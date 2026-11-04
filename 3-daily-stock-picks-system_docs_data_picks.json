@@ -1,0 +1,12 @@
+{
+  "generated_at_utc": null,
+  "data_source": "Alpha Vantage TIME_SERIES_DAILY",
+  "data_note": "No picks published yet. Run the GitHub Actions workflow after adding your API key.",
+  "strategy": "50% trend/momentum, 25% recent pullback context, 15% volume participation, 10% RSI balance.",
+  "value_note": "Pullback context is not a valuation measure.",
+  "universe_size": 18,
+  "symbols_scanned": 0,
+  "errors": [],
+  "picks": [],
+  "watchlist": []
+}
