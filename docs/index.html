@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3 Daily Stock Picks</title>
+<style>
+body{margin:0;background:#0b1220;color:#f4f7fb;font-family:Arial,sans-serif}
+main{max-width:1050px;margin:auto;padding:35px 20px}
+header{padding:20px;border-bottom:1px solid #293951;font-weight:bold}
+h1{text-align:center;font-size:48px}
+.intro{text-align:center;color:#a9b7ca;font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}
+.card{background:#17243a;border:1px solid #293951;border-radius:16px;padding:24px}
+.ticker{font-size:30px;font-weight:bold}
+.muted{color:#a9b7ca}
+.label{color:#70a4ff;font-size:12px;text-transform:uppercase;margin-top:22px}
+.price{font-size:22px;margin-top:12px}
+.notice{margin-top:40px;padding:20px;border:1px solid #385344;border-radius:12px;color:#c7d7e8;font-size:13px}
+@media(max-width:750px){.cards{grid-template-columns:1fr}h1{font-size:35px}}
+</style>
+</head>
+<body>
+<header>3 DAILY STOCK PICKS</header>
+<main>
+<h1>Three ideas. Every trading day.</h1>
+<p class="intro">Daily stock research for US and Canadian markets.</p>
+<p class="muted" id="updated" style="text-align:center">Loading latest picks...</p>
+<div class="cards" id="cards"></div>
+<div class="notice">
+<strong>Disclaimer:</strong> For educational purposes only. These stock ideas are not personalized financial advice or recommendations to buy or sell securities. Investing involves risk, including loss of capital.
+</div>
+</main>
+<script>
+async function loadPicks(){
+ const area=document.getElementById("cards");
+ try{
+  const response=await fetch("./data/picks.json");
+  if(!response.ok) throw new Error("Data not available");
+  const data=await response.json();
+  document.getElementById("updated").textContent=
+   "Last updated: "+new Date(data.updated_at).toLocaleString();
+  area.innerHTML="";
+  data.picks.forEach((p,i)=>{
+   const card=document.createElement("article");
+   card.className="card";
+   card.innerHTML=`
+    <p class="muted">PICK 0${i+1} · ${p.market} · ${p.sector}</p>
+    <div class="ticker">${p.ticker}</div>
+    <div class="muted">${p.company}</div>
+    <div class="price">${p.price}</div>
+    <div class="muted">Price date: ${p.price_date}</div>
+    <div class="label">Why it's on the list</div>
+    <p>${p.reason}</p>
+    <div class="label">Key risk</div>
+    <p>${p.risk}</p>
+    <div class="label">Momentum score</div>
+    <p>${p.score}/100</p>`;
+   area.appendChild(card);
+  });
+ }catch(error){
+  document.getElementById("updated").textContent=
+   "Stock picks are being prepared. Please check again later.";
+ }
+}
+loadPicks();
+</script>
+</body>
+</html>
