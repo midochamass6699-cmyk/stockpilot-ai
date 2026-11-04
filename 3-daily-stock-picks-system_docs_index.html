@@ -1,40 +1,325 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>3 Daily Stock Picks</title>
+
 <style>
-:root{--bg:#0b1220;--panel:#142139;--line:#2a3b56;--ink:#f4f7fb;--muted:#a9b7ca;--blue:#6595ff;--green:#53d6a0}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#1b3764 0,transparent 55%),var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
-.wrap{width:min(1050px,calc(100% - 36px));margin:auto}header{padding:22px 0;border-bottom:1px solid #26364d}.brand{font-weight:850;letter-spacing:.03em;display:flex;align-items:center;gap:11px}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#3978f6,#70a4ff);display:grid;place-items:center}
-.hero{text-align:center;padding:64px 0 34px}.pill{display:inline-block;border:1px solid #39547e;background:#1b2d4c;color:#cbdcff;padding:6px 12px;border-radius:30px;font-size:12px;font-weight:750;letter-spacing:.06em}
-h1{font-size:clamp(38px,6vw,62px);line-height:1.04;letter-spacing:-.045em;margin:18px 0 12px}.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:18px}.meta{color:#c1cfe2;font-size:13px;margin-top:20px}
-.head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:30px 0 16px}h2{margin:0;font-size:25px}.sub,.muted{color:var(--muted);font-size:13px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(160deg,#192943,#111d31);border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:0 15px 35px #0003}.top{display:flex;justify-content:space-between;gap:8px;color:#91a7c6;font-size:12px;font-weight:800;letter-spacing:.08em}.ticker{font-size:29px;font-weight:850;margin-top:18px;letter-spacing:-.03em}.company{color:var(--muted)}.price{font-size:21px;font-weight:750;margin-top:16px}.score{display:inline-block;color:#a8f2d2;background:#174532;border:1px solid #276b50;padding:4px 8px;border-radius:8px;font-size:12px}.label{font-size:11px;color:#8fa3bf;font-weight:800;letter-spacing:.1em;margin:18px 0 4px}.body{font-size:14px;color:#e0e8f3;margin:0}.risk{color:#c7d2e1}.notice{margin:24px 0 60px;padding:17px 19px;border:1px solid #38506f;border-radius:14px;background:#111e31;color:#bdcbe0;font-size:13px}.notice strong{color:#fff}.status{padding:14px;border:1px dashed #405775;border-radius:12px;color:#c4d1e2}.empty{display:none}.watch{margin:25px 0 50px}details{color:#dbe6f4}summary{cursor:pointer;font-weight:700}table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}td,th{text-align:left;padding:9px;border-bottom:1px solid var(--line)}th{color:#9eb0c8}footer{border-top:1px solid #26364d;padding:24px 0 36px;color:#8193ac;font-size:12px}
-@media(max-width:800px){.cards{grid-template-columns:1fr}.head{display:block}.head .sub{margin-top:5px}.hero{padding:48px 0 28px}}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #172033;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  padding: 22px 6%;
+  border-bottom: 1px solid #e5e9f0;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+main {
+  max-width: 1250px;
+  margin: auto;
+  padding: 55px 25px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.eyebrow {
+  color: #1764d8;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(36px, 6vw, 58px);
+  margin: 14px 0;
+  color: #101828;
+}
+
+.subtitle {
+  font-size: 19px;
+  color: #667085;
+}
+
+.updated {
+  margin-top: 25px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 35px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #dce3ed;
+  border-top: 6px solid #1764d8;
+  border-radius: 18px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 28px rgba(16, 24, 40, 0.08);
+}
+
+.pick-number {
+  color: #1764d8;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.market {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #edf4ff;
+  color: #1754a6;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ticker {
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: 900;
+  color: #101828;
+  margin-top: 18px;
+  overflow-wrap: anywhere;
+}
+
+.company {
+  color: #667085;
+  font-size: 16px;
+  min-height: 38px;
+  margin-top: 5px;
+}
+
+.price-label {
+  color: #667085;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-top: 27px;
+}
+
+.price {
+  font-size: 34px;
+  font-weight: 800;
+  color: #101828;
+  margin-top: 5px;
+}
+
+.score-area {
+  margin-top: 25px;
+  padding: 17px;
+  background: #f0f6ff;
+  border-radius: 12px;
+}
+
+.score-label {
+  color: #475467;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.score {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1764d8;
+  margin-top: 5px;
+}
+
+.section-label {
+  margin-top: 25px;
+  color: #1764d8;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.detail {
+  color: #344054;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.price-date {
+  color: #98a2b3;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.notice {
+  margin-top: 55px;
+  padding: 22px;
+  background: #f8fafc;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+footer {
+  text-align: center;
+  color: #98a2b3;
+  font-size: 12px;
+  padding: 25px;
+}
+
+@media (max-width: 850px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 35px 18px;
+  }
+}
 </style>
 </head>
-<body><header><div class="wrap brand"><span class="mark">3</span>3 DAILY STOCK PICKS</div></header>
-<main class="wrap">
-<section class="hero"><span class="pill">US + CANADIAN MARKETS · FREE DAILY SCREEN</span><h1>Three stocks worth researching.</h1><p>A daily, rules-based shortlist blending trend strength with recent pullback context. Every pick includes the reason it ranked and a risk to consider.</p><div class="meta" id="updated">Loading latest published screen…</div></section>
-<section><div class="head"><div><h2>Today's 3 picks</h2><div class="sub">End-of-day market data · Research candidates, not buy signals</div></div><div class="sub" id="coverage"></div></div><div id="cards" class="cards"><div class="status">Loading published picks…</div></div><div id="error" class="status empty"></div></section>
-<section class="watch"><details><summary>View full monitored watchlist</summary><div id="watchlist" class="muted"></div></details></section>
-<aside class="notice"><strong>Important:</strong> For educational and informational purposes only; not investment advice or a recommendation to buy or sell. Prices and scores are based on historical end-of-day data and may be delayed. This screen does not evaluate all company fundamentals, fair value, news, liquidity, or your financial circumstances. Investing involves risk, including loss of principal. No returns are promised or guaranteed.</aside>
-</main><footer><div class="wrap">© <span id="year"></span> 3 Daily Stock Picks · Data source: Alpha Vantage · Built as a free prototype</div></footer>
+
+<body>
+
+<header>3 DAILY STOCK PICKS</header>
+
+<main>
+
+  <section class="hero">
+    <div class="eyebrow">US & Canadian Markets</div>
+    <h1>Today's Top 3 Stock Picks</h1>
+    <p class="subtitle">
+      Three stock research ideas, updated every trading day.
+    </p>
+    <p class="updated" id="updated">Loading latest picks...</p>
+  </section>
+
+  <section class="cards" id="cards"></section>
+
+  <div class="notice">
+    <strong>Important disclaimer:</strong>
+    These stock ideas are provided for educational and informational
+    purposes only. They are not personalized financial advice or
+    recommendations to buy or sell securities. Stock prices can change.
+    Investing involves risk, including the possible loss of your capital.
+    Always do your own research before investing.
+  </div>
+
+</main>
+
+<footer>
+  3 Daily Stock Picks · Daily market research
+</footer>
+
 <script>
-const money=(n,c)=>new Intl.NumberFormat('en-US',{style:'currency',currency:c,maximumFractionDigits:2}).format(n);
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-async function load(){
- document.getElementById('year').textContent=new Date().getFullYear();
- try{
-  const r=await fetch('data/picks.json?ts='+Date.now(),{cache:'no-store'});
-  if(!r.ok) throw new Error('No published picks yet. The automated workflow has not completed its first run.');
-  const d=await r.json();
-  document.getElementById('updated').textContent='Last generated: '+new Date(d.generated_at_utc).toLocaleString()+' · '+d.data_source;
-  document.getElementById('coverage').textContent=`${d.symbols_scanned}/${d.universe_size} symbols scanned`;
-  const cards=document.getElementById('cards');
-  cards.innerHTML=(d.picks||[]).map((p,i)=>`<article class="card"><div class="top"><span>PICK 0${i+1} · ${esc(p.market)}</span><span class="score">Score ${esc(p.score)}/100</span></div><div class="ticker">${esc(p.symbol)}</div><div class="company">${esc(p.company)} · ${esc(p.sector)}</div><div class="price">${money(p.price,p.currency)}</div><div class="muted">Close on ${esc(p.price_date)} · ${esc(p.currency)}</div><div class="label">WHY IT MADE THE LIST</div><p class="body">${esc(p.reason)}</p><div class="label">KEY RISK TO CONSIDER</div><p class="body risk">${esc(p.risk)}</p></article>`).join('');
-  document.getElementById('watchlist').innerHTML='<table><thead><tr><th>Symbol</th><th>Market</th><th>Score</th><th>20-session return</th><th>RSI</th></tr></thead><tbody>'+(d.watchlist||[]).map(p=>`<tr><td>${esc(p.symbol)}</td><td>${esc(p.market)}</td><td>${esc(p.score)}</td><td>${esc(p.return_20d_pct)}%</td><td>${esc(p.rsi_14)}</td></tr>`).join('')+'</tbody></table>';
- }catch(e){document.getElementById('cards').innerHTML='';const el=document.getElementById('error');el.classList.remove('empty');el.textContent=e.message;}
+async function loadPicks() {
+  const area = document.getElementById("cards");
+  const updated = document.getElementById("updated");
+
+  try {
+    const response = await fetch("./data/picks.json");
+
+    if (!response.ok) {
+      throw new Error("Stock data unavailable");
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data.picks) || data.picks.length !== 3) {
+      throw new Error("Three picks are not available");
+    }
+
+    const date = new Date(data.updated_at);
+
+    updated.textContent = "Last updated: " +
+      (isNaN(date.getTime()) ? "Date unavailable" :
+      date.toLocaleString());
+
+    area.replaceChildren();
+
+    data.picks.forEach((p, i) => {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      const currency = p.market === "Canada" ? "CAD" : "USD";
+
+      const price = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: currency
+      }).format(Number(p.price));
+
+      function addElement(parent, tag, className, content) {
+        const element = document.createElement(tag);
+        element.className = className;
+        element.textContent = content;
+        parent.appendChild(element);
+        return element;
+      }
+
+      addElement(card, "div", "pick-number",
+        "PICK 0" + (i + 1));
+
+      addElement(card, "span", "market",
+        p.market + " · " + p.sector);
+
+      addElement(card, "div", "ticker", p.ticker);
+      addElement(card, "div", "company", p.company);
+
+      addElement(card, "div", "price-label", "Latest available price");
+      addElement(card, "div", "price", price);
+
+      addElement(card, "div", "price-date",
+        "Price date: " + p.price_date);
+
+      const scoreBox = document.createElement("div");
+      scoreBox.className = "score-area";
+
+      addElement(scoreBox, "div", "score-label",
+        "MOMENTUM SCORE");
+
+      addElement(scoreBox, "div", "score",
+        Number(p.score).toFixed(1) + " / 100");
+
+      card.appendChild(scoreBox);
+
+      addElement(card, "div", "section-label",
+        "Why it's on the list");
+
+      addElement(card, "p", "detail", p.reason);
+
+      addElement(card, "div", "section-label",
+        "Key risk");
+
+      addElement(card, "p", "detail", p.risk);
+
+      area.appendChild(card);
+    });
+
+  } catch (error) {
+    updated.textContent =
+      "Today's stock picks are temporarily unavailable.";
+  }
 }
-load();
-</script></body></html>
+
+loadPicks();
+</script>
+
+</body>
+</html>
