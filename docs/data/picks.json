@@ -1,4 +1,53 @@
 {
-  "updated_at": null,
-  "picks": []
+  "updated_at": "2026-11-04T15:43:55.328210+00:00",
+  "picks": [
+    {
+      "ticker": "LLY",
+      "company": "Eli Lilly",
+      "market": "US",
+      "sector": "Healthcare",
+      "price": 1409.38,
+      "price_date": "2026-11-03",
+      "score": 89.0,
+      "return_20d": 21.76,
+      "return_50d": 13.03,
+      "rsi": 79.3,
+      "volume_ratio": 1.08,
+      "above_50day_average": true,
+      "reason": "Positive trend and momentum with recent price and volume indicators.",
+      "risk": "Price momentum can reverse. Review company fundamentals and recent news."
+    },
+    {
+      "ticker": "CSU.TRT",
+      "company": "Constellation Software",
+      "market": "Canada",
+      "sector": "Technology",
+      "price": 3438.0,
+      "price_date": "2026-11-03",
+      "score": 87.2,
+      "return_20d": 15.12,
+      "return_50d": 13.05,
+      "rsi": 69.0,
+      "volume_ratio": 0.82,
+      "above_50day_average": true,
+      "reason": "Positive trend and momentum with recent price and volume indicators.",
+      "risk": "Price momentum can reverse. Review company fundamentals and recent news."
+    },
+    {
+      "ticker": "KO",
+      "company": "Coca-Cola",
+      "market": "US",
+      "sector": "Consumer",
+      "price": 94.8,
+      "price_date": "2026-11-03",
+      "score": 83.5,
+      "return_20d": 10.02,
+      "return_50d": 3.05,
+      "rsi": 59.4,
+      "volume_ratio": 0.96,
+      "above_50day_average": true,
+      "reason": "Positive trend and momentum with recent price and volume indicators.",
+      "risk": "Price momentum can reverse. Review company fundamentals and recent news."
+    }
+  ]
 }
