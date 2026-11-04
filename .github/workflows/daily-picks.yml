@@ -1,0 +1,38 @@
+
+name: Update daily stock picks
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 22 * * 1-5"
+
+permissions:
+  contents: write
+
+jobs:
+  update-picks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate stock picks
+        env:
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+        run: python stock_picker.py
+
+      - name: Save updated picks
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/picks.json
+          git diff --cached --quiet || git commit -m "Update daily stock picks"
+          git push
