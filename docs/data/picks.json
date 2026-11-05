@@ -1,53 +1,29 @@
 {
-  "updated_at": "2026-11-04T23:17:17.145643+00:00",
-  "picks": [
+  "updated_at": "2026-11-05T09:00:00-05:00",
+  "main": [
     {
       "ticker": "CSU.TRT",
       "company": "Constellation Software",
-      "market": "Canada",
-      "sector": "Technology",
+      "exchange": "TSX",
+      "currency": "CAD",
       "price": 3465.98,
-      "price_date": "2026-11-04",
+      "change_percent": 2.5,
       "score": 92.3,
-      "return_20d": 17.47,
-      "return_50d": 11.85,
-      "rsi": 63.6,
-      "volume_ratio": 1.2,
-      "above_50day_average": true,
-      "reason": "Positive trend and momentum with recent price and volume indicators.",
-      "risk": "Price momentum can reverse. Review company fundamentals and recent news."
-    },
+      "reason": "Strong price momentum and trading activity.",
+      "risk": "Moderate"
+    }
+  ],
+  "penny": [
     {
-      "ticker": "LLY",
-      "company": "Eli Lilly",
-      "market": "US",
-      "sector": "Healthcare",
-      "price": 1417.72,
-      "price_date": "2026-11-04",
-      "score": 91.9,
-      "return_20d": 19.26,
-      "return_50d": 14.92,
-      "rsi": 77.0,
-      "volume_ratio": 1.37,
-      "above_50day_average": true,
-      "reason": "Positive trend and momentum with recent price and volume indicators.",
-      "risk": "Price momentum can reverse. Review company fundamentals and recent news."
-    },
-    {
-      "ticker": "KO",
-      "company": "Coca-Cola",
-      "market": "US",
-      "sector": "Consumer",
-      "price": 95.86,
-      "price_date": "2026-11-04",
-      "score": 90.2,
-      "return_20d": 11.7,
-      "return_50d": 4.6,
-      "rsi": 61.5,
-      "volume_ratio": 1.62,
-      "above_50day_average": true,
-      "reason": "Positive trend and momentum with recent price and volume indicators.",
-      "risk": "Price momentum can reverse. Review company fundamentals and recent news."
+      "ticker": "EXAMPLE",
+      "company": "Example Company",
+      "exchange": "NASDAQ",
+      "currency": "USD",
+      "price": 2.45,
+      "change_percent": 3.2,
+      "score": 85.0,
+      "reason": "Example research entry.",
+      "risk": "High"
     }
   ]
 }
