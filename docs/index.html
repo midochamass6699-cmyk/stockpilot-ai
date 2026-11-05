@@ -2,165 +2,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Six daily stock research picks covering US and Canadian markets.">
+  <title>3 Daily Stock Picks | Market Research</title>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SD95HMM6GV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-SD95HMM6GV');
-</script>
-  
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>3 Daily Stock Picks</title>
-<style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SD95HMM6GV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SD95HMM6GV');
+  </script>
 
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #172033;
-  font-family: Arial, sans-serif;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1120;
+      color: #f8fafc;
+    }
 
-main {
-  max-width: 1250px;
-  margin: auto;
-  padding: 40px 25px;
-}
+    header {
+      text-align: center;
+      padding: 42px 16px 30px;
+      background: #111c32;
+      border-bottom: 1px solid #263650;
+    }
 
-header {
-  padding: 22px 6%;
-  border-bottom: 1px solid #e5e9f0;
-  font-size: 20px;
-  font-weight: bold;
-  color: #172033;
-}
+    header h1 {
+      margin: 0;
+      font-size: clamp(27px, 5vw, 42px);
+      color: #ffffff;
+    }
 
-h1 {
-  text-align: center;
-  font-size: 46px;
-  color: #101828;
-}
+    header p {
+      color: #aab8ce;
+      margin: 12px 0 0;
+    }
 
-.intro {
-  text-align: center;
-  color: #667085;
-  font-size: 19px;
-}
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 28px 18px 50px;
+    }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 35px;
-}
+    .update {
+      text-align: center;
+      color: #aab8ce;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
 
-.card {
-  background: #ffffff;
-  color: #172033;
-  border: 1px solid #dce3ed;
-  border-top: 6px solid #1764d8;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 8px 25px rgba(0,0,0,.08);
-}
+    .section-title {
+      font-size: 23px;
+      margin: 30px 0 16px;
+    }
 
-.ticker {
-  font-size: 42px;
-  font-weight: 900;
-  color: #101828;
-}
+    .section-subtitle {
+      color: #9caec5;
+      font-size: 13px;
+      margin: -8px 0 18px;
+    }
 
-.muted {
-  color: #667085;
-}
+    .stock-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
 
-.label {
-  color: #1764d8;
-  font-size: 13px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 22px;
-}
+    .stock-card {
+      background: #16233a;
+      border: 1px solid #2b3d59;
+      border-radius: 14px;
+      padding: 20px;
+      min-width: 0;
+    }
 
-.price {
-  font-size: 30px;
-  font-weight: bold;
-  color: #101828;
-  margin-top: 12px;
-}
+    .stock-card h3 {
+      margin: 0 0 6px;
+      font-size: 19px;
+    }
 
-.notice {
-  margin-top: 40px;
-  padding: 20px;
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  color: #667085;
-  font-size: 13px;
-}
+    .ticker {
+      color: #9eb1cc;
+      font-size: 13px;
+    }
 
-@media(max-width:750px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-  h1 {
-    font-size: 35px;
-  }
-}
+    .price {
+      font-size: 27px;
+      font-weight: bold;
+      margin: 19px 0 5px;
+    }
 
-</style>
+    .change {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .positive { color: #34d399; }
+    .negative { color: #fb7185; }
+
+    .details {
+      border-top: 1px solid #2b3d59;
+      margin-top: 17px;
+      padding-top: 13px;
+      color: #c4d0e0;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .risk {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 10px;
+      border-radius: 20px;
+      background: #263650;
+      color: #e2e8f0;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .penny {
+      border-color: #75552c;
+    }
+
+    .penny-label {
+      color: #fbbf24;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      text-align: center;
+      color: #aab8ce;
+      padding: 25px;
+      grid-column: 1 / -1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 18px;
+      border-top: 1px solid #263650;
+      color: #8495ad;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 750px) {
+      .stock-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stock-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>3 DAILY STOCK PICKS</header>
-<main>
-<h1>Three ideas. Every trading day.</h1>
-<p class="intro">Daily stock research for US and Canadian markets.</p>
-<p class="muted" id="updated" style="text-align:center">Loading latest picks...</p>
-<div class="cards" id="cards"></div>
-<div class="notice">
-<strong>Disclaimer:</strong> For educational purposes only. These stock ideas are not personalized financial advice or recommendations to buy or sell securities. Investing involves risk, including loss of capital.
-</div>
+
+<header>
+  <h1>3 Daily Stock Picks</h1>
+  <p>Six daily research ideas. US & Canadian markets.</p>
+</header>
+
+<main class="container">
+
+  <div class="update" id="updated">
+    Loading latest stock picks...
+  </div>
+
+  <section>
+    <h2 class="section-title">📈 Main Stock Picks</h2>
+    <p class="section-subtitle">
+      Three established stocks selected using market data and research.
+    </p>
+    <div class="stock-grid" id="mainStocks">
+      <div class="message">Loading main stocks...</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">⚡ Penny Stock Picks</h2>
+    <p class="section-subtitle">
+      Three speculative, higher-risk opportunities.
+    </p>
+    <div class="stock-grid" id="pennyStocks">
+      <div class="message">Loading penny stocks...</div>
+    </div>
+  </section>
+
 </main>
+
+<footer>
+  <p>
+    Stock information is provided for educational and research purposes only.
+    Penny stocks can be highly volatile and illiquid.
+  </p>
+  <p>
+    Not financial advice. Prices may be delayed.
+    Always do your own research before investing.
+  </p>
+  <p>© 2026 3 Daily Stock Picks</p>
+</footer>
+
 <script>
-async function loadPicks(){
- const area=document.getElementById("cards");
- try{
-  const response=await fetch("./data/picks.json");
-  if(!response.ok) throw new Error("Data not available");
-  const data=await response.json();
-  document.getElementById("updated").textContent=
-   "Last updated: "+new Date(data.updated_at).toLocaleString();
-  area.innerHTML="";
-  data.picks.forEach((p,i)=>{
-   const card=document.createElement("article");
-   card.className="card";
-   card.innerHTML=`
-    <p class="muted">PICK 0${i+1} · ${p.market} · ${p.sector}</p>
-    <div class="ticker">${p.ticker}</div>
-    <div class="muted">${p.company}</div>
-    <div class="price">${p.price}</div>
-    <div class="muted">Price date: ${p.price_date}</div>
-    <div class="label">Why it's on the list</div>
-    <p>${p.reason}</p>
-    <div class="label">Key risk</div>
-    <p>${p.risk}</p>
-    <div class="label">Momentum score</div>
-    <p>${p.score}/100</p>`;
-   area.appendChild(card);
-  });
- }catch(error){
-  document.getElementById("updated").textContent=
-   "Stock picks are being prepared. Please check again later.";
- }
-}
-loadPicks();
+  function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    })[char]);
+  }
+
+  function renderStock(stock, isPenny = false) {
+    const change = Number(stock.change_percent);
+    const validChange = Number.isFinite(change);
+    const changeClass = validChange
+      ? (change >= 0 ? "positive" : "negative")
+      : "";
+    const changeText = validChange
+      ? `${change > 0 ? "+" : ""}${change.toFixed(2)}% today`
+      : "Daily change unavailable";
+
+    const price = Number(stock.price);
+    const priceText = Number.isFinite(price)
+      ? `${escapeHTML(stock.currency || "")} ${price.toFixed(2)}`
+      : "Price unavailable";
+
+    return `
+      <article class="stock-card ${isPenny ? "penny" : ""}">
+        ${isPenny ? '<div class="penny-label">PENNY STOCK</div>' : ""}
+        <h3>${escapeHTML(stock.company)}</h3>
+        <div class="ticker">
+          ${escapeHTML(stock.ticker)} · ${escapeHTML(stock.exchange)}
+        </div>
+
+        <div class="price">${priceText}</div>
+        <div class="change ${changeClass}">${changeText}</div>
+
+        <div class="details">
+          <strong>Why selected:</strong><br>
+          ${escapeHTML(stock.reason || "Research details unavailable")}
+          <br><br>
+          <strong>Quote time:</strong>
+          ${escapeHTML(stock.quote_time || "Not provided")}
+          <br>
+          <strong>Risk:</strong>
+          ${escapeHTML(stock.risk || (isPenny ? "High" : "Review"))}
+        </div>
+
+        <span class="risk">
+          ${escapeHTML(stock.risk || (isPenny ? "HIGH RISK" : "RESEARCH PICK"))}
+        </span>
+      </article>
+    `;
+  }
+
+  async function loadStocks() {
+    const main = document.getElementById("mainStocks");
+    const penny = document.getElementById("pennyStocks");
+
+    try {
+      const response = await fetch("./data/picks.json?t=" + Date.now());
+
+      if (!response.ok) {
+        throw new Error("Could not load picks.json");
+      }
+
+      const data = await response.json();
+
+      const mainPicks = Array.isArray(data.main) ? data.main : [];
+      const pennyPicks = Array.isArray(data.penny) ? data.penny : [];
+
+      main.innerHTML = mainPicks.length
+        ? mainPicks.slice(0, 3).map(stock => renderStock(stock)).join("")
+        : '<div class="message">No main stock picks available yet.</div>';
+
+      penny.innerHTML = pennyPicks.length
+        ? pennyPicks.slice(0, 3).map(stock => renderStock(stock, true)).join("")
+        : '<div class="message">No penny stock picks available yet.</div>';
+
+      document.getElementById("updated").textContent =
+        "Last updated: " + (data.updated_at || "Date not provided");
+
+    } catch (error) {
+      main.innerHTML = '<div class="message">Unable to load stock picks. Please try again later.</div>';
+      penny.innerHTML = '<div class="message">Unable to load stock picks. Please try again later.</div>';
+      document.getElementById("updated").textContent =
+        "Stock data is temporarily unavailable.";
+      console.error(error);
+    }
+  }
+
+  loadStocks();
 </script>
+
 </body>
 </html>
+
