@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StockPilot — weekly penny-stock watchlist for Canadian and US markets.">
+  <title>StockPilot | Weekly Stock Picks</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b1220; --panel:#121d30; --line:#263650; --muted:#9aabc2; --text:#edf4ff; --green:#48d597; --blue:#77a9ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(ellipse at top,#172944 0,#0b1220 55%); color:var(--text); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+    .wrap { width:min(1080px,92%); margin:auto; }
+    header { padding:34px 0 22px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-size:1.35rem; font-weight:800; letter-spacing:.4px; }
+    .brand span { color:var(--green); }
+    .tag { color:var(--muted); font-size:.88rem; border:1px solid var(--line); border-radius:999px; padding:7px 12px; }
+    .hero { padding:48px 0 28px; max-width:760px; }
+    .eyebrow { color:var(--green); text-transform:uppercase; letter-spacing:2px; font-size:.75rem; font-weight:700; }
+    h1 { font-size:clamp(2.2rem,6vw,4rem); line-height:1.04; margin:12px 0 18px; letter-spacing:-1.8px; }
+    .hero p { color:var(--muted); font-size:1.08rem; max-width:660px; }
+    .rules { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:26px 0 34px; }
+    .rule,.panel { background:rgba(18,29,48,.88); border:1px solid var(--line); border-radius:16px; padding:18px; }
+    .rule strong { display:block; font-size:1.45rem; color:var(--green); }
+    .rule span { color:var(--muted); font-size:.9rem; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:12px; margin:26px 0 14px; }
+    h2 { margin:0; font-size:1.45rem; }
+    .section-head small { color:var(--muted); }
+    .status { padding:22px; border:1px dashed #49617f; border-radius:14px; color:var(--muted); background:rgba(18,29,48,.5); }
+    .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:14px; }
+    table { width:100%; border-collapse:collapse; min-width:620px; }
+    th,td { text-align:left; padding:13px 15px; border-bottom:1px solid var(--line); }
+    th { color:var(--muted); font-size:.8rem; text-transform:uppercase; letter-spacing:.7px; }
+    tr:last-child td { border-bottom:0; }
+    .ticker { font-weight:800; color:var(--blue); }
+    footer { color:var(--muted); font-size:.82rem; padding:36px 0 48px; }
+    .note { color:var(--muted); font-size:.88rem; margin-top:14px; }
+    @media(max-width:650px) { header { align-items:flex-start; flex-direction:column; } .rules { grid-template-columns:1fr; } .hero { padding-top:28px; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">Stock<span>Pilot</span></div>
+      <div class="tag">CANADA + UNITED STATES</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">Weekly market watchlist</div>
+        <h1>Find the signal.<br>Follow the numbers.</h1>
+        <p>Five penny-stock candidates selected using trading activity, debt-to-equity and profitability. Prices are evaluated in each stock's local currency.</p>
+      </section>
+
+      <section class="rules" aria-label="Selection rules">
+        <div class="rule"><strong>40%</strong><span>Trading activity and liquidity</span></div>
+        <div class="rule"><strong>30%</strong><span>Debt-to-equity</span></div>
+        <div class="rule"><strong>30%</strong><span>Profitability</span></div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>This week's five picks</h2>
+          <small id="updated">Waiting for verified data</small>
+        </div>
+        <div id="content" class="status" role="status">No verified picks have been published yet. Once the data workflow creates <code>data/picks.json</code>, the five candidates will appear here. StockPilot will not invent prices or financial figures.</div>
+        <p class="note">Price ceiling: US$10 for US-listed stocks and C$10 for Canadian-listed stocks. Data may be delayed or end-of-day; this is not a real-time trading feed.</p>
+      </section>
+    </main>
+
+    <footer>
+      <strong>Important:</strong> StockPilot is for research and education, not investment advice. Penny stocks can be highly volatile and may be difficult to sell. Verify all information with the original data provider before making a decision.
+    </footer>
+  </div>
+
+  <script>
+    async function loadPicks() {
+      const box = document.getElementById('content');
+      const updated = document.getElementById('updated');
+      try {
+        const response = await fetch('data/picks.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Picks file not available');
+        const payload = await response.json();
+        const picks = Array.isArray(payload) ? payload : (payload.picks || []);
+        if (!picks.length) throw new Error('No verified picks in the data file');
+        const rows = picks.slice(0, 5).map((p, i) => `
+          <tr>
+            <td>${i + 1}</td>
+            <td class="ticker">${escapeHtml(p.ticker || p.symbol || '—')}</td>
+            <td>${escapeHtml(p.market || p.exchange || '—')}</td>
+            <td>${escapeHtml(p.price_display || p.price || '—')}</td>
+            <td>${escapeHtml(p.score ?? '—')}</td>
+          </tr>`).join('');
+        box.className = 'table-wrap';
+        box.innerHTML = `<table><thead><tr><th>#</th><th>Ticker</th><th>Market</th><th>Price</th><th>Score</th></tr></thead><tbody>${rows}</tbody></table>`;
+        updated.textContent = payload.updated_at ? 'Updated: ' + payload.updated_at : 'Latest available data';
+      } catch (err) {
+        box.className = 'status';
+        box.textContent = 'The page is published, but verified stock data is not available yet. No picks are shown until the data file is created.';
+      }
+    }
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+    loadPicks();
+  </script>
+</body>
+</html>
