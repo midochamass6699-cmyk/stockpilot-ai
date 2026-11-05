@@ -51,7 +51,7 @@ PENNY_UNIVERSE = [
     ("LUMN", "Lumen Technologies", "US", "Telecommunications"),
 ]
 
-PENNY_MAX_PRICE = 5.00
+PENNY_MAX_PRICE = 10.00
 REQUEST_DELAY = 12.5
 
 
