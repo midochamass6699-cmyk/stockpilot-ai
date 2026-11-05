@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StockPilot | Weekly Picks</title>
+<meta name="description" content="A manually curated weekly watchlist of five US and Canadian penny stocks.">
+<style>
+:root{color-scheme:dark;--bg:#09111f;--panel:#121e31;--line:#263852;--text:#eef4ff;--muted:#9aabc2;--green:#50dda0;--blue:#83adff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1a2d49 0,#09111f 60%);color:var(--text);font:16px/1.5 system-ui,Segoe UI,Arial,sans-serif}
+.wrap{width:min(1100px,92%);margin:auto}header{padding:30px 0;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:1.4rem;font-weight:850}.brand span{color:var(--green)}.pill{border:1px solid var(--line);border-radius:30px;padding:7px 12px;color:var(--muted);font-size:.82rem}
+.hero{padding:45px 0 25px;max-width:760px}.eyebrow{color:var(--green);text-transform:uppercase;letter-spacing:2px;font-size:.76rem;font-weight:700}h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.05;letter-spacing:-1.7px;margin:12px 0}p{color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0 38px}.metric,.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px}.metric b{display:block;color:var(--green);font-size:1.4rem}.metric span{color:var(--muted);font-size:.9rem}.head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:20px 0 14px}h2{margin:0;font-size:1.45rem}.stamp{color:var(--muted);font-size:.84rem}.status{border:1px dashed #49617f;border-radius:14px;padding:22px;color:var(--muted)}.tablebox{overflow:auto;border:1px solid var(--line);border-radius:14px}table{border-collapse:collapse;width:100%;min-width:850px}th,td{text-align:left;padding:12px 13px;border-bottom:1px solid var(--line)}th{font-size:.76rem;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}tr:last-child td{border:0}.ticker{font-weight:800;color:var(--blue)}.score{font-weight:800;color:var(--green)}.note{font-size:.86rem;color:var(--muted);margin-top:13px}footer{padding:35px 0 48px;color:var(--muted);font-size:.82rem}
+@media(max-width:650px){header{align-items:flex-start;flex-direction:column}.metrics{grid-template-columns:1fr}.hero{padding-top:25px}}
+</style></head>
+<body><div class="wrap">
+<header><div class="brand">Stock<span>Pilot</span></div><div class="pill">WEEKLY WATCHLIST · US + CANADA</div></header>
+<main>
+<section class="hero"><div class="eyebrow">Your weekly stock shortlist</div><h1>Five picks.<br>Chosen by you.</h1>
+<p>StockPilot displays five penny-stock candidates selected and reviewed manually each week. Scores use trading activity, debt-to-equity and profitability.</p></section>
+<section class="metrics">
+<div class="metric"><b>40%</b><span>Trading activity score</span></div>
+<div class="metric"><b>30%</b><span>Debt-to-equity score</span></div>
+<div class="metric"><b>30%</b><span>Profitability score</span></div>
+</section>
+<section><div class="head"><h2>This week's five picks</h2><span class="stamp" id="updated">Awaiting weekly update</span></div>
+<div id="content" class="status">No stocks have been entered for this week yet. The watchlist will appear here after the five selections are added to the data file.</div>
+<p class="note">Price limit: US$10 for US-listed stocks and C$10 for Canadian-listed stocks. Prices and financial figures are entered manually and should include their source and date. This is not a real-time feed.</p>
+</section></main>
+<footer><b>Disclaimer:</b> For research and educational purposes only, not investment advice. Penny stocks are speculative and can be highly volatile. Verify figures with reliable original sources before making investment decisions.</footer>
+</div>
+<script>
+const esc=v=>String(v??"—").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+async function load(){
+ const box=document.getElementById("content"),stamp=document.getElementById("updated");
+ try{
+  const r=await fetch("data/picks.json",{cache:"no-store"});if(!r.ok)throw Error();
+  const d=await r.json(),picks=Array.isArray(d.picks)?d.picks:[];
+  if(!picks.length){stamp.textContent="Awaiting weekly update";return;}
+  const rows=picks.slice(0,5).map((p,i)=>{
+   const score=(Number(p.trading_score||0)*.4+Number(p.debt_score||0)*.3+Number(p.profitability_score||0)*.3);
+   const scoreText=[p.trading_score,p.debt_score,p.profitability_score].every(v=>Number.isFinite(Number(v)))?score.toFixed(1):"—";
+   return `<tr><td>${i+1}</td><td class="ticker">${esc(p.ticker)}</td><td>${esc(p.company)}</td><td>${esc(p.market)}</td><td>${esc(p.price)} ${esc(p.currency)}</td><td>${esc(p.volume)}</td><td>${esc(p.debt_to_equity)}</td><td>${esc(p.profitability)}</td><td class="score">${scoreText}/100</td></tr>`;
+  }).join("");
+  box.className="tablebox";box.innerHTML=`<table><thead><tr><th>#</th><th>Ticker</th><th>Company</th><th>Market</th><th>Price</th><th>Volume</th><th>Debt/equity</th><th>Profitability</th><th>Weighted score</th></tr></thead><tbody>${rows}</tbody></table>`;
+  stamp.textContent="Updated: "+esc(d.updated_at||"date not supplied");
+ }catch(e){box.className="status";box.textContent="Stock data file not found. Add docs/data/picks.json to publish this week's five selections.";}
+}
+load();
+</script></body></html>
