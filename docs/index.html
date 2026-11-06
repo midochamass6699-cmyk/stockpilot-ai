@@ -830,7 +830,19 @@ footer a {color:var(--yellow);}
   <div class="eyebrow">WEEKLY COMPANY RESEARCH</div>
 
   <h2>⭐ Stock of the Week: CEMATRIX Corporation (TSX: CEMX)</h2>
+<div class="weekly-vote" id="weekly-vote" data-symbol="CEMX">
+  <strong>Do you agree with this week's pick?</strong>
 
+  <button id="weekly-agree" type="button" disabled>
+    👍 Agree (<span id="weekly-agree-count">0</span>)
+  </button>
+
+  <button id="weekly-disagree" type="button" disabled>
+    👎 Disagree (<span id="weekly-disagree-count">0</span>)
+  </button>
+
+  <small id="weekly-vote-message">Loading votes...</small>
+</div>
   <p>
     CEMATRIX Corporation is an interesting Canadian small-cap company
     specializing in cellular concrete solutions for infrastructure,
