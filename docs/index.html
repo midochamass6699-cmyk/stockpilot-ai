@@ -1008,9 +1008,12 @@ async function loadPicks() {
 
     renderCards("penny-cards", data.penny, "PENNY");
 
-    document.getElementById("source").textContent =
-      "Source: " + data.data_source + " · " + data.data_note;
+   const sourceElement = document.getElementById("source");
 
+if (sourceElement) {
+  sourceElement.textContent =
+    "Source: " + data.data_source + " · " + data.data_note;
+}
   } catch (error) {
 
     updated.textContent =
