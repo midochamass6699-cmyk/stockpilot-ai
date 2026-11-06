@@ -1667,5 +1667,108 @@ setInterval(loadStocks,15 * 60 * 1000);
 
 </script>
 
+<script>
+(() => {
+  const API_URL = "https://script.google.com/macros/s/AKfycbyv3QaqN1X035ynu1ChQjigpbbXAHQf-UFcitZmJGQuIwIOW2Tx93u96qrgJ-ZPH71d/exec";
+
+  const box = document.getElementById("weekly-vote");
+  if (!box) return;
+
+  const symbol = box.dataset.symbol;
+  const agreeButton = document.getElementById("weekly-agree");
+  const disagreeButton = document.getElementById("weekly-disagree");
+  const agreeCount = document.getElementById("weekly-agree-count");
+  const disagreeCount = document.getElementById("weekly-disagree-count");
+  const message = document.getElementById("weekly-vote-message");
+
+  let storageKey = "";
+
+  function loadVotes() {
+    agreeButton.disabled = true;
+    disagreeButton.disabled = true;
+
+    const script = document.createElement("script");
+
+    window.stockPilotVotesCallback = function(data) {
+      script.remove();
+      delete window.stockPilotVotesCallback;
+
+      if (!data || !data.ok) {
+        message.textContent = "Unable to load voting results.";
+        return;
+      }
+
+      agreeCount.textContent = data.agree;
+      disagreeCount.textContent = data.disagree;
+
+      storageKey =
+        "stockpilot-weekly-vote:" + symbol + ":" + data.weekKey;
+
+      let alreadyVoted = false;
+
+      try {
+        alreadyVoted = Boolean(localStorage.getItem(storageKey));
+      } catch (error) {
+        message.textContent = "Voting storage is unavailable.";
+        return;
+      }
+
+      agreeButton.disabled = alreadyVoted;
+      disagreeButton.disabled = alreadyVoted;
+
+      message.textContent = alreadyVoted
+        ? "You have already voted this week."
+        : "Cast your vote!";
+    };
+
+    script.onerror = function() {
+      message.textContent = "Unable to connect to the voting service.";
+      script.remove();
+    };
+
+    script.src =
+      API_URL +
+      "?symbol=" + encodeURIComponent(symbol) +
+      "&callback=stockPilotVotesCallback" +
+      "&_=" + Date.now();
+
+    document.head.appendChild(script);
+  }
+
+  async function castVote(vote) {
+    if (!storageKey || localStorage.getItem(storageKey)) return;
+
+    agreeButton.disabled = true;
+    disagreeButton.disabled = true;
+    message.textContent = "Submitting your vote...";
+
+    try {
+      await fetch(API_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams({
+          symbol: symbol,
+          vote: vote
+        })
+      });
+
+      localStorage.setItem(storageKey, vote);
+      message.textContent = "Thank you! Your vote has been recorded.";
+
+      setTimeout(loadVotes, 1200);
+    } catch (error) {
+      message.textContent = "Vote could not be submitted. Please try again.";
+      agreeButton.disabled = false;
+      disagreeButton.disabled = false;
+    }
+  }
+
+  agreeButton.addEventListener("click", () => castVote("agree"));
+  disagreeButton.addEventListener("click", () => castVote("disagree"));
+
+  loadVotes();
+})();
+</script>
+  
 </body>
 </html>
