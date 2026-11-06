@@ -109,6 +109,54 @@
 <footer><strong>STOCKPILOT AI</strong><p>Free daily stock research · Market activity · Investor discussion</p><p>© <span id="year"></span> StockPilot AI · For educational purposes only · Not financial advice</p><a href="#top">Back to top ↑</a></footer>
 <script>
 
+
+<section id="contact" class="contact-section">
+  <h2>Contact StockPilot AI</h2>
+  <p>Have a question, suggestion or business inquiry? Send us a message.</p>
+
+  <form id="contactForm">
+    <input type="text" id="contactName"
+      placeholder="Your name" required>
+
+    <input type="email" id="contactEmail"
+      placeholder="Your email address" required>
+
+    <input type="text" id="contactSubject"
+      placeholder="Subject" required>
+
+    <textarea id="contactMessage"
+      placeholder="Your message..." rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const recipient = "midochamass6699@gmail.com";
+
+  const name = document.getElementById("contactName").value;
+  const email = document.getElementById("contactEmail").value;
+  const subject = document.getElementById("contactSubject").value;
+  const message = document.getElementById("contactMessage").value;
+
+  const body =
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n\n" +
+    message;
+
+  const mailto =
+    "mailto:" + recipient +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  window.location.href = mailto;
+});
+</script>
+
+  
 function renderCrypto(c,index){
   const price=Number(c.current_price),volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h);
   const validChange=Number.isFinite(change);
