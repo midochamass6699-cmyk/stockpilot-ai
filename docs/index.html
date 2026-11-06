@@ -842,10 +842,8 @@ footer {
 </footer>
 
 <!-- STOCK DATA ENGINE -->
-
-// STOCK DATA ENGINE - STOCKPILOT AI
-
-// STOCKPILOT AI — AUTOMATIC STOCK DATA ENGINE
+<script>
+"use strict";
 
 const money = value =>
   new Intl.NumberFormat("en-US", {
@@ -868,45 +866,64 @@ function safe(value) {
 
 function renderStockCards(elementId, stocks) {
   const container = document.getElementById(elementId);
-  if (!container) return;
+
+  if (!container) {
+    console.error("StockPilot: Missing HTML element:", elementId);
+    return;
+  }
 
   container.innerHTML = "";
 
   if (!Array.isArray(stocks) || stocks.length === 0) {
-    container.textContent = "No qualifying stocks available.";
+    container.innerHTML =
+      '<div class="empty">No qualifying stocks available.</div>';
     return;
   }
 
   stocks.forEach((stock, index) => {
     const change = Number(stock.change_percent || 0);
     const positive = change >= 0;
-    const card = document.createElement("article");
 
+    const card = document.createElement("article");
     card.className = "stock-card";
 
     card.innerHTML = `
-      <div class="stock-card-top">
-        <span>${safe(stock.exchange || "US")}</span>
-        <span>#${index + 1}</span>
+      <div class="stock-type">
+        ${safe(stock.exchange || "US")} · #${index + 1}
       </div>
 
-      <h3>${safe(stock.ticker)}</h3>
-      <p>${safe(stock.company || stock.ticker)}</p>
+      <div class="ticker">${safe(stock.ticker)}</div>
 
-      <div class="stock-price">${money(stock.price)}</div>
+      <div class="company">
+        ${safe(stock.company || stock.ticker)}
+      </div>
 
-      <div class="${positive ? "positive" : "negative"}">
+      <div class="price">${money(stock.price)}</div>
+
+      <div class="change ${positive ? "positive" : "negative"}">
         ${positive ? "+" : ""}${change.toFixed(2)}%
       </div>
 
-      <p>Volume: ${number(stock.volume)}</p>
+      <div class="meta">
+        Trading volume: ${number(stock.volume)}
+      </div>
 
-      <p>${safe(stock.reason || "Selected by trading volume.")}</p>
+      <div class="label">Why it was selected</div>
 
-      <p class="risk">${safe(stock.risk || "Market risk applies.")}</p>
+      <div class="reason">
+        ${safe(stock.reason || "Selected by trading volume.")}
+      </div>
 
-      <a href="https://finance.yahoo.com/quote/${encodeURIComponent(stock.ticker)}"
-         target="_blank" rel="noopener noreferrer">
+      <div class="label">Risk</div>
+
+      <div class="risk">
+        ${safe(stock.risk || "Market risk applies.")}
+      </div>
+
+      <a class="stock-link"
+         href="https://finance.yahoo.com/quote/${encodeURIComponent(stock.ticker)}"
+         target="_blank"
+         rel="noopener noreferrer">
          View stock →
       </a>
     `;
@@ -927,70 +944,87 @@ async function loadStockPicks() {
     );
 
     if (!response.ok) {
-      throw new Error("Stock data HTTP error: " + response.status);
+      throw new Error(
+        "Could not load stock data. HTTP status: " + response.status
+      );
     }
 
     const data = await response.json();
 
     if (data.status !== "ok") {
-      throw new Error("Stock data is not available.");
+      throw new Error("Stock data status is not OK.");
     }
 
     if (!Array.isArray(data.main) || !Array.isArray(data.penny)) {
       throw new Error("Invalid stock data format.");
     }
 
+    if (data.main.length !== 3 || data.penny.length !== 3) {
+      console.warn(
+        "StockPilot: Expected three main and three penny stocks.",
+        data.main.length,
+        data.penny.length
+      );
+    }
+
     renderStockCards("main-cards", data.main);
     renderStockCards("penny-cards", data.penny);
 
     if (updated) {
-      updated.textContent =
-        "Last updated: " +
-        new Date(data.updated_at).toLocaleString();
+      const date = data.updated_at
+        ? new Date(data.updated_at).toLocaleString()
+        : "Date unavailable";
+
+      updated.textContent = "Last updated: " + date;
     }
 
     if (source) {
       source.textContent =
-        "Source: " + (data.data_source || "Alpha Vantage");
+        "Source: " +
+        (data.data_source || "Alpha Vantage") +
+        (data.data_note ? " · " + data.data_note : "");
     }
 
-    if (error) error.innerHTML = "";
+    if (error) {
+      error.innerHTML = "";
+    }
 
-    console.log("StockPilot: six stock picks loaded.");
+    console.log(
+      "StockPilot: Stock picks loaded successfully.",
+      data.main.length,
+      "main stocks;",
+      data.penny.length,
+      "penny stocks."
+    );
 
   } catch (err) {
     console.error("StockPilot error:", err);
 
-    if (updated) updated.textContent = "Unable to load stock picks.";
+    if (updated) {
+      updated.textContent = "Unable to load stock picks.";
+    }
 
     if (error) {
-      error.textContent = err.message;
+      error.innerHTML =
+        '<div class="error">' + safe(err.message) + '</div>';
     }
   }
 }
 
-// Load immediately, then refresh every 15 minutes.
+// Load market data immediately.
 loadStockPicks();
 
+// Refresh the displayed data every 15 minutes.
 setInterval(loadStockPicks, 15 * 60 * 1000);
 
-// Footer year
-const year = document.getElementById("year");
-if (year) year.textContent = new Date().getFullYear();
-
-// Load market data when the page opens.
-loadPicks();
-
-// Check for updated JSON every 15 minutes.
-setInterval(loadPicks, 15 * 60 * 1000);
-
-// Update copyright year safely.
-const yearElement = getElement("year");
+// Automatically update the copyright year.
+const yearElement = document.getElementById("year");
 
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
-
+</script>
+<!-- END STOCK DATA ENGINE -->
 
 </body>
 </html>
