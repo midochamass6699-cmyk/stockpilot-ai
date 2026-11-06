@@ -2,909 +2,1041 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>StockPilot | Weekly Stock Research & Investing Education</title>
-  <meta name="description" content="Discover three weekly stock research picks, learn about investing, and explore the stock market with StockPilot.">
-  <meta name="keywords" content="StockPilot, stock research, Canadian stocks, TSX stocks, investing education, weekly stock picks">
-  <meta name="author" content="StockPilot">
-  <link rel="canonical" href="https://www.technofront.org/">
-
-  <meta property="og:title" content="StockPilot | Research. Learn. Invest.">
-  <meta property="og:description" content="Three stocks to research. More knowledge to invest with confidence.">
-  <meta property="og:url" content="https://www.technofront.org/">
-  <meta property="og:type" content="website">
-
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VL62LP5NZ9"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-VL62LP5NZ9');
-  </script>
-
-  <style>
-    :root {
-      --bg: #07111f;
-      --panel: #101e30;
-      --panel2: #14263a;
-      --text: #f4f8ff;
-      --muted: #a9bbcf;
-      --cyan: #38d9ff;
-      --green: #39e69a;
-      --border: rgba(255,255,255,.10);
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background:
-        radial-gradient(ellipse at 50% -20%, #183d60 0%, transparent 55%),
-        var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.5;
-    }
-
-    a { color: inherit; }
-
-    .container {
-      width: min(1120px, 94%);
-      margin: auto;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      background: rgba(7,17,31,.94);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-    }
-
-    .nav {
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      padding: 9px 0;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .logo span { color: var(--cyan); }
-
-    nav {
-      display: flex;
-      gap: 17px;
-      flex-wrap: wrap;
-      font-size: 13px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-    }
-
-    nav a:hover { color: var(--cyan); }
-
-    .hero {
-      text-align: center;
-      padding: 43px 12px 24px;
-    }
-
-    .eyebrow {
-      color: var(--green);
-      font-weight: 800;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: clamp(35px, 6vw, 62px);
-      line-height: 1.03;
-      letter-spacing: -2px;
-      margin: 12px 0;
-    }
-
-    h1 span {
-      color: var(--cyan);
-      text-shadow: 0 0 25px rgba(56,217,255,.25);
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 650px;
-      margin: 10px auto 18px;
-      font-size: 16px;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 17px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 13px;
-      border: 1px solid var(--cyan);
-      color: #061522;
-      background: var(--cyan);
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: var(--cyan);
-    }
-
-    .ticker-banner {
-      margin: 0 auto 25px;
-      padding: 10px 14px;
-      text-align: center;
-      border: 1px solid rgba(56,217,255,.3);
-      background: linear-gradient(90deg, #10263b, #12364a, #10263b);
-      border-radius: 9px;
-      color: #dffaff;
-      font-size: 12px;
-      font-weight: 800;
-      animation: glow 3s ease-in-out infinite;
-    }
-
-    @keyframes glow {
-      0%,100% { box-shadow: 0 0 5px rgba(56,217,255,.10); }
-      50% { box-shadow: 0 0 19px rgba(56,217,255,.24); }
-    }
-
-    section { padding: 22px 0; }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-bottom: 13px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 25px;
-      letter-spacing: -.6px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin: 0;
-      font-size: 12px;
-    }
-
-    .stock-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .stock-card {
-      position: relative;
-      overflow: hidden;
-      padding: 17px;
-      border-radius: 11px;
-      background: linear-gradient(145deg, #172d43, #0e1b2c);
-      border: 1px solid rgba(56,217,255,.28);
-      transition: transform .2s, border-color .2s;
-    }
-
-    .stock-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--cyan);
-    }
-
-    .stock-card::after {
-      content: "";
-      position: absolute;
-      width: 110px;
-      height: 110px;
-      right: -55px;
-      top: -55px;
-      background: rgba(56,217,255,.10);
-      border-radius: 50%;
-    }
-
-    .stock-number {
-      color: var(--green);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-    }
-
-    .ticker {
-      font-size: 29px;
-      font-weight: 900;
-      margin: 5px 0 1px;
-      color: var(--cyan);
-    }
-
-    .company {
-      font-size: 14px;
-      font-weight: 800;
-      min-height: 39px;
-    }
-
-    .exchange {
-      color: var(--muted);
-      font-size: 11px;
-      margin: 5px 0 11px;
-    }
-
-    .stock-card p {
-      color: #c1cede;
-      font-size: 12px;
-      margin: 8px 0;
-    }
-
-    .stock-link {
-      display: inline-block;
-      color: var(--green);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 800;
-      margin-top: 7px;
-    }
-
-    .stock-link:hover { text-decoration: underline; }
-
-    .notice {
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 10px;
-    }
-
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 17px;
-    }
-
-    .panel h3 {
-      margin: 0 0 7px;
-      font-size: 17px;
-      color: var(--cyan);
-    }
-
-    .panel p {
-      color: var(--muted);
-      margin: 5px 0;
-      font-size: 13px;
-    }
-
-    .panel ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
-      color: #d3deeb;
-      font-size: 12px;
-    }
-
-    .panel li { margin: 5px 0; }
-
-    .three-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .mini-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      padding: 14px;
-    }
-
-    .mini-card strong {
-      color: var(--green);
-      font-size: 13px;
-    }
-
-    .mini-card p {
-      color: var(--muted);
-      font-size: 12px;
-      margin: 5px 0 0;
-    }
-
-    .newsletter {
-      background:
-        radial-gradient(ellipse at 90% 10%, rgba(56,217,255,.17), transparent 45%),
-        linear-gradient(130deg, #112b42, #102035);
-      border: 1px solid rgba(56,217,255,.35);
-      border-radius: 12px;
-      padding: 22px;
-      text-align: center;
-    }
-
-    .newsletter h2 {
-      font-size: 27px;
-      margin-bottom: 5px;
-    }
-
-    .newsletter > p {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 5px auto 13px;
-      max-width: 620px;
-    }
-
-    .signup-form {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      max-width: 540px;
-      margin: 12px auto 5px;
-      flex-wrap: wrap;
-    }
-
-    .signup-form input[type="email"] {
-      flex: 1 1 230px;
-      min-width: 0;
-      padding: 12px;
-      border: 1px solid #45617c;
-      border-radius: 7px;
-      background: #071525;
-      color: white;
-      font-size: 14px;
-    }
-
-    .signup-form button {
-      padding: 12px 18px;
-      border: 0;
-      border-radius: 7px;
-      background: var(--green);
-      color: #062017;
-      font-weight: 900;
-      cursor: pointer;
-    }
-
-    .signup-form button:hover { filter: brightness(1.1); }
-
-    .consent {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 7px;
-      max-width: 540px;
-      margin: 10px auto;
-      text-align: left;
-      color: #c1cede;
-      font-size: 11px;
-    }
-
-    .consent input { margin-top: 3px; }
-
-    .privacy-note {
-      color: #a9bbcf;
-      font-size: 10px;
-      margin: 8px auto 0;
-      max-width: 570px;
-    }
-
-    #formMessage {
-      font-size: 13px;
-      font-weight: 700;
-      margin-top: 10px;
-    }
-
-    .resources {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-    }
-
-    .resource {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      padding: 11px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 800;
-      color: #dceaff;
-    }
-
-    .resource:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
-    }
-
-    .about {
-      background: linear-gradient(120deg, #13283c, #101d2d);
-      border-left: 3px solid var(--green);
-      border-radius: 8px;
-      padding: 18px;
-    }
-
-    .about h2 { margin-bottom: 9px; }
-
-    .about p {
-      color: #c4d2e2;
-      font-size: 13px;
-      margin: 7px 0;
-    }
-
-    footer {
-      margin-top: 20px;
-      border-top: 1px solid var(--border);
-      padding: 18px 0 25px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .footer-links a {
-      color: var(--cyan);
-      text-decoration: none;
-    }
-
-    .disclaimer {
-      border-top: 1px solid var(--border);
-      margin-top: 12px;
-      padding-top: 10px;
-      font-size: 10px;
-    }
-
-    @media (max-width: 760px) {
-      .stock-grid, .three-grid { grid-template-columns: 1fr; }
-      .content-grid { grid-template-columns: 1fr; }
-      .resources { grid-template-columns: 1fr 1fr; }
-      .hero { padding-top: 30px; }
-      nav { gap: 11px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>StockPilot AI | Daily Stock Picks & Research</title>
+<meta name="description" content="Free daily stock research, three main stock picks, three penny stock picks, investing education and community discussions.">
+<meta name="theme-color" content="#07111f">
+<link rel="canonical" href="https://www.technofront.org/">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VL62LP5NZ9"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VL62LP5NZ9');
+</script>
+
+<style>
+:root {
+  --bg:#07111f;
+  --card:#101e30;
+  --text:#f2f6fc;
+  --muted:#a8b6c9;
+  --cyan:#38c9e8;
+  --green:#37d69a;
+  --red:#ff7777;
+  --border:rgba(255,255,255,.10);
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.55;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+.container {
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+header {
+  background:#091524;
+  border-bottom:1px solid var(--border);
+}
+
+.nav {
+  min-height:68px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.logo {
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-.8px;
+}
+
+.logo span { color:var(--cyan); }
+
+.nav-links {
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.nav-links a:hover { color:var(--cyan); }
+
+.hero {
+  text-align:center;
+  padding:52px 0 35px;
+}
+
+.free-label {
+  display:inline-block;
+  color:var(--green);
+  background:rgba(55,214,154,.12);
+  border:1px solid rgba(55,214,154,.35);
+  padding:5px 12px;
+  border-radius:30px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-bottom:14px;
+}
+
+.hero h1 {
+  font-size:clamp(36px,6vw,58px);
+  line-height:1.08;
+  letter-spacing:-1.8px;
+  margin-bottom:14px;
+}
+
+.hero h1 span { color:var(--cyan); }
+
+.hero p {
+  max-width:650px;
+  margin:0 auto 20px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.hero-links {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.button {
+  display:inline-block;
+  padding:11px 18px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:700;
+  background:var(--cyan);
+  color:#06131d;
+  border:1px solid var(--cyan);
+  cursor:pointer;
+}
+
+.button.secondary {
+  background:transparent;
+  color:var(--text);
+  border-color:var(--border);
+}
+
+.button:hover { opacity:.85; }
+
+section { padding:30px 0; }
+
+.section-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.section-heading h2 {
+  font-size:22px;
+  letter-spacing:-.4px;
+}
+
+.section-heading p {
+  font-size:12px;
+  color:var(--muted);
+}
+
+.stock-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.stock-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:19px;
+  min-width:0;
+  transition:transform .2s,border-color .2s;
+}
+
+.stock-card:hover {
+  transform:translateY(-3px);
+  border-color:var(--cyan);
+}
+
+.stock-type {
+  color:var(--green);
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.ticker {
+  font-size:29px;
+  font-weight:800;
+  margin:6px 0 0;
+  overflow-wrap:anywhere;
+}
+
+.company {
+  color:var(--muted);
+  font-size:13px;
+}
+
+.price {
+  font-size:25px;
+  font-weight:700;
+  margin-top:15px;
+}
+
+.change {
+  font-size:13px;
+  margin-top:5px;
+}
+
+.positive { color:var(--green); }
+.negative { color:var(--red); }
+
+.meta {
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+  margin-top:13px;
+  overflow-wrap:anywhere;
+}
+
+.label {
+  color:var(--cyan);
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-top:17px;
+}
+
+.reason,.risk {
+  font-size:12px;
+  line-height:1.5;
+  margin-top:6px;
+}
+
+.risk { color:#ffd19a; }
+
+.stock-link {
+  display:inline-block;
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:700;
+  margin-top:14px;
+}
+
+.stock-link:hover { text-decoration:underline; }
+
+.notice {
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+  margin-top:13px;
+}
+
+.empty {
+  grid-column:1/-1;
+  color:#cbd5e1;
+  background:var(--card);
+  border:1px dashed #43536b;
+  padding:20px;
+  border-radius:12px;
+}
+
+.error {
+  margin:15px 0;
+  padding:15px;
+  border:1px solid #8b4b4b;
+  border-radius:10px;
+  color:#ffd0d0;
+  font-size:13px;
+}
+
+.promise {
+  text-align:center;
+  padding:18px;
+  background:rgba(55,214,154,.07);
+  border:1px solid rgba(55,214,154,.18);
+  border-radius:10px;
+  color:var(--green);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.4px;
+}
+
+.two-column {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.panel {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:19px;
+}
+
+.panel h3 {
+  font-size:16px;
+  margin-bottom:7px;
+}
+
+.panel p {
+  color:var(--muted);
+  font-size:13px;
+}
+
+.resource-list {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.resource-link {
+  display:block;
+  padding:13px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:9px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.resource-link span {
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:400;
+  margin-top:3px;
+}
+
+.resource-link:hover { border-color:var(--cyan); }
+
+.comments-box {
+  background:white;
+  color:#111;
+  padding:17px;
+  border-radius:14px;
+  min-height:250px;
+  overflow:hidden;
+}
+
+.newsletter {
+  background:linear-gradient(120deg,#10283b,#102238);
+  border:1px solid rgba(56,201,232,.2);
+  border-radius:14px;
+  padding:23px;
+}
+
+.newsletter h2 {
+  font-size:22px;
+  margin-bottom:6px;
+}
+
+.newsletter p {
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:14px;
+}
+
+.newsletter-form {
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.newsletter-form input[type=email] {
+  flex:1;
+  min-width:210px;
+  padding:12px;
+  border-radius:7px;
+  border:1px solid var(--border);
+  background:#071524;
+  color:white;
+  font-size:13px;
+}
+
+.consent {
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  width:100%;
+  margin:12px 0;
+  font-size:11px;
+  color:var(--muted);
+}
+
+.consent input { margin-top:3px; }
+
+.privacy-note {
+  font-size:10px!important;
+  margin:9px 0 0!important;
+}
+
+.about-text {
+  color:var(--muted);
+  font-size:13px;
+}
+
+footer {
+  border-top:1px solid var(--border);
+  padding:25px 0;
+  margin-top:25px;
+}
+
+.footer-content {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.footer-content p {
+  font-size:11px;
+  color:var(--muted);
+}
+
+.disclaimer {
+  color:var(--muted);
+  font-size:11px;
+  margin-top:16px;
+  max-width:950px;
+}
+
+@media(max-width:750px) {
+  .nav {
+    padding:13px 0;
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .nav-links { gap:13px; }
+
+  .stock-grid { grid-template-columns:1fr 1fr; }
+
+  .two-column { grid-template-columns:1fr; }
+
+  .section-heading {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+
+@media(max-width:500px) {
+  .stock-grid,.resource-list { grid-template-columns:1fr; }
+  .hero { padding-top:35px; }
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <div class="container nav">
-    <div class="logo">STOCK<span>PILOT</span></div>
-    <nav>
-      <a href="#stocks">Weekly Stocks</a>
-      <a href="#learn">Learn</a>
+    <a href="#" class="logo">Stock<span>Pilot</span> AI</a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#stocks">Stocks</a>
+      <a href="#education">Learn</a>
+      <a href="#resources">Resources</a>
+      <a href="#community">Discussions</a>
       <a href="#newsletter">Newsletter</a>
-      <a href="#about">About</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-  <div class="container hero">
-    <div class="eyebrow">Independent research • Canadian market focus</div>
-    <h1>Research. Learn.<br><span>Move Forward.</span></h1>
+  <!-- HERO -->
+  <section class="hero container">
+    <div class="free-label">
+      100% FREE · NO MEMBERSHIP · NO PAYWALL
+    </div>
+
+    <h1>
+      Research. Learn.<br>
+      <span>Invest smarter.</span>
+    </h1>
+
     <p>
-      Discover companies worth researching, understand the market,
-      and build your investing knowledge one week at a time.
+      Discover daily stock market activity, explore research ideas,
+      learn about investing and discuss the market with our community.
     </p>
-    <div class="hero-actions">
-      <a class="btn" href="#stocks">Explore This Week's Stocks</a>
-      <a class="btn secondary" href="#newsletter">Join the Newsletter</a>
-    </div>
-  </div>
 
-  <div class="container">
-    <div class="ticker-banner">
-      THREE COMPANIES TO RESEARCH · NEW INSIGHTS EVERY WEEK
+    <div class="hero-links">
+      <a class="button" href="#stocks">Explore today's stocks</a>
+      <a class="button secondary" href="#community">Join discussions</a>
     </div>
-  </div>
+  </section>
 
-  <section id="stocks">
-    <div class="container">
-      <div class="section-heading">
-        <h2>Featured Stocks</h2>
-        <p>Our current research watchlist</p>
+  <!-- STOCK PICKS -->
+  <section id="stocks" class="container">
+
+    <div class="section-heading">
+      <h2>Today's Stock Picks</h2>
+      <p>Six stocks · Updated daily</p>
+    </div>
+
+    <p id="updated" class="notice">
+      Loading verified market data...
+    </p>
+
+    <div id="error"></div>
+
+    <h3 style="font-size:19px;margin:25px 0 5px">
+      3 Main Stocks
+    </h3>
+
+    <p class="notice">
+      Highest reported share volume among qualifying US stocks
+      priced above US$10.
+    </p>
+
+    <div class="stock-grid" id="main-cards">
+      <div class="empty">Loading main stocks...</div>
+    </div>
+
+    <h3 style="font-size:19px;margin:35px 0 5px">
+      3 Penny Stocks
+    </h3>
+
+    <p class="notice">
+      Highest reported share volume among qualifying US stocks
+      priced US$0.10–US$10. These stocks carry elevated risk.
+    </p>
+
+    <div class="stock-grid" id="penny-cards">
+      <div class="empty">Loading penny stocks...</div>
+    </div>
+
+    <p class="notice">
+      Stock selection is based on reported trading volume.
+      Volume does not indicate investment quality or predict
+      future performance.
+    </p>
+
+  </section>
+
+  <!-- PROMISE -->
+  <section class="container">
+    <div class="promise">
+      NO FEES. NO MEMBERSHIP. NO PAYWALL.
+      INVESTING KNOWLEDGE SHOULD BE ACCESSIBLE TO EVERYONE.
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="container">
+
+    <div class="section-heading">
+      <h2>Learn the Market</h2>
+      <p>Build your knowledge</p>
+    </div>
+
+    <div class="two-column">
+
+      <div class="panel">
+        <h3>Understand a Stock</h3>
+        <p>
+          Learn how to read a ticker, understand company financials,
+          evaluate business performance and research a company.
+        </p>
       </div>
 
-      <div class="stock-grid">
-
-        <article class="stock-card">
-          <div class="stock-number">01 · COMPANY RESEARCH</div>
-          <div class="ticker">CEMX</div>
-          <div class="company">CEMATRIX Corporation</div>
-          <div class="exchange">TSX Venture Exchange · CEMX.V</div>
-          <p>
-            A Canadian company focused on cellular concrete products
-            and infrastructure-related applications.
-          </p>
-          <p><strong>Research focus:</strong> Business development, projects,
-            financial performance, and industry demand.</p>
-          <a class="stock-link"
-             href="https://finance.yahoo.com/quote/CEMX.V/"
-             target="_blank" rel="noopener">View market information →</a>
-        </article>
-
-        <article class="stock-card">
-          <div class="stock-number">02 · COMPANY RESEARCH</div>
-          <div class="ticker">BBD.B</div>
-          <div class="company">Bombardier Inc.</div>
-          <div class="exchange">Toronto Stock Exchange · BBD-B.TO</div>
-          <p>
-            A global aerospace company known for its business aircraft
-            and aviation services.
-          </p>
-          <p><strong>Research focus:</strong> Aircraft deliveries,
-            order backlog, debt, revenue, and profitability.</p>
-          <a class="stock-link"
-             href="https://finance.yahoo.com/quote/BBD-B.TO/"
-             target="_blank" rel="noopener">View market information →</a>
-        </article>
-
-        <article class="stock-card">
-          <div class="stock-number">03 · COMPANY RESEARCH</div>
-          <div class="ticker">RY</div>
-          <div class="company">Royal Bank of Canada</div>
-          <div class="exchange">Toronto Stock Exchange · RY.TO</div>
-          <p>
-            One of Canada's major financial institutions, with banking,
-            wealth management, and capital markets businesses.
-          </p>
-          <p><strong>Research focus:</strong> Earnings, dividends,
-            loan quality, and financial-sector conditions.</p>
-          <a class="stock-link"
-             href="https://finance.yahoo.com/quote/RY.TO/"
-             target="_blank" rel="noopener">View market information →</a>
-        </article>
-
+      <div class="panel">
+        <h3>Understand Trading Risk</h3>
+        <p>
+          Learn about volatility, trading volume, liquidity,
+          stop-loss orders and potential losses.
+        </p>
       </div>
 
-      <p class="notice">
-        These are research examples, not guaranteed winners or personalized
-        investment recommendations. Review current prices, company filings,
-        risks, and your own financial circumstances before making decisions.
+      <div class="panel">
+        <h3>Do Your Own Research</h3>
+        <p>
+          Compare company announcements, financial statements,
+          market trends and independent sources.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Start Small and Learn</h3>
+        <p>
+          Understand the risks, avoid investing money you cannot
+          afford to lose and take your time.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESEARCH RESOURCES -->
+  <section id="resources" class="container">
+
+    <div class="section-heading">
+      <h2>Research Tools</h2>
+      <p>Useful market resources</p>
+    </div>
+
+    <div class="resource-list">
+
+      <a class="resource-link"
+         href="https://finance.yahoo.com/"
+         target="_blank" rel="noopener noreferrer">
+        Yahoo Finance
+        <span>Prices, charts and company information</span>
+      </a>
+
+      <a class="resource-link"
+         href="https://www.google.com/finance/"
+         target="_blank" rel="noopener noreferrer">
+        Google Finance
+        <span>Market news and stock information</span>
+      </a>
+
+      <a class="resource-link"
+         href="https://www.sedarplus.ca/"
+         target="_blank" rel="noopener noreferrer">
+        SEDAR+
+        <span>Canadian company filings</span>
+      </a>
+
+      <a class="resource-link"
+         href="https://www.tsx.com/"
+         target="_blank" rel="noopener noreferrer">
+        TMX / TSX
+        <span>Canadian stock exchange information</span>
+      </a>
+
+      <a class="resource-link"
+         href="https://www.sec.gov/edgar/search/"
+         target="_blank" rel="noopener noreferrer">
+        SEC EDGAR
+        <span>US company filings and reports</span>
+      </a>
+
+      <a class="resource-link"
+         href="https://www.investor.gov/"
+         target="_blank" rel="noopener noreferrer">
+        Investor.gov
+        <span>Investor education and protection</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- COMMUNITY / GISCUS -->
+  <section id="community" class="container">
+
+    <div class="section-heading">
+      <h2>StockPilot Community</h2>
+      <p>Share ideas and join the discussion</p>
+    </div>
+
+    <div class="panel" style="margin-bottom:14px">
+      <h3>Let's learn together.</h3>
+
+      <p>
+        Share your thoughts, discuss companies and exchange research
+        ideas respectfully. Keep discussions informative and never
+        share private financial information.
       </p>
     </div>
-  </section>
 
-  <section id="learn">
-    <div class="container">
-      <div class="section-heading">
-        <h2>Build Your Investing Knowledge</h2>
-        <p>Start with the fundamentals</p>
-      </div>
+    <div class="comments-box">
 
-      <div class="content-grid">
+      <!-- GISCUS DISCUSSION SYSTEM -->
+      <script
+        src="https://giscus.app/client.js"
+        data-repo="midochamass6699-cmyk/stockpilot-ai"
+        data-repo-id="R_kgDOVhw6Ww"
+        data-category="comments"
+        data-category-id="DIC_kwDOVhw6W84DKfeM"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="fr"
+        crossorigin="anonymous"
+        async>
+      </script>
+      <!-- END GISCUS -->
 
-        <div class="panel">
-          <h3>What Is a Stock?</h3>
-          <p>
-            A stock represents a share of ownership in a company.
-            When you buy shares, you participate in the company's
-            potential gains and losses.
-          </p>
-          <ul>
-            <li>Stock prices can rise or fall.</li>
-            <li>Some companies pay dividends.</li>
-            <li>Past performance does not guarantee future results.</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Where Can You Invest?</h3>
-          <p>
-            Canadians can research brokerage platforms and investment
-            accounts before deciding where to invest.
-          </p>
-          <ul>
-            <li>Compare fees and trading costs.</li>
-            <li>Understand TFSA and RRSP account rules.</li>
-            <li>Check that a firm is properly registered.</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>How to Research a Company</h3>
-          <p>Look beyond the ticker symbol. Understand the business.</p>
-          <ul>
-            <li>Read quarterly and annual financial reports.</li>
-            <li>Review revenue, earnings, and debt.</li>
-            <li>Understand the company's industry and competitors.</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Understand Risk</h3>
-          <p>
-            Investing always involves uncertainty. A company can perform
-            differently from what investors expect.
-          </p>
-          <ul>
-            <li>Avoid investing money you cannot afford to lose.</li>
-            <li>Consider diversification.</li>
-            <li>Be cautious about hype and promises of quick profits.</li>
-          </ul>
-        </div>
-
-      </div>
     </div>
+
+    <p class="notice">
+      Discussions are hosted through GitHub Discussions.
+      Visitors need a GitHub account to comment.
+    </p>
+
   </section>
 
-  <section>
-    <div class="container">
-      <div class="section-heading">
-        <h2>Three Habits of Better Investors</h2>
-      </div>
+  <!-- NEWSLETTER -->
+  <section id="newsletter" class="container">
 
-      <div class="three-grid">
-        <div class="mini-card">
-          <strong>01 · Do Your Research</strong>
-          <p>Understand what a company sells, how it earns money,
-          and what could affect its future.</p>
-        </div>
-        <div class="mini-card">
-          <strong>02 · Think Long Term</strong>
-          <p>Look beyond daily price movements. Consider business
-          performance and your own time horizon.</p>
-        </div>
-        <div class="mini-card">
-          <strong>03 · Keep Learning</strong>
-          <p>Follow credible information, question assumptions,
-          and learn from both gains and losses.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="newsletter">
 
-  <section id="newsletter">
-    <div class="container">
-      <div class="newsletter">
-        <div class="eyebrow">The StockPilot Weekly Update</div>
-        <h2>Get the Next Three Stocks</h2>
-        <p>
-          Join the StockPilot community. Receive our weekly research
-          selections, company information, and investing education.
-        </p>
+      <h2>Get StockPilot Updates</h2>
 
-        <form id="newsletterForm"
-              class="signup-form"
-              action="https://formsubmit.co/midochamass6699@gmail.com"
-              method="POST">
+      <p>
+        Sign up to receive StockPilot updates and future
+        research announcements by email.
+      </p>
 
-          <input type="hidden" name="_subject"
-                 value="New StockPilot Newsletter Subscriber">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_url"
-                 value="https://www.technofront.org/">
+      <form class="newsletter-form"
+            action="https://formsubmit.co/midochamass6699@gmail.com"
+            method="POST">
 
-          <!-- Spam protection: leave this field empty -->
-          <input type="text" name="_honey"
-                 style="display:none" tabindex="-1"
-                 autocomplete="off">
+        <input type="hidden"
+               name="_subject"
+               value="New StockPilot Newsletter Subscriber">
 
-          <input type="email"
-                 name="email"
-                 id="subscriberEmail"
-                 placeholder="Enter your email address"
-                 aria-label="Your email address"
-                 required>
+        <input type="hidden"
+               name="_template"
+               value="table">
 
-          <button type="submit" id="subscribeButton">
-            Subscribe Free
-          </button>
-        </form>
+        <input type="text"
+               name="_honey"
+               style="display:none"
+               tabindex="-1"
+               autocomplete="off">
+
+        <input type="email"
+               name="email"
+               placeholder="Enter your email address"
+               aria-label="Email address"
+               required>
+
+        <button class="button" type="submit">
+          Subscribe Free
+        </button>
 
         <label class="consent">
-          <input type="checkbox" id="consent" required>
+          <input type="checkbox"
+                 name="consent"
+                 value="I agree to receive StockPilot email updates."
+                 required>
+
           <span>
-            I agree to receive StockPilot's weekly email updates.
+            I agree to receive StockPilot updates by email.
             I understand I can unsubscribe at any time.
           </span>
         </label>
 
-        <div id="formMessage" role="status" aria-live="polite"></div>
+      </form>
 
-        <p class="privacy-note">
-          Your email address is used for StockPilot updates.
-          We do not display subscriber addresses publicly or sell them.
-          Please do not submit anyone else's email without permission.
-        </p>
-      </div>
+      <p class="privacy-note">
+        Your email will be used to send StockPilot updates.
+        Do not submit sensitive personal or financial information.
+      </p>
+
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="section-heading">
-        <h2>Useful Investing Resources</h2>
-        <p>Explore independent information</p>
-      </div>
+  <!-- ABOUT -->
+  <section id="about" class="container">
 
-      <div class="resources">
-        <a class="resource" href="https://www.tsx.com/"
-           target="_blank" rel="noopener">Toronto Stock Exchange ↗</a>
-
-        <a class="resource" href="https://www.sedarplus.ca/"
-           target="_blank" rel="noopener">SEDAR+ Company Filings ↗</a>
-
-        <a class="resource" href="https://www.getsmarteraboutmoney.ca/"
-           target="_blank" rel="noopener">GetSmarterAboutMoney ↗</a>
-
-        <a class="resource" href="https://www.ciro.ca/"
-           target="_blank" rel="noopener">CIRO Investor Information ↗</a>
-
-        <a class="resource" href="https://finance.yahoo.com/"
-           target="_blank" rel="noopener">Yahoo Finance ↗</a>
-
-        <a class="resource" href="https://www.tradingview.com/"
-           target="_blank" rel="noopener">TradingView ↗</a>
-
-        <a class="resource" href="https://www.bankofcanada.ca/"
-           target="_blank" rel="noopener">Bank of Canada ↗</a>
-
-        <a class="resource" href="https://www.canada.ca/en/services/finance.html"
-           target="_blank" rel="noopener">Government of Canada Finance ↗</a>
-      </div>
+    <div class="section-heading">
+      <h2>Why StockPilot?</h2>
     </div>
-  </section>
 
-  <section id="about">
-    <div class="container">
-      <div class="about">
-        <div class="eyebrow">The Person Behind StockPilot</div>
-        <h2>Why I Created StockPilot</h2>
+    <div class="panel">
 
-        <p>
-          My interest in the stock market started with curiosity.
-          I began exploring companies, following stock movements,
-          reading financial information, and learning through
-          independent research and real-life experience.
-        </p>
+      <p class="about-text">
+        StockPilot started with a simple idea: investing knowledge
+        should not be reserved for people who can afford expensive
+        services or memberships.
 
-        <p>
-          I'm self-taught. I created StockPilot because I wanted a place
-          where I could share the companies I find interesting to research,
-          exchange ideas, and make financial education easier to approach.
-        </p>
+        <br><br>
 
-        <p>
-          My goal is simple: highlight three companies each week,
-          share useful research starting points, and encourage people
-          to learn how the market works before making their own decisions.
-        </p>
+        I started with very little and wanted to learn how to
+        understand the market independently. StockPilot is a place
+        to share research resources and make investing education
+        more accessible.
 
-        <p>
-          StockPilot is a personal research and education project.
-          It is not a financial advisory service, and I do not claim
-          to be a licensed investment professional.
-        </p>
+        <br><br>
 
-        <p><strong>Thank you for being part of the journey.</strong></p>
-        <p style="color:#38d9ff;font-weight:800;">— Mido, Founder of StockPilot</p>
-      </div>
+        This is an independent learning and research project.
+        We believe in learning, asking questions and making
+        informed decisions.
+      </p>
+
     </div>
   </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
+
   <div class="container">
-    <div class="footer-links">
-      <a href="#stocks">Weekly Stocks</a>
-      <a href="#learn">Education</a>
-      <a href="#newsletter">Newsletter</a>
-      <a href="#about">About StockPilot</a>
+
+    <div class="footer-content">
+
+      <a href="#" class="logo">
+        Stock<span>Pilot</span> AI
+      </a>
+
+      <p>
+        Independent research. Free education. Open discussion.
+      </p>
+
     </div>
 
-    <div>© <span id="year"></span> StockPilot. All rights reserved.</div>
+    <p class="disclaimer">
+      DISCLAIMER: StockPilot provides general information and
+      educational content only. Nothing on this website constitutes
+      financial, investment, tax or legal advice, or a recommendation
+      to buy, sell or hold any security. Stock investing and trading
+      involve risk, including the possible loss of your entire
+      investment. Short-term trading can be especially volatile.
+      Past performance does not guarantee future results.
+      Always conduct your own research and consult a qualified
+      professional if you need personalized advice.
+    </p>
 
-    <div class="disclaimer">
-      <strong>Important Disclaimer:</strong>
-      StockPilot provides general information and independent research
-      for educational purposes only. Nothing on this website constitutes
-      personalized financial, investment, tax, or legal advice, or a
-      recommendation to buy or sell a security. Stocks involve risk,
-      including the possible loss of your investment. Always do your
-      own research and consider consulting a qualified professional.
-      Company descriptions and research topics are not guarantees of
-      future performance.
-    </div>
+    <p class="disclaimer">
+      © <span id="year"></span> StockPilot. All rights reserved.
+      External websites are operated independently and have
+      their own terms and privacy policies.
+    </p>
+
   </div>
+
 </footer>
 
+<!-- STOCK DATA ENGINE -->
 <script>
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
 
-  const newsletterForm = document.getElementById("newsletterForm");
-  const formMessage = document.getElementById("formMessage");
-  const subscribeButton = document.getElementById("subscribeButton");
+const money = value =>
+  new Intl.NumberFormat("en-US", {
+    style:"currency",
+    currency:"USD"
+  }).format(Number(value));
 
-  newsletterForm.addEventListener("submit", async function(event) {
-    event.preventDefault();
+const number = value =>
+  new Intl.NumberFormat("en-US").format(Number(value));
 
-    const consent = document.getElementById("consent");
+function safe(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[ch]));
+}
 
-    if (!consent.checked) {
-      formMessage.textContent =
-        "Please agree to receive the weekly email updates.";
-      formMessage.style.color = "#ffcf70";
+function renderCards(targetId, stocks, label) {
+
+  const area = document.getElementById(targetId);
+
+  area.innerHTML = "";
+
+  if (!stocks || !stocks.length) {
+    area.innerHTML =
+      '<div class="empty">No qualifying stocks were returned. No sample picks are displayed.</div>';
+    return;
+  }
+
+  stocks.forEach((stock, index) => {
+
+    const card = document.createElement("article");
+
+    card.className = "stock-card";
+
+    const change = Number(stock.change_percent || 0);
+
+    const sign = change > 0 ? "+" : "";
+
+    const changeClass =
+      change > 0 ? "positive" :
+      change < 0 ? "negative" : "";
+
+    const yahooTicker = encodeURIComponent(stock.ticker || "");
+
+    card.innerHTML = `
+
+      <div class="stock-type">
+        ${safe(label)} · VOLUME RANK #${index + 1}
+      </div>
+
+      <div class="ticker">
+        ${safe(stock.ticker)}
+      </div>
+
+      <div class="company">
+        ${safe(stock.company || "Company name not supplied by data provider")}
+      </div>
+
+      <div class="price">
+        ${money(stock.price)}
+      </div>
+
+      <div class="change ${changeClass}">
+        ${sign}${change.toFixed(2)}% daily change
+      </div>
+
+      <div class="meta">
+
+        Reported volume:
+        <strong>${number(stock.volume)}</strong>
+        <br>
+
+        Snapshot date:
+        ${safe(stock.price_date)}
+        <br>
+
+        Market:
+        ${safe(stock.market)}
+        · Currency: USD
+
+      </div>
+
+      <div class="label">
+        Why it appears
+      </div>
+
+      <p class="reason">
+        ${safe(stock.reason)}
+      </p>
+
+      <div class="label">
+        Risk note
+      </div>
+
+      <p class="risk">
+        ${safe(stock.risk)}
+      </p>
+
+      <a class="stock-link"
+         href="https://finance.yahoo.com/quote/${yahooTicker}/"
+         target="_blank"
+         rel="noopener noreferrer">
+        View market information →
+      </a>
+
+    `;
+
+    area.appendChild(card);
+
+  });
+}
+
+async function loadPicks() {
+
+  const updated = document.getElementById("updated");
+
+  const errorArea = document.getElementById("error");
+
+  try {
+
+    const response = await fetch(
+      "./data/picks.json?t=" + Date.now(),
+      {cache:"no-store"}
+    );
+
+    if (!response.ok) {
+      throw new Error("Market data file could not be loaded.");
+    }
+
+    const data = await response.json();
+
+    if (data.status !== "ok") {
+
+      updated.textContent =
+        "Market data update failed. No picks are being displayed.";
+
+      errorArea.innerHTML =
+        '<div class="error">' +
+        safe((data.errors || ["Unknown data error"]).join(" · ")) +
+        '</div>';
+
+      renderCards("main-cards", [], "MAIN");
+
+      renderCards("penny-cards", [], "PENNY");
+
       return;
     }
 
-    subscribeButton.disabled = true;
-    subscribeButton.textContent = "Sending...";
-    formMessage.textContent = "";
-
-    try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/midochamass6699@gmail.com",
-        {
-          method: "POST",
-          body: new FormData(newsletterForm),
-          headers: { "Accept": "application/json" }
-        }
+    updated.textContent =
+      "Last generated: " +
+      new Date(data.updated_at).toLocaleString() +
+      (
+        data.snapshot_time
+          ? " · Market snapshot: " + data.snapshot_time
+          : ""
       );
 
-      if (!response.ok) {
-        throw new Error("Submission failed");
-      }
+    renderCards("main-cards", data.main, "MAIN");
 
-      formMessage.textContent =
-        "Thank you! Your subscription request has been received.";
-      formMessage.style.color = "#39e69a";
+    renderCards("penny-cards", data.penny, "PENNY");
 
-      newsletterForm.reset();
+    document.getElementById("source").textContent =
+      "Source: " + data.data_source + " · " + data.data_note;
 
-      if (typeof gtag === "function") {
-        gtag("event", "newsletter_signup", {
-          event_category: "engagement"
-        });
-      }
+  } catch (error) {
 
-    } catch (error) {
-      formMessage.textContent =
-        "Sorry, we could not submit your request. Please try again.";
-      formMessage.style.color = "#ff9b9b";
-    }
+    updated.textContent =
+      "Could not load verified market data.";
 
-    subscribeButton.disabled = false;
-    subscribeButton.textContent = "Subscribe Free";
-  });
+    errorArea.innerHTML =
+      '<div class="error">' +
+      safe(error.message) +
+      '</div>';
+
+    renderCards("main-cards", [], "MAIN");
+
+    renderCards("penny-cards", [], "PENNY");
+
+  }
+}
+
+// Load stock data on page opening.
+loadPicks();
+
+// Update the displayed data every 15 minutes if the JSON file changes.
+setInterval(loadPicks, 15 * 60 * 1000);
+
+// Footer year.
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
 </script>
 
 </body>
