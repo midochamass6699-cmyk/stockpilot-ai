@@ -845,7 +845,7 @@ footer {
 
 // STOCK DATA ENGINE - STOCKPILOT AI
 
-const getElement = id => document.getElementById(id);
+// STOCKPILOT AI — AUTOMATIC STOCK DATA ENGINE
 
 const money = value =>
   new Intl.NumberFormat("en-US", {
@@ -866,170 +866,117 @@ function safe(value) {
   }[ch]));
 }
 
-function showError(message) {
-  const area = getElement("error");
+function renderStockCards(elementId, stocks) {
+  const container = document.getElementById(elementId);
+  if (!container) return;
 
-  if (area) {
-    area.innerHTML =
-      '<div class="error">' + safe(message) + '</div>';
-  }
-
-  console.error("StockPilot:", message);
-}
-
-function renderCards(targetId, stocks, label) {
-
-  const area = getElement(targetId);
-
-  if (!area) {
-    showError("Missing HTML element: " + targetId);
-    return;
-  }
-
-  area.innerHTML = "";
+  container.innerHTML = "";
 
   if (!Array.isArray(stocks) || stocks.length === 0) {
-    area.innerHTML =
-      '<div class="empty">No qualifying stocks were returned. No sample picks are displayed.</div>';
+    container.textContent = "No qualifying stocks available.";
     return;
   }
 
   stocks.forEach((stock, index) => {
-
+    const change = Number(stock.change_percent || 0);
+    const positive = change >= 0;
     const card = document.createElement("article");
+
     card.className = "stock-card";
 
-    const change = Number(stock.change_percent || 0);
-
-    const sign = change > 0 ? "+" : "";
-
-    const changeClass =
-      change > 0 ? "positive" :
-      change < 0 ? "negative" : "";
-
-    const yahooTicker = encodeURIComponent(stock.ticker || "");
-
     card.innerHTML = `
-      <div class="stock-type">
-        ${safe(label)} · VOLUME RANK #${index + 1}
+      <div class="stock-card-top">
+        <span>${safe(stock.exchange || "US")}</span>
+        <span>#${index + 1}</span>
       </div>
 
-      <div class="ticker">${safe(stock.ticker)}</div>
+      <h3>${safe(stock.ticker)}</h3>
+      <p>${safe(stock.company || stock.ticker)}</p>
 
-      <div class="company">
-        ${safe(stock.company || stock.ticker)}
+      <div class="stock-price">${money(stock.price)}</div>
+
+      <div class="${positive ? "positive" : "negative"}">
+        ${positive ? "+" : ""}${change.toFixed(2)}%
       </div>
 
-      <div class="price">${money(stock.price)}</div>
+      <p>Volume: ${number(stock.volume)}</p>
 
-      <div class="change ${changeClass}">
-        ${sign}${change.toFixed(2)}% daily change
-      </div>
+      <p>${safe(stock.reason || "Selected by trading volume.")}</p>
 
-      <div class="meta">
-        Reported volume:
-        <strong>${number(stock.volume)}</strong>
-        <br>
-        Snapshot date: ${safe(stock.price_date)}
-        <br>
-        Market: ${safe(stock.market || "US")}
-        · Currency: USD
-      </div>
+      <p class="risk">${safe(stock.risk || "Market risk applies.")}</p>
 
-      <div class="label">Why it appears</div>
-      <p class="reason">${safe(stock.reason)}</p>
-
-      <div class="label">Risk note</div>
-      <p class="risk">${safe(stock.risk)}</p>
-
-      <a class="stock-link"
-         href="https://finance.yahoo.com/quote/${yahooTicker}/"
-         target="_blank"
-         rel="noopener noreferrer">
-        View market information →
+      <a href="https://finance.yahoo.com/quote/${encodeURIComponent(stock.ticker)}"
+         target="_blank" rel="noopener noreferrer">
+         View stock →
       </a>
     `;
 
-    area.appendChild(card);
+    container.appendChild(card);
   });
 }
 
-async function loadPicks() {
-
-  const updated = getElement("updated");
-
-  if (!updated) {
-    showError('Missing HTML element with id="updated".');
-    return;
-  }
+async function loadStockPicks() {
+  const updated = document.getElementById("updated");
+  const error = document.getElementById("error");
+  const source = document.getElementById("source");
 
   try {
-
     const response = await fetch(
-      "./data/picks.json?t=" + Date.now(),
+      "./data/picks.json?v=" + Date.now(),
       { cache: "no-store" }
     );
 
     if (!response.ok) {
-      throw new Error(
-        "Could not load picks.json. HTTP status: " + response.status
-      );
+      throw new Error("Stock data HTTP error: " + response.status);
     }
 
     const data = await response.json();
 
     if (data.status !== "ok") {
-      throw new Error(
-        (data.errors || ["Market data status is not OK."]).join(" · ")
-      );
+      throw new Error("Stock data is not available.");
     }
 
-    if (!Array.isArray(data.main) ||
-        !Array.isArray(data.penny)) {
-      throw new Error(
-        "Invalid JSON format: main and penny must both be arrays."
-      );
+    if (!Array.isArray(data.main) || !Array.isArray(data.penny)) {
+      throw new Error("Invalid stock data format.");
     }
 
-    updated.textContent =
-      "Last generated: " +
-      new Date(data.updated_at).toLocaleString() +
-      (data.snapshot_time
-        ? " · Market snapshot: " + data.snapshot_time
-        : "");
+    renderStockCards("main-cards", data.main);
+    renderStockCards("penny-cards", data.penny);
 
-    renderCards("main-cards", data.main, "MAIN");
-    renderCards("penny-cards", data.penny, "PENNY");
-
-    const source = getElement("source");
+    if (updated) {
+      updated.textContent =
+        "Last updated: " +
+        new Date(data.updated_at).toLocaleString();
+    }
 
     if (source) {
       source.textContent =
-        "Source: " +
-        (data.data_source || "Market data provider") +
-        " · " +
-        (data.data_note || "");
+        "Source: " + (data.data_source || "Alpha Vantage");
     }
 
-    const errorArea = getElement("error");
+    if (error) error.innerHTML = "";
 
-    if (errorArea) {
-      errorArea.innerHTML = "";
+    console.log("StockPilot: six stock picks loaded.");
+
+  } catch (err) {
+    console.error("StockPilot error:", err);
+
+    if (updated) updated.textContent = "Unable to load stock picks.";
+
+    if (error) {
+      error.textContent = err.message;
     }
-
-    console.log("StockPilot picks loaded successfully.");
-
-  } catch (error) {
-
-    updated.textContent =
-      "Could not load verified market data.";
-
-    showError(error.message);
-
-    renderCards("main-cards", [], "MAIN");
-    renderCards("penny-cards", [], "PENNY");
   }
 }
+
+// Load immediately, then refresh every 15 minutes.
+loadStockPicks();
+
+setInterval(loadStockPicks, 15 * 60 * 1000);
+
+// Footer year
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
 
 // Load market data when the page opens.
 loadPicks();
