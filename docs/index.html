@@ -5,683 +5,479 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>StockPilot AI | Daily Stock Picks & Research</title>
-<meta name="description" content="Free daily stock research, three main stock picks, three penny stock picks, investing education and community discussions.">
-<meta name="theme-color" content="#07111f">
+<title>StockPilot AI | Daily Stock Picks & Penny Stocks to Watch</title>
+
+<meta name="description" content="Discover six daily stock market research picks: three actively traded main stocks and three penny stocks to watch. Explore market activity, stock prices, volume and risk.">
+
+<meta name="keywords" content="daily stock picks, most actively traded stocks, penny stocks to watch, stock market research, daily stock market analysis, US stocks, stock trading">
+
+<meta name="author" content="StockPilot AI">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.technofront.org/">
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VL62LP5NZ9"></script>
+<meta property="og:title" content="StockPilot AI | Daily Stock Picks">
+<meta property="og:description" content="Six daily stock research picks based on real market data.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.technofront.org/">
+
+<meta name="theme-color" content="#111111">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SD95HMM6GV"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-VL62LP5NZ9');
+gtag('config', 'G-SD95HMM6GV');
 </script>
 
 <style>
 :root {
-  --bg:#07111f;
-  --card:#101e30;
-  --text:#f2f6fc;
-  --muted:#a8b6c9;
-  --cyan:#38c9e8;
-  --green:#37d69a;
-  --red:#ff7777;
-  --border:rgba(255,255,255,.10);
+  --black:#111111;
+  --yellow:#f5d52a;
+  --cream:#f7f5ec;
+  --white:#ffffff;
+  --gray:#666666;
+  --border:#e6e2d5;
 }
 
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+* { box-sizing:border-box; }
 
 html { scroll-behavior:smooth; }
 
 body {
-  background:var(--bg);
-  color:var(--text);
+  margin:0;
   font-family:Arial,Helvetica,sans-serif;
+  background:var(--cream);
+  color:var(--black);
   line-height:1.55;
 }
 
-a {
-  color:inherit;
-  text-decoration:none;
-}
+a { color:inherit; }
 
-.container {
-  width:min(1100px,92%);
-  margin:auto;
-}
-
-header {
-  background:#091524;
-  border-bottom:1px solid var(--border);
+.topbar {
+  background:var(--black);
+  color:white;
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:3px solid var(--yellow);
 }
 
 .nav {
-  min-height:68px;
+  max-width:1180px;
+  margin:auto;
+  padding:12px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:20px;
+  gap:18px;
 }
 
 .logo {
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:-.8px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--yellow);
+  font-size:19px;
+  font-weight:900;
+  letter-spacing:.5px;
+  text-decoration:none;
+  white-space:nowrap;
 }
 
-.logo span { color:var(--cyan); }
+.logo-icon {
+  background:var(--yellow);
+  color:var(--black);
+  width:34px;
+  height:34px;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  font-size:21px;
+}
 
 .nav-links {
   display:flex;
+  gap:22px;
+  align-items:center;
   flex-wrap:wrap;
-  gap:18px;
-  color:var(--muted);
-  font-size:13px;
 }
 
-.nav-links a:hover { color:var(--cyan); }
+.nav-links a {
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.nav-links a:hover { color:var(--yellow); }
 
 .hero {
-  text-align:center;
-  padding:52px 0 35px;
+  background:var(--yellow);
+  padding:48px 20px 42px;
 }
 
-.free-label {
-  display:inline-block;
-  color:var(--green);
-  background:rgba(55,214,154,.12);
-  border:1px solid rgba(55,214,154,.35);
-  padding:5px 12px;
-  border-radius:30px;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:1px;
-  margin-bottom:14px;
+.hero-inner {
+  max-width:1180px;
+  margin:auto;
+}
+
+.eyebrow {
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.5px;
 }
 
 .hero h1 {
-  font-size:clamp(36px,6vw,58px);
-  line-height:1.08;
-  letter-spacing:-1.8px;
-  margin-bottom:14px;
+  font-size:clamp(34px,5vw,55px);
+  line-height:1.06;
+  max-width:760px;
+  margin:12px 0;
+  letter-spacing:-1.5px;
 }
-
-.hero h1 span { color:var(--cyan); }
 
 .hero p {
+  font-size:17px;
   max-width:650px;
-  margin:0 auto 20px;
-  color:var(--muted);
-  font-size:15px;
+  margin:0 0 22px;
 }
 
-.hero-links {
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.button {
+.cta {
   display:inline-block;
-  padding:11px 18px;
-  border-radius:8px;
+  background:var(--black);
+  color:var(--yellow);
+  padding:12px 19px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:900;
   font-size:13px;
-  font-weight:700;
-  background:var(--cyan);
-  color:#06131d;
-  border:1px solid var(--cyan);
-  cursor:pointer;
 }
 
-.button.secondary {
-  background:transparent;
-  color:var(--text);
-  border-color:var(--border);
+.cta:hover { background:#333; }
+
+.container {
+  max-width:1180px;
+  margin:auto;
+  padding:25px 20px 45px;
 }
 
-.button:hover { opacity:.85; }
+.update {
+  font-size:12px;
+  color:var(--gray);
+  margin-bottom:18px;
+}
 
-section { padding:30px 0; }
+.section {
+  margin:28px 0;
+  scroll-margin-top:85px;
+}
 
 .section-heading {
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:end;
   gap:12px;
-  margin-bottom:16px;
+  margin-bottom:13px;
 }
 
-.section-heading h2 {
-  font-size:22px;
+.section-title {
+  font-size:23px;
+  margin:0;
   letter-spacing:-.4px;
 }
 
-.section-heading p {
-  font-size:12px;
-  color:var(--muted);
+.section-subtitle {
+  color:var(--gray);
+  font-size:13px;
+  margin:3px 0 0;
 }
 
 .stock-grid {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px;
+  gap:13px;
 }
 
 .stock-card {
-  background:var(--card);
+  background:var(--white);
   border:1px solid var(--border);
-  border-radius:14px;
-  padding:19px;
+  border-top:4px solid var(--black);
+  border-radius:9px;
+  padding:16px;
   min-width:0;
-  transition:transform .2s,border-color .2s;
+  box-shadow:0 3px 10px rgba(0,0,0,.035);
 }
 
-.stock-card:hover {
-  transform:translateY(-3px);
-  border-color:var(--cyan);
-}
+.stock-card.penny { border-top-color:#d4a900; }
 
-.stock-type {
-  color:var(--green);
-  font-size:10px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1px;
+.stock-card h3 {
+  margin:0 0 3px;
+  font-size:17px;
 }
 
 .ticker {
-  font-size:29px;
-  font-weight:800;
-  margin:6px 0 0;
-  overflow-wrap:anywhere;
-}
-
-.company {
-  color:var(--muted);
-  font-size:13px;
+  color:var(--gray);
+  font-size:12px;
+  font-weight:bold;
 }
 
 .price {
-  font-size:25px;
-  font-weight:700;
-  margin-top:15px;
+  font-size:27px;
+  font-weight:900;
+  margin:12px 0 0;
 }
 
 .change {
   font-size:13px;
-  margin-top:5px;
+  font-weight:bold;
 }
 
-.positive { color:var(--green); }
-.negative { color:var(--red); }
+.positive { color:#087b45; }
+.negative { color:#bd2929; }
 
-.meta {
-  color:var(--muted);
+.details {
+  border-top:1px solid var(--border);
+  margin-top:12px;
+  padding-top:10px;
+  color:#555;
   font-size:12px;
-  line-height:1.7;
-  margin-top:13px;
-  overflow-wrap:anywhere;
+  line-height:1.65;
 }
 
-.label {
-  color:var(--cyan);
-  font-size:10px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin-top:17px;
-}
-
-.reason,.risk {
-  font-size:12px;
-  line-height:1.5;
-  margin-top:6px;
-}
-
-.risk { color:#ffd19a; }
-
-.stock-link {
+.risk {
   display:inline-block;
-  color:var(--cyan);
-  font-size:12px;
-  font-weight:700;
-  margin-top:14px;
+  margin-top:10px;
+  padding:4px 8px;
+  border-radius:4px;
+  background:#fff2b8;
+  color:#4b3b00;
+  font-size:10px;
+  font-weight:900;
 }
 
-.stock-link:hover { text-decoration:underline; }
-
-.notice {
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.6;
-  margin-top:13px;
-}
-
-.empty {
-  grid-column:1/-1;
-  color:#cbd5e1;
-  background:var(--card);
-  border:1px dashed #43536b;
-  padding:20px;
-  border-radius:12px;
-}
-
-.error {
-  margin:15px 0;
-  padding:15px;
-  border:1px solid #8b4b4b;
-  border-radius:10px;
-  color:#ffd0d0;
-  font-size:13px;
-}
-
-.promise {
-  text-align:center;
-  padding:18px;
-  background:rgba(55,214,154,.07);
-  border:1px solid rgba(55,214,154,.18);
-  border-radius:10px;
-  color:var(--green);
-  font-weight:800;
-  font-size:13px;
-  letter-spacing:.4px;
-}
-
-.two-column {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-.panel {
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:19px;
-}
-
-.panel h3 {
-  font-size:16px;
+.penny-label {
+  color:#8b6a00;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
   margin-bottom:7px;
 }
 
-.panel p {
-  color:var(--muted);
+.message {
+  grid-column:1/-1;
+  background:white;
+  border:1px dashed #c9c3ae;
+  border-radius:8px;
+  padding:20px;
+  color:var(--gray);
   font-size:13px;
 }
 
-.resource-list {
+.info-strip {
+  background:var(--black);
+  color:white;
+  border-radius:9px;
+  padding:19px;
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:9px;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-.resource-link {
+.info-strip strong {
   display:block;
-  padding:13px;
-  background:var(--card);
+  color:var(--yellow);
+  font-size:18px;
+}
+
+.info-strip span {
+  font-size:12px;
+  color:#eeeeee;
+}
+
+.content-panel {
+  background:white;
   border:1px solid var(--border);
   border-radius:9px;
-  font-size:13px;
-  font-weight:700;
+  padding:21px;
 }
 
-.resource-link span {
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-  font-weight:400;
-  margin-top:3px;
+.content-panel h2 {
+  font-size:21px;
+  margin:0 0 8px;
 }
 
-.resource-link:hover { border-color:var(--cyan); }
-
-.comments-box {
-  background:white;
-  color:#111;
-  padding:17px;
-  border-radius:14px;
-  min-height:250px;
-  overflow:hidden;
-}
-
-.newsletter {
-  background:linear-gradient(120deg,#10283b,#102238);
-  border:1px solid rgba(56,201,232,.2);
-  border-radius:14px;
-  padding:23px;
-}
-
-.newsletter h2 {
-  font-size:22px;
-  margin-bottom:6px;
-}
-
-.newsletter p {
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:14px;
-}
-
-.newsletter-form {
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-}
-
-.newsletter-form input[type=email] {
-  flex:1;
-  min-width:210px;
-  padding:12px;
-  border-radius:7px;
-  border:1px solid var(--border);
-  background:#071524;
-  color:white;
-  font-size:13px;
-}
-
-.consent {
-  display:flex;
-  align-items:flex-start;
-  gap:8px;
-  width:100%;
-  margin:12px 0;
-  font-size:11px;
-  color:var(--muted);
-}
-
-.consent input { margin-top:3px; }
-
-.privacy-note {
-  font-size:10px!important;
-  margin:9px 0 0!important;
-}
-
-.about-text {
-  color:var(--muted);
-  font-size:13px;
-}
-
-footer {
-  border-top:1px solid var(--border);
-  padding:25px 0;
-  margin-top:25px;
-}
-
-.footer-content {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.footer-content p {
-  font-size:11px;
-  color:var(--muted);
+.content-panel p {
+  color:#555;
+  font-size:14px;
+  margin:7px 0;
 }
 
 .disclaimer {
-  color:var(--muted);
-  font-size:11px;
-  margin-top:16px;
-  max-width:950px;
+  background:#fff3bd;
+  border-left:4px solid var(--yellow);
+  padding:13px 15px;
+  font-size:12px;
+  color:#4a401d;
+  border-radius:4px;
 }
 
-@media(max-width:750px) {
+#discussion {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:20px;
+}
+
+footer {
+  background:var(--black);
+  color:#ddd;
+  padding:25px 20px;
+  text-align:center;
+  font-size:12px;
+}
+
+footer a { color:var(--yellow); }
+
+@media(max-width:760px) {
   .nav {
-    padding:13px 0;
     align-items:flex-start;
     flex-direction:column;
     gap:10px;
   }
-
-  .nav-links { gap:13px; }
-
-  .stock-grid { grid-template-columns:1fr 1fr; }
-
-  .two-column { grid-template-columns:1fr; }
-
-  .section-heading {
-    align-items:flex-start;
-    flex-direction:column;
-  }
+  .nav-links { gap:15px; }
+  .stock-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .hero { padding:36px 18px; }
 }
 
-@media(max-width:500px) {
-  .stock-grid,.resource-list { grid-template-columns:1fr; }
-  .hero { padding-top:35px; }
+@media(max-width:480px) {
+  .stock-grid { grid-template-columns:1fr; }
+  .info-strip { grid-template-columns:1fr; }
+  .section-heading { align-items:flex-start; flex-direction:column; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
-    <a href="#" class="logo">Stock<span>Pilot</span> AI</a>
+<header class="topbar">
+  <nav class="nav">
+    <a class="logo" href="#home">
+      <span class="logo-icon">↗</span>
+      STOCKPILOT AI
+    </a>
 
-    <nav class="nav-links" aria-label="Main navigation">
-      <a href="#stocks">Stocks</a>
-      <a href="#education">Learn</a>
-      <a href="#resources">Resources</a>
-      <a href="#community">Discussions</a>
-      <a href="#newsletter">Newsletter</a>
-    </nav>
-  </div>
+    <div class="nav-links">
+      <a href="#home">HOME</a>
+      <a href="#picks">DAILY PICKS</a>
+      <a href="#about">ABOUT</a>
+      <a href="#discussion">DISCUSSION</a>
+    </div>
+  </nav>
 </header>
 
-<main>
-
-  <!-- HERO -->
-  <section class="hero container">
-    <div class="free-label">
-      100% FREE · NO MEMBERSHIP · NO PAYWALL
-    </div>
-
-    <h1>
-      Research. Learn.<br>
-      <span>Invest smarter.</span>
-    </h1>
-
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="eyebrow">MARKET DATA. CLEARER RESEARCH.</div>
+    <h1>Find stocks worth researching.</h1>
     <p>
-      Discover daily stock market activity, explore research ideas,
-      learn about investing and discuss the market with our community.
+      Discover daily stock market activity, actively traded stocks
+      and penny stocks to watch — all in one simple place.
     </p>
+    <a class="cta" href="#picks">EXPLORE TODAY'S PICKS ↓</a>
+  </div>
+</section>
 
-    <div class="hero-links">
-      <a class="button" href="#stocks">Explore today's stocks</a>
-      <a class="button secondary" href="#community">Join discussions</a>
+<main class="container">
+
+  <div class="update" id="updated">
+    Loading daily market data...
+  </div>
+
+  <div class="info-strip">
+    <div>
+      <strong>3</strong>
+      <span>Main stock picks</span>
     </div>
-  </section>
+    <div>
+      <strong>3</strong>
+      <span>Penny stock picks</span>
+    </div>
+    <div>
+      <strong>Daily</strong>
+      <span>Market research updates</span>
+    </div>
+  </div>
 
-  <!-- STOCK PICKS -->
-  <section id="stocks" class="container">
-
+  <section class="section" id="picks">
     <div class="section-heading">
-      <h2>Today's Stock Picks</h2>
-      <p>Six stocks · Updated daily</p>
-      <p id="source" class="notice"></p>
-    </div>
-
-    <p id="updated" class="notice">
-      Loading verified market data...
-    </p>
-
-    <div id="error"></div>
-
-    <h3 style="font-size:19px;margin:25px 0 5px">
-      3 Main Stocks
-    </h3>
-
-    <p class="notice">
-      Highest reported share volume among qualifying US stocks
-      priced above US$10.
-    </p>
-
-    <div class="stock-grid" id="main-cards">
-      <div class="empty">Loading main stocks...</div>
-    </div>
-
-    <h3 style="font-size:19px;margin:35px 0 5px">
-      3 Penny Stocks
-    </h3>
-
-    <p class="notice">
-      Highest reported share volume among qualifying US stocks
-      priced US$0.10–US$10. These stocks carry elevated risk.
-    </p>
-
-    <div class="stock-grid" id="penny-cards">
-      <div class="empty">Loading penny stocks...</div>
-    </div>
-
-    <p class="notice">
-      Stock selection is based on reported trading volume.
-      Volume does not indicate investment quality or predict
-      future performance.
-    </p>
-
-  </section>
-
-  <!-- PROMISE -->
-  <section class="container">
-    <div class="promise">
-      NO FEES. NO MEMBERSHIP. NO PAYWALL.
-      INVESTING KNOWLEDGE SHOULD BE ACCESSIBLE TO EVERYONE.
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="container">
-
-    <div class="section-heading">
-      <h2>Learn the Market</h2>
-      <p>Build your knowledge</p>
-    </div>
-
-    <div class="two-column">
-
-      <div class="panel">
-        <h3>Understand a Stock</h3>
-        <p>
-          Learn how to read a ticker, understand company financials,
-          evaluate business performance and research a company.
+      <div>
+        <h2 class="section-title">Today's Main Stock Picks</h2>
+        <p class="section-subtitle">
+          Three actively traded stocks selected from the available market data.
         </p>
       </div>
+    </div>
 
-      <div class="panel">
-        <h3>Understand Trading Risk</h3>
-        <p>
-          Learn about volatility, trading volume, liquidity,
-          stop-loss orders and potential losses.
-        </p>
-      </div>
-
-      <div class="panel">
-        <h3>Do Your Own Research</h3>
-        <p>
-          Compare company announcements, financial statements,
-          market trends and independent sources.
-        </p>
-      </div>
-
-      <div class="panel">
-        <h3>Start Small and Learn</h3>
-        <p>
-          Understand the risks, avoid investing money you cannot
-          afford to lose and take your time.
-        </p>
-      </div>
-
+    <div class="stock-grid" id="mainStocks">
+      <div class="message">Loading main stock picks...</div>
     </div>
   </section>
 
-  <!-- RESEARCH RESOURCES -->
-  <section id="resources" class="container">
-
+  <section class="section">
     <div class="section-heading">
-      <h2>Research Tools</h2>
-      <p>Useful market resources</p>
+      <div>
+        <h2 class="section-title">Penny Stocks to Watch</h2>
+        <p class="section-subtitle">
+          Three lower-priced stocks. These can carry substantially higher risk.
+        </p>
+      </div>
     </div>
 
-    <div class="resource-list">
-
-      <a class="resource-link"
-         href="https://finance.yahoo.com/"
-         target="_blank" rel="noopener noreferrer">
-        Yahoo Finance
-        <span>Prices, charts and company information</span>
-      </a>
-
-      <a class="resource-link"
-         href="https://www.google.com/finance/"
-         target="_blank" rel="noopener noreferrer">
-        Google Finance
-        <span>Market news and stock information</span>
-      </a>
-
-      <a class="resource-link"
-         href="https://www.sedarplus.ca/"
-         target="_blank" rel="noopener noreferrer">
-        SEDAR+
-        <span>Canadian company filings</span>
-      </a>
-
-      <a class="resource-link"
-         href="https://www.tsx.com/"
-         target="_blank" rel="noopener noreferrer">
-        TMX / TSX
-        <span>Canadian stock exchange information</span>
-      </a>
-
-      <a class="resource-link"
-         href="https://www.sec.gov/edgar/search/"
-         target="_blank" rel="noopener noreferrer">
-        SEC EDGAR
-        <span>US company filings and reports</span>
-      </a>
-
-      <a class="resource-link"
-         href="https://www.investor.gov/"
-         target="_blank" rel="noopener noreferrer">
-        Investor.gov
-        <span>Investor education and protection</span>
-      </a>
-
+    <div class="stock-grid" id="pennyStocks">
+      <div class="message">Loading penny stocks...</div>
     </div>
   </section>
 
-  <!-- COMMUNITY / GISCUS -->
-  <section id="community" class="container">
-
-    <div class="section-heading">
-      <h2>StockPilot Community</h2>
-      <p>Share ideas and join the discussion</p>
+  <section class="section">
+    <div class="disclaimer">
+      <strong>Important:</strong> StockPilot AI presents market information
+      for educational and research purposes. Picks are based on the data
+      source available to the site and do not represent every stock in
+      the market. Prices and volumes may be delayed. This is not financial
+      advice or a recommendation to buy or sell.
     </div>
+  </section>
 
-    <div class="panel" style="margin-bottom:14px">
-      <h3>Let's learn together.</h3>
-
+  <section class="section" id="about">
+    <div class="content-panel">
+      <h2>Why I Started StockPilot AI</h2>
       <p>
-        Share your thoughts, discuss companies and exchange research
-        ideas respectfully. Keep discussions informative and never
-        share private financial information.
+        I created StockPilot AI with one simple idea: make daily stock
+        market research easier to follow.
+      </p>
+      <p>
+        The market moves quickly, and finding useful information can take
+        time. I wanted to create a straightforward place where people can
+        explore actively traded stocks, discover penny stocks and review
+        important market information without unnecessary clutter.
+      </p>
+      <p>
+        StockPilot AI is an independent project built to make market
+        information easier to access and understand. It is a starting
+        point for research — not a substitute for your own decisions.
       </p>
     </div>
+  </section>
 
-    <div class="comments-box">
+  <section class="section" id="discussion">
+    <div class="content-panel">
+      <h2>Join the Discussion</h2>
+      <p>
+        What stocks are you watching? Share your research, ideas and
+        questions with the StockPilot AI community.
+      </p>
 
-      <!-- GISCUS DISCUSSION SYSTEM -->
-      <script
-        src="https://giscus.app/client.js"
+      <script src="https://giscus.app/client.js"
         data-repo="midochamass6699-cmyk/stockpilot-ai"
         data-repo-id="R_kgDOVhw6Ww"
         data-category="comments"
@@ -690,341 +486,145 @@ footer {
         data-strict="0"
         data-reactions-enabled="1"
         data-emit-metadata="0"
-        data-input-position="bottom"
+        data-input-position="top"
         data-theme="light"
-        data-lang="fr"
+        data-lang="en"
         crossorigin="anonymous"
         async>
       </script>
-      <!-- END GISCUS -->
-
-    </div>
-
-    <p class="notice">
-      Discussions are hosted through GitHub Discussions.
-      Visitors need a GitHub account to comment.
-    </p>
-
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section id="newsletter" class="container">
-
-    <div class="newsletter">
-
-      <h2>Get StockPilot Updates</h2>
-
-      <p>
-        Sign up to receive StockPilot updates and future
-        research announcements by email.
-      </p>
-
-      <form class="newsletter-form"
-            action="https://formsubmit.co/midochamass6699@gmail.com"
-            method="POST">
-
-        <input type="hidden"
-               name="_subject"
-               value="New StockPilot Newsletter Subscriber">
-
-        <input type="hidden"
-               name="_template"
-               value="table">
-
-        <input type="text"
-               name="_honey"
-               style="display:none"
-               tabindex="-1"
-               autocomplete="off">
-
-        <input type="email"
-               name="email"
-               placeholder="Enter your email address"
-               aria-label="Email address"
-               required>
-
-        <button class="button" type="submit">
-          Subscribe Free
-        </button>
-
-        <label class="consent">
-          <input type="checkbox"
-                 name="consent"
-                 value="I agree to receive StockPilot email updates."
-                 required>
-
-          <span>
-            I agree to receive StockPilot updates by email.
-            I understand I can unsubscribe at any time.
-          </span>
-        </label>
-
-      </form>
-
-      <p class="privacy-note">
-        Your email will be used to send StockPilot updates.
-        Do not submit sensitive personal or financial information.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="container">
-
-    <div class="section-heading">
-      <h2>Why StockPilot?</h2>
-    </div>
-
-    <div class="panel">
-
-      <p class="about-text">
-        StockPilot started with a simple idea: investing knowledge
-        should not be reserved for people who can afford expensive
-        services or memberships.
-
-        <br><br>
-
-        I started with very little and wanted to learn how to
-        understand the market independently. StockPilot is a place
-        to share research resources and make investing education
-        more accessible.
-
-        <br><br>
-
-        This is an independent learning and research project.
-        We believe in learning, asking questions and making
-        informed decisions.
-      </p>
-
     </div>
   </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-
-  <div class="container">
-
-    <div class="footer-content">
-
-      <a href="#" class="logo">
-        Stock<span>Pilot</span> AI
-      </a>
-
-      <p>
-        Independent research. Free education. Open discussion.
-      </p>
-
-    </div>
-
-    <p class="disclaimer">
-      DISCLAIMER: StockPilot provides general information and
-      educational content only. Nothing on this website constitutes
-      financial, investment, tax or legal advice, or a recommendation
-      to buy, sell or hold any security. Stock investing and trading
-      involve risk, including the possible loss of your entire
-      investment. Short-term trading can be especially volatile.
-      Past performance does not guarantee future results.
-      Always conduct your own research and consult a qualified
-      professional if you need personalized advice.
-    </p>
-
-    <p class="disclaimer">
-      © <span id="year"></span> StockPilot. All rights reserved.
-      External websites are operated independently and have
-      their own terms and privacy policies.
-    </p>
-
-  </div>
-
+  <strong>STOCKPILOT AI</strong>
+  <p>Independent stock market research and daily market activity.</p>
+  <p>For educational purposes only. Not financial advice.</p>
+  <p>© <span id="year"></span> StockPilot AI</p>
+  <p><a href="#home">Back to top ↑</a></p>
 </footer>
 
-<!-- STOCK DATA ENGINE -->
 <script>
-"use strict";
-
-const money = value =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD"
-  }).format(Number(value));
-
-const number = value =>
-  new Intl.NumberFormat("en-US").format(Number(value));
-
-function safe(value) {
-  return String(value ?? "").replace(/[&<>"']/g, ch => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[ch]));
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[char]);
 }
 
-function renderStockCards(elementId, stocks) {
-  const container = document.getElementById(elementId);
+function renderStock(stock, isPenny=false) {
+  const change = Number(stock.change_percent);
+  const validChange = Number.isFinite(change);
 
-  if (!container) {
-    console.error("StockPilot: Missing HTML element:", elementId);
-    return;
-  }
+  const changeClass = validChange
+    ? (change >= 0 ? "positive" : "negative") : "";
 
-  container.innerHTML = "";
+  const changeText = validChange
+    ? `${change > 0 ? "+" : ""}${change.toFixed(2)}% today`
+    : "Daily change unavailable";
 
-  if (!Array.isArray(stocks) || stocks.length === 0) {
-    container.innerHTML =
-      '<div class="empty">No qualifying stocks available.</div>';
-    return;
-  }
+  const price = Number(stock.price);
+  const currency = stock.currency || "USD";
 
-  stocks.forEach((stock, index) => {
-    const change = Number(stock.change_percent || 0);
-    const positive = change >= 0;
+  const priceText = Number.isFinite(price) && price > 0
+    ? `${escapeHTML(currency)} ${price.toFixed(2)}`
+    : "Price unavailable";
 
-    const card = document.createElement("article");
-    card.className = "stock-card";
+  const volume = Number(stock.volume);
+  const volumeText = Number.isFinite(volume)
+    ? volume.toLocaleString()
+    : "Not provided";
 
-    card.innerHTML = `
-      <div class="stock-type">
-        ${safe(stock.exchange || "US")} · #${index + 1}
+  return `
+    <article class="stock-card ${isPenny ? "penny" : ""}">
+      ${isPenny ? '<div class="penny-label">PENNY STOCK</div>' : ""}
+      <h3>${escapeHTML(stock.company || stock.ticker)}</h3>
+
+      <div class="ticker">
+        ${escapeHTML(stock.ticker)} ·
+        ${escapeHTML(stock.exchange || stock.market || "")}
       </div>
 
-      <div class="ticker">${safe(stock.ticker)}</div>
+      <div class="price">${priceText}</div>
+      <div class="change ${changeClass}">${changeText}</div>
 
-      <div class="company">
-        ${safe(stock.company || stock.ticker)}
+      <div class="details">
+        <strong>Trading volume:</strong> ${volumeText}<br>
+        <strong>Why selected:</strong>
+        ${escapeHTML(stock.reason || "Market activity data")}<br>
+        <strong>Quote date:</strong>
+        ${escapeHTML(stock.price_date || stock.quote_time || "Not provided")}<br>
+        <strong>Risk:</strong>
+        ${escapeHTML(stock.risk || (isPenny ? "High" : "Review"))}
       </div>
 
-      <div class="price">${money(stock.price)}</div>
-
-      <div class="change ${positive ? "positive" : "negative"}">
-        ${positive ? "+" : ""}${change.toFixed(2)}%
-      </div>
-
-      <div class="meta">
-        Trading volume: ${number(stock.volume)}
-      </div>
-
-      <div class="label">Why it was selected</div>
-
-      <div class="reason">
-        ${safe(stock.reason || "Selected by trading volume.")}
-      </div>
-
-      <div class="label">Risk</div>
-
-      <div class="risk">
-        ${safe(stock.risk || "Market risk applies.")}
-      </div>
-
-      <a class="stock-link"
-         href="https://finance.yahoo.com/quote/${encodeURIComponent(stock.ticker)}"
-         target="_blank"
-         rel="noopener noreferrer">
-         View stock →
-      </a>
-    `;
-
-    container.appendChild(card);
-  });
+      <span class="risk">${isPenny ? "HIGHER RISK" : "MARKET RESEARCH"}</span>
+    </article>
+  `;
 }
 
-async function loadStockPicks() {
+async function loadStocks() {
+  const main = document.getElementById("mainStocks");
+  const penny = document.getElementById("pennyStocks");
   const updated = document.getElementById("updated");
-  const error = document.getElementById("error");
-  const source = document.getElementById("source");
 
   try {
-    const response = await fetch(
-      "./data/picks.json?v=" + Date.now(),
-      { cache: "no-store" }
-    );
+    const response = await fetch("./data/picks.json?t=" + Date.now());
 
     if (!response.ok) {
-      throw new Error(
-        "Could not load stock data. HTTP status: " + response.status
-      );
+      throw new Error("Could not load market data.");
     }
 
     const data = await response.json();
 
-    if (data.status !== "ok") {
-      throw new Error("Stock data status is not OK.");
+    if (data.status === "error") {
+      throw new Error(data.error || "Market data update failed.");
     }
 
-    if (!Array.isArray(data.main) || !Array.isArray(data.penny)) {
-      throw new Error("Invalid stock data format.");
+    const mainPicks = Array.isArray(data.main) ? data.main : [];
+    const pennyPicks = Array.isArray(data.penny) ? data.penny : [];
+
+    const mainTickers = new Set(mainPicks.map(s => s.ticker));
+    const uniquePenny = pennyPicks.filter(s => !mainTickers.has(s.ticker));
+
+    main.innerHTML = mainPicks.length
+      ? mainPicks.slice(0, 3).map(s => renderStock(s)).join("")
+      : '<div class="message">No verified main stock picks are available right now.</div>';
+
+    penny.innerHTML = uniquePenny.length
+      ? uniquePenny.slice(0, 3).map(s => renderStock(s, true)).join("")
+      : '<div class="message">No qualifying penny stock picks are available right now.</div>';
+
+    const date = data.updated_at || data.generated_at_utc;
+
+    updated.textContent = "Last updated: " +
+      (date ? new Date(date).toLocaleString() : "Date unavailable");
+
+    if (data.source) {
+      updated.textContent += " · Source: " + data.source;
     }
 
-    if (data.main.length !== 3 || data.penny.length !== 3) {
-      console.warn(
-        "StockPilot: Expected three main and three penny stocks.",
-        data.main.length,
-        data.penny.length
-      );
-    }
+  } catch (error) {
+    main.innerHTML =
+      '<div class="message">Main stock data is temporarily unavailable.</div>';
 
-    renderStockCards("main-cards", data.main);
-    renderStockCards("penny-cards", data.penny);
+    penny.innerHTML =
+      '<div class="message">Penny stock data is temporarily unavailable.</div>';
 
-    if (updated) {
-      const date = data.updated_at
-        ? new Date(data.updated_at).toLocaleString()
-        : "Date unavailable";
-
-      updated.textContent = "Last updated: " + date;
-    }
-
-    if (source) {
-      source.textContent =
-        "Source: " +
-        (data.data_source || "Alpha Vantage") +
-        (data.data_note ? " · " + data.data_note : "");
-    }
-
-    if (error) {
-      error.innerHTML = "";
-    }
-
-    console.log(
-      "StockPilot: Stock picks loaded successfully.",
-      data.main.length,
-      "main stocks;",
-      data.penny.length,
-      "penny stocks."
-    );
-
-  } catch (err) {
-    console.error("StockPilot error:", err);
-
-    if (updated) {
-      updated.textContent = "Unable to load stock picks.";
-    }
-
-    if (error) {
-      error.innerHTML =
-        '<div class="error">' + safe(err.message) + '</div>';
-    }
+    updated.textContent = "Market data temporarily unavailable.";
+    console.error("StockPilot data error:", error);
   }
 }
 
-// Load market data immediately.
-loadStockPicks();
+document.getElementById("year").textContent = new Date().getFullYear();
 
-// Refresh the displayed data every 15 minutes.
-setInterval(loadStockPicks, 15 * 60 * 1000);
-
-// Automatically update the copyright year.
-const yearElement = document.getElementById("year");
-
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
+loadStocks();
+setInterval(loadStocks, 15 * 60 * 1000);
 </script>
-<!-- END STOCK DATA ENGINE -->
 
 </body>
 </html>
