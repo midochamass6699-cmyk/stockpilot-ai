@@ -3,29 +3,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>StockPilot | Canadian Stock Market Research & Investment Insights</title>
+  <title>StockPilot | Weekly Top 3 Stocks & Investing Education</title>
 
-  <meta name="description" content="Explore Canadian stocks, TSX companies, stock market research, financial news, company profiles, investment insights and resources with StockPilot.">
-
-  <meta name="keywords" content="Canadian stocks, TSX stocks, Toronto Stock Exchange, stock market Canada, stock market analysis, investing in Canada, stock research, Canadian companies, financial markets, investment research, Bombardier stock, CEMATRIX stock, Royal Bank stock, RBC stock, BBD.B, CEMX, RY">
-
+  <meta name="description" content="Discover StockPilot's weekly top 3 stocks to research, learn where to invest, and understand how to start investing.">
+  <meta name="keywords" content="weekly stock picks, Canadian stocks, TSX stocks, where to invest, how to invest, stock market, investing for beginners">
   <meta name="author" content="StockPilot">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#f4f8ff">
-
   <link rel="canonical" href="https://www.technofront.org/">
-
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="StockPilot | Discover the Canadian Stock Market">
-  <meta property="og:description" content="Explore Canadian companies, stock market insights, investment research and financial resources.">
-  <meta property="og:url" content="https://www.technofront.org/">
-  <meta property="og:site_name" content="StockPilot">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="StockPilot | Canadian Stock Market Research">
-  <meta name="twitter:description" content="Discover Canadian stocks, company profiles and investment research.">
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VL62LP5NZ9"></script>
@@ -36,555 +21,274 @@
     gtag('config', 'G-VL62LP5NZ9');
   </script>
 
-  <!-- Search engine structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "StockPilot",
-    "url": "https://www.technofront.org/",
-    "description": "Canadian stock market research, company profiles and investment resources.",
-    "inLanguage": "en-CA"
-  }
-  </script>
-
   <style>
-    :root {
-      --navy: #142b4d;
-      --blue: #2868d7;
-      --blue-light: #eaf2ff;
-      --green: #159b70;
-      --text: #24344b;
-      --muted: #6e7d91;
-      --border: #e3eaf3;
-      --white: #ffffff;
-      --background: #f4f8ff;
-      --shadow: 0 12px 35px rgba(34, 65, 110, .08);
-    }
-
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      color: var(--text);
-      background:
-        radial-gradient(ellipse at 5% 5%, #e1efff 0, transparent 34%),
-        radial-gradient(ellipse at 95% 35%, #e6f8f2 0, transparent 30%),
-        linear-gradient(180deg, #f8fbff 0%, #f1f6fd 100%);
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      line-height: 1.65;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .container {
-      width: min(1160px, 90%);
-      margin: auto;
+      font-family: Arial, sans-serif;
+      background: #f5f8fc;
+      color: #17243a;
+      line-height: 1.6;
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
+      background: #10233f;
+      color: white;
+      padding: 20px;
     }
 
-    .navigation {
-      min-height: 76px;
+    .nav {
+      max-width: 1100px;
+      margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
-    }
-
-    .logo {
-      color: var(--navy);
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      text-decoration: none;
-    }
-
-    .logo span {
-      color: var(--blue);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 23px;
-    }
-
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    nav a:hover {
-      color: var(--blue);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 85px 0 75px;
-    }
-
-    .hero::after {
-      content: "↗";
-      position: absolute;
-      right: 5%;
-      top: 10px;
-      font-size: 280px;
-      line-height: 1;
-      font-weight: 900;
-      color: rgba(40,104,215,.055);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 780px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 7px 14px;
-      border-radius: 30px;
-      background: #e5f0ff;
-      color: var(--blue);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 22px 0 17px;
-      color: var(--navy);
-      font-size: clamp(39px, 6vw, 66px);
-      line-height: 1.08;
-      letter-spacing: -2.8px;
-    }
-
-    h1 span {
-      color: var(--blue);
-    }
-
-    .hero p {
-      max-width: 690px;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 30px;
-    }
-
-    .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 13px 21px;
-      border-radius: 9px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      transition: .2s ease;
-    }
-
-    .button-primary {
-      background: var(--blue);
-      color: white;
-      box-shadow: 0 8px 20px rgba(40,104,215,.2);
-    }
-
-    .button-primary:hover {
-      background: #174fae;
-      transform: translateY(-2px);
-    }
-
-    .button-secondary {
-      color: var(--navy);
-      background: white;
-      border: 1px solid var(--border);
-    }
-
-    .button-secondary:hover {
-      border-color: var(--blue);
-    }
-
-    .trust-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 45px;
-    }
-
-    .trust-item {
-      padding: 17px;
-      border: 1px solid rgba(210,224,241,.9);
-      background: rgba(255,255,255,.75);
-      border-radius: 12px;
-    }
-
-    .trust-item strong {
-      display: block;
-      color: var(--navy);
-      font-size: 15px;
-    }
-
-    .trust-item span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    section {
-      padding: 65px 0;
-    }
-
-    .section-heading {
-      max-width: 720px;
-      margin-bottom: 28px;
-    }
-
-    .section-heading .eyebrow {
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      margin: 0 0 10px;
-      color: var(--navy);
-      font-size: clamp(27px, 4vw, 37px);
-      line-height: 1.2;
-      letter-spacing: -1px;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .stock-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 20px;
-    }
-
-    .stock-card {
-      display: flex;
-      flex-direction: column;
-      padding: 25px;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      background: white;
-      box-shadow: var(--shadow);
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .stock-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 45px rgba(34,65,110,.13);
-    }
-
-    .stock-symbol {
-      display: inline-block;
-      align-self: flex-start;
-      padding: 6px 11px;
-      border-radius: 6px;
-      background: var(--blue-light);
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .stock-card h3 {
-      color: var(--navy);
-      font-size: 23px;
-      line-height: 1.2;
-      margin: 17px 0 5px;
-    }
-
-    .stock-sector {
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .7px;
-    }
-
-    .stock-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .stock-card h4 {
-      margin: 15px 0 3px;
-      color: var(--navy);
-      font-size: 14px;
-    }
-
-    .stock-card ul {
-      margin: 5px 0 15px;
-      padding-left: 19px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .stock-card li {
-      margin-bottom: 6px;
-    }
-
-    .stock-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: auto;
-      padding-top: 18px;
-      border-top: 1px solid var(--border);
-    }
-
-    .stock-links a {
-      color: var(--blue);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .stock-links a:hover {
-      text-decoration: underline;
-    }
-
-    .soft-section {
-      background: rgba(255,255,255,.73);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .info-card {
-      padding: 26px;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      background: white;
-      box-shadow: 0 8px 25px rgba(34,65,110,.045);
-    }
-
-    .info-card h3 {
-      margin: 0 0 10px;
-      color: var(--navy);
-      font-size: 19px;
-    }
-
-    .info-card p {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 0;
-    }
-
-    .info-card ul {
-      padding-left: 20px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 15px;
     }
 
-    .resource {
-      display: block;
-      padding: 21px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      text-decoration: none;
-      transition: .2s ease;
-    }
-
-    .resource:hover {
-      border-color: #9cbcf0;
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-
-    .resource-icon {
-      display: block;
-      margin-bottom: 10px;
+    .logo {
       font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
-    .resource strong {
-      display: block;
-      color: var(--navy);
-      font-size: 15px;
+    .logo span {
+      color: #53c6a5;
     }
 
-    .resource span {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .topics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .topic {
-      padding: 9px 14px;
-      border-radius: 30px;
-      background: white;
-      border: 1px solid var(--border);
-      color: #52647d;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .article {
-      padding: 25px;
-      margin-bottom: 18px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-
-    .article h3 {
-      margin: 0 0 8px;
-      color: var(--navy);
-      font-size: 19px;
-    }
-
-    .article p {
-      color: var(--muted);
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
       font-size: 14px;
-      margin: 0;
+    }
+
+    nav a:hover {
+      color: #53c6a5;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #10233f, #214d75);
+      color: white;
+      text-align: center;
+      padding: 75px 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #dce8f5;
+      font-size: 17px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #53c6a5;
+      color: #10233f;
+      padding: 12px 22px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 22px;
+    }
+
+    .button:hover {
+      background: #78dfbf;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+
+    .section-title {
+      font-size: 29px;
+      margin-bottom: 10px;
+      color: #10233f;
+    }
+
+    .section-intro {
+      color: #607087;
+      margin-bottom: 25px;
+    }
+
+    .weekly-note {
+      background: #e6f5f0;
+      border-left: 4px solid #36aa88;
+      padding: 16px;
+      border-radius: 6px;
+      margin: 25px 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e1e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 15px rgba(20, 40, 70, 0.05);
+    }
+
+    .card h3 {
+      color: #10233f;
+      font-size: 21px;
+      margin: 12px 0 5px;
+    }
+
+    .ticker {
+      color: #168b70;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 14px;
+      margin: 12px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eaf1fa;
+      color: #31577f;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .links a {
+      display: inline-block;
+      margin: 8px 12px 0 0;
+      color: #167c69;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .education {
+      background: white;
+      border: 1px solid #e1e8f0;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+    }
+
+    .education h3 {
+      color: #10233f;
+      margin-bottom: 8px;
+    }
+
+    .education p {
+      color: #607087;
+    }
+
+    .education ul {
+      padding-left: 22px;
+      color: #607087;
+      margin-top: 10px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .step {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #e1e8f0;
+    }
+
+    .step strong {
+      color: #168b70;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .resources {
+      background: #eaf1fa;
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    .resources a {
+      display: inline-block;
+      margin: 10px 18px 0 0;
+      color: #176c9e;
+      font-weight: bold;
+      text-decoration: none;
     }
 
     .disclaimer {
-      padding: 24px;
-      border: 1px solid #dce8f7;
-      border-radius: 13px;
-      background: #edf4ff;
-      color: #566982;
+      background: #fff8e9;
+      border-left: 4px solid #e5ae46;
+      padding: 18px;
+      border-radius: 6px;
       font-size: 13px;
+      color: #66542e;
+      margin-top: 25px;
     }
 
     footer {
-      padding: 45px 0 25px;
-      background: #142b4d;
-      color: #d5e1f2;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 30px;
-    }
-
-    footer h3 {
-      color: white;
-      margin-top: 0;
-    }
-
-    footer p {
-      color: #b4c4d9;
+      background: #10233f;
+      color: #dce8f5;
+      text-align: center;
+      padding: 30px 20px;
       font-size: 13px;
     }
 
     footer a {
-      display: block;
-      color: #d5e1f2;
+      color: #53c6a5;
       text-decoration: none;
-      font-size: 13px;
-      margin: 8px 0;
     }
 
-    footer a:hover {
-      color: white;
-      text-decoration: underline;
-    }
-
-    .copyright {
-      border-top: 1px solid rgba(255,255,255,.15);
-      margin-top: 30px;
-      padding-top: 20px;
-      color: #aebfd5;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    @media(max-width: 850px) {
-      .stock-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .resource-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media(max-width: 600px) {
-      .navigation {
-        padding: 15px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav {
-        gap: 14px;
-      }
-
-      nav a {
-        font-size: 12px;
-      }
-
-      .hero {
-        padding: 55px 0 45px;
-      }
-
-      .hero::after {
-        font-size: 170px;
-      }
-
-      .trust-strip,
-      .stock-grid,
-      .two-columns,
-      .resource-grid,
-      .footer-grid {
+    @media (max-width: 750px) {
+      .cards {
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 45px 0;
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px 10px 5px 0;
       }
     }
   </style>
@@ -593,624 +297,268 @@
 <body>
 
 <header>
-  <div class="container navigation">
-    <a class="logo" href="#home">STOCK<span>PILOT</span></a>
-
-    <nav aria-label="Main navigation">
-      <a href="#stocks">Featured Stocks</a>
-      <a href="#research">Stock Research</a>
-      <a href="#resources">Market Resources</a>
-      <a href="#about">About</a>
+  <div class="nav">
+    <div class="logo">STOCK<span>PILOT</span></div>
+    <nav>
+      <a href="#weekly">Weekly Stocks</a>
+      <a href="#where">Where to Invest</a>
+      <a href="#how">How to Invest</a>
+      <a href="#resources">Resources</a>
     </nav>
   </div>
 </header>
 
-<main id="home">
+<section class="hero">
+  <h1>Make Smarter Investing Decisions</h1>
+  <p>
+    Discover three stocks to research every week.
+    Learn where to invest, how the stock market works,
+    and how to make informed financial decisions.
+  </p>
+  <a class="button" href="#weekly">Explore This Week's Stocks</a>
+</section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <span class="eyebrow">Canadian Financial Markets</span>
+<main>
 
-        <h1>
-          Discover the market.<br>
-          <span>Explore opportunities.</span>
-        </h1>
+<section class="container" id="weekly">
+  <h2 class="section-title">Weekly Top 3 Stocks</h2>
+  <p class="section-intro">
+    Three Canadian companies selected for this week's research watchlist.
+    Explore their businesses, stock information, and official announcements.
+  </p>
 
-        <p>
-          Welcome to StockPilot, your starting point for Canadian stock
-          market research. Explore publicly traded companies, TSX stocks,
-          business fundamentals, investment information and trusted
-          financial resources in one convenient place.
-        </p>
+  <div class="weekly-note">
+    <strong>Your weekly StockPilot update</strong>
+    <p>
+      Come back every Monday for the next edition.
+      We review the watchlist and publish updated research
+      so you have a reason to stay informed.
+    </p>
+  </div>
 
-        <div class="hero-buttons">
-          <a class="button button-primary" href="#stocks">
-            Explore Featured Stocks →
-          </a>
+  <div class="cards">
 
-          <a class="button button-secondary" href="#resources">
-            Discover Market Resources
-          </a>
-        </div>
+    <article class="card">
+      <span class="tag">Weekly Watchlist #1</span>
+      <h3>CEMATRIX Corporation</h3>
+      <div class="ticker">TSXV: CEMX</div>
+      <p>
+        CEMATRIX operates in the cellular concrete industry,
+        providing lightweight concrete solutions for
+        infrastructure and construction projects.
+      </p>
+      <p>
+        <strong>Research focus:</strong> Project activity,
+        infrastructure demand, financial results, and company growth.
+      </p>
+      <div class="links">
+        <a href="https://finance.yahoo.com/quote/CEMX.V/"
+           target="_blank" rel="noopener">Stock Information ↗</a>
+        <a href="https://www.cematrix.com/"
+           target="_blank" rel="noopener">Company Website ↗</a>
       </div>
+    </article>
 
-      <div class="trust-strip">
-        <div class="trust-item">
-          <strong>Canadian Market Focus</strong>
-          <span>Companies listed on the Toronto Stock Exchange</span>
-        </div>
-
-        <div class="trust-item">
-          <strong>Research & Education</strong>
-          <span>Understand businesses and investment risks</span>
-        </div>
-
-        <div class="trust-item">
-          <strong>Useful Market Links</strong>
-          <span>Access company and financial information</span>
-        </div>
+    <article class="card">
+      <span class="tag">Weekly Watchlist #2</span>
+      <h3>Bombardier Inc.</h3>
+      <div class="ticker">TSX: BBD.B</div>
+      <p>
+        Bombardier is a Canadian aerospace company focused
+        on business aircraft and related services.
+      </p>
+      <p>
+        <strong>Research focus:</strong> Aircraft deliveries,
+        orders, revenue, debt, and international demand.
+      </p>
+      <div class="links">
+        <a href="https://finance.yahoo.com/quote/BBD-B.TO/"
+           target="_blank" rel="noopener">Stock Information ↗</a>
+        <a href="https://bombardier.com/en/investors"
+           target="_blank" rel="noopener">Investor Relations ↗</a>
       </div>
+    </article>
+
+    <article class="card">
+      <span class="tag">Weekly Watchlist #3</span>
+      <h3>Royal Bank of Canada</h3>
+      <div class="ticker">TSX: RY</div>
+      <p>
+        RBC is one of Canada's major financial institutions,
+        operating in banking, wealth management, and financial services.
+      </p>
+      <p>
+        <strong>Research focus:</strong> Earnings, dividends,
+        interest rates, loan quality, and financial performance.
+      </p>
+      <div class="links">
+        <a href="https://finance.yahoo.com/quote/RY.TO/"
+           target="_blank" rel="noopener">Stock Information ↗</a>
+        <a href="https://www.rbc.com/investor-relations/"
+           target="_blank" rel="noopener">Investor Relations ↗</a>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="disclaimer">
+    These companies are presented as a research watchlist,
+    not as ranked recommendations or instructions to buy or sell.
+    Review current prices, financial information, and risks
+    before making investment decisions.
+  </div>
+</section>
+
+<section class="container" id="where">
+  <h2 class="section-title">Where Should You Invest?</h2>
+  <p class="section-intro">
+    Understand the main investment choices before putting your money to work.
+  </p>
+
+  <div class="education">
+    <h3>1. Individual Stocks</h3>
+    <p>
+      Buying a stock means purchasing a share of a company.
+      Your investment can increase or decrease in value
+      depending on the company's performance and market conditions.
+    </p>
+  </div>
+
+  <div class="education">
+    <h3>2. ETFs — Exchange-Traded Funds</h3>
+    <p>
+      An ETF can hold many different investments in one product.
+      It can help diversify your portfolio without buying
+      each company separately.
+    </p>
+  </div>
+
+  <div class="education">
+    <h3>3. Bonds and Fixed-Income Investments</h3>
+    <p>
+      Bonds are investments that represent money lent to a
+      government or company. They have different risks,
+      interest payments, and maturity dates.
+    </p>
+  </div>
+
+  <div class="education">
+    <h3>4. Registered Canadian Accounts</h3>
+    <p>
+      Canadians may consider accounts such as the TFSA,
+      RRSP, and FHSA, depending on their eligibility and goals.
+      Each account has different tax rules and contribution limits.
+    </p>
+  </div>
+</section>
+
+<section class="container" id="how">
+  <h2 class="section-title">How to Start Investing</h2>
+  <p class="section-intro">
+    A beginner-friendly guide to getting started responsibly.
+  </p>
+
+  <div class="steps">
+    <div class="step">
+      <strong>Step 1 — Define Your Goals</strong>
+      Decide what you're investing for and when
+      you may need the money.
     </div>
-  </section>
 
-  <!-- FEATURED STOCKS -->
-  <section id="stocks">
-    <div class="container">
-
-      <div class="section-heading">
-        <span class="eyebrow">Featured Companies</span>
-        <h2>Three Canadian Stocks to Explore</h2>
-        <p>
-          Discover the businesses, industries, potential growth drivers
-          and risks behind three selected Canadian-listed companies.
-          These profiles are intended for research, not as buy or sell
-          recommendations.
-        </p>
-      </div>
-
-      <div class="stock-grid">
-
-        <!-- CEMATRIX -->
-        <article class="stock-card">
-          <span class="stock-symbol">TSX: CEMX</span>
-
-          <h3>CEMATRIX Corporation</h3>
-          <div class="stock-sector">Construction Materials</div>
-
-          <p>
-            CEMATRIX is a Canadian company specializing in cellular
-            concrete technology. Its lightweight concrete solutions
-            are used in infrastructure, construction and geotechnical
-            applications across North America.
-          </p>
-
-          <h4>Business Overview</h4>
-          <p>
-            Its products can be used for lightweight backfill,
-            roadways, bridge approaches, insulation, underground
-            infrastructure and specialized grouting projects.
-          </p>
-
-          <h4>Potential Growth Drivers</h4>
-          <ul>
-            <li>Infrastructure development and public construction projects.</li>
-            <li>Demand for specialized lightweight construction materials.</li>
-            <li>Expansion of cellular concrete applications.</li>
-            <li>Projects across Canadian and US markets.</li>
-          </ul>
-
-          <h4>Investment Risks to Consider</h4>
-          <ul>
-            <li>Construction industry and project-cycle exposure.</li>
-            <li>Changes in material, transportation and labour costs.</li>
-            <li>Revenue can vary with the timing of large contracts.</li>
-          </ul>
-
-          <div class="stock-links">
-            <a href="https://www.cematrix.com/investors/overview/"
-               target="_blank" rel="noopener">Investor Information ↗</a>
-
-            <a href="https://www.cematrix.com/investors/stock-information/"
-               target="_blank" rel="noopener">Stock Information ↗</a>
-
-            <a href="https://finance.yahoo.com/quote/CEMX.TO/"
-               target="_blank" rel="noopener">Stock Quote ↗</a>
-          </div>
-        </article>
-
-        <!-- BOMBARDIER -->
-        <article class="stock-card">
-          <span class="stock-symbol">TSX: BBD.B</span>
-
-          <h3>Bombardier Inc.</h3>
-          <div class="stock-sector">Aerospace & Aviation</div>
-
-          <p>
-            Bombardier is a Canadian aerospace company focused on
-            business aircraft. Its aircraft portfolio includes
-            Challenger and Global business jets serving customers
-            around the world.
-          </p>
-
-          <h4>Business Overview</h4>
-          <p>
-            Bombardier designs, manufactures and supports business
-            aircraft. Its operations also include aircraft maintenance,
-            aftermarket services and specialized aviation solutions.
-          </p>
-
-          <h4>Potential Growth Drivers</h4>
-          <ul>
-            <li>Global demand for business aviation.</li>
-            <li>Aircraft deliveries and new customer orders.</li>
-            <li>Maintenance and aftermarket service revenue.</li>
-            <li>Growth in specialized and defense-related aviation.</li>
-          </ul>
-
-          <h4>Investment Risks to Consider</h4>
-          <ul>
-            <li>Debt, financing costs and capital requirements.</li>
-            <li>Aircraft production and delivery challenges.</li>
-            <li>Economic conditions affecting business jet demand.</li>
-            <li>Foreign exchange and supply-chain exposure.</li>
-          </ul>
-
-          <div class="stock-links">
-            <a href="https://bombardier.com/"
-               target="_blank" rel="noopener">Company Website ↗</a>
-
-            <a href="https://bombardier.com/en/investors"
-               target="_blank" rel="noopener">Investor Relations ↗</a>
-
-            <a href="https://finance.yahoo.com/quote/BBD-B.TO/"
-               target="_blank" rel="noopener">Stock Quote ↗</a>
-          </div>
-        </article>
-
-        <!-- RBC -->
-        <article class="stock-card">
-          <span class="stock-symbol">TSX: RY</span>
-
-          <h3>Royal Bank of Canada</h3>
-          <div class="stock-sector">Banking & Financial Services</div>
-
-          <p>
-            Royal Bank of Canada, commonly known as RBC, is one of
-            Canada's major financial institutions. It provides
-            banking, wealth management, insurance and capital
-            markets services.
-          </p>
-
-          <h4>Business Overview</h4>
-          <p>
-            RBC serves individual customers, businesses and
-            institutional clients through its diversified financial
-            services operations in Canada and international markets.
-          </p>
-
-          <h4>Potential Growth Drivers</h4>
-          <ul>
-            <li>Personal and commercial banking activity.</li>
-            <li>Wealth management and investment services.</li>
-            <li>Capital markets and institutional business.</li>
-            <li>Digital banking and customer growth.</li>
-          </ul>
-
-          <h4>Investment Risks to Consider</h4>
-          <ul>
-            <li>Loan defaults and credit quality.</li>
-            <li>Interest-rate changes and economic conditions.</li>
-            <li>Regulatory requirements and competition.</li>
-            <li>Financial market volatility.</li>
-          </ul>
-
-          <div class="stock-links">
-            <a href="https://www.rbc.com/"
-               target="_blank" rel="noopener">Company Website ↗</a>
-
-            <a href="https://www.rbc.com/investor-relations/"
-               target="_blank" rel="noopener">Investor Relations ↗</a>
-
-            <a href="https://finance.yahoo.com/quote/RY.TO/"
-               target="_blank" rel="noopener">Stock Quote ↗</a>
-          </div>
-        </article>
-
-      </div>
+    <div class="step">
+      <strong>Step 2 — Understand Your Risk</strong>
+      Learn how much volatility and potential loss
+      you can reasonably tolerate.
     </div>
-  </section>
 
-  <!-- STOCK EDUCATION -->
-  <section class="soft-section" id="research">
-    <div class="container">
-
-      <div class="section-heading">
-        <span class="eyebrow">Investor Knowledge</span>
-        <h2>Understand the Stock Market</h2>
-        <p>
-          Successful stock research starts with understanding a company's
-          business, financial position, competitive environment and
-          potential risks.
-        </p>
-      </div>
-
-      <div class="two-columns">
-
-        <div class="info-card">
-          <h3>What Is Stock Market Investing?</h3>
-          <p>
-            Investing in stocks means purchasing shares of a publicly
-            traded company. A shareholder owns a portion of that
-            business and may benefit if the company grows or distributes
-            dividends. Stock prices can also decline, and investors
-            can lose money.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <h3>How to Research a Stock</h3>
-          <ul>
-            <li>Understand the company's products and services.</li>
-            <li>Review revenue, earnings and cash flow.</li>
-            <li>Examine debt and financial obligations.</li>
-            <li>Compare competitors and industry conditions.</li>
-            <li>Read official financial statements and company news.</li>
-            <li>Evaluate risks before making an investment decision.</li>
-          </ul>
-        </div>
-
-        <div class="info-card">
-          <h3>Fundamental Stock Analysis</h3>
-          <p>
-            Fundamental analysis examines a company's financial
-            performance and business quality. Common measures include
-            earnings per share, price-to-earnings ratio, revenue growth,
-            operating margins, return on equity, debt-to-equity and
-            free cash flow.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <h3>Technical Stock Analysis</h3>
-          <p>
-            Technical analysis studies historical prices and trading
-            volume to understand market trends. Investors often examine
-            moving averages, support and resistance, relative strength
-            index (RSI), momentum and volatility.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <h3>Understanding the Toronto Stock Exchange</h3>
-          <p>
-            The Toronto Stock Exchange (TSX) is a major Canadian
-            marketplace for publicly traded companies. Investors
-            can research TSX-listed companies across banking,
-            energy, mining, technology, healthcare, industrials
-            and other sectors.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <h3>Risk Management and Diversification</h3>
-          <p>
-            Diversification means spreading investments across
-            different companies, industries or asset classes.
-            Understanding your investment horizon, risk tolerance
-            and portfolio concentration is an important part
-            of responsible investing.
-          </p>
-        </div>
-
-      </div>
+    <div class="step">
+      <strong>Step 3 — Research Your Options</strong>
+      Compare stocks, ETFs, fees, diversification,
+      and investment account choices.
     </div>
-  </section>
 
-  <!-- EXTERNAL RESOURCE DIRECTORY -->
-  <section id="resources">
-    <div class="container">
-
-      <div class="section-heading">
-        <span class="eyebrow">Financial Resource Directory</span>
-        <h2>Explore the Financial Markets</h2>
-        <p>
-          A collection of useful external destinations for stock quotes,
-          Canadian financial information, company filings, market news
-          and investment education.
-        </p>
-      </div>
-
-      <div class="resource-grid">
-
-        <a class="resource" href="https://www.tsx.com/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">🏛️</span>
-          <strong>Toronto Stock Exchange</strong>
-          <span>Canadian exchange information and listed companies.</span>
-        </a>
-
-        <a class="resource" href="https://money.tmx.com/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">📊</span>
-          <strong>TMX Money</strong>
-          <span>Canadian stock quotes, market information and company data.</span>
-        </a>
-
-        <a class="resource" href="https://www.sedarplus.ca/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">📄</span>
-          <strong>SEDAR+</strong>
-          <span>Official Canadian company filings and disclosure documents.</span>
-        </a>
-
-        <a class="resource" href="https://finance.yahoo.com/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">📈</span>
-          <strong>Yahoo Finance</strong>
-          <span>Stock prices, charts, financial news and market data.</span>
-        </a>
-
-        <a class="resource" href="https://www.investing.com/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">🌎</span>
-          <strong>Investing.com</strong>
-          <span>International markets, economic calendars and analysis.</span>
-        </a>
-
-        <a class="resource" href="https://www.tradingview.com/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">📉</span>
-          <strong>TradingView</strong>
-          <span>Stock charts, technical analysis and market monitoring.</span>
-        </a>
-
-        <a class="resource" href="https://www.bankofcanada.ca/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">🏦</span>
-          <strong>Bank of Canada</strong>
-          <span>Interest rates, monetary policy and economic statistics.</span>
-        </a>
-
-        <a class="resource" href="https://www.osc.ca/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">⚖️</span>
-          <strong>Ontario Securities Commission</strong>
-          <span>Investor protection, securities regulation and education.</span>
-        </a>
-
-        <a class="resource" href="https://www.bnnbloomberg.ca/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">📰</span>
-          <strong>BNN Bloomberg</strong>
-          <span>Canadian business, financial markets and investment news.</span>
-        </a>
-
-        <a class="resource" href="https://www.reuters.com/markets/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">🌐</span>
-          <strong>Reuters Markets</strong>
-          <span>Global stock market and financial news.</span>
-        </a>
-
-        <a class="resource" href="https://www.morningstar.ca/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">🔎</span>
-          <strong>Morningstar Canada</strong>
-          <span>Investment research, funds and portfolio information.</span>
-        </a>
-
-        <a class="resource" href="https://www.google.com/finance/"
-           target="_blank" rel="noopener">
-          <span class="resource-icon">💹</span>
-          <strong>Google Finance</strong>
-          <span>Market trends, stock information and financial news.</span>
-        </a>
-
-      </div>
+    <div class="step">
+      <strong>Step 4 — Choose a Brokerage</strong>
+      Compare fees, available investments,
+      account types, and regulatory protections.
     </div>
-  </section>
 
-  <!-- SEARCH TOPICS -->
-  <section class="soft-section">
-    <div class="container">
-
-      <div class="section-heading">
-        <span class="eyebrow">Market Topics</span>
-        <h2>Explore Stock Market Research Topics</h2>
-        <p>
-          Learn about the financial terms, industries and market
-          concepts that investors commonly research.
-        </p>
-      </div>
-
-      <div class="topics">
-        <span class="topic">Canadian Stocks</span>
-        <span class="topic">TSX Stocks</span>
-        <span class="topic">Stock Market Canada</span>
-        <span class="topic">Stock Market Analysis</span>
-        <span class="topic">Investment Research</span>
-        <span class="topic">Financial News</span>
-        <span class="topic">Stock Market Trends</span>
-        <span class="topic">Dividend Investing</span>
-        <span class="topic">Growth Stocks</span>
-        <span class="topic">Value Investing</span>
-        <span class="topic">Small-Cap Stocks</span>
-        <span class="topic">Large-Cap Stocks</span>
-        <span class="topic">Bank Stocks</span>
-        <span class="topic">Technology Stocks</span>
-        <span class="topic">Mining Stocks</span>
-        <span class="topic">Energy Stocks</span>
-        <span class="topic">Earnings Reports</span>
-        <span class="topic">Company Fundamentals</span>
-        <span class="topic">Stock Valuation</span>
-        <span class="topic">Portfolio Diversification</span>
-        <span class="topic">Trading Volume</span>
-        <span class="topic">Market Capitalization</span>
-        <span class="topic">Interest Rates</span>
-        <span class="topic">Economic Indicators</span>
-      </div>
+    <div class="step">
+      <strong>Step 5 — Start Carefully</strong>
+      Invest only money you can afford to put at risk.
+      Avoid borrowing money to speculate.
     </div>
-  </section>
 
-  <!-- INVESTMENT RESEARCH ARTICLES -->
-  <section>
-    <div class="container">
-
-      <div class="section-heading">
-        <span class="eyebrow">Learn & Research</span>
-        <h2>Stock Market Insights for Investors</h2>
-      </div>
-
-      <article class="article">
-        <h3>How to Find Stocks Worth Researching</h3>
-        <p>
-          Investors often begin by screening companies according to
-          industry, revenue growth, profitability, balance-sheet
-          strength, trading activity and valuation. A stock screener
-          can help narrow the market into a research list. However,
-          screening results are only a starting point. Investors
-          should examine official company reports and understand
-          the risks before investing.
-        </p>
-      </article>
-
-      <article class="article">
-        <h3>Why Company Earnings Matter</h3>
-        <p>
-          Quarterly and annual earnings reports provide information
-          about revenue, expenses, operating income, net income and
-          cash flow. Comparing financial results over several periods
-          can help investors understand whether a company is growing,
-          maintaining profitability or facing financial challenges.
-        </p>
-      </article>
-
-      <article class="article">
-        <h3>What Makes a Stock Price Move?</h3>
-        <p>
-          Stock prices can respond to company earnings, new contracts,
-          product announcements, economic data, interest rates,
-          industry developments, investor expectations and broader
-          market sentiment. Trading volume and volatility can also
-          provide context when researching market movements.
-        </p>
-      </article>
-
-      <article class="article">
-        <h3>Why Canadian Investors Follow the TSX</h3>
-        <p>
-          The Toronto Stock Exchange provides access to companies
-          in important sectors of the Canadian economy, including
-          financial services, natural resources, energy, industrials,
-          technology and consumer businesses. Understanding sector
-          trends can help investors compare businesses and evaluate
-          portfolio exposure.
-        </p>
-      </article>
-
+    <div class="step">
+      <strong>Step 6 — Review Regularly</strong>
+      Follow your investments, review your goals,
+      and avoid making decisions based only on headlines.
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section class="soft-section" id="about">
-    <div class="container">
-      <div class="section-heading">
-        <span class="eyebrow">Our Mission</span>
-        <h2>About StockPilot</h2>
-        <p>
-          StockPilot is an independent stock market research and
-          financial resource destination designed to make company
-          research easier to navigate.
-        </p>
-      </div>
+<section class="container" id="resources">
+  <h2 class="section-title">Stock Market Research Resources</h2>
+  <p class="section-intro">
+    Explore trusted sources for market information,
+    financial disclosures, and investment education.
+  </p>
 
-      <div class="two-columns">
-        <div class="info-card">
-          <h3>Our Approach</h3>
-          <p>
-            We focus on company profiles, business models, financial
-            research, industry developments and useful links to
-            established financial information providers. Our goal
-            is to help visitors find relevant information and
-            continue their own research.
-          </p>
-        </div>
+  <div class="resources">
+    <a href="https://www.tsx.com/"
+       target="_blank" rel="noopener">Toronto Stock Exchange ↗</a>
 
-        <div class="info-card">
-          <h3>Our Commitment</h3>
-          <p>
-            We aim to provide clear educational content and direct
-            access to original sources. Company information and
-            financial conditions can change, so visitors should
-            always verify the latest information before making
-            financial decisions.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <a href="https://money.tmx.com/"
+       target="_blank" rel="noopener">TMX Money ↗</a>
 
-  <!-- DISCLAIMER -->
-  <section>
-    <div class="container">
-      <div class="disclaimer">
-        <strong>Investment Disclaimer:</strong>
-        StockPilot is an independent informational and educational
-        website. Nothing on this website constitutes financial,
-        investment, tax or legal advice, or a recommendation to buy,
-        sell or hold any security. Stocks involve risk, including
-        possible loss of capital. Company descriptions and external
-        links are provided for research convenience. StockPilot does
-        not guarantee the accuracy or availability of third-party
-        information. Always consult official filings and consider
-        your own circumstances before investing.
-      </div>
-    </div>
-  </section>
+    <a href="https://finance.yahoo.com/"
+       target="_blank" rel="noopener">Yahoo Finance ↗</a>
+
+    <a href="https://www.tradingview.com/"
+       target="_blank" rel="noopener">TradingView ↗</a>
+
+    <a href="https://www.sedarplus.ca/"
+       target="_blank" rel="noopener">SEDAR+ ↗</a>
+
+    <a href="https://www.bankofcanada.ca/"
+       target="_blank" rel="noopener">Bank of Canada ↗</a>
+
+    <a href="https://www.getsmarteraboutmoney.ca/"
+       target="_blank" rel="noopener">Investor Education ↗</a>
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="section-title">Your Weekly Investing Routine</h2>
+  <div class="education">
+    <h3>Make StockPilot part of your Monday routine.</h3>
+    <p>
+      Visit every Monday to review the weekly stock watchlist,
+      explore company information, and learn something new
+      about investing.
+    </p>
+    <a class="button" href="#weekly">Review the Weekly Stocks</a>
+  </div>
+</section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div>
-        <h3>STOCKPILOT</h3>
-        <p>
-          Your starting point for Canadian stock market research,
-          company information, investment education and financial
-          market resources.
-        </p>
-      </div>
-
-      <div>
-        <h3>Explore</h3>
-        <a href="#stocks">Featured Stocks</a>
-        <a href="#research">Stock Research</a>
-        <a href="#resources">Financial Resources</a>
-        <a href="#about">About StockPilot</a>
-      </div>
-
-      <div>
-        <h3>Market Resources</h3>
-        <a href="https://www.tsx.com/" target="_blank" rel="noopener">TSX</a>
-        <a href="https://www.sedarplus.ca/" target="_blank" rel="noopener">SEDAR+</a>
-        <a href="https://money.tmx.com/" target="_blank" rel="noopener">TMX Money</a>
-        <a href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance</a>
-      </div>
-
-    </div>
-
-    <div class="copyright">
-      © 2026 StockPilot · Canadian Stock Market Research & Financial Education
-    </div>
-
-  </div>
+  <div class="logo">STOCK<span>PILOT</span></div>
+  <p>Weekly stock research and investing education.</p>
+  <p style="margin-top:12px;">
+    StockPilot provides general educational information only.
+    It does not provide personalized financial or investment advice.
+  </p>
+  <p style="margin-top:15px;">
+    © <span id="year"></span> StockPilot. All rights reserved.
+  </p>
 </footer>
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
 
 </body>
 </html>
