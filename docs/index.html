@@ -842,12 +842,15 @@ footer {
 </footer>
 
 <!-- STOCK DATA ENGINE -->
-<script>
+
+// STOCK DATA ENGINE - STOCKPILOT AI
+
+const getElement = id => document.getElementById(id);
 
 const money = value =>
   new Intl.NumberFormat("en-US", {
-    style:"currency",
-    currency:"USD"
+    style: "currency",
+    currency: "USD"
   }).format(Number(value));
 
 const number = value =>
@@ -855,21 +858,37 @@ const number = value =>
 
 function safe(value) {
   return String(value ?? "").replace(/[&<>"']/g, ch => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
   }[ch]));
+}
+
+function showError(message) {
+  const area = getElement("error");
+
+  if (area) {
+    area.innerHTML =
+      '<div class="error">' + safe(message) + '</div>';
+  }
+
+  console.error("StockPilot:", message);
 }
 
 function renderCards(targetId, stocks, label) {
 
-  const area = document.getElementById(targetId);
+  const area = getElement(targetId);
+
+  if (!area) {
+    showError("Missing HTML element: " + targetId);
+    return;
+  }
 
   area.innerHTML = "";
 
-  if (!stocks || !stocks.length) {
+  if (!Array.isArray(stocks) || stocks.length === 0) {
     area.innerHTML =
       '<div class="empty">No qualifying stocks were returned. No sample picks are displayed.</div>';
     return;
@@ -878,7 +897,6 @@ function renderCards(targetId, stocks, label) {
   stocks.forEach((stock, index) => {
 
     const card = document.createElement("article");
-
     card.className = "stock-card";
 
     const change = Number(stock.change_percent || 0);
@@ -892,58 +910,37 @@ function renderCards(targetId, stocks, label) {
     const yahooTicker = encodeURIComponent(stock.ticker || "");
 
     card.innerHTML = `
-
       <div class="stock-type">
         ${safe(label)} · VOLUME RANK #${index + 1}
       </div>
 
-      <div class="ticker">
-        ${safe(stock.ticker)}
-      </div>
+      <div class="ticker">${safe(stock.ticker)}</div>
 
       <div class="company">
-        ${safe(stock.company || "Company name not supplied by data provider")}
+        ${safe(stock.company || stock.ticker)}
       </div>
 
-      <div class="price">
-        ${money(stock.price)}
-      </div>
+      <div class="price">${money(stock.price)}</div>
 
       <div class="change ${changeClass}">
         ${sign}${change.toFixed(2)}% daily change
       </div>
 
       <div class="meta">
-
         Reported volume:
         <strong>${number(stock.volume)}</strong>
         <br>
-
-        Snapshot date:
-        ${safe(stock.price_date)}
+        Snapshot date: ${safe(stock.price_date)}
         <br>
-
-        Market:
-        ${safe(stock.market)}
+        Market: ${safe(stock.market || "US")}
         · Currency: USD
-
       </div>
 
-      <div class="label">
-        Why it appears
-      </div>
+      <div class="label">Why it appears</div>
+      <p class="reason">${safe(stock.reason)}</p>
 
-      <p class="reason">
-        ${safe(stock.reason)}
-      </p>
-
-      <div class="label">
-        Risk note
-      </div>
-
-      <p class="risk">
-        ${safe(stock.risk)}
-      </p>
+      <div class="label">Risk note</div>
+      <p class="risk">${safe(stock.risk)}</p>
 
       <a class="stock-link"
          href="https://finance.yahoo.com/quote/${yahooTicker}/"
@@ -951,97 +948,102 @@ function renderCards(targetId, stocks, label) {
          rel="noopener noreferrer">
         View market information →
       </a>
-
     `;
 
     area.appendChild(card);
-
   });
 }
 
 async function loadPicks() {
 
-  const updated = document.getElementById("updated");
+  const updated = getElement("updated");
 
-  const errorArea = document.getElementById("error");
+  if (!updated) {
+    showError('Missing HTML element with id="updated".');
+    return;
+  }
 
   try {
 
     const response = await fetch(
       "./data/picks.json?t=" + Date.now(),
-      {cache:"no-store"}
+      { cache: "no-store" }
     );
 
     if (!response.ok) {
-      throw new Error("Market data file could not be loaded.");
+      throw new Error(
+        "Could not load picks.json. HTTP status: " + response.status
+      );
     }
 
     const data = await response.json();
 
     if (data.status !== "ok") {
+      throw new Error(
+        (data.errors || ["Market data status is not OK."]).join(" · ")
+      );
+    }
 
-      updated.textContent =
-        "Market data update failed. No picks are being displayed.";
-
-      errorArea.innerHTML =
-        '<div class="error">' +
-        safe((data.errors || ["Unknown data error"]).join(" · ")) +
-        '</div>';
-
-      renderCards("main-cards", [], "MAIN");
-
-      renderCards("penny-cards", [], "PENNY");
-
-      return;
+    if (!Array.isArray(data.main) ||
+        !Array.isArray(data.penny)) {
+      throw new Error(
+        "Invalid JSON format: main and penny must both be arrays."
+      );
     }
 
     updated.textContent =
       "Last generated: " +
       new Date(data.updated_at).toLocaleString() +
-      (
-        data.snapshot_time
-          ? " · Market snapshot: " + data.snapshot_time
-          : ""
-      );
+      (data.snapshot_time
+        ? " · Market snapshot: " + data.snapshot_time
+        : "");
 
     renderCards("main-cards", data.main, "MAIN");
-
     renderCards("penny-cards", data.penny, "PENNY");
 
-   const sourceElement = document.getElementById("source");
+    const source = getElement("source");
 
-if (sourceElement) {
-  sourceElement.textContent =
-    "Source: " + data.data_source + " · " + data.data_note;
-}
+    if (source) {
+      source.textContent =
+        "Source: " +
+        (data.data_source || "Market data provider") +
+        " · " +
+        (data.data_note || "");
+    }
+
+    const errorArea = getElement("error");
+
+    if (errorArea) {
+      errorArea.innerHTML = "";
+    }
+
+    console.log("StockPilot picks loaded successfully.");
+
   } catch (error) {
 
     updated.textContent =
       "Could not load verified market data.";
 
-    errorArea.innerHTML =
-      '<div class="error">' +
-      safe(error.message) +
-      '</div>';
+    showError(error.message);
 
     renderCards("main-cards", [], "MAIN");
-
     renderCards("penny-cards", [], "PENNY");
-
   }
 }
 
-// Load stock data on page opening.
+// Load market data when the page opens.
 loadPicks();
 
-// Update the displayed data every 15 minutes if the JSON file changes.
+// Check for updated JSON every 15 minutes.
 setInterval(loadPicks, 15 * 60 * 1000);
 
-// Footer year.
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+// Update copyright year safely.
+const yearElement = getElement("year");
 
-</script>
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
 
 </body>
 </html>
