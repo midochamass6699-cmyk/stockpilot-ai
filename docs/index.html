@@ -60,7 +60,43 @@ gtag('config', 'G-VL62LP5NZ9');
 </script>
 
 <style>
-:root {
+
+  
+  .weekly-vote {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.weekly-vote strong {
+  width: 100%;
+  font-size: 14px;
+}
+
+.weekly-vote button {
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  padding: 10px 15px;
+  background: #fff;
+  color: #222;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.weekly-vote button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+#weekly-vote-message {
+  width: 100%;
+  color: #777;
+  font-size: 12px;
+}
+  
+  :root {
   --black:#101010;
   --yellow:#ffd629;
   --gold:#e8b900;
