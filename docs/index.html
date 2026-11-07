@@ -1198,6 +1198,146 @@ footer a { color:#8AB4FF !important; }
   .stock-grid { grid-template-columns:1fr !important; }
 }
 
+
+
+/* ==========================================================
+   BROKER DIRECTORY SECTION
+   ========================================================== */
+.broker-directory {
+  margin:24px 0 28px;
+  padding:24px;
+  background:#FFFFFF;
+  border:1px solid #D8E1EE;
+  border-top:4px solid #2563EB;
+  border-radius:13px;
+  box-shadow:0 7px 22px #07111F0B;
+}
+.broker-heading {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:20px;
+}
+.broker-heading h2 {
+  margin:3px 0 6px;
+  color:#0B1A31;
+  font-size:clamp(23px,3vw,31px);
+  line-height:1.15;
+}
+.broker-intro {
+  max-width:780px;
+  margin:0;
+  color:#526174;
+  font-size:13px;
+  line-height:1.65;
+}
+.broker-heading-mark {
+  flex:0 0 58px;
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:#EAF1FF;
+  color:#2563EB;
+  font-size:34px;
+  font-weight:900;
+}
+.broker-group { margin:20px 0 0; }
+.broker-group-title {
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  margin:0 0 10px;
+  padding-bottom:8px;
+  border-bottom:1px solid #D8E1EE;
+}
+.broker-group-title h3 { margin:0; color:#10213D; font-size:16px; }
+.broker-group-title span { color:#64748B; font-size:10px; text-align:right; }
+.broker-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.broker-card {
+  min-width:0;
+  display:grid;
+  grid-template-columns:40px minmax(0,1fr);
+  align-items:center;
+  column-gap:11px;
+  row-gap:7px;
+  padding:12px;
+  background:#F8FAFD;
+  border:1px solid #D8E1EE;
+  border-radius:9px;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.broker-card:hover {
+  transform:translateY(-2px);
+  border-color:#8AB4FF;
+  box-shadow:0 6px 16px #07111F10;
+}
+.broker-monogram {
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:#0B1A31;
+  color:#FFFFFF;
+  font-size:13px;
+  font-weight:950;
+  letter-spacing:-.04em;
+}
+.broker-card-copy { min-width:0; }
+.broker-card h4 { margin:0 0 3px; color:#10213D; font-size:13px; line-height:1.25; }
+.broker-card p { margin:0; color:#64748B; font-size:10px; line-height:1.45; }
+.broker-card > a {
+  grid-column:1 / -1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:2px;
+  padding:7px 9px;
+  border-radius:6px;
+  background:#EAF1FF;
+  color:#1D4ED8 !important;
+  font-size:10px;
+  font-weight:850;
+  text-decoration:none;
+}
+.broker-card > a:hover { background:#2563EB; color:#FFFFFF !important; }
+.broker-special-group { padding:13px; border:1px solid #D8E1EE; border-radius:10px; background:#F8FAFD; }
+.broker-cfd-card { max-width:640px; background:#FFFFFF; }
+.broker-disclosure {
+  margin-top:18px;
+  padding:12px 14px;
+  background:#EEF4FF;
+  border:1px solid #C9D9F4;
+  border-radius:8px;
+  color:#40516A;
+  font-size:10px;
+  line-height:1.65;
+}
+.broker-disclosure strong { color:#10213D; }
+.broker-disclosure a { color:#1D4ED8 !important; text-decoration:underline; }
+@media(max-width:850px) {
+  .broker-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:560px) {
+  .broker-directory { padding:16px 12px; margin:18px 0; }
+  .broker-heading { align-items:flex-start; }
+  .broker-heading-mark { flex-basis:42px; width:42px; height:42px; font-size:25px; }
+  .broker-group-title { align-items:flex-start; flex-direction:column; gap:2px; }
+  .broker-group-title span { text-align:left; }
+  .broker-grid { grid-template-columns:1fr; }
+  .broker-card { padding:11px; }
+  .broker-cfd-card { max-width:none; }
+}
+
 </style>
 </head>
 <body>
@@ -1209,7 +1349,7 @@ footer a { color:#8AB4FF !important; }
       STOCKPILOT AI
     </a>
 <div class="navlinks">
-<a href="#top">HOME</a><a href="#main-picks">TODAY’S STOCKS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">TOP CRYPTO</a>
+<a href="#top">HOME</a><a href="#main-picks">TODAY’S STOCKS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">TOP CRYPTO</a><a href="#broker-directory">BROKERS</a>
 
 
 <a href="#market-coverage">MARKETS</a>
@@ -1353,6 +1493,99 @@ footer a { color:#8AB4FF !important; }
       not investment advice.
     </div>
 </section>
+<!-- BROKER AND BANK TRADING DIRECTORY -->
+<section class="broker-directory" id="broker-directory" aria-labelledby="broker-directory-title">
+  <div class="broker-heading">
+    <div>
+      <div class="eyebrow">EXPLORE YOUR TRADING OPTIONS</div>
+      <h2 id="broker-directory-title">Where to Trade</h2>
+      <p class="broker-intro">
+        Found a company you want to research further? Explore online brokerage platforms
+        and bank-owned investing services available to Canadian investors. Visit each
+        provider's official website to review account options, supported markets and fees.
+      </p>
+    </div>
+    <div class="broker-heading-mark" aria-hidden="true">↗</div>
+  </div>
+
+  <div class="broker-group">
+    <div class="broker-group-title">
+      <h3>Online Brokerage Platforms</h3>
+      <span>Independent platforms</span>
+    </div>
+    <div class="broker-grid">
+      <article class="broker-card">
+        <div class="broker-monogram">Q</div>
+        <div class="broker-card-copy"><h4>Questrade</h4><p>Self-directed investing and trading tools.</p></div>
+        <a href="https://www.questrade.com/" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">IB</div>
+        <div class="broker-card-copy"><h4>Interactive Brokers</h4><p>Multi-market investing and active-trading platforms.</p></div>
+        <a href="https://www.interactivebrokers.ca/" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">W</div>
+        <div class="broker-card-copy"><h4>Wealthsimple</h4><p>Self-directed stocks, ETFs and other investing products.</p></div>
+        <a href="https://www.wealthsimple.com/en-ca" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">QT</div>
+        <div class="broker-card-copy"><h4>Qtrade Direct Investing</h4><p>Online investing and self-directed brokerage accounts.</p></div>
+        <a href="https://www.qtrade.ca/en/investor.html" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">M</div>
+        <div class="broker-card-copy"><h4>Moomoo</h4><p>Trading platform and market-research tools.</p></div>
+        <a href="https://www.moomoo.com/ca" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">Wb</div>
+        <div class="broker-card-copy"><h4>Webull Canada</h4><p>Self-directed trading and market-data tools.</p></div>
+        <a href="https://www.webull.ca/" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a>
+      </article>
+    </div>
+  </div>
+
+  <div class="broker-group">
+    <div class="broker-group-title">
+      <h3>Bank Brokerage Platforms</h3>
+      <span>Investing services from financial institutions</span>
+    </div>
+    <div class="broker-grid broker-grid-banks">
+      <article class="broker-card"><div class="broker-monogram">TD</div><div class="broker-card-copy"><h4>TD Direct Investing</h4><p>Self-directed investing from TD.</p></div><a href="https://www.td.com/ca/en/investing/direct-investing" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">RBC</div><div class="broker-card-copy"><h4>RBC Direct Investing</h4><p>Online investing from RBC.</p></div><a href="https://www.rbcdirectinvesting.com/" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">BMO</div><div class="broker-card-copy"><h4>BMO InvestorLine</h4><p>Self-directed investing from BMO.</p></div><a href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">CIBC</div><div class="broker-card-copy"><h4>CIBC Investor's Edge</h4><p>Online brokerage from CIBC.</p></div><a href="https://www.investorsedge.cibc.com/en/home.html" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">Sc</div><div class="broker-card-copy"><h4>Scotia iTRADE</h4><p>Self-directed investing from Scotiabank.</p></div><a href="https://www.scotiaitrade.com/" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">NB</div><div class="broker-card-copy"><h4>National Bank Direct Brokerage</h4><p>Online brokerage from National Bank.</p></div><a href="https://nbdb.ca/" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">D</div><div class="broker-card-copy"><h4>Disnat</h4><p>Online brokerage from Desjardins.</p></div><a href="https://www.disnat.com/en" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a></article>
+    </div>
+  </div>
+
+  <div class="broker-group broker-special-group">
+    <div class="broker-group-title">
+      <h3>Forex and CFD Trading</h3>
+      <span>Different from buying shares outright</span>
+    </div>
+    <article class="broker-card broker-cfd-card">
+      <div class="broker-monogram">CMC</div>
+      <div class="broker-card-copy"><h4>CMC Markets</h4><p>Online forex and contract-for-difference (CFD) trading. CFDs are leveraged products and do not represent ownership of the underlying shares.</p></div>
+      <a href="https://www.cmcmarkets.com/en-ca" target="_blank" rel="noopener noreferrer">Visit official website <span aria-hidden="true">↗</span></a>
+    </article>
+  </div>
+
+  <div class="broker-disclosure">
+    <strong>Before opening an account:</strong> Compare commissions, account fees, foreign-exchange costs,
+    available investments, market access, account eligibility and the risks of margin or leveraged products.
+    Products and services vary by provider and province. Check registration and disciplinary information
+    using the <a href="https://www.securities-administrators.ca/investor-tools/are-they-registered/" target="_blank" rel="noopener noreferrer">Canadian Securities Administrators' National Registration Search</a>.
+    StockPilot AI is providing this directory for general information only. Listing a provider is not an endorsement,
+    recommendation or guarantee that a particular account or product is available to you. StockPilot AI is not
+    currently representing that it receives compensation from these providers.
+  </div>
+</section>
+
 <!-- CRYPTOCURRENCY PICKS -->
 
 <!-- MAIN STOCK PICKS -->
