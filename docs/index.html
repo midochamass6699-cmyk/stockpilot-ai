@@ -1470,72 +1470,62 @@ async function loadCrypto() {
 
 /* RENDER STOCK */
 function renderStock(s,penny) {
-
   const ch = Number(s.change_percent);
   const valid = Number.isFinite(ch);
-
   const price = Number(s.price);
   const volume = Number(s.volume);
+  const score = Number(s.score);
 
-  const cls = valid
-    ? (ch >= 0 ? 'positive' : 'negative')
-    : '';
-
+  const cls = valid ? (ch >= 0 ? 'positive' : 'negative') : '';
   const change = valid
     ? `${ch > 0 ? '+' : ''}${ch.toFixed(2)}% today`
     : 'Daily change unavailable';
 
+  const currency = s.currency === 'CAD' ? 'CA$' : 'US$';
   const priceText = Number.isFinite(price) && price > 0
-    ? `US$${price.toFixed(2)}`
+    ? currency + price.toLocaleString('en-CA', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: price < 1 ? 4 : 2
+      })
     : 'Price unavailable';
 
-  const ticker = esc(s.ticker || '');
+  const scoreText = Number.isFinite(score)
+    ? `${score.toFixed(1)} / 100`
+    : 'Not available';
 
-  const link =
-    'https://finance.yahoo.com/quote/' +
-    encodeURIComponent(s.ticker || '');
+  const ticker = esc(s.ticker || '');
+  const link = 'https://finance.yahoo.com/quote/'
+    + encodeURIComponent(s.ticker || '');
 
   return `
     <article class="stock-card ${penny ? 'penny' : ''}">
-
       <h3>${esc(s.company || s.ticker || 'Unknown company')}</h3>
-
       <div class="ticker">
         <a class="ticker-symbol-link"
            href="${link}"
            target="_blank"
-           rel="noopener noreferrer">
-          ${ticker}
-        </a>
+           rel="noopener noreferrer">${ticker}</a>
         ${s.exchange ? ' · ' + esc(s.exchange) : ''}
+        ${s.market ? ' · ' + esc(s.market) : ''}
       </div>
 
       <div class="price">${priceText}</div>
-
-      <div class="change ${cls}">
-        ${change}
-      </div>
+      <div class="change ${cls}">${change}</div>
 
       <div class="card-meta">
-
+        <strong>Momentum score:</strong> ${scoreText}
+        <br>
         <strong>Trading volume:</strong>
         ${Number.isFinite(volume) ? volume.toLocaleString() : 'Not provided'}
-
         <br>
-
         <strong>Why selected:</strong>
         ${esc(s.reason || 'Market activity')}
-
         <br>
-
         <strong>Quote date:</strong>
         ${esc(s.price_date || s.quote_time || 'Not provided')}
-
         <br>
-
         <strong>Risk:</strong>
         ${esc(s.risk || (penny ? 'High' : 'Review carefully'))}
-
       </div>
 
       <a class="stock-link"
@@ -1544,11 +1534,9 @@ function renderStock(s,penny) {
          rel="noopener noreferrer">
         Research ${ticker} on Yahoo Finance ↗
       </a>
-
     </article>
   `;
 }
-
 /* LOAD DAILY STOCK PICKS */
 async function loadStocks() {
 
