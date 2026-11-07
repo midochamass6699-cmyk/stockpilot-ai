@@ -9,7 +9,7 @@
 <meta content="index,follow" name="robots"/>
 <link href="https://technofront.org/" rel="canonical"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
-<meta content="#183A34" name="theme-color"/>
+<meta content="#07111F" name="theme-color"/>
 <meta content="en_CA" property="og:locale"/>
 <meta content="StockPilot AI" property="og:site_name"/>
 <meta content="StockPilot AI - Daily Stock Picks" property="og:title"/>
@@ -975,6 +975,229 @@ button,.button { border-radius:999px; }
   .stock-card:hover { transform:none; }
 }
 
+
+
+/* ==========================================================
+   STOCKPILOT BLUE / BLACK / WHITE LAYOUT UPDATE
+   ========================================================== */
+:root {
+  --black:#07111F;
+  --yellow:#2563EB;
+  --gold:#1D4ED8;
+  --cream:#F4F7FB;
+  --white:#FFFFFF;
+  --ink:#101827;
+  --muted:#64748B;
+  --line:#D8E1EE;
+  --green:#15803D;
+  --red:#B91C1C;
+}
+
+html { scroll-padding-top:100px; }
+body { background:#F4F7FB; color:#101827; }
+a { color:#1D4ED8; }
+
+.topbar {
+  background:#050B16 !important;
+  border-bottom:3px solid #2563EB !important;
+  box-shadow:0 4px 18px #07111f24 !important;
+}
+.brand { color:#FFFFFF !important; }
+.brandmark { background:#2563EB !important; color:#FFFFFF !important; border-radius:9px !important; }
+.navlinks a { color:#EAF1FF !important; }
+.navlinks a:hover { color:#78A7FF !important; }
+.navlinks .nav-cta { background:#2563EB !important; color:#FFFFFF !important; }
+
+/* The moving announcement now sits directly below the navigation. */
+.free-ribbon {
+  margin:0 0 10px !important;
+  background:#0B1A31 !important;
+  color:#FFFFFF !important;
+  border:0 !important;
+  border-top:2px solid #2563EB !important;
+  border-bottom:2px solid #2563EB !important;
+}
+.marquee {
+  padding:7px 0 !important;
+  font-size:clamp(12px,1.45vw,16px) !important;
+  letter-spacing:.055em;
+  font-weight:900 !important;
+}
+.marquee span { color:#FFFFFF; padding:0 24px !important; }
+
+/* Stock of the Week: roughly half the previous visual height. */
+.stock-of-the-week {
+  width:min(1200px,calc(100% - 36px));
+  margin:10px auto 12px !important;
+  padding:0 !important;
+  overflow:hidden;
+  background:#FFFFFF !important;
+  border:1px solid #D8E1EE !important;
+  border-left:4px solid #2563EB !important;
+  border-radius:12px !important;
+  box-shadow:0 8px 25px #0B1A3110 !important;
+}
+.weekly-feature-inner {
+  display:grid !important;
+  grid-template-columns:minmax(0,1.8fr) minmax(145px,.48fr) !important;
+  min-height:0 !important;
+}
+.weekly-feature-copy { padding:13px 18px 12px !important; }
+.weekly-feature-kicker { color:#1D4ED8 !important; font-size:9px !important; letter-spacing:.13em !important; }
+.weekly-live-dot { background:#2563EB !important; box-shadow:0 0 0 4px #2563EB20 !important; }
+.weekly-feature-label { margin:3px 0 !important; color:#64748B !important; font-size:9px !important; letter-spacing:.1em; }
+#weekly-stock-title { margin:2px 0 3px !important; color:#07111F !important; font-size:clamp(21px,2.3vw,27px) !important; line-height:1.08 !important; }
+.weekly-feature-copy h2 { margin:3px 0 5px !important; color:#17243A !important; font-size:15px !important; line-height:1.2 !important; }
+.weekly-feature-description {
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  overflow:hidden;
+  margin:5px 0 7px !important;
+  color:#475569 !important;
+  font-size:11px !important;
+  line-height:1.42 !important;
+}
+.weekly-feature-actions { gap:10px !important; margin:6px 0 3px !important; }
+.weekly-research-link { padding:6px 10px !important; border-radius:6px !important; background:#2563EB !important; color:#FFFFFF !important; font-size:10px !important; }
+.weekly-ticker-note { color:#1D4ED8 !important; font-size:10px !important; }
+.weekly-feature-disclaimer { margin:3px 0 0 !important; color:#64748B !important; font-size:9px !important; }
+.weekly-feature-side {
+  min-height:145px !important;
+  padding:12px !important;
+  background:linear-gradient(145deg,#07111F,#12336B) !important;
+  border-left:1px solid #D8E1EE;
+}
+.weekly-side-top { color:#BBD0F7 !important; font-size:8px !important; }
+.weekly-monogram { width:43px !important; height:43px !important; margin:9px 0 6px !important; border-radius:10px !important; background:#2563EB !important; color:#FFFFFF !important; font-size:25px !important; }
+.weekly-side-ticker { color:#FFFFFF !important; font-size:23px !important; }
+.weekly-side-market { color:#BBD0F7 !important; font-size:8px !important; }
+.weekly-side-rule { margin:8px 0 6px !important; background:#60A5FA !important; }
+.weekly-feature-side p { color:#EAF1FF !important; font-size:10px !important; }
+.weekly-side-tag { margin-top:8px !important; color:#DCE9FF !important; border-color:#FFFFFF55 !important; font-size:8px !important; }
+
+/* Simple Stocks / Penny Stocks / Crypto tabs immediately under the feature. */
+.category-nav {
+  width:min(1200px,calc(100% - 36px));
+  margin:0 auto 10px;
+  padding:6px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;
+  background:#FFFFFF;
+  border:1px solid #D8E1EE;
+  border-radius:10px;
+  box-shadow:0 4px 14px #07111F0A;
+}
+.category-tab {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:8px 12px;
+  border:1px solid #D8E1EE;
+  border-radius:7px;
+  background:#F4F7FB;
+  color:#10213D !important;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.045em;
+  text-align:center;
+  text-decoration:none;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.category-tab.active,
+.category-tab:hover {
+  background:#2563EB;
+  border-color:#2563EB;
+  color:#FFFFFF !important;
+}
+
+.market-hero { display:none !important; }
+main.container { background:transparent; }
+.picks-top { padding:3px 0 8px !important; }
+.section-head { margin-bottom:9px !important; }
+.section-head h1,.section-head h2 { color:#0B1A31 !important; }
+.eyebrow { color:#1D4ED8 !important; }
+.updated { color:#64748B !important; }
+.stock-grid { gap:12px !important; }
+.stock-card {
+  background:#FFFFFF !important;
+  border:1px solid #D8E1EE !important;
+  border-top:4px solid #07111F !important;
+  border-radius:10px !important;
+  box-shadow:0 5px 16px #07111F0D !important;
+}
+.stock-card.penny { border-top-color:#2563EB !important; }
+.stock-card h3 { color:#10213D !important; }
+.price { color:#0B1A31 !important; }
+.card-meta { border-color:#E2E8F0 !important; color:#526174 !important; }
+.stock-link,.ticker-symbol-link { color:#1D4ED8 !important; }
+.risk { background:#E7EFFF !important; color:#1E40AF !important; }
+.empty { background:#FFFFFF !important; border-color:#B8C7DD !important; color:#526174 !important; }
+.crypto-card { border-top-color:#2563EB !important; background:#FFFFFF !important; }
+.crypto-note { color:#64748B !important; }
+
+.crypto-card .crypto-rank { background:#E7EFFF !important; color:#1E40AF !important; }
+.crypto-card .price { color:#0B1A31 !important; }
+.visual-art,.feature-art { background:linear-gradient(135deg,#07111F,#173F83) !important; color:#8AB4FF !important; }
+.visual-card.dark { background:#07111F !important; color:#FFFFFF !important; border-color:#1E3A63 !important; }
+.visual-card.dark .visual-copy p { color:#DCE6F6 !important; }
+.visual-card.dark .eyebrow { color:#8AB4FF !important; }
+.visual-copy h2,.feature h3,.method-section h2,.panel h2,.resource-copy h3 { color:#10213D !important; }
+.visual-copy p,.feature p,.method-section p,.panel p,.resource-copy p { color:#526174 !important; }
+.method-section,.feature,.panel,.resource-card { background:#FFFFFF !important; border-color:#D8E1EE !important; }
+.resource-mark { background:#07111F !important; color:#8AB4FF !important; }
+.resource-card a { color:#1D4ED8 !important; }
+.contact-form input,.contact-form textarea { border-color:#CBD7E7 !important; background:#FFFFFF !important; color:#101827 !important; }
+.contact-form button { background:#2563EB !important; color:#FFFFFF !important; }
+.contact-note { color:#64748B !important; }
+.ticker-symbol-link { border-bottom-color:#93B4ED !important; }
+
+.tradingview-banner { margin:14px auto 18px !important; }
+.tradingview-banner img { border:1px solid #D8E1EE; border-radius:10px !important; }
+.affiliate-disclosure { color:#64748B !important; }
+.market-coverage,.market-card,.visual-card,.resource-card,.discussion-card,.contact-section {
+  background:#FFFFFF !important;
+  border-color:#D8E1EE !important;
+}
+.market-coverage { border-top-color:#2563EB !important; }
+.market-card { background:#FFFFFF !important; }
+.market-card h3,.market-coverage h2,.contact-section h2 { color:#10213D !important; }
+.market-region { color:#1D4ED8 !important; }
+.disclaimer { background:#EAF1FF !important; border-color:#BBD0F7 !important; color:#334155 !important; }
+footer { background:#050B16 !important; color:#DCE6F6 !important; border-top:3px solid #2563EB; }
+footer strong { color:#FFFFFF !important; }
+footer a { color:#8AB4FF !important; }
+.privacy-policy {
+  max-width:920px;
+  margin:20px auto 14px;
+  padding:15px 18px;
+  border-top:1px solid #33445F;
+  border-bottom:1px solid #33445F;
+  text-align:left;
+  color:#C4D0E0;
+  font-size:10px;
+  line-height:1.65;
+}
+.privacy-policy h3 { margin:0 0 7px; color:#FFFFFF; font-size:13px; }
+.privacy-policy p { margin:5px 0; }
+.privacy-policy a { color:#8AB4FF !important; text-decoration:underline; }
+
+@media(max-width:760px) {
+  .stock-of-the-week { width:calc(100% - 24px); }
+  .weekly-feature-inner { grid-template-columns:1fr !important; }
+  .weekly-feature-side { display:none !important; }
+  .weekly-feature-copy { padding:13px 14px !important; }
+  .weekly-feature-description { -webkit-line-clamp:3; }
+  .category-nav { width:calc(100% - 24px); gap:5px; padding:5px; }
+  .category-tab { min-height:34px; padding:7px 5px; font-size:10px; }
+}
+@media(max-width:500px) {
+  .category-tab { font-size:9px; letter-spacing:0; }
+  .stock-grid { grid-template-columns:1fr !important; }
+}
+
 </style>
 </head>
 <body>
@@ -999,6 +1222,18 @@ button,.button { border-radius:999px; }
 </div>
 </nav>
 </header>
+
+<!-- MOVING BANNER -->
+<div class="free-ribbon">
+<div class="marquee">
+<span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
+<span>★ DAILY STOCK PICKS — FREE ACCESS</span>
+<span>★ NO PAYWALL — NO SUBSCRIPTION</span>
+<span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
+<span>★ DAILY STOCK PICKS — FREE ACCESS</span>
+<span>★ NO PAYWALL — NO SUBSCRIPTION</span>
+</div>
+</div>
 
 <!-- FEATURED WEEKLY STOCK: FIRST CONTENT AFTER THE NAVIGATION -->
 <section class="stock-of-the-week" id="stock-of-the-week" aria-labelledby="weekly-stock-title">
@@ -1040,29 +1275,12 @@ button,.button { border-radius:999px; }
   </div>
 </section>
 
-<!-- MOVING BANNER -->
-<div class="free-ribbon">
-<div class="marquee">
-<span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
-<span>★ DAILY STOCK PICKS — FREE ACCESS</span>
-<span>★ NO PAYWALL — NO SUBSCRIPTION</span>
-<span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
-<span>★ DAILY STOCK PICKS — FREE ACCESS</span>
-<span>★ NO PAYWALL — NO SUBSCRIPTION</span>
-</div>
-</div><section aria-label="StockPilot daily market picks" class="market-hero"><div class="market-hero-inner"><p class="eyebrow">DAILY MARKET PICKS · FREE MARKET RESEARCH</p><h1>Stocks. Penny Stocks. Crypto.</h1><p class="hero-copy">Start with today's main stock picks and penny stocks, then explore the top cryptocurrency picks below.</p><div class="market-hero-links"><a href="#main-picks">TODAY’S MAIN STOCK PICKS</a><a href="#penny-picks">PENNY STOCK PICKS</a><a href="#crypto-picks">TOP CRYPTO PICKS</a></div></div></section>
-<!-- TRADINGVIEW AFFILIATE BANNER -->
-<div class="container">
-<div class="tradingview-banner">
-<a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">
-<img alt="TradingView - Advanced Charts and Smarter Decisions" src="assets/tradingview-banner.png"/>
-</a>
-<p class="affiliate-disclosure">
-      StockPilot AI may earn a commission if you subscribe,
-      at no additional cost to you.
-    </p>
-</div>
-</div>
+<nav class="category-nav" aria-label="Market categories">
+  <a class="category-tab active" href="#main-picks">TODAY’S STOCKS</a>
+  <a class="category-tab" href="#penny-picks">PENNY STOCKS</a>
+  <a class="category-tab" href="#crypto-picks">CRYPTO</a>
+</nav>
+
 
 <!-- MAIN CONTENT -->
 <main class="container" id="top"><section class="picks-top" id="main-picks">
@@ -1082,7 +1300,21 @@ button,.button { border-radius:999px; }
 <div class="stock-grid" id="mainStocks">
 <div class="empty">Loading main stock picks…</div>
 </div>
-</section><section class="penny-section" id="penny-picks">
+</section>
+
+<!-- TRADINGVIEW AFFILIATE BANNER -->
+<div class="container">
+<div class="tradingview-banner">
+<a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">
+<img alt="TradingView - Advanced Charts and Smarter Decisions" src="assets/tradingview-banner.png"/>
+</a>
+<p class="affiliate-disclosure">
+      StockPilot AI may earn a commission if you subscribe,
+      at no additional cost to you.
+    </p>
+</div>
+</div>
+<section class="penny-section" id="penny-picks">
 <div class="section-head">
 <div>
 <div class="eyebrow">LOWER-PRICED · HIGHER RISK</div>
@@ -1416,46 +1648,18 @@ button,.button { border-radius:999px; }
 </main>
 <!-- FOOTER -->
 <footer>
-
-  <section id="privacy-policy" style="padding:25px 20px; font-size:13px; line-height:1.7; color:#aaa;">
-  <h3 style="color:#fff;">Privacy Policy</h3>
-
-  <p>
-    StockPilot AI respects your privacy. We may collect basic technical
-    information, such as browser type, device information, IP address
-    and pages visited, to improve our website and its services.
-  </p>
-
-  <p>
-    We use Google AdSense to display advertisements. Google and other
-    third-party advertising providers may use cookies, web beacons and
-    similar technologies to display and measure advertisements.
-  </p>
-
-  <p>
-    Our website may also use third-party services for visitor statistics
-    and website discussions. These providers may collect information
-    according to their own privacy policies.
-  </p>
-
-  <p>
-    You can manage or disable cookies through your browser settings.
-    You can also learn more about how Google uses information on
-    partner websites at
-    <a href="https://policies.google.com/technologies/partner-sites"
-       target="_blank" rel="noopener">
-       Google's Privacy Information page
-    </a>.
-  </p>
-
-  <p>
-    By using StockPilot AI, you acknowledge this Privacy Policy.
-  </p>
-</section>
 <strong>STOCKPILOT AI</strong>
 <p>
     Free daily stock research · Market activity · Investor discussion
   </p>
+<div class="privacy-policy" id="privacy-policy">
+  <h3>Privacy Policy</h3>
+  <p>StockPilot AI respects your privacy. When you visit this website, basic technical information such as your browser type, device information, IP address and pages visited may be processed to operate, protect and improve the website.</p>
+  <p>This website uses Google Analytics to understand how visitors use the site and Google AdSense to display advertisements. Google and its advertising partners may use cookies or similar technologies to personalize and measure ads, limit repeated ads, and help prevent fraud. Third-party providers process information according to their own privacy policies.</p>
+  <p>You can control cookies through your browser settings. You can also review or change Google's advertising-personalization settings at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Center</a> and read how Google uses information on partner sites in its <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">partner-site privacy information</a>.</p>
+  <p>StockPilot AI may include links to external websites and embedded discussion features. Those third-party websites and services may collect information under their own privacy policies. StockPilot AI does not control their data practices.</p>
+  <p>This policy may be updated when website features or legal requirements change.</p>
+</div>
 <p>
     © <span id="year"></span> StockPilot AI ·
     For educational purposes only · Not financial advice
