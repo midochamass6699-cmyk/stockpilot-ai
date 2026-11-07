@@ -1,262 +1,122 @@
-
-#!/usr/bin/env python3
-"""
-StockPilot AI - Daily Stock Picks
-
-Selects:
-- 3 most actively traded US stocks above $10
-- 3 most actively traded US stocks between $0.10 and $10
-
-Uses Alpha Vantage TOP_GAINERS_LOSERS.
-This is a volume-ranking screen, not investment advice.
-"""
-
-import json
-import os
-from datetime import datetime, timezone
-from pathlib import Path
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
-from urllib.error import HTTPError, URLError
-
-API_KEY = os.environ.get("ALPHAVANTAGE_API_KEY", "").strip()
-OUTPUT = Path(os.environ.get("PICKS_OUTPUT", "docs/data/picks.json"))
-
-FEED_URL = "https://www.alphavantage.co/query"
-
-PENNY_MIN_PRICE = 0.10
-PENNY_MAX_PRICE = 10.00
-
-MAIN_MIN_PRICE = 10.00
-PICKS_PER_CATEGORY = 3
+        "sector": meta["sector"],
+        "currency": meta["currency"],
+        "quote_time": m["price_date"] + " (daily close)",
+        "reason": "; ".join(reasons or ["highest momentum score in the screened candidate pool"]) + ".",
+        "risk": "; ".join(risks) + ".",
+        **m,
+    }
 
 
-def write_output(data):
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(
-        json.dumps(data, indent=2),
-        encoding="utf-8"
-    )
+def eligible(stock, penny=False):
+    if stock["return_20d"] <= 0 or not stock["above_20day_average"]:
+        return False
+    if penny:
+        return (PENNY_MIN_PRICE <= stock["price"] <= PENNY_MAX_PRICE
+                and stock["average_dollar_volume_20d"] >= PENNY_MIN_AVG_DOLLAR_VOLUME
+                and stock["average_volume_20d"] >= 50_000)
+    return stock["price"] > PENNY_MAX_PRICE and stock["average_dollar_volume_20d"] >= MAIN_MIN_AVG_DOLLAR_VOLUME
 
 
-def error_output(message):
-    now = datetime.now(timezone.utc).isoformat()
-
-    write_output({
-        "status": "error",
-        "updated_at": now,
-        "data_source": "Alpha Vantage",
-        "data_note": "No verified market data received. No sample stocks displayed.",
-        "main": [],
-        "penny": [],
-        "picks": [],
-        "errors": [str(message)]
-    })
-
-    print("DATA ERROR:", message)
-
-
-def to_float(value):
-    if value is None:
-        raise ValueError("Missing numeric value")
-
-    return float(
-        str(value).replace(",", "").replace("%", "").strip()
-    )
-
-
-def fetch_most_active():
-
-    if not API_KEY:
-        raise RuntimeError(
-            "Missing GitHub secret ALPHAVANTAGE_API_KEY"
-        )
-
-    params = urlencode({
-        "function": "TOP_GAINERS_LOSERS",
-        "apikey": API_KEY
-    })
-
-    request = Request(
-        FEED_URL + "?" + params,
-        headers={
-            "User-Agent": "StockPilotDailyPicks/1.0"
-        }
-    )
-
-    try:
-        with urlopen(request, timeout=30) as response:
-            payload = json.loads(
-                response.read().decode("utf-8")
-            )
-
-    except HTTPError as exc:
-        raise RuntimeError(
-            f"Alpha Vantage HTTP error: {exc.code}"
-        )
-
-    except URLError as exc:
-        raise RuntimeError(
-            f"Could not connect to Alpha Vantage: {exc.reason}"
-        )
-
-    # Alpha Vantage may return an API error instead of stock data.
-    if "most_actively_traded" not in payload:
-
-        message = (
-            payload.get("Note")
-            or payload.get("Information")
-            or payload.get("Error Message")
-            or "The API did not return most_actively_traded."
-        )
-
-        raise RuntimeError(message)
-
-    rows = payload["most_actively_traded"]
-
-    if not isinstance(rows, list) or not rows:
-        raise RuntimeError(
-            "Alpha Vantage returned an empty most_actively_traded list."
-        )
-
-    return rows
-
-
-def normalize_rows(rows, snapshot_time):
-
-    normalized = []
-
-    for row in rows:
-
-        try:
-            ticker = str(row["ticker"]).strip().upper()
-
-            price = to_float(row["price"])
-
-            volume = int(
-                float(str(row["volume"]).replace(",", ""))
-            )
-
-            change_pct = to_float(
-                row.get("change_percentage", 0)
-            )
-
-            if not ticker:
-                continue
-
-            if price <= 0 or volume <= 0:
-                continue
-
-            normalized.append({
-                "ticker": ticker,
-                "company": ticker,
-                "exchange": "US market",
-                "market": "US",
-                "price": round(price, 4),
-                "change_percent": round(change_pct, 2),
-                "volume": volume,
-                "price_date": snapshot_time,
-                "reason": (
-                    "Selected based on reported trading volume "
-                    "among stocks returned by Alpha Vantage."
-                ),
-                "risk": (
-                    "Market risk applies. Trading volume does not "
-                    "predict future performance."
-                )
-            })
-
-        except (KeyError, ValueError, TypeError) as exc:
-            print("Skipping invalid stock row:", exc)
+def choose_diversified(ranked, count=3):
+    chosen, markets, sectors = [], {}, {}
+    for stock in ranked:
+        if markets.get(stock["market"], 0) >= 2 or sectors.get(stock["sector"], 0) >= 1:
             continue
+        chosen.append(stock)
+        markets[stock["market"]] = markets.get(stock["market"], 0) + 1
+        sectors[stock["sector"]] = sectors.get(stock["sector"], 0) + 1
+        if len(chosen) == count:
+            return chosen
+    for stock in ranked:
+        if stock not in chosen:
+            chosen.append(stock)
+        if len(chosen) == count:
+            break
+    return chosen
 
-    return normalized
 
+def main():
+    print("StockPilot Free Momentum v3 — public US + Canada candidate screeners")
+    universe, universe_errors, screeners_ok = build_universe()
+    all_meta = universe.get("US", []) + universe.get("Canada", [])
+    # Remove duplicate symbols while preserving first occurrence.
+    unique = {x["ticker"]: x for x in all_meta}
+    all_meta = list(unique.values())
+    print(f"Screeners responding: {screeners_ok}/{len(SCREENER_IDS) * 2}")
+    print(f"Candidates queued: {len(all_meta)} (US {len(universe.get('US', []))}; Canada {len(universe.get('Canada', []))})")
+    if len(all_meta) < 20:
+        sys.exit("ERROR: Too few candidates returned by public screeners; existing picks.json left unchanged.")
 
-def build_picks():
+    histories, history_errors = fetch_histories([x["ticker"] for x in all_meta])
+    results = []
+    meta_by_symbol = {x["ticker"]: x for x in all_meta}
+    for symbol, frame in histories.items():
+        try:
+            results.append(analyze(meta_by_symbol[symbol], frame))
+        except Exception as exc:
+            history_errors.append(f"{symbol}: analysis failed: {exc}")
+
+    main_ranked = sorted([x for x in results if eligible(x, False)], key=lambda x: x["score"], reverse=True)
+    penny_ranked = sorted([x for x in results if eligible(x, True)], key=lambda x: x["score"], reverse=True)
+    main_picks = choose_diversified(main_ranked, 3)
+    selected = {x["ticker"] for x in main_picks}
+    penny_ranked = [x for x in penny_ranked if x["ticker"] not in selected]
+    penny_picks = choose_diversified(penny_ranked, 3)
+
+    if len(main_picks) < 3:
+        sys.exit("ERROR: Fewer than 3 main stocks passed the filters; existing picks.json left unchanged.")
+    for stock in penny_picks:
+        stock["risk"] = "HIGH RISK — penny-stock volatility. " + stock["risk"]
 
     now = datetime.now(timezone.utc)
-    snapshot_time = now.strftime("%Y-%m-%d")
-
-    print("Fetching Alpha Vantage market data...")
-
-    rows = fetch_most_active()
-
-    stocks = normalize_rows(rows, snapshot_time)
-
-    if not stocks:
-        raise RuntimeError(
-            "No valid stock records were found in the API response."
-        )
-
-    # Main stocks: strictly above $10.
-    main_stocks = [
-        stock for stock in stocks
-        if stock["price"] > MAIN_MIN_PRICE
-    ]
-
-    # Penny stocks: $0.10 through $10 inclusive.
-    penny_stocks = [
-        stock for stock in stocks
-        if PENNY_MIN_PRICE <= stock["price"] <= PENNY_MAX_PRICE
-    ]
-
-    # Highest reported volume first.
-    main_stocks.sort(
-        key=lambda stock: stock["volume"],
-        reverse=True
-    )
-
-    penny_stocks.sort(
-        key=lambda stock: stock["volume"],
-        reverse=True
-    )
-
-    main_stocks = main_stocks[:PICKS_PER_CATEGORY]
-    penny_stocks = penny_stocks[:PICKS_PER_CATEGORY]
-
-    combined = main_stocks + penny_stocks
-
-    if not combined:
-        raise RuntimeError(
-            "The API returned stocks, but none matched the price filters."
-        )
-
     output = {
         "status": "ok",
         "updated_at": now.isoformat(),
-        "snapshot_time": snapshot_time,
-        "data_source": "Alpha Vantage TOP_GAINERS_LOSERS",
+        "snapshot_time": now.date().isoformat(),
+        "data_source": "Yahoo Finance public screeners + Yahoo Finance daily historical prices (via yfinance)",
         "data_note": (
-            "Ranked by reported trading volume among stocks "
-            "included in Alpha Vantage's most_actively_traded feed. "
-            "The feed may not represent every US-listed stock."
+            "Free, broad candidate scan from public US and Canadian activity/gainer screeners; "
+            "not an exhaustive scan of every listed security. End-of-day history may be delayed. "
+            "Yahoo endpoints are unofficial and can be throttled or changed. Prices are in local "
+            "trading currencies (USD for US, CAD for Canada)."
         ),
-        "main": main_stocks,
-        "penny": penny_stocks,
-        "picks": combined,
-        "errors": []
+        "strategy": (
+            "Momentum score 0–100: 10% 5-day return, 30% 20-day return, 25% 50-day return, "
+            "20% relative volume, 15% trend alignment; deductions for elevated RSI and volatility. "
+            "Requires positive 20-day momentum and price above the 20-day average."
+        ),
+        "universe": {
+            "markets": ["US", "Canada"],
+            "candidate_sources": list(SCREENER_IDS),
+            "us_candidates_queued": len(universe.get("US", [])),
+            "canada_candidates_queued": len(universe.get("Canada", [])),
+            "unique_candidates_queued": len(all_meta),
+            "history_symbols_returned": len(histories),
+            "penny_price_cap_local_currency": PENNY_MAX_PRICE,
+            "exhaustive_market_scan": False,
+        },
+        "main": main_picks,
+        "penny": penny_picks,
+        "picks": main_picks,
+        "watchlist": main_ranked,
+        "penny_watchlist": penny_ranked,
+        "main_candidates_scanned": len(results),
+        "main_candidates_eligible": len(main_ranked),
+        "penny_candidates_scanned": len(results),
+        "penny_candidates_eligible": len(penny_ranked),
+        "errors": universe_errors + history_errors,
+        "penny_errors": [],
     }
-
-    write_output(output)
-
-    print("SUCCESS: Stock picks updated.")
-    print("Main stocks:", len(main_stocks))
-    print("Penny stocks:", len(penny_stocks))
-
-    for stock in combined:
-        print(
-            stock["ticker"],
-            "Price:", stock["price"],
-            "Volume:", stock["volume"]
-        )
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    temp = OUTPUT.with_suffix(OUTPUT.suffix + ".tmp")
+    temp.write_text(json.dumps(output, indent=2), encoding="utf-8")
+    temp.replace(OUTPUT)
+    print(f"SUCCESS: {len(main_picks)}/3 main picks; {len(penny_picks)}/3 penny picks")
+    print(f"History downloaded for {len(histories)}/{len(all_meta)} candidates")
+    print(f"Output: {OUTPUT}")
+    if len(penny_picks) < 3:
+        print("WARNING: fewer than 3 penny stocks qualified; no picks were fabricated.")
 
 
 if __name__ == "__main__":
-
-    try:
-        build_picks()
-
-    except Exception as exc:
-        error_output(exc)
-        raise
+    main()
