@@ -1,27 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="en-CA">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>StockPilot AI | Daily Stock Picks & Top Cryptocurrencies</title>
-<meta name="description" content="Discover actively traded stocks, penny stocks and cryptocurrencies. Free daily market information, trading volume rankings and financial research.">
-<meta name="author" content="StockPilot AI">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://technofront.org/">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="theme-color" content="#101010">
-
-<meta property="og:locale" content="en_CA">
-<meta property="og:site_name" content="StockPilot AI">
-<meta property="og:title" content="StockPilot AI - Daily Stock Picks">
-<meta property="og:description" content="Free daily stock and cryptocurrency market research.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://technofront.org/">
-<meta property="og:image" content="https://technofront.org/assets/stockpilot-social-preview.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://technofront.org/assets/stockpilot-social-preview.png">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>StockPilot AI | Daily Stock Picks &amp; Top Cryptocurrencies</title>
+<meta content="Discover actively traded stocks, penny stocks and cryptocurrencies. Free daily market information, trading volume rankings and financial research." name="description"/>
+<meta content="StockPilot AI" name="author"/>
+<meta content="index,follow" name="robots"/>
+<link href="https://technofront.org/" rel="canonical"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#101010" name="theme-color"/>
+<meta content="en_CA" property="og:locale"/>
+<meta content="StockPilot AI" property="og:site_name"/>
+<meta content="StockPilot AI - Daily Stock Picks" property="og:title"/>
+<meta content="Free daily stock and cryptocurrency market research." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://technofront.org/" property="og:url"/>
+<meta content="https://technofront.org/assets/stockpilot-social-preview.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://technofront.org/assets/stockpilot-social-preview.png" name="twitter:image"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -45,36 +43,28 @@
   ]
 }
 </script>
-
 <!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5757077530115290"
-crossorigin="anonymous"></script>
-
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5757077530115290"></script>
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VL62LP5NZ9"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL62LP5NZ9"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-VL62LP5NZ9');
 </script>
-
 <style>
-
-  
-  .weekly-vote {
+.weekly-vote {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
   margin: 16px 0;
 }
-
 .weekly-vote strong {
   width: 100%;
   font-size: 14px;
 }
-
 .weekly-vote button {
   border: 1px solid #ddd;
   border-radius: 7px;
@@ -84,19 +74,16 @@ gtag('config', 'G-VL62LP5NZ9');
   font-weight: 700;
   cursor: pointer;
 }
-
 .weekly-vote button:disabled {
   opacity: .55;
   cursor: not-allowed;
 }
-
 #weekly-vote-message {
   width: 100%;
   color: #777;
   font-size: 12px;
 }
-  
-  :root {
+:root {
   --black:#101010;
   --yellow:#ffd629;
   --gold:#e8b900;
@@ -108,14 +95,11 @@ gtag('config', 'G-VL62LP5NZ9');
   --green:#087a43;
   --red:#bd2929;
 }
-
 * {box-sizing:border-box;}
-
 html {
   scroll-behavior:smooth;
   scroll-padding-top:85px;
 }
-
 body {
   margin:0;
   background:var(--cream);
@@ -123,16 +107,12 @@ body {
   font-family:Inter,Arial,Helvetica,sans-serif;
   line-height:1.5;
 }
-
 a {color:inherit;}
-
 .container {
   width:min(1200px, calc(100% - 36px));
   margin:auto;
 }
-
 /* NAVIGATION */
-
 .topbar {
   position:sticky;
   top:0;
@@ -141,7 +121,6 @@ a {color:inherit;}
   border-bottom:3px solid var(--yellow);
   box-shadow:0 3px 14px #0002;
 }
-
 .nav {
   max-width:1200px;
   margin:auto;
@@ -151,7 +130,6 @@ a {color:inherit;}
   justify-content:space-between;
   gap:18px;
 }
-
 .brand {
   display:flex;
   align-items:center;
@@ -162,7 +140,6 @@ a {color:inherit;}
   text-decoration:none;
   white-space:nowrap;
 }
-
 .brandmark {
   width:35px;
   height:35px;
@@ -173,32 +150,26 @@ a {color:inherit;}
   color:var(--black);
   font-size:23px;
 }
-
 .navlinks {
   display:flex;
   gap:18px;
   align-items:center;
   flex-wrap:wrap;
 }
-
 .navlinks a {
   font-size:12px;
   font-weight:800;
   color:white;
   text-decoration:none;
 }
-
 .navlinks a:hover {color:var(--yellow);}
-
 .navlinks .nav-cta {
   background:var(--yellow);
   color:#111;
   padding:8px 13px;
   border-radius:6px;
 }
-
-/* MOVING FREE BANNER */
-
+/* MOVING BANNER */
 .free-ribbon {
   margin:0 0 14px;
   overflow:hidden;
@@ -207,7 +178,6 @@ a {color:inherit;}
   border-top:2px solid #e2b800;
   border-bottom:2px solid #e2b800;
 }
-
 .marquee {
   display:flex;
   width:max-content;
@@ -217,20 +187,15 @@ a {color:inherit;}
   font-weight:1000;
   font-size:clamp(17px,2.5vw,25px);
 }
-
 .marquee span {padding:0 30px;}
-
 @keyframes marquee {
   from {transform:translateX(0);}
   to {transform:translateX(-50%);}
 }
-
 .free-ribbon:hover .marquee {
   animation-play-state:paused;
 }
-
 /* GENERAL SECTIONS */
-
 .section-head {
   display:flex;
   align-items:end;
@@ -238,20 +203,17 @@ a {color:inherit;}
   gap:12px;
   margin:0 0 13px;
 }
-
 .section-head h1,
 .section-head h2 {
   margin:3px 0 0;
   font-size:clamp(22px,3vw,30px);
   line-height:1.1;
 }
-
 .section-head p {
   margin:5px 0 0;
   color:var(--muted);
   font-size:12px;
 }
-
 .eyebrow {
   font-size:10px;
   letter-spacing:1.6px;
@@ -259,45 +221,29 @@ a {color:inherit;}
   color:#8a6b00;
   text-transform:uppercase;
 }
-
 .updated {
   font-size:11px;
   color:var(--muted);
   margin:0 0 13px;
 }
-
 /* TRADINGVIEW BANNER */
-
 .tradingview-banner {
   max-width:1000px;
   margin:18px auto 22px;
   text-align:center;
 }
-
 .tradingview-banner img {
   width:100%;
   height:auto;
   border-radius:14px;
   display:block;
 }
-
 .affiliate-disclosure {
   font-size:11px;
   color:#777;
   margin-top:8px;
 }
-
 /* STOCK OF THE WEEK */
-
-<iframe
-  src="https://polls.tools/embed/vote/?id=at26rrgx"
-  width="100%"
-  height="460"
-  style="border:0;max-width:640px"
-  loading="lazy">
-</iframe>
-
-  
 .stock-of-the-week {
   margin:24px 0;
   padding:22px;
@@ -307,49 +253,39 @@ a {color:inherit;}
   border-radius:10px;
   box-shadow:0 4px 15px #00000008;
 }
-
 .stock-of-the-week h2 {
   margin:5px 0 12px;
   font-size:23px;
 }
-
 .stock-of-the-week p {
   font-size:13px;
   color:#444;
   line-height:1.7;
   margin:9px 0;
 }
-
 .stock-of-the-week a {
   color:#725900;
   font-weight:800;
 }
-
 .stock-of-the-week .disclaimer {
   margin-bottom:0;
 }
-
 /* STOCK AND CRYPTO CARDS */
-
 .crypto-section {
   padding:22px 0 8px;
   border-bottom:1px solid var(--line);
 }
-
 .picks-top {
   padding:24px 0 8px;
 }
-
 .penny-section {
   padding:22px 0 6px;
 }
-
 .stock-grid {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px;
 }
-
 .stock-card {
   position:relative;
   overflow:hidden;
@@ -361,40 +297,32 @@ a {color:inherit;}
   box-shadow:0 4px 15px #00000008;
   min-width:0;
 }
-
 .stock-card.penny {border-top-color:var(--gold);}
-
 .stock-card:hover {
   transform:translateY(-2px);
   box-shadow:0 8px 22px #00000012;
 }
-
 .stock-card h3 {
   margin:0;
   font-size:16px;
   line-height:1.25;
 }
-
 .ticker {
   font-size:11px;
   color:var(--muted);
   font-weight:800;
 }
-
 .price {
   font-size:25px;
   font-weight:950;
   margin-top:9px;
 }
-
 .change {
   font-size:12px;
   font-weight:900;
 }
-
 .positive {color:var(--green);}
 .negative {color:var(--red);}
-
 .card-meta {
   border-top:1px solid #eee9dc;
   margin-top:10px;
@@ -403,7 +331,6 @@ a {color:inherit;}
   line-height:1.65;
   color:#555;
 }
-
 .risk {
   display:inline-block;
   margin-top:8px;
@@ -414,7 +341,6 @@ a {color:inherit;}
   font-size:9px;
   font-weight:900;
 }
-
 .stock-link {
   display:inline-block;
   margin-top:8px;
@@ -423,20 +349,16 @@ a {color:inherit;}
   color:#725900;
   text-decoration:none;
 }
-
 .stock-link:hover {text-decoration:underline;}
-
 .ticker-symbol-link {
   color:inherit;
   text-decoration:none;
   border-bottom:1px dotted #a99a6d;
 }
-
 .ticker-symbol-link:hover {
   color:#725900;
   border-bottom-style:solid;
 }
-
 .empty {
   grid-column:1/-1;
   background:white;
@@ -446,12 +368,10 @@ a {color:inherit;}
   color:#666;
   font-size:13px;
 }
-
 .crypto-card {
   border-top-color:#d9ad00;
   background:linear-gradient(145deg,#fff 0%,#fffdf5 100%);
 }
-
 .crypto-card .crypto-rank {
   display:inline-block;
   background:#fff0ad;
@@ -462,9 +382,7 @@ a {color:inherit;}
   font-weight:900;
   margin-bottom:7px;
 }
-
 .crypto-card .price {font-size:24px;}
-
 .crypto-logo {
   width:30px;
   height:30px;
@@ -472,22 +390,18 @@ a {color:inherit;}
   float:right;
   margin-left:8px;
 }
-
 .crypto-note {
   font-size:10px;
   color:var(--muted);
   margin:9px 0 0;
 }
-
 /* MARKET INSIGHTS */
-
 .visual-intro {
   display:grid;
   grid-template-columns:1.2fr .8fr;
   gap:14px;
   margin:24px 0;
 }
-
 .visual-card {
   background:white;
   border:1px solid var(--line);
@@ -497,7 +411,6 @@ a {color:inherit;}
   display:grid;
   grid-template-columns:1fr 1fr;
 }
-
 .visual-art {
   min-height:190px;
   display:grid;
@@ -506,46 +419,38 @@ a {color:inherit;}
   color:var(--yellow);
   font-size:65px;
 }
-
 .visual-copy {
   padding:18px;
   align-self:center;
 }
-
 .visual-copy h2 {
   font-size:19px;
   margin:0 0 7px;
 }
-
 .visual-copy p {
   font-size:12px;
   color:#555;
   margin:0;
 }
-
 .visual-card.dark {
   background:#151515;
   color:white;
   border-color:#252525;
 }
-
 .visual-card.dark .visual-copy p {color:#ddd;}
 .visual-card.dark .eyebrow {color:var(--yellow);}
-
 .features {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:13px;
   margin:22px 0;
 }
-
 .feature {
   background:white;
   border:1px solid var(--line);
   border-radius:10px;
   overflow:hidden;
 }
-
 .feature-art {
   height:115px;
   display:grid;
@@ -554,22 +459,17 @@ a {color:inherit;}
   font-size:42px;
   color:var(--yellow);
 }
-
 .feature div:last-child {padding:13px;}
-
 .feature h3 {
   font-size:15px;
   margin:0 0 4px;
 }
-
 .feature p {
   font-size:12px;
   color:#666;
   margin:0;
 }
-
 /* METHODOLOGY */
-
 .method-section {
   margin:24px 0;
   padding:20px;
@@ -577,34 +477,28 @@ a {color:inherit;}
   border:1px solid var(--line);
   border-radius:10px;
 }
-
 .method-section h2 {
   margin:0 0 8px;
   font-size:20px;
 }
-
 .method-section p {
   margin:7px 0;
   color:#555;
   font-size:13px;
   max-width:950px;
 }
-
 /* FINANCIAL RESOURCES */
-
 .resources-section {
   margin:24px 0 8px;
   padding:22px 0;
   border-top:1px solid var(--line);
 }
-
 .resources-grid {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px;
   margin-top:14px;
 }
-
 .resource-card {
   display:flex;
   align-items:flex-start;
@@ -614,7 +508,6 @@ a {color:inherit;}
   border-radius:10px;
   padding:14px;
 }
-
 .resource-mark {
   flex:0 0 38px;
   width:38px;
@@ -627,20 +520,16 @@ a {color:inherit;}
   font-size:13px;
   font-weight:1000;
 }
-
 .resource-copy {min-width:0;}
-
 .resource-copy h3 {
   margin:0 0 3px;
   font-size:14px;
 }
-
 .resource-copy p {
   margin:0 0 7px;
   color:#666;
   font-size:11px;
 }
-
 .resource-card a {
   display:inline-block;
   color:#725900;
@@ -648,16 +537,13 @@ a {color:inherit;}
   font-weight:900;
   text-decoration:none;
 }
-
 /* ABOUT AND DISCUSSION */
-
 .about-discuss {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
   margin:24px 0 35px;
 }
-
 .panel {
   background:white;
   border:1px solid var(--line);
@@ -665,22 +551,17 @@ a {color:inherit;}
   padding:19px;
   overflow:hidden;
 }
-
 .panel h2 {
   font-size:20px;
   margin:0 0 8px;
 }
-
 .panel p {
   font-size:13px;
   color:#555;
   margin:7px 0;
 }
-
 .panel .giscus {margin-top:12px;}
-
 /* CONTACT */
-
 .contact-section {
   margin:24px 0 30px;
   padding:22px;
@@ -688,33 +569,27 @@ a {color:inherit;}
   border:1px solid var(--line);
   border-radius:10px;
 }
-
 .contact-section h2 {
   margin:3px 0 6px;
   font-size:22px;
 }
-
 .contact-intro {
   margin:0 0 16px;
   color:var(--muted);
   font-size:13px;
 }
-
 .contact-form {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
-
 .contact-form .full {grid-column:1/-1;}
-
 .contact-form label {
   display:block;
   margin:0 0 5px;
   font-size:11px;
   font-weight:800;
 }
-
 .contact-form input,
 .contact-form textarea {
   width:100%;
@@ -726,12 +601,10 @@ a {color:inherit;}
   background:white;
   color:var(--ink);
 }
-
 .contact-form textarea {
   min-height:125px;
   resize:vertical;
 }
-
 .contact-form button {
   grid-column:1/-1;
   justify-self:start;
@@ -743,15 +616,12 @@ a {color:inherit;}
   font-weight:900;
   cursor:pointer;
 }
-
 .contact-note {
   margin:8px 0 0;
   color:#777;
   font-size:10px;
 }
-
 /* DISCLAIMER AND FOOTER */
-
 .disclaimer {
   background:#fff1bb;
   border-left:4px solid var(--yellow);
@@ -761,7 +631,6 @@ a {color:inherit;}
   font-size:11px;
   margin:20px 0 28px;
 }
-
 footer {
   background:#101010;
   color:#ddd;
@@ -769,29 +638,23 @@ footer {
   text-align:center;
   font-size:11px;
 }
-
 footer strong {
   color:var(--yellow);
   font-size:15px;
 }
-
 footer a {color:var(--yellow);}
-
 /* MOBILE */
-
 @media(max-width:760px) {
   .nav {
     align-items:flex-start;
     flex-direction:column;
     gap:9px;
   }
-
   .navlinks {gap:12px;}
   .visual-intro,.about-discuss {grid-template-columns:1fr;}
   .stock-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
   .resources-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
 }
-
 @media(max-width:500px) {
   .container {width:calc(100% - 24px);}
   .stock-grid,.features,.resources-grid {grid-template-columns:1fr;}
@@ -806,13 +669,10 @@ footer a {color:var(--yellow);}
   .contact-form button {width:100%;}
   .navlinks a {font-size:11px;}
 }
-
 @media(prefers-reduced-motion:reduce) {
   html {scroll-behavior:auto;}
   .marquee {animation:none;}
 }
-
-
 /* MARKET EXCHANGE COVERAGE */
 .market-coverage {
   margin: 26px 0;
@@ -882,592 +742,509 @@ footer a {color:var(--yellow);}
   .market-grid {grid-template-columns:1fr;}
   .market-card img {height:180px;}
 }
-
+/* STOCKPILOT MARKET PICKS HERO BANNER */
+.market-hero {
+  background:linear-gradient(115deg,#101010 0%,#242424 58%,#3a3000 100%);
+  color:#fff;
+  border-bottom:3px solid var(--yellow);
+  padding:30px 18px 27px;
+  text-align:center;
+}
+.market-hero-inner {
+  width:min(1200px,100%);
+  margin:0 auto;
+}
+.market-hero .eyebrow {
+  color:var(--yellow);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin:0 0 8px;
+}
+.market-hero h1 {
+  color:#fff;
+  font-size:clamp(25px,4vw,42px);
+  line-height:1.12;
+  margin:0 0 9px;
+  font-weight:950;
+}
+.market-hero .hero-copy {
+  color:#e8e8e8;
+  margin:0 auto 18px;
+  max-width:700px;
+  font-size:15px;
+}
+.market-hero-links {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.market-hero-links a {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:11px 17px;
+  border:1px solid #ffffff55;
+  border-radius:999px;
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:850;
+  transition:background .2s,border-color .2s;
+}
+.market-hero-links a:first-child {
+  background:var(--yellow);
+  color:#101010;
+  border-color:var(--yellow);
+}
+.market-hero-links a:hover {
+  background:#fff;
+  color:#101010;
+  border-color:#fff;
+}
+@media(max-width:600px) {
+  .market-hero {padding:24px 15px;}
+  .market-hero-links {gap:8px;}
+  .market-hero-links a {
+    width:100%;
+    max-width:310px;
+  }
+}
 </style>
 </head>
-
 <body>
-
 <!-- NAVIGATION -->
 <header class="topbar">
-  <nav class="nav">
-    <a class="brand" href="#top">
-      <span class="brandmark">↗</span>
-      STOCKPILOT AI
-    </a>
-
-    <div class="navlinks">
-      <a href="#top">HOME</a>
-      <a href="#crypto-picks">TOP CRYPTO</a>
-      <a href="#main-picks">DAILY PICKS</a>
-      <a href="#market-coverage">MARKETS</a>
-      <a href="#stock-of-the-week">STOCK OF THE WEEK</a>
-      <a href="#market-insights">MARKET INSIGHTS</a>
-      <a href="#financial-resources">RESOURCES</a>
-      <a href="#about">ABOUT</a>
-      <a href="#contact">CONTACT</a>
-      <a class="nav-cta" href="#discussion">DISCUSSION</a>
-    </div>
-  </nav>
+<nav class="nav">
+<a class="brand" href="#top">
+<span class="brandmark">↗</span>
+STOCKPILOT AI
+</a>
+<div class="navlinks">
+<a href="#top">HOME</a>
+<a href="#main-picks">TODAY’S STOCKS</a>
+<a href="#penny-picks">PENNY STOCKS</a>
+<a href="#crypto-picks">TOP CRYPTO</a>
+<a href="#market-coverage">MARKETS</a>
+<a href="#stock-of-the-week">STOCK OF THE WEEK</a>
+<a href="#market-insights">MARKET INSIGHTS</a>
+<a href="#financial-resources">RESOURCES</a>
+<a href="#about">ABOUT</a>
+<a href="#contact">CONTACT</a>
+<a class="nav-cta" href="#discussion">DISCUSSION</a>
+</div>
+</nav>
 </header>
-
 <!-- MOVING BANNER -->
 <div class="free-ribbon">
-  <div class="marquee">
-    <span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
-    <span>★ DAILY STOCK PICKS — FREE ACCESS</span>
-    <span>★ NO PAYWALL — NO SUBSCRIPTION</span>
-    <span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
-    <span>★ DAILY STOCK PICKS — FREE ACCESS</span>
-    <span>★ NO PAYWALL — NO SUBSCRIPTION</span>
-  </div>
+<div class="marquee">
+<span>★ TODAY’S MAIN STOCK PICKS</span>
+<span>★ PENNY STOCK PICKS</span>
+<span>★ TOP CRYPTO PICKS</span>
+<span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
+<span>★ TODAY’S MAIN STOCK PICKS</span>
+<span>★ PENNY STOCK PICKS</span>
+<span>★ TOP CRYPTO PICKS</span>
+<span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
 </div>
-
+</div>
+<section aria-label="StockPilot daily market picks" class="market-hero">
+<div class="market-hero-inner">
+<p class="eyebrow">DAILY MARKET PICKS · FREE MARKET RESEARCH</p>
+<h1>Stocks. Penny Stocks. Crypto.</h1>
+<p class="hero-copy">Start with today's main stock picks and penny stocks, then explore the top cryptocurrency picks below.</p>
+<div class="market-hero-links">
+<a href="#main-picks">TODAY’S MAIN STOCK PICKS</a>
+<a href="#penny-picks">PENNY STOCK PICKS</a>
+<a href="#crypto-picks">TOP CRYPTO PICKS</a>
+</div>
+</div>
+</section>
 <!-- TRADINGVIEW AFFILIATE BANNER -->
 <div class="container">
-  <div class="tradingview-banner">
-    <a href="https://www.tradingview.com/?aff_id=1174186"
-       target="_blank"
-       rel="sponsored noopener noreferrer">
-      <img
-        src="assets/tradingview-banner.png"
-        alt="TradingView - Advanced Charts and Smarter Decisions">
-    </a>
-
-    <p class="affiliate-disclosure">
-      StockPilot AI may earn a commission if you subscribe,
-      at no additional cost to you.
-    </p>
-  </div>
+<div class="tradingview-banner">
+<a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">
+<img alt="TradingView - Advanced Charts and Smarter Decisions" src="assets/tradingview-banner.png"/>
+</a>
+<p class="affiliate-disclosure">
+StockPilot AI may earn a commission if you subscribe,
+at no additional cost to you.
+</p>
 </div>
-
-<!-- STOCK OF THE WEEK: NOW BELOW THE BANNER -->
+</div>
+<!-- STOCK OF THE WEEK -->
 <div class="container">
-
 <section class="stock-of-the-week" id="stock-of-the-week">
-  <div class="eyebrow">WEEKLY COMPANY RESEARCH</div>
-
-  <h2>⭐ Stock of the Week: CEMATRIX Corporation (TSX: CEMX)</h2>
-  <p>
-    CEMATRIX Corporation is an interesting Canadian small-cap company
-    specializing in cellular concrete solutions for infrastructure,
-    construction and ground stabilization projects. The company has
-    demonstrated strong nine-month revenue growth in 2026, reaching
-    C$37.9 million, up 16% compared with the same period in 2025.
-    It also announced C$43.2 million in new contract awards through
-    September 2026. However, investors should note that third-quarter
-    revenue declined 22% year over year and adjusted EBITDA fell 60%,
-    highlighting the importance of monitoring project timing and
-    profitability. CEMATRIX is worth watching as a potential
-    infrastructure-growth story, but its financial performance and
-    valuation deserve careful attention.
-  </p>
-
-  <p>
-    <strong>Ticker:</strong> TSX: CEMX ·
-    <a href="https://finance.yahoo.com/quote/CEMX.V/"
-       target="_blank"
-       rel="noopener noreferrer">
-       Research CEMATRIX ↗
-    </a>
-  </p>
-
-  <p class="disclaimer">
-    StockPilot AI discussion only. This is not a buy or sell
-    recommendation or financial advice.
-  </p>
-</section>
-
+<div class="eyebrow">WEEKLY COMPANY RESEARCH</div>
+<h2>⭐ Stock of the Week: CEMATRIX Corporation (TSX: CEMX)</h2>
+<p>
+CEMATRIX Corporation is an interesting Canadian small-cap company
+specializing in cellular concrete solutions for infrastructure,
+construction and ground stabilization projects. The company has
+demonstrated strong nine-month revenue growth in 2026, reaching
+C$37.9 million, up 16% compared with the same period in 2025.
+It also announced C$43.2 million in new contract awards through
+September 2026. However, investors should note that third-quarter
+revenue declined 22% year over year and adjusted EBITDA fell 60%,
+highlighting the importance of monitoring project timing and
+profitability. CEMATRIX is worth watching as a potential
+infrastructure-growth story, but its financial performance and
+valuation deserve careful attention.
+</p>
+<p>
+<strong>Ticker:</strong> TSX: CEMX ·
+<a href="https://finance.yahoo.com/quote/CEMX.V/" rel="noopener noreferrer" target="_blank">
+Research CEMATRIX ↗
+</a>
+</p>
+<div class="weekly-poll" style="margin:18px 0;text-align:center;">
+<iframe
+src="https://polls.tools/embed/vote/?id=at26rrgx"
+width="100%"
+height="460"
+style="border:0;max-width:640px"
+loading="lazy"
+title="StockPilot weekly stock poll">
+</iframe>
 </div>
-
+<p class="disclaimer">
+StockPilot AI discussion only. This is not a buy or sell
+recommendation or financial advice.
+</p>
+</section>
+</div>
 <!-- MAIN CONTENT -->
-<main id="top" class="container">
-
-  <!-- CRYPTOCURRENCY PICKS -->
-  <section class="crypto-section" id="crypto-picks">
-
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">
-          CRYPTO MARKET · RANKED BY 24-HOUR VOLUME
-        </div>
-
-        <h2>Top 3 Most Traded Cryptocurrencies</h2>
-
-        <p>
-          Automatically ranked by reported 24-hour trading volume
-          in USD. Rankings can change throughout the day.
-        </p>
-      </div>
-    </div>
-
-    <div class="updated" id="cryptoUpdated">
-      Loading cryptocurrency market data…
-    </div>
-
-    <div class="stock-grid" id="cryptoCards">
-      <div class="empty">Loading the top three cryptocurrencies…</div>
-    </div>
-
-    <div class="crypto-note">
-      Crypto prices and volumes can change rapidly.
-      Data is supplied by CoinGecko. This is market information,
-      not investment advice.
-    </div>
-
-  </section>
-
-  <!-- MAIN STOCK PICKS -->
-  <section class="picks-top" id="main-picks">
-
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
-        <h1>Today's Main Stock Picks</h1>
-        <p>
-          Three actively traded stocks selected from the available
-          market-data feed.
-        </p>
-      </div>
-    </div>
-
-    <div class="updated" id="updated">
-      Loading daily market data…
-    </div>
-
-    <div class="stock-grid" id="mainStocks">
-      <div class="empty">Loading main stock picks…</div>
-    </div>
-
-  </section>
-
-  <!-- PENNY STOCK PICKS -->
-  <section class="penny-section" id="penny-picks">
-
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">LOWER-PRICED · HIGHER RISK</div>
-        <h2>Penny Stocks to Watch</h2>
-        <p>
-          Three qualifying stocks priced from US$0.10 to US$10,
-          when available.
-        </p>
-      </div>
-    </div>
-
-    <div class="stock-grid" id="pennyStocks">
-      <div class="empty">Loading penny stock picks…</div>
-    </div>
-
-  </section>
-
-
-
-  <!-- MARKET EXCHANGE COVERAGE -->
-  <section class="market-coverage" id="market-coverage">
-    <div class="eyebrow">NORTH AMERICAN EQUITY MARKETS</div>
-    <h2>Markets in Focus</h2>
-    <p class="market-coverage-intro">
-      StockPilot is being developed to screen eligible companies listed
-      on major US and Canadian exchanges. Explore the four target markets.
-    </p>
-
-    <div class="market-grid">
-      <article class="market-card">
-        <a href="https://www.nyse.com/" target="_blank" rel="noopener noreferrer">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"
-               alt="Facade of the New York Stock Exchange on Wall Street" loading="lazy">
-          <div class="market-card-body">
-            <div class="market-region">United States</div>
-            <h3>NYSE ↗</h3>
-            <p>New York Stock Exchange</p>
-          </div>
-        </a>
-        <small class="market-photo-credit">Photo: Donatingpictures · Wikimedia Commons · CC BY-SA 4.0</small>
-      </article>
-
-      <article class="market-card">
-        <a href="https://www.nasdaq.com/" target="_blank" rel="noopener noreferrer">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"
-               alt="NASDAQ MarketSite studio in Times Square" loading="lazy">
-          <div class="market-card-body">
-            <div class="market-region">United States</div>
-            <h3>NASDAQ ↗</h3>
-            <p>NASDAQ Stock Market</p>
-          </div>
-        </a>
-        <small class="market-photo-credit">Photo: Luis Villa del Campo · Wikimedia Commons · CC BY 2.0</small>
-      </article>
-
-      <article class="market-card">
-        <a href="https://www.tsx.com/" target="_blank" rel="noopener noreferrer">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"
-               alt="Historic Toronto Stock Exchange building on Bay Street" loading="lazy">
-          <div class="market-card-body">
-            <div class="market-region">Canada</div>
-            <h3>TSX ↗</h3>
-            <p>Toronto Stock Exchange</p>
-          </div>
-        </a>
-        <small class="market-photo-credit">Historic exchange building photo: nodomain.cc · Wikimedia Commons · CC BY 2.0</small>
-      </article>
-
-      <article class="market-card">
-        <a href="https://www.tsx.com/en/venture" target="_blank" rel="noopener noreferrer">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"
-               alt="Toronto financial district skyline" loading="lazy">
-          <div class="market-card-body">
-            <div class="market-region">Canada</div>
-            <h3>TSX Venture ↗</h3>
-            <p>TSX Venture Exchange</p>
-          </div>
-        </a>
-        <small class="market-photo-credit">Toronto financial district photo: Gregory Karastergios · Wikimedia Commons · CC0</small>
-      </article>
-    </div>
-
-    <p class="market-coverage-note">
-      <strong>Coverage note:</strong> These are StockPilot's target exchanges,
-      not a claim that every listed security is currently scanned. Actual
-      screening coverage depends on the market-data sources and verified
-      company information available to the daily scanner.
-    </p>
-  </section>
-
-
-  <!-- SELECTION METHODOLOGY -->
-  <section class="method-section" id="selection-methodology">
-
-    <div class="eyebrow">HOW THE DAILY LISTS WORK</div>
-
-    <h2>How StockPilot AI Selects Market Picks</h2>
-
-    <p>
-      StockPilot AI highlights market activity rather than promising
-      investment results. The main stock list and penny-stock list
-      are ranked by reported trading volume within the available
-      actively traded stock-data feed.
-    </p>
-
-    <p>
-      Main-stock candidates are priced above US$10. Penny-stock
-      candidates are priced from US$0.10 to US$10, when qualifying
-      data is available.
-    </p>
-
-    <p>
-      The cryptocurrency list ranks the available coins by reported
-      24-hour trading volume in US dollars. Stock information is
-      supplied by Alpha Vantage and cryptocurrency market information
-      is supplied by CoinGecko.
-    </p>
-
-    <p>
-      Provider coverage, reporting times and data availability can
-      affect the lists. The stock feed is not an exhaustive ranking
-      of every listed security.
-    </p>
-
-    <p>
-      Trading volume measures market activity, not company quality,
-      future performance or suitability for an individual investor.
-      Always verify current information and do your own research.
-    </p>
-
-  </section>
-
-  <!-- FINANCIAL RESOURCES -->
-  <section class="resources-section" id="financial-resources">
-
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">EXPLORE THE MARKETS</div>
-        <h2>Financial Resources</h2>
-        <p>
-          Useful external destinations for market research,
-          charts, company filings and cryptocurrency data.
-        </p>
-      </div>
-    </div>
-
-    <div class="resources-grid">
-
-      <article class="resource-card">
-        <div class="resource-mark">Y!</div>
-        <div class="resource-copy">
-          <h3>Yahoo Finance</h3>
-          <p>Stock quotes, company profiles and market news.</p>
-          <a href="https://finance.yahoo.com/"
-             target="_blank" rel="noopener noreferrer">
-            Explore Yahoo Finance ↗
-          </a>
-        </div>
-      </article>
-
-      <article class="resource-card">
-        <div class="resource-mark">TV</div>
-        <div class="resource-copy">
-          <h3>TradingView</h3>
-          <p>Interactive charts and technical indicators.</p>
-          <a href="https://www.tradingview.com/?aff_id=1174186"
-             target="_blank"
-             rel="sponsored noopener noreferrer">
-            Explore TradingView ↗
-          </a>
-        </div>
-      </article>
-
-      <article class="resource-card">
-        <div class="resource-mark">N</div>
-        <div class="resource-copy">
-          <h3>Nasdaq</h3>
-          <p>Market information, exchange news and listings.</p>
-          <a href="https://www.nasdaq.com/"
-             target="_blank" rel="noopener noreferrer">
-            Visit Nasdaq ↗
-          </a>
-        </div>
-      </article>
-
-      <article class="resource-card">
-        <div class="resource-mark">SEC</div>
-        <div class="resource-copy">
-          <h3>SEC EDGAR</h3>
-          <p>Official US company filings.</p>
-          <a href="https://www.sec.gov/edgar/search/"
-             target="_blank" rel="noopener noreferrer">
-            Search filings ↗
-          </a>
-        </div>
-      </article>
-
-      <article class="resource-card">
-        <div class="resource-mark">CG</div>
-        <div class="resource-copy">
-          <h3>CoinGecko</h3>
-          <p>Cryptocurrency prices and trading-volume rankings.</p>
-          <a href="https://www.coingecko.com/"
-             target="_blank" rel="noopener noreferrer">
-            Explore CoinGecko ↗
-          </a>
-        </div>
-      </article>
-
-      <article class="resource-card">
-        <div class="resource-mark">i</div>
-        <div class="resource-copy">
-          <h3>Investopedia</h3>
-          <p>Educational explanations of investing and markets.</p>
-          <a href="https://www.investopedia.com/"
-             target="_blank" rel="noopener noreferrer">
-            Learn with Investopedia ↗
-          </a>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="crypto-note">
-      These are independent third-party websites.
-      StockPilot AI does not control their content.
-    </p>
-
-  </section>
-
-  <!-- MARKET INSIGHTS -->
-  <section class="visual-intro" id="market-insights">
-
-    <article class="visual-card dark">
-      <div class="visual-art">📊</div>
-      <div class="visual-copy">
-        <div class="eyebrow">YOUR RESEARCH DESK</div>
-        <h2>Clear information. Better questions.</h2>
-        <p>
-          Compare market activity and learn what to investigate
-          before making an investment decision.
-        </p>
-      </div>
-    </article>
-
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features">
-
-    <article class="feature">
-      <div class="feature-art">📈</div>
-      <div>
-        <h3>Follow the Market</h3>
-        <p>Explore daily stock activity and market movements.</p>
-      </div>
-    </article>
-
-    <article class="feature">
-      <div class="feature-art">₿</div>
-      <div>
-        <h3>Explore Crypto</h3>
-        <p>Discover cryptocurrencies ranked by trading volume.</p>
-      </div>
-    </article>
-
-    <article class="feature">
-      <div class="feature-art">🚀</div>
-      <div>
-        <h3>Stay Curious</h3>
-        <p>Keep learning and do your own financial research.</p>
-      </div>
-    </article>
-
-  </section>
-
-  <!-- ABOUT AND DISCUSSION -->
-  <section class="about-discuss">
-
-    <article class="panel" id="about">
-
-      <div class="eyebrow">THE STORY BEHIND THE PROJECT</div>
-
-      <h2>Why I Started StockPilot AI</h2>
-
-      <p>
-        I created StockPilot AI with one simple idea:
-        make daily stock-market research easier to follow.
-      </p>
-
-      <p>
-        The market moves quickly, and finding useful information
-        can take time. I wanted to build a straightforward place
-        where people can explore actively traded stocks, discover
-        penny stocks and review key market information without
-        unnecessary clutter.
-      </p>
-
-      <p>
-        StockPilot AI is an independent project built to make
-        market information easier to access. It is a starting
-        point for research—not a substitute for your own decisions.
-      </p>
-
-    </article>
-
-    <article class="panel" id="discussion">
-
-      <div class="eyebrow">THE STOCKPILOT COMMUNITY</div>
-
-      <h2>Join the Discussion</h2>
-
-      <p>
-        What stocks are you watching? Share your research,
-        questions and market observations with the community.
-      </p>
-
-      <div class="giscus"></div>
-
-      <script src="https://giscus.app/client.js"
-        data-repo="midochamass6699-cmyk/stockpilot-ai"
-        data-repo-id="R_kgDOVhw6Ww"
-        data-category="comments"
-        data-category-id="DIC_kwDOVhw6W84DKfeM"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-      </script>
-
-    </article>
-
-  </section>
-
-  <!-- CONTACT FORM -->
-  <section class="contact-section" id="contact">
-
-    <div class="eyebrow">GET IN TOUCH</div>
-
-    <h2>Contact StockPilot AI</h2>
-
-    <p class="contact-intro">
-      Questions, suggestions or business inquiries?
-      Send us a message.
-    </p>
-
-    <form class="contact-form" id="contactForm">
-
-      <div>
-        <label for="contactName">Your name</label>
-        <input id="contactName" type="text"
-               autocomplete="name" required>
-      </div>
-
-      <div>
-        <label for="contactEmail">Email address</label>
-        <input id="contactEmail" type="email"
-               autocomplete="email" required>
-      </div>
-
-      <div class="full">
-        <label for="contactSubject">Subject</label>
-        <input id="contactSubject" type="text" required>
-      </div>
-
-      <div class="full">
-        <label for="contactMessage">Message</label>
-        <textarea id="contactMessage" required></textarea>
-      </div>
-
-      <button type="submit">SEND MESSAGE</button>
-
-    </form>
-
-    <p class="contact-note">
-      Your email application will open with your message ready
-      to send. You can review it before sending.
-    </p>
-
-  </section>
-
-  <!-- DISCLAIMER -->
-  <div class="disclaimer">
-    <strong>Important:</strong>
-    StockPilot AI provides market information for educational
-    and research purposes only. Picks are selected from the
-    available data feed and do not represent every stock in
-    the market. Prices and volume may be delayed. Nothing on
-    this website is financial advice or a recommendation to
-    buy or sell securities.
-  </div>
-
+<main class="container" id="top">
+<section class="picks-top" id="main-picks">
+<div class="section-head">
+<div>
+<div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
+<h1>Today's Main Stock Picks</h1>
+<p>Three actively traded stocks selected from the available market-data feed.</p>
+</div>
+</div>
+<div class="updated" id="updated">Loading daily market data…</div>
+<div class="stock-grid" id="mainStocks">
+<div class="empty">Loading main stock picks…</div>
+</div>
+</section>
+<section class="penny-section" id="penny-picks">
+<div class="section-head">
+<div>
+<div class="eyebrow">LOWER-PRICED · HIGHER RISK</div>
+<h2>Penny Stocks to Watch</h2>
+<p>Three qualifying stocks priced from US$0.10 to US$10, when available.</p>
+</div>
+</div>
+<div class="stock-grid" id="pennyStocks">
+<div class="empty">Loading penny stock picks…</div>
+</div>
+</section>
+<section class="crypto-section" id="crypto-picks">
+<div class="section-head">
+<div>
+<div class="eyebrow">CRYPTO MARKET · RANKED BY 24-HOUR VOLUME</div>
+<h2>Top 3 Most Traded Cryptocurrencies</h2>
+<p>Automatically ranked by reported 24-hour trading volume in USD. Rankings can change throughout the day.</p>
+</div>
+</div>
+<div class="updated" id="cryptoUpdated">Loading cryptocurrency market data…</div>
+<div class="stock-grid" id="cryptoCards">
+<div class="empty">Loading the top three cryptocurrencies…</div>
+</div>
+<div class="crypto-note">
+Crypto prices and volumes can change rapidly.
+Data is supplied by CoinGecko. This is market information,
+not investment advice.
+</div>
+</section>
+<!-- MARKET EXCHANGE COVERAGE -->
+<section class="market-coverage" id="market-coverage">
+<div class="eyebrow">NORTH AMERICAN EQUITY MARKETS</div>
+<h2>Markets in Focus</h2>
+<p class="market-coverage-intro">
+StockPilot is being developed to screen eligible companies listed
+on major US and Canadian exchanges. Explore the four target markets.
+</p>
+<div class="market-grid">
+<article class="market-card">
+<a href="https://www.nyse.com/" rel="noopener noreferrer" target="_blank">
+<img alt="Facade of the New York Stock Exchange on Wall Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"/>
+<div class="market-card-body">
+<div class="market-region">United States</div>
+<h3>NYSE ↗</h3>
+<p>New York Stock Exchange</p>
+</div>
+</a>
+<small class="market-photo-credit">Photo: Donatingpictures · Wikimedia Commons · CC BY-SA 4.0</small>
+</article>
+<article class="market-card">
+<a href="https://www.nasdaq.com/" rel="noopener noreferrer" target="_blank">
+<img alt="NASDAQ MarketSite studio in Times Square" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"/>
+<div class="market-card-body">
+<div class="market-region">United States</div>
+<h3>NASDAQ ↗</h3>
+<p>NASDAQ Stock Market</p>
+</div>
+</a>
+<small class="market-photo-credit">Photo: Luis Villa del Campo · Wikimedia Commons · CC BY 2.0</small>
+</article>
+<article class="market-card">
+<a href="https://www.tsx.com/" rel="noopener noreferrer" target="_blank">
+<img alt="Historic Toronto Stock Exchange building on Bay Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"/>
+<div class="market-card-body">
+<div class="market-region">Canada</div>
+<h3>TSX ↗</h3>
+<p>Toronto Stock Exchange</p>
+</div>
+</a>
+<small class="market-photo-credit">Historic exchange building photo: nodomain.cc · Wikimedia Commons · CC BY 2.0</small>
+</article>
+<article class="market-card">
+<a href="https://www.tsx.com/en/venture" rel="noopener noreferrer" target="_blank">
+<img alt="Toronto financial district skyline" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"/>
+<div class="market-card-body">
+<div class="market-region">Canada</div>
+<h3>TSX Venture ↗</h3>
+<p>TSX Venture Exchange</p>
+</div>
+</a>
+<small class="market-photo-credit">Toronto financial district photo: Gregory Karastergios · Wikimedia Commons · CC0</small>
+</article>
+</div>
+<p class="market-coverage-note">
+<strong>Coverage note:</strong> These are StockPilot's target exchanges,
+not a claim that every listed security is currently scanned. Actual
+screening coverage depends on the market-data sources and verified
+company information available to the daily scanner.
+</p>
+</section>
+<!-- SELECTION METHODOLOGY -->
+<section class="method-section" id="selection-methodology">
+<div class="eyebrow">HOW THE DAILY LISTS WORK</div>
+<h2>How StockPilot AI Selects Market Picks</h2>
+<p>
+StockPilot AI highlights market activity rather than promising
+investment results. The main stock list and penny-stock list
+are ranked by reported trading volume within the available
+actively traded stock-data feed.
+</p>
+<p>
+Main-stock candidates are priced above US$10. Penny-stock
+candidates are priced from US$0.10 to US$10, when qualifying
+data is available.
+</p>
+<p>
+The cryptocurrency list ranks the available coins by reported
+24-hour trading volume in US dollars. Stock information is
+supplied by Alpha Vantage and cryptocurrency market information
+is supplied by CoinGecko.
+</p>
+<p>
+Provider coverage, reporting times and data availability can
+affect the lists. The stock feed is not an exhaustive ranking
+of every listed security.
+</p>
+<p>
+Trading volume measures market activity, not company quality,
+future performance or suitability for an individual investor.
+Always verify current information and do your own research.
+</p>
+</section>
+<!-- FINANCIAL RESOURCES -->
+<section class="resources-section" id="financial-resources">
+<div class="section-head">
+<div>
+<div class="eyebrow">EXPLORE THE MARKETS</div>
+<h2>Financial Resources</h2>
+<p>Useful external destinations for market research, charts, company filings and cryptocurrency data.</p>
+</div>
+</div>
+<div class="resources-grid">
+<article class="resource-card">
+<div class="resource-mark">Y!</div>
+<div class="resource-copy">
+<h3>Yahoo Finance</h3>
+<p>Stock quotes, company profiles and market news.</p>
+<a href="https://finance.yahoo.com/" rel="noopener noreferrer" target="_blank">Explore Yahoo Finance ↗</a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">TV</div>
+<div class="resource-copy">
+<h3>TradingView</h3>
+<p>Interactive charts and technical indicators.</p>
+<a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">Explore TradingView ↗</a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">N</div>
+<div class="resource-copy">
+<h3>Nasdaq</h3>
+<p>Market information, exchange news and listings.</p>
+<a href="https://www.nasdaq.com/" rel="noopener noreferrer" target="_blank">Visit Nasdaq ↗</a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">SEC</div>
+<div class="resource-copy">
+<h3>SEC EDGAR</h3>
+<p>Official US company filings.</p>
+<a href="https://www.sec.gov/edgar/search/" rel="noopener noreferrer" target="_blank">Search filings ↗</a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">CG</div>
+<div class="resource-copy">
+<h3>CoinGecko</h3>
+<p>Cryptocurrency prices and trading-volume rankings.</p>
+<a href="https://www.coingecko.com/" rel="noopener noreferrer" target="_blank">Explore CoinGecko ↗</a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">i</div>
+<div class="resource-copy">
+<h3>Investopedia</h3>
+<p>Educational explanations of investing and markets.</p>
+<a href="https://www.investopedia.com/" rel="noopener noreferrer" target="_blank">Learn with Investopedia ↗</a>
+</div>
+</article>
+</div>
+<p class="crypto-note">
+These are independent third-party websites.
+StockPilot AI does not control their content.
+</p>
+</section>
+<!-- MARKET INSIGHTS -->
+<section class="visual-intro" id="market-insights">
+<article class="visual-card dark">
+<div class="visual-art">📊</div>
+<div class="visual-copy">
+<div class="eyebrow">YOUR RESEARCH DESK</div>
+<h2>Clear information. Better questions.</h2>
+<p>
+Compare market activity and learn what to investigate
+before making an investment decision.
+</p>
+</div>
+</article>
+</section>
+<!-- FEATURES -->
+<section class="features">
+<article class="feature">
+<div class="feature-art">📈</div>
+<div>
+<h3>Follow the Market</h3>
+<p>Explore daily stock activity and market movements.</p>
+</div>
+</article>
+<article class="feature">
+<div class="feature-art">₿</div>
+<div>
+<h3>Explore Crypto</h3>
+<p>Discover cryptocurrencies ranked by trading volume.</p>
+</div>
+</article>
+<article class="feature">
+<div class="feature-art">🚀</div>
+<div>
+<h3>Stay Curious</h3>
+<p>Keep learning and do your own financial research.</p>
+</div>
+</article>
+</section>
+<!-- ABOUT AND DISCUSSION -->
+<section class="about-discuss">
+<article class="panel" id="about">
+<div class="eyebrow">THE STORY BEHIND THE PROJECT</div>
+<h2>Why I Started StockPilot AI</h2>
+<p>
+I created StockPilot AI with one simple idea:
+make daily stock-market research easier to follow.
+</p>
+<p>
+The market moves quickly, and finding useful information
+can take time. I wanted to build a straightforward place
+where people can explore actively traded stocks, discover
+penny stocks and review key market information without
+unnecessary clutter.
+</p>
+<p>
+StockPilot AI is an independent project built to make
+market information easier to access. It is a starting
+point for research—not a substitute for your own decisions.
+</p>
+</article>
+<article class="panel" id="discussion">
+<div class="eyebrow">THE STOCKPILOT COMMUNITY</div>
+<h2>Join the Discussion</h2>
+<p>
+What stocks are you watching? Share your research,
+questions and market observations with the community.
+</p>
+<div class="giscus"></div>
+<script async="" crossorigin="anonymous" data-category="comments" data-category-id="DIC_kwDOVhw6W84DKfeM" data-emit-metadata="0" data-input-position="top" data-lang="en" data-mapping="pathname" data-reactions-enabled="1" data-repo="midochamass6699-cmyk/stockpilot-ai" data-repo-id="R_kgDOVhw6Ww" data-strict="0" data-theme="light" src="https://giscus.app/client.js">
+</script>
+</article>
+</section>
+<!-- CONTACT FORM -->
+<section class="contact-section" id="contact">
+<div class="eyebrow">GET IN TOUCH</div>
+<h2>Contact StockPilot AI</h2>
+<p class="contact-intro">Questions, suggestions or business inquiries? Send us a message.</p>
+<form class="contact-form" id="contactForm">
+<div>
+<label for="contactName">Your name</label>
+<input autocomplete="name" id="contactName" required="" type="text"/>
+</div>
+<div>
+<label for="contactEmail">Email address</label>
+<input autocomplete="email" id="contactEmail" required="" type="email"/>
+</div>
+<div class="full">
+<label for="contactSubject">Subject</label>
+<input id="contactSubject" required="" type="text"/>
+</div>
+<div class="full">
+<label for="contactMessage">Message</label>
+<textarea id="contactMessage" required=""></textarea>
+</div>
+<button type="submit">SEND MESSAGE</button>
+</form>
+<p class="contact-note">
+Your email application will open with your message ready
+to send. You can review it before sending.
+</p>
+</section>
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+<strong>Important:</strong>
+StockPilot AI provides market information for educational
+and research purposes only. Picks are selected from the
+available data feed and do not represent every stock in
+the market. Prices and volume may be delayed. Nothing on
+this website is financial advice or a recommendation to
+buy or sell securities.
+</div>
 </main>
-
 <!-- FOOTER -->
 <footer>
-  <strong>STOCKPILOT AI</strong>
-
-  <p>
-    Free daily stock research · Market activity · Investor discussion
-  </p>
-
-  <p>
-    © <span id="year"></span> StockPilot AI ·
-    For educational purposes only · Not financial advice
-  </p>
-
-  <a href="#top">Back to top ↑</a>
-
+<strong>STOCKPILOT AI</strong>
+<p>Free daily stock research · Market activity · Investor discussion</p>
+<p>
+© <span id="year"></span> StockPilot AI ·
+For educational purposes only · Not financial advice
+</p>
+<a href="#top">Back to top ↑</a>
 <!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href='https://counter.gratis/?language=fr&ID=de43d061' target='_top'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==' id='cg_de43d061' alt='Free Counter' title='Counter Statistics'><noscript><img src='https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180' alt='Free Counter' title='Counter Statistics'></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
+<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" id="cg_de43d061" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
 <!-- Compteur de visiteurs https://counter.gratis ENDE -->
-
-
 </footer>
-
 <!-- WEBSITE JAVASCRIPT -->
 <script>
-
 /* SAFE HTML TEXT */
 function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, function(c) {
@@ -1480,113 +1257,70 @@ function esc(value) {
     }[c];
   });
 }
-
 /* CRYPTO CARD */
 function renderCrypto(c,index) {
-
   const price = Number(c.current_price);
   const volume = Number(c.total_volume);
   const change = Number(c.price_change_percentage_24h);
-
   const validChange = Number.isFinite(change);
-
   const changeClass = validChange
     ? (change >= 0 ? 'positive' : 'negative')
     : '';
-
   const changeText = validChange
     ? `${change > 0 ? '+' : ''}${change.toFixed(2)}% (24h)`
     : '24h change unavailable';
-
   const priceText = Number.isFinite(price)
     ? '$' + price.toLocaleString('en-US', {
         minimumFractionDigits:2,
         maximumFractionDigits:price < 1 ? 6 : 2
       })
     : 'Price unavailable';
-
   const volumeText = Number.isFinite(volume)
     ? '$' + volume.toLocaleString('en-US', {
         maximumFractionDigits:0
       })
     : 'Not provided';
-
   const image = c.image
     ? `<img class="crypto-logo" src="${esc(c.image)}" alt="" loading="lazy">`
     : '';
-
   const symbol = esc(String(c.symbol || '').toUpperCase());
-
   const url = 'https://www.coingecko.com/en/coins/'
     + encodeURIComponent(c.id || '');
-
   return `
     <article class="stock-card crypto-card">
-
-      <span class="crypto-rank">
-        #${index+1} BY 24H VOLUME
-      </span>
-
+      <span class="crypto-rank">#${index+1} BY 24H VOLUME</span>
       ${image}
-
       <h3>${esc(c.name || symbol)}</h3>
-
       <div class="ticker">
-        <a class="ticker-symbol-link"
-           href="${url}"
-           target="_blank"
-           rel="noopener noreferrer">
-          ${symbol}
-        </a>
+        <a class="ticker-symbol-link" href="${url}" target="_blank" rel="noopener noreferrer">${symbol}</a>
         · CRYPTO
       </div>
-
       <div class="price">${priceText}</div>
-
-      <div class="change ${changeClass}">
-        ${changeText}
-      </div>
-
+      <div class="change ${changeClass}">${changeText}</div>
       <div class="card-meta">
         <strong>24h trading volume:</strong> ${volumeText}
       </div>
-
-      <a class="stock-link"
-         href="${url}"
-         target="_blank"
-         rel="noopener noreferrer">
+      <a class="stock-link" href="${url}" target="_blank" rel="noopener noreferrer">
         View ${symbol} market details ↗
       </a>
-
     </article>
   `;
 }
-
 /* LOAD CRYPTO */
 async function loadCrypto() {
-
   const cards = document.getElementById('cryptoCards');
   const updated = document.getElementById('cryptoUpdated');
-
   try {
-
     const url =
       'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false';
-
-    const response = await fetch(url, {
-      cache:'no-store'
-    });
-
+    const response = await fetch(url, {cache:'no-store'});
     if (!response.ok) {
       throw new Error('Crypto provider returned HTTP ' + response.status);
     }
-
     const data = await response.json();
-
     if (!Array.isArray(data) || data.length === 0) {
       throw new Error('No cryptocurrency results returned.');
     }
-
     const ranked = data
       .slice()
       .sort((a,b) =>
@@ -1594,27 +1328,20 @@ async function loadCrypto() {
         (Number(a.total_volume) || 0)
       )
       .slice(0,3);
-
     cards.innerHTML = ranked
       .map((coin,i) => renderCrypto(coin,i))
       .join('');
-
     updated.textContent =
       'Last updated: ' + new Date().toLocaleString() +
       ' · Ranked by 24-hour USD trading volume · Source: CoinGecko';
-
   } catch(error) {
-
     cards.innerHTML =
       '<div class="empty">Live cryptocurrency data is temporarily unavailable. Please refresh later.</div>';
-
     updated.textContent =
       'Cryptocurrency data temporarily unavailable.';
-
     console.error('StockPilot crypto data:',error);
   }
 }
-
 /* RENDER STOCK */
 function renderStock(s,penny) {
   const ch = Number(s.change_percent);
@@ -1622,12 +1349,10 @@ function renderStock(s,penny) {
   const price = Number(s.price);
   const volume = Number(s.volume);
   const score = Number(s.score);
-
   const cls = valid ? (ch >= 0 ? 'positive' : 'negative') : '';
   const change = valid
     ? `${ch > 0 ? '+' : ''}${ch.toFixed(2)}% today`
     : 'Daily change unavailable';
-
   const currency = s.currency === 'CAD' ? 'CA$' : 'US$';
   const priceText = Number.isFinite(price) && price > 0
     ? currency + price.toLocaleString('en-CA', {
@@ -1635,15 +1360,12 @@ function renderStock(s,penny) {
         maximumFractionDigits: price < 1 ? 4 : 2
       })
     : 'Price unavailable';
-
   const scoreText = Number.isFinite(score)
     ? `${score.toFixed(1)} / 100`
     : 'Not available';
-
   const ticker = esc(s.ticker || '');
   const link = 'https://finance.yahoo.com/quote/'
     + encodeURIComponent(s.ticker || '');
-
   return `
     <article class="stock-card ${penny ? 'penny' : ''}">
       <h3>${esc(s.company || s.ticker || 'Unknown company')}</h3>
@@ -1655,10 +1377,8 @@ function renderStock(s,penny) {
         ${s.exchange ? ' · ' + esc(s.exchange) : ''}
         ${s.market ? ' · ' + esc(s.market) : ''}
       </div>
-
       <div class="price">${priceText}</div>
       <div class="change ${cls}">${change}</div>
-
       <div class="card-meta">
         <strong>Momentum score:</strong> ${scoreText}
         <br>
@@ -1674,7 +1394,6 @@ function renderStock(s,penny) {
         <strong>Risk:</strong>
         ${esc(s.risk || (penny ? 'High' : 'Review carefully'))}
       </div>
-
       <a class="stock-link"
          href="${link}"
          target="_blank"
@@ -1686,199 +1405,148 @@ function renderStock(s,penny) {
 }
 /* LOAD DAILY STOCK PICKS */
 async function loadStocks() {
-
   const main = document.getElementById('mainStocks');
   const penny = document.getElementById('pennyStocks');
   const updated = document.getElementById('updated');
-
   try {
-
     const response = await fetch(
       './data/picks.json?t=' + Date.now(),
       {cache:'no-store'}
     );
-
     if (!response.ok) {
       throw new Error('Market data file returned HTTP ' + response.status);
     }
-
     const data = await response.json();
-
     if (data.status === 'error') {
       throw new Error(data.error || 'The latest stock update failed.');
     }
-
     const mainPicks = Array.isArray(data.main)
       ? data.main
       : [];
-
     const pennyPicks = Array.isArray(data.penny)
       ? data.penny
       : [];
-
     const mainTickers = new Set(
       mainPicks.map(stock => stock.ticker)
     );
-
     const filteredPenny = pennyPicks.filter(
       stock => !mainTickers.has(stock.ticker)
     );
-
     main.innerHTML = mainPicks.length
       ? mainPicks.slice(0,3)
           .map(stock => renderStock(stock,false))
           .join('')
       : '<div class="empty">No verified main stock picks are available right now.</div>';
-
     penny.innerHTML = filteredPenny.length
       ? filteredPenny.slice(0,3)
           .map(stock => renderStock(stock,true))
           .join('')
       : '<div class="empty">No qualifying penny stock picks are available right now.</div>';
-
     const stamp = data.updated_at || data.generated_at_utc;
-
     updated.textContent =
       'Last updated: ' +
       (stamp ? new Date(stamp).toLocaleString() : 'date unavailable') +
       ((data.source || data.data_source)
         ? ' · Data source: ' + (data.source || data.data_source)
         : '');
-
     if (mainPicks.length !== 3 || filteredPenny.length !== 3) {
       updated.textContent +=
         ' · Fewer than six qualifying picks are currently available.';
     }
-
   } catch(error) {
-
     main.innerHTML =
       '<div class="empty">Main stock data is temporarily unavailable. Please check back later.</div>';
-
     penny.innerHTML =
       '<div class="empty">Penny stock data is temporarily unavailable. Please check back later.</div>';
-
     updated.textContent =
       'Market data temporarily unavailable.';
-
     console.error('StockPilot stocks:',error);
   }
 }
-
 /* CONTACT FORM */
 document.getElementById('contactForm')
   .addEventListener('submit',function(event) {
-
     event.preventDefault();
-
     const recipient = 'midochamass6699@gmail.com';
-
     const name = document.getElementById('contactName').value.trim();
     const email = document.getElementById('contactEmail').value.trim();
     const subject = document.getElementById('contactSubject').value.trim();
     const message = document.getElementById('contactMessage').value.trim();
-
     const body =
       'Name: ' + name +
       '\nEmail: ' + email +
       '\n\n' + message;
-
     const mailto =
       'mailto:' + recipient +
       '?subject=' + encodeURIComponent(subject) +
       '&body=' + encodeURIComponent(body);
-
     window.location.href = mailto;
 });
-
 /* START WEBSITE */
 document.getElementById('year').textContent =
   new Date().getFullYear();
-
 loadCrypto();
 loadStocks();
-
 /* AUTOMATIC REFRESH */
 setInterval(loadCrypto,5 * 60 * 1000);
 setInterval(loadStocks,15 * 60 * 1000);
-
 </script>
-
 <script>
 (() => {
   const API_URL = "https://script.google.com/macros/s/AKfycbyv3QaqN1X035ynu1ChQjigpbbXAHQf-UFcitZmJGQuIwIOW2Tx93u96qrgJ-ZPH71d/exec";
-
   const box = document.getElementById("weekly-vote");
   if (!box) return;
-
   const symbol = box.dataset.symbol;
   const agreeButton = document.getElementById("weekly-agree");
   const disagreeButton = document.getElementById("weekly-disagree");
   const agreeCount = document.getElementById("weekly-agree-count");
   const disagreeCount = document.getElementById("weekly-disagree-count");
   const message = document.getElementById("weekly-vote-message");
-
   let storageKey = "";
-
   function loadVotes() {
     agreeButton.disabled = true;
     disagreeButton.disabled = true;
-
     const script = document.createElement("script");
-
     window.stockPilotVotesCallback = function(data) {
       script.remove();
       delete window.stockPilotVotesCallback;
-
       if (!data || !data.ok) {
         message.textContent = "Unable to load voting results.";
         return;
       }
-
       agreeCount.textContent = data.agree;
       disagreeCount.textContent = data.disagree;
-
       storageKey =
         "stockpilot-weekly-vote:" + symbol + ":" + data.weekKey;
-
       let alreadyVoted = false;
-
       try {
         alreadyVoted = Boolean(localStorage.getItem(storageKey));
       } catch (error) {
         message.textContent = "Voting storage is unavailable.";
         return;
       }
-
       agreeButton.disabled = alreadyVoted;
       disagreeButton.disabled = alreadyVoted;
-
       message.textContent = alreadyVoted
         ? "You have already voted this week."
         : "Cast your vote!";
     };
-
     script.onerror = function() {
       message.textContent = "Unable to connect to the voting service.";
       script.remove();
     };
-
     script.src =
       API_URL +
       "?symbol=" + encodeURIComponent(symbol) +
       "&callback=stockPilotVotesCallback" +
       "&_=" + Date.now();
-
     document.head.appendChild(script);
   }
-
   async function castVote(vote) {
     if (!storageKey || localStorage.getItem(storageKey)) return;
-
     agreeButton.disabled = true;
     disagreeButton.disabled = true;
     message.textContent = "Submitting your vote...";
-
     try {
       await fetch(API_URL, {
         method: "POST",
@@ -1888,10 +1556,8 @@ setInterval(loadStocks,15 * 60 * 1000);
           vote: vote
         })
       });
-
       localStorage.setItem(storageKey, vote);
       message.textContent = "Thank you! Your vote has been recorded.";
-
       setTimeout(loadVotes, 1200);
     } catch (error) {
       message.textContent = "Vote could not be submitted. Please try again.";
@@ -1899,18 +1565,13 @@ setInterval(loadStocks,15 * 60 * 1000);
       disagreeButton.disabled = false;
     }
   }
-
   agreeButton.addEventListener("click", () => castVote("agree"));
   disagreeButton.addEventListener("click", () => castVote("disagree"));
-
   loadVotes();
 })();
 </script>
-
-  <!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href='https://counter.gratis/?language=fr&ID=de43d061' target='_top'><img src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==' id='cg_de43d061' alt='Free Counter' title='Counter Statistics'><noscript><img src='https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180' alt='Free Counter' title='Counter Statistics'></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
+<!-- Compteur de visiteurs https://counter.gratis BEGINN -->
+<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" id="cg_de43d061" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
 <!-- Compteur de visiteurs https://counter.gratis ENDE -->
-
-  
 </body>
 </html>
