@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "updated_at": "2026-11-06T02:51:11.149412+00:00",
-  "snapshot_time": "2026-11-06",
+  "updated_at": "2026-11-07T00:46:54.247582+00:00",
+  "snapshot_time": "2026-11-07",
   "data_source": "Alpha Vantage TOP_GAINERS_LOSERS",
   "data_note": "Ranked by reported trading volume among stocks included in Alpha Vantage's most_actively_traded feed. The feed may not represent every US-listed stock.",
   "main": [
@@ -13,7 +13,7 @@
       "price": 40.755,
       "change_percent": -38.88,
       "volume": 498970120,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -25,7 +25,7 @@
       "price": 182.29,
       "change_percent": -8.91,
       "volume": 254776488,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -37,7 +37,7 @@
       "price": 52.215,
       "change_percent": -10.39,
       "volume": 225645590,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     }
@@ -51,7 +51,7 @@
       "price": 0.6,
       "change_percent": 213.48,
       "volume": 699169363,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -63,7 +63,7 @@
       "price": 0.1581,
       "change_percent": 48.45,
       "volume": 351946908,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -75,7 +75,7 @@
       "price": 3.0602,
       "change_percent": -43.64,
       "volume": 222073318,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     }
@@ -89,7 +89,7 @@
       "price": 40.755,
       "change_percent": -38.88,
       "volume": 498970120,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -101,7 +101,7 @@
       "price": 182.29,
       "change_percent": -8.91,
       "volume": 254776488,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -113,7 +113,7 @@
       "price": 52.215,
       "change_percent": -10.39,
       "volume": 225645590,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -125,7 +125,7 @@
       "price": 0.6,
       "change_percent": 213.48,
       "volume": 699169363,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -137,7 +137,7 @@
       "price": 0.1581,
       "change_percent": 48.45,
       "volume": 351946908,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     },
@@ -149,7 +149,7 @@
       "price": 3.0602,
       "change_percent": -43.64,
       "volume": 222073318,
-      "price_date": "2026-11-06",
+      "price_date": "2026-11-07",
       "reason": "Selected based on reported trading volume among stocks returned by Alpha Vantage.",
       "risk": "Market risk applies. Trading volume does not predict future performance."
     }
