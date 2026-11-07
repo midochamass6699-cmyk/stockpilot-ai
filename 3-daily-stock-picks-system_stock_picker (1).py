@@ -1,96 +1,122 @@
-#!/usr/bin/env python3
-"""
-StockPilot daily momentum screener.
-
-Keeps the existing GitHub Pages contract:
-  output: docs/data/picks.json
-  keys: status, updated_at, data_source, main, penny, picks, watchlist, errors
-
-Data provider: Alpha Vantage TIME_SERIES_DAILY.
-The script scans a fixed, disclosed US + Canadian candidate universe.
-It does not claim to scan every listed security in either market.
-"""
-
-import json
-import math
-import os
-import sys
-import time
-from datetime import datetime, timezone
-from pathlib import Path
-from statistics import pstdev
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
-
-API_KEY = os.environ.get("ALPHAVANTAGE_API_KEY", "").strip()
-OUTPUT = Path(os.environ.get("PICKS_OUTPUT", "docs/data/picks.json"))
-
-# Keep this at or below the provider's available daily request allowance.
-# One daily time-series request is made per symbol.
-MAIN_UNIVERSE = [
-    ("MSFT", "Microsoft", "US", "Technology", "NASDAQ", "USD"),
-    ("NVDA", "NVIDIA", "US", "Semiconductors", "NASDAQ", "USD"),
-    ("AMZN", "Amazon", "US", "Consumer Discretionary", "NASDAQ", "USD"),
-    ("GOOGL", "Alphabet", "US", "Communication Services", "NASDAQ", "USD"),
-    ("META", "Meta Platforms", "US", "Communication Services", "NASDAQ", "USD"),
-    ("AVGO", "Broadcom", "US", "Semiconductors", "NASDAQ", "USD"),
-    ("JPM", "JPMorgan Chase", "US", "Financials", "NYSE", "USD"),
-    ("COST", "Costco", "US", "Consumer Staples", "NASDAQ", "USD"),
-    ("LLY", "Eli Lilly", "US", "Healthcare", "NYSE", "USD"),
-    ("KO", "Coca-Cola", "US", "Consumer Staples", "NYSE", "USD"),
-    ("SHOP.TRT", "Shopify", "Canada", "Technology", "TSX", "CAD"),
-    ("RY.TRT", "Royal Bank of Canada", "Canada", "Financials", "TSX", "CAD"),
-    ("TD.TRT", "Toronto-Dominion Bank", "Canada", "Financials", "TSX", "CAD"),
-    ("CNR.TRT", "Canadian National Railway", "Canada", "Industrials", "TSX", "CAD"),
-    ("ENB.TRT", "Enbridge", "Canada", "Energy", "TSX", "CAD"),
-]
-
-PENNY_UNIVERSE = [
-    ("SNDL", "SNDL Inc.", "US", "Cannabis", "NASDAQ", "USD"),
-    ("ACB", "Aurora Cannabis", "US", "Cannabis", "NASDAQ", "USD"),
-    ("TLRY", "Tilray Brands", "US", "Cannabis", "NASDAQ", "USD"),
-    ("BITF", "Bitfarms", "US", "Technology", "NASDAQ", "USD"),
-    ("OPEN", "Opendoor Technologies", "US", "Real Estate", "NASDAQ", "USD"),
-    ("HIVE.TRT", "HIVE Digital Technologies", "Canada", "Technology", "TSX", "CAD"),
-    ("BITF.TRT", "Bitfarms", "Canada", "Technology", "TSX", "CAD"),
-    ("BTE.TRT", "Baytex Energy", "Canada", "Energy", "TSX", "CAD"),
-    ("AC.TRT", "Air Canada", "Canada", "Industrials", "TSX", "CAD"),
-    ("TVE.TRT", "Tamarack Valley Energy", "Canada", "Energy", "TSX", "CAD"),
-]
-
-PENNY_MAX_PRICE = float(os.environ.get("PENNY_MAX_PRICE", "10.00"))
-PENNY_MIN_PRICE = 0.05
-MAIN_MIN_AVG_DOLLAR_VOLUME = 1_000_000
-PENNY_MIN_AVG_DOLLAR_VOLUME = 100_000
-REQUEST_DELAY = float(os.environ.get("REQUEST_DELAY_SECONDS", "12.5"))
-MIN_HISTORY = 55
+        "sector": meta["sector"],
+        "currency": meta["currency"],
+        "quote_time": m["price_date"] + " (daily close)",
+        "reason": "; ".join(reasons or ["highest momentum score in the screened candidate pool"]) + ".",
+        "risk": "; ".join(risks) + ".",
+        **m,
+    }
 
 
-def clamp(value, low=0.0, high=100.0):
-    return max(low, min(high, value))
+def eligible(stock, penny=False):
+    if stock["return_20d"] <= 0 or not stock["above_20day_average"]:
+        return False
+    if penny:
+        return (PENNY_MIN_PRICE <= stock["price"] <= PENNY_MAX_PRICE
+                and stock["average_dollar_volume_20d"] >= PENNY_MIN_AVG_DOLLAR_VOLUME
+                and stock["average_volume_20d"] >= 50_000)
+    return stock["price"] > PENNY_MAX_PRICE and stock["average_dollar_volume_20d"] >= MAIN_MIN_AVG_DOLLAR_VOLUME
 
 
-def pct_change(new, old):
-    return ((new / old) - 1.0) * 100.0 if old else 0.0
+def choose_diversified(ranked, count=3):
+    chosen, markets, sectors = [], {}, {}
+    for stock in ranked:
+        if markets.get(stock["market"], 0) >= 2 or sectors.get(stock["sector"], 0) >= 1:
+            continue
+        chosen.append(stock)
+        markets[stock["market"]] = markets.get(stock["market"], 0) + 1
+        sectors[stock["sector"]] = sectors.get(stock["sector"], 0) + 1
+        if len(chosen) == count:
+            return chosen
+    for stock in ranked:
+        if stock not in chosen:
+            chosen.append(stock)
+        if len(chosen) == count:
+            break
+    return chosen
 
 
-def fetch_daily(symbol):
-    params = urlencode({
-        "function": "TIME_SERIES_DAILY",
-        "symbol": symbol,
-        "outputsize": "compact",
-        "apikey": API_KEY,
-    })
-    url = "https://www.alphavantage.co/query?" + params
-    request = Request(url, headers={"User-Agent": "StockPilotMomentum/2.0"})
-    with urlopen(request, timeout=30) as response:
-        payload = json.loads(response.read().decode("utf-8"))
+def main():
+    print("StockPilot Free Momentum v3 — public US + Canada candidate screeners")
+    universe, universe_errors, screeners_ok = build_universe()
+    all_meta = universe.get("US", []) + universe.get("Canada", [])
+    # Remove duplicate symbols while preserving first occurrence.
+    unique = {x["ticker"]: x for x in all_meta}
+    all_meta = list(unique.values())
+    print(f"Screeners responding: {screeners_ok}/{len(SCREENER_IDS) * 2}")
+    print(f"Candidates queued: {len(all_meta)} (US {len(universe.get('US', []))}; Canada {len(universe.get('Canada', []))})")
+    if len(all_meta) < 20:
+        sys.exit("ERROR: Too few candidates returned by public screeners; existing picks.json left unchanged.")
 
-    key = "Time Series (Daily)"
-    if key not in payload:
-        message = (
-            payload.get("Note")
-            or payload.get("Information")
-            or payload.get("Error Message")
-            or "No daily data returned"
-        )
+    histories, history_errors = fetch_histories([x["ticker"] for x in all_meta])
+    results = []
+    meta_by_symbol = {x["ticker"]: x for x in all_meta}
+    for symbol, frame in histories.items():
+        try:
+            results.append(analyze(meta_by_symbol[symbol], frame))
+        except Exception as exc:
+            history_errors.append(f"{symbol}: analysis failed: {exc}")
+
+    main_ranked = sorted([x for x in results if eligible(x, False)], key=lambda x: x["score"], reverse=True)
+    penny_ranked = sorted([x for x in results if eligible(x, True)], key=lambda x: x["score"], reverse=True)
+    main_picks = choose_diversified(main_ranked, 3)
+    selected = {x["ticker"] for x in main_picks}
+    penny_ranked = [x for x in penny_ranked if x["ticker"] not in selected]
+    penny_picks = choose_diversified(penny_ranked, 3)
+
+    if len(main_picks) < 3:
+        sys.exit("ERROR: Fewer than 3 main stocks passed the filters; existing picks.json left unchanged.")
+    for stock in penny_picks:
+        stock["risk"] = "HIGH RISK — penny-stock volatility. " + stock["risk"]
+
+    now = datetime.now(timezone.utc)
+    output = {
+        "status": "ok",
+        "updated_at": now.isoformat(),
+        "snapshot_time": now.date().isoformat(),
+        "data_source": "Yahoo Finance public screeners + Yahoo Finance daily historical prices (via yfinance)",
+        "data_note": (
+            "Free, broad candidate scan from public US and Canadian activity/gainer screeners; "
+            "not an exhaustive scan of every listed security. End-of-day history may be delayed. "
+            "Yahoo endpoints are unofficial and can be throttled or changed. Prices are in local "
+            "trading currencies (USD for US, CAD for Canada)."
+        ),
+        "strategy": (
+            "Momentum score 0–100: 10% 5-day return, 30% 20-day return, 25% 50-day return, "
+            "20% relative volume, 15% trend alignment; deductions for elevated RSI and volatility. "
+            "Requires positive 20-day momentum and price above the 20-day average."
+        ),
+        "universe": {
+            "markets": ["US", "Canada"],
+            "candidate_sources": list(SCREENER_IDS),
+            "us_candidates_queued": len(universe.get("US", [])),
+            "canada_candidates_queued": len(universe.get("Canada", [])),
+            "unique_candidates_queued": len(all_meta),
+            "history_symbols_returned": len(histories),
+            "penny_price_cap_local_currency": PENNY_MAX_PRICE,
+            "exhaustive_market_scan": False,
+        },
+        "main": main_picks,
+        "penny": penny_picks,
+        "picks": main_picks,
+        "watchlist": main_ranked,
+        "penny_watchlist": penny_ranked,
+        "main_candidates_scanned": len(results),
+        "main_candidates_eligible": len(main_ranked),
+        "penny_candidates_scanned": len(results),
+        "penny_candidates_eligible": len(penny_ranked),
+        "errors": universe_errors + history_errors,
+        "penny_errors": [],
+    }
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    temp = OUTPUT.with_suffix(OUTPUT.suffix + ".tmp")
+    temp.write_text(json.dumps(output, indent=2), encoding="utf-8")
+    temp.replace(OUTPUT)
+    print(f"SUCCESS: {len(main_picks)}/3 main picks; {len(penny_picks)}/3 penny picks")
+    print(f"History downloaded for {len(histories)}/{len(all_meta)} candidates")
+    print(f"Output: {OUTPUT}")
+    if len(penny_picks) < 3:
+        print("WARNING: fewer than 3 penny stocks qualified; no picks were fabricated.")
+
+
+if __name__ == "__main__":
+    main()
