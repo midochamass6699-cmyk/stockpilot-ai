@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>StockPilot AI | Daily Stock Picks &amp; Top Cryptocurrencies</title>
-<meta content="Discover actively traded stocks, penny stocks and cryptocurrencies. Free daily market information, trading volume rankings and financial research." name="description"/>
+<title>Daily Stock Picks, Penny Stocks &amp; Crypto | StockPilot AI</title>
+<meta content="Explore daily stock picks, penny stocks to watch and cryptocurrency rankings by 24-hour volume. Free stock market research for your own decisions." name="description"/>
 <meta content="StockPilot AI" name="author"/>
 <meta content="index,follow" name="robots"/>
 <link href="https://technofront.org/" rel="canonical"/>
@@ -12,8 +12,8 @@
 <meta content="#07111F" name="theme-color"/>
 <meta content="en_CA" property="og:locale"/>
 <meta content="StockPilot AI" property="og:site_name"/>
-<meta content="StockPilot AI - Daily Stock Picks" property="og:title"/>
-<meta content="Free daily stock and cryptocurrency market research." property="og:description"/>
+<meta content="Daily Stock Picks, Penny Stocks &amp; Crypto | StockPilot AI" property="og:title"/>
+<meta content="Free daily stock market research, actively traded stocks, penny stocks to watch and cryptocurrency volume rankings." property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://technofront.org/" property="og:url"/>
 <meta content="https://technofront.org/assets/stockpilot-social-preview.png" property="og:image"/>
@@ -1338,6 +1338,42 @@ footer a { color:#8AB4FF !important; }
   .broker-cfd-card { max-width:none; }
 }
 
+
+/* SEO INTRO AND FAQ: VISIBLE, READABLE CONTENT */
+.seo-intro {
+  width: min(1200px, calc(100% - 36px));
+  margin: 16px auto 6px;
+  padding: 17px 20px;
+  border-left: 4px solid #2563eb;
+  border-radius: 9px;
+  background: #f2f6fc;
+  color: #152238;
+}
+.seo-intro-inner {max-width: 980px; margin: 0 auto;}
+.seo-intro h1 {
+  margin: 0 0 7px;
+  color: #10294b;
+  font-size: clamp(22px, 3vw, 30px);
+  line-height: 1.2;
+  font-weight: 850;
+}
+.seo-intro p {margin: 0; color: #40516a; font-size: 14px; line-height: 1.65;}
+.seo-faq {
+  margin: 28px 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: #17243a;
+}
+.seo-faq > h2 {margin: 5px 0 16px; color: #10294b;}
+.seo-faq-item {padding: 13px 0; border-top: 1px solid #e5eaf1;}
+.seo-faq-item h3 {margin: 0 0 6px; color: #173d70; font-size: 16px;}
+.seo-faq-item p {margin: 0; color: #526176; line-height: 1.65; font-size: 14px;}
+@media(max-width:600px) {
+  .seo-intro {width:calc(100% - 24px); padding:14px; margin-top:12px;}
+  .seo-faq {padding:17px;}
+}
 </style>
 </head>
 <body>
@@ -1375,14 +1411,22 @@ footer a { color:#8AB4FF !important; }
 </div>
 </div>
 
-<!-- FEATURED WEEKLY STOCK: FIRST CONTENT AFTER THE NAVIGATION -->
+<!-- PRIMARY HOMEPAGE TOPIC AND SEARCH INTRODUCTION -->
+<section class="seo-intro" aria-labelledby="home-seo-title">
+  <div class="seo-intro-inner">
+    <h1 id="home-seo-title">Daily Stock Picks, Penny Stocks &amp; Crypto Market Data</h1>
+    <p>StockPilot AI offers free daily stock market research for people following actively traded stocks, penny stocks and cryptocurrency markets. Explore stock picks ranked by reported trading volume, review top cryptocurrencies by 24-hour volume, and use the linked research resources to investigate the market. Our lists are informational screens, not personalized investment advice or buy-and-sell recommendations.</p>
+  </div>
+</section>
+
+<!-- FEATURED WEEKLY STOCK -->
 <section class="stock-of-the-week" id="stock-of-the-week" aria-labelledby="weekly-stock-title">
   <div class="weekly-feature-inner">
     <div class="weekly-feature-copy">
       <div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> THE WEEKLY SPOTLIGHT</div>
       <p class="weekly-feature-label">ONE COMPANY. A CLOSER LOOK.</p>
-      <h1 id="weekly-stock-title">Stock of the Week</h1>
-      <h2>CEMATRIX Corporation <span>(TSX: CEMX)</span></h2>
+      <h2 id="weekly-stock-title">Stock of the Week</h2>
+      <h3>CEMATRIX Corporation <span>(TSX: CEMX)</span></h3>
       <p class="weekly-feature-description">
         CEMATRIX Corporation is an interesting Canadian small-cap company
         specializing in cellular concrete solutions for infrastructure,
@@ -1427,10 +1471,11 @@ footer a { color:#8AB4FF !important; }
 <div class="section-head">
 <div>
 <div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
-<h1>Today's Main Stock Picks</h1>
+<h2>Today's Main Stock Picks</h2>
 <p>
           Three actively traded stocks selected from the available
-          market-data feed.
+          market-data feed and ranked by reported trading volume. Use these
+          daily stock picks as a starting point for your own company research.
         </p>
 </div>
 </div>
@@ -1474,7 +1519,7 @@ footer a { color:#8AB4FF !important; }
 <div class="eyebrow">
           CRYPTO MARKET · RANKED BY 24-HOUR VOLUME
         </div>
-<h2>Top 3 Most Traded Cryptocurrencies</h2>
+<h2>Top 3 Cryptocurrencies by 24-Hour Trading Volume</h2>
 <p>
           Automatically ranked by reported 24-hour trading volume
           in USD. Rankings can change throughout the day.
@@ -1653,6 +1698,32 @@ footer a { color:#8AB4FF !important; }
       company information available to the daily scanner.
     </p>
 </section>
+<!-- STOCK MARKET RESEARCH FAQ: USEFUL LONG-TAIL SEARCH CONTENT -->
+<section class="seo-faq" id="stock-market-faq" aria-labelledby="stock-market-faq-title">
+  <div class="eyebrow">STOCK MARKET RESEARCH · QUICK ANSWERS</div>
+  <h2 id="stock-market-faq-title">Stock Market Picks, Penny Stocks &amp; Crypto: FAQs</h2>
+  <article class="seo-faq-item">
+    <h3>What are daily stock picks?</h3>
+    <p>Daily stock picks are a shortlist of shares selected for review on a particular day. StockPilot AI highlights actively traded stocks from its available data feed using reported trading volume. A listing means the stock met the site's screen; it is not a prediction or a recommendation to buy.</p>
+  </article>
+  <article class="seo-faq-item">
+    <h3>How does StockPilot AI select actively traded stocks?</h3>
+    <p>The main-stock and penny-stock lists are ranked by reported trading volume within the available stock-data feed. Main-stock candidates are priced above US$10. The feed has limited provider coverage and is not an exhaustive ranking of every listed security.</p>
+  </article>
+  <article class="seo-faq-item">
+    <h3>What does StockPilot AI mean by penny stocks?</h3>
+    <p>For this site's penny-stock screen, qualifying shares are priced from US$0.10 to US$10 when data is available. Definitions of penny stocks can vary by market, exchange and data provider. Lower-priced shares can be volatile and carry substantial risk.</p>
+  </article>
+  <article class="seo-faq-item">
+    <h3>How are the top cryptocurrencies ranked?</h3>
+    <p>The cryptocurrency section ranks available coins by reported 24-hour trading volume in US dollars. Crypto prices and trading volume can change quickly. The data provider is CoinGecko, and the displayed list is limited to the assets available through the feed.</p>
+  </article>
+  <article class="seo-faq-item">
+    <h3>Is StockPilot AI financial advice?</h3>
+    <p>No. StockPilot AI provides general market information for educational and research purposes. The lists are not personalized investment advice or recommendations to buy or sell securities. Verify information with primary sources and consider your own financial situation and risk tolerance.</p>
+  </article>
+</section>
+
 <!-- SELECTION METHODOLOGY -->
 <section class="method-section" id="selection-methodology">
 <div class="eyebrow">HOW THE DAILY LISTS WORK</div>
