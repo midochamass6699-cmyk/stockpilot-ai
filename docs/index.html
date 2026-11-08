@@ -53,43 +53,7 @@ gtag('js', new Date());
 gtag('config', 'G-VL62LP5NZ9');
 </script>
 <style>
-
-  
-  .weekly-vote {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 16px 0;
-}
-
-.weekly-vote strong {
-  width: 100%;
-  font-size: 14px;
-}
-
-.weekly-vote button {
-  border: 1px solid #ddd;
-  border-radius: 7px;
-  padding: 10px 15px;
-  background: #fff;
-  color: #222;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.weekly-vote button:disabled {
-  opacity: .55;
-  cursor: not-allowed;
-}
-
-#weekly-vote-message {
-  width: 100%;
-  color: #777;
-  font-size: 12px;
-}
-  
-  :root {
+:root {
   --black:#101010;
   --yellow:#ffd629;
   --gold:#e8b900;
@@ -1374,7 +1338,9 @@ footer a { color:#8AB4FF !important; }
   .seo-intro {width:calc(100% - 24px); padding:14px; margin-top:12px;}
   .seo-faq {padding:17px;}
 }
-  /* STOCKPILOT DAILY SUBSCRIPTION */
+
+
+/* ON-PAGE ONESIGNAL SUBSCRIPTION PANEL */
 .weekly-subscribe-cta {
   display:flex;
   align-items:center;
@@ -1382,155 +1348,69 @@ footer a { color:#8AB4FF !important; }
   flex-wrap:wrap;
   gap:12px;
   margin:12px 0 8px;
-  padding:13px;
+  padding:13px 14px;
   background:#EFF6FF;
   border:1px solid #BFDBFE;
   border-left:4px solid #2563EB;
   border-radius:9px;
 }
-
-.weekly-subscribe-message {
+.weekly-subscribe-copy {
   display:flex;
   align-items:center;
   gap:10px;
-  flex:1;
-  min-width:180px;
+  flex:1 1 230px;
+  min-width:0;
 }
-
-.weekly-subscribe-icon {
-  font-size:28px;
-}
-
-.weekly-subscribe-message strong,
-.weekly-subscribe-message small {
+.weekly-subscribe-icon {font-size:27px; line-height:1;}
+.weekly-subscribe-copy strong {
   display:block;
-}
-
-.weekly-subscribe-message strong {
   color:#10213D;
   font-size:12px;
-  font-weight:900;
+  line-height:1.35;
+  font-weight:950;
 }
-
-.weekly-subscribe-message small {
+.weekly-subscribe-copy small {
+  display:block;
+  margin-top:3px;
   color:#526174;
   font-size:11px;
-  line-height:1.4;
-  margin-top:3px;
+  line-height:1.45;
 }
-
 #stockpilot-subscribe-btn {
-  background:#2563EB;
-  color:white;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:40px;
+  padding:10px 17px;
   border:0;
   border-radius:7px;
-  padding:12px 18px;
-  font-size:12px;
-  font-weight:900;
+  background:#2563EB;
+  color:#FFFFFF;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.035em;
   cursor:pointer;
+  transition:background .2s, transform .2s;
 }
-
-#stockpilot-subscribe-btn:hover {
-  background:#1D4ED8;
-}
-
-#stockpilot-subscribe-btn:disabled {
-  opacity:.7;
-  cursor:default;
-}
-
+#stockpilot-subscribe-btn:hover {background:#1D4ED8; transform:translateY(-1px);}
+#stockpilot-subscribe-btn:focus-visible {outline:3px solid #93C5FD; outline-offset:3px;}
+#stockpilot-subscribe-btn:disabled {opacity:.7; cursor:default; transform:none;}
 #stockpilot-subscribe-status {
   flex-basis:100%;
-  margin:0 !important;
-  font-size:10px !important;
-  color:#526174 !important;
+  margin:0;
+  color:#526174;
+  font-size:10px;
+  line-height:1.4;
+}
+@media(max-width:600px) {
+  .weekly-subscribe-cta {align-items:stretch;}
+  .weekly-subscribe-copy {flex-basis:100%;}
+  #stockpilot-subscribe-btn {width:100%;}
 }
 
-@media(max-width:600px) {
-  #stockpilot-subscribe-btn {
-    width:100%;
-  }
-}
 </style>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
- 
-<script>
-window.OneSignalDeferred = window.OneSignalDeferred || [];
-
-OneSignalDeferred.push(async function(OneSignal) {
-
-  await OneSignal.init({
-    appId: "e88adecc-e047-49d3-afa9-559d28f8fcc3",
-    safari_web_id: "web.onesignal.auto.4ed01e00-f557-41b7-a4bd-c51172d553fd",
-    notifyButton: {
-      enable: false
-    }
-  });
-
-  function setupSubscribeButton() {
-
-    const button = document.getElementById("stockpilot-subscribe-btn");
-    const status = document.getElementById("stockpilot-subscribe-status");
-
-    if (!button || !status) {
-      console.error("StockPilot subscription button not found.");
-      return;
-    }
-
-    function updateButton() {
-      if (OneSignal.User.PushSubscription.optedIn === true) {
-        button.textContent = "✓ YOU'RE SUBSCRIBED";
-        button.disabled = true;
-        status.textContent = "You're signed up for daily StockPilot alerts!";
-      } else {
-        button.textContent = "🔔 SUBSCRIBE FREE";
-        button.disabled = false;
-        status.textContent = "Free daily market alerts. No payment required.";
-      }
-    }
-
-    button.addEventListener("click", async function() {
-      button.disabled = true;
-      button.textContent = "CONNECTING...";
-
-      try {
-        await OneSignal.User.PushSubscription.optIn();
-        updateButton();
-
-        if (OneSignal.User.PushSubscription.optedIn !== true) {
-          button.disabled = false;
-          button.textContent = "🔔 SUBSCRIBE FREE";
-          status.textContent = "Please allow notifications in your browser.";
-        }
-
-      } catch (error) {
-        console.error("Subscription error:", error);
-        button.disabled = false;
-        button.textContent = "🔔 SUBSCRIBE FREE";
-        status.textContent = "Unable to subscribe. Please try again.";
-      }
-    });
-
-    OneSignal.User.PushSubscription.addEventListener(
-      "change",
-      updateButton
-    );
-
-    updateButton();
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupSubscribeButton);
-  } else {
-    setupSubscribeButton();
-  }
-
-});
-</script>
-
-</script>
-  
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -1598,28 +1478,22 @@ OneSignalDeferred.push(async function(OneSignal) {
         valuation deserve careful attention.
       </p>
       <div class="weekly-feature-actions">
-<div style="margin:16px 0;padding:16px;background:#EFF6FF;border-left:4px solid #2563EB;border-radius:10px;">
+        <a class="weekly-research-link" href="https://finance.yahoo.com/quote/CEMX.V/" target="_blank" rel="noopener noreferrer">Research CEMATRIX <span aria-hidden="true">↗</span></a>
+        <span class="weekly-ticker-note">TSX: CEMX</span>
+      </div>
 
-  <strong style="display:block;color:#10213D;font-size:15px;">
-    🔔 NEVER MISS A DAILY STOCK PICK!
-  </strong>
+      <div class="weekly-subscribe-cta" aria-labelledby="weekly-subscribe-heading">
+        <div class="weekly-subscribe-copy">
+          <span class="weekly-subscribe-icon" aria-hidden="true">🔔</span>
+          <div>
+            <strong id="weekly-subscribe-heading">NEVER MISS A DAILY STOCK PICK!</strong>
+            <small>Get free notifications when new stocks, penny stocks and crypto updates are published.</small>
+          </div>
+        </div>
+        <button id="stockpilot-subscribe-btn" type="button">🔔 SUBSCRIBE FREE</button>
+        <p id="stockpilot-subscribe-status" aria-live="polite">Free daily market alerts. No payment required.</p>
+      </div>
 
-  <p style="font-size:12px;color:#526174;margin:5px 0 12px;">
-    Get free notifications when new stocks, penny stocks and crypto updates are published.
-  </p>
-
-  <button id="stockpilot-subscribe-btn" type="button"
-    style="background:#2563EB;color:white;border:0;border-radius:7px;padding:13px 22px;font-weight:900;cursor:pointer;">
-    🔔 SUBSCRIBE FREE
-  </button>
-
-  <p id="stockpilot-subscribe-status"
-    style="font-size:11px;color:#526174;margin:8px 0 0;">
-    Free daily market alerts. No payment required.
-  </p>
-
-</div>
-        
       <p class="weekly-feature-disclaimer">StockPilot AI discussion only. This is not a buy or sell recommendation or financial advice.</p>
     </div>
     <aside class="weekly-feature-side" aria-label="Featured stock symbol">
@@ -2486,110 +2360,123 @@ setInterval(loadCrypto,5 * 60 * 1000);
 setInterval(loadStocks,15 * 60 * 1000);
 
 </script>
+<!-- Removed abandoned Google Sheets voting script. -->
+
+
 <script>
-(() => {
-  const API_URL = "https://script.google.com/macros/s/AKfycbyv3QaqN1X035ynu1ChQjigpbbXAHQf-UFcitZmJGQuIwIOW2Tx93u96qrgJ-ZPH71d/exec";
+(function () {
+  const button = document.getElementById("stockpilot-subscribe-btn");
+  const status = document.getElementById("stockpilot-subscribe-status");
+  if (!button || !status) return;
 
-  const box = document.getElementById("weekly-vote");
-  if (!box) return;
+  let oneSignalClient = null;
+  let initFailed = false;
+  let clickInProgress = false;
 
-  const symbol = box.dataset.symbol;
-  const agreeButton = document.getElementById("weekly-agree");
-  const disagreeButton = document.getElementById("weekly-disagree");
-  const agreeCount = document.getElementById("weekly-agree-count");
-  const disagreeCount = document.getElementById("weekly-disagree-count");
-  const message = document.getElementById("weekly-vote-message");
-
-  let storageKey = "";
-
-  function loadVotes() {
-    agreeButton.disabled = true;
-    disagreeButton.disabled = true;
-
-    const script = document.createElement("script");
-
-    window.stockPilotVotesCallback = function(data) {
-      script.remove();
-      delete window.stockPilotVotesCallback;
-
-      if (!data || !data.ok) {
-        message.textContent = "Unable to load voting results.";
-        return;
-      }
-
-      agreeCount.textContent = data.agree;
-      disagreeCount.textContent = data.disagree;
-
-      storageKey =
-        "stockpilot-weekly-vote:" + symbol + ":" + data.weekKey;
-
-      let alreadyVoted = false;
-
-      try {
-        alreadyVoted = Boolean(localStorage.getItem(storageKey));
-      } catch (error) {
-        message.textContent = "Voting storage is unavailable.";
-        return;
-      }
-
-      agreeButton.disabled = alreadyVoted;
-      disagreeButton.disabled = alreadyVoted;
-
-      message.textContent = alreadyVoted
-        ? "You have already voted this week."
-        : "Cast your vote!";
-    };
-
-    script.onerror = function() {
-      message.textContent = "Unable to connect to the voting service.";
-      script.remove();
-    };
-
-    script.src =
-      API_URL +
-      "?symbol=" + encodeURIComponent(symbol) +
-      "&callback=stockPilotVotesCallback" +
-      "&_=" + Date.now();
-
-    document.head.appendChild(script);
+  function show(text) {
+    status.textContent = text;
   }
 
-  async function castVote(vote) {
-    if (!storageKey || localStorage.getItem(storageKey)) return;
+  function updateSubscribeButton() {
+    if (!oneSignalClient) return;
 
-    agreeButton.disabled = true;
-    disagreeButton.disabled = true;
-    message.textContent = "Submitting your vote...";
+    const subscription = oneSignalClient.User.PushSubscription;
+    const isSubscribed = subscription && subscription.optedIn === true;
 
-    try {
-      await fetch(API_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: new URLSearchParams({
-          symbol: symbol,
-          vote: vote
-        })
-      });
+    if (isSubscribed) {
+      button.textContent = "✓ YOU'RE SUBSCRIBED";
+      button.disabled = true;
+      show("You're subscribed to StockPilot AI daily alerts. Thank you!");
+      return;
+    }
 
-      localStorage.setItem(storageKey, vote);
-      message.textContent = "Thank you! Your vote has been recorded.";
+    button.textContent = "🔔 SUBSCRIBE FREE";
+    button.disabled = false;
 
-      setTimeout(loadVotes, 1200);
-    } catch (error) {
-      message.textContent = "Vote could not be submitted. Please try again.";
-      agreeButton.disabled = false;
-      disagreeButton.disabled = false;
+    if (oneSignalClient.Notifications.permissionNative === "denied") {
+      show("Notifications are blocked in this browser. Enable them in this site's browser settings, then try again.");
+    } else {
+      show("Free daily market alerts. No payment required.");
     }
   }
 
-  agreeButton.addEventListener("click", () => castVote("agree"));
-  disagreeButton.addEventListener("click", () => castVote("disagree"));
+  // Attach the click handler immediately, so the button always gives feedback.
+  button.addEventListener("click", async function () {
+    if (clickInProgress) return;
 
-  loadVotes();
+    if (!oneSignalClient) {
+      show(initFailed
+        ? "The notification service could not start. Refresh the page and try again."
+        : "The notification service is still connecting. Please try again in a moment.");
+      return;
+    }
+
+    if (!oneSignalClient.Notifications.isPushSupported()) {
+      show("Push notifications are not supported by this browser or device.");
+      return;
+    }
+
+    if (oneSignalClient.Notifications.permissionNative === "denied") {
+      show("Notifications are blocked. Open your browser's site settings for technofront.org and allow notifications.");
+      return;
+    }
+
+    clickInProgress = true;
+    button.disabled = true;
+    button.textContent = "CONNECTING...";
+    show("Requesting notification permission...");
+
+    try {
+      // optIn() prompts for permission when needed and subscribes this browser.
+      await oneSignalClient.User.PushSubscription.optIn();
+      updateSubscribeButton();
+
+      if (oneSignalClient.User.PushSubscription.optedIn !== true) {
+        button.disabled = false;
+        button.textContent = "🔔 SUBSCRIBE FREE";
+        show("Subscription not completed. If your browser asked for permission, choose Allow. If no prompt appeared, check browser settings.");
+      }
+    } catch (error) {
+      console.error("StockPilot OneSignal subscription error:", error);
+      button.disabled = false;
+      button.textContent = "🔔 SUBSCRIBE FREE";
+      show("We couldn't complete the subscription. Check browser notification permissions and try again.");
+    } finally {
+      clickInProgress = false;
+      if (oneSignalClient.User.PushSubscription.optedIn !== true) {
+        button.disabled = false;
+        button.textContent = "🔔 SUBSCRIBE FREE";
+      }
+    }
+  });
+
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  window.OneSignalDeferred.push(async function (OneSignal) {
+    try {
+      await OneSignal.init({
+        appId: "e88adecc-e047-49d3-afa9-559d28f8fcc3",
+        safari_web_id: "web.onesignal.auto.4ed01e00-f557-41b7-a4bd-c51172d553fd",
+        notifyButton: { enable: false }
+      });
+
+      oneSignalClient = OneSignal;
+
+      if (!OneSignal.Notifications.isPushSupported()) {
+        button.disabled = true;
+        show("Push notifications are not supported by this browser or device.");
+        return;
+      }
+
+      OneSignal.User.PushSubscription.addEventListener("change", updateSubscribeButton);
+      updateSubscribeButton();
+    } catch (error) {
+      initFailed = true;
+      console.error("StockPilot OneSignal initialization error:", error);
+      show("The notification service could not start. Please refresh and try again.");
+    }
+  });
 })();
 </script>
-<!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" id="cg_de43d061" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
-<!-- Compteur de visiteurs https://counter.gratis ENDE -->
+
 </body>
 </html>
