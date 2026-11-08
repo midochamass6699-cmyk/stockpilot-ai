@@ -1454,16 +1454,81 @@ footer a { color:#8AB4FF !important; }
 </style>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "e88adecc-e047-49d3-afa9-559d28f8fcc3",
-      safari_web_id: "web.onesignal.auto.4ed01e00-f557-41b7-a4bd-c51172d553fd",
-      notifyButton: {
-  enable: false,
-},
-    });
+ 
+<script>
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+
+OneSignalDeferred.push(async function(OneSignal) {
+
+  await OneSignal.init({
+    appId: "e88adecc-e047-49d3-afa9-559d28f8fcc3",
+    safari_web_id: "web.onesignal.auto.4ed01e00-f557-41b7-a4bd-c51172d553fd",
+    notifyButton: {
+      enable: false
+    }
   });
+
+  function setupSubscribeButton() {
+
+    const button = document.getElementById("stockpilot-subscribe-btn");
+    const status = document.getElementById("stockpilot-subscribe-status");
+
+    if (!button || !status) {
+      console.error("StockPilot subscription button not found.");
+      return;
+    }
+
+    function updateButton() {
+      if (OneSignal.User.PushSubscription.optedIn === true) {
+        button.textContent = "✓ YOU'RE SUBSCRIBED";
+        button.disabled = true;
+        status.textContent = "You're signed up for daily StockPilot alerts!";
+      } else {
+        button.textContent = "🔔 SUBSCRIBE FREE";
+        button.disabled = false;
+        status.textContent = "Free daily market alerts. No payment required.";
+      }
+    }
+
+    button.addEventListener("click", async function() {
+      button.disabled = true;
+      button.textContent = "CONNECTING...";
+
+      try {
+        await OneSignal.User.PushSubscription.optIn();
+        updateButton();
+
+        if (OneSignal.User.PushSubscription.optedIn !== true) {
+          button.disabled = false;
+          button.textContent = "🔔 SUBSCRIBE FREE";
+          status.textContent = "Please allow notifications in your browser.";
+        }
+
+      } catch (error) {
+        console.error("Subscription error:", error);
+        button.disabled = false;
+        button.textContent = "🔔 SUBSCRIBE FREE";
+        status.textContent = "Unable to subscribe. Please try again.";
+      }
+    });
+
+    OneSignal.User.PushSubscription.addEventListener(
+      "change",
+      updateButton
+    );
+
+    updateButton();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupSubscribeButton);
+  } else {
+    setupSubscribeButton();
+  }
+
+});
+</script>
+
 </script>
   
 </head>
