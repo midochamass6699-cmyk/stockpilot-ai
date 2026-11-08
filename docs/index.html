@@ -1374,6 +1374,83 @@ footer a { color:#8AB4FF !important; }
   .seo-intro {width:calc(100% - 24px); padding:14px; margin-top:12px;}
   .seo-faq {padding:17px;}
 }
+  /* STOCKPILOT DAILY SUBSCRIPTION */
+.weekly-subscribe-cta {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:12px 0 8px;
+  padding:13px;
+  background:#EFF6FF;
+  border:1px solid #BFDBFE;
+  border-left:4px solid #2563EB;
+  border-radius:9px;
+}
+
+.weekly-subscribe-message {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:1;
+  min-width:180px;
+}
+
+.weekly-subscribe-icon {
+  font-size:28px;
+}
+
+.weekly-subscribe-message strong,
+.weekly-subscribe-message small {
+  display:block;
+}
+
+.weekly-subscribe-message strong {
+  color:#10213D;
+  font-size:12px;
+  font-weight:900;
+}
+
+.weekly-subscribe-message small {
+  color:#526174;
+  font-size:11px;
+  line-height:1.4;
+  margin-top:3px;
+}
+
+#stockpilot-subscribe-btn {
+  background:#2563EB;
+  color:white;
+  border:0;
+  border-radius:7px;
+  padding:12px 18px;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+#stockpilot-subscribe-btn:hover {
+  background:#1D4ED8;
+}
+
+#stockpilot-subscribe-btn:disabled {
+  opacity:.7;
+  cursor:default;
+}
+
+#stockpilot-subscribe-status {
+  flex-basis:100%;
+  margin:0 !important;
+  font-size:10px !important;
+  color:#526174 !important;
+}
+
+@media(max-width:600px) {
+  #stockpilot-subscribe-btn {
+    width:100%;
+  }
+}
 </style>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
