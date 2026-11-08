@@ -38,13 +38,51 @@ jobs:
         run: python stock_picker.py
 
       - name: Commit updated picks
+        id: commit-picks
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add docs/data/picks.json
+
           if git diff --cached --quiet; then
-            echo 'No picks data changes to commit.'
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No picks data changes to commit."
           else
+            git commit -m 'Update daily StockPilot picks'
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send OneSignal notification
+        if: steps.commit-picks.outputs.changed == 'true'
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: |
+          MAIN=$(python -c "import json; d=json.load(open('docs/data/picks.json')); print(', '.join(x['ticker'] for x in d.get('main', [])))")
+          PENNY=$(python -c "import json; d=json.load(open('docs/data/picks.json')); print(', '.join(x['ticker'] for x in d.get('penny', [])))")
+
+          BODY="Today's picks are ready! Stocks: ${MAIN}. Penny stocks: ${PENNY}. Visit StockPilot AI for the full research and crypto updates."
+
+          PAYLOAD=$(jq -n \
+            --arg app "e88adecc-e047-49d3-afa9-559d28f8fcc3" \
+            --arg title "StockPilot AI — Daily Picks Are Ready!" \
+            --arg body "$BODY" \
+            '{
+              app_id: $app,
+              target_channel: "push",
+              included_segments: ["Subscribed Users"],
+              headings: {en: $title},
+              contents: {en: $body},
+              url: "https://technofront.org/"
+            }')
+
+          curl --fail-with-body --silent --show-error \
+            -X POST "https://api.onesignal.com/notifications" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Key ${ONESIGNAL_REST_API_KEY}" \
+            -d "$PAYLOAD"
+
+          
             git commit -m 'Update daily StockPilot picks'
             git push
           fi
