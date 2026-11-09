@@ -53,6 +53,34 @@ gtag('js', new Date());
 gtag('config', 'G-VL62LP5NZ9');
 </script>
 <style>
+
+.broker-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: nowrap;
+  margin: 20px auto;
+}
+
+.broker-logos img {
+  height: 55px;
+  width: auto;
+  max-width: 45%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .broker-logos {
+    gap: 18px;
+  }
+
+  .broker-logos img {
+    height: 42px;
+  }
+}
+  
 :root {
   --black:#101010;
   --yellow:#ffd629;
@@ -251,7 +279,15 @@ a {color:inherit;}
   color:#777;
   margin-top:8px;
 }
+<div class="broker-logos">
+  <a href="https://www.questrade.com/" target="_blank" rel="noopener">
+    <img src="./questrade.jpeg" alt="Questrade">
+  </a>
 
+  <a href="https://www.interactivebrokers.ca/" target="_blank" rel="noopener">
+    <img src="./interactive-brokers.png" alt="Interactive Brokers">
+  </a>
+</div>
 /* STOCK OF THE WEEK */
 
 
@@ -1640,19 +1676,7 @@ html, body { background-color:#F1F5FA !important; }
   <div class="weekly-feature-inner">
     <div class="weekly-feature-copy">
 
-<!-- QUESTRADE LOGO -->
-<a href="https://www.questrade.com/"
-   target="_blank"
-   rel="noopener noreferrer"
-   title="Visit Questrade"
-   style="display:inline-block; margin:15px 10px;">
 
-    <img
-        src="./questrade.jpg"
-        alt="Questrade"
-        loading="lazy"
-        style="width:160px; height:auto; display:block;">
-</a>
       
       <div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> THE WEEKLY SPOTLIGHT</div>
       <p class="weekly-feature-label">ONE COMPANY. A CLOSER LOOK.</p>
@@ -1676,19 +1700,7 @@ html, body { background-color:#F1F5FA !important; }
         AppLovin stands out in several of these areas. Its AI-powered advertising technology gives it a differentiated product, while its recent financial results demonstrate strong sales growth, profitability and cash generation. Its share price gained approximately 71.2% between the October 30 and November 6, 2026 closing prices. This is a dated historical move, not a forecast or promise of future performance.
         Our daily stock and penny-stock lists use a separate process: ranking qualifying securities by reported trading volume within the available market-data feed. The Weekly Spotlight adds a closer fundamental and qualitative company review. It is not a statistically validated price-prediction model.
       </p>
-<!-- INTERACTIVE BROKERS LOGO -->
-<a href="https://www.interactivebrokers.ca/en/home.php"
-   target="_blank"
-   rel="noopener noreferrer"
-   title="Visit Interactive Brokers"
-   style="display:inline-block; margin:15px 10px;">
 
-    <img
-        src="./interactive-brokers.png"
-        alt="Interactive Brokers"
-        loading="lazy"
-        style="width:160px; height:auto; display:block;">
-</a>
       <div class="weekly-debt-note">
         <strong>IMPORTANT: DEBT REQUIREMENT</strong>
         <p>
