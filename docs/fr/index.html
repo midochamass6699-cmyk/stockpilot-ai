@@ -1412,6 +1412,35 @@ footer a { color:#8AB4FF !important; }
 /* Bilingual navigation */
 .navlinks .language-switch { border:1px solid #ffffff80; border-radius:5px; padding:6px 8px; min-width:34px; text-align:center; }
 .navlinks .language-switch.active { background:var(--yellow); color:#111; border-color:var(--yellow); }
+/* Sélecteur de langue EN / FR */
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    margin-left: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 25px;
+    background: #ffffff;
+    white-space: nowrap;
+}
+
+.language-switch a {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: #333333;
+}
+
+.language-switch a:hover,
+.language-switch a[aria-current="page"] {
+    background: #f2c94c;
+    color: #111111;
+}
+
 </style>
 <script defer="" src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
 <link href="https://technofront.org/fr/" hreflang="fr-CA" rel="alternate"/><link href="https://technofront.org/" hreflang="en-CA" rel="alternate"/><link href="https://technofront.org/" hreflang="x-default" rel="alternate"/></head>
@@ -1433,6 +1462,11 @@ footer a { color:#8AB4FF !important; }
 <a href="#contact">CONTACT</a>
 <a class="nav-cta" href="#discussion">DISCUSSION</a>
 <a aria-label="English version" class="language-switch" href="/" lang="en-CA">EN</a><a aria-current="page" aria-label="Version française" class="language-switch active" href="/fr/" lang="fr-CA">FR</a></div>
+
+<div class="language-switch">
+    <a href="/" lang="en">EN</a>
+    <a href="/fr/" lang="fr-CA" aria-current="page">FR</a>
+</div>
 </nav>
 </header>
  BANDEAU DÉFILANT 
