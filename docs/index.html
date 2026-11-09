@@ -55,6 +55,66 @@ gtag('config', 'G-VL62LP5NZ9');
 <style>
 
   .weekly-title-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.weekly-title-row h2 {
+  margin: 0;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 24px;
+}
+
+.weekly-questrade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weekly-ibkr {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.weekly-questrade img {
+  width: 190px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.weekly-ibkr img {
+  width: 230px;
+  height: 65px;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .weekly-title-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .weekly-title-row h2 {
+    font-size: 19px;
+  }
+
+  .weekly-questrade {
+    justify-content: flex-end;
+  }
+
+  .weekly-ibkr {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+}
+
+  .weekly-title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -361,7 +421,7 @@ a {color:inherit;}
     <img src="./interactive-brokers.png" alt="Interactive Brokers">
   </a>
 </div>
-/* STOCK OF THE WEEK */
+/* STOCK OF THE https://github.com/midochamass6699-cmyk/stockpilot-ai/securityWEEK */
 
 
   
@@ -1753,23 +1813,23 @@ html, body { background-color:#F1F5FA !important; }
       
       <div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> THE WEEKLY SPOTLIGHT</div>
       <p class="weekly-feature-label">ONE COMPANY. A CLOSER LOOK.</p>
-    <div class="weekly-title-row">
+  <div class="weekly-title-row">
 
   <h2 id="weekly-stock-title">Stock of the Week</h2>
 
-  <div class="weekly-actions">
+  <a href="https://www.questrade.com/"
+     target="_blank" rel="noopener"
+     class="weekly-questrade">
+    <img src="./questrade.jpeg" alt="Questrade">
+  </a>
 
-    <!-- KEEP YOUR EXISTING SUBSCRIBE BUTTON HERE -->
+  <a href="https://www.interactivebrokers.ca/"
+     target="_blank" rel="noopener"
+     class="weekly-ibkr">
+    <img src="./interactive-brokers.png" alt="Interactive Brokers">
+  </a>
 
-    <div class="broker-logos">
-      <a href="https://www.questrade.com/" target="_blank" rel="noopener">
-        <img src="./questrade.jpeg" alt="Questrade">
-      </a>
-
-      <a href="https://www.interactivebrokers.ca/" target="_blank" rel="noopener">
-        <img src="./interactive-brokers.png" alt="Interactive Brokers">
-      </a>
-    </div>
+</div>
 
   </div>
 </div>      <h3 class="weekly-company-name">AppLovin Corporation <span>(NASDAQ: APP)</span></h3>
