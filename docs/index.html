@@ -1623,13 +1623,35 @@ html, body { background-color:#F1F5FA !important; }
 </nav>
 </header>
 
-  <div class="language-selector">
-  <a href="/">EN</a>
+<div class="language-selector">
+  <a href="/" title="English">EN</a>
   <span>|</span>
-  <a href="/fr/">FR</a>
+  <a href="/fr/" title="Français">FR</a>
   <span>|</span>
-  <a href="/es/">ES</a>
+  <a href="/es/" title="Español">ES</a>
 </div>
+
+<style>
+.language-selector {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  visibility: visible !important;
+}
+
+.language-selector a {
+  display: inline-block !important;
+  color: #d6ad55 !important;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.language-selector span {
+  color: #ffffff;
+}
+</style>
 
 <!-- STOCKPILOT AI MARKET TICKER -->
 <div class="tradingview-widget-container"
