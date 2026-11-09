@@ -1408,7 +1408,43 @@ footer a { color:#8AB4FF !important; }
   .weekly-subscribe-copy {flex-basis:100%;}
   #stockpilot-subscribe-btn {width:100%;}
 }
+/* Expedia affiliate skyscraper banners — desktop screens only */
+#expedia-left-banner,
+#expedia-right-banner {
+  position: fixed;
+  top: 130px;
+  width: 160px;
+  height: 600px;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
 
+/* The main page content is 1200px wide; these positions leave a 20px gap. */
+#expedia-left-banner {
+  left: calc(50% - 780px);
+}
+
+#expedia-right-banner {
+  right: calc(50% - 780px);
+}
+
+#expedia-left-banner .eg-affiliate-banners,
+#expedia-right-banner .eg-affiliate-banners {
+  width: 160px;
+  min-width: 160px;
+  min-height: 600px;
+}
+
+/* Hide side banners when the viewport is too narrow, so they never cover content. */
+@media (max-width: 1599px) {
+  #expedia-left-banner,
+  #expedia-right-banner {
+    display: none !important;
+  }
+}
 </style>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 </head>
@@ -2688,6 +2724,39 @@ setInterval(loadStocks,15 * 60 * 1000);
     }
   });
 })();
+</script>
+<!-- Expedia affiliate side banners: left and right -->
+<div id="expedia-left-banner" aria-label="Expedia travel affiliate banner">
+  <div
+    class="eg-affiliate-banners"
+    data-program="us-expedia"
+    data-network="pz"
+    data-layout="wide-skyscraper"
+    data-image="sailing"
+    data-message="sun-seeker-find-perfect-beach-getaway"
+    data-camref="1011l5ugbw"
+    data-pubref=""
+    data-link="home">
+  </div>
+</div>
+
+<div id="expedia-right-banner" aria-label="Expedia car-rental affiliate banner">
+  <div
+    class="eg-affiliate-banners"
+    data-program="us-expedia"
+    data-network="pz"
+    data-layout="wide-skyscraper"
+    data-image="sailing"
+    data-message="find-perfect-car-rental"
+    data-camref="1011l5ugbw"
+    data-pubref=""
+    data-link="home">
+  </div>
+</div>
+
+  <script
+  class="eg-affiliate-banners-script"
+  src="https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.js">
 </script>
 
 </body>
