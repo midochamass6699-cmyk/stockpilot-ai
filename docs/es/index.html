@@ -1465,32 +1465,11 @@ footer a { color:#8AB4FF !important; }
 }
 
 
-
-/* EN / FR language switch */
-.language-switch {
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  padding:3px;
-  border:1px solid #52647d;
-  border-radius:999px;
-  background:#0B1A31;
-}
-.language-switch a {
-  display:inline-block;
-  min-width:34px;
-  padding:6px 9px;
-  border-radius:999px;
-  color:#EAF1FF !important;
-  text-align:center;
-  text-decoration:none;
-  font-size:11px;
-  font-weight:900;
-}
-.language-switch a[aria-current="page"] {
-  background:#2563EB;
-  color:#FFFFFF !important;
-}
+<div class="language-switch" aria-label="Choose language">
+  <a href="/" lang="en">EN</a>
+  <a href="/fr/" lang="fr">FR</a>
+  <a href="/es/" lang="es">ES</a>
+</div>
 
 /* AppLovin weekly feature: keep the complete research text readable. */
 .weekly-company-name {
