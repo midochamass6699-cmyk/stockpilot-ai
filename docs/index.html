@@ -186,20 +186,26 @@ a {color:inherit;}
   animation-play-state:paused;
 }
 
-<!-- STOCKPILOT AI - MARKET TICKER -->
+
+<!-- STOCKPILOT AI MARKET TICKER -->
+<div style="width:100%; background:#07111f; min-height:48px; overflow:hidden;">
+
+  <tv-ticker-tape
+    symbols="FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,TSX:RY,TSX:TD,TSX:SHOP,TSX:BNS,TSX:ENB,TSX:CNQ,TSX:SU,NASDAQ:AAPL,NASDAQ:NVDA,NASDAQ:MSFT,NASDAQ:AMZN,NASDAQ:GOOGL,NASDAQ:META,NASDAQ:TSLA,NASDAQ:AMD,NASDAQ:PLTR,NYSE:JPM,NYSE:WMT,NYSE:V,NYSE:DIS,AMEX:SPY,NASDAQ:QQQ,BITSTAMP:BTCUSD,BITSTAMP:ETHUSD"
+    item-size="compact">
+    <div style="color:white;text-align:center;padding:14px;font-size:13px;">
+      Loading live market ticker...
+    </div>
+  </tv-ticker-tape>
+
+</div>
+
 <script
   type="module"
-  src="https://www.tradingview-widget.com/w/en/tv-ticker-tape.js">
+  src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js">
 </script>
+<!-- END STOCKPILOT AI MARKET TICKER -->
 
-<div style="width:100%; background:#07111f; overflow:hidden;">
-  <tv-ticker-tape
-    symbols="FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,TSX:RY,TSX:TD,TSX:SHOP,TSX:BNS,TSX:ENB,TSX:CNQ,TSX:SU,TSX:CP,TSX:CNR,NASDAQ:AAPL,NASDAQ:NVDA,NASDAQ:MSFT,NASDAQ:AMZN,NASDAQ:GOOGL,NASDAQ:META,NASDAQ:TSLA,NASDAQ:AMD,NASDAQ:AVGO,NASDAQ:PLTR,NASDAQ:COIN,NASDAQ:MSTR,NYSE:BRK.B,NYSE:WMT,NYSE:LLY,NYSE:JPM,NYSE:V,NYSE:DIS,AMEX:SPY,NASDAQ:QQQ,AMEX:GLD,BITSTAMP:BTCUSD,BITSTAMP:ETHUSD"
-    direction="horizontal"
-    item-size="normal">
-  </tv-ticker-tape>
-</div>
-<!-- END MARKET TICKER -->
 
 /* GENERAL SECTIONS */
 
