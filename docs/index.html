@@ -1649,7 +1649,7 @@ footer a { color:#8AB4FF !important; }
 
 html, body { background-color:#F1F5FA !important; }
 
-/* Bloomberg stays at the TOP of the right column; preserve all AppLovin copy. */
+/* Intro slideshow stays at the TOP of the right column; preserve all featured-stock copy. */
 .stock-of-the-week { overflow:visible !important; }
 .weekly-feature-inner {
   grid-template-columns:minmax(0,1fr) minmax(320px,390px) !important;
@@ -1745,6 +1745,31 @@ html, body { background-color:#F1F5FA !important; }
 #margin-account-article a{color:#2866b8}
 #margin-account-article .margin-back-top{display:inline-block;margin-top:8px;font-weight:800;text-decoration:none}
 @media(max-width:600px){#margin-account-article{padding:36px 0 48px}#margin-account-article .toc ol{columns:1}#margin-account-article .margin-article-wrap{width:min(100% - 28px,1120px)}}
+
+
+/* STOCKPILOT AI INTRO SLIDESHOW — advances every 2.5 seconds */
+.weekly-feature-side { background:linear-gradient(145deg,#07111F,#12336B) !important; }
+.sp-slideshow { width:100%; min-height:300px; display:flex; flex-direction:column; justify-content:space-between; color:#fff; }
+.sp-slides { position:relative; min-height:225px; }
+.sp-slide { display:none; animation:spSlideIn .42s ease both; }
+.sp-slide.is-active { display:block; }
+.sp-slide-icon { width:48px; height:48px; display:grid; place-items:center; margin:2px 0 14px; border:1px solid #75A7FF66; border-radius:13px; background:#2563EB; color:#fff; font-size:27px; font-weight:900; box-shadow:0 8px 22px #0003; }
+.sp-slide-kicker { margin:0 0 7px !important; color:#9FC1FF !important; font-size:9px !important; font-weight:900; letter-spacing:.15em; line-height:1.4 !important; }
+.sp-slide h2 { margin:0 0 9px !important; color:#fff !important; font-size:clamp(20px,2vw,26px) !important; line-height:1.12 !important; }
+.sp-slide > p:not(.sp-slide-kicker) { margin:0 !important; color:#DCE8FA !important; font-size:12px !important; line-height:1.65 !important; }
+.sp-slide-link { display:inline-flex; align-items:center; gap:9px; margin-top:17px; padding:9px 12px; border-radius:6px; background:#fff; color:#0B1A31 !important; font-size:9px; font-weight:950; letter-spacing:.06em; text-decoration:none; }
+.sp-slide-link:hover { background:#DCE9FF; }
+.sp-slide-controls { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; }
+.sp-slide-arrow { width:28px; height:28px; border:1px solid #FFFFFF55; border-radius:50%; background:#FFFFFF12; color:#fff; font-size:20px; line-height:1; cursor:pointer; }
+.sp-slide-arrow:hover { background:#2563EB; }
+.sp-slide-dots { display:flex; align-items:center; justify-content:center; gap:7px; }
+.sp-dot { width:7px; height:7px; padding:0; border:0; border-radius:50%; background:#FFFFFF55; cursor:pointer; }
+.sp-dot.is-active { width:20px; border-radius:8px; background:#8AB4FF; }
+.sp-slide-footnote { margin:11px 0 0 !important; padding-top:9px; border-top:1px solid #FFFFFF25; color:#AFC5E8 !important; font-size:9px !important; line-height:1.4 !important; }
+@keyframes spSlideIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:760px) { .sp-slideshow { min-height:275px; } .sp-slides { min-height:205px; } }
+@media(prefers-reduced-motion:reduce) { .sp-slide { animation:none; } }
+
 </style>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 </head>
@@ -1937,19 +1962,66 @@ html, body { background-color:#F1F5FA !important; }
       <p class="weekly-feature-disclaimer">StockPilot AI research and educational discussion only. Not a buy or sell recommendation or financial advice.</p>
     </div>
 
-    <aside class="weekly-feature-side" aria-label="Bloomberg live financial news">
-      <div class="weekly-live">
-        <div class="weekly-live-label"><span class="weekly-live-dot"></span> BLOOMBERG TELEVISION — LIVE</div>
-        <iframe
-          src="https://www.youtube.com/embed/live_stream?channel=UCIALMKvObZNtJ6AmdCLP7Lg&autoplay=1&mute=1&playsinline=1"
-          title="Bloomberg Television live business and financial news"
-          loading="eager"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+    <aside class="weekly-feature-side" aria-label="Explore StockPilot AI">
+      <div class="sp-slideshow" id="stockpilot-slideshow" aria-roledescription="carousel" aria-label="What you can explore on StockPilot AI">
+        <div class="sp-slides">
+          <article class="sp-slide is-active" aria-hidden="false">
+            <div class="sp-slide-icon" aria-hidden="true">↗</div>
+            <p class="sp-slide-kicker">YOUR MARKET STARTING POINT</p>
+            <h2>Daily Stock Picks</h2>
+            <p>Discover actively traded stocks selected from market data, with key prices and daily market activity in one place.</p>
+            <a href="#main-picks" class="sp-slide-link">EXPLORE TODAY’S PICKS <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="sp-slide" aria-hidden="true">
+            <div class="sp-slide-icon" aria-hidden="true">$</div>
+            <p class="sp-slide-kicker">SMALLER COMPANIES · HIGHER RISK</p>
+            <h2>Penny Stocks</h2>
+            <p>Review lower-priced stocks, compare market activity, and research companies that may deserve a closer look.</p>
+            <a href="#penny-picks" class="sp-slide-link">VIEW PENNY STOCKS <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="sp-slide" aria-hidden="true">
+            <div class="sp-slide-icon" aria-hidden="true">₿</div>
+            <p class="sp-slide-kicker">CRYPTO MARKET WATCH</p>
+            <h2>Top Cryptocurrencies</h2>
+            <p>Follow leading cryptocurrencies ranked by reported 24-hour trading volume and monitor changing market activity.</p>
+            <a href="#crypto-picks" class="sp-slide-link">EXPLORE CRYPTO <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="sp-slide" aria-hidden="true">
+            <div class="sp-slide-icon" aria-hidden="true">▤</div>
+            <p class="sp-slide-kicker">LEARN BEFORE YOU INVEST</p>
+            <h2>Research &amp; Investing Guides</h2>
+            <p>Explore market research, investing education, company information, and practical guides to help inform your own research.</p>
+            <a href="./research.html" class="sp-slide-link">VISIT RESEARCH CENTER <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="sp-slide" aria-hidden="true">
+            <div class="sp-slide-icon" aria-hidden="true">⇄</div>
+            <p class="sp-slide-kicker">BROKERAGE DIRECTORY</p>
+            <h2>Compare Brokers</h2>
+            <p>Discover brokerage platforms and review available information before deciding which services to investigate further.</p>
+            <a href="#broker-directory" class="sp-slide-link">EXPLORE BROKERS <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="sp-slide" aria-hidden="true">
+            <div class="sp-slide-icon" aria-hidden="true">◎</div>
+            <p class="sp-slide-kicker">GLOBAL MARKET COVERAGE</p>
+            <h2>Markets &amp; Resources</h2>
+            <p>Explore major stock exchanges, financial resources, market insights, and tools gathered to support your market research.</p>
+            <a href="#market-coverage" class="sp-slide-link">EXPLORE MARKETS <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+        <div class="sp-slide-controls">
+          <button class="sp-slide-arrow" type="button" data-sp-prev aria-label="Previous slide">‹</button>
+          <div class="sp-slide-dots" aria-label="Choose a slide">
+            <button class="sp-dot is-active" type="button" data-sp-slide="0" aria-label="Slide 1" aria-current="true"></button>
+            <button class="sp-dot" type="button" data-sp-slide="1" aria-label="Slide 2"></button>
+            <button class="sp-dot" type="button" data-sp-slide="2" aria-label="Slide 3"></button>
+            <button class="sp-dot" type="button" data-sp-slide="3" aria-label="Slide 4"></button>
+            <button class="sp-dot" type="button" data-sp-slide="4" aria-label="Slide 5"></button>
+            <button class="sp-dot" type="button" data-sp-slide="5" aria-label="Slide 6"></button>
+          </div>
+          <button class="sp-slide-arrow" type="button" data-sp-next aria-label="Next slide">›</button>
+        </div>
+        <p class="sp-slide-footnote">A clearer view of the markets, one topic at a time.</p>
       </div>
-      <p style="margin-top:12px;">Live business and financial market coverage</p>
     </aside>
   </div>
 </section>
@@ -2990,6 +3062,48 @@ setInterval(loadStocks,15 * 60 * 1000);
     </div>
   </div>
 </section>
+
+
+<script>
+(function () {
+  const carousel = document.getElementById('stockpilot-slideshow');
+  if (!carousel) return;
+  const slides = Array.from(carousel.querySelectorAll('.sp-slide'));
+  const dots = Array.from(carousel.querySelectorAll('.sp-dot'));
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current = 0;
+  let timer = null;
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      const active = i === current;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+    dots.forEach((dot, i) => {
+      const active = i === current;
+      dot.classList.toggle('is-active', active);
+      if (active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+  }
+  function stop() { if (timer) window.clearInterval(timer); timer = null; }
+  function start() {
+    stop();
+    if (!reducedMotion) timer = window.setInterval(() => showSlide(current + 1), 2500);
+  }
+  carousel.querySelector('[data-sp-prev]').addEventListener('click', () => { showSlide(current - 1); start(); });
+  carousel.querySelector('[data-sp-next]').addEventListener('click', () => { showSlide(current + 1); start(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); start(); }));
+  carousel.addEventListener('mouseenter', stop);
+  carousel.addEventListener('mouseleave', start);
+  carousel.addEventListener('focusin', stop);
+  carousel.addEventListener('focusout', event => { if (!carousel.contains(event.relatedTarget)) start(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+  showSlide(0);
+  start();
+})();
+</script>
 
 </body>
 </html>
