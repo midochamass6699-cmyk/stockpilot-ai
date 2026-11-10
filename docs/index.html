@@ -1994,29 +1994,40 @@ html, body { background-color:#F1F5FA !important; }
         <p class="sp-slide-footnote">A clearer view of the markets, one topic at a time.</p>
       </div>
 
-      <!-- STOCKPILOT AI: PERSONAL BROKER MATCHER -->
-      <section class="broker-match-widget" id="broker-match-widget" aria-labelledby="broker-match-title">
-        <div class="broker-match-topline"><span class="broker-match-spark">✦</span> STOCKPILOT AI BROKER MATCH</div>
-        <h2 id="broker-match-title">Find Your Best Broker</h2>
-        <p class="broker-match-intro">Answer a few quick questions. We’ll match you with <strong>one broker</strong> from our 14 listed platforms.</p>
-        <div class="broker-match-progress" aria-label="Question progress"><span id="broker-match-progress-fill"></span></div>
-        <div id="broker-match-step" class="broker-match-step" aria-live="polite">
-          <p class="broker-match-count" id="broker-match-count">QUESTION 1 OF 5</p>
-          <h3 id="broker-match-question">Where do you live?</h3>
-          <div id="broker-match-options" class="broker-match-options">
-            <label class="broker-match-option"><input type="radio" name="broker-country" value="Canada"><span>Canada</span></label>
-            <label class="broker-match-option"><input type="radio" name="broker-country" value="United States"><span>United States</span></label>
-            <label class="broker-match-option"><input type="radio" name="broker-country" value="United Kingdom"><span>United Kingdom</span></label>
-            <label class="broker-match-option"><input type="radio" name="broker-country" value="Australia"><span>Australia</span></label>
-            <label class="broker-match-option"><input type="radio" name="broker-country" value="Other country"><span>Another country</span></label>
-          </div>
-          <input id="broker-match-country-other" class="broker-match-country-other" type="text" placeholder="Enter your country" aria-label="Your country" hidden>
-          <div class="broker-match-actions"><button type="button" id="broker-match-next" disabled>CONTINUE <span aria-hidden="true">→</span></button></div>
-          <p class="broker-match-footnote">We only compare the 14 brokers already listed on StockPilot AI. Availability and account eligibility depend on your country.</p>
-        </div>
-        <div id="broker-match-result" class="broker-match-result" hidden aria-live="polite"></div>
-      </section>
+      
     </aside>
+  </div>
+</section>
+
+<!-- STOCKPILOT AI: FULL-WIDTH, ANIMATED BROKER MATCH BANNER -->
+<section class="broker-match-widget" id="broker-match-widget" aria-labelledby="broker-match-title">
+  <div class="broker-match-banner">
+    <div class="broker-match-banner-copy">
+      <div class="broker-match-topline"><span class="broker-match-spark" aria-hidden="true">✦</span> STOCKPILOT AI PERSONAL BROKER MATCH</div>
+      <h2 id="broker-match-title">Find Your Best Broker</h2>
+      <p class="broker-match-intro">Answer a few quick questions. Discover the one broker that best matches your needs.</p>
+    </div>
+    <button type="button" class="broker-match-start" id="broker-match-start" aria-expanded="false" aria-controls="broker-match-panel">
+      <span>START NOW</span><span class="broker-match-start-arrow" aria-hidden="true">→</span>
+    </button>
+  </div>
+  <div class="broker-match-panel" id="broker-match-panel" hidden>
+    <div class="broker-match-progress" aria-label="Question progress"><span id="broker-match-progress-fill"></span></div>
+    <div id="broker-match-step" class="broker-match-step" aria-live="polite">
+      <p class="broker-match-count" id="broker-match-count">QUESTION 1 OF 5</p>
+      <h3 id="broker-match-question">Where do you live?</h3>
+      <div id="broker-match-options" class="broker-match-options">
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Canada"><span>Canada</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="United States"><span>United States</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="United Kingdom"><span>United Kingdom</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Australia"><span>Australia</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Other country"><span>Another country</span></label>
+      </div>
+      <input id="broker-match-country-other" class="broker-match-country-other" type="text" placeholder="Enter your country" aria-label="Your country" hidden>
+      <div class="broker-match-actions"><button type="button" id="broker-match-next" disabled>CONTINUE <span aria-hidden="true">→</span></button></div>
+      <p class="broker-match-footnote">We compare only the 14 brokers listed on StockPilot AI. Availability and account eligibility depend on your country.</p>
+    </div>
+    <div id="broker-match-result" class="broker-match-result" hidden aria-live="polite"></div>
   </div>
 </section>
 
@@ -3586,25 +3597,45 @@ body { overflow-x: hidden; }
 
 
 <style>
-/* PROMINENT BROKER MATCHER IN THE RIGHT-HAND FEATURE COLUMN */
+/* FULL-WIDTH ANIMATED BROKER MATCH BANNER BELOW THE TWO FEATURE COLUMNS */
 .broker-match-widget {
-  position:relative; z-index:3; width:100%; margin-top:18px; padding:18px 16px 15px;
-  border:1px solid #F0A17D; border-radius:16px; text-align:left; color:#F8FAFC;
-  background:linear-gradient(145deg,#102D29 0%,#173D36 58%,#244D43 100%);
-  box-shadow:0 12px 28px #061B173D;
+  position:relative; isolation:isolate; overflow:hidden; width:min(1200px,calc(100% - 32px));
+  margin:22px auto 28px; padding:0; border:1px solid rgba(240,161,125,.8); border-radius:18px;
+  color:#F8FAFC; background:linear-gradient(110deg,#102D29 0%,#17483D 48%,#102D29 100%);
+  box-shadow:0 12px 30px rgba(6,27,23,.18),0 0 0 1px rgba(255,192,159,.08);
 }
-.broker-match-topline { display:flex; align-items:center; gap:7px; color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.15em; }
-.broker-match-spark { display:grid; place-items:center; width:20px; height:20px; border-radius:7px; color:#173D36; background:#FFC09F; font-size:13px; }
-.broker-match-widget h2 { margin:10px 0 6px; color:#FFFFFF; font-size:clamp(21px,2.1vw,28px); line-height:1.05; letter-spacing:-.035em; }
-.broker-match-intro { margin:0 0 12px; color:#D9E7E0; font-size:12px; line-height:1.55; }
-.broker-match-intro strong { color:#FFFFFF; }
-.broker-match-progress { height:5px; margin:12px 0 13px; overflow:hidden; border-radius:99px; background:#FFFFFF25; }
+.broker-match-widget::before {
+  content:""; position:absolute; z-index:-1; inset:-40% auto -40% -35%; width:34%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
+  transform:skewX(-22deg); animation:brokerBannerSweep 6s ease-in-out infinite;
+  pointer-events:none;
+}
+.broker-match-widget::after {
+  content:""; position:absolute; z-index:-1; width:220px; height:220px; right:-75px; top:-125px;
+  border-radius:50%; background:rgba(240,161,125,.13); filter:blur(5px);
+  animation:brokerGlow 4.5s ease-in-out infinite alternate; pointer-events:none;
+}
+.broker-match-banner { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:17px 23px; }
+.broker-match-banner-copy { min-width:0; }
+.broker-match-topline { display:flex; align-items:center; gap:8px; color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.15em; }
+.broker-match-spark { display:grid; place-items:center; width:21px; height:21px; border-radius:7px; color:#173D36; background:#FFC09F; font-size:14px; animation:brokerSpark 3.2s ease-in-out infinite; }
+.broker-match-widget h2 { margin:5px 0 3px; color:#FFFFFF; font-size:clamp(22px,2.5vw,31px); line-height:1.08; letter-spacing:-.035em; }
+.broker-match-intro { margin:0; color:#D9E7E0; font-size:12px; line-height:1.5; }
+.broker-match-start { position:relative; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; gap:13px; min-height:48px; padding:0 22px; border:1px solid rgba(255,255,255,.5); border-radius:999px; background:linear-gradient(115deg,#FFC09F,#F0A17D); color:#183A34; font-size:11px; font-weight:1000; letter-spacing:.09em; cursor:pointer; box-shadow:0 0 0 0 rgba(240,161,125,.48); animation:brokerButtonPulse 2.4s ease-out infinite; transition:transform .2s ease,box-shadow .2s ease,filter .2s ease; }
+.broker-match-start:hover { transform:translateY(-2px) scale(1.025); filter:brightness(1.06); box-shadow:0 8px 22px rgba(240,161,125,.32); }
+.broker-match-start:focus-visible { outline:3px solid #FFFFFF; outline-offset:4px; }
+.broker-match-start-arrow { font-size:19px; line-height:1; transition:transform .2s ease; }
+.broker-match-start:hover .broker-match-start-arrow { transform:translateX(4px); }
+.broker-match-panel { padding:0 23px 20px; animation:brokerPanelReveal .35s ease both; }
+.broker-match-panel[hidden] { display:none; }
+.broker-match-progress { height:5px; margin:0 0 13px; overflow:hidden; border-radius:99px; background:#FFFFFF25; }
 .broker-match-progress span { display:block; width:20%; height:100%; border-radius:99px; background:#F0A17D; transition:width .2s ease; }
 .broker-match-count { margin:0 0 5px; color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.13em; }
 .broker-match-step h3 { margin:0 0 11px; color:#FFFFFF; font-size:16px; line-height:1.25; }
-.broker-match-options { display:grid; gap:6px; }
-.broker-match-country-other { width:100%; margin-top:8px; padding:10px 11px; border:1px solid #FFC09F; border-radius:9px; background:#FFFFFF; color:#183A34; font-size:12px; }
-.broker-match-option { display:flex; align-items:center; gap:9px; min-height:34px; padding:7px 9px; border:1px solid #FFFFFF35; border-radius:9px; background:#FFFFFF0D; color:#FFFFFF; font-size:11px; line-height:1.3; cursor:pointer; }
+.broker-match-options { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:7px; }
+.broker-match-country-other { width:100%; max-width:420px; margin-top:8px; padding:10px 11px; border:1px solid #FFC09F; border-radius:9px; background:#FFFFFF; color:#183A34; font-size:12px; }
+.broker-match-option { display:flex; align-items:center; gap:9px; min-height:36px; padding:7px 9px; border:1px solid #FFFFFF35; border-radius:9px; background:#FFFFFF0D; color:#FFFFFF; font-size:11px; line-height:1.3; cursor:pointer; transition:background .18s ease,border-color .18s ease; }
+.broker-match-option:hover { border-color:#FFC09F; background:#F0A17D20; }
 .broker-match-option:has(input:checked) { border-color:#FFC09F; background:#F0A17D20; }
 .broker-match-option input { width:15px; height:15px; margin:0; accent-color:#F0A17D; flex:0 0 auto; }
 .broker-match-actions { display:flex; justify-content:flex-end; margin-top:11px; }
@@ -3618,11 +3649,30 @@ body { overflow-x: hidden; }
 .broker-match-result .match-caveat { padding:9px; border-left:3px solid #F0A17D; border-radius:5px; background:#FFFFFF10; color:#F7E6DC; font-size:10px; }
 .broker-match-result a { display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:#FFC09F; font-size:11px; font-weight:900; text-decoration:underline; }
 .broker-match-result .broker-match-restart { display:block; margin-top:12px; }
+@keyframes brokerBannerSweep { 0%,20% { left:-40%; opacity:0; } 35% { opacity:1; } 65% { left:115%; opacity:0; } 100% { left:115%; opacity:0; } }
+@keyframes brokerButtonPulse { 0% { box-shadow:0 0 0 0 rgba(240,161,125,.42); } 70% { box-shadow:0 0 0 12px rgba(240,161,125,0); } 100% { box-shadow:0 0 0 0 rgba(240,161,125,0); } }
+@keyframes brokerGlow { from { transform:scale(.86); opacity:.55; } to { transform:scale(1.18); opacity:1; } }
+@keyframes brokerSpark { 0%,100% { transform:rotate(0) scale(1); } 50% { transform:rotate(18deg) scale(1.12); } }
+@keyframes brokerPanelReveal { from { opacity:0; transform:translateY(-7px); } to { opacity:1; transform:translateY(0); } }
 @media(max-width:760px) {
-  .broker-match-widget { margin-top:15px; padding:19px 16px; }
-  .broker-match-widget h2 { font-size:25px; }
+  .broker-match-widget { width:calc(100% - 24px); margin:16px auto 22px; border-radius:15px; }
+  .broker-match-banner { align-items:flex-start; gap:13px; padding:15px 14px; }
+  .broker-match-topline { font-size:8px; letter-spacing:.1em; }
+  .broker-match-widget h2 { font-size:22px; }
+  .broker-match-intro { max-width:38ch; font-size:11px; }
+  .broker-match-start { gap:7px; min-height:42px; padding:0 13px; font-size:9px; }
+  .broker-match-panel { padding:0 14px 16px; }
+  .broker-match-options { grid-template-columns:1fr; }
   .broker-match-option { min-height:39px; font-size:12px; }
   .broker-match-step h3 { font-size:18px; }
+}
+@media(max-width:420px) {
+  .broker-match-banner { flex-direction:column; align-items:stretch; }
+  .broker-match-start { align-self:flex-start; min-width:145px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .broker-match-widget::before,.broker-match-widget::after,.broker-match-spark,.broker-match-start { animation:none !important; }
+  .broker-match-panel { animation:none !important; }
 }
 </style>
 
@@ -3631,6 +3681,8 @@ body { overflow-x: hidden; }
 (function(){
   const root=document.getElementById('broker-match-widget');
   if(!root) return;
+  const startBtn=document.getElementById('broker-match-start');
+  const panel=document.getElementById('broker-match-panel');
   const questionEl=document.getElementById('broker-match-question');
   const optionsEl=document.getElementById('broker-match-options');
   const countEl=document.getElementById('broker-match-count');
@@ -3699,9 +3751,10 @@ body { overflow-x: hidden; }
     const para=document.createElement('p'); para.textContent=why;
     const warning=document.createElement('p'); warning.className='match-caveat'; warning.textContent=caveat;
     const link=document.createElement('a'); link.href=url; link.target='_blank'; link.rel='noopener noreferrer'; link.textContent='VISIT OFFICIAL BROKER WEBSITE ↗';
-    const restart=document.createElement('button'); restart.type='button'; restart.className='broker-match-restart'; restart.textContent='START AGAIN'; restart.addEventListener('click',()=>{index=0; Object.keys(answers).forEach(k=>delete answers[k]); otherCountryInput.value=''; otherCountryInput.hidden=true; resultEl.hidden=true; stepEl.hidden=false; draw();});
+    const restart=document.createElement('button'); restart.type='button'; restart.className='broker-match-restart'; restart.textContent='START AGAIN'; restart.addEventListener('click',()=>{index=0; Object.keys(answers).forEach(k=>delete answers[k]); otherCountryInput.value=''; otherCountryInput.hidden=true; resultEl.hidden=true; stepEl.hidden=false; draw(); panel.hidden=true; startBtn.hidden=false; startBtn.setAttribute('aria-expanded','false');});
     resultEl.append(kicker,title,para,warning,link,restart);
   }
+  startBtn.addEventListener('click',()=>{panel.hidden=false; startBtn.hidden=true; startBtn.setAttribute('aria-expanded','true'); draw(); panel.scrollIntoView({behavior:'smooth',block:'nearest'});});
   otherCountryInput.addEventListener('input',()=>{if(answers.country==='Another country') nextBtn.disabled=!otherCountryInput.value.trim();});
   nextBtn.addEventListener('click',()=>{const q=questions[index]; if(!answers[q.key]) return; if(q.key==='country' && answers.country==='Another country'){if(!otherCountryInput.value.trim()){otherCountryInput.focus();return;} answers.countryText=otherCountryInput.value.trim();} if(index<questions.length-1){index++;draw();}else{showResult();}});
   draw();
