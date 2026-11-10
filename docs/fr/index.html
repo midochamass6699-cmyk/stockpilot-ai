@@ -1465,6 +1465,130 @@ footer a { color:#8AB4FF !important; }
     background-color: #F1F5FA !important;
 }
 
+/* FULL-WIDTH ANIMATED BROKER MATCH BANNER BELOW THE TWO FEATURE COLUMNS */
+.broker-match-widget {
+  position:relative; isolation:isolate; overflow:hidden; width:min(1200px,calc(100% - 32px));
+  margin:22px auto 28px; padding:0; border:1px solid rgba(240,161,125,.8); border-radius:18px;
+  color:#F8FAFC; background:linear-gradient(110deg,#102D29 0%,#17483D 48%,#102D29 100%);
+  box-shadow:0 12px 30px rgba(6,27,23,.18),0 0 0 1px rgba(255,192,159,.08);
+}
+.broker-match-widget::before {
+  content:""; position:absolute; z-index:-1; inset:-40% auto -40% -35%; width:34%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
+  transform:skewX(-22deg); animation:brokerBannerSweep 6s ease-in-out infinite;
+  pointer-events:none;
+}
+.broker-match-widget::after {
+  content:""; position:absolute; z-index:-1; width:220px; height:220px; right:-75px; top:-125px;
+  border-radius:50%; background:rgba(240,161,125,.13); filter:blur(5px);
+  animation:brokerGlow 4.5s ease-in-out infinite alternate; pointer-events:none;
+}
+.broker-match-banner { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:17px 23px; }
+.broker-match-banner-copy { min-width:0; }
+.broker-match-topline { display:flex; align-items:center; gap:8px; color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.15em; }
+.broker-match-spark { display:grid; place-items:center; width:21px; height:21px; border-radius:7px; color:#173D36; background:#FFC09F; font-size:14px; animation:brokerSpark 3.2s ease-in-out infinite; }
+.broker-match-widget h2 { margin:5px 0 3px; color:#FFFFFF; font-size:clamp(22px,2.5vw,31px); line-height:1.08; letter-spacing:-.035em; }
+.broker-match-intro { margin:0; color:#D9E7E0; font-size:12px; line-height:1.5; }
+.broker-match-start { position:relative; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; gap:13px; min-height:48px; padding:0 22px; border:1px solid rgba(255,255,255,.5); border-radius:999px; background:linear-gradient(115deg,#FFC09F,#F0A17D); color:#183A34; font-size:11px; font-weight:1000; letter-spacing:.09em; cursor:pointer; box-shadow:0 0 0 0 rgba(240,161,125,.48); animation:brokerButtonPulse 2.4s ease-out infinite; transition:transform .2s ease,box-shadow .2s ease,filter .2s ease; }
+.broker-match-start:hover { transform:translateY(-2px) scale(1.025); filter:brightness(1.06); box-shadow:0 8px 22px rgba(240,161,125,.32); }
+.broker-match-start:focus-visible { outline:3px solid #FFFFFF; outline-offset:4px; }
+.broker-match-start-arrow { font-size:19px; line-height:1; transition:transform .2s ease; }
+.broker-match-start:hover .broker-match-start-arrow { transform:translateX(4px); }
+.broker-match-panel { padding:0 23px 20px; animation:brokerPanelReveal .35s ease both; }
+.broker-match-panel[hidden] { display:none; }
+.broker-match-progress { height:5px; margin:0 0 13px; overflow:hidden; border-radius:99px; background:#FFFFFF25; }
+.broker-match-progress span { display:block; width:20%; height:100%; border-radius:99px; background:#F0A17D; transition:width .2s ease; }
+.broker-match-count { margin:0 0 5px; color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.13em; }
+.broker-match-step h3 { margin:0 0 11px; color:#FFFFFF; font-size:16px; line-height:1.25; }
+.broker-match-options { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:7px; }
+.broker-match-country-other { width:100%; max-width:420px; margin-top:8px; padding:10px 11px; border:1px solid #FFC09F; border-radius:9px; background:#FFFFFF; color:#183A34; font-size:12px; }
+.broker-match-option { display:flex; align-items:center; gap:9px; min-height:36px; padding:7px 9px; border:1px solid #FFFFFF35; border-radius:9px; background:#FFFFFF0D; color:#FFFFFF; font-size:11px; line-height:1.3; cursor:pointer; transition:background .18s ease,border-color .18s ease; }
+.broker-match-option:hover { border-color:#FFC09F; background:#F0A17D20; }
+.broker-match-option:has(input:checked) { border-color:#FFC09F; background:#F0A17D20; }
+.broker-match-option input { width:15px; height:15px; margin:0; accent-color:#F0A17D; flex:0 0 auto; }
+.broker-match-actions { display:flex; justify-content:flex-end; margin-top:11px; }
+.broker-match-actions button, .broker-match-restart { min-height:37px; padding:9px 15px; border:0; border-radius:999px; background:#F0A17D; color:#183A34; font-size:10px; font-weight:950; letter-spacing:.06em; cursor:pointer; }
+.broker-match-actions button:disabled { opacity:.45; cursor:not-allowed; }
+.broker-match-footnote { margin:10px 0 0; color:#BFD1C8; font-size:9px; line-height:1.45; }
+.broker-match-result { padding-top:3px; }
+.broker-match-result .match-kicker { color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.13em; }
+.broker-match-result h3 { margin:6px 0 7px; color:#FFFFFF; font-size:21px; line-height:1.15; }
+.broker-match-result p { margin:7px 0; color:#D9E7E0; font-size:11px; line-height:1.55; }
+.broker-match-result .match-caveat { padding:9px; border-left:3px solid #F0A17D; border-radius:5px; background:#FFFFFF10; color:#F7E6DC; font-size:10px; }
+.broker-match-result a { display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:#FFC09F; font-size:11px; font-weight:900; text-decoration:underline; }
+.broker-match-result .broker-match-restart { display:block; margin-top:12px; }
+@keyframes brokerBannerSweep { 0%,20% { left:-40%; opacity:0; } 35% { opacity:1; } 65% { left:115%; opacity:0; } 100% { left:115%; opacity:0; } }
+@keyframes brokerButtonPulse { 0% { box-shadow:0 0 0 0 rgba(240,161,125,.42); } 70% { box-shadow:0 0 0 12px rgba(240,161,125,0); } 100% { box-shadow:0 0 0 0 rgba(240,161,125,0); } }
+@keyframes brokerGlow { from { transform:scale(.86); opacity:.55; } to { transform:scale(1.18); opacity:1; } }
+@keyframes brokerSpark { 0%,100% { transform:rotate(0) scale(1); } 50% { transform:rotate(18deg) scale(1.12); } }
+@keyframes brokerPanelReveal { from { opacity:0; transform:translateY(-7px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:760px) {
+  .broker-match-widget { width:calc(100% - 24px); margin:16px auto 22px; border-radius:15px; }
+  .broker-match-banner { align-items:flex-start; gap:13px; padding:15px 14px; }
+  .broker-match-topline { font-size:8px; letter-spacing:.1em; }
+  .broker-match-widget h2 { font-size:22px; }
+  .broker-match-intro { max-width:38ch; font-size:11px; }
+  .broker-match-start { gap:7px; min-height:42px; padding:0 13px; font-size:9px; }
+  .broker-match-panel { padding:0 14px 16px; }
+  .broker-match-options { grid-template-columns:1fr; }
+  .broker-match-option { min-height:39px; font-size:12px; }
+  .broker-match-step h3 { font-size:18px; }
+}
+@media(max-width:420px) {
+  .broker-match-banner { flex-direction:column; align-items:stretch; }
+  .broker-match-start { align-self:flex-start; min-width:145px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .broker-match-widget::before,.broker-match-widget::after,.broker-match-spark,.broker-match-start { animation:none !important; }
+  .broker-match-panel { animation:none !important; }
+}
+
+
+/* FR HOMEPAGE RESPONSIVE POLISH */
+html, body { max-width:100%; overflow-x:hidden; }
+img, iframe, video { max-width:100%; }
+.container { width:min(1200px,calc(100% - 32px)); }
+.nav { min-width:0; }
+.navlinks { min-width:0; }
+.weekly-feature-inner { min-width:0; }
+.weekly-feature-copy, .weekly-feature-side { min-width:0; }
+.weekly-feature-description { overflow-wrap:anywhere; }
+.stock-grid > *, .resources-grid > *, .market-grid > * { min-width:0; }
+@media(max-width:760px) {
+  .nav { align-items:center !important; flex-direction:column !important; }
+  .navlinks {
+    display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important;
+    width:100%; overflow-x:auto; overflow-y:hidden; white-space:nowrap;
+    gap:14px !important; padding:5px 0 9px; scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .navlinks::-webkit-scrollbar { display:none; }
+  .navlinks a { flex:0 0 auto; white-space:nowrap; }
+  .weekly-feature-inner { grid-template-columns:1fr !important; }
+  .weekly-feature-side { display:flex !important; min-height:210px !important; }
+  .weekly-feature-copy { padding:20px 18px !important; }
+  .stock-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  .market-grid, .resources-grid, .features { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+}
+@media(max-width:520px) {
+  .container { width:calc(100% - 24px) !important; }
+  .stock-grid, .market-grid, .resources-grid, .features { grid-template-columns:1fr !important; }
+  .weekly-feature-copy h1 { font-size:clamp(29px,8vw,40px) !important; }
+  .weekly-feature-description { font-size:13px !important; line-height:1.65 !important; }
+  .weekly-feature-side { min-height:185px !important; }
+  .stock-of-the-week { width:calc(100% - 24px) !important; }
+  .market-coverage, .method-section, .seo-faq, .contact-section { padding:16px !important; }
+  .broker-match-banner { align-items:flex-start !important; flex-direction:column !important; gap:13px !important; padding:16px !important; }
+  .broker-match-start { width:100%; }
+  .broker-match-panel { padding:0 16px 17px !important; }
+  .broker-match-options { grid-template-columns:1fr !important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .broker-match-widget::before, .broker-match-widget::after, .broker-match-spark,
+  .broker-match-start { animation:none !important; }
+  .broker-match-panel { animation:none !important; }
+}
+
 </style>
 <script defer="" src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
 <link href="https://technofront.org/fr/" hreflang="fr-CA" rel="alternate"/><link href="https://technofront.org/" hreflang="en-CA" rel="alternate"/><link href="https://technofront.org/" hreflang="x-default" rel="alternate"/></head>
@@ -1552,6 +1676,39 @@ footer a { color:#8AB4FF !important; }
 </aside>
 </div>
 </section>
+
+<!-- STOCKPILOT AI: FULL-WIDTH, ANIMATED BROKER MATCH BANNER -->
+<section class="broker-match-widget" id="broker-match-widget" aria-labelledby="broker-match-title">
+  <div class="broker-match-banner">
+    <div class="broker-match-banner-copy">
+      <div class="broker-match-topline"><span class="broker-match-spark" aria-hidden="true">✦</span> SÉLECTION PERSONNALISÉE DE COURTIER STOCKPILOT AI</div>
+      <h2 id="broker-match-title">Trouvez le courtier qui vous convient</h2>
+      <p class="broker-match-intro">Répondez à quelques questions pour découvrir le courtier qui correspond le mieux à vos besoins.</p>
+    </div>
+    <button type="button" class="broker-match-start" id="broker-match-start" aria-expanded="false" aria-controls="broker-match-panel">
+      <span>COMMENCER</span><span class="broker-match-start-arrow" aria-hidden="true">→</span>
+    </button>
+  </div>
+  <div class="broker-match-panel" id="broker-match-panel" hidden>
+    <div class="broker-match-progress" aria-label="Progression des questions"><span id="broker-match-progress-fill"></span></div>
+    <div id="broker-match-step" class="broker-match-step" aria-live="polite">
+      <p class="broker-match-count" id="broker-match-count">QUESTION 1 SUR 5</p>
+      <h3 id="broker-match-question">Dans quel pays habitez-vous?</h3>
+      <div id="broker-match-options" class="broker-match-options">
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Canada"><span>Canada</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="États-Unis"><span>États-Unis</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Royaume-Uni"><span>Royaume-Uni</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Australie"><span>Australie</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Other country"><span>Autre pays</span></label>
+      </div>
+      <input id="broker-match-country-other" class="broker-match-country-other" type="text" placeholder="Entrez votre pays" aria-label="Votre pays" hidden>
+      <div class="broker-match-actions"><button type="button" id="broker-match-next" disabled>CONTINUER <span aria-hidden="true">→</span></button></div>
+      <p class="broker-match-footnote">Nous comparons uniquement les 14 courtiers répertoriés sur StockPilot AI. Leur disponibilité dépend de votre pays.</p>
+    </div>
+    <div id="broker-match-result" class="broker-match-result" hidden aria-live="polite"></div>
+  </div>
+</section>
+
 <nav aria-label="Catégories de marché" class="category-nav">
 <a aria-label="Aller à la section actions du jour" class="category-tab active" href="#main-picks">ACTIONS DU JOUR</a>
 <a aria-label="Aller à la section penny stocks" class="category-tab" href="#penny-picks">PENNY STOCKS</a>
@@ -2455,6 +2612,90 @@ setInterval(loadStocks,15 * 60 * 1000);
       show("Le service de notifications n’a pas pu démarrer. Actualisez la page et réessayez.");
     }
   });
+})();
+</script>
+
+<script>
+(function(){
+  const root=document.getElementById('broker-match-widget');
+  if(!root) return;
+  const startBtn=document.getElementById('broker-match-start');
+  const panel=document.getElementById('broker-match-panel');
+  const questionEl=document.getElementById('broker-match-question');
+  const optionsEl=document.getElementById('broker-match-options');
+  const countEl=document.getElementById('broker-match-count');
+  const fillEl=document.getElementById('broker-match-progress-fill');
+  const nextBtn=document.getElementById('broker-match-next');
+  const stepEl=document.getElementById('broker-match-step');
+  const resultEl=document.getElementById('broker-match-result');
+  const otherCountryInput=document.getElementById('broker-match-country-other');
+  const questions=[
+    {key:'country',title:'Dans quel pays habitez-vous?',options:['Canada','États-Unis','Royaume-Uni','Australie','Autre pays']},
+    {key:'assets',title:'Dans quoi souhaitez-vous investir?',options:['Actions et FNB','Actions, FNB et cryptomonnaies','Actions, FNB, cryptomonnaies et autres placements']},
+    {key:'budget',title:'Quel montant souhaitez-vous investir au départ?',options:['Moins de 500 $','500 $ à 5 000 $','5 000 $ à 25 000 $','Plus de 25 000 $']},
+    {key:'priority',title:'Quel est votre critère le plus important?',options:['Aucune commission sur les actions et les FNB','Coût total le plus bas, conversion de devises comprise','Accès à un vaste choix de marchés internationaux','Un équilibre entre faibles coûts et choix de placements']},
+    {key:'style',title:'À quelle fréquence prévoyez-vous effectuer des transactions?',options:['Quelques fois par année','Quelques fois par mois','Plusieurs fois par semaine','Je ne sais pas encore']}
+  ];
+  let index=0; const answers={};
+  function draw(){
+    const q=questions[index];
+    if(q.key!=='country') otherCountryInput.hidden=true;
+    countEl.textContent='QUESTION '+(index+1)+' OF '+questions.length;
+    questionEl.textContent=q.title;
+    fillEl.style.width=((index+1)/questions.length*100)+'%';
+    optionsEl.innerHTML='';
+    q.options.forEach((value,i)=>{
+      const label=document.createElement('label'); label.className='broker-match-option';
+      const input=document.createElement('input'); input.type='radio'; input.name='broker-match-answer'; input.value=value;
+      input.addEventListener('change',()=>{answers[q.key]=value; if(q.key==='country'){otherCountryInput.hidden=value!=='Autre pays'; if(value!=='Autre pays') otherCountryInput.value='';} nextBtn.disabled=false;});
+      const span=document.createElement('span'); span.textContent=value; label.append(input,span); optionsEl.append(label);
+    });
+    nextBtn.disabled=!answers[q.key] || (q.key==='country' && answers[q.key]==='Autre pays' && !otherCountryInput.value.trim());
+    nextBtn.innerHTML=index===questions.length-1?'VOIR MON MEILLEUR CHOIX <span aria-hidden="true">→</span>':'CONTINUER <span aria-hidden="true">→</span>' ;
+  }
+  function showResult(){
+    const canada=answers.country==='Canada';
+    const usa=answers.country==='États-Unis';
+    const wantsCrypto=answers.assets && answers.assets.toLowerCase().includes('cryptomonnaies');
+    let broker,why,caveat,url;
+    const activeTrading=answers.style==='Plusieurs fois par semaine';
+    const largerAccount=answers.budget==='5 000 $ à 25 000 $' || answers.budget==='Plus de 25 000 $';
+    const globalAccess=answers.priority==='Accès à un vaste choix de marchés internationaux';
+    if(canada && wantsCrypto){
+      broker='Wealthsimple'; url='https://www.wealthsimple.com/en-ca/invest';
+      why='Parmi les plateformes répertoriées, Wealthsimple correspond le mieux à un débutant canadien qui souhaite investir dans les actions, les FNB et les cryptomonnaies. La plateforme annonce des commissions de 0 $ sur les titres canadiens et américains admissibles.';
+      caveat='Important : des commissions de 0 $ sur les actions et les FNB ne signifient pas que tous les placements sont gratuits. Des frais de conversion de devises et des frais propres aux cryptomonnaies peuvent s’appliquer. Vérifiez les frais et l’admissibilité des produits avant d’ouvrir un compte.';
+    } else if(canada && (activeTrading || largerAccount || globalAccess)){
+      broker='Interactive Brokers'; url='https://www.interactivebrokers.ca/';
+      why='Vos réponses indiquent que vous recherchez un accès étendu aux marchés ou que vous prévoyez négocier plus souvent. Interactive Brokers donne accès à de nombreux marchés internationaux et à une vaste gamme de produits.';
+      caveat='Il ne s’agit pas d’une garantie de commissions nulles : les frais dépendent du marché et du forfait choisi. L’accès aux cryptomonnaies varie selon le pays et l’entité du compte. Consultez la grille tarifaire locale avant de présenter une demande.';
+    } else if(canada){
+      broker='Webull Canada'; url='https://www.webull.ca/';
+      why='Vos réponses privilégient les placements à faible coût dans les actions et les FNB, sans exiger l’accès aux cryptomonnaies ou à de nombreux marchés internationaux. Webull Canada annonce des commissions de 0 $ sur les actions et les FNB américains et canadiens admissibles.';
+      caveat='Cette sélection privilégie les commissions sur les actions et les FNB. Vérifiez les frais de données de marché, de conversion de devises, de compte et les autres frais, ainsi que les protections réglementaires en vigueur.';
+    } else if(usa){
+      broker='Webull'; url='https://www.webull.com/';
+      why='Webull est une option axée sur les coûts dans notre répertoire pour la négociation d’actions et de FNB aux États-Unis; la plateforme annonce des transactions sans commission sur certains titres admissibles.';
+      caveat='L’accès aux produits, la disponibilité des cryptomonnaies, les protections du compte et les frais dépendent de votre État et du type de compte. Vérifiez les conditions actuelles directement auprès de Webull.';
+    } else {
+      broker='Interactive Brokers'; url='https://www.interactivebrokers.com/';
+      why='Parmi les courtiers de notre répertoire, Interactive Brokers offre une vaste portée internationale et publie une liste des pays admissibles. C’est le point de départ le plus pratique pour vérifier l’accès depuis '+(answers.countryText || answers.country)+'.';
+      caveat='Cette sélection repose sur l’étendue des marchés accessibles et non sur une promesse de commissions nulles. Les commissions, les produits offerts et l’accès aux cryptomonnaies varient selon le pays et l’entité du compte. Consultez la liste officielle des pays et la grille tarifaire locale.';
+    }
+    stepEl.hidden=true; resultEl.hidden=false;
+    resultEl.innerHTML='';
+    const kicker=document.createElement('div'); kicker.className='match-kicker'; kicker.textContent='VOTRE RÉSULTAT STOCKPILOT AI';
+    const title=document.createElement('h3'); title.textContent=broker;
+    const para=document.createElement('p'); para.textContent=why;
+    const warning=document.createElement('p'); warning.className='match-caveat'; warning.textContent=caveat;
+    const link=document.createElement('a'); link.href=url; link.target='_blank'; link.rel='noopener noreferrer'; link.textContent='VISITER LE SITE OFFICIEL DU COURTIER ↗';
+    const restart=document.createElement('button'); restart.type='button'; restart.className='broker-match-restart'; restart.textContent='RECOMMENCER'; restart.addEventListener('click',()=>{index=0; Object.keys(answers).forEach(k=>delete answers[k]); otherCountryInput.value=''; otherCountryInput.hidden=true; resultEl.hidden=true; stepEl.hidden=false; draw(); panel.hidden=true; startBtn.hidden=false; startBtn.setAttribute('aria-expanded','false');});
+    resultEl.append(kicker,title,para,warning,link,restart);
+  }
+  startBtn.addEventListener('click',()=>{panel.hidden=false; startBtn.hidden=true; startBtn.setAttribute('aria-expanded','true'); draw(); panel.scrollIntoView({behavior:'smooth',block:'nearest'});});
+  otherCountryInput.addEventListener('input',()=>{if(answers.country==='Autre pays') nextBtn.disabled=!otherCountryInput.value.trim();});
+  nextBtn.addEventListener('click',()=>{const q=questions[index]; if(!answers[q.key]) return; if(q.key==='country' && answers.country==='Autre pays'){if(!otherCountryInput.value.trim()){otherCountryInput.focus();return;} answers.countryText=otherCountryInput.value.trim();} if(index<questions.length-1){index++;draw();}else{showResult();}});
+  draw();
 })();
 </script>
 </body>
