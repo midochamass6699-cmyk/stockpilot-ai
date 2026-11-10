@@ -1887,17 +1887,7 @@ html, body { background-color:#F1F5FA !important; }
 </div>
 <!-- END STOCKPILOT AI MARKET TICKER -->
 
-<!-- MOVING BANNER -->
-<div class="free-ribbon">
-<div class="marquee">
-<span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
-<span>★ DAILY STOCK PICKS — FREE ACCESS</span>
-<span>★ NO PAYWALL — NO SUBSCRIPTION</span>
-<span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span>
-<span>★ DAILY STOCK PICKS — FREE ACCESS</span>
-<span>★ NO PAYWALL — NO SUBSCRIPTION</span>
-</div>
-</div>
+<!-- The free-access message now appears in the two vertical side banners. -->
 
 <!-- FEATURED WEEKLY STOCK -->
 <section class="stock-of-the-week" id="stock-of-the-week" aria-labelledby="weekly-stock-title">
@@ -2984,34 +2974,39 @@ setInterval(loadStocks,15 * 60 * 1000);
 </script>
 
 
-<!-- Expedia affiliate side banners: left and right -->
-<div id="expedia-left-banner" aria-label="Expedia beach getaway affiliate banner">
-  <div class="eg-affiliate-banners"
-       data-program="us-expedia"
-       data-network="pz"
-       data-layout="wide-skyscraper"
-       data-image="sailing"
-       data-message="sun-seeker-find-perfect-beach-getaway"
-       data-camref="1011l5ugbw"
-       data-pubref=""
-       data-link="home"></div>
-</div>
-
-<div id="expedia-right-banner" aria-label="Expedia car rental affiliate banner">
-  <div class="eg-affiliate-banners"
-       data-program="us-expedia"
-       data-network="pz"
-       data-layout="wide-skyscraper"
-       data-image="sailing"
-       data-message="find-perfect-car-rental"
-       data-camref="1011l5ugbw"
-       data-pubref=""
-       data-link="home"></div>
-</div>
-
-<!-- Load Expedia's banner script once for both placements. -->
-<script class="eg-affiliate-banners-script" src="https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"></script>
-
+<!-- STOCKPILOT AI FREE-ACCESS SIDE BANNERS -->
+<aside id="free-left-banner" class="free-side-banner" aria-label="StockPilot AI free access information">
+  <div class="free-side-track" aria-hidden="true">
+    <div class="free-side-message">
+      <span class="free-side-star">✦</span><strong>100% FREE</strong><span>NO MEMBERSHIP REQUIRED</span>
+      <i></i><strong>DAILY STOCK PICKS</strong><span>FREE MARKET INSIGHTS</span>
+      <i></i><strong>PENNY STOCKS</strong><span>CRYPTO MARKET UPDATES</span>
+      <i></i><strong>NO PAYWALL</strong><span>EXPLORE STOCKPILOT AI</span>
+    </div>
+    <div class="free-side-message">
+      <span class="free-side-star">✦</span><strong>100% FREE</strong><span>NO MEMBERSHIP REQUIRED</span>
+      <i></i><strong>DAILY STOCK PICKS</strong><span>FREE MARKET INSIGHTS</span>
+      <i></i><strong>PENNY STOCKS</strong><span>CRYPTO MARKET UPDATES</span>
+      <i></i><strong>NO PAYWALL</strong><span>EXPLORE STOCKPILOT AI</span>
+    </div>
+  </div>
+</aside>
+<aside id="free-right-banner" class="free-side-banner" aria-label="StockPilot AI free market research information">
+  <div class="free-side-track" aria-hidden="true">
+    <div class="free-side-message">
+      <span class="free-side-star">✦</span><strong>STOCKPILOT AI</strong><span>YOUR MARKET RESEARCH HUB</span>
+      <i></i><strong>DAILY PICKS</strong><span>COMPANIES TO WATCH</span>
+      <i></i><strong>CRYPTO MARKET</strong><span>FOLLOW DIGITAL ASSETS</span>
+      <i></i><strong>INVESTING GUIDES</strong><span>LEARN. RESEARCH. EXPLORE.</span>
+    </div>
+    <div class="free-side-message">
+      <span class="free-side-star">✦</span><strong>STOCKPILOT AI</strong><span>YOUR MARKET RESEARCH HUB</span>
+      <i></i><strong>DAILY PICKS</strong><span>COMPANIES TO WATCH</span>
+      <i></i><strong>CRYPTO MARKET</strong><span>FOLLOW DIGITAL ASSETS</span>
+      <i></i><strong>INVESTING GUIDES</strong><span>LEARN. RESEARCH. EXPLORE.</span>
+    </div>
+  </div>
+</aside>
 
 <!-- FULL MARGIN ACCOUNT ARTICLE: EXPANDS ON THIS HOMEPAGE -->
 <section id="margin-account-article" aria-labelledby="margin-article-title">
@@ -3219,6 +3214,90 @@ body { overflow-x: hidden; }
   .sp-slide-link { max-width: 100%; white-space: normal; }
   .navlinks { gap: 7px 9px; }
   .navlinks a { font-size: 10px; }
+}
+</style>
+
+
+<style id="stockpilot-vertical-free-banners">
+/* Replace the two Expedia skyscraper placements with StockPilot AI's own vertical promo banners. */
+#expedia-left-banner, #expedia-right-banner { display:none !important; }
+.free-side-banner {
+  position:fixed;
+  top:132px;
+  width:150px;
+  height:570px;
+  z-index:18;
+  overflow:hidden;
+  display:none;
+  border:1px solid #29466B;
+  border-radius:14px;
+  background:linear-gradient(180deg,#102746 0%,#07182D 100%);
+  box-shadow:0 8px 24px rgba(7,17,31,.16);
+  color:#fff;
+}
+#free-left-banner { left:calc(50% - 780px); }
+#free-right-banner { right:calc(50% - 780px); }
+@media (min-width:1600px) {
+  .free-side-banner { display:block; }
+}
+.free-side-track {
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  animation:stockpilot-side-scroll-down 34s linear infinite;
+  will-change:transform;
+}
+.free-side-message {
+  min-height:570px;
+  flex:0 0 570px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-evenly;
+  gap:12px;
+  padding:22px 13px;
+  text-align:center;
+}
+.free-side-message strong {
+  display:block;
+  color:#FFFFFF;
+  font-size:20px;
+  line-height:1.2;
+  font-weight:900;
+  letter-spacing:.035em;
+  overflow-wrap:anywhere;
+}
+.free-side-message span:not(.free-side-star) {
+  display:block;
+  color:#C6D8EF;
+  font-size:11px;
+  line-height:1.6;
+  font-weight:700;
+  letter-spacing:.09em;
+}
+.free-side-message .free-side-star {
+  color:#69A9FF;
+  font-size:30px;
+  line-height:1;
+}
+.free-side-message i {
+  display:block;
+  width:44px;
+  height:2px;
+  background:#4D91E8;
+  border-radius:2px;
+}
+@keyframes stockpilot-side-scroll-down {
+  from { transform:translateY(-570px); }
+  to { transform:translateY(0); }
+}
+.free-side-banner:hover .free-side-track,
+.free-side-banner:focus-within .free-side-track { animation-play-state:paused; }
+@media (prefers-reduced-motion: reduce) {
+  .free-side-track { animation:none; }
+}
+@media (max-width:1599px) {
+  .free-side-banner { display:none !important; }
 }
 </style>
 
