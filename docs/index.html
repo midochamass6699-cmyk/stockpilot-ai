@@ -1956,59 +1956,38 @@ html, body { background-color:#F1F5FA !important; }
 
     <aside class="weekly-feature-side" aria-label="Explore StockPilot AI">
       <div class="sp-slideshow" id="stockpilot-slideshow" aria-roledescription="carousel" aria-label="What you can explore on StockPilot AI">
-        <div class="sp-slides">
-          <article class="sp-slide is-active" aria-hidden="false">
-            <div class="sp-slide-icon" aria-hidden="true">↗</div>
-            <p class="sp-slide-kicker">YOUR MARKET STARTING POINT</p>
-            <h2>Daily Stock Picks</h2>
-            <p>Discover actively traded stocks selected from market data, with key prices and daily market activity in one place.</p>
-            <a href="#main-picks" class="sp-slide-link">EXPLORE TODAY’S PICKS <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="sp-slide" aria-hidden="true">
-            <div class="sp-slide-icon" aria-hidden="true">$</div>
-            <p class="sp-slide-kicker">SMALLER COMPANIES · HIGHER RISK</p>
-            <h2>Penny Stocks</h2>
-            <p>Review lower-priced stocks, compare market activity, and research companies that may deserve a closer look.</p>
-            <a href="#penny-picks" class="sp-slide-link">VIEW PENNY STOCKS <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="sp-slide" aria-hidden="true">
-            <div class="sp-slide-icon" aria-hidden="true">₿</div>
-            <p class="sp-slide-kicker">CRYPTO MARKET WATCH</p>
-            <h2>Top Cryptocurrencies</h2>
-            <p>Follow leading cryptocurrencies ranked by reported 24-hour trading volume and monitor changing market activity.</p>
-            <a href="#crypto-picks" class="sp-slide-link">EXPLORE CRYPTO <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="sp-slide" aria-hidden="true">
-            <div class="sp-slide-icon" aria-hidden="true">▤</div>
-            <p class="sp-slide-kicker">LEARN BEFORE YOU INVEST</p>
-            <h2>Research &amp; Investing Guides</h2>
-            <p>Explore market research, investing education, company information, and practical guides to help inform your own research.</p>
-            <a href="./research.html" class="sp-slide-link">VISIT RESEARCH CENTER <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="sp-slide" aria-hidden="true">
-            <div class="sp-slide-icon" aria-hidden="true">⇄</div>
-            <p class="sp-slide-kicker">BROKERAGE DIRECTORY</p>
-            <h2>Compare Brokers</h2>
-            <p>Discover brokerage platforms and review available information before deciding which services to investigate further.</p>
-            <a href="#broker-directory" class="sp-slide-link">EXPLORE BROKERS <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="sp-slide" aria-hidden="true">
-            <div class="sp-slide-icon" aria-hidden="true">◎</div>
-            <p class="sp-slide-kicker">GLOBAL MARKET COVERAGE</p>
-            <h2>Markets &amp; Resources</h2>
-            <p>Explore major stock exchanges, financial resources, market insights, and tools gathered to support your market research.</p>
-            <a href="#market-coverage" class="sp-slide-link">EXPLORE MARKETS <span aria-hidden="true">→</span></a>
-          </article>
-        </div>
+        <div class="sp-slides sp-market-slides">
+        <article class="sp-slide is-active" aria-hidden="false" data-market-preview="main">
+          <p class="sp-slide-kicker">UPDATED FROM TODAY’S MARKET PICKS</p>
+          <h2>Daily Stock Picks</h2>
+          <div class="sp-market-list" id="previewMainStocks" aria-live="polite">
+            <div class="sp-market-loading">Loading today's main stock picks…</div>
+          </div>
+          <a href="#main-picks" class="sp-slide-link">VIEW ALL DAILY PICKS <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="sp-slide" aria-hidden="true" data-market-preview="penny">
+          <p class="sp-slide-kicker">LOWER-PRICED · HIGHER-RISK SHARES</p>
+          <h2>Penny Stocks to Watch</h2>
+          <div class="sp-market-list" id="previewPennyStocks" aria-live="polite">
+            <div class="sp-market-loading">Loading penny stock picks…</div>
+          </div>
+          <a href="#penny-picks" class="sp-slide-link">VIEW PENNY STOCKS <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="sp-slide" aria-hidden="true" data-market-preview="crypto">
+          <p class="sp-slide-kicker">RANKED BY REPORTED 24-HOUR VOLUME</p>
+          <h2>Top Cryptocurrencies</h2>
+          <div class="sp-market-list" id="previewCrypto" aria-live="polite">
+            <div class="sp-market-loading">Loading top cryptocurrencies…</div>
+          </div>
+          <a href="#crypto-picks" class="sp-slide-link">VIEW CRYPTO MARKET <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
         <div class="sp-slide-controls">
           <button class="sp-slide-arrow" type="button" data-sp-prev aria-label="Previous slide">‹</button>
-          <div class="sp-slide-dots" aria-label="Choose a slide">
-            <button class="sp-dot is-active" type="button" data-sp-slide="0" aria-label="Slide 1" aria-current="true"></button>
-            <button class="sp-dot" type="button" data-sp-slide="1" aria-label="Slide 2"></button>
-            <button class="sp-dot" type="button" data-sp-slide="2" aria-label="Slide 3"></button>
-            <button class="sp-dot" type="button" data-sp-slide="3" aria-label="Slide 4"></button>
-            <button class="sp-dot" type="button" data-sp-slide="4" aria-label="Slide 5"></button>
-            <button class="sp-dot" type="button" data-sp-slide="5" aria-label="Slide 6"></button>
+          <div class="sp-slide-dots" aria-label="Choose a market list">
+            <button class="sp-dot is-active" type="button" data-sp-slide="0" aria-label="Daily stock picks" aria-current="true"></button>
+            <button class="sp-dot" type="button" data-sp-slide="1" aria-label="Penny stocks"></button>
+            <button class="sp-dot" type="button" data-sp-slide="2" aria-label="Top cryptocurrencies"></button>
           </div>
           <button class="sp-slide-arrow" type="button" data-sp-next aria-label="Next slide">›</button>
         </div>
@@ -2638,6 +2617,54 @@ function renderCrypto(c,index) {
   `;
 }
 
+
+/* COMPACT LIVE MARKET LISTS IN THE STOCK-OF-THE-WEEK SIDE PANEL */
+function previewEscape(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[c]));
+}
+function setMarketPreview(id, items, kind) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  if (!Array.isArray(items) || !items.length) {
+    target.innerHTML = '<div class="sp-market-loading">No verified data is available right now.</div>';
+    return;
+  }
+  target.innerHTML = items.slice(0, 3).map((item, index) => {
+    let name, symbol, price, change, href, positive;
+    if (kind === 'crypto') {
+      name = item.name || item.symbol || 'Cryptocurrency';
+      symbol = String(item.symbol || '').toUpperCase();
+      const n = Number(item.current_price);
+      price = Number.isFinite(n)
+        ? '$' + n.toLocaleString('en-US', {maximumFractionDigits: n < 1 ? 6 : 2})
+        : 'Price unavailable';
+      const ch = Number(item.price_change_percentage_24h);
+      change = Number.isFinite(ch) ? (ch > 0 ? '+' : '') + ch.toFixed(2) + '%' : '—';
+      positive = Number.isFinite(ch) && ch >= 0;
+      href = item.id ? 'https://www.coingecko.com/en/coins/' + encodeURIComponent(item.id) : '#crypto-picks';
+    } else {
+      name = item.company || item.ticker || 'Stock';
+      symbol = String(item.ticker || '').toUpperCase();
+      const n = Number(item.price);
+      const currency = item.currency === 'CAD' ? 'CA$' : 'US$';
+      price = Number.isFinite(n) && n > 0
+        ? currency + n.toLocaleString('en-CA', {minimumFractionDigits: 2, maximumFractionDigits: n < 1 ? 4 : 2})
+        : 'Price unavailable';
+      const ch = Number(item.change_percent);
+      change = Number.isFinite(ch) ? (ch > 0 ? '+' : '') + ch.toFixed(2) + '%' : '—';
+      positive = Number.isFinite(ch) && ch >= 0;
+      href = symbol ? 'https://finance.yahoo.com/quote/' + encodeURIComponent(symbol) : '#main-picks';
+    }
+    return `<a class="sp-market-row" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
+      <span class="sp-market-rank">${index + 1}</span>
+      <span class="sp-market-name"><strong>${previewEscape(name)}</strong><small>${previewEscape(symbol)}</small></span>
+      <span class="sp-market-values"><strong>${previewEscape(price)}</strong><small class="${positive ? 'sp-market-up' : 'sp-market-down'}">${previewEscape(change)}</small></span>
+    </a>`;
+  }).join('');
+}
+
 /* LOAD CRYPTO */
 async function loadCrypto() {
 
@@ -2675,6 +2702,8 @@ async function loadCrypto() {
       .map((coin,i) => renderCrypto(coin,i))
       .join('');
 
+    setMarketPreview('previewCrypto', ranked, 'crypto');
+
     updated.textContent =
       'Last updated: ' + new Date().toLocaleString() +
       ' · Ranked by 24-hour USD trading volume · Source: CoinGecko';
@@ -2683,6 +2712,8 @@ async function loadCrypto() {
 
     cards.innerHTML =
       '<div class="empty">Live cryptocurrency data is temporarily unavailable. Please refresh later.</div>';
+
+    setMarketPreview('previewCrypto', [], 'crypto');
 
     updated.textContent =
       'Cryptocurrency data temporarily unavailable.';
@@ -2812,6 +2843,9 @@ async function loadStocks() {
           .join('')
       : '<div class="empty">No qualifying penny stock picks are available right now.</div>';
 
+    setMarketPreview('previewMainStocks', mainPicks.slice(0,3), 'stock');
+    setMarketPreview('previewPennyStocks', filteredPenny.slice(0,3), 'stock');
+
     const stamp = data.updated_at || data.generated_at_utc;
 
     updated.textContent =
@@ -2833,6 +2867,9 @@ async function loadStocks() {
 
     penny.innerHTML =
       '<div class="empty">Penny stock data is temporarily unavailable. Please check back later.</div>';
+
+    setMarketPreview('previewMainStocks', [], 'stock');
+    setMarketPreview('previewPennyStocks', [], 'stock');
 
     updated.textContent =
       'Market data temporarily unavailable.';
@@ -3088,7 +3125,7 @@ setInterval(loadStocks,15 * 60 * 1000);
   function stop() { if (timer) window.clearInterval(timer); timer = null; }
   function start() {
     stop();
-    if (!reducedMotion) timer = window.setInterval(() => showSlide(current + 1), 2500);
+    if (!reducedMotion) timer = window.setInterval(() => showSlide(current + 1), 3000);
   }
   carousel.querySelector('[data-sp-prev]').addEventListener('click', () => { showSlide(current - 1); start(); });
   carousel.querySelector('[data-sp-next]').addEventListener('click', () => { showSlide(current + 1); start(); });
@@ -3322,6 +3359,69 @@ body { overflow-x: hidden; }
 }
 @media (max-width:1599px) {
   .free-side-banner { display:none !important; }
+}
+</style>
+
+
+<style id="stockpilot-live-market-preview-styles">
+/* Compact live market cards in the rotating right-hand feature panel */
+.sp-market-slides { min-height: 255px !important; }
+.sp-market-slides .sp-slide { min-width: 0; }
+.sp-market-slides .sp-slide-kicker { margin-bottom: 5px !important; }
+.sp-market-slides .sp-slide h2 { margin-bottom: 10px !important; }
+.sp-market-list { display: grid; gap: 6px; margin: 8px 0 2px; }
+.sp-market-row {
+  display: grid;
+  grid-template-columns: 22px minmax(0,1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 7px 9px;
+  border: 1px solid #FFFFFF24;
+  border-radius: 8px;
+  background: #FFFFFF0D;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+}
+.sp-market-row:hover { background: #FFFFFF18; border-color: #75A7FF88; }
+.sp-market-rank {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: #2563EB;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 900;
+}
+.sp-market-name, .sp-market-values { display: grid; min-width: 0; gap: 2px; }
+.sp-market-name strong {
+  overflow: hidden;
+  color: #FFFFFF;
+  font-size: 11px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sp-market-name small, .sp-market-values small {
+  color: #BFD0E8;
+  font-size: 9px;
+  line-height: 1.2;
+}
+.sp-market-values { text-align: right; }
+.sp-market-values strong { color: #FFFFFF; font-size: 10px; white-space: nowrap; }
+.sp-market-values small { font-weight: 800; }
+.sp-market-values .sp-market-up { color: #75E0AE; }
+.sp-market-values .sp-market-down { color: #FF9D9D; }
+.sp-market-loading { padding: 15px 9px; color: #DCE8FA; font-size: 11px; }
+.sp-market-slides .sp-slide-link { margin-top: 10px; }
+@media (max-width: 760px) {
+  .sp-market-slides { min-height: 255px !important; }
+  .sp-market-slides .sp-slide h2 { font-size: 21px !important; }
+  .sp-market-row { padding: 8px; }
+  .sp-market-name strong { font-size: 12px; }
+  .sp-market-values strong { font-size: 11px; }
 }
 </style>
 
