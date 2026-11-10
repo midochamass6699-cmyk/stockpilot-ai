@@ -1993,6 +1993,29 @@ html, body { background-color:#F1F5FA !important; }
         </div>
         <p class="sp-slide-footnote">A clearer view of the markets, one topic at a time.</p>
       </div>
+
+      <!-- STOCKPILOT AI: PERSONAL BROKER MATCHER -->
+      <section class="broker-match-widget" id="broker-match-widget" aria-labelledby="broker-match-title">
+        <div class="broker-match-topline"><span class="broker-match-spark">✦</span> STOCKPILOT AI BROKER MATCH</div>
+        <h2 id="broker-match-title">Find Your Best Broker</h2>
+        <p class="broker-match-intro">Answer a few quick questions. We’ll match you with <strong>one broker</strong> from our 14 listed platforms.</p>
+        <div class="broker-match-progress" aria-label="Question progress"><span id="broker-match-progress-fill"></span></div>
+        <div id="broker-match-step" class="broker-match-step" aria-live="polite">
+          <p class="broker-match-count" id="broker-match-count">QUESTION 1 OF 5</p>
+          <h3 id="broker-match-question">Where do you live?</h3>
+          <div id="broker-match-options" class="broker-match-options">
+            <label class="broker-match-option"><input type="radio" name="broker-country" value="Canada"><span>Canada</span></label>
+            <label class="broker-match-option"><input type="radio" name="broker-country" value="United States"><span>United States</span></label>
+            <label class="broker-match-option"><input type="radio" name="broker-country" value="United Kingdom"><span>United Kingdom</span></label>
+            <label class="broker-match-option"><input type="radio" name="broker-country" value="Australia"><span>Australia</span></label>
+            <label class="broker-match-option"><input type="radio" name="broker-country" value="Other country"><span>Another country</span></label>
+          </div>
+          <input id="broker-match-country-other" class="broker-match-country-other" type="text" placeholder="Enter your country" aria-label="Your country" hidden>
+          <div class="broker-match-actions"><button type="button" id="broker-match-next" disabled>CONTINUE <span aria-hidden="true">→</span></button></div>
+          <p class="broker-match-footnote">We only compare the 14 brokers already listed on StockPilot AI. Availability and account eligibility depend on your country.</p>
+        </div>
+        <div id="broker-match-result" class="broker-match-result" hidden aria-live="polite"></div>
+      </section>
     </aside>
   </div>
 </section>
@@ -3559,6 +3582,131 @@ body { overflow-x: hidden; }
   }
 }
 </style>
+
+
+
+<style>
+/* PROMINENT BROKER MATCHER IN THE RIGHT-HAND FEATURE COLUMN */
+.broker-match-widget {
+  position:relative; z-index:3; width:100%; margin-top:18px; padding:18px 16px 15px;
+  border:1px solid #F0A17D; border-radius:16px; text-align:left; color:#F8FAFC;
+  background:linear-gradient(145deg,#102D29 0%,#173D36 58%,#244D43 100%);
+  box-shadow:0 12px 28px #061B173D;
+}
+.broker-match-topline { display:flex; align-items:center; gap:7px; color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.15em; }
+.broker-match-spark { display:grid; place-items:center; width:20px; height:20px; border-radius:7px; color:#173D36; background:#FFC09F; font-size:13px; }
+.broker-match-widget h2 { margin:10px 0 6px; color:#FFFFFF; font-size:clamp(21px,2.1vw,28px); line-height:1.05; letter-spacing:-.035em; }
+.broker-match-intro { margin:0 0 12px; color:#D9E7E0; font-size:12px; line-height:1.55; }
+.broker-match-intro strong { color:#FFFFFF; }
+.broker-match-progress { height:5px; margin:12px 0 13px; overflow:hidden; border-radius:99px; background:#FFFFFF25; }
+.broker-match-progress span { display:block; width:20%; height:100%; border-radius:99px; background:#F0A17D; transition:width .2s ease; }
+.broker-match-count { margin:0 0 5px; color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.13em; }
+.broker-match-step h3 { margin:0 0 11px; color:#FFFFFF; font-size:16px; line-height:1.25; }
+.broker-match-options { display:grid; gap:6px; }
+.broker-match-country-other { width:100%; margin-top:8px; padding:10px 11px; border:1px solid #FFC09F; border-radius:9px; background:#FFFFFF; color:#183A34; font-size:12px; }
+.broker-match-option { display:flex; align-items:center; gap:9px; min-height:34px; padding:7px 9px; border:1px solid #FFFFFF35; border-radius:9px; background:#FFFFFF0D; color:#FFFFFF; font-size:11px; line-height:1.3; cursor:pointer; }
+.broker-match-option:has(input:checked) { border-color:#FFC09F; background:#F0A17D20; }
+.broker-match-option input { width:15px; height:15px; margin:0; accent-color:#F0A17D; flex:0 0 auto; }
+.broker-match-actions { display:flex; justify-content:flex-end; margin-top:11px; }
+.broker-match-actions button, .broker-match-restart { min-height:37px; padding:9px 15px; border:0; border-radius:999px; background:#F0A17D; color:#183A34; font-size:10px; font-weight:950; letter-spacing:.06em; cursor:pointer; }
+.broker-match-actions button:disabled { opacity:.45; cursor:not-allowed; }
+.broker-match-footnote { margin:10px 0 0; color:#BFD1C8; font-size:9px; line-height:1.45; }
+.broker-match-result { padding-top:3px; }
+.broker-match-result .match-kicker { color:#FFC09F; font-size:9px; font-weight:950; letter-spacing:.13em; }
+.broker-match-result h3 { margin:6px 0 7px; color:#FFFFFF; font-size:21px; line-height:1.15; }
+.broker-match-result p { margin:7px 0; color:#D9E7E0; font-size:11px; line-height:1.55; }
+.broker-match-result .match-caveat { padding:9px; border-left:3px solid #F0A17D; border-radius:5px; background:#FFFFFF10; color:#F7E6DC; font-size:10px; }
+.broker-match-result a { display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:#FFC09F; font-size:11px; font-weight:900; text-decoration:underline; }
+.broker-match-result .broker-match-restart { display:block; margin-top:12px; }
+@media(max-width:760px) {
+  .broker-match-widget { margin-top:15px; padding:19px 16px; }
+  .broker-match-widget h2 { font-size:25px; }
+  .broker-match-option { min-height:39px; font-size:12px; }
+  .broker-match-step h3 { font-size:18px; }
+}
+</style>
+
+
+<script>
+(function(){
+  const root=document.getElementById('broker-match-widget');
+  if(!root) return;
+  const questionEl=document.getElementById('broker-match-question');
+  const optionsEl=document.getElementById('broker-match-options');
+  const countEl=document.getElementById('broker-match-count');
+  const fillEl=document.getElementById('broker-match-progress-fill');
+  const nextBtn=document.getElementById('broker-match-next');
+  const stepEl=document.getElementById('broker-match-step');
+  const resultEl=document.getElementById('broker-match-result');
+  const otherCountryInput=document.getElementById('broker-match-country-other');
+  const questions=[
+    {key:'country',title:'Where do you live?',options:['Canada','United States','United Kingdom','Australia','Another country']},
+    {key:'assets',title:'What would you like to invest in?',options:['Stocks and ETFs','Stocks, ETFs and crypto','Stocks, ETFs, crypto and other investments']},
+    {key:'budget',title:'How much would you initially invest?',options:['Less than $500','$500–$5,000','$5,000–$25,000','More than $25,000']},
+    {key:'priority',title:'What matters most when choosing a broker?',options:['Zero-commission stock and ETF trading','Lowest total cost, including currency conversion','Broad international market access','A balance of low costs and investment choice']},
+    {key:'style',title:'How often do you expect to trade?',options:['A few times a year','A few times a month','Several times a week','I am not sure yet']}
+  ];
+  let index=0; const answers={};
+  function draw(){
+    const q=questions[index];
+    if(q.key!=='country') otherCountryInput.hidden=true;
+    countEl.textContent='QUESTION '+(index+1)+' OF '+questions.length;
+    questionEl.textContent=q.title;
+    fillEl.style.width=((index+1)/questions.length*100)+'%';
+    optionsEl.innerHTML='';
+    q.options.forEach((value,i)=>{
+      const label=document.createElement('label'); label.className='broker-match-option';
+      const input=document.createElement('input'); input.type='radio'; input.name='broker-match-answer'; input.value=value;
+      input.addEventListener('change',()=>{answers[q.key]=value; if(q.key==='country'){otherCountryInput.hidden=value!=='Another country'; if(value!=='Another country') otherCountryInput.value='';} nextBtn.disabled=false;});
+      const span=document.createElement('span'); span.textContent=value; label.append(input,span); optionsEl.append(label);
+    });
+    nextBtn.disabled=!answers[q.key] || (q.key==='country' && answers[q.key]==='Another country' && !otherCountryInput.value.trim());
+    nextBtn.innerHTML=index===questions.length-1?'SHOW MY BEST MATCH <span aria-hidden="true">→</span>':'CONTINUE <span aria-hidden="true">→</span>' ;
+  }
+  function showResult(){
+    const canada=answers.country==='Canada';
+    const usa=answers.country==='United States';
+    const wantsCrypto=answers.assets && answers.assets.toLowerCase().includes('crypto');
+    let broker,why,caveat,url;
+    const activeTrading=answers.style==='Several times a week';
+    const largerAccount=answers.budget==='$5,000–$25,000' || answers.budget==='More than $25,000';
+    const globalAccess=answers.priority==='Broad international market access';
+    if(canada && wantsCrypto){
+      broker='Wealthsimple'; url='https://www.wealthsimple.com/en-ca/invest';
+      why='Among the listed platforms, Wealthsimple is the closest fit for a Canadian beginner who wants both stocks/ETFs and crypto. It offers $0 commissions on listed Canadian and U.S. securities.';
+      caveat='Important: $0 stock/ETF commissions do not mean every investment is free. Currency conversion charges apply, and crypto has separate costs. Confirm the current crypto fee schedule and product eligibility before opening an account.';
+    } else if(canada && (activeTrading || largerAccount || globalAccess)){
+      broker='Interactive Brokers'; url='https://www.interactivebrokers.ca/';
+      why='Your answers point toward broader market access or more frequent trading. Interactive Brokers offers access to many international markets and a broad range of products, which may suit that profile better than a simple zero-commission offer.';
+      caveat='This is not a zero-commission promise: commissions depend on market and pricing plan. Crypto access varies by country and account entity. Compare the local fee schedule before applying.';
+    } else if(canada){
+      broker='Webull Canada'; url='https://www.webull.ca/';
+      why='Your answers prioritize low-cost stock and ETF investing without requiring crypto or extensive international access. Webull Canada advertises $0 commissions on U.S. and Canadian stocks and ETFs.';
+      caveat='This match prioritizes stock/ETF commissions. Review market-data, currency-conversion, account and other charges, and confirm current regulatory protections before opening an account.';
+    } else if(usa){
+      broker='Webull'; url='https://www.webull.com/';
+      why='Webull is a fee-focused candidate in the listed directory for U.S. stock and ETF trading, with commission-free trading advertised for eligible securities.';
+      caveat='Product access, crypto availability, account protections and fees depend on your state and account type. Confirm current details directly with Webull before applying.';
+    } else {
+      broker='Interactive Brokers'; url='https://www.interactivebrokers.com/';
+      why='Interactive Brokers has broad international reach among the brokers in this directory and publishes a country-eligibility list. It is the most practical starting point for checking access in '+(answers.countryText || answers.country)+'.';
+      caveat='This is a reach-and-market-access match, not a zero-commission promise. Commissions, available products and crypto access vary by country and account entity. Check the official country list and local fee schedule before applying.';
+    }
+    stepEl.hidden=true; resultEl.hidden=false;
+    resultEl.innerHTML='';
+    const kicker=document.createElement('div'); kicker.className='match-kicker'; kicker.textContent='YOUR STOCKPILOT AI MATCH';
+    const title=document.createElement('h3'); title.textContent=broker;
+    const para=document.createElement('p'); para.textContent=why;
+    const warning=document.createElement('p'); warning.className='match-caveat'; warning.textContent=caveat;
+    const link=document.createElement('a'); link.href=url; link.target='_blank'; link.rel='noopener noreferrer'; link.textContent='VISIT OFFICIAL BROKER WEBSITE ↗';
+    const restart=document.createElement('button'); restart.type='button'; restart.className='broker-match-restart'; restart.textContent='START AGAIN'; restart.addEventListener('click',()=>{index=0; Object.keys(answers).forEach(k=>delete answers[k]); otherCountryInput.value=''; otherCountryInput.hidden=true; resultEl.hidden=true; stepEl.hidden=false; draw();});
+    resultEl.append(kicker,title,para,warning,link,restart);
+  }
+  otherCountryInput.addEventListener('input',()=>{if(answers.country==='Another country') nextBtn.disabled=!otherCountryInput.value.trim();});
+  nextBtn.addEventListener('click',()=>{const q=questions[index]; if(!answers[q.key]) return; if(q.key==='country' && answers.country==='Another country'){if(!otherCountryInput.value.trim()){otherCountryInput.focus();return;} answers.countryText=otherCountryInput.value.trim();} if(index<questions.length-1){index++;draw();}else{showResult();}});
+  draw();
+})();
+</script>
 
 </body>
 </html>
