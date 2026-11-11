@@ -1981,10 +1981,9 @@ input, select, textarea, button {
 @media(prefers-reduced-motion:reduce){.find-broker-banner:before{animation:none}}
 </style>
 <style id="stockpilot-homepage-focus-style">
-.margin-guide-teaser{display:flex;align-items:center;justify-content:space-between;gap:22px;margin:22px 0 28px;padding:20px 22px;background:#fff;border:1px solid var(--line);border-left:5px solid #D9784F;border-radius:12px;box-shadow:0 5px 18px #183a3410}
-.margin-guide-teaser-copy{min-width:0}.margin-guide-teaser h2{margin:4px 0 6px;font-size:clamp(18px,2.2vw,24px);line-height:1.2;color:#183A34}.margin-guide-teaser p{margin:0;color:#68746E;font-size:14px;line-height:1.6;max-width:760px}
-.margin-guide-teaser>a{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:999px;background:#183A34;color:#fff;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.03em}.margin-guide-teaser>a:hover{background:#D9784F;color:#183A34}
-@media(max-width:650px){.margin-guide-teaser{align-items:flex-start;flex-direction:column;padding:17px}.margin-guide-teaser>a{width:100%;text-align:center}}
+.margin-guide-teaser{box-sizing:border-box;width:min(1200px,calc(100% - 36px));max-width:100%;display:flex;align-items:center;justify-content:space-between;gap:22px;margin:22px auto 28px;padding:20px 22px;background:#fff;border:1px solid var(--line);border-left:5px solid #D9784F;border-radius:12px;box-shadow:0 5px 18px #183a3410}
+.margin-guide-teaser-copy{min-width:0;flex:1 1 auto}.margin-guide-teaser h2{margin:4px 0 6px;font-size:clamp(18px,2.2vw,24px);line-height:1.2;color:#183A34;overflow-wrap:anywhere}.margin-guide-teaser p{margin:0;color:#68746E;font-size:14px;line-height:1.6;max-width:760px}.margin-guide-teaser>a{flex:0 1 auto;max-width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:999px;background:#183A34;color:#fff;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.03em;text-align:center;white-space:normal}.margin-guide-teaser>a:hover{background:#D9784F;color:#183A34}
+@media(max-width:650px){.margin-guide-teaser{width:calc(100% - 24px);align-items:flex-start;flex-direction:column;padding:17px}.margin-guide-teaser>a{width:100%;box-sizing:border-box;text-align:center}}
 </style></head>
 <body>
 <!-- NAVIGATION -->
@@ -2114,17 +2113,17 @@ input, select, textarea, button {
 </div>
 <div class="trading-desk-grid">
 <article class="trading-panel trading-panel-main">
-<div class="trading-panel-heading"><span class="trading-panel-icon">↗</span><div><h2>Stocks to Watch</h2><p>Daily stock screen</p></div></div>
+<div class="trading-panel-heading"><span class="trading-panel-icon">↗</span><div><h2>Top 3 Stocks to Watch</h2><p>Selected daily stock picks</p></div></div>
 <div aria-live="polite" class="trading-market-list" id="deskMainStocks"><div class="trading-loading">Loading stock data…</div></div>
 <a class="trading-panel-link" href="#main-picks">Explore all stock picks <span aria-hidden="true">→</span></a>
 </article>
 <article class="trading-panel trading-panel-penny">
-<div class="trading-panel-heading"><span class="trading-panel-icon">⚡</span><div><h2>Penny Stock Movers</h2><p>Lower-priced · Higher risk</p></div></div>
+<div class="trading-panel-heading"><span class="trading-panel-icon">⚡</span><div><h2>Top 3 Penny Stock Movers</h2><p>Selected penny-stock picks · Higher risk</p></div></div>
 <div aria-live="polite" class="trading-market-list" id="deskPennyStocks"><div class="trading-loading">Loading penny stocks…</div></div>
 <a class="trading-panel-link" href="#penny-picks">Explore penny stocks <span aria-hidden="true">→</span></a>
 </article>
 <article class="trading-panel trading-panel-crypto">
-<div class="trading-panel-heading"><span class="trading-panel-icon">₿</span><div><h2>Crypto Activity</h2><p>Ranked by 24-hour volume</p></div></div>
+<div class="trading-panel-heading"><span class="trading-panel-icon">₿</span><div><h2>Top 3 Crypto by Trading Volume</h2><p>Ranked by 24-hour trading volume</p></div></div>
 <div aria-live="polite" class="trading-market-list" id="deskCrypto"><div class="trading-loading">Loading crypto data…</div></div>
 <a class="trading-panel-link" href="#crypto-picks">Explore crypto market <span aria-hidden="true">→</span></a>
 </article>
