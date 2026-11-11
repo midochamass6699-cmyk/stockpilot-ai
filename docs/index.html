@@ -353,10 +353,7 @@ a {color:inherit;}
 /* Broker logos are displayed in the Stock of the Week heading row. */
 /* STOCK OF THE https://github.com/midochamass6699-cmyk/stockpilot-ai/securityWEEK */
 
-<div class="hot-stock-hint">
-    <span>HOT STOCK INSIDE</span>
-    <span class="hot-stock-arrow">↓</span>
-</div>
+
   
 .stock-of-the-week {
   margin:24px 0;
@@ -2072,9 +2069,17 @@ input, select, textarea, button {
       
       <div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> THE WEEKLY SPOTLIGHT</div>
       <p class="weekly-feature-label">ONE COMPANY. A CLOSER LOOK.</p>
-  <div class="weekly-title-row">
+<div class="weekly-title-row">
 
-  <p class="weekly-stock-heading" id="weekly-stock-title">Stock of the Week</p>
+  <p class="weekly-stock-heading" id="weekly-stock-title">
+    Stock of the Week
+  </p>
+
+  <div class="hot-stock-hint">
+    <span>HOT STOCK INSIDE</span>
+    <span class="hot-stock-arrow">↓</span>
+  </div>
+
 </div>
 
       <h3 class="weekly-company-name">AppLovin Corporation <span>(NASDAQ: APP)</span></h3>
@@ -3593,6 +3598,45 @@ body { overflow-x: hidden; }
   .navlinks { gap: 7px 9px; }
   .navlinks a { font-size: 10px; }
 }
+
+.weekly-title-row {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+  width:100%;
+}
+
+.hot-stock-hint {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:5px 12px;
+  color:#167B45;
+  font-size:15px;
+  font-weight:950;
+  letter-spacing:1.2px;
+  white-space:nowrap;
+  animation: classyFlash 3s ease-in-out infinite;
+}
+
+.hot-stock-arrow {
+  font-size:30px;
+  line-height:1.2;
+  animation: classyArrow 2s ease-in-out infinite;
+}
+
+@keyframes classyFlash {
+  0%,100% { opacity:1; }
+  50% { opacity:.55; }
+}
+
+@keyframes classyArrow {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(6px); }
+}
+  
 </style>
 
 
