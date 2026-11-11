@@ -3044,88 +3044,99 @@ function renderStock(s,penny) {
 }
 /* LOAD DAILY STOCK PICKS */
 async function loadStocks() {
-
   const main = document.getElementById('mainStocks');
   const penny = document.getElementById('pennyStocks');
   const updated = document.getElementById('updated');
 
-  try {
+  // The French homepage is served from /fr/, so use the site-root data path.
+  const dataUrl = new URL('/data/picks.json', window.location.origin);
+  dataUrl.searchParams.set('t', Date.now());
 
-    const response = await fetch(
-      './data/picks.json?t=' + Date.now(),
-      {cache:'no-store'}
-    );
+  try {
+    const response = await fetch(dataUrl.toString(), {
+      cache: 'no-store',
+      headers: { 'Accept': 'application/json' }
+    });
 
     if (!response.ok) {
       throw new Error('Market data file returned HTTP ' + response.status);
     }
 
-    const data = await response.json();
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType && !contentType.toLowerCase().includes('json')) {
+      throw new Error('The stock data URL did not return JSON (' + contentType + ').');
+    }
 
+    const data = await response.json();
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
+      throw new Error('The stock data response is not a valid object.');
+    }
     if (data.status === 'error') {
       throw new Error(data.error || 'The latest stock update failed.');
     }
 
-    const mainPicks = Array.isArray(data.main)
-      ? data.main
-      : [];
+    const mainPicks = Array.isArray(data.main) ? data.main : [];
+    const pennyPicks = Array.isArray(data.penny) ? data.penny : [];
 
-    const pennyPicks = Array.isArray(data.penny)
-      ? data.penny
-      : [];
+    const normalizeTicker = stock =>
+      String(stock && stock.ticker || '').trim().toUpperCase();
 
-    const mainTickers = new Set(
-      mainPicks.map(stock => stock.ticker)
-    );
+    const mainTickers = new Set(mainPicks.map(normalizeTicker).filter(Boolean));
+    const filteredPenny = pennyPicks.filter(stock => {
+      const ticker = normalizeTicker(stock);
+      return ticker && !mainTickers.has(ticker);
+    });
 
-    const filteredPenny = pennyPicks.filter(
-      stock => !mainTickers.has(stock.ticker)
-    );
+    // Render the two lists independently so one malformed card cannot hide both.
+    try {
+      const validMain = mainPicks.filter(stock => stock && typeof stock === 'object');
+      main.innerHTML = validMain.length
+        ? validMain.slice(0, 3).map(stock => renderStock(stock, false)).join('')
+        : '<div class="empty">Aucune sélection boursière principale vérifiée n’est disponible pour le moment.</div>';
+      setMarketPreview('previewMainStocks', validMain.slice(0, 3), 'stock');
+    } catch (mainError) {
+      main.innerHTML = '<div class="empty">Les principales sélections boursières ne peuvent pas être affichées pour le moment.</div>';
+      console.error('StockPilot main stocks:', mainError);
+    }
 
-    main.innerHTML = mainPicks.length
-      ? mainPicks.slice(0,3)
-          .map(stock => renderStock(stock,false))
-          .join('')
-      : '<div class="empty">No verified main stock picks are available right now.</div>';
-
-    penny.innerHTML = filteredPenny.length
-      ? filteredPenny.slice(0,3)
-          .map(stock => renderStock(stock,true))
-          .join('')
-      : '<div class="empty">No qualifying penny stock picks are available right now.</div>';
-
-    setMarketPreview('previewMainStocks', mainPicks.slice(0,3), 'stock');
-    setMarketPreview('previewPennyStocks', filteredPenny.slice(0,3), 'stock');
+    try {
+      const validPenny = filteredPenny.filter(stock => stock && typeof stock === 'object');
+      penny.innerHTML = validPenny.length
+        ? validPenny.slice(0, 3).map(stock => renderStock(stock, true)).join('')
+        : '<div class="empty">Aucun penny stock admissible n’est disponible pour le moment.</div>';
+      setMarketPreview('previewPennyStocks', validPenny.slice(0, 3), 'stock');
+    } catch (pennyError) {
+      penny.innerHTML = '<div class="empty">Les penny stocks ne peuvent pas être affichés pour le moment.</div>';
+      console.error('StockPilot penny stocks:', pennyError);
+    }
 
     const stamp = data.updated_at || data.generated_at_utc;
+    const parsedStamp = stamp ? new Date(stamp) : null;
+    const dateText = parsedStamp && !Number.isNaN(parsedStamp.getTime())
+      ? parsedStamp.toLocaleString()
+      : 'date indisponible';
 
     updated.textContent =
-      'Last updated: ' +
-      (stamp ? new Date(stamp).toLocaleString() : 'date unavailable') +
+      'Dernière mise à jour : ' + dateText +
       ((data.source || data.data_source)
-        ? ' · Data source: ' + (data.source || data.data_source)
+        ? ' · Source des données : ' + (data.source || data.data_source)
         : '');
 
     if (mainPicks.length !== 3 || filteredPenny.length !== 3) {
       updated.textContent +=
-        ' · Fewer than six qualifying picks are currently available.';
+        ' · Moins de six sélections admissibles sont actuellement disponibles.';
     }
-
-  } catch(error) {
-
+  } catch (error) {
     main.innerHTML =
-      '<div class="empty">Main stock data is temporarily unavailable. Please check back later.</div>';
-
+      '<div class="empty">Les données boursières principales sont temporairement indisponibles. Veuillez réessayer plus tard.</div>';
     penny.innerHTML =
-      '<div class="empty">Penny stock data is temporarily unavailable. Please check back later.</div>';
+      '<div class="empty">Les données des penny stocks sont temporairement indisponibles. Veuillez réessayer plus tard.</div>';
 
     setMarketPreview('previewMainStocks', [], 'stock');
     setMarketPreview('previewPennyStocks', [], 'stock');
 
-    updated.textContent =
-      'Market data temporarily unavailable.';
-
-    console.error('StockPilot stocks:',error);
+    updated.textContent = 'Données boursières temporairement indisponibles.';
+    console.error('StockPilot stocks:', error);
   }
 }
 
