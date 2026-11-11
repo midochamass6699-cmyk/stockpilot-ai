@@ -2075,10 +2075,17 @@ input, select, textarea, button {
     Stock of the Week
   </p>
 
-  <div class="hot-stock-hint">
-    <span>HOT STOCK INSIDE</span>
-    <span class="hot-stock-arrow">↓</span>
-  </div>
+<div class="hot-stock-hint">
+  <span>HOT STOCK PICK INSIDE</span>
+  <svg class="hot-stock-arrow" viewBox="0 0 100 55">
+    <polyline points="3,43 22,30 34,37 51,14 65,24 85,5"
+      fill="none" stroke="currentColor" stroke-width="5"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="72,5 85,5 85,18"
+      fill="none" stroke="currentColor" stroke-width="5"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
 
 </div>
 
@@ -3636,7 +3643,43 @@ body { overflow-x: hidden; }
   0%,100% { transform:translateY(0); }
   50% { transform:translateY(6px); }
 }
-  
+.hot-stock-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 6px 10px;
+  color: #18A45B;
+  font-size: 16px;
+  font-weight: 950;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  animation: hotStockFlash 2.5s ease-in-out infinite;
+}
+
+.hot-stock-arrow {
+  width: 75px;
+  height: 42px;
+  overflow: visible;
+  animation: hotStockArrow 2.5s ease-in-out infinite;
+}
+
+@keyframes hotStockFlash {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(24,164,91,.45);
+  }
+  50% {
+    opacity: .25;
+    text-shadow: none;
+  }
+}
+
+@keyframes hotStockArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}  
 </style>
 
 
