@@ -1816,6 +1816,37 @@ html, body { background-color:#F1F5FA !important; }
 <link rel="preconnect" href="https://www.google.com" crossorigin="anonymous"/>
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"/>
 <link rel="preconnect" href="https://s3.tradingview.com" crossorigin="anonymous"/>
+
+<style id="stockpilot-editorial-updates">
+/* Readable editorial context beneath every live stock and crypto result. */
+.stock-insight {
+  margin-top: 13px;
+  padding: 12px 13px;
+  border: 1px solid #DCE5F0;
+  border-left: 3px solid #2563EB;
+  border-radius: 9px;
+  background: #F7FAFF;
+}
+.stock-card.penny .stock-insight { border-left-color: #D9784F; background: #FFFAF6; }
+.stock-insight h4 { margin: 0 0 6px; color: #10294B; font-size: 14px; line-height: 1.35; font-weight: 850; }
+.stock-insight p { margin: 0; color: #334155; font-size: 15px; line-height: 1.65; }
+.weekly-feature-side { flex-direction: column !important; align-items: stretch !important; gap: 14px; }
+.weekly-feature-side .sp-slideshow { width: 100%; min-height: 0 !important; flex: 0 0 auto !important; }
+.weekly-feature-side .sp-slides { min-height: 210px; }
+.weekly-why-card { position: relative; z-index: 2; width: 100%; padding: 16px; border: 1px solid #FFFFFF30; border-radius: 12px; background: #FFFFFF12; color: #F8FAFC; text-align: left; }
+.weekly-why-kicker { margin: 0 0 5px !important; color: #AFC5E8 !important; font-size: 10px !important; font-weight: 900; letter-spacing: .14em; }
+.weekly-why-card h3 { margin: 0 0 8px; color: #FFFFFF; font-size: 19px; line-height: 1.25; }
+.weekly-why-card p { margin: 0 0 9px !important; color: #E8EEF8 !important; font-size: 14px !important; line-height: 1.65 !important; }
+.weekly-why-card .weekly-why-risk { color: #C9D7EA !important; font-size: 12px !important; }
+.weekly-why-card a { display: inline-block; margin-top: 2px; color: #AFCBFF; font-size: 12px; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) {
+  .stock-insight p { font-size: 15px; }
+  .weekly-feature-side .sp-slides { min-height: 190px !important; }
+  .weekly-why-card { padding: 15px; }
+  .weekly-why-card p { font-size: 14px !important; }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2001,7 +2032,13 @@ html, body { background-color:#F1F5FA !important; }
         <p class="sp-slide-footnote">A clearer view of the markets, one topic at a time.</p>
       </div>
 
-      
+      <section class="weekly-why-card" aria-labelledby="weekly-why-title">
+        <p class="weekly-why-kicker">THE INVESTMENT THESIS</p>
+        <h3 id="weekly-why-title">Why We Chose AppLovin</h3>
+        <p>AppLovin’s AI-powered advertising platform is showing significant business momentum. In its third-quarter 2026 results, revenue rose 55% year over year to US$2.18 billion, while net income increased 72% to US$1.44 billion. The company also reported US$1.4 billion in quarterly free cash flow.</p>
+        <p class="weekly-why-risk"><strong>What to watch:</strong> Advertising demand, competition, execution and the valuation investors are paying. Strong results do not eliminate the risk of a share-price correction.</p>
+        <a href="https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-Third-Quarter-2026-Financial-Results/default.aspx" target="_blank" rel="noopener noreferrer">Read the company’s Q3 results ↗</a>
+      </section>
     </aside>
   </div>
 </section>
@@ -2583,6 +2620,75 @@ function esc(value) {
   });
 }
 
+/* SHORT EDITORIAL EXPLANATIONS FOR LIVE STOCK AND CRYPTO PICKS */
+function insightText(value) {
+  return String(value ?? '').replace(/\s+/g, ' ').trim();
+}
+
+function getStockInsight(s, penny) {
+  const supplied = insightText(s.why_watch || s.analysis || s.editorial || s.description || s.company_description || s.business_summary);
+  if (supplied) return supplied;
+
+  const reason = insightText(s.reason);
+  const change = Number(s.change_percent);
+  const volume = Number(s.volume);
+  const score = Number(s.score);
+  const ticker = String(s.ticker || 'This company').toUpperCase();
+  const company = insightText(s.company || ticker);
+  const parts = [];
+
+  if (reason && !/^market activity$/i.test(reason) && !/^not available$/i.test(reason)) {
+    parts.push(`${company} stands out in today’s screen because ${reason.replace(/[.\s]+$/, '')}.`);
+  } else if (Number.isFinite(score)) {
+    parts.push(`${company} earned a ${score.toFixed(1)} out of 100 screening score, making it one of the names selected for a closer look today.`);
+  } else {
+    parts.push(`${company} appears in today’s market screen and is worth monitoring for changes in trading activity and price behavior.`);
+  }
+
+  if (Number.isFinite(volume) && volume > 0) {
+    parts.push(`Reported trading volume is ${volume.toLocaleString('en-US')} shares, a useful measure of current market participation.`);
+  }
+  if (Number.isFinite(change)) {
+    parts.push(`The share price is ${change >= 0 ? 'up' : 'down'} ${Math.abs(change).toFixed(2)}% today, so investors can watch whether that move continues or reverses.`);
+  }
+
+  if (penny) {
+    parts.push('Because lower-priced shares can be thinly traded and highly volatile, check liquidity, company disclosures and the reason for the move before taking any action.');
+  } else {
+    parts.push('Treat these signals as a research starting point: confirm the latest company news and financial results, and watch whether market activity is sustained.');
+  }
+  return parts.join(' ');
+}
+
+function getCryptoInsight(c) {
+  const symbol = String(c.symbol || '').toUpperCase();
+  const name = insightText(c.name || symbol || 'This cryptocurrency');
+  const volume = Number(c.total_volume);
+  const change = Number(c.price_change_percentage_24h);
+  const descriptions = {
+    BTC: 'Bitcoin is the largest and most established crypto asset. Its price, liquidity and institutional demand often influence sentiment across the wider digital-asset market.',
+    ETH: 'Ethereum supports a broad ecosystem of smart contracts, decentralized applications and tokenized assets. Network use, fees and developer activity are important themes to follow.',
+    USDT: 'Tether is a widely used US-dollar stablecoin that supports trading and transfers across crypto markets. Its high turnover mainly reflects its role as a trading and settlement asset, not the same kind of price-growth opportunity as a volatile coin.',
+    USDC: 'USD Coin is a dollar-pegged stablecoin used for payments, transfers and crypto-market liquidity. Its activity is more about settlement and adoption than conventional price appreciation.',
+    BNB: 'BNB is used across the BNB Chain ecosystem and related services. Network activity, ecosystem adoption and regulatory developments are key factors to monitor.',
+    XRP: 'XRP is designed for value transfer and is associated with the XRP Ledger payment ecosystem. Adoption, network activity and regulatory developments can influence investor attention.',
+    SOL: 'Solana is a high-throughput blockchain used for decentralized applications, trading and digital assets. Network reliability, application activity and ecosystem growth are useful indicators.',
+    DOGE: 'Dogecoin is a highly recognized, community-driven cryptocurrency. Social attention and market sentiment can have a significant influence, which also makes volatility an important risk.',
+    TRX: 'TRON is a blockchain network used for digital-asset transfers and decentralized applications. Stablecoin flows and network activity are useful areas to monitor.',
+    ADA: 'Cardano is a smart-contract blockchain focused on a research-led development approach. Adoption, application growth and delivery of network upgrades are important watch points.',
+    LINK: 'Chainlink provides oracle infrastructure that connects smart contracts with external data and services. Integration growth and demand for on-chain data infrastructure are key themes.',
+    TON: 'The Open Network is a blockchain ecosystem associated with Telegram-linked distribution and applications. User adoption, ecosystem activity and execution are important to follow.',
+    LTC: 'Litecoin is an established cryptocurrency designed for peer-to-peer payments. Payment usage, liquidity and its position among older digital assets are relevant indicators.',
+    BCH: 'Bitcoin Cash focuses on peer-to-peer payments. Merchant usage, transaction activity and liquidity help provide context beyond short-term price movements.'
+  };
+  const base = descriptions[symbol] || `${name} ranks among the most actively traded cryptocurrencies in this snapshot. Its trading volume signals current market attention, but volume alone does not show whether buyers or sellers are in control.`;
+  const extra = [];
+  if (Number.isFinite(volume) && volume > 0) extra.push(`Its reported 24-hour trading volume is approximately US$${volume.toLocaleString('en-US', {maximumFractionDigits: 0})}.`);
+  if (Number.isFinite(change)) extra.push(`The 24-hour price move is ${change >= 0 ? 'positive' : 'negative'} at ${change > 0 ? '+' : ''}${change.toFixed(2)}%.`);
+  extra.push('Watch liquidity, market-wide sentiment and relevant project developments; crypto assets can experience sharp losses.');
+  return base + ' ' + extra.join(' ');
+}
+
 /* CRYPTO CARD */
 function renderCrypto(c,index) {
 
@@ -2652,6 +2758,11 @@ function renderCrypto(c,index) {
       <div class="card-meta">
         <strong>24h trading volume:</strong> ${volumeText}
       </div>
+
+      <section class="stock-insight" aria-label="Why this cryptocurrency is worth watching">
+        <h4>Why it’s worth watching</h4>
+        <p>${esc(getCryptoInsight(c))}</p>
+      </section>
 
       <a class="stock-link"
          href="${url}"
@@ -2819,7 +2930,7 @@ function renderStock(s,penny) {
         <strong>Trading volume:</strong>
         ${Number.isFinite(volume) ? volume.toLocaleString() : 'Not provided'}
         <br>
-        <strong>Why selected:</strong>
+        <strong>Screen signal:</strong>
         ${esc(s.reason || 'Market activity')}
         <br>
         <strong>Quote date:</strong>
@@ -2828,6 +2939,11 @@ function renderStock(s,penny) {
         <strong>Risk:</strong>
         ${esc(s.risk || (penny ? 'High' : 'Review carefully'))}
       </div>
+
+      <section class="stock-insight" aria-label="Why this stock is worth watching">
+        <h4>Why it’s worth watching</h4>
+        <p>${esc(getStockInsight(s,penny))}</p>
+      </section>
 
       <a class="stock-link"
          href="${link}"
