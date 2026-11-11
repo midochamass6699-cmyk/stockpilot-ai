@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="en" href="https://technofront.org/"/>
 <link rel="alternate" hreflang="es" href="https://technofront.org/es/"/>
 <link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
-<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2214%22%20fill=%22%2307111f%22/%3E%3Cpath%20d=%22M10%2043%2024%2029l9%208%2020-22%22%20fill=%22none%22%20stroke=%22%2338d6a6%22%20stroke-width=%225%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3Cpath%20d=%22M40%2015h13v13%22%20fill=%22none%22%20stroke=%22%2338d6a6%22%20stroke-width=%225%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3C/svg%3E"/>
 <meta content="#07111F" name="theme-color"/>
 <meta content="en_CA" property="og:locale"/>
 <meta content="StockPilot AI" property="og:site_name"/>
@@ -1813,6 +1813,9 @@ html, body { background-color:#F1F5FA !important; }
 
 </style>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<link rel="preconnect" href="https://www.google.com" crossorigin="anonymous"/>
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"/>
+<link rel="preconnect" href="https://s3.tradingview.com" crossorigin="anonymous"/>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2107,7 +2110,7 @@ html, body { background-color:#F1F5FA !important; }
 <div class="container">
 <div class="tradingview-banner">
 <a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">
-<img alt="TradingView - Advanced Charts and Smarter Decisions" src="assets/tradingview-banner.png"/>
+<img alt="TradingView - Advanced Charts and Smarter Decisions" src="assets/tradingview-banner.png"/ loading="eager" decoding="async" fetchpriority="high">
 </a>
 <p class="affiliate-disclosure">
       StockPilot AI may earn a commission if you subscribe,
@@ -2233,7 +2236,7 @@ html, body { background-color:#F1F5FA !important; }
 <div class="market-grid">
 <article class="market-card">
 <a href="https://www.nyse.com/" rel="noopener noreferrer" target="_blank">
-<img alt="Facade of the New York Stock Exchange on Wall Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"/>
+<img alt="Facade of the New York Stock Exchange on Wall Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"/ decoding="async">
 <div class="market-card-body">
 <div class="market-region">United States</div>
 <h3>NYSE ↗</h3>
@@ -2244,7 +2247,7 @@ html, body { background-color:#F1F5FA !important; }
 </article>
 <article class="market-card">
 <a href="https://www.nasdaq.com/" rel="noopener noreferrer" target="_blank">
-<img alt="NASDAQ MarketSite studio in Times Square" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"/>
+<img alt="NASDAQ MarketSite studio in Times Square" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"/ decoding="async">
 <div class="market-card-body">
 <div class="market-region">United States</div>
 <h3>NASDAQ ↗</h3>
@@ -2255,7 +2258,7 @@ html, body { background-color:#F1F5FA !important; }
 </article>
 <article class="market-card">
 <a href="https://www.tsx.com/" rel="noopener noreferrer" target="_blank">
-<img alt="Historic Toronto Stock Exchange building on Bay Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"/>
+<img alt="Historic Toronto Stock Exchange building on Bay Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"/ decoding="async">
 <div class="market-card-body">
 <div class="market-region">Canada</div>
 <h3>TSX ↗</h3>
@@ -2266,7 +2269,7 @@ html, body { background-color:#F1F5FA !important; }
 </article>
 <article class="market-card">
 <a href="https://www.tsx.com/en/venture" rel="noopener noreferrer" target="_blank">
-<img alt="Toronto financial district skyline" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"/>
+<img alt="Toronto financial district skyline" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"/ decoding="async">
 <div class="market-card-body">
 <div class="market-region">Canada</div>
 <h3>TSX Venture ↗</h3>
@@ -2555,7 +2558,7 @@ html, body { background-color:#F1F5FA !important; }
   </p>
 <a href="#top">Back to top ↑</a>
 <!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" id="cg_de43d061" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
+<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" id="cg_de43d061" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/ loading="lazy" decoding="async"><noscript><img alt="Free Counter" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/ loading="lazy" decoding="async"></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
 <!-- Compteur de visiteurs https://counter.gratis ENDE -->
 
   <p>
@@ -2611,7 +2614,7 @@ function renderCrypto(c,index) {
     : 'Not provided';
 
   const image = c.image
-    ? `<img class="crypto-logo" src="${esc(c.image)}" alt="" loading="lazy">`
+    ? `<img class="crypto-logo" src="${esc(c.image)}" alt="" loading="lazy" decoding="async">`
     : '';
 
   const symbol = esc(String(c.symbol || '').toUpperCase());
@@ -3103,46 +3106,46 @@ setInterval(loadStocks,15 * 60 * 1000);
     <div class="free-side-message">
       <strong class="broker-scroll-heading">ONLINE BROKERS</strong>
 
-      <a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=questrade.com&sz=128" alt=""><span>Questrade</span></a>
-      <a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&sz=128" alt=""><span>Interactive Brokers</span></a>
-      <a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=wealthsimple.com&sz=128" alt=""><span>Wealthsimple</span></a>
-      <a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img src="https://www.google.com/s2/favicons?domain=qtrade.ca&sz=128" alt=""><span>Qtrade</span></a>
-      <a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=moomoo.com&sz=128" alt=""><span>Moomoo</span></a>
-      <a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=webull.ca&sz=128" alt=""><span>Webull</span></a>
+      <a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=questrade.com&sz=128" alt="" loading="lazy" decoding="async"><span>Questrade</span></a>
+      <a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Interactive Brokers</span></a>
+      <a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=wealthsimple.com&sz=128" alt="" loading="lazy" decoding="async"><span>Wealthsimple</span></a>
+      <a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img src="https://www.google.com/s2/favicons?domain=qtrade.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Qtrade</span></a>
+      <a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=moomoo.com&sz=128" alt="" loading="lazy" decoding="async"><span>Moomoo</span></a>
+      <a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=webull.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Webull</span></a>
 
       <strong class="broker-scroll-heading">BANK BROKERAGES</strong>
 
-      <a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img src="https://www.google.com/s2/favicons?domain=td.com&sz=128" alt=""><span>TD Direct Investing</span></a>
-      <a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&sz=128" alt=""><span>RBC Direct Investing</span></a>
-      <a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=bmo.com&sz=128" alt=""><span>BMO InvestorLine</span></a>
-      <a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&sz=128" alt=""><span>CIBC Investor's Edge</span></a>
-      <a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&sz=128" alt=""><span>Scotia iTRADE</span></a>
-      <a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=nbdb.ca&sz=128" alt=""><span>National Bank</span></a>
-      <a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img src="https://www.google.com/s2/favicons?domain=disnat.com&sz=128" alt=""><span>Disnat</span></a>
+      <a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img src="https://www.google.com/s2/favicons?domain=td.com&sz=128" alt="" loading="lazy" decoding="async"><span>TD Direct Investing</span></a>
+      <a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&sz=128" alt="" loading="lazy" decoding="async"><span>RBC Direct Investing</span></a>
+      <a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=bmo.com&sz=128" alt="" loading="lazy" decoding="async"><span>BMO InvestorLine</span></a>
+      <a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&sz=128" alt="" loading="lazy" decoding="async"><span>CIBC Investor's Edge</span></a>
+      <a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&sz=128" alt="" loading="lazy" decoding="async"><span>Scotia iTRADE</span></a>
+      <a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=nbdb.ca&sz=128" alt="" loading="lazy" decoding="async"><span>National Bank</span></a>
+      <a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img src="https://www.google.com/s2/favicons?domain=disnat.com&sz=128" alt="" loading="lazy" decoding="async"><span>Disnat</span></a>
 
       <strong class="broker-scroll-heading">FOREX & CFD</strong>
-      <a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&sz=128" alt=""><span>CMC Markets</span></a>
+      <a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&sz=128" alt="" loading="lazy" decoding="async"><span>CMC Markets</span></a>
     </div>
 
     <!-- Duplicate for continuous scrolling -->
     <div class="free-side-message" aria-hidden="true">
       <strong class="broker-scroll-heading">ONLINE BROKERS</strong>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=questrade.com&sz=128" alt=""><span>Questrade</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&sz=128" alt=""><span>Interactive Brokers</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=wealthsimple.com&sz=128" alt=""><span>Wealthsimple</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=qtrade.ca&sz=128" alt=""><span>Qtrade</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=moomoo.com&sz=128" alt=""><span>Moomoo</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=webull.ca&sz=128" alt=""><span>Webull</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=questrade.com&sz=128" alt="" loading="lazy" decoding="async"><span>Questrade</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Interactive Brokers</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=wealthsimple.com&sz=128" alt="" loading="lazy" decoding="async"><span>Wealthsimple</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=qtrade.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Qtrade</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=moomoo.com&sz=128" alt="" loading="lazy" decoding="async"><span>Moomoo</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=webull.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Webull</span></a>
       <strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=td.com&sz=128" alt=""><span>TD Direct Investing</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&sz=128" alt=""><span>RBC Direct Investing</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=bmo.com&sz=128" alt=""><span>BMO InvestorLine</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&sz=128" alt=""><span>CIBC Investor's Edge</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&sz=128" alt=""><span>Scotia iTRADE</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=nbdb.ca&sz=128" alt=""><span>National Bank</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=disnat.com&sz=128" alt=""><span>Disnat</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=td.com&sz=128" alt="" loading="lazy" decoding="async"><span>TD Direct Investing</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&sz=128" alt="" loading="lazy" decoding="async"><span>RBC Direct Investing</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=bmo.com&sz=128" alt="" loading="lazy" decoding="async"><span>BMO InvestorLine</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&sz=128" alt="" loading="lazy" decoding="async"><span>CIBC Investor's Edge</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&sz=128" alt="" loading="lazy" decoding="async"><span>Scotia iTRADE</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=nbdb.ca&sz=128" alt="" loading="lazy" decoding="async"><span>National Bank</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=disnat.com&sz=128" alt="" loading="lazy" decoding="async"><span>Disnat</span></a>
       <strong class="broker-scroll-heading">FOREX & CFD</strong>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&sz=128" alt=""><span>CMC Markets</span></a>
+      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&sz=128" alt="" loading="lazy" decoding="async"><span>CMC Markets</span></a>
     </div>
 
   </div>
