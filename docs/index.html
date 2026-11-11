@@ -2074,19 +2074,19 @@ input, select, textarea, button {
   <p class="weekly-stock-heading" id="weekly-stock-title">
     Stock of the Week
   </p>
-
 <div class="hot-stock-hint">
-  <span>HOT STOCK PICK INSIDE</span>
-  <svg class="hot-stock-arrow" viewBox="0 0 100 55">
-    <polyline points="3,43 22,30 34,37 51,14 65,24 85,5"
-      fill="none" stroke="currentColor" stroke-width="5"
+  <span class="hot-stock-main">HOT STOCK</span>
+  <span class="hot-stock-sub">PICK INSIDE</span>
+
+  <svg class="hot-stock-arrow" viewBox="0 0 100 65">
+    <polyline points="5,8 25,25 40,15 60,40 75,30 92,55"
+      fill="none" stroke="currentColor" stroke-width="6"
       stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="72,5 85,5 85,18"
-      fill="none" stroke="currentColor" stroke-width="5"
+    <polyline points="75,55 92,55 92,38"
+      fill="none" stroke="currentColor" stroke-width="6"
       stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </div>
-
 </div>
 
       <h3 class="weekly-company-name">AppLovin Corporation <span>(NASDAQ: APP)</span></h3>
@@ -3680,6 +3680,41 @@ body { overflow-x: hidden; }
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
 }  
+
+  .hot-stock-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  color: #16A05A;
+  white-space: nowrap;
+  animation: hotStockBlink 2s steps(1, end) infinite;
+}
+
+.hot-stock-main {
+  font-size: 23px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+}
+
+.hot-stock-sub {
+  font-size: 19px;
+  font-weight: 950;
+  letter-spacing: 2px;
+}
+
+.hot-stock-arrow {
+  width: 75px;
+  height: 49px;
+  margin-top: 3px;
+}
+
+@keyframes hotStockBlink {
+  0%, 49% { visibility: visible; }
+  50%, 99% { visibility: hidden; }
+  100% { visibility: visible; }
+}
 </style>
 
 
