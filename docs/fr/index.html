@@ -2042,9 +2042,20 @@ input, select, textarea, button {
       <div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> À LA UNE CETTE SEMAINE</div>
       <p class="weekly-feature-label">UNE ENTREPRISE. UNE ANALYSE APPROFONDIE.</p>
   <div class="weekly-title-row">
-
-  <p class="weekly-stock-heading" id="weekly-stock-title">Action de la semaine</p>
-</div>
+    <p class="weekly-stock-heading" id="weekly-stock-title">Action de la semaine</p>
+    <div class="hot-stock-hint">
+      <span class="hot-stock-main">HOT STOCK</span>
+      <span class="hot-stock-sub">PICK INSIDE</span>
+      <svg class="hot-stock-arrow" viewBox="0 0 100 65" aria-hidden="true">
+        <polyline points="5,8 25,25 40,15 60,40 75,30 92,55"
+          fill="none" stroke="currentColor" stroke-width="6"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="75,55 92,55 92,38"
+          fill="none" stroke="currentColor" stroke-width="6"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
 
       <h3 class="weekly-company-name">AppLovin Corporation <span>(NASDAQ: APP)</span></h3>
 <div class="weekly-metrics" aria-label="AppLovin quarterly financial highlights">
@@ -4006,6 +4017,59 @@ body { overflow-x: hidden; }
 @media (max-width:760px) {
   .weekly-feature-copy > .broker-match-widget { margin-top:18px !important; }
   .weekly-feature-copy > .broker-match-widget .broker-match-banner { padding:16px; }
+}
+
+
+/* HOT STOCK PICK INSIDE - hard flash every two seconds */
+.weekly-title-row {
+  display:flex !important;
+  grid-template-columns:none !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+  width:100%;
+}
+.hot-stock-hint {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:1px;
+  color:#16A05A;
+  white-space:nowrap;
+  text-align:center;
+  animation:hotStockBlink 2s steps(1,end) infinite;
+}
+.hot-stock-main {
+  font-size:23px;
+  font-weight:1000;
+  letter-spacing:1px;
+  line-height:1.1;
+}
+.hot-stock-sub {
+  font-size:19px;
+  font-weight:950;
+  letter-spacing:2px;
+  line-height:1.15;
+}
+.hot-stock-arrow {
+  display:block;
+  width:75px;
+  height:49px;
+  margin-top:3px;
+}
+@keyframes hotStockBlink {
+  0%,49% { visibility:visible; }
+  50%,99% { visibility:hidden; }
+  100% { visibility:visible; }
+}
+@media(max-width:520px) {
+  .hot-stock-main { font-size:18px; }
+  .hot-stock-sub { font-size:15px; letter-spacing:1.4px; }
+  .hot-stock-arrow { width:60px; height:40px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hot-stock-hint { animation:none; }
 }
 </style>
 </body>
