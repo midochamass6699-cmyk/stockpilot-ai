@@ -1990,6 +1990,38 @@ html, body { background-color:#F1F5FA !important; }
       </div>
 
       <p class="weekly-feature-disclaimer">StockPilot AI research and educational discussion only. Not a buy or sell recommendation or financial advice.</p>
+
+      <!-- STOCKPILOT AI: FULL-WIDTH, ANIMATED BROKER MATCH BANNER -->
+<section class="broker-match-widget" id="broker-match-widget" aria-labelledby="broker-match-title">
+  <div class="broker-match-banner">
+    <div class="broker-match-banner-copy">
+      <div class="broker-match-topline"><span class="broker-match-spark" aria-hidden="true">✦</span> STOCKPILOT AI PERSONAL BROKER MATCH</div>
+      <h2 id="broker-match-title">Find Your Best Broker</h2>
+      <p class="broker-match-intro">Answer a few quick questions. Discover the one broker that best matches your needs.</p>
+    </div>
+    <button type="button" class="broker-match-start" id="broker-match-start" aria-expanded="false" aria-controls="broker-match-panel">
+      <span>START NOW</span><span class="broker-match-start-arrow" aria-hidden="true">→</span>
+    </button>
+  </div>
+  <div class="broker-match-panel" id="broker-match-panel" hidden>
+    <div class="broker-match-progress" aria-label="Question progress"><span id="broker-match-progress-fill"></span></div>
+    <div id="broker-match-step" class="broker-match-step" aria-live="polite">
+      <p class="broker-match-count" id="broker-match-count">QUESTION 1 OF 5</p>
+      <h3 id="broker-match-question">Where do you live?</h3>
+      <div id="broker-match-options" class="broker-match-options">
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Canada"><span>Canada</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="United States"><span>United States</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="United Kingdom"><span>United Kingdom</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Australia"><span>Australia</span></label>
+        <label class="broker-match-option"><input type="radio" name="broker-country" value="Other country"><span>Another country</span></label>
+      </div>
+      <input id="broker-match-country-other" class="broker-match-country-other" type="text" placeholder="Enter your country" aria-label="Your country" hidden>
+      <div class="broker-match-actions"><button type="button" id="broker-match-next" disabled>CONTINUE <span aria-hidden="true">→</span></button></div>
+      <p class="broker-match-footnote">We compare only the 14 brokers listed on StockPilot AI. Availability and account eligibility depend on your country.</p>
+    </div>
+    <div id="broker-match-result" class="broker-match-result" hidden aria-live="polite"></div>
+  </div>
+</section>
     </div>
 
     <aside class="weekly-feature-side" aria-label="Explore StockPilot AI">
@@ -2043,37 +2075,7 @@ html, body { background-color:#F1F5FA !important; }
   </div>
 </section>
 
-<!-- STOCKPILOT AI: FULL-WIDTH, ANIMATED BROKER MATCH BANNER -->
-<section class="broker-match-widget" id="broker-match-widget" aria-labelledby="broker-match-title">
-  <div class="broker-match-banner">
-    <div class="broker-match-banner-copy">
-      <div class="broker-match-topline"><span class="broker-match-spark" aria-hidden="true">✦</span> STOCKPILOT AI PERSONAL BROKER MATCH</div>
-      <h2 id="broker-match-title">Find Your Best Broker</h2>
-      <p class="broker-match-intro">Answer a few quick questions. Discover the one broker that best matches your needs.</p>
-    </div>
-    <button type="button" class="broker-match-start" id="broker-match-start" aria-expanded="false" aria-controls="broker-match-panel">
-      <span>START NOW</span><span class="broker-match-start-arrow" aria-hidden="true">→</span>
-    </button>
-  </div>
-  <div class="broker-match-panel" id="broker-match-panel" hidden>
-    <div class="broker-match-progress" aria-label="Question progress"><span id="broker-match-progress-fill"></span></div>
-    <div id="broker-match-step" class="broker-match-step" aria-live="polite">
-      <p class="broker-match-count" id="broker-match-count">QUESTION 1 OF 5</p>
-      <h3 id="broker-match-question">Where do you live?</h3>
-      <div id="broker-match-options" class="broker-match-options">
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Canada"><span>Canada</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="United States"><span>United States</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="United Kingdom"><span>United Kingdom</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Australia"><span>Australia</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Other country"><span>Another country</span></label>
-      </div>
-      <input id="broker-match-country-other" class="broker-match-country-other" type="text" placeholder="Enter your country" aria-label="Your country" hidden>
-      <div class="broker-match-actions"><button type="button" id="broker-match-next" disabled>CONTINUE <span aria-hidden="true">→</span></button></div>
-      <p class="broker-match-footnote">We compare only the 14 brokers listed on StockPilot AI. Availability and account eligibility depend on your country.</p>
-    </div>
-    <div id="broker-match-result" class="broker-match-result" hidden aria-live="polite"></div>
-  </div>
-</section>
+
 
 <nav class="category-nav" aria-label="Market categories">
   <a class="category-tab active" href="#main-picks">TODAY’S STOCKS</a>
@@ -3890,5 +3892,24 @@ body { overflow-x: hidden; }
 })();
 </script>
 
+
+<style id="broker-widget-under-stock-of-week">
+/* Keep the broker matcher inside the left Stock of the Week column. */
+.weekly-feature-copy > .broker-match-widget {
+  width:100% !important; max-width:none !important; margin:22px 0 0 !important;
+  border-radius:15px;
+}
+.weekly-feature-copy > .broker-match-widget .broker-match-banner {
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start;
+  gap:13px; padding:18px 20px;
+}
+.weekly-feature-copy > .broker-match-widget .broker-match-banner-copy { width:100%; }
+.weekly-feature-copy > .broker-match-widget .broker-match-start { align-self:flex-start; }
+.weekly-feature-copy > .broker-match-widget .broker-match-panel { width:100%; }
+@media (max-width:760px) {
+  .weekly-feature-copy > .broker-match-widget { margin-top:18px !important; }
+  .weekly-feature-copy > .broker-match-widget .broker-match-banner { padding:16px; }
+}
+</style>
 </body>
 </html>
