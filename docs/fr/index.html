@@ -1,17 +1,18 @@
 <!DOCTYPE html>
+
 <html lang="fr-CA">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Sélections boursières quotidiennes, penny stocks et cryptomonnaies | StockPilot AI</title>
+<title>Sélections boursières du jour, penny stocks et cryptomonnaies | StockPilot AI</title>
 <meta content="Sélections boursières quotidiennes gratuites, penny stocks à surveiller et cryptomonnaies classées selon leur volume de négociation sur 24 heures. Découvrez les données des marchés et des ressources de recherche en placement." name="description"/>
 <meta content="StockPilot AI" name="author"/>
 <meta content="index,follow,max-image-preview:large" name="robots"/>
 <link href="https://technofront.org/fr/" rel="canonical"/>
-<link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
-<link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/"/>
-<link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2214%22%20fill=%22%2307111f%22/%3E%3Cpath%20d=%22M10%2043%2024%2029l9%208%2020-22%22%20fill=%22none%22%20stroke=%22%2338d6a6%22%20stroke-width=%225%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3Cpath%20d=%22M40%2015h13v13%22%20fill=%22none%22%20stroke=%22%2338d6a6%22%20stroke-width=%225%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3C/svg%3E"/>
+<link href="https://technofront.org/" hreflang="en-CA" rel="alternate"/>
+<link href="https://technofront.org/fr/" hreflang="fr-CA" rel="alternate"/>
+<link href="https://technofront.org/" hreflang="x-default" rel="alternate"/>
+<link href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2214%22%20fill=%22%2307111f%22/%3E%3Cpath%20d=%22M10%2043%2024%2029l9%208%2020-22%22%20fill=%22none%22%20stroke=%22%2338d6a6%22%20stroke-width=%225%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3Cpath%20d=%22M40%2015h13v13%22%20fill=%22none%22%20stroke=%22%2338d6a6%22%20stroke-width=%225%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
 <meta content="#07111F" name="theme-color"/>
 <meta content="fr_CA" property="og:locale"/>
 <meta content="StockPilot AI" property="og:site_name"/>
@@ -1893,11 +1894,10 @@ input, select, textarea, button {
 }
 
 </style>
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<link rel="preconnect" href="https://www.google.com" crossorigin="anonymous"/>
-<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"/>
-<link rel="preconnect" href="https://s3.tradingview.com" crossorigin="anonymous"/>
-
+<script defer="" src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
+<link crossorigin="anonymous" href="https://www.google.com" rel="preconnect"/>
+<link crossorigin="anonymous" href="https://www.googletagmanager.com" rel="preconnect"/>
+<link crossorigin="anonymous" href="https://s3.tradingview.com" rel="preconnect"/>
 <style id="stockpilot-editorial-updates">
 /* Readable editorial context beneath every live stock and crypto result. */
 .stock-insight {
@@ -1927,8 +1927,17 @@ input, select, textarea, button {
   .weekly-why-card p { font-size: 14px !important; }
 }
 </style>
-
-</head>
+<style id="stockpilot-fr-margin-guide-banner-style">
+/* Bannière du guide sur les comptes : largeur contenue, alignée sur le contenu */
+#stockpilot-fr-margin-guide-banner{box-sizing:border-box;width:min(1200px,calc(100% - 36px));max-width:100%;margin:22px auto 26px;padding:clamp(18px,2.6vw,28px);display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;border:1px solid rgba(148,163,184,.28);border-left:5px solid #eabf55;border-radius:16px;background:linear-gradient(110deg,#101b30 0%,#18345b 100%);color:#fff;box-shadow:0 10px 28px rgba(15,23,42,.12);overflow:hidden}
+#stockpilot-fr-margin-guide-banner .guide-copy{min-width:0;flex:1 1 420px}
+#stockpilot-fr-margin-guide-banner .guide-eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#f2cf79;margin-bottom:7px}
+#stockpilot-fr-margin-guide-banner h2{font-size:clamp(19px,2.2vw,25px);line-height:1.2;color:#fff;margin:0 0 7px;max-width:760px}
+#stockpilot-fr-margin-guide-banner p{font-size:14px;line-height:1.55;color:#dce7f7;margin:0;max-width:760px}
+#stockpilot-fr-margin-guide-banner>a{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 1 auto;max-width:100%;padding:12px 16px;border-radius:9px;background:#f2c45e;color:#14213a!important;text-decoration:none!important;font-size:12px;font-weight:850;letter-spacing:.035em;line-height:1.3;text-align:center;white-space:normal;overflow-wrap:anywhere}
+#stockpilot-fr-margin-guide-banner>a:hover{background:#ffda83;transform:translateY(-1px)}
+@media(max-width:640px){#stockpilot-fr-margin-guide-banner{width:calc(100% - 28px);gap:14px;margin:16px auto 20px}#stockpilot-fr-margin-guide-banner .guide-copy{flex-basis:100%}#stockpilot-fr-margin-guide-banner>a{width:100%}}
+</style></head>
 <body>
 <!-- NAVIGATION -->
 <header class="topbar">
@@ -1939,35 +1948,30 @@ input, select, textarea, button {
     </a>
 <div class="navlinks">
 <a href="#top">ACCUEIL</a><a href="#main-picks">ACTIONS DU JOUR</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">TOP CRYPTO</a><a href="#broker-directory">COURTIERS</a>
-
-
 <a href="#market-coverage">MARCHÉS</a>
 <a href="#stock-of-the-week">ACTION DE LA SEMAINE</a>
-  <a href="./research.html">CENTRE DE RECHERCHE</a>
-  <a href="./market-investing-guide.html">GUIDE DE PLACEMENT</a>
-  <a href="#margin-account-article">GUIDE SUR LES COMPTES SUR MARGE</a>
+<a href="./research.html">CENTRE DE RECHERCHE</a>
+<a href="./market-investing-guide.html">GUIDE DE PLACEMENT</a>
+<a href="#margin-account-article">GUIDE SUR LES COMPTES SUR MARGE</a>
 <a href="#market-insights">ANALYSE DES MARCHÉS</a>
 <a href="#financial-resources">RESSOURCES</a>
 <a href="#about">À PROPOS</a>
-  
 <a href="#contact">CONTACT</a>
 <a class="nav-cta" href="#discussion">DISCUSSION</a>
-<div class="language-switch" aria-label="Choose language">
-  <a href="/" lang="en">EN</a>
-  <a href="/fr/" lang="fr" aria-current="page">FR</a>
+<div aria-label="Choose language" class="language-switch">
+<a href="/" lang="en">EN</a>
+<a aria-current="page" href="/fr/" lang="fr">FR</a>
 <span>|</span>
-  <a href="/es/" lang="es">ES</a>
+<a href="/es/" lang="es">ES</a>
 </div>
 </div>
 </nav>
 </header>
-
-<div class="language-switch" aria-label="Choose language">
-  <a href="/" lang="en">EN</a>
-  <a href="/fr/" lang="fr">FR</a>
-  <a href="/es/" lang="es">ES</a>
+<div aria-label="Choose language" class="language-switch">
+<a href="/" lang="en">EN</a>
+<a href="/fr/" lang="fr">FR</a>
+<a href="/es/" lang="es">ES</a>
 </div>
-
 <style>
 .language-selector {
   display: inline-flex !important;
@@ -1989,16 +1993,10 @@ input, select, textarea, button {
   color: #ffffff;
 }
 </style>
-
 <!-- STOCKPILOT AI MARKET TICKER -->
-<div class="tradingview-widget-container"
-     style="width:100%; height:46px; background:#ffffff;">
-
-  <div class="tradingview-widget-container__widget"></div>
-
-  <script type="text/javascript"
-    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-    async>
+<div class="tradingview-widget-container" style="width:100%; height:46px; background:#ffffff;">
+<div class="tradingview-widget-container__widget"></div>
+<script async="" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" type="text/javascript">
   {
     "symbols": [
       {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
@@ -2029,165 +2027,141 @@ input, select, textarea, button {
   </script>
 </div>
 <!-- END STOCKPILOT AI MARKET TICKER -->
-
 <!-- The free-access message now appears in the two vertical side banners. -->
-
 <!-- ACTION VEDETTE DE LA SEMAINE -->
-<section class="stock-of-the-week" id="stock-of-the-week" aria-labelledby="weekly-stock-title">
-  <div class="weekly-feature-inner">
-    <div class="weekly-feature-copy">
-
-
-      
-      <div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> À LA UNE CETTE SEMAINE</div>
-      <p class="weekly-feature-label">UNE ENTREPRISE. UNE ANALYSE APPROFONDIE.</p>
-  <div class="weekly-title-row">
-    <p class="weekly-stock-heading" id="weekly-stock-title">Action de la semaine</p>
-    <div class="hot-stock-hint">
-      <span class="hot-stock-main">HOT STOCK</span>
-      <span class="hot-stock-sub">PICK INSIDE</span>
-      <svg class="hot-stock-arrow" viewBox="0 0 100 65" aria-hidden="true">
-        <polyline points="5,8 25,25 40,15 60,40 75,30 92,55"
-          fill="none" stroke="currentColor" stroke-width="6"
-          stroke-linecap="round" stroke-linejoin="round"/>
-        <polyline points="75,55 92,55 92,38"
-          fill="none" stroke="currentColor" stroke-width="6"
-          stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-  </div>
-
-      <h3 class="weekly-company-name">AppLovin Corporation <span>(NASDAQ: APP)</span></h3>
-<div class="weekly-metrics" aria-label="AppLovin quarterly financial highlights">
-        <div class="weekly-metric"><strong>+55%</strong><span>Revenue growth</span></div>
-        <div class="weekly-metric"><strong>+72%</strong><span>Net income growth</span></div>
-        <div class="weekly-metric"><strong>US$1.4B</strong><span>Q3 free cash flow</span></div>
-      </div>
+<section aria-labelledby="weekly-stock-title" class="stock-of-the-week" id="stock-of-the-week">
+<div class="weekly-feature-inner">
+<div class="weekly-feature-copy">
+<div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> À LA UNE CETTE SEMAINE</div>
+<p class="weekly-feature-label">UNE ENTREPRISE. UNE ANALYSE APPROFONDIE.</p>
+<div class="weekly-title-row">
+<p class="weekly-stock-heading" id="weekly-stock-title">Action de la semaine</p>
+<div class="hot-stock-hint">
+<span class="hot-stock-main">HOT STOCK</span>
+<span class="hot-stock-sub">PICK INSIDE</span>
+<svg aria-hidden="true" class="hot-stock-arrow" viewbox="0 0 100 65">
+<polyline fill="none" points="5,8 25,25 40,15 60,40 75,30 92,55" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></polyline>
+<polyline fill="none" points="75,55 92,55 92,38" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></polyline>
+</svg>
+</div>
+</div>
+<h3 class="weekly-company-name">AppLovin Corporation <span>(NASDAQ: APP)</span></h3>
+<div aria-label="AppLovin quarterly financial highlights" class="weekly-metrics">
+<div class="weekly-metric"><strong>+55%</strong><span>Revenue growth</span></div>
+<div class="weekly-metric"><strong>+72%</strong><span>Net income growth</span></div>
+<div class="weekly-metric"><strong>US$1.4B</strong><span>Q3 free cash flow</span></div>
+</div>
 <div class="weekly-feature-actions">
-        <a class="weekly-research-link" href="https://finance.yahoo.com/quote/APP/" target="_blank" rel="noopener noreferrer">Analyser APP <span aria-hidden="true">↗</span></a>
-        <a class="weekly-research-link" href="https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-Third-Quarter-2026-Financial-Results/default.aspx" target="_blank" rel="noopener noreferrer">Résultats financiers du 3e trimestre <span aria-hidden="true">↗</span></a>
-        <span class="weekly-ticker-note">NASDAQ: APP · USD</span>
-      </div>
-
-      <div class="weekly-subscribe-cta" aria-labelledby="weekly-subscribe-heading">
-        <div class="weekly-subscribe-copy">
-          <span class="weekly-subscribe-icon" aria-hidden="true">🔔</span>
-          <div>
-            <strong id="weekly-subscribe-heading">NE MANQUEZ AUCUNE SÉLECTION BOURSIÈRE !</strong>
-            <small>Recevez des alertes gratuites lorsque de nouvelles actions, penny stocks et actualités crypto sont publiés.</small>
-          </div>
-        </div>
-        <button id="stockpilot-subscribe-btn" type="button">🔔 S’ABONNER GRATUITEMENT</button>
-        <p id="stockpilot-subscribe-status" aria-live="polite">Alertes boursières quotidiennes gratuites. Aucun paiement requis.</p>
-      </div>
-
-      <p class="weekly-feature-disclaimer">StockPilot AI research and educational discussion only. Not a buy or sell recommendation or financial advice.</p>
-
-      <!-- STOCKPILOT AI: FULL-WIDTH, ANIMATED BROKER MATCH BANNER -->
-<section class="broker-match-widget" id="broker-match-widget" aria-labelledby="broker-match-title">
-  <div class="broker-match-banner">
-    <div class="broker-match-banner-copy">
-      <div class="broker-match-topline"><span class="broker-match-spark" aria-hidden="true">✦</span> STOCKPILOT AI PERSONAL BROKER MATCH</div>
-      <h2 id="broker-match-title">Trouvez le courtier qui vous convient</h2>
-      <p class="broker-match-intro">Répondez à quelques questions rapides pour découvrir le courtier qui correspond le mieux à vos besoins.</p>
-    </div>
-    <button type="button" class="broker-match-start" id="broker-match-start" aria-expanded="false" aria-controls="broker-match-panel">
-      <span>COMMENCER</span><span class="broker-match-start-arrow" aria-hidden="true">→</span>
-    </button>
-  </div>
-  <div class="broker-match-panel" id="broker-match-panel" hidden>
-    <div class="broker-match-progress" aria-label="Question progress"><span id="broker-match-progress-fill"></span></div>
-    <div id="broker-match-step" class="broker-match-step" aria-live="polite">
-      <p class="broker-match-count" id="broker-match-count">QUESTION 1 SUR 5</p>
-      <h3 id="broker-match-question">Dans quel pays résidez-vous ?</h3>
-      <div id="broker-match-options" class="broker-match-options">
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Canada"><span>Canada</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="États-Unis"><span>États-Unis</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Royaume-Uni"><span>Royaume-Uni</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Australie"><span>Australie</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Other country"><span>Autre pays</span></label>
-      </div>
-      <input id="broker-match-country-other" class="broker-match-country-other" type="text" placeholder="Enter your country" aria-label="Your country" hidden>
-      <div class="broker-match-actions"><button type="button" id="broker-match-next" disabled>CONTINUER <span aria-hidden="true">→</span></button></div>
-      <p class="broker-match-footnote">Nous comparons uniquement les 14 courtiers répertoriés sur StockPilot AI. La disponibilité et l’admissibilité aux comptes dépendent de votre pays.</p>
-    </div>
-    <div id="broker-match-result" class="broker-match-result" hidden aria-live="polite"></div>
-  </div>
+<a class="weekly-research-link" href="https://finance.yahoo.com/quote/APP/" rel="noopener noreferrer" target="_blank">Analyser APP <span aria-hidden="true">↗</span></a>
+<a class="weekly-research-link" href="https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-Third-Quarter-2026-Financial-Results/default.aspx" rel="noopener noreferrer" target="_blank">Résultats financiers du 3e trimestre <span aria-hidden="true">↗</span></a>
+<span class="weekly-ticker-note">NASDAQ: APP · USD</span>
+</div>
+<div aria-labelledby="weekly-subscribe-heading" class="weekly-subscribe-cta">
+<div class="weekly-subscribe-copy">
+<span aria-hidden="true" class="weekly-subscribe-icon">🔔</span>
+<div>
+<strong id="weekly-subscribe-heading">NE MANQUEZ AUCUNE SÉLECTION BOURSIÈRE !</strong>
+<small>Recevez des alertes gratuites lorsque de nouvelles actions, penny stocks et actualités crypto sont publiés.</small>
+</div>
+</div>
+<button id="stockpilot-subscribe-btn" type="button">🔔 S’ABONNER GRATUITEMENT</button>
+<p aria-live="polite" id="stockpilot-subscribe-status">Alertes boursières quotidiennes gratuites. Aucun paiement requis.</p>
+</div>
+<p class="weekly-feature-disclaimer">StockPilot AI research and educational discussion only. Not a buy or sell recommendation or financial advice.</p>
+<!-- STOCKPILOT AI: FULL-WIDTH, ANIMATED BROKER MATCH BANNER -->
+<section aria-labelledby="broker-match-title" class="broker-match-widget" id="broker-match-widget">
+<div class="broker-match-banner">
+<div class="broker-match-banner-copy">
+<div class="broker-match-topline"><span aria-hidden="true" class="broker-match-spark">✦</span> STOCKPILOT AI PERSONAL BROKER MATCH</div>
+<h2 id="broker-match-title">Trouvez le courtier qui vous convient</h2>
+<p class="broker-match-intro">Répondez à quelques questions rapides pour découvrir le courtier qui correspond le mieux à vos besoins.</p>
+</div>
+<button aria-controls="broker-match-panel" aria-expanded="false" class="broker-match-start" id="broker-match-start" type="button">
+<span>COMMENCER</span><span aria-hidden="true" class="broker-match-start-arrow">→</span>
+</button>
+</div>
+<div class="broker-match-panel" hidden="" id="broker-match-panel">
+<div aria-label="Question progress" class="broker-match-progress"><span id="broker-match-progress-fill"></span></div>
+<div aria-live="polite" class="broker-match-step" id="broker-match-step">
+<p class="broker-match-count" id="broker-match-count">QUESTION 1 SUR 5</p>
+<h3 id="broker-match-question">Dans quel pays résidez-vous ?</h3>
+<div class="broker-match-options" id="broker-match-options">
+<label class="broker-match-option"><input name="broker-country" type="radio" value="Canada"/><span>Canada</span></label>
+<label class="broker-match-option"><input name="broker-country" type="radio" value="États-Unis"/><span>États-Unis</span></label>
+<label class="broker-match-option"><input name="broker-country" type="radio" value="Royaume-Uni"/><span>Royaume-Uni</span></label>
+<label class="broker-match-option"><input name="broker-country" type="radio" value="Australie"/><span>Australie</span></label>
+<label class="broker-match-option"><input name="broker-country" type="radio" value="Other country"/><span>Autre pays</span></label>
+</div>
+<input aria-label="Your country" class="broker-match-country-other" hidden="" id="broker-match-country-other" placeholder="Enter your country" type="text"/>
+<div class="broker-match-actions"><button disabled="" id="broker-match-next" type="button">CONTINUER <span aria-hidden="true">→</span></button></div>
+<p class="broker-match-footnote">Nous comparons uniquement les 14 courtiers répertoriés sur StockPilot AI. La disponibilité et l’admissibilité aux comptes dépendent de votre pays.</p>
+</div>
+<div aria-live="polite" class="broker-match-result" hidden="" id="broker-match-result"></div>
+</div>
+</section><section id="stockpilot-fr-margin-guide-banner"><div class="guide-copy"><div class="guide-eyebrow">ÉDUCATION DES INVESTISSEURS · CANADA</div><h2>Comprenez les comptes sur marge avant de négocier</h2><p>Découvrez comment fonctionne l’emprunt pour investir, combien les intérêts peuvent coûter et comment une baisse du marché peut entraîner un appel de marge.</p></div><a href="#margin-account-article">LIRE LE GUIDE SUR LES COMPTES SUR MARGE  →</a></section>
+</div>
+<aside aria-label="Explore StockPilot AI" class="weekly-feature-side">
+<div aria-label="What you can explore on StockPilot AI" aria-roledescription="carousel" class="sp-slideshow" id="stockpilot-slideshow">
+<div class="sp-slides sp-market-slides">
+<article aria-hidden="false" class="sp-slide is-active" data-market-preview="main">
+<p class="sp-slide-kicker">UPDATED FROM TODAY’S MARKET PICKS</p>
+<h2>Top 3 des actions à surveiller</h2>
+<div aria-live="polite" class="sp-market-list" id="previewMainStocks">
+<div class="sp-market-loading">Chargement des principales sélections boursières…</div>
+</div>
+<a class="sp-slide-link" href="#main-picks">VOIR TOUTES LES SÉLECTIONS <span aria-hidden="true">→</span></a>
+</article>
+<article aria-hidden="true" class="sp-slide" data-market-preview="penny">
+<p class="sp-slide-kicker">LOWER-PRICED · HIGHER-RISK SHARES</p>
+<h2>Top 3 des penny stocks en mouvement</h2>
+<div aria-live="polite" class="sp-market-list" id="previewPennyStocks">
+<div class="sp-market-loading">Chargement des penny stocks…</div>
+</div>
+<a class="sp-slide-link" href="#penny-picks">VOIR LES PENNY STOCKS <span aria-hidden="true">→</span></a>
+</article>
+<article aria-hidden="true" class="sp-slide" data-market-preview="crypto">
+<p class="sp-slide-kicker">RANKED BY REPORTED 24-HOUR VOLUME</p>
+<h2>Top 3 des cryptomonnaies par volume</h2>
+<div aria-live="polite" class="sp-market-list" id="previewCrypto">
+<div class="sp-market-loading">Chargement des principales cryptomonnaies…</div>
+</div>
+<a class="sp-slide-link" href="#crypto-picks">VOIR LE MARCHÉ CRYPTO <span aria-hidden="true">→</span></a>
+</article>
+</div>
+<div class="sp-slide-controls">
+<button aria-label="Previous slide" class="sp-slide-arrow" data-sp-prev="" type="button">‹</button>
+<div aria-label="Choose a market list" class="sp-slide-dots">
+<button aria-current="true" aria-label="Daily stock picks" class="sp-dot is-active" data-sp-slide="0" type="button"></button>
+<button aria-label="Penny stocks" class="sp-dot" data-sp-slide="1" type="button"></button>
+<button aria-label="Top cryptocurrencies" class="sp-dot" data-sp-slide="2" type="button"></button>
+</div>
+<button aria-label="Next slide" class="sp-slide-arrow" data-sp-next="" type="button">›</button>
+</div>
+<p class="sp-slide-footnote">Une vision plus claire des marchés, un sujet à la fois.</p>
+</div>
+<section aria-labelledby="weekly-why-title" class="weekly-why-card">
+<p class="weekly-why-kicker">THE INVESTMENT THESIS</p>
+<h3 id="weekly-why-title">Pourquoi nous avons choisi AppLovin</h3>
+<p>AppLovin’s AI-powered advertising platform is showing significant business momentum. In its third-quarter 2026 results, revenue rose 55% year over year to US$2.18 billion, while net income increased 72% to US$1.44 billion. The company also reported US$1.4 billion in quarterly free cash flow.</p>
+<p class="weekly-why-risk"><strong>Points à surveiller :</strong> Advertising demand, competition, execution and the valuation investors are paying. Strong results do not eliminate the risk of a share-price correction.</p>
+<a href="https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-Third-Quarter-2026-Financial-Results/default.aspx" rel="noopener noreferrer" target="_blank">Consulter les résultats du 3e trimestre ↗</a>
 </section>
-    </div>
-
-    <aside class="weekly-feature-side" aria-label="Explore StockPilot AI">
-      <div class="sp-slideshow" id="stockpilot-slideshow" aria-roledescription="carousel" aria-label="What you can explore on StockPilot AI">
-        <div class="sp-slides sp-market-slides">
-        <article class="sp-slide is-active" aria-hidden="false" data-market-preview="main">
-          <p class="sp-slide-kicker">UPDATED FROM TODAY’S MARKET PICKS</p>
-          <h2>Sélections boursières du jour</h2>
-          <div class="sp-market-list" id="previewMainStocks" aria-live="polite">
-            <div class="sp-market-loading">Chargement des principales sélections boursières…</div>
-          </div>
-          <a href="#main-picks" class="sp-slide-link">VOIR TOUTES LES SÉLECTIONS <span aria-hidden="true">→</span></a>
-        </article>
-        <article class="sp-slide" aria-hidden="true" data-market-preview="penny">
-          <p class="sp-slide-kicker">LOWER-PRICED · HIGHER-RISK SHARES</p>
-          <h2>Penny stocks à surveiller</h2>
-          <div class="sp-market-list" id="previewPennyStocks" aria-live="polite">
-            <div class="sp-market-loading">Chargement des penny stocks…</div>
-          </div>
-          <a href="#penny-picks" class="sp-slide-link">VOIR LES PENNY STOCKS <span aria-hidden="true">→</span></a>
-        </article>
-        <article class="sp-slide" aria-hidden="true" data-market-preview="crypto">
-          <p class="sp-slide-kicker">RANKED BY REPORTED 24-HOUR VOLUME</p>
-          <h2>Principales cryptomonnaies</h2>
-          <div class="sp-market-list" id="previewCrypto" aria-live="polite">
-            <div class="sp-market-loading">Chargement des principales cryptomonnaies…</div>
-          </div>
-          <a href="#crypto-picks" class="sp-slide-link">VOIR LE MARCHÉ CRYPTO <span aria-hidden="true">→</span></a>
-        </article>
-      </div>
-        <div class="sp-slide-controls">
-          <button class="sp-slide-arrow" type="button" data-sp-prev aria-label="Previous slide">‹</button>
-          <div class="sp-slide-dots" aria-label="Choose a market list">
-            <button class="sp-dot is-active" type="button" data-sp-slide="0" aria-label="Daily stock picks" aria-current="true"></button>
-            <button class="sp-dot" type="button" data-sp-slide="1" aria-label="Penny stocks"></button>
-            <button class="sp-dot" type="button" data-sp-slide="2" aria-label="Top cryptocurrencies"></button>
-          </div>
-          <button class="sp-slide-arrow" type="button" data-sp-next aria-label="Next slide">›</button>
-        </div>
-        <p class="sp-slide-footnote">Une vision plus claire des marchés, un sujet à la fois.</p>
-      </div>
-
-      <section class="weekly-why-card" aria-labelledby="weekly-why-title">
-        <p class="weekly-why-kicker">THE INVESTMENT THESIS</p>
-        <h3 id="weekly-why-title">Pourquoi nous avons choisi AppLovin</h3>
-        <p>AppLovin’s AI-powered advertising platform is showing significant business momentum. In its third-quarter 2026 results, revenue rose 55% year over year to US$2.18 billion, while net income increased 72% to US$1.44 billion. The company also reported US$1.4 billion in quarterly free cash flow.</p>
-        <p class="weekly-why-risk"><strong>Points à surveiller :</strong> Advertising demand, competition, execution and the valuation investors are paying. Strong results do not eliminate the risk of a share-price correction.</p>
-        <a href="https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-Third-Quarter-2026-Financial-Results/default.aspx" target="_blank" rel="noopener noreferrer">Consulter les résultats du 3e trimestre ↗</a>
-      </section>
-    </aside>
-  </div>
+</aside>
+</div>
 </section>
-
-
-
-<nav class="category-nav" aria-label="Market categories">
-  <a class="category-tab active" href="#main-picks">ACTIONS DU JOUR</a>
-  <a class="category-tab" href="#penny-picks">PENNY STOCKS</a>
-  <a class="category-tab" href="#crypto-picks">CRYPTO</a>
+<nav aria-label="Market categories" class="category-nav">
+<a class="category-tab active" href="#main-picks">ACTIONS DU JOUR</a>
+<a class="category-tab" href="#penny-picks">PENNY STOCKS</a>
+<a class="category-tab" href="#crypto-picks">CRYPTO</a>
 </nav>
-
-
 <!-- PRIMARY ACCUEILPAGE TOPIC AND SEARCH INTRODUCTION -->
 <!-- MAIN CONTENT -->
 <main class="container" id="top"><section class="picks-top" id="main-picks">
 <div class="section-head">
 <div>
-<div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
-<h2>Principales actions du jour</h2>
-<p>
-          Three actively traded stocks selected from the available
-          market-data feed and ranked by reported trading volume. Use these
-          daily stock picks as a starting point for your own company research.
-        </p>
+<div class="eyebrow">DONNÉES DE MARCHÉ · SÉLECTION QUOTIDIENNE</div>
+<h2>Top 3 des actions à surveiller</h2>
+<p>Trois actions actives sélectionnées à partir des données de marché disponibles et classées selon leur volume de négociation déclaré. Utilisez ces sélections comme point de départ pour vos propres recherches.</p>
 </div>
 </div>
 <div class="updated" id="updated">
@@ -2197,16 +2171,12 @@ input, select, textarea, button {
 <div class="empty">Chargement des principales actions…</div>
 </div>
 </section>
-
 <section class="penny-section" id="penny-picks">
 <div class="section-head">
 <div>
-<div class="eyebrow">LOWER-PRICED · HIGHER RISK</div>
-<h2>Penny stocks à surveiller</h2>
-<p>
-          Three qualifying stocks priced from US$0.10 to US$10,
-          when available.
-        </p>
+<div class="eyebrow">PETITES CAPITALISATIONS · RISQUE PLUS ÉLEVÉ</div>
+<h2>Top 3 des penny stocks en mouvement</h2>
+<p>Jusqu’à trois titres admissibles, généralement entre 0,10 $ US et 10 $ US, lorsque les données disponibles le permettent. Ces titres comportent des risques élevés.</p>
 </div>
 </div>
 <div class="stock-grid" id="pennyStocks">
@@ -2215,14 +2185,9 @@ input, select, textarea, button {
 </section><section class="crypto-section" id="crypto-picks">
 <div class="section-head">
 <div>
-<div class="eyebrow">
-          CRYPTO MARKET · RANKED BY 24-HOUR VOLUME
-        </div>
-<h2>Les 3 principales cryptomonnaies selon le volume de négociation sur 24 heures</h2>
-<p>
-          Automatically ranked by reported 24-hour trading volume
-          in USD. Rankings can change throughout the day.
-        </p>
+<div class="eyebrow">MARCHÉ DES CRYPTOMONNAIES · VOLUME SUR 24 H</div>
+<h2>Top 3 des cryptomonnaies selon le volume sur 24 heures</h2>
+<p>Classement automatique selon le volume de négociation déclaré sur 24 heures en dollars américains. Le classement peut changer au cours de la journée.</p>
 </div>
 </div>
 <div class="updated" id="cryptoUpdated">
@@ -2241,7 +2206,7 @@ input, select, textarea, button {
 <div class="container">
 <div class="tradingview-banner">
 <a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">
-<img alt="TradingView - Advanced Charts and Smarter Decisions" src="assets/tradingview-banner.png"/ loading="eager" decoding="async" fetchpriority="high">
+<img alt="TradingView - Advanced Charts and Smarter Decisions" decoding="async" fetchpriority="high" loading="eager" src="assets/tradingview-banner.png"/>
 </a>
 <p class="affiliate-disclosure">
       StockPilot AI may earn a commission if you subscribe,
@@ -2249,113 +2214,103 @@ input, select, textarea, button {
     </p>
 </div>
 </div>
-
-<section class="seo-intro" aria-labelledby="home-seo-title">
-  <div class="seo-intro-inner">
-    <h1 id="home-seo-title">Sélections boursières du jour, Penny Stocks &amp; Crypto Market Data</h1>
-    <p>StockPilot AI offers free daily stock market research for people following actively traded stocks, penny stocks and cryptocurrency markets. Explore stock picks ranked by reported trading volume, review top cryptocurrencies by 24-hour volume, and use the linked research resources to investigate the market. Our lists are informational screens, not personalized investment advice or buy-and-sell recommendations.</p>
-  </div>
+<section aria-labelledby="home-seo-title" class="seo-intro">
+<div class="seo-intro-inner">
+<h1 id="home-seo-title">Sélections boursières du jour, Penny Stocks &amp; Crypto Market Data</h1>
+<p>StockPilot AI offers free daily stock market research for people following actively traded stocks, penny stocks and cryptocurrency markets. Explore stock picks ranked by reported trading volume, review top cryptocurrencies by 24-hour volume, and use the linked research resources to investigate the market. Our lists are informational screens, not personalized investment advice or buy-and-sell recommendations.</p>
+</div>
 </section>
-
 <!-- BROKER AND BANK TRADING DIRECTORY -->
-<section class="broker-directory" id="broker-directory" aria-labelledby="broker-directory-title">
-  <div class="broker-heading">
-    <div>
-      <div class="eyebrow">EXPLORE YOUR TRADING OPTIONS</div>
-      <h2 id="broker-directory-title">Où négocier</h2>
-      <p class="broker-intro">
+<section aria-labelledby="broker-directory-title" class="broker-directory" id="broker-directory">
+<div class="broker-heading">
+<div>
+<div class="eyebrow">EXPLORE YOUR TRADING OPTIONS</div>
+<h2 id="broker-directory-title">Où négocier</h2>
+<p class="broker-intro">
         Found a company you want to research further? Explore online brokerage platforms
         and bank-owned investing services available to Canadian investors. Visit each
         provider's official website to review account options, supported markets and fees.
       </p>
-    </div>
-    <div class="broker-heading-mark" aria-hidden="true">↗</div>
-  </div>
-
-  <div class="broker-group">
-    <div class="broker-group-title">
-      <h3>Plateformes de courtage en ligne</h3>
-      <span>Plateformes indépendantes</span>
-    </div>
-    <div class="broker-grid">
-      <article class="broker-card">
-        <div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128" alt="Questrade logo" loading="lazy" decoding="async"></div>
-        <div class="broker-card-copy"><h4>Questrade</h4><p>Self-directed investing and trading tools.</p></div>
-        <a href="https://www.questrade.com/" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a>
-      </article>
-      <article class="broker-card">
-        <div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128" alt="Interactive Brokers logo" loading="lazy" decoding="async"></div>
-        <div class="broker-card-copy"><h4>Interactive Brokers</h4><p>Multi-market investing and active-trading platforms.</p></div>
-        <a href="https://www.interactivebrokers.ca/" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a>
-      </article>
-      <article class="broker-card">
-        <div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128" alt="Wealthsimple logo" loading="lazy" decoding="async"></div>
-        <div class="broker-card-copy"><h4>Wealthsimple</h4><p>Self-directed stocks, ETFs and other investing products.</p></div>
-        <a href="https://www.wealthsimple.com/en-ca" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a>
-      </article>
-      <article class="broker-card">
-        <div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128" alt="Qtrade Direct Investing logo" loading="lazy" decoding="async"></div>
-        <div class="broker-card-copy"><h4>Qtrade Direct Investing</h4><p>Online investing and self-directed brokerage accounts.</p></div>
-        <a href="https://www.qtrade.ca/en/investor.html" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a>
-      </article>
-      <article class="broker-card">
-        <div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128" alt="Moomoo logo" loading="lazy" decoding="async"></div>
-        <div class="broker-card-copy"><h4>Moomoo</h4><p>Trading platform and market-research tools.</p></div>
-        <a href="https://www.moomoo.com/ca" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a>
-      </article>
-      <article class="broker-card">
-        <div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128" alt="Webull Canada logo" loading="lazy" decoding="async"></div>
-        <div class="broker-card-copy"><h4>Webull Canada</h4><p>Self-directed trading and market-data tools.</p></div>
-        <a href="https://www.webull.ca/" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a>
-      </article>
-    </div>
-  </div>
-
-  <div class="broker-group">
-    <div class="broker-group-title">
-      <h3>Services de courtage des banques</h3>
-      <span>Services de placement offerts par les institutions financières</span>
-    </div>
-    <div class="broker-grid broker-grid-banks">
-      <article class="broker-card"><div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128" alt="TD Direct Investing logo" loading="lazy" decoding="async"></div><div class="broker-card-copy"><h4>TD Direct Investing</h4><p>Self-directed investing from TD.</p></div><a href="https://www.td.com/ca/en/investing/direct-investing" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
-      <article class="broker-card"><div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128" alt="RBC Direct Investing logo" loading="lazy" decoding="async"></div><div class="broker-card-copy"><h4>RBC Direct Investing</h4><p>Online investing from RBC.</p></div><a href="https://www.rbcdirectinvesting.com/" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
-      <article class="broker-card"><div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128" alt="BMO InvestorLine logo" loading="lazy" decoding="async"></div><div class="broker-card-copy"><h4>BMO InvestorLine</h4><p>Self-directed investing from BMO.</p></div><a href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
-      <article class="broker-card"><div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128" alt="CIBC Investor's Edge logo" loading="lazy" decoding="async"></div><div class="broker-card-copy"><h4>CIBC Investor's Edge</h4><p>Online brokerage from CIBC.</p></div><a href="https://www.investorsedge.cibc.com/en/home.html" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
-      <article class="broker-card"><div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128" alt="Scotia iTRADE logo" loading="lazy" decoding="async"></div><div class="broker-card-copy"><h4>Scotia iTRADE</h4><p>Self-directed investing from Scotiabank.</p></div><a href="https://www.scotiaitrade.com/" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
-      <article class="broker-card"><div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128" alt="National Bank Direct Brokerage logo" loading="lazy" decoding="async"></div><div class="broker-card-copy"><h4>National Bank Direct Brokerage</h4><p>Online brokerage from National Bank.</p></div><a href="https://nbdb.ca/" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
-      <article class="broker-card"><div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128" alt="Disnat logo" loading="lazy" decoding="async"></div><div class="broker-card-copy"><h4>Disnat</h4><p>Online brokerage from Desjardins.</p></div><a href="https://www.disnat.com/en" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
-    </div>
-  </div>
-
-  <div class="broker-group broker-special-group">
-    <div class="broker-group-title">
-      <h3>Négociation de forex et de CFD</h3>
-      <span>Différent de l’achat direct d’actions</span>
-    </div>
-    <article class="broker-card broker-cfd-card">
-      <div class="broker-logo"><img src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128" alt="CMC Markets logo" loading="lazy" decoding="async"></div>
-      <div class="broker-card-copy"><h4>CMC Markets</h4><p>Online forex and contract-for-difference (CFD) trading. CFDs are leveraged products and do not represent ownership of the underlying shares.</p></div>
-      <a href="https://www.cmcmarkets.com/en-ca" target="_blank" rel="noopener noreferrer">Visiter le site officiel <span aria-hidden="true">↗</span></a>
-    </article>
-  </div>
-
-  <div class="broker-disclosure">
-    <strong>Avant d’ouvrir un compte :</strong> Compare commissions, account fees, foreign-exchange costs,
+</div>
+<div aria-hidden="true" class="broker-heading-mark">↗</div>
+</div>
+<div class="broker-group">
+<div class="broker-group-title">
+<h3>Plateformes de courtage en ligne</h3>
+<span>Plateformes indépendantes</span>
+</div>
+<div class="broker-grid">
+<article class="broker-card">
+<div class="broker-logo"><img alt="Questrade logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/></div>
+<div class="broker-card-copy"><h4>Questrade</h4><p>Self-directed investing and trading tools.</p></div>
+<a href="https://www.questrade.com/" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a>
+</article>
+<article class="broker-card">
+<div class="broker-logo"><img alt="Interactive Brokers logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/></div>
+<div class="broker-card-copy"><h4>Interactive Brokers</h4><p>Multi-market investing and active-trading platforms.</p></div>
+<a href="https://www.interactivebrokers.ca/" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a>
+</article>
+<article class="broker-card">
+<div class="broker-logo"><img alt="Wealthsimple logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/></div>
+<div class="broker-card-copy"><h4>Wealthsimple</h4><p>Self-directed stocks, ETFs and other investing products.</p></div>
+<a href="https://www.wealthsimple.com/en-ca" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a>
+</article>
+<article class="broker-card">
+<div class="broker-logo"><img alt="Qtrade Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/></div>
+<div class="broker-card-copy"><h4>Qtrade Direct Investing</h4><p>Online investing and self-directed brokerage accounts.</p></div>
+<a href="https://www.qtrade.ca/en/investor.html" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a>
+</article>
+<article class="broker-card">
+<div class="broker-logo"><img alt="Moomoo logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/></div>
+<div class="broker-card-copy"><h4>Moomoo</h4><p>Trading platform and market-research tools.</p></div>
+<a href="https://www.moomoo.com/ca" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a>
+</article>
+<article class="broker-card">
+<div class="broker-logo"><img alt="Webull Canada logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/></div>
+<div class="broker-card-copy"><h4>Webull Canada</h4><p>Self-directed trading and market-data tools.</p></div>
+<a href="https://www.webull.ca/" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a>
+</article>
+</div>
+</div>
+<div class="broker-group">
+<div class="broker-group-title">
+<h3>Services de courtage des banques</h3>
+<span>Services de placement offerts par les institutions financières</span>
+</div>
+<div class="broker-grid broker-grid-banks">
+<article class="broker-card"><div class="broker-logo"><img alt="TD Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>TD Direct Investing</h4><p>Self-directed investing from TD.</p></div><a href="https://www.td.com/ca/en/investing/direct-investing" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><img alt="RBC Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>RBC Direct Investing</h4><p>Online investing from RBC.</p></div><a href="https://www.rbcdirectinvesting.com/" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><img alt="BMO InvestorLine logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>BMO InvestorLine</h4><p>Self-directed investing from BMO.</p></div><a href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><img alt="CIBC Investor's Edge logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>CIBC Investor's Edge</h4><p>Online brokerage from CIBC.</p></div><a href="https://www.investorsedge.cibc.com/en/home.html" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><img alt="Scotia iTRADE logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>Scotia iTRADE</h4><p>Self-directed investing from Scotiabank.</p></div><a href="https://www.scotiaitrade.com/" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><img alt="National Bank Direct Brokerage logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/></div><div class="broker-card-copy"><h4>National Bank Direct Brokerage</h4><p>Online brokerage from National Bank.</p></div><a href="https://nbdb.ca/" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><img alt="Disnat logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>Disnat</h4><p>Online brokerage from Desjardins.</p></div><a href="https://www.disnat.com/en" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a></article>
+</div>
+</div>
+<div class="broker-group broker-special-group">
+<div class="broker-group-title">
+<h3>Négociation de forex et de CFD</h3>
+<span>Différent de l’achat direct d’actions</span>
+</div>
+<article class="broker-card broker-cfd-card">
+<div class="broker-logo"><img alt="CMC Markets logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/></div>
+<div class="broker-card-copy"><h4>CMC Markets</h4><p>Online forex and contract-for-difference (CFD) trading. CFDs are leveraged products and do not represent ownership of the underlying shares.</p></div>
+<a href="https://www.cmcmarkets.com/en-ca" rel="noopener noreferrer" target="_blank">Visiter le site officiel <span aria-hidden="true">↗</span></a>
+</article>
+</div>
+<div class="broker-disclosure">
+<strong>Avant d’ouvrir un compte :</strong> Compare commissions, account fees, foreign-exchange costs,
     available investments, market access, account eligibility and the risks of margin or leveraged products.
     Products and services vary by provider and province. Check registration and disciplinary information
-    using the <a href="https://www.securities-administrators.ca/investor-tools/are-they-registered/" target="_blank" rel="noopener noreferrer">Canadian Securities Administrators' National Registration Search</a>.
+    using the <a href="https://www.securities-administrators.ca/investor-tools/are-they-registered/" rel="noopener noreferrer" target="_blank">Canadian Securities Administrators' National Registration Search</a>.
     StockPilot AI is providing this directory for general information only. Listing a provider is not an endorsement,
     recommendation or guarantee that a particular account or product is available to you. StockPilot AI is not
     currently representing that it receives compensation from these providers.
   </div>
 </section>
-
 <!-- CRYPTOCURRENCY PICKS -->
-
 <!-- MAIN STOCK PICKS -->
-
 <!-- PENNY STOCK PICKS -->
-
 <!-- MARKET EXCHANGE COVERAGE -->
 <section class="market-coverage" id="market-coverage">
 <div class="eyebrow">MARCHÉS BOURSIERS NORD-AMÉRICAINS</div>
@@ -2367,7 +2322,7 @@ input, select, textarea, button {
 <div class="market-grid">
 <article class="market-card">
 <a href="https://www.nyse.com/" rel="noopener noreferrer" target="_blank">
-<img alt="Facade of the New York Stock Exchange on Wall Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"/ decoding="async">
+<img alt="Facade of the New York Stock Exchange on Wall Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"/>
 <div class="market-card-body">
 <div class="market-region">États-Unis</div>
 <h3>NYSE ↗</h3>
@@ -2378,7 +2333,7 @@ input, select, textarea, button {
 </article>
 <article class="market-card">
 <a href="https://www.nasdaq.com/" rel="noopener noreferrer" target="_blank">
-<img alt="NASDAQ MarketSite studio in Times Square" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"/ decoding="async">
+<img alt="NASDAQ MarketSite studio in Times Square" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"/>
 <div class="market-card-body">
 <div class="market-region">États-Unis</div>
 <h3>NASDAQ ↗</h3>
@@ -2389,7 +2344,7 @@ input, select, textarea, button {
 </article>
 <article class="market-card">
 <a href="https://www.tsx.com/" rel="noopener noreferrer" target="_blank">
-<img alt="Historic Toronto Stock Exchange building on Bay Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"/ decoding="async">
+<img alt="Historic Toronto Stock Exchange building on Bay Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"/>
 <div class="market-card-body">
 <div class="market-region">Canada</div>
 <h3>TSX ↗</h3>
@@ -2400,7 +2355,7 @@ input, select, textarea, button {
 </article>
 <article class="market-card">
 <a href="https://www.tsx.com/en/venture" rel="noopener noreferrer" target="_blank">
-<img alt="Toronto financial district skyline" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"/ decoding="async">
+<img alt="Toronto financial district skyline" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"/>
 <div class="market-card-body">
 <div class="market-region">Canada</div>
 <h3>TSX Venture ↗</h3>
@@ -2418,31 +2373,30 @@ input, select, textarea, button {
     </p>
 </section>
 <!-- STOCK MARKET RESEARCH FAQ: USEFUL LONG-TAIL SEARCH CONTENT -->
-<section class="seo-faq" id="stock-market-faq" aria-labelledby="stock-market-faq-title">
-  <div class="eyebrow">STOCK MARKET RESEARCH · QUICK ANSWERS</div>
-  <h2 id="stock-market-faq-title">Stock Market Picks, Penny Stocks &amp; Crypto: FAQs</h2>
-  <article class="seo-faq-item">
-    <h3>What are daily stock picks?</h3>
-    <p>Daily stock picks are a shortlist of shares selected for review on a particular day. StockPilot AI highlights actively traded stocks from its available data feed using reported trading volume. A listing means the stock met the site's screen; it is not a prediction or a recommendation to buy.</p>
-  </article>
-  <article class="seo-faq-item">
-    <h3>How does StockPilot AI select actively traded stocks?</h3>
-    <p>The main-stock and penny-stock lists are ranked by reported trading volume within the available stock-data feed. Main-stock candidates are priced above US$10. The feed has limited provider coverage and is not an exhaustive ranking of every listed security.</p>
-  </article>
-  <article class="seo-faq-item">
-    <h3>What does StockPilot AI mean by penny stocks?</h3>
-    <p>For this site's penny-stock screen, qualifying shares are priced from US$0.10 to US$10 when data is available. Definitions of penny stocks can vary by market, exchange and data provider. Lower-priced shares can be volatile and carry substantial risk.</p>
-  </article>
-  <article class="seo-faq-item">
-    <h3>How are the top cryptocurrencies ranked?</h3>
-    <p>The cryptocurrency section ranks available coins by reported 24-hour trading volume in US dollars. Crypto prices and trading volume can change quickly. The data provider is CoinGecko, and the displayed list is limited to the assets available through the feed.</p>
-  </article>
-  <article class="seo-faq-item">
-    <h3>Is StockPilot AI financial advice?</h3>
-    <p>No. StockPilot AI provides general market information for educational and research purposes. The lists are not personalized investment advice or recommendations to buy or sell securities. Verify information with primary sources and consider your own financial situation and risk tolerance.</p>
-  </article>
+<section aria-labelledby="stock-market-faq-title" class="seo-faq" id="stock-market-faq">
+<div class="eyebrow">STOCK MARKET RESEARCH · QUICK ANSWERS</div>
+<h2 id="stock-market-faq-title">Stock Market Picks, Penny Stocks &amp; Crypto: FAQs</h2>
+<article class="seo-faq-item">
+<h3>What are daily stock picks?</h3>
+<p>Daily stock picks are a shortlist of shares selected for review on a particular day. StockPilot AI highlights actively traded stocks from its available data feed using reported trading volume. A listing means the stock met the site's screen; it is not a prediction or a recommendation to buy.</p>
+</article>
+<article class="seo-faq-item">
+<h3>How does StockPilot AI select actively traded stocks?</h3>
+<p>The main-stock and penny-stock lists are ranked by reported trading volume within the available stock-data feed. Main-stock candidates are priced above US$10. The feed has limited provider coverage and is not an exhaustive ranking of every listed security.</p>
+</article>
+<article class="seo-faq-item">
+<h3>What does StockPilot AI mean by penny stocks?</h3>
+<p>For this site's penny-stock screen, qualifying shares are priced from US$0.10 to US$10 when data is available. Definitions of penny stocks can vary by market, exchange and data provider. Lower-priced shares can be volatile and carry substantial risk.</p>
+</article>
+<article class="seo-faq-item">
+<h3>How are the top cryptocurrencies ranked?</h3>
+<p>The cryptocurrency section ranks available coins by reported 24-hour trading volume in US dollars. Crypto prices and trading volume can change quickly. The data provider is CoinGecko, and the displayed list is limited to the assets available through the feed.</p>
+</article>
+<article class="seo-faq-item">
+<h3>Is StockPilot AI financial advice?</h3>
+<p>No. StockPilot AI provides general market information for educational and research purposes. The lists are not personalized investment advice or recommendations to buy or sell securities. Verify information with primary sources and consider your own financial situation and risk tolerance.</p>
+</article>
 </section>
-
 <!-- SELECTION METHODOLOGY -->
 <section class="method-section" id="selection-methodology">
 <div class="eyebrow">HOW THE DAILY LISTS WORK</div>
@@ -2614,9 +2568,9 @@ input, select, textarea, button {
         point for research—not a substitute for your own decisions.
       </p>
 <div class="creator-note">
-  <h3>About the Creator — MIDO</h3>
-  <p>Hi, I'm Mido, creator of StockPilot AI. After years of researching stocks, penny stocks, cryptocurrencies, and exploring different brokers, I created this platform to share what I've learned and help others make more informed investment decisions.</p>
-  <p>My goal is to provide free, useful information to help you develop and refine your own investment strategy. Thank you for being part of the community!</p>
+<h3>About the Creator — MIDO</h3>
+<p>Hi, I'm Mido, creator of StockPilot AI. After years of researching stocks, penny stocks, cryptocurrencies, and exploring different brokers, I created this platform to share what I've learned and help others make more informed investment decisions.</p>
+<p>My goal is to provide free, useful information to help you develop and refine your own investment strategy. Thank you for being part of the community!</p>
 </div>
 </article>
 <article class="panel" id="discussion">
@@ -2642,16 +2596,16 @@ input, select, textarea, button {
 <form class="contact-form" id="contactForm">
 <div>
 <label for="contactName">Votre nom</label>
-<input autocomplete="name" id="contactName" required="" type="text"/>
-</div>
+<input autocomplete="name" id="contactName" required="" type="text">
+</input></div>
 <div>
 <label for="contactEmail">Adresse courriel</label>
-<input autocomplete="email" id="contactEmail" required="" type="email"/>
-</div>
+<input autocomplete="email" id="contactEmail" required="" type="email">
+</input></div>
 <div class="full">
 <label for="contactObjet">Objet</label>
-<input id="contactObjet" required="" type="text"/>
-</div>
+<input id="contactObjet" required="" type="text">
+</input></div>
 <div class="full">
 <label for="contactMessage">Message</label>
 <textarea id="contactMessage" required=""></textarea>
@@ -2681,12 +2635,12 @@ input, select, textarea, button {
     Free daily stock research · Market activity · Investor discussion
   </p>
 <div class="privacy-policy" id="privacy-policy">
-  <h3>Politique de confidentialité</h3>
-  <p>StockPilot AI respects your privacy. When you visit this website, basic technical information such as your browser type, device information, IP address and pages visited may be processed to operate, protect and improve the website.</p>
-  <p>This website uses Google Analytics to understand how visitors use the site and Google AdSense to display advertisements. Google and its advertising partners may use cookies or similar technologies to personalize and measure ads, limit repeated ads, and help prevent fraud. Third-party providers process information according to their own privacy policies.</p>
-  <p>You can control cookies through your browser settings. You can also review or change Google's advertising-personalization settings at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Center</a> and read how Google uses information on partner sites in its <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">partner-site privacy information</a>.</p>
-  <p>StockPilot AI may include links to external websites and embedded discussion features. Those third-party websites and services may collect information under their own privacy policies. StockPilot AI does not control their data practices.</p>
-  <p>This policy may be updated when website features or legal requirements change.</p>
+<h3>Politique de confidentialité</h3>
+<p>StockPilot AI respects your privacy. When you visit this website, basic technical information such as your browser type, device information, IP address and pages visited may be processed to operate, protect and improve the website.</p>
+<p>This website uses Google Analytics to understand how visitors use the site and Google AdSense to display advertisements. Google and its advertising partners may use cookies or similar technologies to personalize and measure ads, limit repeated ads, and help prevent fraud. Third-party providers process information according to their own privacy policies.</p>
+<p>You can control cookies through your browser settings. You can also review or change Google's advertising-personalization settings at <a href="https://myadcenter.google.com/" rel="noopener noreferrer" target="_blank">Google My Ad Center</a> and read how Google uses information on partner sites in its <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer" target="_blank">partner-site privacy information</a>.</p>
+<p>StockPilot AI may include links to external websites and embedded discussion features. Those third-party websites and services may collect information under their own privacy policies. StockPilot AI does not control their data practices.</p>
+<p>This policy may be updated when website features or legal requirements change.</p>
 </div>
 <p>
     © <span id="year"></span> StockPilot AI ·
@@ -2694,12 +2648,11 @@ input, select, textarea, button {
   </p>
 <a href="#top">Retour en haut ↑</a>
 <!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" id="cg_de43d061" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/ loading="lazy" decoding="async"><noscript><img alt="Free Counter" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/ loading="lazy" decoding="async"></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
+<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" decoding="async" id="cg_de43d061" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" decoding="async" loading="lazy" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
 <!-- Compteur de visiteurs https://counter.gratis ENDE -->
-
-  <p>
+<p>
   General Support: <a href="mailto:support@technofront.org">support@technofront.org</a>
-  <br>
+<br/>
   Business Inquiries: <a href="mailto:stockpilotAI@technofront.org">stockpilotAI@technofront.org</a>
 </p>
 </footer>
@@ -3190,8 +3143,6 @@ setInterval(loadStocks,15 * 60 * 1000);
 
 </script>
 <!-- Removed abandoned Google Sheets voting script. -->
-
-
 <script>
 (function () {
   const button = document.getElementById("stockpilot-subscribe-btn");
@@ -3306,86 +3257,75 @@ setInterval(loadStocks,15 * 60 * 1000);
   });
 })();
 </script>
-
-
 <!-- STOCKPILOT AI FREE-ACCESS SIDE BANNERS -->
-<aside id="free-left-banner" class="free-side-banner" aria-label="StockPilot AI free access information">
-  <div class="free-side-track" aria-hidden="true">
-    <div class="free-side-message">
-      <span class="free-side-star">✦</span><strong>100% FREE</strong><span>NO MEMBERSHIP REQUIRED</span>
-      <i></i><strong>DAILY STOCK PICKS</strong><span>FREE ANALYSE DES MARCHÉS</span>
-      <i></i><strong>PENNY STOCKS</strong><span>CRYPTO MARKET UPDATES</span>
-      <i></i><strong>NO PAYWALL</strong><span>EXPLORE STOCKPILOT AI</span>
-    </div>
-    <div class="free-side-message">
-      <span class="free-side-star">✦</span><strong>100% FREE</strong><span>NO MEMBERSHIP REQUIRED</span>
-      <i></i><strong>DAILY STOCK PICKS</strong><span>FREE ANALYSE DES MARCHÉS</span>
-      <i></i><strong>PENNY STOCKS</strong><span>CRYPTO MARKET UPDATES</span>
-      <i></i><strong>NO PAYWALL</strong><span>EXPLORE STOCKPILOT AI</span>
-    </div>
-  </div>
+<aside aria-label="StockPilot AI free access information" class="free-side-banner" id="free-left-banner">
+<div aria-hidden="true" class="free-side-track">
+<div class="free-side-message">
+<span class="free-side-star">✦</span><strong>100% FREE</strong><span>NO MEMBERSHIP REQUIRED</span>
+<i></i><strong>DAILY STOCK PICKS</strong><span>FREE ANALYSE DES MARCHÉS</span>
+<i></i><strong>PENNY STOCKS</strong><span>CRYPTO MARKET UPDATES</span>
+<i></i><strong>NO PAYWALL</strong><span>EXPLORE STOCKPILOT AI</span>
+</div>
+<div class="free-side-message">
+<span class="free-side-star">✦</span><strong>100% FREE</strong><span>NO MEMBERSHIP REQUIRED</span>
+<i></i><strong>DAILY STOCK PICKS</strong><span>FREE ANALYSE DES MARCHÉS</span>
+<i></i><strong>PENNY STOCKS</strong><span>CRYPTO MARKET UPDATES</span>
+<i></i><strong>NO PAYWALL</strong><span>EXPLORE STOCKPILOT AI</span>
+</div>
+</div>
 </aside>
-
-<aside id="free-right-banner" class="free-side-banner" aria-label="StockPilot AI brokerage platforms">
-  <div class="free-side-track">
-
-    <div class="free-side-message">
-      <strong class="broker-scroll-heading">ONLINE COURTIERS</strong>
-
-      <a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=questrade.com&sz=128" alt="" loading="lazy" decoding="async"><span>Questrade</span></a>
-      <a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Interactive Brokers</span></a>
-      <a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=wealthsimple.com&sz=128" alt="" loading="lazy" decoding="async"><span>Wealthsimple</span></a>
-      <a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img src="https://www.google.com/s2/favicons?domain=qtrade.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Qtrade</span></a>
-      <a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=moomoo.com&sz=128" alt="" loading="lazy" decoding="async"><span>Moomoo</span></a>
-      <a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=webull.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Webull</span></a>
-
-      <strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-
-      <a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img src="https://www.google.com/s2/favicons?domain=td.com&sz=128" alt="" loading="lazy" decoding="async"><span>TD Direct Investing</span></a>
-      <a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&sz=128" alt="" loading="lazy" decoding="async"><span>RBC Direct Investing</span></a>
-      <a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=bmo.com&sz=128" alt="" loading="lazy" decoding="async"><span>BMO InvestorLine</span></a>
-      <a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&sz=128" alt="" loading="lazy" decoding="async"><span>CIBC Investor's Edge</span></a>
-      <a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&sz=128" alt="" loading="lazy" decoding="async"><span>Scotia iTRADE</span></a>
-      <a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img src="https://www.google.com/s2/favicons?domain=nbdb.ca&sz=128" alt="" loading="lazy" decoding="async"><span>National Bank</span></a>
-      <a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img src="https://www.google.com/s2/favicons?domain=disnat.com&sz=128" alt="" loading="lazy" decoding="async"><span>Disnat</span></a>
-
-      <strong class="broker-scroll-heading">FOREX & CFD</strong>
-      <a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&sz=128" alt="" loading="lazy" decoding="async"><span>CMC Markets</span></a>
-    </div>
-
-    <!-- Duplicate for continuous scrolling -->
-    <div class="free-side-message" aria-hidden="true">
-      <strong class="broker-scroll-heading">ONLINE COURTIERS</strong>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=questrade.com&sz=128" alt="" loading="lazy" decoding="async"><span>Questrade</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Interactive Brokers</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=wealthsimple.com&sz=128" alt="" loading="lazy" decoding="async"><span>Wealthsimple</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=qtrade.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Qtrade</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=moomoo.com&sz=128" alt="" loading="lazy" decoding="async"><span>Moomoo</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=webull.ca&sz=128" alt="" loading="lazy" decoding="async"><span>Webull</span></a>
-      <strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=td.com&sz=128" alt="" loading="lazy" decoding="async"><span>TD Direct Investing</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&sz=128" alt="" loading="lazy" decoding="async"><span>RBC Direct Investing</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=bmo.com&sz=128" alt="" loading="lazy" decoding="async"><span>BMO InvestorLine</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&sz=128" alt="" loading="lazy" decoding="async"><span>CIBC Investor's Edge</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&sz=128" alt="" loading="lazy" decoding="async"><span>Scotia iTRADE</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=nbdb.ca&sz=128" alt="" loading="lazy" decoding="async"><span>National Bank</span></a>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=disnat.com&sz=128" alt="" loading="lazy" decoding="async"><span>Disnat</span></a>
-      <strong class="broker-scroll-heading">FOREX & CFD</strong>
-      <a class="broker-scroll-item"><img src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&sz=128" alt="" loading="lazy" decoding="async"><span>CMC Markets</span></a>
-    </div>
-
-  </div>
+<aside aria-label="StockPilot AI brokerage platforms" class="free-side-banner" id="free-right-banner">
+<div class="free-side-track">
+<div class="free-side-message">
+<strong class="broker-scroll-heading">ONLINE COURTIERS</strong>
+<a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
+<a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
+<a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
+<a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
+<a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
+<a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
+<strong class="broker-scroll-heading">BANK BROKERAGES</strong>
+<a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
+<a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
+<a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
+<a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
+<a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
+<a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
+<a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
+<strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
+<a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
+</div>
+<!-- Duplicate for continuous scrolling -->
+<div aria-hidden="true" class="free-side-message">
+<strong class="broker-scroll-heading">ONLINE COURTIERS</strong>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
+<strong class="broker-scroll-heading">BANK BROKERAGES</strong>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
+<strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
+<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
+</div>
+</div>
 </aside>
-
 <!-- ARTICLE COMPLET : COMPTE SUR MARGE -->
-<section id="margin-account-article" aria-labelledby="margin-article-title">
-  <div class="margin-article-wrap">
-    <header class="margin-article-heading">
-      <div class="eyebrow">ÉDUCATION FINANCIÈRE · CANADA</div>
-      <h2 id="margin-article-title">Compte sur marge ou compte au comptant : comprendre l’emprunt pour investir</h2>
-      <p>Could you control $10,000 worth of stock with $5,000 of your own money? Learn how leverage works, what borrowing costs, and how a market drop can turn an opportunity into a serious loss.</p>
-    </header>
-    <div class="margin-article-content">
+<section aria-labelledby="margin-article-title" id="margin-account-article">
+<div class="margin-article-wrap">
+<header class="margin-article-heading">
+<div class="eyebrow">ÉDUCATION FINANCIÈRE · CANADA</div>
+<h2 id="margin-article-title">Compte sur marge ou compte au comptant : comprendre l’emprunt pour investir</h2>
+<p>Could you control $10,000 worth of stock with $5,000 of your own money? Learn how leverage works, what borrowing costs, and how a market drop can turn an opportunity into a serious loss.</p>
+</header>
+<div class="margin-article-content">
 <nav aria-label="Table of contents" class="toc"><h2>Dans ce guide</h2><ol><li><a href="#margin-what">Qu’est-ce qu’un compte sur marge ?</a></li><li><a href="#margin-compare">Compte au comptant ou sur marge</a></li><li><a href="#margin-borrow">Combien pouvez-vous emprunter ?</a></li><li><a href="#margin-returns">Comment l’effet de levier modifie les rendements</a></li><li><a href="#margin-call">Appels de marge et liquidation</a></li><li><a href="#margin-interest">Taux d’intérêt et coûts</a></li><li><a href="#margin-collateral">Utiliser des actions comme garantie</a></li><li><a href="#margin-pennies">Penny stocks et marge</a></li><li><a href="#margin-registered">Considérations relatives au CELI et au REER</a></li><li><a href="#margin-tax">Considérations fiscales</a></li><li><a href="#margin-suitable">À qui cela convient-il ?</a></li><li><a href="#margin-checklist">Liste de vérification des risques</a></li></ol></nav>
 <section class="article-card" id="margin-what"><h2>1. Qu’est-ce qu’un compte sur marge ?</h2><p class="lead">Un compte sur marge est un compte de courtage qui peut vous permettre d’emprunter de l’argent à votre courtier pour acheter des placements admissibles. Vos liquidités et les titres admissibles servent de garantie au prêt.</p><p>Considérez-le comme un prêt associé à votre compte de placement. L’argent emprunté augmente votre pouvoir d’achat, mais il s’agit toujours d’une dette : vous devez rembourser le capital et les intérêts, que vos placements montent ou baissent.</p><div class="callout"><strong>Le mot clé est « effet de levier ».</strong> L’effet de levier consiste à utiliser de l’argent emprunté pour contrôler un placement plus important que ce que vos liquidités seules vous permettraient d’acheter. Il amplifie les gains comme les pertes.</div><p>Vous n’êtes pas obligé d’emprunter simplement parce que vous ouvrez un compte sur marge. Vous pouvez ne rien emprunter, mais vérifiez toujours les règles de votre courtier, les soldes en devises et les frais du compte.</p></section>
 <section class="article-card" id="margin-compare"><h2>2. Compte au comptant ou compte sur marge</h2><p>Un compte au comptant exige généralement que vous payiez vos achats avec les fonds disponibles. Un compte sur marge peut permettre d’emprunter en utilisant des garanties admissibles, sous réserve d’une approbation et des exigences de marge.</p><div class="table-wrap"><table><thead><tr><th>Caractéristique</th><th>Compte au comptant</th><th>Compte sur marge</th></tr></thead><tbody><tr><td>Acheter avec vos liquidités disponibles</td><td>Oui</td><td>Oui</td></tr><tr><td>Emprunter pour acheter des titres admissibles</td><td>No</td><td>Possiblement, après approbation</td></tr><tr><td>Intérêts sur le solde emprunté</td><td>Aucun prêt sur marge; un solde négatif peut tout de même entraîner des frais</td><td>Oui, sur le solde débiteur</td></tr><tr><td>Exigences de maintien de la marge</td><td>No</td><td>Oui</td></tr><tr><td>Appel de marge / liquidation par le courtier</td><td>Aucun appel de marge</td><td>Possible</td></tr><tr><td>Vente à découvert</td><td>Généralement non offerte</td><td>Peut être offerte, sous réserve d’approbation</td></tr><tr><td>Utilisation habituelle</td><td>Investir avec vos propres fonds</td><td>Investir avec un effet de levier facultatif</td></tr></tbody></table></div><p>Les caractéristiques exactes varient selon le courtier et la convention de compte. Un compte sur marge n’est pas automatiquement meilleur : il offre simplement des possibilités supplémentaires d’emprunt et de négociation, qui comportent aussi des risques additionnels.</p></section>
@@ -3401,12 +3341,10 @@ setInterval(loadStocks,15 * 60 * 1000);
 <section class="article-card" id="margin-checklist"><h2>12. Liste de vérification avant d’emprunter</h2><ul><li>Confirmez que le titre est admissible à la marge et vérifiez l’exigence actuelle.</li><li>Trouvez le taux d’intérêt exact selon la devise et le montant emprunté.</li><li>Calculez le coût des intérêts si le placement prend plus de temps que prévu.</li><li>Testez les conséquences d’une baisse de 10 %, de 20 % ou plus de votre portefeuille.</li><li>Gardez des liquidités disponibles pour combler un déficit de marge sans devoir vendre au mauvais moment.</li><li>Comprenez quand et comment le courtier peut liquider vos positions.</li><li>Évitez de compter sur les dividendes ou la hausse des cours pour effectuer les remboursements.</li><li>Établissez un plan de remboursement réaliste qui ne dépend pas de la hausse de l’action.</li></ul><div class="callout"><strong>En résumé :</strong> Un compte sur marge peut accroître votre pouvoir d’achat, mais il ne renforce pas votre sécurité financière. L’emprunt amplifie autant les gains que les pertes. Comprenez d’abord les risques et rappelez-vous que vous pouvez toujours choisir de ne pas emprunter.</div></section>
 <section class="article-card"><h2>Foire aux questions</h2><h3>Puis-je perdre plus que mon dépôt ?</h3><p>Oui. Selon la position, les mouvements du marché, les intérêts et les frais, vous pourriez devoir plus que les liquidités que vous avez initialement investies.</p><h3>Dois-je payer des intérêts sur marge si je n’emprunte pas ?</h3><p>Generally, margin-loan interest applies when you have an outstanding debit balance. Other fees or negative balances may still generate charges, so check your broker's fee schedule.</p><h3>Puis-je conserver une position sur marge pendant des années ?</h3><p>Brokerage rules may allow it, but interest generally continues while the debit balance remains. Long holding periods can make borrowing costly.</p><h3>Mon courtier peut-il vendre mes placements ?</h3><p>Oui. Votre convention de marge peut autoriser le courtier à liquider des titres pour corriger un déficit. Le moment et la procédure dépendent de la convention et des règles applicables.</p><h3>Un compte sur marge est-il identique à une marge de crédit ?</h3><p>Les deux impliquent un emprunt, mais un prêt sur marge est garanti par des placements admissibles et soumis à la variation de la valeur des garanties ainsi qu’aux exigences de maintien.</p><h3>Un compte sur marge m’oblige-t-il à emprunter ?</h3><p>Non. Vous pouvez avoir des privilèges de marge sans conserver de solde emprunté. Surveillez vos soldes en espèces et en devises pour éviter tout emprunt involontaire.</p></section>
 <section class="article-card"><h2>Sources et lectures complémentaires</h2><ul class="source-list"><li><a href="https://www.ciro.ca/office-investor/understanding-risk/risk-borrowing-invest" rel="noopener" target="_blank">Canadian Investment Regulatory Organization (CIRO): Risk of Borrowing to Invest</a> — risks, suitability considerations and repayment obligations.</li><li><a href="https://qtrade.ca/en/investor/pricing/interest-rates.html" rel="noopener" target="_blank">Qtrade: Interest Rates</a> — published margin rates and interest calculation details. Rates change; check the live page.</li><li><a href="https://www.interactivebrokers.ca/en/trading/margin-rates.php" rel="noopener" target="_blank">Interactive Brokers Canada: Margin Rates</a> — current currency-specific margin financing rates.</li><li><a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/deductions-credits-expenses/line-22100-carrying-charges-interest-expenses.html" rel="noopener" target="_blank">Canada Revenue Agency: Carrying Charges and Interest Expenses</a> — tax rules and eligible expenses.</li></ul><p class="disclaimer"><strong>Avis éducatif :</strong> Cet article est fourni à titre informatif seulement et ne constitue pas un conseil financier, en placement, juridique ou fiscal. Le placement sur marge implique un emprunt et peut entraîner des pertes importantes, y compris des pertes supérieures au montant initialement investi. Margin eligibility, interest rates, collateral values and broker liquidation policies can change. Review your brokerage agreement and consult an appropriately qualified professional before making decisions.</p><p><a href="#top">← Retour à StockPilot AI</a> · <a href="./market-investing-guide.html">Lire le guide de placement</a> · <a href="./research.html">Visiter le centre de recherche</a></p></section>
-      <a class="margin-back-top" href="#top">↑ Retour en haut de StockPilot AI</a>
-    </div>
-  </div>
+<a class="margin-back-top" href="#top">↑ Retour en haut de StockPilot AI</a>
+</div>
+</div>
 </section>
-
-
 <script>
 (function () {
   const carousel = document.getElementById('stockpilot-slideshow');
@@ -3447,8 +3385,6 @@ setInterval(loadStocks,15 * 60 * 1000);
   start();
 })();
 </script>
-
-
 <style id="stockpilot-mobile-responsive-fixes">
 /* Responsive layout pass: retain the desktop design and make every section usable on phones. */
 *, *::before, *::after { box-sizing: border-box; }
@@ -3585,8 +3521,6 @@ body { overflow-x: hidden; }
   .navlinks a { font-size: 10px; }
 }
 </style>
-
-
 <style id="stockpilot-vertical-free-banners">
 /* Replace the two Expedia skyscraper placements with StockPilot AI's own vertical promo banners. */
 #expedia-left-banner, #expedia-right-banner { display:none !important; }
@@ -3722,8 +3656,6 @@ body { overflow-x: hidden; }
 }
 
 </style>
-
-
 <style id="stockpilot-live-market-preview-styles">
 /* Compact live market cards in the rotating right-hand feature panel */
 .sp-market-slides { min-height: 255px !important; }
@@ -3785,7 +3717,6 @@ body { overflow-x: hidden; }
   .sp-market-values strong { font-size: 11px; }
 }
 </style>
-
 <style>
 /* STOCKPILOT MOBILE NAVIGATION FIX */
 @media (max-width: 760px) {
@@ -3832,9 +3763,6 @@ body { overflow-x: hidden; }
   }
 }
 </style>
-
-
-
 <style>
 /* FULL-WIDTH ANIMATED BROKER MATCH BANNER BELOW THE TWO FEATURE COLUMNS */
 .broker-match-widget {
@@ -3914,8 +3842,6 @@ body { overflow-x: hidden; }
   .broker-match-panel { animation:none !important; }
 }
 </style>
-
-
 <script>
 (function(){
   const root=document.getElementById('broker-match-widget');
@@ -3999,8 +3925,6 @@ body { overflow-x: hidden; }
   draw();
 })();
 </script>
-
-
 <style id="broker-widget-under-stock-of-week">
 /* Keep the broker matcher inside the left Action de la semaine column. */
 .weekly-feature-copy > .broker-match-widget {
