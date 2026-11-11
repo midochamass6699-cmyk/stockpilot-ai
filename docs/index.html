@@ -2045,10 +2045,10 @@ input, select, textarea, button {
       <span class="hot-stock-message message-1">HOT PICKS INSIDE</span>
       <span class="hot-stock-message message-2">PENNY STOCKS ON THE RISE</span>
       <span class="hot-stock-message message-3">HOT CRYPTO</span>
-      <svg class="hot-stock-arrow" viewBox="0 0 100 65" aria-hidden="true">
-        <polyline points="5,8 25,25 40,15 60,40 75,30 92,55" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-        <polyline points="75,55 92,55 92,38" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+<svg class="hot-stock-arrow" viewBox="0 0 80 70" aria-hidden="true">
+  <path d="M28 5 H52 V37 H75 L40 67 L5 37 H28 Z"
+        fill="currentColor"/>
+</svg>
     </div>
   </div>
 
@@ -4038,12 +4038,13 @@ body { overflow-x: hidden; }
 .message-2 { animation-delay:-2s; }
 .message-3 { animation-delay:-4s; }
 .hot-stock-arrow {
-  position:absolute;
-  top:23px;
-  left:34px;
-  width:53px;
-  height:35px;
-  color:#168BFF;
+  position: absolute;
+  top: 48px;
+  left: 65px;
+  width: 65px;
+  height: 58px;
+  color: #168BFF;
+  animation: hotStockSequence 6s steps(1, end) infinite;
 }
 @keyframes hotStockSequence {
   0%,16% { visibility:visible; }
