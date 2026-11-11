@@ -353,8 +353,6 @@ a {color:inherit;}
 /* Broker logos are displayed in the Stock of the Week heading row. */
 /* STOCK OF THE https://github.com/midochamass6699-cmyk/stockpilot-ai/securityWEEK */
 
-
-  
 .stock-of-the-week {
   margin:24px 0;
   padding:22px;
@@ -1891,35 +1889,7 @@ input, select, textarea, button {
         font-size: 24px;
     }
 }
-.hot-stock-hint {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #55e89a;
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 1.4px;
-    white-space: nowrap;
-    animation: classyFlash 2.8s ease-in-out infinite;
-}
-
-.hot-stock-arrow {
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 1.2;
-    animation: classyArrow 1.8s ease-in-out infinite;
-}
-
-@keyframes classyFlash {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.55; }
-}
-
-@keyframes classyArrow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(7px); }
-}
+/* Rotating hot-stock messages are styled in the dedicated block below. */
 </style>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <link rel="preconnect" href="https://www.google.com" crossorigin="anonymous"/>
@@ -2069,26 +2039,18 @@ input, select, textarea, button {
       
       <div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> THE WEEKLY SPOTLIGHT</div>
       <p class="weekly-feature-label">ONE COMPANY. A CLOSER LOOK.</p>
-<div class="weekly-title-row">
-
-  <p class="weekly-stock-heading" id="weekly-stock-title">
-    Stock of the Week
-  </p>
-<div class="hot-stock-hint">
-  <span class="hot-stock-message message-1">HOT PICKS INSIDE</span>
-  <span class="hot-stock-message message-2">PENNY STOCKS ON THE RISE</span>
-  <span class="hot-stock-message message-3">HOT CRYPTO</span>
-
-  <svg class="hot-stock-arrow" viewBox="0 0 100 65">
-    <polyline points="5,8 25,25 40,15 60,40 75,30 92,55"
-      fill="none" stroke="currentColor" stroke-width="6"
-      stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="75,55 92,55 92,38"
-      fill="none" stroke="currentColor" stroke-width="6"
-      stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</div>
-</div>
+  <div class="weekly-title-row">
+    <p class="weekly-stock-heading" id="weekly-stock-title">Stock of the Week</p>
+    <div class="hot-stock-hint" aria-label="Hot market topics">
+      <span class="hot-stock-message message-1">HOT PICKS INSIDE</span>
+      <span class="hot-stock-message message-2">PENNY STOCKS ON THE RISE</span>
+      <span class="hot-stock-message message-3">HOT CRYPTO</span>
+      <svg class="hot-stock-arrow" viewBox="0 0 100 65" aria-hidden="true">
+        <polyline points="5,8 25,25 40,15 60,40 75,30 92,55" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="75,55 92,55 92,38" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
 
       <h3 class="weekly-company-name">AppLovin Corporation <span>(NASDAQ: APP)</span></h3>
 <div class="weekly-metrics" aria-label="AppLovin quarterly financial highlights">
@@ -3606,152 +3568,6 @@ body { overflow-x: hidden; }
   .navlinks { gap: 7px 9px; }
   .navlinks a { font-size: 10px; }
 }
-
-.weekly-title-row {
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  gap:12px !important;
-  width:100%;
-}
-
-.hot-stock-hint {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:5px 12px;
-  color:#167B45;
-  font-size:15px;
-  font-weight:950;
-  letter-spacing:1.2px;
-  white-space:nowrap;
-  animation: classyFlash 3s ease-in-out infinite;
-}
-
-.hot-stock-arrow {
-  font-size:30px;
-  line-height:1.2;
-  animation: classyArrow 2s ease-in-out infinite;
-}
-
-@keyframes classyFlash {
-  0%,100% { opacity:1; }
-  50% { opacity:.55; }
-}
-
-@keyframes classyArrow {
-  0%,100% { transform:translateY(0); }
-  50% { transform:translateY(6px); }
-}
-.hot-stock-hint {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  padding: 6px 10px;
-  color: #18A45B;
-  font-size: 16px;
-  font-weight: 950;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  animation: hotStockFlash 2.5s ease-in-out infinite;
-}
-
-.hot-stock-arrow {
-  width: 75px;
-  height: 42px;
-  overflow: visible;
-  animation: hotStockArrow 2.5s ease-in-out infinite;
-}
-
-@keyframes hotStockFlash {
-  0%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 10px rgba(24,164,91,.45);
-  }
-  50% {
-    opacity: .25;
-    text-shadow: none;
-  }
-}
-
-@keyframes hotStockArrow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}  
-
-  .hot-stock-hint {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1px;
-  color: #16A05A;
-  white-space: nowrap;
-  animation: hotStockBlink 3s steps(1, end) infinite;
-}
-
-.hot-stock-main {
-  font-size: 23px;
-  font-weight: 1000;
-  letter-spacing: 1px;
-}
-
-.hot-stock-sub {
-  font-size: 19px;
-  font-weight: 950;
-  letter-spacing: 2px;
-}
-
-.hot-stock-arrow {
-  width: 75px;
-  height: 49px;
-  margin-top: 3px;
-}
-
-@keyframes hotStockBlink {
-  0%, 49% { visibility: visible; }
-  50%, 99% { visibility: hidden; }
-  100% { visibility: visible; }
-}
-
-  .hot-stock-hint {
-  position: relative;
-  height: 58px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #168BFF;
-  white-space: nowrap;
-}
-
-.hot-stock-message {
-  position: absolute;
-  font-size: 21px;
-  font-weight: 1000;
-  letter-spacing: 1px;
-  visibility: hidden;
-  animation: hotStockSequence 6s steps(1, end) infinite;
-}
-
-.message-1 { animation-delay: 0s; }
-.message-2 { animation-delay: -2s; }
-.message-3 { animation-delay: -4s; }
-
-.hot-stock-arrow {
-  position: absolute;
-  top: 55px;
-  width: 75px;
-  height: 49px;
-  color: #168BFF;
-}
-
-@keyframes hotStockSequence {
-  0%, 16% { visibility: visible; }
-  17%, 100% { visibility: hidden; }
-}
 </style>
 
 
@@ -4185,6 +4001,59 @@ body { overflow-x: hidden; }
 @media (max-width:760px) {
   .weekly-feature-copy > .broker-match-widget { margin-top:18px !important; }
   .weekly-feature-copy > .broker-match-widget .broker-match-banner { padding:16px; }
+}
+
+/* ROTATING HOT STOCK MESSAGES */
+.weekly-title-row {
+  display:flex !important;
+  grid-template-columns:none !important;
+  justify-content:flex-start !important;
+  align-items:flex-start !important;
+  flex-wrap:wrap !important;
+  gap:12px !important;
+  width:100%;
+}
+.hot-stock-hint {
+  position:relative;
+  flex:0 1 290px;
+  width:290px;
+  height:58px;
+  margin-top:-7px;
+  color:#168BFF;
+  white-space:nowrap;
+  text-align:left;
+}
+.hot-stock-message {
+  position:absolute;
+  top:0;
+  left:0;
+  visibility:hidden;
+  font-size:clamp(13px, 1.45vw, 17px);
+  line-height:1.25;
+  font-weight:1000;
+  letter-spacing:.5px;
+  animation:hotStockSequence 6s steps(1,end) infinite;
+}
+.message-1 { animation-delay:0s; }
+.message-2 { animation-delay:-2s; }
+.message-3 { animation-delay:-4s; }
+.hot-stock-arrow {
+  position:absolute;
+  top:23px;
+  left:34px;
+  width:53px;
+  height:35px;
+  color:#168BFF;
+}
+@keyframes hotStockSequence {
+  0%,16% { visibility:visible; }
+  17%,100% { visibility:hidden; }
+}
+@media(max-width:700px) {
+  .weekly-title-row { gap:8px !important; }
+  .hot-stock-hint { flex-basis:250px; width:250px; height:54px; margin-top:-5px; }
+  .hot-stock-message { font-size:14px; }
+  .hot-stock-arrow { top:22px; left:30px; width:48px; height:32px; }
 }
 </style>
 </body>
