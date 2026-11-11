@@ -353,7 +353,10 @@ a {color:inherit;}
 /* Broker logos are displayed in the Stock of the Week heading row. */
 /* STOCK OF THE https://github.com/midochamass6699-cmyk/stockpilot-ai/securityWEEK */
 
-
+<div class="hot-stock-hint">
+    <span>HOT STOCK INSIDE</span>
+    <span class="hot-stock-arrow">↓</span>
+</div>
   
 .stock-of-the-week {
   margin:24px 0;
@@ -1891,7 +1894,35 @@ input, select, textarea, button {
         font-size: 24px;
     }
 }
+.hot-stock-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #55e89a;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+    white-space: nowrap;
+    animation: classyFlash 2.8s ease-in-out infinite;
+}
 
+.hot-stock-arrow {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1.2;
+    animation: classyArrow 1.8s ease-in-out infinite;
+}
+
+@keyframes classyFlash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+}
+
+@keyframes classyArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(7px); }
+}
 </style>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <link rel="preconnect" href="https://www.google.com" crossorigin="anonymous"/>
