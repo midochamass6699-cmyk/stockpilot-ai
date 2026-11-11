@@ -1924,6 +1924,47 @@ input, select, textarea, button {
 }
 </style>
 
+
+<style id="stockpilot-live-trading-desk">
+.live-trading-desk{width:min(1200px,calc(100% - 36px));margin:12px auto 18px;padding:clamp(18px,3vw,30px);border:1px solid #D8E1EE;border-top:5px solid #2563EB;border-radius:16px;background:linear-gradient(135deg,#FFFFFF 0%,#F5F8FF 100%);box-shadow:0 12px 32px #07111F12;color:#101827}
+.trading-desk-header{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;margin-bottom:22px}
+.trading-desk-kicker{display:flex;align-items:center;gap:9px;color:#1D4ED8;font-size:10px;font-weight:950;letter-spacing:.15em}
+.trading-pulse{width:9px;height:9px;border-radius:50%;background:#16A34A;box-shadow:0 0 0 4px #16A34A20;animation:tradingPulse 1.8s ease-in-out infinite}
+@keyframes tradingPulse{50%{box-shadow:0 0 0 7px #16A34A08;opacity:.65}}
+#trading-desk-title{margin:7px 0 5px;color:#07111F;font-size:clamp(28px,4vw,43px);font-weight:1000;letter-spacing:-.045em;line-height:1.05}
+.trading-desk-intro{max-width:680px;margin:0;color:#526176;font-size:15px;line-height:1.55}
+.trading-session-card{flex:0 0 min(280px,32%);padding:14px 16px;border:1px solid #D8E1EE;border-radius:11px;background:#07111F;color:#fff}
+.session-label{display:block;margin-bottom:6px;color:#9FC1FF;font-size:9px;font-weight:900;letter-spacing:.13em}
+.trading-session-card strong{display:block;font-size:14px;line-height:1.35}
+.trading-session-card small{display:block;margin-top:6px;color:#C4D2E6;font-size:11px;line-height:1.45}
+.trading-desk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.trading-panel{min-width:0;padding:16px;border:1px solid #DCE5F0;border-radius:12px;background:#fff;box-shadow:0 5px 16px #07111F08}
+.trading-panel-main{border-top:3px solid #2563EB}.trading-panel-penny{border-top:3px solid #D97706}.trading-panel-crypto{border-top:3px solid #7C3AED}
+.trading-panel-heading{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.trading-panel-icon{display:grid;place-items:center;flex:0 0 37px;height:37px;border-radius:10px;background:#EAF1FF;color:#1D4ED8;font-size:22px;font-weight:900}
+.trading-panel-penny .trading-panel-icon{background:#FFF4E5;color:#B45309}.trading-panel-crypto .trading-panel-icon{background:#F2EAFE;color:#6D28D9}
+.trading-panel-heading h2{margin:0;color:#101827;font-size:18px;line-height:1.25}.trading-panel-heading p{margin:3px 0 0;color:#64748B;font-size:11px;line-height:1.3}
+.trading-market-list{display:grid;gap:7px;min-height:135px}
+.trading-market-list .sp-market-row{display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:8px;padding:9px 8px;border:1px solid #E5EAF2;border-radius:8px;background:#F8FAFD;color:#101827;text-decoration:none}
+.trading-market-list .sp-market-row:hover{border-color:#8CB5FF;background:#EFF5FF}
+.trading-market-list .sp-market-rank{display:grid;place-items:center;width:21px;height:21px;border-radius:6px;background:#E7EEFA;color:#1D4ED8;font-size:10px;font-weight:950}
+.trading-market-list .sp-market-name strong{display:block;overflow:hidden;color:#14243A;font-size:12px;text-overflow:ellipsis;white-space:nowrap}
+.trading-market-list .sp-market-name small{color:#64748B;font-size:10px}
+.trading-market-list .sp-market-values{text-align:right}.trading-market-list .sp-market-values strong{display:block;color:#14243A;font-size:11px;white-space:nowrap}.trading-market-list .sp-market-values small{font-size:10px;font-weight:900}
+.trading-market-list .sp-market-up{color:#15803D}.trading-market-list .sp-market-down{color:#B91C1C}
+.trading-loading,.trading-market-list .sp-market-loading{padding:16px 8px;color:#64748B;font-size:12px;line-height:1.5}
+.trading-panel-link{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;padding-top:11px;border-top:1px solid #E5EAF2;color:#1D4ED8;font-size:12px;font-weight:900;text-decoration:none}.trading-panel-link:hover{text-decoration:underline}
+.trading-desk-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.trading-desk-tools a{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:9px;align-items:center;padding:12px;border:1px solid #DCE5F0;border-radius:10px;background:#fff;color:#101827;text-decoration:none;transition:transform .18s,border-color .18s}
+.trading-desk-tools a:hover{transform:translateY(-2px);border-color:#8CB5FF}
+.trading-desk-tools a>span{grid-row:span 2;display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#EFF5FF;font-size:17px}
+.trading-desk-tools strong{font-size:11px;line-height:1.3}.trading-desk-tools small{color:#64748B;font-size:10px;line-height:1.35}
+.trading-desk-note{margin-top:14px;padding:10px 12px;border-left:3px solid #94A3B8;border-radius:0 7px 7px 0;background:#F1F5F9;color:#526176;font-size:11px;line-height:1.55}
+@media(max-width:850px){.trading-desk-header{flex-direction:column}.trading-session-card{width:100%;flex-basis:auto}.trading-desk-grid{grid-template-columns:1fr 1fr}.trading-desk-tools{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.live-trading-desk{width:calc(100% - 20px);padding:16px 12px;margin:10px auto 14px}.trading-desk-grid{grid-template-columns:1fr}.trading-panel{padding:13px}.trading-market-list{min-height:0}.trading-desk-tools{grid-template-columns:1fr 1fr;gap:7px}.trading-desk-tools a{padding:9px 7px;grid-template-columns:29px minmax(0,1fr);column-gap:7px}.trading-desk-tools a>span{width:29px;height:29px}.trading-desk-tools strong{font-size:10px}.trading-desk-tools small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.trading-pulse{animation:none}.trading-desk-tools a{transition:none}}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2028,136 +2069,49 @@ input, select, textarea, button {
 
 <!-- The free-access message now appears in the two vertical side banners. -->
 
-<!-- FEATURED WEEKLY STOCK -->
-<section class="stock-of-the-week" id="stock-of-the-week" aria-labelledby="weekly-stock-title">
-  <div class="weekly-feature-inner">
-    <div class="weekly-feature-copy">
-
-
-      
-      <div class="weekly-feature-kicker"><span class="weekly-live-dot"></span> THE WEEKLY SPOTLIGHT</div>
-      <p class="weekly-feature-label">ONE COMPANY. A CLOSER LOOK.</p>
-  <div class="weekly-title-row">
-    <p class="weekly-stock-heading" id="weekly-stock-title">Stock of the Week</p>
- <div class="hot-stock-hint" aria-label="Hot market topics">
-  <span class="hot-stock-message message-1">HOT MARKET PICKS FOR YOU INSIDE</span>
-  <span class="hot-stock-message message-2">PENNY STOCKS READY TO TRADE</span>
-  <span class="hot-stock-message message-3">HOT CRYPTO FOR YOUR WALLET</span>
-
-</div>
-  </div>
-
-      <h3 class="weekly-company-name">AppLovin Corporation <span>(NASDAQ: APP)</span></h3>
-<div class="weekly-metrics" aria-label="AppLovin quarterly financial highlights">
-        <div class="weekly-metric"><strong>+55%</strong><span>Revenue growth</span></div>
-        <div class="weekly-metric"><strong>+72%</strong><span>Net income growth</span></div>
-        <div class="weekly-metric"><strong>US$1.4B</strong><span>Q3 free cash flow</span></div>
-      </div>
-<div class="weekly-feature-actions">
-        <a class="weekly-research-link" href="https://finance.yahoo.com/quote/APP/" target="_blank" rel="noopener noreferrer">Research APP <span aria-hidden="true">↗</span></a>
-        <a class="weekly-research-link" href="https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-Third-Quarter-2026-Financial-Results/default.aspx" target="_blank" rel="noopener noreferrer">Q3 Financial Results <span aria-hidden="true">↗</span></a>
-        <span class="weekly-ticker-note">NASDAQ: APP · USD</span>
-      </div>
-
-      <div class="weekly-subscribe-cta" aria-labelledby="weekly-subscribe-heading">
-        <div class="weekly-subscribe-copy">
-          <span class="weekly-subscribe-icon" aria-hidden="true">🔔</span>
-          <div>
-            <strong id="weekly-subscribe-heading">NEVER MISS A DAILY STOCK PICK!</strong>
-            <small>Get free notifications when new stocks, penny stocks and crypto updates are published.</small>
-          </div>
-        </div>
-        <button id="stockpilot-subscribe-btn" type="button">🔔 SUBSCRIBE FREE</button>
-        <p id="stockpilot-subscribe-status" aria-live="polite">Free daily market alerts. No payment required.</p>
-      </div>
-
-      <p class="weekly-feature-disclaimer">StockPilot AI research and educational discussion only. Not a buy or sell recommendation or financial advice.</p>
-
-      <!-- STOCKPILOT AI: FULL-WIDTH, ANIMATED BROKER MATCH BANNER -->
-<section class="broker-match-widget" id="broker-match-widget" aria-labelledby="broker-match-title">
-  <div class="broker-match-banner">
-    <div class="broker-match-banner-copy">
-      <div class="broker-match-topline"><span class="broker-match-spark" aria-hidden="true">✦</span> STOCKPILOT AI PERSONAL BROKER MATCH</div>
-      <h2 id="broker-match-title">Find Your Best Broker</h2>
-      <p class="broker-match-intro">Answer a few quick questions. Discover the one broker that best matches your needs.</p>
+<!-- LIVE TRADING DESK: REPLACES THE WEEKLY STOCK OPINION -->
+<section class="live-trading-desk" id="live-trading-desk" aria-labelledby="trading-desk-title">
+  <div class="trading-desk-header">
+    <div>
+      <div class="trading-desk-kicker"><span class="trading-pulse" aria-hidden="true"></span> STOCKPILOT AI · MARKET MONITOR</div>
+      <h1 id="trading-desk-title">LIVE TRADING DESK</h1>
+      <p class="trading-desk-intro">A quick market snapshot to help you decide what deserves a closer look. Compare activity, check prices and do your own research.</p>
     </div>
-    <button type="button" class="broker-match-start" id="broker-match-start" aria-expanded="false" aria-controls="broker-match-panel">
-      <span>START NOW</span><span class="broker-match-start-arrow" aria-hidden="true">→</span>
-    </button>
-  </div>
-  <div class="broker-match-panel" id="broker-match-panel" hidden>
-    <div class="broker-match-progress" aria-label="Question progress"><span id="broker-match-progress-fill"></span></div>
-    <div id="broker-match-step" class="broker-match-step" aria-live="polite">
-      <p class="broker-match-count" id="broker-match-count">QUESTION 1 OF 5</p>
-      <h3 id="broker-match-question">Where do you live?</h3>
-      <div id="broker-match-options" class="broker-match-options">
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Canada"><span>Canada</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="United States"><span>United States</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="United Kingdom"><span>United Kingdom</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Australia"><span>Australia</span></label>
-        <label class="broker-match-option"><input type="radio" name="broker-country" value="Other country"><span>Another country</span></label>
-      </div>
-      <input id="broker-match-country-other" class="broker-match-country-other" type="text" placeholder="Enter your country" aria-label="Your country" hidden>
-      <div class="broker-match-actions"><button type="button" id="broker-match-next" disabled>CONTINUE <span aria-hidden="true">→</span></button></div>
-      <p class="broker-match-footnote">We compare only the 14 brokers listed on StockPilot AI. Availability and account eligibility depend on your country.</p>
+    <div class="trading-session-card">
+      <span class="session-label">YOUR MARKET CHECKPOINT</span>
+      <strong>Stocks · Penny Stocks · Crypto</strong>
+      <small>Data refreshes when the market feed updates. Quotes may be delayed.</small>
     </div>
-    <div id="broker-match-result" class="broker-match-result" hidden aria-live="polite"></div>
   </div>
+
+  <div class="trading-desk-grid">
+    <article class="trading-panel trading-panel-main">
+      <div class="trading-panel-heading"><span class="trading-panel-icon">↗</span><div><h2>Stocks to Watch</h2><p>Daily stock screen</p></div></div>
+      <div class="trading-market-list" id="deskMainStocks" aria-live="polite"><div class="trading-loading">Loading stock data…</div></div>
+      <a class="trading-panel-link" href="#main-picks">Explore all stock picks <span aria-hidden="true">→</span></a>
+    </article>
+
+    <article class="trading-panel trading-panel-penny">
+      <div class="trading-panel-heading"><span class="trading-panel-icon">⚡</span><div><h2>Penny Stock Movers</h2><p>Lower-priced · Higher risk</p></div></div>
+      <div class="trading-market-list" id="deskPennyStocks" aria-live="polite"><div class="trading-loading">Loading penny stocks…</div></div>
+      <a class="trading-panel-link" href="#penny-picks">Explore penny stocks <span aria-hidden="true">→</span></a>
+    </article>
+
+    <article class="trading-panel trading-panel-crypto">
+      <div class="trading-panel-heading"><span class="trading-panel-icon">₿</span><div><h2>Crypto Activity</h2><p>Ranked by 24-hour volume</p></div></div>
+      <div class="trading-market-list" id="deskCrypto" aria-live="polite"><div class="trading-loading">Loading crypto data…</div></div>
+      <a class="trading-panel-link" href="#crypto-picks">Explore crypto market <span aria-hidden="true">→</span></a>
+    </article>
+  </div>
+
+  <div class="trading-desk-tools">
+    <a href="#main-picks"><span>📊</span><strong>Daily Stock Research</strong><small>Review today's selected stocks</small></a>
+    <a href="#penny-picks"><span>🚀</span><strong>Penny Stock Watchlist</strong><small>Monitor lower-priced shares</small></a>
+    <a href="#crypto-picks"><span>₿</span><strong>Crypto Market</strong><small>Check leading digital assets</small></a>
+    <a href="#market-insights"><span>🔎</span><strong>Market Insights</strong><small>Explore market education and analysis</small></a>
+  </div>
+  <div class="trading-desk-note"><strong>Important:</strong> This desk is a research starting point, not a real-time trading terminal or a buy/sell recommendation. Always verify the latest quote, volume and company news with your broker or a live market-data provider.</div>
 </section>
-    </div>
-
-    <aside class="weekly-feature-side" aria-label="Explore StockPilot AI">
-      <div class="sp-slideshow" id="stockpilot-slideshow" aria-roledescription="carousel" aria-label="What you can explore on StockPilot AI">
-        <div class="sp-slides sp-market-slides">
-        <article class="sp-slide is-active" aria-hidden="false" data-market-preview="main">
-          <p class="sp-slide-kicker">UPDATED FROM TODAY’S MARKET PICKS</p>
-          <h2>Daily Stock Picks</h2>
-          <div class="sp-market-list" id="previewMainStocks" aria-live="polite">
-            <div class="sp-market-loading">Loading today's main stock picks…</div>
-          </div>
-          <a href="#main-picks" class="sp-slide-link">VIEW ALL DAILY PICKS <span aria-hidden="true">→</span></a>
-        </article>
-        <article class="sp-slide" aria-hidden="true" data-market-preview="penny">
-          <p class="sp-slide-kicker">LOWER-PRICED · HIGHER-RISK SHARES</p>
-          <h2>Penny Stocks to Watch</h2>
-          <div class="sp-market-list" id="previewPennyStocks" aria-live="polite">
-            <div class="sp-market-loading">Loading penny stock picks…</div>
-          </div>
-          <a href="#penny-picks" class="sp-slide-link">VIEW PENNY STOCKS <span aria-hidden="true">→</span></a>
-        </article>
-        <article class="sp-slide" aria-hidden="true" data-market-preview="crypto">
-          <p class="sp-slide-kicker">RANKED BY REPORTED 24-HOUR VOLUME</p>
-          <h2>Top Cryptocurrencies</h2>
-          <div class="sp-market-list" id="previewCrypto" aria-live="polite">
-            <div class="sp-market-loading">Loading top cryptocurrencies…</div>
-          </div>
-          <a href="#crypto-picks" class="sp-slide-link">VIEW CRYPTO MARKET <span aria-hidden="true">→</span></a>
-        </article>
-      </div>
-        <div class="sp-slide-controls">
-          <button class="sp-slide-arrow" type="button" data-sp-prev aria-label="Previous slide">‹</button>
-          <div class="sp-slide-dots" aria-label="Choose a market list">
-            <button class="sp-dot is-active" type="button" data-sp-slide="0" aria-label="Daily stock picks" aria-current="true"></button>
-            <button class="sp-dot" type="button" data-sp-slide="1" aria-label="Penny stocks"></button>
-            <button class="sp-dot" type="button" data-sp-slide="2" aria-label="Top cryptocurrencies"></button>
-          </div>
-          <button class="sp-slide-arrow" type="button" data-sp-next aria-label="Next slide">›</button>
-        </div>
-        <p class="sp-slide-footnote">A clearer view of the markets, one topic at a time.</p>
-      </div>
-
-      <section class="weekly-why-card" aria-labelledby="weekly-why-title">
-        <p class="weekly-why-kicker">THE INVESTMENT THESIS</p>
-        <h3 id="weekly-why-title">Why We Chose AppLovin</h3>
-        <p>AppLovin’s AI-powered advertising platform is showing significant business momentum. In its third-quarter 2026 results, revenue rose 55% year over year to US$2.18 billion, while net income increased 72% to US$1.44 billion. The company also reported US$1.4 billion in quarterly free cash flow.</p>
-        <p class="weekly-why-risk"><strong>What to watch:</strong> Advertising demand, competition, execution and the valuation investors are paying. Strong results do not eliminate the risk of a share-price correction.</p>
-        <a href="https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-Third-Quarter-2026-Financial-Results/default.aspx" target="_blank" rel="noopener noreferrer">Read the company’s Q3 results ↗</a>
-      </section>
-    </aside>
-  </div>
-</section>
-
-
 
 <nav class="category-nav" aria-label="Market categories">
   <a class="category-tab active" href="#main-picks">TODAY’S STOCKS</a>
@@ -2950,6 +2904,7 @@ async function loadCrypto() {
       .join('');
 
     setMarketPreview('previewCrypto', ranked, 'crypto');
+    setMarketPreview('deskCrypto', ranked, 'crypto');
 
     updated.textContent =
       'Last updated: ' + new Date().toLocaleString() +
@@ -2961,6 +2916,7 @@ async function loadCrypto() {
       '<div class="empty">Live cryptocurrency data is temporarily unavailable. Please refresh later.</div>';
 
     setMarketPreview('previewCrypto', [], 'crypto');
+    setMarketPreview('deskCrypto', [], 'crypto');
 
     updated.textContent =
       'Cryptocurrency data temporarily unavailable.';
@@ -3096,7 +3052,9 @@ async function loadStocks() {
       : '<div class="empty">No qualifying penny stock picks are available right now.</div>';
 
     setMarketPreview('previewMainStocks', mainPicks.slice(0,3), 'stock');
+    setMarketPreview('deskMainStocks', mainPicks.slice(0,3), 'stock');
     setMarketPreview('previewPennyStocks', filteredPenny.slice(0,3), 'stock');
+    setMarketPreview('deskPennyStocks', filteredPenny.slice(0,3), 'stock');
 
     const stamp = data.updated_at || data.generated_at_utc;
 
@@ -3121,7 +3079,9 @@ async function loadStocks() {
       '<div class="empty">Penny stock data is temporarily unavailable. Please check back later.</div>';
 
     setMarketPreview('previewMainStocks', [], 'stock');
+    setMarketPreview('deskMainStocks', [], 'stock');
     setMarketPreview('previewPennyStocks', [], 'stock');
+    setMarketPreview('deskPennyStocks', [], 'stock');
 
     updated.textContent =
       'Market data temporarily unavailable.';
