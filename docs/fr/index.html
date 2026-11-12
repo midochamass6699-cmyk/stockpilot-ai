@@ -2160,8 +2160,187 @@ input, select, textarea, button {
 <a class="category-tab active" href="#main-picks">ACTIONS DU JOUR</a>
 <a class="category-tab" href="#penny-picks">PENNY STOCKS</a>
 <a class="category-tab" href="#crypto-picks">CRYPTO</a>
-</nav>
-<!-- PRIMARY ACCUEILPAGE TOPIC AND SEARCH INTRODUCTION -->
+</nav>\n<!-- OUTIL DE RECHERCHE BOURSIÈRE STOCKPILOT AI -->
+<section id="quick-stock-lookup" aria-label="Recherche rapide d’actions">
+  <div class="qsl-search">
+    <div class="qsl-heading">Recherche rapide d’actions</div>
+    <div class="qsl-controls">
+      <input id="qsl-input" type="search" placeholder="Nom d’entreprise ou symbole boursier…" autocomplete="off" aria-label="Nom ou symbole de l’action">
+      <button id="qsl-search-btn" type="button">Rechercher</button>
+    </div>
+  </div>
+  <div class="qsl-output" id="qsl-output" aria-live="polite">
+    <span class="qsl-placeholder">Recherchez une action pour voir son dernier cours.</span>
+  </div>
+</section>
+<style id="stockpilot-quick-lookup-fr-style">
+#quick-stock-lookup{width:min(1200px,calc(100% - 36px));margin:10px auto 14px;padding:10px 14px;box-sizing:border-box;display:grid;grid-template-columns:minmax(260px,.9fr) minmax(280px,1.1fr);align-items:center;gap:14px;background:#071a33;border:1px solid #25436d;border-left:4px solid #2563EB;border-radius:10px;color:#fff;font-family:inherit;box-shadow:0 5px 16px #07111f10}
+.qsl-heading{font-size:14px;font-weight:850;margin-bottom:6px;color:#fff}
+.qsl-controls{display:flex;gap:7px}
+.qsl-controls input{min-width:0;flex:1;height:34px;padding:0 10px;border:1px solid #b9c9df;border-radius:6px;background:#fff;color:#172333;font-size:12px}
+.qsl-controls button{border:0;border-radius:6px;padding:0 13px;background:#2563EB;color:#fff;font-size:11px;font-weight:800;cursor:pointer}
+.qsl-controls button:hover{background:#1D4ED8}
+.qsl-output{min-height:35px;display:flex;flex-direction:column;justify-content:center;font-size:12px;overflow-wrap:anywhere}
+.qsl-placeholder{color:#c5d4e9}
+.qsl-price{font-size:21px;font-weight:850;color:#75e0a5}
+.qsl-stock-name{font-size:13px;font-weight:800;margin-bottom:2px;color:#fff}
+.qsl-details,.qsl-updated{color:#c5d4e9;margin-top:2px;font-size:10px}
+.qsl-choices{display:flex;flex-direction:column;gap:5px;margin-top:6px;max-height:145px;overflow:auto}
+.qsl-choice{text-align:left;padding:6px 8px;border:1px solid #53677d;border-radius:5px;background:#142c4c;color:#fff;cursor:pointer;font-size:11px}
+.qsl-choice:hover{background:#2563EB}
+.qsl-error{color:#ffb4a9}
+@media(max-width:650px){#quick-stock-lookup{width:calc(100% - 24px);grid-template-columns:1fr;gap:7px;padding:10px;margin:9px auto 12px}.qsl-heading{margin-bottom:5px}.qsl-controls input{font-size:12px}}
+</style>
+<script>
+(() => {
+  const API_URL = "https://stockpilot-lookup.midochamass6699.workers.dev";
+
+  const input = document.getElementById("qsl-input");
+  const button = document.getElementById("qsl-search-btn");
+  const output = document.getElementById("qsl-output");
+
+  async function requestData(params) {
+    const url = new URL(API_URL);
+    Object.entries(params).forEach(([key, value]) => {
+      if (value) url.searchParams.set(key, value);
+    });
+
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Lookup service unavailable.");
+    return response.json();
+  }
+
+  function showError(message) {
+    output.innerHTML = "";
+    const error = document.createElement("div");
+    error.className = "qsl-error";
+    error.textContent = message;
+    output.appendChild(error);
+  }
+
+  function showQuote(quote) {
+    if (!quote || !quote.close || !quote.currency) {
+      showError("Aucun cours n’est actuellement disponible pour cette inscription.");
+      return;
+    }
+
+    const price = Number(quote.close);
+    if (!Number.isFinite(price)) {
+      showError("Le fournisseur a retourné un prix invalide.");
+      return;
+    }
+
+    const formatted = new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency: quote.currency
+    }).format(price);
+
+    const updated = quote.last_quote_at
+      ? new Date(Number(quote.last_quote_at) * 1000).toLocaleString()
+      : (quote.datetime || "Heure non disponible");
+
+    output.innerHTML = "";
+
+    const name = document.createElement("div");
+    name.className = "qsl-stock-name";
+    name.textContent = quote.name || quote.symbol;
+
+    const priceEl = document.createElement("div");
+    priceEl.className = "qsl-price";
+    priceEl.textContent = formatted;
+
+    const details = document.createElement("div");
+    details.className = "qsl-details";
+    details.textContent =
+      `${quote.symbol} · ${quote.exchange || "Bourse non précisée"} · ${quote.currency}`;
+
+    const time = document.createElement("div");
+    time.className = "qsl-updated";
+    time.textContent = `Dernières données disponibles : ${updated}`;
+
+    output.append(name, priceEl, details, time);
+  }
+
+  async function getQuote(stock) {
+    output.textContent = "Chargement du cours…";
+
+    try {
+      const quote = await requestData({
+        action: "quote",
+        symbol: stock.symbol,
+        mic_code: stock.mic_code,
+        exchange: stock.exchange
+      });
+
+      if (quote.status === "error" || quote.code) {
+        throw new Error(quote.message || "Cours indisponible.");
+      }
+
+      showQuote(quote);
+    } catch (error) {
+      showError(error.message || "Impossible de récupérer ce cours.");
+    }
+  }
+
+  async function searchStock() {
+    const query = input.value.trim();
+    if (!query) {
+      showError("Entrez le nom d’une entreprise ou un symbole boursier.");
+      return;
+    }
+
+    output.textContent = "Recherche des inscriptions sur les marchés mondiaux…";
+
+    try {
+      const result = await requestData({
+        action: "search",
+        q: query
+      });
+
+      const matches = (result.data || []).slice(0, 8);
+
+      if (!matches.length) {
+        showError("Aucune inscription correspondante trouvée.");
+        return;
+      }
+
+      output.innerHTML = "";
+
+      if (matches.length === 1) {
+        await getQuote(matches[0]);
+        return;
+      }
+
+      const heading = document.createElement("div");
+      heading.textContent = "Choisissez la bonne bourse :";
+      output.appendChild(heading);
+
+      const choices = document.createElement("div");
+      choices.className = "qsl-choices";
+
+      matches.forEach(stock => {
+        const choice = document.createElement("button");
+        choice.type = "button";
+        choice.className = "qsl-choice";
+        choice.textContent =
+          `${stock.name || stock.symbol} · ${stock.symbol} · ${stock.exchange || stock.country || "Bourse"}`;
+
+        choice.addEventListener("click", () => getQuote(stock));
+        choices.appendChild(choice);
+      });
+
+      output.appendChild(choices);
+    } catch (error) {
+      showError(error.message || "La recherche a échoué. Veuillez réessayer.");
+    }
+  }
+
+  button.addEventListener("click", searchStock);
+  input.addEventListener("keydown", event => {
+    if (event.key === "Enter") searchStock();
+  });
+})();
+</script>\n<!-- FIN DE LA RECHERCHE RAPIDE D’ACTIONS -->\n<!-- PRIMARY ACCUEILPAGE TOPIC AND SEARCH INTRODUCTION -->
 <!-- MAIN CONTENT -->
 <main class="container" id="top"><section class="picks-top" id="main-picks">
 <div class="section-head">
