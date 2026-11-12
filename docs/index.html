@@ -2130,6 +2130,296 @@ input, select, textarea, button {
 <div class="trading-desk-header">
 <div>
 <div class="trading-desk-kicker"><span aria-hidden="true" class="trading-pulse"></span> STOCKPILOT AI · MARKET MONITOR</div>
+  
+<!-- STOCKPILOT AI - QUICK STOCK LOOKUP -->
+<section id="quick-stock-lookup">
+  <div class="qsl-search">
+    <div class="qsl-heading">Quick Stock Lookup</div>
+    <div class="qsl-controls">
+      <input
+        id="qsl-input"
+        type="search"
+        placeholder="Enter a company name or ticker..."
+        autocomplete="off"
+      >
+      <button id="qsl-search-btn" type="button">Search</button>
+    </div>
+  </div>
+
+  <div class="qsl-output" id="qsl-output">
+    <span class="qsl-placeholder">Search for a stock to see its latest price.</span>
+  </div>
+</section>
+
+<style>
+#quick-stock-lookup {
+  width: 100%;
+  max-width: 1200px;
+  margin: 14px auto 18px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(280px, 1.1fr);
+  align-items: center;
+  gap: 18px;
+  background: #111d2c;
+  border: 1px solid #293c52;
+  border-radius: 10px;
+  color: #fff;
+  font-family: inherit;
+}
+
+.qsl-heading {
+  font-size: 17px;
+  font-weight: 750;
+  margin-bottom: 8px;
+}
+
+.qsl-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.qsl-controls input {
+  min-width: 0;
+  flex: 1;
+  height: 39px;
+  padding: 0 11px;
+  border: 1px solid #52647a;
+  border-radius: 6px;
+  background: #fff;
+  color: #172333;
+  font-size: 14px;
+}
+
+.qsl-controls button {
+  border: 0;
+  border-radius: 6px;
+  padding: 0 16px;
+  background: #2878df;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qsl-output {
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.qsl-placeholder {
+  color: #aebdce;
+}
+
+.qsl-price {
+  font-size: 25px;
+  font-weight: 800;
+  color: #65d99a;
+}
+
+.qsl-stock-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.qsl-details, .qsl-updated {
+  color: #b8c6d5;
+  margin-top: 3px;
+}
+
+.qsl-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.qsl-choice {
+  text-align: left;
+  padding: 7px 9px;
+  border: 1px solid #53677d;
+  border-radius: 5px;
+  background: #1c2c40;
+  color: white;
+  cursor: pointer;
+}
+
+.qsl-error {
+  color: #ffb4a9;
+}
+
+@media (max-width: 650px) {
+  #quick-stock-lookup {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 11px;
+  }
+  .qsl-heading {
+    margin-bottom: 6px;
+  }
+  .qsl-controls input {
+    font-size: 13px;
+  }
+}
+</style>
+
+<script>
+(() => {
+  const API_URL = "https://YOUR-WORKER-URL.workers.dev";
+
+  const input = document.getElementById("qsl-input");
+  const button = document.getElementById("qsl-search-btn");
+  const output = document.getElementById("qsl-output");
+
+  async function requestData(params) {
+    const url = new URL(API_URL);
+    Object.entries(params).forEach(([key, value]) => {
+      if (value) url.searchParams.set(key, value);
+    });
+
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Lookup service unavailable.");
+    return response.json();
+  }
+
+  function showError(message) {
+    output.innerHTML = "";
+    const error = document.createElement("div");
+    error.className = "qsl-error";
+    error.textContent = message;
+    output.appendChild(error);
+  }
+
+  function showQuote(quote) {
+    if (!quote || !quote.close || !quote.currency) {
+      showError("No price is currently available for this listing.");
+      return;
+    }
+
+    const price = Number(quote.close);
+    if (!Number.isFinite(price)) {
+      showError("The provider returned an invalid price.");
+      return;
+    }
+
+    const formatted = new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency: quote.currency
+    }).format(price);
+
+    const updated = quote.last_quote_at
+      ? new Date(Number(quote.last_quote_at) * 1000).toLocaleString()
+      : (quote.datetime || "Time unavailable");
+
+    output.innerHTML = "";
+
+    const name = document.createElement("div");
+    name.className = "qsl-stock-name";
+    name.textContent = quote.name || quote.symbol;
+
+    const priceEl = document.createElement("div");
+    priceEl.className = "qsl-price";
+    priceEl.textContent = formatted;
+
+    const details = document.createElement("div");
+    details.className = "qsl-details";
+    details.textContent =
+      `${quote.symbol} · ${quote.exchange || "Exchange unavailable"} · ${quote.currency}`;
+
+    const time = document.createElement("div");
+    time.className = "qsl-updated";
+    time.textContent = `Latest available data: ${updated}`;
+
+    output.append(name, priceEl, details, time);
+  }
+
+  async function getQuote(stock) {
+    output.textContent = "Loading price...";
+
+    try {
+      const quote = await requestData({
+        action: "quote",
+        symbol: stock.symbol,
+        mic_code: stock.mic_code,
+        exchange: stock.exchange
+      });
+
+      if (quote.status === "error" || quote.code) {
+        throw new Error(quote.message || "Price unavailable.");
+      }
+
+      showQuote(quote);
+    } catch (error) {
+      showError(error.message || "Unable to retrieve this price.");
+    }
+  }
+
+  async function searchStock() {
+    const query = input.value.trim();
+    if (!query) {
+      showError("Enter a company name or ticker.");
+      return;
+    }
+
+    output.textContent = "Searching worldwide listings...";
+
+    try {
+      const result = await requestData({
+        action: "search",
+        q: query
+      });
+
+      const matches = (result.data || []).slice(0, 8);
+
+      if (!matches.length) {
+        showError("No matching listings found.");
+        return;
+      }
+
+      output.innerHTML = "";
+
+      if (matches.length === 1) {
+        await getQuote(matches[0]);
+        return;
+      }
+
+      const heading = document.createElement("div");
+      heading.textContent = "Choose the correct exchange:";
+      output.appendChild(heading);
+
+      const choices = document.createElement("div");
+      choices.className = "qsl-choices";
+
+      matches.forEach(stock => {
+        const choice = document.createElement("button");
+        choice.type = "button";
+        choice.className = "qsl-choice";
+        choice.textContent =
+          `${stock.name || stock.symbol} · ${stock.symbol} · ${stock.exchange || stock.country || "Exchange"}`;
+
+        choice.addEventListener("click", () => getQuote(stock));
+        choices.appendChild(choice);
+      });
+
+      output.appendChild(choices);
+    } catch (error) {
+      showError(error.message || "Search failed. Please try again.");
+    }
+  }
+
+  button.addEventListener("click", searchStock);
+  input.addEventListener("keydown", event => {
+    if (event.key === "Enter") searchStock();
+  });
+})();
+</script>
+<!-- END QUICK STOCK LOOKUP -->
+
 <h1 id="trading-desk-title">Market Stock Buzz at a Glance</h1>
 <p class="trading-desk-intro">Hand-Picked Winners</p>
 </div>
