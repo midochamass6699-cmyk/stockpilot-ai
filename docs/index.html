@@ -1638,30 +1638,56 @@ footer a { color:#8AB4FF !important; }
   line-height:1.6;
 }
 
-/* Expedia 160x600 side banners. They appear only when there is room beside the 1200px content column. */
-#expedia-left-banner,
-#expedia-right-banner {
-  position:fixed;
-  top:130px;
-  width:160px;
-  height:600px;
-  z-index:20;
+/* Expedia horizontal affiliate banners (Leaderboard 728x90). */
+.expedia-horizontal-wrap {
+  box-sizing:border-box;
+  width:min(1200px, calc(100% - 32px));
+  margin:18px auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+}
+.expedia-horizontal-slot {
+  box-sizing:border-box;
+  width:100%;
+  min-height:90px;
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  overflow:hidden;
+  overflow:visible;
 }
-#expedia-left-banner { left:calc(50% - 780px); }
-#expedia-right-banner { right:calc(50% - 780px); }
-#expedia-left-banner .eg-affiliate-banners,
-#expedia-right-banner .eg-affiliate-banners {
-  width:160px;
-  min-width:160px;
-  min-height:600px;
+.expedia-horizontal-slot .eg-affiliate-banners {
+  display:block;
+  width:728px;
+  min-width:728px;
+  min-height:90px;
 }
-@media(max-width:1599px) {
-  #expedia-left-banner,
-  #expedia-right-banner { display:none !important; }
+.expedia-ad-caption {
+  display:block;
+  margin:0 0 5px;
+  color:#68746E;
+  font-size:10px;
+  line-height:1.35;
+  text-align:center;
+}
+/* Scale the fixed-width leaderboard proportionally on smaller screens. */
+@media(max-width:760px) and (min-width:601px) {
+  .expedia-horizontal-slot { min-height:74px; }
+  .expedia-horizontal-slot .eg-affiliate-banners { transform:scale(.82); transform-origin:top center; }
+}
+@media(max-width:600px) and (min-width:451px) {
+  .expedia-horizontal-slot { min-height:55px; }
+  .expedia-horizontal-slot .eg-affiliate-banners { transform:scale(.61); transform-origin:top center; }
+}
+@media(max-width:450px) and (min-width:361px) {
+  .expedia-horizontal-slot { min-height:43px; }
+  .expedia-horizontal-slot .eg-affiliate-banners { transform:scale(.48); transform-origin:top center; }
+}
+@media(max-width:360px) {
+  .expedia-horizontal-wrap { width:calc(100% - 16px); }
+  .expedia-horizontal-slot { min-height:41px; }
+  .expedia-horizontal-slot .eg-affiliate-banners { transform:scale(.45); transform-origin:top center; }
 }
 @media(max-width:600px) {
   .weekly-metrics { grid-template-columns:1fr; }
@@ -1723,7 +1749,7 @@ html, body { background-color:#F1F5FA !important; }
 }
 
 
-/* MUST-READ MARGIN ARTICLE vs cash CTA */
+/* MUST-READ MARGIN ARTICLE CTA */
 .weekly-title-row .margin-feature-cta{
   min-height:78px; padding:10px 14px; flex-direction:column; align-items:flex-start; justify-content:center; gap:3px;
   border:1px solid #d9e3ef; border-left:4px solid #e4b43f; border-radius:10px;
@@ -2074,6 +2100,24 @@ input, select, textarea, button {
   </script>
 </div>
 <!-- END STOCKPILOT AI MARKET TICKER -->
+<!-- EXPEDIA HORIZONTAL AFFILIATE BANNER 1: beach getaway -->
+<div class="expedia-horizontal-wrap" aria-label="Expedia travel offers">
+  <div class="expedia-horizontal-slot">
+    <div>
+      <span class="expedia-ad-caption">Sponsored travel offer · StockPilot AI may earn a commission from qualifying bookings.</span>
+      <div class="eg-affiliate-banners"
+           data-program="us-expedia"
+           data-network="pz"
+           data-layout="leaderboard"
+           data-image="sailing"
+           data-message="sun-seeker-find-perfect-beach-getaway"
+           data-camref="1011l5ugbw"
+           data-pubref=""
+           data-link="home"></div>
+    </div>
+  </div>
+</div>
+
 <!-- The free-access message now appears in the two vertical side banners. -->
 <!-- FIND YOUR BROKER: slim, high-visibility banner above the Live Trading Desk -->
 <a aria-label="Find your broker and explore brokerage platforms" class="find-broker-banner" href="#broker-directory" id="stockpilot-find-broker-banner">
@@ -2136,6 +2180,21 @@ input, select, textarea, button {
 </div>
 <div class="trading-desk-note"><strong>Important:</strong> This desk is a research starting point, not a real-time trading terminal or a buy/sell recommendation. Always verify the latest quote, volume and company news with your broker or a live market-data provider.</div>
 </section>
+<!-- STOCKPILOT AI FREE DAILY ALERTS: ENGLISH HOMEPAGE SUBSCRIPTION CTA -->
+<section class="container" aria-label="Free StockPilot AI market alerts" id="stockpilot-alert-signup">
+  <div class="weekly-subscribe-cta">
+    <div class="weekly-subscribe-copy">
+      <span aria-hidden="true" class="weekly-subscribe-icon">🔔</span>
+      <div>
+        <strong id="weekly-subscribe-heading">NEVER MISS A MARKET MOVE</strong>
+        <small>Get free StockPilot AI browser alerts when new daily stock picks, penny-stock watchlists and important market updates are published.</small>
+      </div>
+    </div>
+    <button id="stockpilot-subscribe-btn" type="button">🔔 SUBSCRIBE FREE</button>
+    <p aria-live="polite" id="stockpilot-subscribe-status">Free daily market alerts. No payment required.</p>
+  </div>
+</section>
+
 <nav aria-label="Market categories" class="category-nav">
 <a class="category-tab active" href="#main-picks">TODAY’S STOCKS</a>
 <a class="category-tab" href="#penny-picks">PENNY STOCKS</a>
@@ -2162,6 +2221,23 @@ input, select, textarea, button {
 <div class="empty">Loading main stock picks…</div>
 </div>
 </section>
+<!-- EXPEDIA HORIZONTAL AFFILIATE BANNER 2: car rental -->
+<div class="expedia-horizontal-wrap" aria-label="Expedia car rental offer">
+  <div class="expedia-horizontal-slot">
+    <div>
+      <span class="expedia-ad-caption">Sponsored travel offer · StockPilot AI may earn a commission from qualifying bookings.</span>
+      <div class="eg-affiliate-banners"
+           data-program="us-expedia"
+           data-network="pz"
+           data-layout="leaderboard"
+           data-image="sailing"
+           data-message="find-perfect-car-rental"
+           data-camref="1011l5ugbw"
+           data-pubref=""
+           data-link="home"></div>
+    </div>
+  </div>
+</div>
 <section class="penny-section" id="penny-picks">
 <div class="section-head">
 <div>
@@ -2429,23 +2505,6 @@ input, select, textarea, button {
       Always verify current information and do your own research.
     </p>
 </section>
-
-<!-- EXPEDIA CAR RENTAL — HORIZONTAL BANNER -->
-<div class="expedia-horizontal-banner">
-  <div
-    class="eg-affiliate-banners"
-    data-program="us-expedia"
-    data-network="pz"
-    data-layout="leaderboard"
-    data-image="sailing"
-    data-message="find-perfect-car-rental"
-    data-camref="1011l5ugbw"
-    data-pubref=""
-    data-link="home">
-  </div>
-</div>
-
-  
 <!-- FINANCIAL RESOURCES -->
 <section class="resources-section" id="financial-resources">
 <div class="section-head">
@@ -2585,8 +2644,8 @@ input, select, textarea, button {
         point for research—not a substitute for your own decisions.
       </p>
 <div class="creator-note">
-<h3>About the Creator — anonymous</h3>
-<p>Hi, I'm the creator of StockPilot AI. After years of researching stocks, penny stocks, cryptocurrencies, and exploring different brokers, I created this platform to share what I've learned and help others make more informed investment decisions.</p>
+<h3>About the Creator — MIDO</h3>
+<p>Hi, I'm Mido, creator of StockPilot AI. After years of researching stocks, penny stocks, cryptocurrencies, and exploring different brokers, I created this platform to share what I've learned and help others make more informed investment decisions.</p>
 <p>My goal is to provide free, useful information to help you develop and refine your own investment strategy. Thank you for being part of the community!</p>
 </div>
 </article>
@@ -2672,23 +2731,6 @@ input, select, textarea, button {
 <br/>
   Business Inquiries: <a href="mailto:stockpilotAI@technofront.org">stockpilotAI@technofront.org</a>
 </p>
-
-  
-<!-- EXPEDIA BEACH GETAWAY — HORIZONTAL BANNER -->
-<div class="expedia-horizontal-banner">
-  <div
-    class="eg-affiliate-banners"
-    data-program="us-expedia"
-    data-network="pz"
-    data-layout="leaderboard"
-    data-image="sailing"
-    data-message="sun-seeker-find-perfect-beach-getaway"
-    data-camref="1011l5ugbw"
-    data-pubref=""
-    data-link="home">
-  </div>
-</div>
-
 </footer>
 <!-- WEBSITE JAVASCRIPT -->
 <script>
@@ -3523,29 +3565,9 @@ body { overflow-x: hidden; }
   .navlinks { gap: 7px 9px; }
   .navlinks a { font-size: 10px; }
 }
-  
-/* Expedia horizontal leaderboard banners */
-.expedia-horizontal-banner {
-  width: 100%;
-  max-width: 728px;
-  min-height: 90px;
-  margin: 20px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.expedia-horizontal-banner .eg-affiliate-banners {
-  width: 728px;
-  min-width: 728px;
-  min-height: 90px;
-}
-
 </style>
 <style id="stockpilot-vertical-free-banners">
-/* Replace the two Expedia skyscraper placements with StockPilot AI's own vertical promo banners. */
-#expedia-left-banner, #expedia-right-banner { display:none !important; }
+/* StockPilot AI vertical promotional side banners remain separate from the Expedia horizontal placements. */
 .free-side-banner {
   position:fixed;
   top:132px;
@@ -4011,11 +4033,8 @@ body { overflow-x: hidden; }
   .hot-stock-arrow { top:22px; left:30px; width:48px; height:32px; }
 }
 </style>
-  
-<script
-  class="eg-affiliate-banners-script"
-  src="https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.js">
-</script>
+<!-- Load Expedia's affiliate banner script once for both horizontal placements. -->
+<script class="eg-affiliate-banners-script" src="https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.js" defer></script>
 
 </body>
 </html>
