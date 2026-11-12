@@ -291,8 +291,6 @@ a {color:inherit;}
   animation-play-state:paused;
 }
 
-  
-
 
 /* GENERAL SECTIONS */
 
@@ -955,8 +953,6 @@ footer a {color:var(--yellow);}
   .market-card img {height:180px;}
 }
 
-
-
 /* STOCKPILOT MARKET PICKS HERO BANNER */
 .market-hero {background:linear-gradient(115deg,#101010 0%,#242424 58%,#3a3000 100%);color:#fff;border-bottom:3px solid var(--yellow);padding:30px 18px 27px;text-align:center;}
 .market-hero-inner {width:min(1200px,100%);margin:0 auto;}
@@ -1071,8 +1067,6 @@ button,.button { border-radius:999px; }
   .marquee { animation:none; }
   .stock-card:hover { transform:none; }
 }
-
-
 
 /* ==========================================================
    STOCKPILOT BLUE / BLACK / WHITE LAYOUT UPDATE
@@ -1294,8 +1288,6 @@ footer a { color:#8AB4FF !important; }
   .category-tab { font-size:9px; letter-spacing:0; }
   .stock-grid { grid-template-columns:1fr !important; }
 }
-
-
 
 /* ==========================================================
    BROKER DIRECTORY SECTION
@@ -1542,8 +1534,6 @@ footer a { color:#8AB4FF !important; }
   .weekly-subscribe-copy {flex-basis:100%;}
   #stockpilot-subscribe-btn {width:100%;}
 }
-
-
 
 /* EN / FR language switch */
 .language-switch {
@@ -2025,12 +2015,6 @@ input, select, textarea, button {
 
 
 
-
-
-
-
-
-
 <a href="#top">HOME</a><a href="#main-picks">TODAY’S STOCKS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">CRYPTO</a><a class="nav-cta" href="./research.html">RESEARCH TOOLS</a><a href="#broker-directory">BROKERS</a><div aria-label="Choose language" class="language-switch">
 
 
@@ -2103,6 +2087,9 @@ input, select, textarea, button {
 </div>
 
 <!-- The free-access message now appears in the two vertical side banners. -->
+
+<!-- BROKER FINDER + QUICK STOCK LOOKUP: compact side-by-side tools -->
+<div class="stockpilot-top-tools">
 <!-- FIND YOUR BROKER: slim, high-visibility banner above the Live Trading Desk -->
 <a aria-label="Find your broker and explore brokerage platforms" class="find-broker-banner" href="#broker-directory" id="stockpilot-find-broker-banner">
 <span class="find-broker-copy">
@@ -2115,22 +2102,6 @@ input, select, textarea, button {
 </span>
 <span class="find-broker-action">EXPLORE BROKERS <span aria-hidden="true">→</span></span>
 </a>
-<!-- MARGIN GUIDE TEASER: placed directly below Find Your Broker -->
-<section aria-labelledby="margin-guide-teaser-title" class="margin-guide-teaser">
-<div class="margin-guide-teaser-copy">
-<div class="eyebrow">INVESTOR EDUCATION · CANADA</div>
-<h2 id="margin-guide-teaser-title">Help Me Choose: Cash or a Margin Account?</h2>
-<p>Compare the flexibility, costs and risks of cash and margin accounts before choosing how to invest.</p>
-</div>
-<a href="./margin-account-guide.html">COMPARE CASH &amp; MARGIN ACCOUNTS <span aria-hidden="true">→</span></a>
-</section>
-
-<!-- LIVE TRADING DESK: REPLACES THE WEEKLY STOCK OPINION -->
-<section aria-labelledby="trading-desk-title" class="live-trading-desk" id="live-trading-desk">
-<div class="trading-desk-header">
-<div>
-<div class="trading-desk-kicker"><span aria-hidden="true" class="trading-pulse"></span> STOCKPILOT AI · MARKET MONITOR</div>
-  
 <!-- STOCKPILOT AI - QUICK STOCK LOOKUP -->
 <section id="quick-stock-lookup">
   <div class="qsl-search">
@@ -2270,7 +2241,7 @@ input, select, textarea, button {
 
 <script>
 (() => {
-  const API_URL = "https://YOUR-WORKER-URL.workers.dev";
+  const API_URL = "https://stockpilot-lookup.midochamass6699.workers.dev";
 
   const input = document.getElementById("qsl-input");
   const button = document.getElementById("qsl-search-btn");
@@ -2419,388 +2390,90 @@ input, select, textarea, button {
 })();
 </script>
 <!-- END QUICK STOCK LOOKUP -->
-
-<!-- STOCKPILOT AI QUICK STOCK LOOKUP -->
-<div id="sp-lookup" class="sp-lookup">
-
-  <div class="sp-search">
-    <span class="sp-search-icon">⌕</span>
-    <input
-      type="text"
-      id="sp-stock-input"
-      placeholder="Search any stock or company..."
-      autocomplete="off"
-      aria-label="Search stocks"
-    />
-    <button id="sp-search-btn" type="button">Search</button>
-    <div id="sp-suggestions" class="sp-suggestions"></div>
-  </div>
-
-  <div class="sp-result" id="sp-result">
-    <span class="sp-result-label">STOCK LOOKUP</span>
-    <span class="sp-result-message">
-      Search a stock to see its latest quote
-    </span>
-  </div>
-
 </div>
 
-<style>
-/* QUICK STOCK LOOKUP */
-.sp-lookup {
-  width: 100%;
-  max-width: 1200px;
-  min-height: 54px;
-  margin: 10px auto 14px;
-  padding: 7px 12px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
+<style id="stockpilot-quick-lookup-layout-fix">
+/* Compact two-column broker + stock lookup row */
+.stockpilot-top-tools {
+  width: min(1200px, calc(100% - 36px));
+  margin: 12px auto 10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
   gap: 12px;
-  background: #101d30;
-  border: 1px solid #263c58;
-  border-radius: 8px;
-  position: relative;
-  z-index: 20;
-  font-family: Arial, sans-serif;
 }
-
-.sp-search {
-  flex: 1 1 45%;
+.stockpilot-top-tools .find-broker-banner {
+  width: 100%;
   min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
+  min-height: 82px;
+  height: 100%;
+  margin: 0;
+  padding: 10px 14px;
 }
-
-.sp-search-icon {
-  color: #8faecc;
-  font-size: 23px;
-}
-
-.sp-search input {
-  flex: 1;
+.stockpilot-top-tools #quick-stock-lookup {
+  width: 100%;
+  max-width: none;
   min-width: 0;
-  height: 34px;
-  border: 0;
-  outline: none;
-  color: #fff;
-  background: transparent;
-  font-size: 14px;
+  min-height: 82px;
+  height: 100%;
+  margin: 0;
+  padding: 9px 12px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+  border-radius: 11px;
 }
-
-.sp-search input::placeholder {
-  color: #91a1b7;
-}
-
-#sp-search-btn {
-  border: 0;
-  border-radius: 5px;
-  background: #2878ed;
-  color: white;
+.stockpilot-top-tools #quick-stock-lookup .qsl-heading {
+  margin: 0 0 4px;
   font-size: 13px;
-  font-weight: 700;
-  padding: 9px 14px;
-  cursor: pointer;
-  white-space: nowrap;
 }
-
-#sp-search-btn:hover {
-  background: #4390ff;
-}
-
-.sp-result {
-  flex: 1 1 55%;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  border-left: 1px solid #31435b;
-  padding-left: 14px;
-  color: #fff;
-}
-
-.sp-result-label {
-  font-size: 10px;
-  color: #8faecc;
-  font-weight: 700;
-  letter-spacing: .8px;
-  white-space: nowrap;
-}
-
-.sp-result-message {
-  color: #c5d0df;
+.stockpilot-top-tools #quick-stock-lookup .qsl-controls input {
+  height: 32px;
   font-size: 12px;
-  text-align: right;
 }
-
-.sp-price {
-  font-size: 19px;
-  font-weight: 700;
-  color: #fff;
-  white-space: nowrap;
-}
-
-.sp-change {
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.sp-up { color: #36d69a; }
-.sp-down { color: #ff6b76; }
-
-.sp-stock-name {
-  font-size: 12px;
-  color: #c5d0df;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.sp-suggestions {
-  display: none;
-  position: absolute;
-  top: calc(100% + 9px);
-  left: 0;
-  width: min(420px, 90vw);
-  max-height: 300px;
-  overflow-y: auto;
-  background: #14243a;
-  border: 1px solid #344b68;
-  border-radius: 7px;
-  box-shadow: 0 8px 25px rgba(0,0,0,.4);
-  z-index: 1000;
-}
-
-.sp-suggestion {
-  display: block;
-  width: 100%;
-  padding: 11px;
-  border: 0;
-  border-bottom: 1px solid #293d56;
-  background: transparent;
-  color: white;
-  text-align: left;
-  cursor: pointer;
-}
-
-.sp-suggestion:hover {
-  background: #263e5c;
-}
-
-.sp-suggestion strong {
-  color: #65a8ff;
-  margin-right: 7px;
-}
-
-.sp-suggestion small {
-  display: block;
-  color: #aab9cc;
-  margin-top: 3px;
+.stockpilot-top-tools #quick-stock-lookup .qsl-controls button {
+  padding: 0 11px;
   font-size: 11px;
 }
-
-@media (max-width: 650px) {
-  .sp-lookup {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 7px;
-    padding: 8px;
+.stockpilot-top-tools #quick-stock-lookup .qsl-output {
+  min-height: 22px;
+  font-size: 11px;
+}
+.stockpilot-top-tools #quick-stock-lookup .qsl-price {
+  font-size: 18px;
+}
+.stockpilot-top-tools #quick-stock-lookup .qsl-details,
+.stockpilot-top-tools #quick-stock-lookup .qsl-updated {
+  font-size: 10px;
+}
+@media (max-width: 700px) {
+  .stockpilot-top-tools {
+    width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    gap: 9px;
   }
-
-  .sp-search {
-    width: 100%;
-  }
-
-  .sp-result {
-    width: 100%;
-    border-left: 0;
-    border-top: 1px solid #31435b;
-    padding: 7px 0 2px;
-    justify-content: space-between;
-  }
-
-  .sp-result-message {
-    text-align: left;
+  .stockpilot-top-tools .find-broker-banner,
+  .stockpilot-top-tools #quick-stock-lookup {
+    min-height: 76px;
   }
 }
 </style>
+<!-- MARGIN GUIDE TEASER: placed directly below Find Your Broker -->
+<section aria-labelledby="margin-guide-teaser-title" class="margin-guide-teaser">
+<div class="margin-guide-teaser-copy">
+<div class="eyebrow">INVESTOR EDUCATION · CANADA</div>
+<h2 id="margin-guide-teaser-title">Help Me Choose: Cash or a Margin Account?</h2>
+<p>Compare the flexibility, costs and risks of cash and margin accounts before choosing how to invest.</p>
+</div>
+<a href="./margin-account-guide.html">COMPARE CASH &amp; MARGIN ACCOUNTS <span aria-hidden="true">→</span></a>
+</section>
 
-<script>
-(function () {
-  const WORKER_URL =
-    "https://https://stockpilot-lookup.midochamass6699.workers.dev";
+<!-- LIVE TRADING DESK: REPLACES THE WEEKLY STOCK OPINION -->
+<section aria-labelledby="trading-desk-title" class="live-trading-desk" id="live-trading-desk">
+<div class="trading-desk-header">
+<div>
+<div class="trading-desk-kicker"><span aria-hidden="true" class="trading-pulse"></span> STOCKPILOT AI · MARKET MONITOR</div>
 
-  const input = document.getElementById("sp-stock-input");
-  const button = document.getElementById("sp-search-btn");
-  const suggestions = document.getElementById("sp-suggestions");
-  const result = document.getElementById("sp-result");
 
-  let stocks = [];
-  let searchTimer;
-
-  async function api(action, params = {}) {
-    const query = new URLSearchParams({
-      action,
-      ...params
-    });
-
-    const response = await fetch(
-      `${WORKER_URL}?${query.toString()}`
-    );
-
-    const data = await response.json();
-
-    if (!response.ok || data.status === "error" || data.error) {
-      throw new Error(data.error || data.message || "Request failed");
-    }
-
-    return data;
-  }
-
-  function showMessage(message) {
-    result.innerHTML = "";
-
-    const label = document.createElement("span");
-    label.className = "sp-result-label";
-    label.textContent = "STOCK LOOKUP";
-
-    const text = document.createElement("span");
-    text.className = "sp-result-message";
-    text.textContent = message;
-
-    result.append(label, text);
-  }
-
-  async function searchStocks() {
-    const q = input.value.trim();
-
-    if (q.length < 1) return;
-
-    suggestions.style.display = "none";
-    showMessage("Searching...");
-
-    try {
-      const data = await api("search", { q });
-      stocks = data.data || [];
-
-      suggestions.innerHTML = "";
-
-      if (!stocks.length) {
-        showMessage("No matching stocks found.");
-        return;
-      }
-
-      stocks.forEach((stock) => {
-        const item = document.createElement("button");
-        item.type = "button";
-        item.className = "sp-suggestion";
-
-        const symbol = document.createElement("strong");
-        symbol.textContent = stock.symbol || "";
-
-        const name = document.createElement("span");
-        name.textContent = stock.instrument_name || "";
-
-        const details = document.createElement("small");
-        details.textContent =
-          `${stock.exchange || ""} · ${stock.country || ""}`;
-
-        item.append(symbol, name, details);
-
-        item.addEventListener("click", () => {
-          input.value = stock.symbol;
-          suggestions.style.display = "none";
-          getQuote(stock.symbol, stock.exchange || "");
-        });
-
-        suggestions.appendChild(item);
-      });
-
-      suggestions.style.display = "block";
-      showMessage("Select a stock from the results.");
-
-    } catch (error) {
-      showMessage(error.message || "Search unavailable.");
-    }
-  }
-
-  async function getQuote(symbol, exchange) {
-    showMessage("Loading price...");
-
-    try {
-      const data = await api("quote", {
-        symbol,
-        exchange
-      });
-
-      result.innerHTML = "";
-
-      const label = document.createElement("span");
-      label.className = "sp-result-label";
-      label.textContent = data.symbol || symbol;
-
-      const name = document.createElement("span");
-      name.className = "sp-stock-name";
-      name.textContent = data.name || exchange || "";
-
-      const price = document.createElement("span");
-      price.className = "sp-price";
-      price.textContent =
-        data.price != null
-          ? `${data.currency || ""} ${Number(data.price).toFixed(2)}`
-          : "Price unavailable";
-
-      const change = document.createElement("span");
-      const percent = Number(data.percent_change || 0);
-      change.className =
-        "sp-change " + (percent >= 0 ? "sp-up" : "sp-down");
-
-      change.textContent =
-        `${percent >= 0 ? "+" : ""}${percent.toFixed(2)}%`;
-
-      result.append(label, name, price, change);
-
-    } catch (error) {
-      showMessage(error.message || "Quote unavailable.");
-    }
-  }
-
-  button.addEventListener("click", searchStocks);
-
-  input.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      searchStocks();
-    }
-
-    if (event.key === "Escape") {
-      suggestions.style.display = "none";
-    }
-  });
-
-  input.addEventListener("input", () => {
-    clearTimeout(searchTimer);
-
-    if (!input.value.trim()) {
-      suggestions.style.display = "none";
-      showMessage("Search a stock to see its latest quote");
-      return;
-    }
-
-    searchTimer = setTimeout(searchStocks, 450);
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!event.target.closest("#sp-lookup")) {
-      suggestions.style.display = "none";
-    }
-  });
-})();
-</script>
-<!-- END STOCKPILOT AI QUICK STOCK LOOKUP -->
 
 <h1 id="trading-desk-title">Market Stock Buzz at a Glance</h1>
 <p class="trading-desk-intro">Hand-Picked Winners</p>
