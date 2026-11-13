@@ -3167,6 +3167,38 @@ input, select, textarea, button {
 <script>
 
 /* SAFE HTML TEXT */
+
+  let usdCadRate = null;
+
+async function loadUsdCadRate() {
+  try {
+    const response = await fetch(
+      "https://api.frankfurter.dev/v1/latest?base=USD&symbols=CAD"
+    );
+    const data = await response.json();
+    await loadUsdCadRate();
+    if (data.status === 'error') {
+    usdCadRate = data.rates.CAD;
+  } catch (error) {
+    console.log("Exchange rate unavailable");
+  }
+}
+
+function showConvertedPrice(price, currency) {
+  const amount = Number(price);
+  if (!Number.isFinite(amount) || !usdCadRate) return "";
+
+  const converted = currency === "USD"
+    ? amount * usdCadRate
+    : currency === "CAD"
+      ? amount / usdCadRate
+      : null;
+
+  if (converted === null) return "";
+
+  const target = currency === "USD" ? "CAD" : "USD";
+  return `<small>≈ ${converted.toFixed(2)} ${target}</small>`;
+}
 function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, function(c) {
     return {
@@ -3308,7 +3340,10 @@ function renderCrypto(c,index) {
         · CRYPTO
       </div>
 
-      <div class="price">${priceText}</div>
+<div class="price">
+  ${priceText}
+  ${showConvertedPrice(price, 'USD')}
+</div>
 
       <div class="change ${changeClass}">
         ${changeText}
