@@ -3169,23 +3169,29 @@ input, select, textarea, button {
 /* SAFE HTML TEXT */
 
   let usdCadRate = null;
+let usdCadRate = null;
 
 async function loadUsdCadRate() {
   try {
     const response = await fetch(
       "https://api.frankfurter.dev/v1/latest?base=USD&symbols=CAD"
     );
+
+    if (!response.ok) {
+      throw new Error("Exchange rate unavailable");
+    }
+
     const data = await response.json();
-    await loadUsdCadRate();
-    if (data.status === 'error') {
-    usdCadRate = data.rates.CAD;
+    usdCadRate = Number(data.rates.CAD) || null;
+
   } catch (error) {
-    console.log("Exchange rate unavailable");
+    console.warn("Exchange rate unavailable:", error);
   }
 }
 
 function showConvertedPrice(price, currency) {
   const amount = Number(price);
+
   if (!Number.isFinite(amount) || !usdCadRate) return "";
 
   const converted = currency === "USD"
@@ -3197,6 +3203,7 @@ function showConvertedPrice(price, currency) {
   if (converted === null) return "";
 
   const target = currency === "USD" ? "CAD" : "USD";
+
   return `<small>≈ ${converted.toFixed(2)} ${target}</small>`;
 }
 function esc(value) {
