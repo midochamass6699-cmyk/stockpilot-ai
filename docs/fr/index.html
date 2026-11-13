@@ -2110,14 +2110,15 @@ input, select, textarea, button {
 #stockpilot-forex-ticker .news-inner{width:100%;max-width:1240px;min-height:104px;margin:0 auto;padding:0 20px;box-sizing:border-box;display:flex;align-items:stretch}
 #stockpilot-forex-ticker .news-label{flex:0 0 112px;display:flex;align-items:center;justify-content:center;padding:12px;background:#183A34;color:#fff;font:900 11px/1.35 Arial,sans-serif;letter-spacing:.07em;text-align:center}
 #stockpilot-forex-ticker .news-card{display:flex;align-items:center;gap:16px;min-width:0;flex:1;padding:10px 18px;color:#171717;text-decoration:none}
-#stockpilot-forex-ticker .news-image{width:132px;height:80px;flex:0 0 132px;object-fit:cover;border-radius:7px;background:#e8e8e8}
-#stockpilot-forex-ticker .news-copy{min-width:0;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;text-align:center}
-#stockpilot-forex-ticker .news-meta{font:800 10px/1.3 Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#9a7620}
-#stockpilot-forex-ticker .news-headline{font:800 clamp(14px,1.7vw,19px)/1.25 Arial,sans-serif;color:#183A34;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-#stockpilot-forex-ticker .news-read{font:800 10px/1.2 Arial,sans-serif;letter-spacing:.05em;color:#68746E}
+#stockpilot-forex-ticker .news-image{width:148px;height:88px;flex:0 0 148px;object-fit:cover;border-radius:10px;background:#e8e8e8;border:1px solid #d6ad55;box-shadow:0 5px 14px #183a3420;transition:transform .25s ease}
+#stockpilot-forex-ticker .news-card:hover .news-image{transform:scale(1.025)}
+#stockpilot-forex-ticker .news-copy{min-width:0;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;text-align:center;padding:4px 12px}
+#stockpilot-forex-ticker .news-meta{display:inline-block;padding:4px 9px;border-radius:999px;background:#f6f0df;color:#8a681c;font:900 10px/1.3 Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase}
+#stockpilot-forex-ticker .news-headline{max-width:900px;font:900 clamp(17px,2vw,23px)/1.22 Arial,sans-serif;letter-spacing:-.025em;color:#123c35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-wrap:pretty}
+#stockpilot-forex-ticker .news-read{font:900 10px/1.2 Arial,sans-serif;letter-spacing:.09em;color:#9a7620}
 #stockpilot-forex-ticker .news-card:hover .news-headline{text-decoration:underline}
 #stockpilot-forex-ticker .news-card:focus-visible{outline:3px solid #d6ad55;outline-offset:-3px}
-@media(max-width:560px){#stockpilot-forex-ticker{min-height:94px}#stockpilot-forex-ticker .news-inner{min-height:94px;padding:0 12px}#stockpilot-forex-ticker .news-label{flex-basis:72px;font-size:9px;padding:8px}#stockpilot-forex-ticker .news-card{gap:10px;padding:8px 10px}#stockpilot-forex-ticker .news-image{width:88px;height:70px;flex-basis:88px}#stockpilot-forex-ticker .news-headline{-webkit-line-clamp:3;font-size:13px}#stockpilot-forex-ticker .news-meta{font-size:9px}}
+@media(max-width:560px){#stockpilot-forex-ticker{min-height:94px}#stockpilot-forex-ticker .news-inner{min-height:94px;padding:0 12px}#stockpilot-forex-ticker .news-label{flex-basis:72px;font-size:9px;padding:8px}#stockpilot-forex-ticker .news-card{gap:10px;padding:8px 10px}#stockpilot-forex-ticker .news-image{width:96px;height:70px;flex-basis:96px} #stockpilot-forex-ticker .news-copy{padding:2px 0;gap:5px} #stockpilot-forex-ticker .news-headline{font-size:14px}#stockpilot-forex-ticker .news-headline{-webkit-line-clamp:3;font-size:13px}#stockpilot-forex-ticker .news-meta{font-size:9px}}
 </style>
 <div id="stockpilot-forex-ticker" aria-label="Actualités des marchés financiers">
   <div class="news-inner">
@@ -2142,15 +2143,14 @@ input, select, textarea, button {
   const image=document.getElementById('stockpilot-headline-image');
   const title=document.getElementById('stockpilot-headline-title');
   const meta=document.getElementById('stockpilot-headline-meta');
-  const fallback=config.fallback;
+  const fallbackImages=[config.fallback,"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=520&q=75","https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=520&q=75","https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=520&q=75","https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?auto=format&fit=crop&w=520&q=75"];
   let stories=[],current=0,rotation=null;
   const excluded=/politic|election|president|parliament|campaign|congress|senate|guerre|war|pol[ií]tica|elecciones|gobierno|gouvernement/i;
-  function safeImage(item){
-    if(item.thumbnail) return item.thumbnail;
-    if(item.enclosure && item.enclosure.link) return item.enclosure.link;
+  function safeImage(item,index){
     const html=String(item.content||item.description||'');
     const match=html.match(/<img[^>]+src=["']([^"']+)/i);
-    return match?match[1]:fallback;
+    const candidate=(match&&match[1])||(item.enclosure&&item.enclosure.link)||item.thumbnail;
+    return candidate||fallbackImages[index%fallbackImages.length];
   }
   function render(){
     if(!stories.length)return;
@@ -2162,8 +2162,9 @@ input, select, textarea, button {
     title.textContent=headline||raw;
     meta.textContent=source+(item.pubDate?' · '+new Date(item.pubDate).toLocaleString('fr-CA',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'');
     link.href=item.link||'https://news.google.com/';
-    image.src=safeImage(item);
-    image.onerror=function(){this.onerror=null;this.src=fallback;};
+    image.onerror=null;
+    image.src=safeImage(item,current);
+    image.onerror=function(){this.onerror=null;this.src=fallbackImages[(current+1)%fallbackImages.length];};
     image.alt=headline||'Financial market news';
   }
   async function load(){
