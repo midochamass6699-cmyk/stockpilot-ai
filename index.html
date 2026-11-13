@@ -86,9 +86,76 @@
 .contact-note{margin:8px 0 0;color:#777;font-size:10px}
 @media(max-width:600px){.contact-form{grid-template-columns:1fr}.contact-form .full{grid-column:auto}.contact-form button{width:100%}}
 </style>
+<style>
+/* Floating USD/CAD converter */
+.fx-converter{position:fixed;right:16px;top:82px;z-index:1000;font:600 13px Arial,sans-serif;color:#172033}
+.fx-converter summary{list-style:none;cursor:pointer;background:#ffd629;color:#111;padding:10px 14px;border-radius:22px;box-shadow:0 3px 12px #0003;font-weight:900;white-space:nowrap}
+.fx-converter summary::-webkit-details-marker{display:none}
+.fx-converter[open] summary{border-radius:14px 14px 0 0}
+.fx-panel{width:250px;padding:14px;background:#fff;border:1px solid #d9d9d9;border-radius:12px 0 12px 12px;box-shadow:0 5px 20px #0003}
+.fx-panel label{display:block;margin:0 0 5px;font-size:12px}
+.fx-panel input,.fx-panel select{width:100%;padding:9px;border:1px solid #c8c8c8;border-radius:7px;background:#fff;color:#111;font:inherit;margin-bottom:10px}
+.fx-result{font-size:20px;font-weight:900;color:#176b43;overflow-wrap:anywhere}
+.fx-rate{font-size:11px;color:#666;margin-top:6px}
+@media(max-width:760px){.fx-converter{top:8px;right:10px}.fx-converter summary{padding:8px 11px;font-size:11px}.fx-panel{width:min(250px,calc(100vw - 24px))}}
+</style>
 </head>
 <body>
 <header class="topbar"><nav class="nav"><a class="brand" href="#top"><span class="brandmark">↗</span> STOCKPILOT AI</a><div class="navlinks"><a href="#top">HOME</a><a href="#crypto-picks">TOP CRYPTO</a><a href="#main-picks">DAILY PICKS</a><a href="#market-insights">MARKET INSIGHTS</a><a href="#financial-resources">RESOURCES</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a><a class="nav-cta" href="#discussion">DISCUSSION</a></div></nav></header>
+<details class="fx-converter" id="stockpilot-fx-converter">
+  <summary>USD ⇄ CAD Converter</summary>
+  <div class="fx-panel">
+    <label for="fx-amount">Amount</label>
+    <input id="fx-amount" type="number" min="0" step="any" value="100" inputmode="decimal">
+    <label for="fx-direction">Convert</label>
+    <select id="fx-direction">
+      <option value="USD-CAD">USD → CAD</option>
+      <option value="CAD-USD">CAD → USD</option>
+    </select>
+    <div class="fx-result" id="fx-result" aria-live="polite">Loading exchange rate…</div>
+    <div class="fx-rate" id="fx-rate">Loading exchange rate</div>
+  </div>
+</details>
+<script>
+(function(){
+ const box=document.getElementById('stockpilot-fx-converter');
+ if(!box)return;
+ const amount=document.getElementById('fx-amount');
+ const direction=document.getElementById('fx-direction');
+ const result=document.getElementById('fx-result');
+ const rateText=document.getElementById('fx-rate');
+ const isFrench=false;
+ let rate=null;
+ const fmt=(value,currency)=>new Intl.NumberFormat(isFrench?'fr-CA':'en-CA',{style:'currency',currency}).format(value);
+ function calculate(){
+   const value=Number(amount.value);
+   if(!Number.isFinite(value)||value<0){result.textContent=isFrench?'Entrez un montant valide':'Enter a valid amount';return;}
+   if(!rate){result.textContent=isFrench?'Taux indisponible':'Rate unavailable';return;}
+   const reverse=direction.value==='CAD-USD';
+   result.textContent=fmt(reverse?value/rate:value*rate,reverse?'USD':'CAD');
+   rateText.textContent=(isFrench?'Taux indicatif : ':'Indicative rate: ')+(reverse?'1 USD = '+rate.toFixed(4)+' CAD':'1 USD = '+rate.toFixed(4)+' CAD');
+ }
+ async function loadRate(){
+   try{
+     const response=await fetch('https://api.frankfurter.dev/v2/rate/usd/cad',{cache:'no-store'});
+     if(!response.ok)throw new Error('HTTP '+response.status);
+     const data=await response.json();
+     const value=Number(data&&data.rate);
+     if(!Number.isFinite(value)||value<=0)throw new Error('Invalid exchange rate');
+     rate=value;calculate();
+   }catch(error){
+     result.textContent=isFrench?'Taux temporairement indisponible':'Exchange rate temporarily unavailable';
+     rateText.textContent=isFrench?'Impossible de récupérer le taux en direct.':'Could not retrieve the live rate.';
+     console.warn('StockPilot converter:',error);
+   }
+ }
+ amount.addEventListener('input',calculate);
+ direction.addEventListener('change',calculate);
+ box.addEventListener('toggle',function(){if(box.open&&!rate)loadRate();});
+ loadRate();
+})();
+</script>
+
 <div class="free-ribbon" aria-label="100 percent free, no membership required"><div class="marquee" aria-hidden="true"><span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span><span>★ DAILY STOCK PICKS — FREE ACCESS</span><span>★ NO PAYWALL — NO SUBSCRIPTION</span><span>★ 100% FREE — NO MEMBERSHIP REQUIRED</span><span>★ DAILY STOCK PICKS — FREE ACCESS</span><span>★ NO PAYWALL — NO SUBSCRIPTION</span></div></div>
 
 <!-- TRADINGVIEW AFFILIATE BANNER -->
