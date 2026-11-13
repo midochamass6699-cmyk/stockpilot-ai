@@ -3120,23 +3120,29 @@ input, select, textarea, button {
 /* SAFE HTML TEXT */
 
   let usdCadRate = null;
+  let usdCadRatePromise = null;
 
 async function loadUsdCadRate() {
-  try {
-    const response = await fetch(
-      "https://api.frankfurter.dev/v1/latest?base=USD&symbols=CAD"
-    );
-
-    if (!response.ok) {
-      throw new Error("Exchange rate unavailable");
+  if (usdCadRate) return usdCadRate;
+  if (usdCadRatePromise) return usdCadRatePromise;
+  usdCadRatePromise = (async () => {
+    try {
+      const response = await fetch(
+        "https://api.frankfurter.dev/v1/latest?base=USD&symbols=CAD",
+        { cache: "no-store" }
+      );
+      if (!response.ok) throw new Error("Exchange rate unavailable");
+      const data = await response.json();
+      usdCadRate = Number(data.rates.CAD) || null;
+      return usdCadRate;
+    } catch (error) {
+      console.warn("Exchange rate unavailable:", error);
+      return null;
+    } finally {
+      usdCadRatePromise = null;
     }
-
-    const data = await response.json();
-    usdCadRate = Number(data.rates.CAD) || null;
-
-  } catch (error) {
-    console.warn("Exchange rate unavailable:", error);
-  }
+  })();
+  return usdCadRatePromise;
 }
 
 function showConvertedPrice(price, currency) {
@@ -3522,10 +3528,10 @@ async function loadStocks() {
 
   try {
 
-    const response = await fetch(
-      './data/picks.json?t=' + Date.now(),
-      {cache:'no-store'}
-    );
+    const [rate, response] = await Promise.all([
+      loadUsdCadRate(),
+      fetch('./data/picks.json?t=' + Date.now(), {cache:'no-store'})
+    ]);
 
     if (!response.ok) {
       throw new Error('Market data file returned HTTP ' + response.status);
