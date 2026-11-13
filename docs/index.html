@@ -1683,57 +1683,6 @@ footer a { color:#8AB4FF !important; }
   line-height:1.6;
 }
 
-/* Expedia horizontal affiliate banners (Leaderboard 728x90). */
-.expedia-horizontal-wrap {
-  box-sizing:border-box;
-  width:min(1200px, calc(100% - 32px));
-  margin:18px auto;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:18px;
-}
-.expedia-horizontal-slot {
-  box-sizing:border-box;
-  width:100%;
-  min-height:90px;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  overflow:visible;
-}
-.expedia-horizontal-slot .eg-affiliate-banners {
-  display:block;
-  width:728px;
-  min-width:728px;
-  min-height:90px;
-}
-.expedia-ad-caption {
-  display:block;
-  margin:0 0 5px;
-  color:#68746E;
-  font-size:10px;
-  line-height:1.35;
-  text-align:center;
-}
-/* Scale the fixed-width leaderboard proportionally on smaller screens. */
-@media(max-width:760px) and (min-width:601px) {
-  .expedia-horizontal-slot { min-height:74px; }
-  .expedia-horizontal-slot .eg-affiliate-banners { transform:scale(.82); transform-origin:top center; }
-}
-@media(max-width:600px) and (min-width:451px) {
-  .expedia-horizontal-slot { min-height:55px; }
-  .expedia-horizontal-slot .eg-affiliate-banners { transform:scale(.61); transform-origin:top center; }
-}
-@media(max-width:450px) and (min-width:361px) {
-  .expedia-horizontal-slot { min-height:43px; }
-  .expedia-horizontal-slot .eg-affiliate-banners { transform:scale(.48); transform-origin:top center; }
-}
-@media(max-width:360px) {
-  .expedia-horizontal-wrap { width:calc(100% - 16px); }
-  .expedia-horizontal-slot { min-height:41px; }
-  .expedia-horizontal-slot .eg-affiliate-banners { transform:scale(.45); transform-origin:top center; }
-}
 @media(max-width:600px) {
   .weekly-metrics { grid-template-columns:1fr; }
 }
@@ -2671,23 +2620,6 @@ input, select, textarea, button {
 <div class="empty">Loading main stock picks…</div>
 </div>
 </section>
-<!-- EXPEDIA HORIZONTAL AFFILIATE BANNER 2: car rental -->
-<div class="expedia-horizontal-wrap" aria-label="Expedia car rental offer">
-  <div class="expedia-horizontal-slot">
-    <div>
-      <span class="expedia-ad-caption">Sponsored travel offer · StockPilot AI may earn a commission from qualifying bookings.</span>
-      <div class="eg-affiliate-banners"
-           data-program="us-expedia"
-           data-network="pz"
-           data-layout="leaderboard"
-           data-image="sailing"
-           data-message="find-perfect-car-rental"
-           data-camref="1011l5ugbw"
-           data-pubref=""
-           data-link="home"></div>
-    </div>
-  </div>
-</div>
 <section class="penny-section" id="penny-picks">
 <div class="section-head">
 <div>
@@ -2834,22 +2766,6 @@ input, select, textarea, button {
     currently representing that it receives compensation from these providers.
   </div>
 </section>
-<!-- EXPEDIA HORIZONTAL AFFILIATE BANNER 1: beach getaway -->
-<div class="expedia-horizontal-wrap" aria-label="Expedia travel offers">
-  <div class="expedia-horizontal-slot">
-    <div>
-      <span class="expedia-ad-caption">Sponsored travel offer · StockPilot AI may earn a commission from qualifying bookings.</span>
-      <div class="eg-affiliate-banners"
-           data-program="us-expedia"
-           data-network="pz"
-           data-layout="leaderboard"
-           data-image="sailing"
-           data-message="sun-seeker-find-perfect-beach-getaway"
-           data-camref="1011l5ugbw"
-           data-pubref=""
-           data-link="home"></div>
-    </div>
-  </div>
 <!-- CRYPTOCURRENCY PICKS -->
 <!-- MAIN STOCK PICKS -->
 <!-- PENNY STOCK PICKS -->
@@ -4546,8 +4462,6 @@ body { overflow-x: hidden; }
   .hot-stock-arrow { top:22px; left:30px; width:48px; height:32px; }
 }
 </style>
-<!-- Load Expedia's affiliate banner script once for both horizontal placements. -->
-<script class="eg-affiliate-banners-script" src="https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.js" defer></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c2eaaca294c840bf8920ad6becb9d469"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
