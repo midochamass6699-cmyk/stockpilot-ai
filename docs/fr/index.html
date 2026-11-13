@@ -2104,72 +2104,93 @@ input, select, textarea, button {
   color: #ffffff;
 }
 </style>
-<!-- STOCKPILOT AI FOREX TICKER -->
+<!-- STOCKPILOT AI FINANCIAL HEADLINES: replaces the former forex ticker -->
 <style>
-#stockpilot-forex-ticker {
-  display:flex;
-  align-items:stretch;
-  width:100%;
-  height:42px;
-  overflow:hidden;
-  background:#ffffff;
-  border-top:2px solid #d6ad55;
-  border-bottom:1px solid #e8e8e8;
-  box-sizing:border-box;
-}
-#stockpilot-forex-ticker .forex-label {
-  flex:0 0 62px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#183A34;
-  color:#ffffff;
-  font:900 10px/1 Arial,sans-serif;
-  letter-spacing:.08em;
-}
-#stockpilot-forex-ticker .tradingview-widget-container {
-  flex:1 1 auto;
-  min-width:0;
-  width:calc(100% - 62px);
-  height:40px;
-  background:#ffffff;
-}
-#stockpilot-forex-ticker .tradingview-widget-container__widget {
-  width:100%;
-  height:40px;
-}
-@media(max-width:480px) {
-  #stockpilot-forex-ticker .forex-label {flex-basis:52px;font-size:9px}
-  #stockpilot-forex-ticker .tradingview-widget-container {width:calc(100% - 52px)}
-}
+#stockpilot-forex-ticker{display:flex;align-items:stretch;width:100%;min-height:104px;overflow:hidden;background:#fff;border-top:2px solid #d6ad55;border-bottom:1px solid #e8e8e8;box-sizing:border-box}
+#stockpilot-forex-ticker .news-label{flex:0 0 112px;display:flex;align-items:center;justify-content:center;padding:12px;background:#183A34;color:#fff;font:900 11px/1.35 Arial,sans-serif;letter-spacing:.07em;text-align:center}
+#stockpilot-forex-ticker .news-card{display:flex;align-items:center;gap:16px;min-width:0;flex:1;padding:10px 18px;color:#171717;text-decoration:none}
+#stockpilot-forex-ticker .news-image{width:132px;height:80px;flex:0 0 132px;object-fit:cover;border-radius:7px;background:#e8e8e8}
+#stockpilot-forex-ticker .news-copy{min-width:0;display:flex;flex-direction:column;gap:5px}
+#stockpilot-forex-ticker .news-meta{font:800 10px/1.3 Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#9a7620}
+#stockpilot-forex-ticker .news-headline{font:800 clamp(14px,1.7vw,19px)/1.25 Arial,sans-serif;color:#183A34;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#stockpilot-forex-ticker .news-read{font:800 10px/1.2 Arial,sans-serif;letter-spacing:.05em;color:#68746E}
+#stockpilot-forex-ticker .news-card:hover .news-headline{text-decoration:underline}
+#stockpilot-forex-ticker .news-card:focus-visible{outline:3px solid #d6ad55;outline-offset:-3px}
+@media(max-width:560px){#stockpilot-forex-ticker{min-height:94px}#stockpilot-forex-ticker .news-label{flex-basis:72px;font-size:9px;padding:8px}#stockpilot-forex-ticker .news-card{gap:10px;padding:8px 10px}#stockpilot-forex-ticker .news-image{width:88px;height:70px;flex-basis:88px}#stockpilot-forex-ticker .news-headline{-webkit-line-clamp:3;font-size:13px}#stockpilot-forex-ticker .news-meta{font-size:9px}}
 </style>
-<div id="stockpilot-forex-ticker" aria-label="Forex currency market ticker">
-  <div class="forex-label">FOREX</div>
-  <div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <script async="" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" type="text/javascript">
-    {
-      "symbols": [
-        {"proName":"FX:USDCAD","title":"USD/CAD"},
-        {"proName":"FX:EURUSD","title":"EUR/USD"},
-        {"proName":"FX:GBPUSD","title":"GBP/USD"},
-        {"proName":"FX:USDJPY","title":"USD/JPY"},
-        {"proName":"FX:AUDUSD","title":"AUD/USD"},
-        {"proName":"FX:USDCHF","title":"USD/CHF"},
-        {"proName":"FX:NZDUSD","title":"NZD/USD"},
-        {"proName":"FX:EURCAD","title":"EUR/CAD"},
-        {"proName":"FX:GBPJPY","title":"GBP/JPY"}
-      ],
-      "showSymbolLogo": false,
-      "colorTheme": "light",
-      "isTransparent": false,
-      "displayMode": "adaptive",
-      "locale": "fr"
-    }
-    </script>
-  </div>
+<div id="stockpilot-forex-ticker" aria-label="Actualités des marchés financiers">
+  <div class="news-label">ACTUALITÉS BOURSIÈRES</div>
+  <a class="news-card" id="stockpilot-headline-link" href="https://news.google.com/" target="_blank" rel="noopener noreferrer">
+    <img class="news-image" id="stockpilot-headline-image" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=520&q=75" alt="" loading="lazy" decoding="async">
+    <span class="news-copy">
+      <span class="news-meta" id="stockpilot-headline-meta">Chargement des dernières nouvelles financières…</span>
+      <span class="news-headline" id="stockpilot-headline-title" aria-live="polite">Chargement des dernières nouvelles financières…</span>
+      <span class="news-read">LIRE L’ARTICLE ↗</span>
+    </span>
+  </a>
 </div>
-<!-- END STOCKPILOT AI FOREX TICKER -->
+<script>
+(function(){
+  const config={"aria":"Actualités des marchés financiers","label":"ACTUALITÉS BOURSIÈRES","loading":"Chargement des dernières nouvelles financières…","empty":"Les nouvelles financières sont temporairement indisponibles.","read":"LIRE L’ARTICLE","fallback":"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=520&q=75","feed":"https://news.google.com/rss/search?q=%28actions+OR+bourse+OR+%22march%C3%A9s+boursiers%22+OR+%22r%C3%A9sultats+financiers%22%29+-politique+-%C3%A9lection+when%3A2d&hl=fr-CA&gl=CA&ceid=CA%3Afr"};
+  const root=document.getElementById('stockpilot-forex-ticker');
+  if(!root || root.dataset.newsReady) return;
+  root.dataset.newsReady='1';
+  const link=document.getElementById('stockpilot-headline-link');
+  const image=document.getElementById('stockpilot-headline-image');
+  const title=document.getElementById('stockpilot-headline-title');
+  const meta=document.getElementById('stockpilot-headline-meta');
+  const fallback=config.fallback;
+  let stories=[],current=0,rotation=null;
+  const excluded=/politic|election|president|parliament|campaign|congress|senate|guerre|war|pol[ií]tica|elecciones|gobierno|gouvernement/i;
+  function safeImage(item){
+    if(item.thumbnail) return item.thumbnail;
+    if(item.enclosure && item.enclosure.link) return item.enclosure.link;
+    const html=String(item.content||item.description||'');
+    const match=html.match(/<img[^>]+src=["']([^"']+)/i);
+    return match?match[1]:fallback;
+  }
+  function render(){
+    if(!stories.length)return;
+    const item=stories[current%stories.length];
+    const raw=String(item.title||'').trim();
+    const source=String(item.author||'').trim()||(raw.match(/\s[-–|]\s([^|]+)$/)||[])[1]||'Financial news';
+    let headline=raw;
+    if(!item.author&&source!=='Financial news')headline=raw.slice(0,raw.lastIndexOf(source)).replace(/\s[-–|]\s*$/,'').trim();
+    title.textContent=headline||raw;
+    meta.textContent=source+(item.pubDate?' · '+new Date(item.pubDate).toLocaleString('fr-CA',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'');
+    link.href=item.link||'https://news.google.com/';
+    image.src=safeImage(item);
+    image.onerror=function(){this.onerror=null;this.src=fallback;};
+    image.alt=headline||'Financial market news';
+  }
+  async function load(){
+    try{
+      const endpoint='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(config.feed);
+      const response=await fetch(endpoint,{cache:'no-store'});
+      if(!response.ok)throw new Error('News feed request failed');
+      const data=await response.json();
+      const now=Date.now();
+      stories=(Array.isArray(data.items)?data.items:[])
+        .filter(item=>item.title&&item.link&&!excluded.test((item.title||'')+' '+(item.description||'')))
+        .filter(item=>!item.pubDate||(now-new Date(item.pubDate).getTime())<72*60*60*1000)
+        .slice(0,12);
+      if(!stories.length)throw new Error('No suitable recent headlines');
+      current=0;render();
+      if(rotation)clearInterval(rotation);
+      rotation=setInterval(()=>{current=(current+1)%stories.length;render();},12000);
+    }catch(error){
+      meta.textContent=config.label;
+      title.textContent=config.empty;
+      link.href='https://news.google.com/';
+      link.setAttribute('aria-label',config.empty);
+      console.warn('StockPilot financial headlines:',error);
+    }
+  }
+  load();
+  setInterval(load,10*60*1000);
+})();
+</script>
+<!-- END STOCKPILOT AI FINANCIAL HEADLINES -->
 <!-- STOCKPILOT AI MARKET TICKER -->
 <div class="tradingview-widget-container" style="width:100%; height:46px; background:#ffffff;">
 <div class="tradingview-widget-container__widget"></div>
