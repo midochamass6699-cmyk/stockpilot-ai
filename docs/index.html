@@ -461,6 +461,41 @@ a {color:inherit;}
   margin-top:9px;
 }
 
+.stock-price-row {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:9px;
+}
+.stock-price-row .price { margin-top:0; }
+.stock-logo-wrap {
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 36px;
+  width:36px;
+  height:36px;
+  overflow:hidden;
+  border-radius:50%;
+  background:#f2f4f7;
+  border:1px solid #e5e7eb;
+}
+.stock-logo-fallback {
+  font-size:14px;
+  font-weight:900;
+  color:#475569;
+}
+.stock-company-logo {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:3px;
+  background:#fff;
+}
+
 .change {
   font-size:12px;
   font-weight:900;
@@ -3523,7 +3558,13 @@ function renderStock(s,penny) {
         ${s.market ? ' · ' + esc(s.market) : ''}
       </div>
 
-      <div class="price">${priceText}</div>
+      <div class="stock-price-row">
+        <span class="stock-logo-wrap" aria-label="${esc(s.company || s.ticker || 'Company')} logo">
+          <span class="stock-logo-fallback">${esc(String(s.company || s.ticker || '?').trim().charAt(0).toUpperCase())}</span>
+          <img class="stock-company-logo" src="https://financialmodelingprep.com/image-stock/${encodeURIComponent(s.ticker || '')}.png" alt="${esc(s.company || s.ticker || 'Company')} logo" loading="lazy" decoding="async" onload="this.previousElementSibling.style.display='none'" onerror="this.remove()">
+        </span>
+        <div class="price">${priceText}</div>
+      </div>
       <div class="change ${cls}">${change}</div>
 
       <div class="card-meta">
