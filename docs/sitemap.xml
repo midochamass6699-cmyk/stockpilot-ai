@@ -38,6 +38,12 @@
     <loc>https://technofront.org/margin-account-vs-cash-account.html</loc>
   </url>
 
-  <url><loc>https://technofront.org/brokers.html</loc><lastmod>2026-11-13</lastmod></url>
-  <url><loc>https://technofront.org/fr/courtiers.html</loc><lastmod>2026-11-13</lastmod></url>
+  <url>
+    <loc>https://technofront.org/brokers.html</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://technofront.org/fr/courtiers.html</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
 </urlset>
