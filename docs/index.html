@@ -2093,14 +2093,18 @@ input, select, textarea, button {
   const image=document.getElementById('stockpilot-headline-image');
   const title=document.getElementById('stockpilot-headline-title');
   const meta=document.getElementById('stockpilot-headline-meta');
-  const fallbackImages=[config.fallback,"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=520&q=75","https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=520&q=75","https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=520&q=75","https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?auto=format&fit=crop&w=520&q=75"];
+  const fallbackImages=[
+    "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=640&q=85",
+    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=640&q=85",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=640&q=85",
+    "https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?auto=format&fit=crop&w=640&q=85",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=640&q=85"
+  ];
   let stories=[],current=0,rotation=null;
   const excluded=/politic|election|president|parliament|campaign|congress|senate|guerre|war|pol[ií]tica|elecciones|gobierno|gouvernement/i;
   function safeImage(item,index){
-    const html=String(item.content||item.description||'');
-    const match=html.match(/<img[^>]+src=["']([^"']+)/i);
-    const candidate=(match&&match[1])||(item.enclosure&&item.enclosure.link)||item.thumbnail;
-    return candidate||fallbackImages[index%fallbackImages.length];
+    // Use our own rotating market-photo set instead of repetitive RSS thumbnails.
+    return fallbackImages[index%fallbackImages.length];
   }
   function render(){
     if(!stories.length)return;
