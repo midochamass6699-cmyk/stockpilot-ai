@@ -2159,6 +2159,28 @@ input, select, textarea, button {
 </button>
 </nav>
 </header>
+<!-- COMPACT FREE TOOLS BANNER -->
+<style>
+#stockpilot-free-tools{width:100%;min-height:44px;box-sizing:border-box;background:#14243b;border-top:1px solid #294866;border-bottom:1px solid #294866;display:flex;align-items:center;justify-content:center;padding:6px 12px;font-family:Arial,sans-serif;overflow-x:auto}
+#stockpilot-free-tools .tools-inner{width:100%;max-width:1240px;min-height:30px;display:flex;align-items:center;justify-content:center;gap:clamp(8px,1.7vw,22px);white-space:nowrap}
+#stockpilot-free-tools .tool-item{font-size:clamp(10px,1vw,12px);line-height:1.2;font-weight:900;letter-spacing:.045em;text-transform:uppercase}
+#stockpilot-free-tools .broker{color:#62d6ff}
+#stockpilot-free-tools .lookup{color:#ffffff}
+#stockpilot-free-tools .simulator{color:#f6c85f}
+#stockpilot-free-tools .analysis{color:#b9a2ff}
+#stockpilot-free-tools .free{color:#75e6a5;background:#174b3a;border:1px solid #3d9d72;border-radius:999px;padding:5px 10px}
+#stockpilot-free-tools .separator{color:#7890a8;font-size:11px}
+@media(max-width:600px){#stockpilot-free-tools{justify-content:flex-start;padding:6px 10px}#stockpilot-free-tools .tools-inner{justify-content:flex-start;gap:10px}#stockpilot-free-tools .tool-item{font-size:10px}}
+</style>
+<div id="stockpilot-free-tools" aria-label="Free StockPilot AI tools">
+  <div class="tools-inner">
+    <span class="tool-item broker">Broker Tool</span><span class="separator" aria-hidden="true">|</span>
+    <span class="tool-item lookup">Stock Lookup Tool</span><span class="separator" aria-hidden="true">|</span>
+    <span class="tool-item simulator">Options Simulator Tool</span><span class="separator" aria-hidden="true">|</span>
+    <span class="tool-item analysis">Full Analysis Inside</span>
+    <span class="tool-item free">100% FREE</span>
+  </div>
+</div>
 <div aria-label="Choose language" class="language-switch">
 <a href="/" lang="en">EN</a>
 <a href="/fr/" lang="fr">FR</a>
