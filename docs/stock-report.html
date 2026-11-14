@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stock Research Report | StockPilot AI</title>
+<meta name="description" content="Detailed report based on StockPilot AI market data and technical indicators.">
+<meta name="robots" content="noindex,follow">
+<style>
+:root{color-scheme:dark;--bg:#07111f;--panel:#101e30;--panel2:#14253a;--line:#263a52;--text:#edf4fb;--muted:#9fb1c5;--gold:#e7bd58;--green:#48d6a0;--red:#ff7884}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#1b3655 0,transparent 55%),var(--bg);color:var(--text);font:15px/1.6 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:#8fc9ff}.wrap{max-width:1120px;margin:auto;padding:24px 20px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:26px}.brand{font-weight:900;letter-spacing:.3px}.back{color:var(--gold);text-decoration:none;font-weight:750}.eyebrow{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:2px}.hero{border:1px solid var(--line);background:linear-gradient(130deg,#132942,#0d1a2b);border-radius:18px;padding:28px;margin-bottom:18px}.hero h1{font-size:clamp(27px,5vw,43px);line-height:1.12;margin:8px 0}.sub{color:var(--muted);margin:0}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.tag{border:1px solid #38506b;background:#142b43;border-radius:999px;padding:4px 10px;color:#c5d7e9;font-size:12px}.tag.warn{border-color:#806a35;color:#ffdb83;background:#302819}.hero-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:22px}.stat{background:#0b1929;border:1px solid #2a4058;border-radius:12px;padding:12px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:20px;display:block;margin-top:4px;overflow-wrap:anywhere}.positive{color:var(--green)}.negative{color:var(--red)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:20px;min-width:0}.panel h2{font-size:18px;margin:0 0 14px}.panel p{color:#c1cedb;margin:0 0 10px}.wide{grid-column:1/-1}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:var(--panel2);border-radius:10px;padding:11px}.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{font-size:15px}.returns{display:grid;gap:12px}.ret{display:grid;grid-template-columns:90px 1fr 70px;align-items:center;gap:10px;font-size:13px}.track{height:10px;background:#26384d;border-radius:9px;overflow:hidden}.bar{height:100%;border-radius:9px;background:linear-gradient(90deg,#368ed0,#5dd5b0)}.bar.neg{background:linear-gradient(90deg,#d15a70,#ff9b83)}.note{border-left:3px solid var(--gold);padding:10px 13px;background:#1d2a37;border-radius:0 8px 8px 0;color:#d5dfeb}.risklist{padding-left:20px;color:#d5dfeb}.risklist li{margin:8px 0}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{border:1px solid #38506b;border-radius:8px;padding:9px 12px;text-decoration:none}.foot{color:var(--muted);font-size:12px;margin-top:18px}.loading,.error{padding:50px 20px;text-align:center;color:var(--muted)}.error h1{color:var(--text)}@media(max-width:760px){.hero-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.wide{grid-column:auto}.top{align-items:flex-start;flex-direction:column}.wrap{padding:16px 13px 40px}}@media(max-width:390px){.ret{grid-template-columns:70px 1fr 58px}.metrics{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<nav class="top"><div class="brand">STOCKPILOT AI</div><a class="back" href="./index.html">← Retour à StockPilot AI</a></nav>
+<div id="report" class="loading">Chargement des données de marché…</div>
+</main>
+<script>
+const T={"title":"Stock Research Report | StockPilot AI","back":"← Back to StockPilot AI","eyebrow":"STOCK RESEARCH REPORT","loading":"Loading market data…","notFound":"This stock is no longer in the current daily selection.","home":"Return to homepage","main":"Main stock","penny":"Lower-priced stock · Higher risk","price":"Latest available price","change":"Daily change","score":"Momentum score","updated":"Last updated","overview":"Profile overview","screen":"Why this stock appears in the screen","performance":"Recent performance","d5":"5 sessions","d20":"20 sessions","d50":"50 sessions","technicals":"Technical indicators","rsi":"RSI (14)","vol":"Today's volume","volratio":"Volume vs 20-day average","avgvol":"20-day average volume","dollar":"Average daily dollar volume","ma20":"20-day moving average","ma50":"50-day moving average","volatility":"Daily volatility (20 sessions)","position":"Position vs moving averages","above":"Above","below":"Below","na":"Not available","interpretation":"How to read the indicators","risks":"Risks and limitations to review","fundamentals":"Company fundamentals","fundamentalsText":"Fundamental financial data (revenue, earnings, debt, cash and cash flow) is not included in the current daily feed. We do not estimate or invent these figures. Review the company's regulatory filings and reports before drawing conclusions.","sources":"Sources and verification","yahoo":"View market data on Yahoo Finance","sec":"Search regulatory filings on SEC EDGAR","method":"Screen methodology","methodText":"The momentum score combines 5-, 20- and 50-session returns, relative volume and trend alignment. The model applies deductions for elevated RSI and volatility. This is an activity and trend screen, not an assessment of business quality.","sourceLabel":"Data source","dataNote":"Data note","disclaimer":"General information for educational purposes only. This report is not personalized financial advice or a recommendation to buy or sell. Data may be delayed or incomplete.","riskPenny":"Lower-priced security: volatility, limited liquidity, bid-ask spreads and risk of loss may be significant.","riskRsi":"Elevated RSI: the recent move may be extended and could experience rapid swings.","riskVol":"High volatility: observed price fluctuations have been substantial.","riskLiquidity":"Limited average dollar volume: entering or exiting a position may be harder without affecting the price.","riskData":"Provider coverage is limited and may not represent the entire market.","notIn":"Sector classification not supplied","market":"Market","exchange":"Exchange","currency":"Currency","date":"Quote date","returnLabel":"Return","today":"today","unknown":"Not provided","company":"Company","classification":"Sector classification"};
+const DATA_URL="./data/picks.json";
+const params=new URLSearchParams(location.search);
+const ticker=(params.get('ticker')||'').trim().toUpperCase();
+const kind=(params.get('kind')||'main').toLowerCase();
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=(v,d=2)=>Number.isFinite(Number(v))?Number(v).toLocaleString('en-CA',{minimumFractionDigits:d,maximumFractionDigits:d}):T.na;
+const pct=v=>Number.isFinite(Number(v))?(Number(v)>0?'+':'')+num(v)+'%':T.na;
+const cash=(v,c)=>Number.isFinite(Number(v))?(c==='CAD'?'CA$':'US$')+num(v,Number(v)<1?4:2):T.na;
+function metric(label,value){return '<div class="metric"><span>'+label+'</span><strong>'+value+'</strong></div>'}
+function ret(label,value){if(!Number.isFinite(Number(value)))return '';const n=Number(value),w=Math.min(100,Math.abs(n));return '<div class="ret"><span>'+label+'</span><div class="track"><div class="bar '+(n<0?'neg':'')+'" style="width:'+w+'%"></div></div><strong class="'+(n<0?'negative':'positive')+'">'+pct(n)+'</strong></div>'}
+function render(s,penny,data){
+ const currency=s.currency||'USD',name=esc(s.company||s.ticker),exchange=esc(s.exchange||T.unknown),market=esc(s.market||T.unknown);
+ const ch=Number(s.change_percent),price=Number(s.price),rsi=Number(s.rsi),volatility=Number(s.volatility_20d),ratio=Number(s.volume_ratio),avgDollar=Number(s.average_dollar_volume_20d);
+ const trend20=s.above_20day_average===true?T.above:s.above_20day_average===false?T.below:T.na;
+ const trend50=s.above_50day_average===true?T.above:s.above_50day_average===false?T.below:T.na;
+ const readings=[];
+ if(Number.isFinite(Number(s.return_20d))&&Number.isFinite(Number(s.return_50d)))readings.push(Number(s.return_20d)>0&&Number(s.return_50d)>0?"Both 20- and 50-session returns are positive, indicating an upward recent trend over the measured windows.":Number(s.return_20d)<0&&Number(s.return_50d)<0?"Both 20- and 50-session returns are negative, indicating a downward recent trend over the measured windows.":"The 20- and 50-session returns diverge; trend direction is not consistent across both windows.");
+ if(Number.isFinite(ratio))readings.push(ratio>1.5?"Trading volume is well above its 20-session average, indicating above-normal recent activity.":ratio<0.75?"Volume is below its 20-session average, so the recent move is occurring with lighter participation.":"Volume is relatively close to its 20-session average.");
+ if(Number.isFinite(rsi))readings.push(rsi>=70?"RSI is elevated (70 or higher), which can indicate an extended short-term move; it is not a standalone signal.":rsi<=30?"RSI is low (30 or below); this describes recent weakness and does not by itself predict a rebound.":"RSI is within the commonly referenced middle range of 30 to 70.");
+ const risks=[];
+ if(penny)risks.push(T.riskPenny);
+ if(Number.isFinite(rsi)&&rsi>=70)risks.push(T.riskRsi);
+ if(Number.isFinite(volatility)&&volatility>=5)risks.push(T.riskVol);
+ if(Number.isFinite(avgDollar)&&avgDollar<1000000)risks.push(T.riskLiquidity);
+ risks.push(T.riskData);
+ const stamp=data.updated_at||data.generated_at_utc||T.unknown;
+ const y='https://finance.yahoo.com/quote/'+encodeURIComponent(s.ticker||'');
+ const sec='https://www.sec.gov/edgar/search/#/q='+encodeURIComponent(s.ticker||'');
+ $('report').className='';
+ $('report').innerHTML=`
+ <header class="hero">
+  <div class="eyebrow">${T.eyebrow}</div><h1>${name} <span style="color:var(--gold)">(${esc(s.ticker)})</span></h1>
+  <p class="sub">${penny?T.penny:T.main} · ${exchange} · ${market}</p>
+  <div class="tags"><span class="tag">${T.company}: ${name}</span><span class="tag">${T.classification}: ${esc(s.sector||T.notIn)}</span><span class="tag">${T.currency}: ${esc(currency)}</span><span class="tag">${T.date}: ${esc(s.price_date||s.quote_time||T.unknown)}</span>${penny?'<span class="tag warn">HIGH RISK</span>':''}</div>
+  <div class="hero-grid">
+   <div class="stat"><small>${T.price}</small><strong>${cash(price,currency)}</strong></div>
+   <div class="stat"><small>${T.change}</small><strong class="${ch>=0?'positive':'negative'}">${pct(ch)}</strong></div>
+   <div class="stat"><small>${T.score}</small><strong>${num(s.score,1)} / 100</strong></div>
+   <div class="stat"><small>${T.updated}</small><strong style="font-size:13px">${esc(stamp)}</strong></div>
+  </div>
+ </header>
+ <div class="grid">
+  <section class="panel"><h2>${T.overview}</h2><p>${esc(s.company||s.ticker)} is included in StockPilot AI's ${penny?'lower-priced stock':'main stock'} screen for the current snapshot. The supplied dataset classifies its sector as ${esc(s.sector||T.notIn)} and lists it on ${exchange}.</p><div class="note">${T.screen}: ${esc(s.reason||T.unknown)}</div></section>
+  <section class="panel"><h2>${T.performance}</h2><div class="returns">${ret(T.d5,s.return_5d)}${ret(T.d20,s.return_20d)}${ret(T.d50,s.return_50d)}</div><p class="foot">Returns are calculated from daily prices supplied by the source; past periods do not predict future results.</p></section>
+  <section class="panel"><h2>${T.technicals}</h2><div class="metrics">
+   ${metric(T.rsi,num(rsi,1))}${metric(T.vol,Number.isFinite(Number(s.volume))?num(s.volume,0):T.na)}
+   ${metric(T.volratio,Number.isFinite(ratio)?num(ratio,2)+'×':T.na)}${metric(T.avgvol,num(s.average_volume_20d,0))}
+   ${metric(T.dollar,Number.isFinite(avgDollar)?(currency==='CAD'?'CA$':'US$')+num(avgDollar,0):T.na)}
+   ${metric(T.volatility,Number.isFinite(volatility)?num(volatility,2)+'%':T.na)}
+   ${metric(T.ma20,cash(s.ma20,currency))}${metric(T.ma50,cash(s.ma50,currency))}
+   ${metric(T.position,'20d: '+trend20+' · 50d: '+trend50)}
+  </div></section>
+  <section class="panel"><h2>${T.interpretation}</h2><ul class="risklist">${readings.map(x=>'<li>'+x+'</li>').join('')||'<li>'+T.na+'</li>'}</ul><p class="foot">These observations describe the displayed data and do not forecast the stock's future direction.</p></section>
+  <section class="panel"><h2>${T.risks}</h2><ul class="risklist">${risks.map(x=>'<li>'+x+'</li>').join('')}</ul><p class="foot">${esc(s.risk||T.unknown)}</p></section>
+  <section class="panel"><h2>${T.fundamentals}</h2><p>${T.fundamentalsText}</p></section>
+  <section class="panel wide"><h2>${T.method}</h2><p>${T.methodText}</p><p><strong>${T.sourceLabel}:</strong> ${esc(data.data_source||data.source||T.unknown)}</p><p><strong>${T.dataNote}:</strong> ${esc(data.data_note||T.unknown)}</p></section>
+  <section class="panel wide"><h2>${T.sources}</h2><div class="links"><a href="${y}" target="_blank" rel="noopener noreferrer">${T.yahoo} ↗</a><a href="${sec}" target="_blank" rel="noopener noreferrer">${T.sec} ↗</a></div><p class="foot">${T.disclaimer}</p></section>
+ </div>
+ <p class="foot">${T.updated}: ${esc(stamp)} · StockPilot AI</p>`;
+}
+async function init(){
+ if(!ticker){$('report').innerHTML='<div class="error"><h1>Stock not specified</h1><a href="'+home+'">'+T.home+'</a></div>';return;}
+ try{
+  const res=await fetch(DATA_URL+'?v='+Date.now(),{cache:'no-store'});
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  const data=await res.json();
+  const list=kind==='penny'?(data.penny||[]):(data.main||[]);
+  const stock=list.find(x=>String(x.ticker||'').toUpperCase()===ticker);
+  if(!stock){$('report').innerHTML='<div class="error"><h1>'+T.notFound+'</h1><a href="'+home+'">'+T.home+'</a></div>';return;}
+  document.title=(fr?'Research on ':'Research on ')+ticker+' | StockPilot AI';
+  render(stock,kind==='penny',data);
+ }catch(e){$('report').innerHTML='<div class="error"><h1>'+T.loading+'</h1><p>'+esc(e.message)+'</p><a href="'+home+'">'+T.home+'</a></div>';}
+}
+init();
+</script>
+</body></html>
