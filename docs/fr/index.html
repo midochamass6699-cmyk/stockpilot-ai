@@ -3383,6 +3383,9 @@ function renderStock(s,penny,rate) {
   const ticker = esc(s.ticker || '');
   const link = 'https://finance.yahoo.com/quote/'
     + encodeURIComponent(s.ticker || '');
+  const reportLink = './recherche.html?ticker='
+    + encodeURIComponent(s.ticker || '')
+    + '&kind=' + (penny ? 'penny' : 'main');
 
   return `
     <article class="stock-card ${penny ? 'penny' : ''}">
@@ -3427,10 +3430,10 @@ function renderStock(s,penny,rate) {
       </section>
 
       <a class="stock-link"
-         href="${link}"
+         href="${reportLink}"
          target="_blank"
          rel="noopener noreferrer">
-        Research ${ticker} on Yahoo Finance ↗
+        Lire l’analyse complète ↗
       </a>
     </article>
   `;
