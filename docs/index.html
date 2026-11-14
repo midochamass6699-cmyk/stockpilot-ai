@@ -2214,6 +2214,15 @@ input, select, textarea, button {
   <div class="qsl-output" id="qsl-output">
     <span class="qsl-placeholder">Search for a stock to see its latest price.</span>
   </div>
+
+  <a class="qsl-simulator-promo" href="./options-simulator.html" aria-label="Open the StockPilot Virtual Options Simulator">
+    <span class="qsl-simulator-copy">
+      <span class="qsl-simulator-kicker">TRY SOMETHING NEW · EDUCATIONAL SIMULATOR</span>
+      <strong>Practice Options Trading Without Real Money</strong>
+      <span>Explore calls, puts and hypothetical outcomes with a virtual balance. No real trades or market quotes.</span>
+    </span>
+    <span class="qsl-simulator-action">OPEN SIMULATOR <span aria-hidden="true">→</span></span>
+  </a>
 </section>
 
 <style>
@@ -2316,6 +2325,91 @@ input, select, textarea, button {
 
 .qsl-error {
   color: #ffb4a9;
+}
+
+.qsl-simulator-promo {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  max-height: 0;
+  padding: 0 15px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(105deg,#173a55,#1c3150 58%,#263b63);
+  transition: max-height .28s ease, padding .28s ease, opacity .22s ease, visibility .22s ease, border-color .22s ease;
+}
+#quick-stock-lookup:hover .qsl-simulator-promo,
+#quick-stock-lookup:focus-within .qsl-simulator-promo {
+  max-height: 130px;
+  padding: 13px 15px;
+  opacity: 1;
+  visibility: visible;
+  border-color: #4d78a3;
+}
+.qsl-simulator-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.qsl-simulator-kicker {
+  color: #8fc8ff;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+.qsl-simulator-copy strong {
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.25;
+}
+.qsl-simulator-copy > span:last-child {
+  color: #d2deeb;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.qsl-simulator-action {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border-radius: 6px;
+  background: #ffd629;
+  color: #101010;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .04em;
+}
+.qsl-simulator-promo:hover .qsl-simulator-action { background: #ffe36a; }
+.qsl-simulator-promo:focus-visible { outline: 3px solid #8fc8ff; outline-offset: 3px; }
+@media (max-width: 650px) {
+  .qsl-simulator-promo {
+    max-height: none;
+    padding: 12px;
+    opacity: 1;
+    visibility: visible;
+    border-color: #4d78a3;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  #quick-stock-lookup:hover .qsl-simulator-promo,
+  #quick-stock-lookup:focus-within .qsl-simulator-promo {
+    max-height: none;
+    padding: 12px;
+  }
+  .qsl-simulator-copy strong { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qsl-simulator-promo { transition: none; }
 }
 
 @media (max-width: 650px) {
