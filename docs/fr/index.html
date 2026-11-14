@@ -1994,34 +1994,159 @@ input, select, textarea, button {
 .fx-rate{font-size:11px;color:#666;margin-top:6px}
 @media(max-width:760px){.fx-converter{top:8px;right:10px}.fx-converter summary{padding:8px 11px;font-size:11px}.fx-panel{width:min(250px,calc(100vw - 24px))}}
 </style>
+<style id="stockpilot-compact-navigation">
+/* Compact, balanced desktop navigation and one-line mobile header */
+.topbar .nav {
+  position:relative;
+  display:grid !important;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center !important;
+  gap:clamp(12px,2vw,28px) !important;
+  min-height:54px;
+  padding:7px 18px !important;
+}
+.topbar .brand { gap:8px; font-size:18px; }
+.topbar .brandmark { width:32px; height:32px; font-size:21px; }
+.topbar .nav-menu { display:contents; }
+.topbar .navlinks {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex-wrap:nowrap !important;
+  gap:clamp(9px,1.35vw,19px) !important;
+  min-width:0;
+}
+.topbar .navlinks a {
+  display:inline-block;
+  padding:5px 0;
+  font-size:clamp(10px,.88vw,12px);
+  line-height:1.2;
+  white-space:nowrap;
+}
+.topbar .navlinks .nav-cta { padding:7px 10px; }
+.topbar .language-switch {
+  display:flex !important;
+  align-items:center;
+  justify-self:end;
+  gap:7px;
+  margin:0;
+  white-space:nowrap;
+}
+.topbar .language-switch a { padding:5px 0; }
+.topbar .nav-toggle {
+  display:none;
+  border:1px solid #ffffff35;
+  background:transparent;
+  color:inherit;
+  width:38px;
+  height:36px;
+  padding:8px;
+  border-radius:7px;
+  cursor:pointer;
+}
+.topbar .nav-toggle span {
+  display:block;
+  height:2px;
+  width:20px;
+  margin:4px auto;
+  background:currentColor;
+  border-radius:2px;
+}
+.topbar .nav-toggle:focus-visible,
+.topbar .nav a:focus-visible {
+  outline:2px solid var(--yellow);
+  outline-offset:3px;
+}
+@media (max-width:760px) {
+  .topbar .nav {
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:10px !important;
+    min-height:50px;
+    padding:6px 12px !important;
+  }
+  .topbar .brand { font-size:17px; }
+  .topbar .brandmark { width:30px; height:30px; }
+  .topbar .nav-toggle {
+    display:block;
+    justify-self:end;
+    color:#fff;
+  }
+  .topbar .nav-menu { display:none; }
+  .topbar .nav-menu.is-open {
+    display:flex;
+    position:absolute;
+    z-index:60;
+    top:100%;
+    left:0;
+    right:0;
+    width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:7px 14px 12px;
+    background:var(--black);
+    border-bottom:3px solid var(--yellow);
+    box-shadow:0 8px 18px #0003;
+  }
+  .topbar .navlinks {
+    display:flex !important;
+    flex-direction:column;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    gap:0 !important;
+  }
+  .topbar .navlinks a,
+  .topbar .navlinks .nav-cta {
+    display:block;
+    width:100%;
+    padding:10px 8px;
+    border-radius:4px;
+    font-size:13px;
+    text-align:left;
+  }
+  .topbar .language-switch {
+    justify-content:center;
+    align-self:stretch;
+    justify-self:auto;
+    padding-top:10px;
+    margin-top:5px;
+    border-top:1px solid #ffffff2b;
+  }
+  .topbar .language-switch a { padding:5px 10px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .topbar .nav-menu { transition:none; }
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
 <header class="topbar">
-<nav class="nav">
-<a class="brand" href="#top">
-<span class="brandmark">↗</span>
+<nav class="nav" aria-label="Main navigation">
+<a class="brand" href="#top" aria-label="StockPilot AI home">
+<span class="brandmark" aria-hidden="true">↗</span>
       STOCKPILOT AI
-    </a>
+</a>
+<div class="nav-menu" id="primary-navigation">
 <div class="navlinks">
-<a href="#top">ACCUEIL</a><a href="#main-picks">ACTIONS DU JOUR</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">TOP CRYPTO</a><a href="./courtiers.html">COURTIERS</a>
-<a href="#market-coverage">MARCHÉS</a>
-<a href="#stock-of-the-week">ACTION DE LA SEMAINE</a>
-<a href="./research.html">CENTRE DE RECHERCHE</a>
-<a href="./market-investing-guide.html">GUIDE DE PLACEMENT</a>
-<a href="#margin-account-article">GUIDE SUR LES COMPTES SUR MARGE</a>
-<a href="#market-insights">ANALYSE DES MARCHÉS</a>
-<a href="#financial-resources">RESSOURCES</a>
-<a href="#about">À PROPOS</a>
-<a href="#contact">CONTACT</a>
-<a class="nav-cta" href="#discussion">DISCUSSION</a>
+<a href="#top">ACCUEIL</a>
+<a href="#main-picks">ACTIONS</a>
+<a href="#penny-picks">PENNY</a>
+<a href="#crypto-picks">CRYPTO</a>
+<a href="./courtiers.html">COURTIERS</a>
+<a href="./recherche.html">RECHERCHE</a>
+</div>
 <div aria-label="Choose language" class="language-switch">
 <a href="/" lang="en">EN</a>
-<a aria-current="page" href="/fr/" lang="fr">FR</a>
-<span>|</span>
+<span aria-hidden="true">|</span>
+<a href="/fr/" lang="fr" aria-current="page">FR</a>
+<span aria-hidden="true">|</span>
 <a href="/es/" lang="es">ES</a>
 </div>
 </div>
+<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
+<span></span><span></span><span></span>
+</button>
 </nav>
 </header>
 <details class="fx-converter" id="stockpilot-fx-converter">
@@ -4433,5 +4558,32 @@ body { overflow-x: hidden; }
 }
 </style>
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c2eaaca294c840bf8920ad6becb9d469"}'></script><!-- End Cloudflare Web Analytics -->
+<script id="stockpilot-mobile-navigation">
+(function () {
+  const toggle = document.querySelector('.topbar .nav-toggle');
+  const menu = document.getElementById('primary-navigation');
+  if (!toggle || !menu) return;
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+  }
+  toggle.addEventListener('click', function () {
+    const opening = !menu.classList.contains('is-open');
+    menu.classList.toggle('is-open', opening);
+    toggle.setAttribute('aria-expanded', String(opening));
+    toggle.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
+  });
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 760) closeMenu();
+  });
+})();
+</script>
 </body>
 </html>
