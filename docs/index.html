@@ -2814,6 +2814,16 @@ input, select, textarea, button {
 <h1 id="trading-desk-title">Market Stock Buzz at a Glance</h1>
 <p class="trading-desk-intro">Hand-Picked Stock Picks · Detailed Analysis · Market Reports · Market Insights</p>
 </div>
+
+  <button
+  type="button"
+  class="subscribe-bell-cta"
+  onclick="document.getElementById('stockpilot-subscribe-btn')?.click()"
+  aria-label="Subscribe free to StockPilot AI alerts"
+>
+  <span class="subscribe-bell" aria-hidden="true">🔔</span>
+  <span>SUBSCRIBE FREE</span>
+</button>
 <div class="trading-session-card">
 <span class="session-label">YOUR MARKET CHECKPOINT</span>
 <strong>Stocks · Penny Stocks · Crypto</strong>
@@ -4373,6 +4383,36 @@ body { overflow-x: hidden; }
   .sp-slide-link { max-width: 100%; white-space: normal; }
   .navlinks { gap: 7px 9px; }
   .navlinks a { font-size: 10px; }
+}
+  .subscribe-bell-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid #d6ad55;
+  border-radius: 7px;
+  background: #183a34;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.subscribe-bell {
+  display: inline-block;
+  transform-origin: 50% 10%;
+  animation: subscribe-bell-swing 1s ease-in-out infinite alternate;
+}
+
+@keyframes subscribe-bell-swing {
+  from { transform: rotate(-17deg); }
+  to   { transform: rotate(17deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subscribe-bell { animation: none; }
 }
 </style>
 <style id="stockpilot-vertical-free-banners">
