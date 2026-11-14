@@ -8,6 +8,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://technofront.org/fr/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://technofront.org/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
+    <lastmod>2026-11-14</lastmod>
   </url>
 
   <url>
@@ -31,16 +32,20 @@
   </url>
 
   <url>
+    <loc>https://technofront.org/options-simulator.html</loc>
+  </url>
+
+  <url>
     <loc>https://technofront.org/market-investing-guide.html</loc>
   </url>
 
 
   <url>
     <loc>https://technofront.org/brokers.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://technofront.org/fr/courtiers.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
 </urlset>
