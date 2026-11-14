@@ -87,7 +87,7 @@ async function init(){
   const list=kind==='penny'?(data.penny||[]):(data.main||[]);
   const stock=list.find(x=>String(x.ticker||'').toUpperCase()===ticker);
   if(!stock){$('report').innerHTML='<div class="error"><h1>'+T.notFound+'</h1><a href="'+home+'">'+T.home+'</a></div>';return;}
-  document.title=(fr?'Research on ':'Research on ')+ticker+' | StockPilot AI';
+  document.title='Research on '+ticker+' | StockPilot AI';
   render(stock,kind==='penny',data);
  }catch(e){$('report').innerHTML='<div class="error"><h1>'+T.loading+'</h1><p>'+esc(e.message)+'</p><a href="'+home+'">'+T.home+'</a></div>';}
 }
