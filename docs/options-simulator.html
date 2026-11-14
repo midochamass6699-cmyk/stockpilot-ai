@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Virtual Options Simulator | StockPilot AI</title>
+<meta name="description" content="Learn how call and put options work with a free virtual options simulator. Practice using fictional training scenarios and no real money.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://technofront.org/options-simulator.html">
+<meta name="theme-color" content="#07111f">
+<style>
+:root{color-scheme:dark;--bg:#07111f;--panel:#101e30;--panel2:#162840;--line:#29405b;--text:#f4f7fb;--muted:#a9b8ca;--gold:#ffd629;--blue:#73b7ff;--green:#5cdda0;--red:#ff8f8f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#142b46 0,#07111f 55%);color:var(--text);font:15px/1.55 Inter,Arial,sans-serif}
+a{color:inherit}.wrap{width:min(1060px,calc(100% - 32px));margin:auto}.top{padding:22px 0;border-bottom:1px solid #26384d}.brand{font-weight:950;letter-spacing:.02em;color:var(--gold);text-decoration:none}.brand span{color:#fff}.hero{padding:38px 0 24px}.eyebrow{color:var(--blue);font-size:10px;font-weight:900;letter-spacing:.16em}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-.04em;margin:9px 0}.hero p{max-width:690px;color:var(--muted);margin:10px 0}.notice{border:1px solid #5a4c1b;background:#302a16;color:#f5e6a4;border-radius:10px;padding:12px 14px;font-size:12px;margin:20px 0}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.85fr);gap:16px;margin:18px 0 28px}.card{background:linear-gradient(145deg,#122238,#0e1b2c);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:0 14px 35px #0003}.card h2{font-size:18px;margin:0 0 14px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:11px;font-weight:800;color:#d7e2ef}.field input,.field select{width:100%;min-width:0;border:1px solid #405773;border-radius:7px;background:#081625;color:#fff;padding:11px;font:inherit;font-size:14px}.field small{color:var(--muted);font-size:10px}.wide{grid-column:1/-1}.seg{display:flex;gap:7px}.seg button{flex:1;padding:10px;border:1px solid #405773;border-radius:7px;background:#0b1929;color:#dbe7f5;font-weight:800;cursor:pointer}.seg button[aria-pressed=true]{background:#214d77;border-color:#73b7ff;color:white}.result{display:grid;gap:12px}.metric{padding:13px;border-radius:9px;background:#0a1929;border:1px solid #263d57}.metric small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.metric strong{display:block;font-size:25px;margin-top:2px}.positive{color:var(--green)}.negative{color:var(--red)}.neutral{color:var(--gold)}.bar{height:12px;background:#25374d;border-radius:99px;overflow:hidden;margin:12px 0 5px}.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#4c9fe8,#5cdda0);transition:width .2s}.explain{font-size:12px;color:var(--muted);margin:8px 0}.formula{font:11px/1.6 ui-monospace,Consolas,monospace;color:#c2d2e5;background:#091727;border-radius:7px;padding:10px;overflow-wrap:anywhere}.footer{padding:18px 0 35px;color:var(--muted);font-size:11px}.footer a{color:var(--blue)}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.fields{gap:10px}.hero{padding-top:28px}}
+@media(max-width:430px){.fields{grid-template-columns:1fr}.wide{grid-column:auto}.card{padding:15px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="./"><span>STOCKPILOT</span> AI</a></div></header>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">VIRTUAL OPTIONS LAB</div>
+<h1>Practice options.<br>Learn by experimenting.</h1>
+<p>Explore how a hypothetical call or put option could behave at expiration. Change the assumptions and see how the simulated result changes.</p>
+<div class="notice"><strong>Simulation only:</strong> This tool uses fictional training numbers, not real stocks, live quotes or actual option contracts. The virtual balance has no cash value. No real trades are placed.</div>
+</section>
+<div class="layout">
+<section class="card" aria-labelledby="setup-title">
+<h2 id="setup-title">Build a practice scenario</h2>
+<div class="field wide" style="margin-bottom:14px"><label>Option type</label><div class="seg"><button type="button" id="call" aria-pressed="true">Call option</button><button type="button" id="put" aria-pressed="false">Put option</button></div></div>
+<div class="fields">
+<div class="field"><label for="spot">Hypothetical stock price ($)</label><input id="spot" type="number" min=".01" step=".01" value="50"></div>
+<div class="field"><label for="strike">Strike price ($)</label><input id="strike" type="number" min=".01" step=".01" value="55"></div>
+<div class="field"><label for="premium">Premium per share ($)</label><input id="premium" type="number" min="0" step=".01" value="2.50"></div>
+<div class="field"><label for="contracts">Number of contracts</label><input id="contracts" type="number" min="1" max="100" step="1" value="1"></div>
+<div class="field wide"><label for="expiry">Hypothetical stock price at expiration ($)</label><input id="expiry" type="range" min="1" max="120" step=".5" value="60"><small>Selected expiration price: <strong id="expiry-value">$60.00</strong></small></div>
+</div>
+</section>
+<aside class="card result" aria-live="polite">
+<h2>Simulated result</h2>
+<div class="metric"><small>Virtual option cost</small><strong id="cost">$250.00</strong></div>
+<div class="metric"><small>Option value at expiration</small><strong id="value">$500.00</strong></div>
+<div class="metric"><small>Hypothetical profit / loss</small><strong id="pnl" class="positive">+$250.00</strong></div>
+<div class="metric"><small>Break-even stock price</small><strong id="breakeven">$57.50</strong></div>
+<div><div class="bar"><span id="bar-fill"></span></div><div class="explain" id="outcome">In this example, the option finishes in the money and the simulated result is positive.</div></div>
+<div class="formula" id="formula">Call: (max(expiration price − strike, 0) − premium) × 100 × contracts</div>
+</aside>
+</div>
+<section class="card">
+<h2>What this teaches</h2>
+<p class="explain">A call gives its holder the right, but not the obligation, to buy the underlying shares at the strike price. A put gives its holder the right, but not the obligation, to sell at the strike price. This simplified exercise model shows the option buyer's result at expiration, excluding fees, taxes and early exercise considerations.</p>
+<p class="explain">The premium is paid upfront. The maximum loss for this long-option example is the premium paid. The result shown is a hypothetical educational calculation, not a forecast or recommendation.</p>
+</section>
+</main>
+<footer class="wrap footer"><p><a href="./">← Back to StockPilot AI</a></p><p>Educational use only. Fictional inputs and simplified expiration calculations. Not financial advice.</p></footer>
+<script>
+(()=>{
+let type='call';
+const el=id=>document.getElementById(id);
+const money=n=>(n<0?'-$':'$')+Math.abs(n).toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2});
+function update(){
+ const spot=Number(el('spot').value), strike=Number(el('strike').value), premium=Number(el('premium').value), contracts=Number(el('contracts').value), expiry=Number(el('expiry').value);
+ el('expiry-value').textContent=money(expiry);
+ const valid=[spot,strike,premium,contracts,expiry].every(Number.isFinite)&&spot>0&&strike>0&&premium>=0&&contracts>=1&&contracts<=100&&Number.isInteger(contracts);
+ if(!valid){el('outcome').textContent='Enter valid positive prices and between 1 and 100 contracts.';return;}
+ const intrinsic=type==='call'?Math.max(expiry-strike,0):Math.max(strike-expiry,0);
+ const cost=premium*100*contracts, value=intrinsic*100*contracts, pnl=value-cost;
+ const breakeven=type==='call'?strike+premium:strike-premium;
+ el('cost').textContent=money(cost);el('value').textContent=money(value);
+ el('pnl').textContent=(pnl>0?'+':'')+money(pnl);el('pnl').className=pnl>0?'positive':pnl<0?'negative':'neutral';
+ el('breakeven').textContent=money(breakeven);
+ el('bar-fill').style.width=Math.max(0,Math.min(100,(intrinsic/(premium+intrinsic||1))*100))+'%';
+ el('outcome').textContent=pnl>0?'In this hypothetical scenario, the option finishes above its break-even point.':pnl<0?'In this hypothetical scenario, the option finishes below its break-even point.':'In this hypothetical scenario, the option reaches break-even at expiration.';
+ el('formula').textContent=(type==='call'?'Call: (max(expiration price − strike, 0) − premium)':'Put: (max(strike − expiration price, 0) − premium)')+' × 100 × contracts';
+}
+function setType(next){type=next;el('call').setAttribute('aria-pressed',String(type==='call'));el('put').setAttribute('aria-pressed',String(type==='put'));update();}
+el('call').addEventListener('click',()=>setType('call'));el('put').addEventListener('click',()=>setType('put'));
+['spot','strike','premium','contracts','expiry'].forEach(id=>el(id).addEventListener('input',update));
+update();
+})();
+</script>
+</body>
+</html>
