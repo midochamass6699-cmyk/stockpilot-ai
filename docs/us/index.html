@@ -2973,9 +2973,7 @@ input, select, textarea, button {
 <div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
 <h2>Today's Main Stock Picks</h2>
 <p>
-          Three actively traded stocks selected from the available
-          market-data feed and ranked by reported trading volume. Use these
-          daily stock picks as a starting point for your own company research.
+          Three U.S.-market candidates selected from the available data file and ordered by the published screening score. The score combines recent price performance, relative trading volume and trend measures; it is a research summary, not a buy or sell signal.
         </p>
 </div>
 </div>
@@ -3107,7 +3105,7 @@ input, select, textarea, button {
 <div class="eyebrow">STOCK MARKET RESEARCH · QUICK ANSWERS</div>
 <h2 id="stock-market-faq-title">U.S. Stock Market Research: Stocks, Penny Stocks &amp; Crypto FAQs</h2>
 <article class="seo-faq-item"><h3>What does StockPilot AI show?</h3><p>StockPilot AI provides a market overview with selected stocks to watch, a penny-stock screen and leading cryptocurrencies ranked by reported 24-hour trading volume. The lists summarize activity in the available data feeds and are starting points for independent research.</p></article>
-<article class="seo-faq-item"><h3>How are the top stocks selected?</h3><p>The main-stock and penny-stock lists are ranked by reported trading volume within the available stock-data feed. Main-stock candidates are priced above US$10. Provider coverage is limited, so the list is not an exhaustive ranking of every listed security.</p></article>
+<article class="seo-faq-item"><h3>How are the top stocks selected?</h3><p>The available U.S. candidate set is screened using a 0–100 momentum score. The published methodology weights 5-day, 20-day and 50-day returns, relative volume and trend alignment, with deductions for elevated RSI and volatility. Candidates must have positive 20-day momentum and trade above their 20-day average. Main-stock candidates are priced above US$10; the penny-stock screen uses US$0.10 to US$10 when data is available. The feed is limited and is not an exhaustive scan of every U.S. listing.</p></article>
 <article class="seo-faq-item"><h3>What does StockPilot AI mean by penny stocks?</h3><p>For this site's penny-stock screen, qualifying shares are priced from US$0.10 to US$10 when data is available. Definitions vary by market, exchange and data provider. Lower-priced shares can be volatile and carry substantial risk.</p></article>
 <article class="seo-faq-item"><h3>How are the top cryptocurrencies ranked?</h3><p>The crypto section ranks available coins by reported 24-hour trading volume in US dollars. Prices and trading volume can change quickly, and the displayed list is limited to assets available through the CoinGecko feed.</p></article>
 <article class="seo-faq-item"><h3>Where can I compare online brokers?</h3><p>Visit our <a href="/us/brokers.html">U.S. brokerage directory</a> for a starting list of firms and research the current account terms, fees and eligibility directly with each provider.</p></article>
@@ -3121,21 +3119,16 @@ input, select, textarea, button {
 <div class="eyebrow">HOW THE DAILY LISTS WORK</div>
 <h2>How StockPilot AI Selects Market Picks</h2>
 <p>
-      The U.S. edition filters the daily stock lists to records marked as U.S. market listings in the available data file. The main-stock and penny-stock lists summarize activity in that limited feed; they are not an exhaustive scan of every U.S. listing.
+      The U.S. edition filters the published stock lists to records marked with market="US". The candidate universe is drawn from Yahoo Finance public screeners for penny stocks, most-active shares, daily gainers and small-cap gainers. The data file is a limited candidate scan, not a complete inventory of every U.S. listing.
     </p>
 <p>
-      Main-stock candidates are priced above US$10. Penny-stock
-      candidates are priced from US$0.10 to US$10, when qualifying
-      data is available.
+      The published momentum score ranges from 0 to 100. Its stated weighting is 10% 5-day return, 30% 20-day return, 25% 50-day return, 20% relative volume and 15% trend alignment, with deductions for elevated RSI and volatility. The current screen also requires positive 20-day momentum and a price above the 20-day average. Main-stock candidates are priced above US$10; penny-stock candidates range from US$0.10 to US$10 when qualifying data is available.
     </p>
 <p>
-      The cryptocurrency list ranks the available coins by reported
-      24-hour trading volume in US dollars. Stock screening records are supplied through the site’s published data file; cryptocurrency market information is supplied by CoinGecko.
+      Stock prices are shown in U.S. dollars for U.S.-market records. The stock data file uses Yahoo Finance public screeners and daily historical prices through yfinance; those unofficial data endpoints may be throttled or changed. Cryptocurrency market data is supplied by CoinGecko and ranked by reported 24-hour trading volume in USD.
     </p>
 <p>
-      Provider coverage, reporting times and data availability can
-      affect the lists. Canadian-market records are excluded from this U.S. edition. The stock feed is not an exhaustive ranking
-      of every U.S.-listed security.
+      Provider coverage, reporting times and data availability can affect the lists. Canadian-market records are excluded from this U.S. edition. Quote dates are shown on individual stock cards; data may be delayed and the feed is not an exhaustive ranking of every U.S.-listed security.
     </p>
 <p>
       Trading volume measures market activity, not company quality,
