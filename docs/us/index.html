@@ -2164,8 +2164,8 @@ input, select, textarea, button {
 <a href="/us/margin-account-guide.html">MARGIN GUIDE</a>
 </div>
 <div aria-label="Choose language" class="language-switch">
-<a href="/" lang="en-CA">EN-CA</a>
-<a href="/us/" lang="en-US" aria-current="page">EN-US</a>
+<a class="edition-link" href="/" lang="en-CA" aria-label="Canadian edition">🇨🇦 CANADA</a>
+<a class="edition-link" href="/us/" lang="en-US" aria-label="United States edition">🇺🇸 UNITED STATES</a>
 <span aria-hidden="true">|</span><a href="/de/" lang="de" aria-label="Deutsch">DE</a>
 <a href="/fr/" lang="fr">FR</a>
 <span aria-hidden="true">|</span>
@@ -2203,7 +2203,7 @@ input, select, textarea, button {
 </div>
 <div aria-label="Choose language" class="language-switch">
 <a href="/" lang="en-CA">EN-CA</a>
-<a href="/us/" lang="en-US" aria-label="English United States">EN-US</a>
+<a class="edition-link" href="/us/" lang="en-US" aria-label="United States edition">🇺🇸 UNITED STATES</a>
 <a href="/fr/" lang="fr">FR</a>
 <a href="/es/" lang="es">ES</a>
 <a href="/de/" lang="de" aria-label="Deutsch">DE</a></div>
@@ -4903,6 +4903,24 @@ body { overflow-x: hidden; }
   #free-left-banner .sp-side-pick { transition:none; }
 }
 </style>
+
+
+<style id="country-edition-switcher">
+.language-switch .edition-link {display:inline-flex;align-items:center;gap:4px;padding:5px 8px;border:1px solid #d6b82b;border-radius:5px;color:#fff!important;font-weight:900;background:#202020}
+.language-switch .edition-link[aria-current="page"] {background:#ffd629;color:#111!important;border-color:#ffd629}
+.language-switch .edition-link:hover {background:#fff;color:#111!important}
+</style>
+<script id="country-edition-preference">
+(function(){
+  var links=document.querySelectorAll('.language-switch a[href="/"],.language-switch a[href="/us/"]');
+  links.forEach(function(link){
+    link.addEventListener('click',function(){
+      var choice=link.getAttribute('href')==='/us/'?'us':'ca';
+      document.cookie='sp_country_choice='+choice+'; Max-Age=15552000; Path=/; SameSite=Lax; Secure';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
