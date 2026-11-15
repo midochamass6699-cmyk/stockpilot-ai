@@ -56,6 +56,16 @@
 
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://technofront.org/fr/courtiers.html#webpage","url":"https://technofront.org/fr/courtiers.html","name":"Comparatif des courtiers en ligne au Canada | StockPilot AI","description":"Comparez les courtiers en ligne au Canada : frais de négociation, caractéristiques des comptes, retraits, service à la clientèle et plateformes. Découvrez aussi les options américaines.","inLanguage":"fr-CA","datePublished":"2026-11-13","dateModified":"2026-11-14","isPartOf":{"@id":"https://technofront.org/#website"},"breadcrumb":{"@id":"https://technofront.org/fr/courtiers.html#breadcrumb"},"mainEntity":{"@id":"https://technofront.org/fr/courtiers.html#broker-list"}},{"@type":"BreadcrumbList","@id":"https://technofront.org/fr/courtiers.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://technofront.org/fr/"},{"@type":"ListItem","position":2,"name":"Comparatif des courtiers en ligne","item":"https://technofront.org/fr/courtiers.html"}]},{"@type":"ItemList","@id":"https://technofront.org/fr/courtiers.html#broker-list","name":"Plateformes de courtage en ligne comparées","itemListOrder":"https://schema.org/ItemListOrderUnordered","numberOfItems":10,"itemListElement":[{"@type":"ListItem","position":1,"name":"Wealthsimple"},{"@type":"ListItem","position":2,"name":"Questrade"},{"@type":"ListItem","position":3,"name":"Qtrade Direct Investing"},{"@type":"ListItem","position":4,"name":"Interactive Brokers Canada"},{"@type":"ListItem","position":5,"name":"Webull Canada"},{"@type":"ListItem","position":6,"name":"moomoo Canada"},{"@type":"ListItem","position":7,"name":"Robinhood"},{"@type":"ListItem","position":8,"name":"Interactive Brokers Lite"},{"@type":"ListItem","position":9,"name":"Firstrade"},{"@type":"ListItem","position":10,"name":"Webull"}]}]}</script>
+
+<style id="sp-fr-subscribe-fab-style">
+#sp-fr-subscribe-fab{position:fixed;right:18px;bottom:18px;z-index:99999;width:48px;height:48px;border:0;border-radius:50%;background:#2563eb;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,.28);font-size:23px;display:flex;align-items:center;justify-content:center;cursor:pointer;animation:spFrBellSwing 2.2s ease-in-out infinite;}
+#sp-fr-subscribe-fab:hover{background:#1d4ed8;transform:scale(1.06)}
+#sp-fr-subscribe-fab:focus-visible{outline:3px solid #93c5fd;outline-offset:4px}
+#sp-fr-subscribe-fab:disabled{opacity:.65;cursor:default}
+@keyframes spFrBellSwing{0%,84%,100%{transform:rotate(0)}87%{transform:rotate(12deg)}90%{transform:rotate(-10deg)}93%{transform:rotate(7deg)}96%{transform:rotate(-4deg)}}
+@media(prefers-reduced-motion:reduce){#sp-fr-subscribe-fab{animation:none}}
+</style>
+<script defer src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
 </head>
 <body>
 <header class="topbar"><nav class="nav">
@@ -286,5 +296,12 @@
  sort.addEventListener('change',render);search.addEventListener('input',render);
  document.getElementById('year').textContent=new Date().getFullYear();render();
 })();
+</script>
+
+<button aria-label="S’abonner gratuitement aux alertes StockPilot AI" id="sp-fr-subscribe-fab" title="S’abonner gratuitement">🔔</button>
+
+<script defer src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
+<script id="sp-fr-subscribe-fab-script">
+(function(){const fab=document.getElementById('sp-fr-subscribe-fab');if(!fab)return;let client=null,busy=false;fab.addEventListener('click',async function(){if(busy)return;if(!client){fab.title='Le service de notification se connecte. Réessayez dans un instant.';return;}if(!client.Notifications.isPushSupported()){fab.title='Les notifications ne sont pas prises en charge par ce navigateur.';return;}if(client.Notifications.permissionNative==='denied'){fab.title='Autorisez les notifications dans les paramètres du navigateur.';return;}if(client.User.PushSubscription.optedIn===true){fab.title='Vous êtes déjà abonné(e) aux alertes StockPilot AI.';return;}busy=true;fab.disabled=true;fab.textContent='…';try{await client.User.PushSubscription.optIn();fab.title=client.User.PushSubscription.optedIn===true?'Abonnement activé. Merci !':'Autorisation non confirmée. Réessayez.';}catch(e){console.error('StockPilot subscription error:',e);fab.title='Impossible de terminer l’abonnement. Vérifiez les autorisations du navigateur.';}finally{busy=false;fab.disabled=false;fab.textContent='🔔';}});window.OneSignalDeferred=window.OneSignalDeferred||[];window.OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.init({appId:'e88adecc-e047-49d3-afa9-559d28f8fcc3',safari_web_id:'web.onesignal.auto.4ed01e00-f557-41b7-a4bd-c51172d553fd',notifyButton:{enable:false}});client=OneSignal;if(client.User.PushSubscription.optedIn===true)fab.title='Vous êtes déjà abonné(e) aux alertes StockPilot AI.';}catch(e){console.error('OneSignal init error:',e);fab.title='Le service d’abonnement est temporairement indisponible.';}});})();
 </script>
 </body></html>
