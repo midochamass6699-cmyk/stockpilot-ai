@@ -2895,7 +2895,63 @@ input, select, textarea, button {
 </nav>
 <!-- PRIMARY HOMEPAGE TOPIC AND SEARCH INTRODUCTION -->
 <!-- MAIN CONTENT -->
-<main class="container" id="top"><section class="picks-top" id="main-picks">
+<main class="container" id="top">
+<style id="sp-education-hub-style">
+#sp-education-hub{margin:10px 0 30px;padding:clamp(20px,3vw,30px);border:1px solid #DED8CA;border-top:4px solid #D9784F;border-radius:18px;background:linear-gradient(145deg,#FFFEFA 0%,#F8F5ED 100%);box-shadow:0 12px 30px rgba(24,58,52,.07)}
+#sp-education-hub .sp-education-heading{max-width:780px;margin:0 0 18px}
+#sp-education-hub .sp-education-kicker{margin:0 0 7px;color:#B65D3F;font-size:10px;font-weight:950;letter-spacing:.15em}
+#sp-education-hub h2{margin:0 0 7px;color:#183A34;font-size:clamp(22px,2.8vw,30px);line-height:1.15;letter-spacing:-.025em}
+#sp-education-hub .sp-education-intro{margin:0;color:#58665F;font-size:14px;line-height:1.65}
+#sp-education-hub .sp-education-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+#sp-education-hub .sp-education-card{position:relative;display:flex;min-width:0;min-height:218px;flex-direction:column;align-items:flex-start;padding:19px;border:1px solid #E2DED3;border-radius:13px;background:#fff;box-shadow:0 5px 16px rgba(24,58,52,.045)}
+#sp-education-hub .sp-education-card.options{border-top:4px solid #D9784F}
+#sp-education-hub .sp-education-card.ai{border-top:4px solid #315F75}
+#sp-education-hub .sp-education-card-meta{display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;color:#9A6048;font-size:9px;font-weight:950;letter-spacing:.13em}
+#sp-education-hub .sp-education-card.ai .sp-education-card-meta{color:#315F75}
+#sp-education-hub .sp-education-number{display:grid;width:29px;height:29px;place-items:center;border-radius:50%;background:#F8E8DE;color:#8A432C;font-size:11px;letter-spacing:0}
+#sp-education-hub .sp-education-card.ai .sp-education-number{background:#EAF1F4;color:#315F75}
+#sp-education-hub .sp-education-card h3{margin:0 0 8px;color:#183A34;font-size:clamp(17px,1.8vw,21px);line-height:1.2}
+#sp-education-hub .sp-education-card p{margin:0 0 15px;color:#56645D;font-size:13px;line-height:1.65}
+#sp-education-hub .sp-education-card a{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding:9px 13px;border-radius:999px;background:#183A34;color:#fff;text-decoration:none;font-size:11px;font-weight:900;transition:background .18s ease,transform .18s ease}
+#sp-education-hub .sp-education-card.options a{background:#B65D3F}
+#sp-education-hub .sp-education-card a:hover{background:#244C42;transform:translateY(-1px)}
+#sp-education-hub .sp-education-secondary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+#sp-education-hub .sp-education-secondary a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;border:1px solid #E2DED3;border-radius:10px;background:#F8F6F0;color:#183A34;text-decoration:none}
+#sp-education-hub .sp-education-secondary a:hover{border-color:#D9784F;background:#fff}
+#sp-education-hub .sp-education-secondary strong{display:block;font-size:12px;line-height:1.35}
+#sp-education-hub .sp-education-secondary small{display:block;margin-top:3px;color:#68746E;font-size:10px;line-height:1.4}
+#sp-education-hub .sp-education-arrow{flex:0 0 auto;color:#B65D3F;font-size:18px;font-weight:900}
+#sp-education-hub .sp-education-note{margin:13px 0 0;color:#79827B;font-size:10px;line-height:1.5}
+@media(max-width:650px){#sp-education-hub{padding:18px;margin:8px 0 24px}#sp-education-hub .sp-education-feature-grid,#sp-education-hub .sp-education-secondary{grid-template-columns:1fr}#sp-education-hub .sp-education-card{min-height:0;padding:17px}#sp-education-hub .sp-education-intro{font-size:13px}}
+@media(prefers-reduced-motion:reduce){#sp-education-hub .sp-education-card a{transition:none}}
+</style>
+<section aria-labelledby="sp-education-title" id="sp-education-hub">
+  <div class="sp-education-heading">
+    <p class="sp-education-kicker">STOCKPILOT AI · LEARNING CENTRE</p>
+    <h2 id="sp-education-title">Go beyond the daily market snapshot.</h2>
+    <p class="sp-education-intro">Explore clear, independent guides to understand complex topics, evaluate the risks and make sense of the tools shaping today’s markets.</p>
+  </div>
+  <div class="sp-education-feature-grid">
+    <article class="sp-education-card options">
+      <div class="sp-education-card-meta"><span>FEATURED EDUCATIONAL GUIDE</span><span class="sp-education-number">01</span></div>
+      <h3>Options explained: understand the risks before the terminology</h3>
+      <p>Learn what calls and puts represent, how premiums and expiry work, and why options can involve substantial and difficult-to-predict losses. An educational overview—not a trading tutorial.</p>
+      <a href="./options-explained.html">Explore the options guide <span aria-hidden="true">→</span></a>
+    </article>
+    <article class="sp-education-card ai">
+      <div class="sp-education-card-meta"><span>FEATURED EDUCATIONAL GUIDE</span><span class="sp-education-number">02</span></div>
+      <h3>AI-assisted trading: what artificial intelligence can—and cannot—do</h3>
+      <p>See where AI can support market research, where its analysis can fall short, and why human review, independent verification and risk awareness remain essential.</p>
+      <a href="./ai-assisted-trading.html">Explore the AI guide <span aria-hidden="true">→</span></a>
+    </article>
+  </div>
+  <div class="sp-education-secondary" aria-label="More financial education">
+    <a href="./financial-education.html"><span><strong>Financial education guide</strong><small>Build a foundation in accounts, costs, risk and investor protection</small></span><span class="sp-education-arrow" aria-hidden="true">›</span></a>
+    <a href="./margin-account-guide.html"><span><strong>Cash vs. margin accounts</strong><small>Understand borrowing, collateral, interest and margin risk</small></span><span class="sp-education-arrow" aria-hidden="true">›</span></a>
+  </div>
+  <p class="sp-education-note">Educational content only. These guides are not individualized financial advice or recommendations to buy, sell or trade financial products.</p>
+</section>
+<section class="picks-top" id="main-picks">
 <div class="section-head">
 <div>
 <div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
