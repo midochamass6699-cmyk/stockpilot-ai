@@ -76,7 +76,7 @@ f.parentNode.insertBefore(j,f);
         {"@type": "Thing", "name": "Penny stocks"},
         {"@type": "Thing", "name": "Cryptocurrency"}
       ],
-      "inLanguage": "en-CA"
+      "inLanguage": "en-US"
     }
   ]
 }
@@ -2157,7 +2157,7 @@ input, select, textarea, button {
 <a href="#main-picks">STOCKS</a>
 <a href="#penny-picks">PENNY</a>
 <a href="#crypto-picks">CRYPTO</a>
-<a href="/research.html">RESEARCH</a>
+<a href="#market-coverage">U.S. MARKETS</a>
 <a href="/us/financial-education.html">EDUCATION</a>
 <a href="/us/options-explained.html">OPTIONS</a>
 <a href="/us/ai-assisted-trading.html">AI TRADING</a>
@@ -2177,6 +2177,8 @@ input, select, textarea, button {
 </button>
 </nav>
 </header>
+<style id="us-edition-identity-style">.us-edition-ribbon{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:9px 16px;background:linear-gradient(100deg,#10243d,#173d61);color:#fff;border-bottom:1px solid #31577b;font:800 11px/1.3 Arial,sans-serif;letter-spacing:.09em;text-align:center}.us-edition-ribbon .us-flag{font-size:18px;letter-spacing:0}.us-edition-ribbon .us-edition-markets{color:#a9d7ff;font-weight:700}.us-edition-ribbon a{color:#fff;text-decoration:underline;text-underline-offset:3px}@media(max-width:600px){.us-edition-ribbon{gap:6px;padding:9px 10px;font-size:10px}}</style>
+<div class="us-edition-ribbon" role="note" aria-label="United States market edition"><span class="us-flag" aria-hidden="true">🇺🇸</span><strong>UNITED STATES MARKET EDITION</strong><span class="us-edition-markets">NYSE · NASDAQ · U.S.-LISTED STOCKS · USD</span><a href="/us/brokers.html">U.S. brokerage directory ↗</a></div>
 <!-- COMPACT FREE TOOLS BANNER -->
 <style>
 #stockpilot-free-tools{width:100%;min-height:44px;box-sizing:border-box;background:#14243b;border-top:1px solid #294866;border-bottom:1px solid #294866;display:flex;align-items:center;justify-content:center;padding:6px 12px;font-family:Arial,sans-serif;overflow-x:auto}
@@ -2192,11 +2194,11 @@ input, select, textarea, button {
 </style>
 <div id="stockpilot-free-tools" aria-label="Free StockPilot AI tools">
   <div class="tools-inner">
-    <span class="tool-item broker">Broker Tool</span><span class="separator" aria-hidden="true">|</span>
-    <span class="tool-item lookup">Stock Lookup Tool</span><span class="separator" aria-hidden="true">|</span>
-    <span class="tool-item simulator">Options Simulator Tool</span><span class="separator" aria-hidden="true">|</span>
-    <span class="tool-item analysis">Full Analysis Inside</span>
-    <span class="tool-item free">100% FREE</span>
+    <span class="tool-item broker">U.S. Broker Directory</span><span class="separator" aria-hidden="true">|</span>
+    <span class="tool-item lookup">U.S. Stock Lookup</span><span class="separator" aria-hidden="true">|</span>
+    <span class="tool-item simulator">U.S. Investor Guides</span><span class="separator" aria-hidden="true">|</span>
+    <span class="tool-item analysis">NYSE · Nasdaq Research</span>
+    <span class="tool-item free">FREE</span>
   </div>
 </div>
 <div aria-label="Choose language" class="language-switch">
@@ -2367,8 +2369,8 @@ input, select, textarea, button {
 <span aria-hidden="true" class="find-broker-icon">↗</span>
 <span class="find-broker-text">
 <small>MAKE YOUR NEXT MOVE</small>
-<strong>LET US FIND YOU A BROKER</strong>
-<span>Compare online brokers and bank investing services.</span>
+<strong>FIND A U.S. BROKERAGE</strong>
+<span>Explore U.S. brokerage firms and investor resources.</span>
 </span>
 </span>
 <span class="find-broker-action">EXPLORE BROKERS <span aria-hidden="true">→</span></span>
@@ -2827,12 +2829,12 @@ input, select, textarea, button {
 <section aria-labelledby="trading-desk-title" class="live-trading-desk" id="live-trading-desk">
 <div class="trading-desk-header">
 <div>
-<div class="trading-desk-kicker"><span aria-hidden="true" class="trading-pulse"></span> STOCKPILOT AI · MARKET MONITOR</div>
+<div class="trading-desk-kicker"><span aria-hidden="true" class="trading-pulse"></span> STOCKPILOT AI · U.S. MARKET MONITOR</div>
 
 
 
-<h1 id="trading-desk-title">Stock Market Today: Top Stocks, Penny Stocks &amp; Crypto</h1>
-<p class="trading-desk-intro">Hand-Picked Stock Picks · Detailed Analysis · Market Reports · Market Insights</p>
+<h1 id="trading-desk-title">U.S. Stock Market Today: NYSE &amp; Nasdaq Stocks, Penny Stocks &amp; Crypto</h1>
+<p class="trading-desk-intro">U.S.-Listed Stock Research · NYSE &amp; Nasdaq Market Coverage · USD Market Data · Independent Investor Education</p>
 </div>
 
   <button
@@ -2845,24 +2847,24 @@ input, select, textarea, button {
   <span>SUBSCRIBE FREE</span>
 </button>
 <div class="trading-session-card">
-<span class="session-label">YOUR MARKET CHECKPOINT</span>
-<strong>Stocks · Penny Stocks · Crypto</strong>
-<small>Data refreshes when the market feed updates. Quotes may be delayed.</small>
+<span class="session-label">U.S. MARKET CHECKPOINT</span>
+<strong>NYSE · Nasdaq · U.S. Stocks</strong>
+<small>U.S. equity listings and USD-denominated market data. Quotes may be delayed.</small>
 </div>
 </div>
 <div class="trading-desk-grid">
 <article class="trading-panel trading-panel-main">
-<div class="trading-panel-heading"><span class="trading-panel-icon">↗</span><div><h2>Top 3 Stocks to Watch</h2><p>Selected daily stock picks</p></div></div>
+<div class="trading-panel-heading"><span class="trading-panel-icon">🇺🇸</span><div><h2>Top 3 U.S. Stocks to Watch</h2><p>U.S.-listed candidates from the daily screen</p></div></div>
 <div aria-live="polite" class="trading-market-list" id="deskMainStocks"><div class="trading-loading">Loading stock data…</div></div>
 <a class="trading-panel-link" href="#main-picks">Explore all stock picks <span aria-hidden="true">→</span></a>
 </article>
 <article class="trading-panel trading-panel-penny">
-<div class="trading-panel-heading"><span class="trading-panel-icon">⚡</span><div><h2>Top 3 Penny Stock Movers</h2><p>Selected penny-stock picks · Higher risk</p></div></div>
+<div class="trading-panel-heading"><span class="trading-panel-icon">⚡</span><div><h2>U.S. Penny Stocks to Watch</h2><p>U.S.-listed lower-priced shares · Higher risk</p></div></div>
 <div aria-live="polite" class="trading-market-list" id="deskPennyStocks"><div class="trading-loading">Loading penny stocks…</div></div>
 <a class="trading-panel-link" href="#penny-picks">Explore penny stocks <span aria-hidden="true">→</span></a>
 </article>
 <article class="trading-panel trading-panel-crypto">
-<div class="trading-panel-heading"><span class="trading-panel-icon">₿</span><div><h2>Top 3 Crypto by Trading Volume</h2><p>Ranked by 24-hour trading volume</p></div></div>
+<div class="trading-panel-heading"><span class="trading-panel-icon">₿</span><div><h2>Global Crypto Market in USD</h2><p>Worldwide digital assets ranked by 24-hour volume</p></div></div>
 <div aria-live="polite" class="trading-market-list" id="deskCrypto"><div class="trading-loading">Loading crypto data…</div></div>
 <a class="trading-panel-link" href="#crypto-picks">Explore crypto market <span aria-hidden="true">→</span></a>
 </article>
@@ -2970,8 +2972,8 @@ input, select, textarea, button {
 <section class="picks-top" id="main-picks">
 <div class="section-head">
 <div>
-<div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
-<h2>Today's Main Stock Picks</h2>
+<div class="eyebrow">U.S.-LISTED · DAILY MARKET RESEARCH</div>
+<h2>Today's U.S. Stock Watchlist</h2>
 <p>
           Three U.S.-market candidates selected from the available data file and ordered by the published screening score. The score combines recent price performance, relative trading volume and trend measures; it is a research summary, not a buy or sell signal.
         </p>
@@ -2984,14 +2986,11 @@ input, select, textarea, button {
 <div class="empty">Loading main stock picks…</div>
 </div>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="beach" data-message="search-hotels-flights-cars-activities-more" data-camref="1101l5v4EX" data-pubref="" data-link="packages"></div>
-</div>
 <section class="penny-section" id="penny-picks">
 <div class="section-head">
 <div>
-<div class="eyebrow">LOWER-PRICED · HIGHER RISK</div>
-<h2>Penny Stocks to Watch</h2>
+<div class="eyebrow">U.S.-LISTED · LOWER-PRICED · HIGHER RISK</div>
+<h2>U.S. Penny Stocks to Watch</h2>
 <p>
           Three qualifying stocks priced from US$0.10 to US$10,
           when available.
@@ -3001,16 +3000,13 @@ input, select, textarea, button {
 <div class="stock-grid" id="pennyStocks">
 <div class="empty">Loading penny stock picks…</div>
 </div>
-</section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="resort" data-message="ready-takeoff-find-perfect-flight" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div><section class="crypto-section" id="crypto-picks">
+</section><section class="crypto-section" id="crypto-picks">
 <div class="section-head">
 <div>
 <div class="eyebrow">
-          CRYPTO MARKET · RANKED BY 24-HOUR VOLUME
+          GLOBAL CRYPTO MARKET · USD · 24-HOUR VOLUME
         </div>
-<h2>Top 3 Cryptocurrencies by 24-Hour Trading Volume</h2>
+<h2>Global Cryptocurrencies by 24-Hour Trading Volume</h2>
 <p>
           Automatically ranked by reported 24-hour trading volume
           in USD. Rankings can change throughout the day.
@@ -3029,9 +3025,6 @@ input, select, textarea, button {
       not investment advice.
     </div>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="nature" data-message="start-travel-planning" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div>
 <!-- TRADINGVIEW AFFILIATE BANNER -->
 <div class="container">
 <div class="tradingview-banner">
@@ -3046,14 +3039,11 @@ input, select, textarea, button {
 </div>
 <section aria-labelledby="home-seo-title" class="seo-intro">
 <div class="seo-intro-inner">
-<h2 id="home-seo-title">Stock Market Research: Top Stocks, Penny Stocks &amp; Crypto Market Data</h2>
-<p>StockPilot AI offers a free stock market overview for people researching top stocks, actively traded shares and penny stocks. Explore <a href="#main-picks">stocks to watch</a>, review <a href="#penny-picks">penny stocks to watch</a>, and follow <a href="#crypto-picks">top crypto assets</a> ranked by reported 24-hour trading volume.</p>
-<p>Use these market screens as a starting point for independent research. Review U.S. stock market activity, compare market data and consult our <a href="/us/brokers.html">U.S. brokerage directory</a> for general information about brokerage platforms serving the U.S. market. Data availability and update times vary by source; the lists are not exhaustive and are not buy-or-sell recommendations.</p>
+<h2 id="home-seo-title">U.S. Stock Market Research: NYSE &amp; Nasdaq Stocks, Penny Stocks &amp; Crypto</h2>
+<p>StockPilot AI's U.S. edition is built around U.S.-listed shares and the American equity market. Explore <a href="#main-picks">U.S. stocks to watch</a>, review the <a href="#penny-picks">U.S. penny-stock screen</a>, and follow global cryptocurrency markets quoted in U.S. dollars.</p>
+<p>Find U.S.-focused market information, research NYSE and Nasdaq listings, and consult our <a href="/us/brokers.html">U.S. brokerage directory</a> and <a href="/us/financial-education.html">American investor education guides</a>. Cryptocurrency rankings cover global assets and are not limited to U.S. exchanges. Data availability and update times vary; the lists are not exhaustive and are not buy-or-sell recommendations.</p>
 </div>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="tropical" data-message="find-perfect-getaway-package" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div>
 <!-- U.S. BROKERAGE DIRECTORY -->
 <section aria-labelledby="broker-directory-title" class="broker-directory" id="broker-directory">
   <div class="broker-heading">
@@ -3080,9 +3070,6 @@ input, select, textarea, button {
     <strong>Before relying on a provider listing:</strong> confirm the legal entity serving your state, account eligibility, current fees, product availability and investor-protection terms. You can research brokerage firms and registered professionals through <a href="https://brokercheck.finra.org/" rel="noopener noreferrer" target="_blank">FINRA BrokerCheck</a> and <a href="https://www.investor.gov/" rel="noopener noreferrer" target="_blank">SEC Investor.gov</a>. Listing a firm is not an endorsement, recommendation or guarantee of service availability. StockPilot AI does not claim that every listed provider is suitable for every visitor.
   </div>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-  <div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="beach" data-message="search-hotels-flights-cars-activities-more" data-camref="1101l5v4EX" data-pubref="" data-link="packages"></div>
-</div>
 <!-- CRYPTOCURRENCY PICKS -->
 <!-- MAIN STOCK PICKS -->
 <!-- PENNY STOCK PICKS -->
@@ -3097,9 +3084,6 @@ input, select, textarea, button {
   </div>
   <p class="market-coverage-note"><strong>Coverage note:</strong> These are the U.S. markets emphasized by this edition, not a claim that every listed security is scanned. Actual coverage depends on the market-data file and the exchanges represented in its current records.</p>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="resort" data-message="ready-takeoff-find-perfect-flight" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div>
 <!-- STOCK MARKET RESEARCH FAQ: USEFUL LONG-TAIL SEARCH CONTENT -->
 <section aria-labelledby="stock-market-faq-title" class="seo-faq" id="stock-market-faq">
 <div class="eyebrow">STOCK MARKET RESEARCH · QUICK ANSWERS</div>
@@ -3111,9 +3095,6 @@ input, select, textarea, button {
 <article class="seo-faq-item"><h3>Where can I compare online brokers?</h3><p>Visit our <a href="/us/brokers.html">U.S. brokerage directory</a> for a starting list of firms and research the current account terms, fees and eligibility directly with each provider.</p></article>
 <article class="seo-faq-item"><h3>Is StockPilot AI financial advice?</h3><p>No. StockPilot AI provides general market information for educational and research purposes. The lists are not personalized investment advice or recommendations to buy or sell securities. Verify information with primary sources and consider your own circumstances and risk tolerance.</p></article>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="nature" data-message="start-travel-planning" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div>
 <!-- SELECTION METHODOLOGY -->
 <section class="method-section" id="selection-methodology">
 <div class="eyebrow">HOW THE DAILY LISTS WORK</div>
@@ -3136,9 +3117,6 @@ input, select, textarea, button {
       Always verify current information and do your own research.
     </p>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="tropical" data-message="find-perfect-getaway-package" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div>
 <!-- FINANCIAL RESOURCES -->
 <section class="resources-section" id="financial-resources">
 <div class="section-head">
@@ -3218,9 +3196,6 @@ input, select, textarea, button {
       StockPilot AI does not control their content.
     </p>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="beach" data-message="search-hotels-flights-cars-activities-more" data-camref="1101l5v4EX" data-pubref="" data-link="packages"></div>
-</div>
 <!-- MARKET INSIGHTS -->
 <section class="visual-intro" id="market-insights">
 <article class="visual-card dark">
@@ -3235,9 +3210,6 @@ input, select, textarea, button {
 </div>
 </article>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="resort" data-message="ready-takeoff-find-perfect-flight" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div>
 <!-- FEATURES -->
 <section class="features">
 <article class="feature">
@@ -3262,9 +3234,6 @@ input, select, textarea, button {
 </div>
 </article>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="nature" data-message="start-travel-planning" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div>
 <!-- ABOUT AND DISCUSSION -->
 <section class="about-discuss">
 <article class="panel" id="about">
@@ -3304,9 +3273,6 @@ input, select, textarea, button {
 </script>
 </article>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="tropical" data-message="find-perfect-getaway-package" data-camref="1101l5v4EX" data-pubref="" data-link="home"></div>
-</div>
 <!-- CONTACT FORM -->
 <section class="contact-section" id="contact">
 <div class="eyebrow">GET IN TOUCH</div>
@@ -3339,9 +3305,6 @@ input, select, textarea, button {
       to send. You can review it before sending.
     </p>
 </section>
-<div class="expedia-banner-slot" style="width:100%;max-width:100%;margin:22px auto;text-align:center;overflow:hidden;">
-<div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="beach" data-message="search-hotels-flights-cars-activities-more" data-camref="1101l5v4EX" data-pubref="" data-link="packages"></div>
-</div>
 <!-- DISCLAIMER -->
 <div class="disclaimer">
 <strong>Important:</strong>
@@ -3352,8 +3315,6 @@ input, select, textarea, button {
     this website is financial advice or a recommendation to
     buy or sell securities.
   </div>
-
-<script class="eg-affiliate-banners-script" src="https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"></script>
 </main>
 <!-- FOOTER -->
 <footer>
@@ -4106,49 +4067,18 @@ setInterval(loadStocks,15 * 60 * 1000);
     });
 })();
 </script>
-<aside aria-label="StockPilot AI brokerage platforms" class="free-side-banner" id="free-right-banner">
-<div class="free-side-track">
-<div class="free-side-message">
-<strong class="broker-scroll-heading">ONLINE BROKERS</strong>
-<a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
-<strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
-<strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
-</div>
-<!-- Duplicate for continuous scrolling -->
-<div aria-hidden="true" class="free-side-message">
-<strong class="broker-scroll-heading">ONLINE BROKERS</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
-<strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
-<strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
-</div>
-</div>
-</aside>
+<aside aria-label="U.S. brokerage platforms" class="free-side-banner" id="free-right-banner"><div class="free-side-track"><div class="free-side-message"><strong class="broker-scroll-heading">U.S. ONLINE BROKERAGES</strong>
+<a class="broker-scroll-item" href="https://www.fidelity.com/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=fidelity.com&amp;sz=128"/><span>Fidelity</span></a>
+<a class="broker-scroll-item" href="https://www.schwab.com/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=schwab.com&amp;sz=128"/><span>Charles Schwab</span></a>
+<a class="broker-scroll-item" href="https://investor.vanguard.com/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=vanguard.com&amp;sz=128"/><span>Vanguard</span></a>
+<a class="broker-scroll-item" href="https://robinhood.com/us/en/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=robinhood.com&amp;sz=128"/><span>Robinhood</span></a>
+<a class="broker-scroll-item" href="https://www.interactivebrokers.com/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=interactivebrokers.com&amp;sz=128"/><span>Interactive Brokers</span></a>
+<a class="broker-scroll-item" href="https://www.firstrade.com/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=firstrade.com&amp;sz=128"/><span>Firstrade</span></a>
+<a class="broker-scroll-item" href="https://www.webull.com/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=webull.com&amp;sz=128"/><span>Webull</span></a>
+<strong class="broker-scroll-heading">U.S. INVESTOR RESOURCES</strong>
+<a class="broker-scroll-item" href="https://www.investor.gov/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=investor.gov&amp;sz=128"/><span>SEC Investor.gov</span></a>
+<a class="broker-scroll-item" href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=finra.org&amp;sz=128"/><span>FINRA BrokerCheck</span></a></div><div aria-hidden="true" class="free-side-message"><strong class="broker-scroll-heading">U.S. ONLINE BROKERAGES</strong>
+<a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=fidelity.com&amp;sz=128"/><span>Fidelity</span></a><a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=schwab.com&amp;sz=128"/><span>Charles Schwab</span></a><a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=vanguard.com&amp;sz=128"/><span>Vanguard</span></a><a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=robinhood.com&amp;sz=128"/><span>Robinhood</span></a><a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=interactivebrokers.com&amp;sz=128"/><span>Interactive Brokers</span></a><a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=firstrade.com&amp;sz=128"/><span>Firstrade</span></a><a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=webull.com&amp;sz=128"/><span>Webull</span></a><strong class="broker-scroll-heading">U.S. INVESTOR RESOURCES</strong><a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=investor.gov&amp;sz=128"/><span>SEC Investor.gov</span></a><a class="broker-scroll-item"><img alt="" src="https://www.google.com/s2/favicons?domain=finra.org&amp;sz=128"/><span>FINRA BrokerCheck</span></a></div></div></aside>
 <!-- FULL MARGIN ACCOUNT ARTICLE: EXPANDS ON THIS HOMEPAGE -->
 
 <script>
