@@ -1,43 +1,61 @@
 /**
- * StockPilot AI country edition router.
- * Deploy as a Cloudflare Worker and attach route: technofront.org/*
- * Only the site root is redirected. Deep links remain untouched.
+ * StockPilot AI country edition router
+ *
+ * Cloudflare Worker route: technofront.org/*
+ * Optional second route: www.technofront.org/*
+ *
+ * US visitors opening the homepage are sent to /us/.
+ * Canadian visitors remain on /.
+ * A manual Canada/US choice is remembered in a cookie.
+ * Other countries remain on the default homepage.
+ * Deep links and assets are never redirected.
  */
-const COOKIE = "sp_country_choice";
-const MAX_AGE = 60 * 60 * 24 * 180;
+const COOKIE_NAME = "sp_country_choice";
 
 function readCookie(header, name) {
-  const item = (header || "").split(";").map(v => v.trim()).find(v => v.startsWith(name + "="));
-  return item ? decodeURIComponent(item.slice(name.length + 1)) : "";
+  if (!header) return "";
+  const prefix = name + "=";
+  const entry = header.split(";").map(part => part.trim()).find(part => part.startsWith(prefix));
+  if (!entry) return "";
+  try {
+    return decodeURIComponent(entry.slice(prefix.length));
+  } catch {
+    return "";
+  }
 }
 
 export default {
   async fetch(request) {
     const url = new URL(request.url);
+
     if (url.hostname !== "technofront.org" && url.hostname !== "www.technofront.org") {
       return fetch(request);
     }
 
-    // Respect explicit deep links and assets; only route the homepage.
+    // Only route the homepage; leave all deep links and assets untouched.
     if (url.pathname !== "/" && url.pathname !== "/index.html") {
       return fetch(request);
     }
 
-    const saved = readCookie(request.headers.get("Cookie"), COOKIE);
-    const country = saved === "ca" || saved === "us"
-      ? saved
-      : (request.cf && request.cf.country === "US" ? "us"
-        : request.cf && request.cf.country === "CA" ? "ca" : "");
+    // A visitor's manual choice takes priority over IP-country detection.
+    const savedChoice = readCookie(request.headers.get("Cookie"), COOKIE_NAME);
+    let edition = "";
 
-    if (!country) return fetch(request);
-
-    const target = country === "us" ? "/us/" : "/";
-    if ((country === "us" && url.pathname === "/us/") || url.pathname === target) {
-      return fetch(request);
+    if (savedChoice === "ca" || savedChoice === "us") {
+      edition = savedChoice;
+    } else {
+      const detectedCountry = request.cf && request.cf.country;
+      if (detectedCountry === "US") edition = "us";
+      if (detectedCountry === "CA") edition = "ca";
     }
 
-    // Avoid redirect loops and preserve query parameters.
-    url.pathname = target;
+    // Visitors outside Canada and the United States use the default edition.
+    if (!edition) return fetch(request);
+
+    const destination = edition === "us" ? "/us/" : "/";
+    if (url.pathname === destination) return fetch(request);
+
+    url.pathname = destination;
     return Response.redirect(url.toString(), 302);
   }
 };
