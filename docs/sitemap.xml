@@ -64,4 +64,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/financial-education.html"/>
     <lastmod>2026-11-15</lastmod>
   </url>
+  <url>
+    <loc>https://technofront.org/options-explained.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/options-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/options-expliquees.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/options-explained.html"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://technofront.org/fr/options-expliquees.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/options-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/options-expliquees.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/options-explained.html"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://technofront.org/ai-assisted-trading.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/ai-assisted-trading.html"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/trading-assiste-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/ai-assisted-trading.html"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://technofront.org/fr/trading-assiste-ia.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/ai-assisted-trading.html"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/trading-assiste-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/ai-assisted-trading.html"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
 </urlset>
