@@ -101,6 +101,44 @@
     <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/"/>
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://technofront.org/de/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://technofront.org/es/"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://technofront.org/us/brokers.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/brokers.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://technofront.org/us/financial-education.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/financial-education.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://technofront.org/us/margin-account-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/margin-account-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://technofront.org/us/options-explained.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/options-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
+    <lastmod>2026-11-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://technofront.org/us/ai-assisted-trading.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/ai-assisted-trading.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
     <lastmod>2026-11-15</lastmod>
   </url>
 
