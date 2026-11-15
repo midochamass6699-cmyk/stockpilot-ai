@@ -3589,7 +3589,7 @@ function setMarketPreview(id, items, kind) {
       name = item.company || item.ticker || 'Stock';
       symbol = String(item.ticker || '').toUpperCase();
       const n = Number(item.price);
-      const currency = item.currency === 'USD' ? 'US
+      const currency = item.currency === 'USD' ? 'US$' : '$';
       price = Number.isFinite(n) && n > 0
         ? currency + n.toLocaleString('en-CA', {minimumFractionDigits: 2, maximumFractionDigits: n < 1 ? 4 : 2})
         : 'Price unavailable';
@@ -3678,7 +3678,7 @@ function renderStock(s,penny) {
     ? `${ch > 0 ? '+' : ''}${ch.toFixed(2)}% today`
     : 'Daily change unavailable';
 
-  const currency = s.currency === 'USD' ? 'US
+  const currency = s.currency === 'USD' ? 'US$' : '$';
   const priceText = Number.isFinite(price) && price > 0
     ? currency + price.toLocaleString('en-CA', {
         minimumFractionDigits: 2,
