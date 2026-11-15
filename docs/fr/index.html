@@ -2118,6 +2118,15 @@ input, select, textarea, button {
   .topbar .nav-menu { transition:none; }
 }
 </style>
+
+<style id="sp-fr-subscribe-fab-style">
+#sp-fr-subscribe-fab{position:fixed;right:18px;bottom:18px;z-index:99999;width:48px;height:48px;border:0;border-radius:50%;background:#2563eb;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,.28);font-size:23px;display:flex;align-items:center;justify-content:center;cursor:pointer;animation:spFrBellSwing 2.2s ease-in-out infinite;}
+#sp-fr-subscribe-fab:hover{background:#1d4ed8;transform:scale(1.06)}
+#sp-fr-subscribe-fab:focus-visible{outline:3px solid #93c5fd;outline-offset:4px}
+#sp-fr-subscribe-fab:disabled{opacity:.65;cursor:default}
+@keyframes spFrBellSwing{0%,84%,100%{transform:rotate(0)}87%{transform:rotate(12deg)}90%{transform:rotate(-10deg)}93%{transform:rotate(7deg)}96%{transform:rotate(-4deg)}}
+@media(prefers-reduced-motion:reduce){#sp-fr-subscribe-fab{animation:none}}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -4736,5 +4745,11 @@ body { overflow-x: hidden; }
 @media (prefers-reduced-motion: reduce) { #free-left-banner .sp-side-pick { transition:none; } }
 </style>
 
+
+<button aria-label="S’abonner gratuitement aux alertes StockPilot AI" id="sp-fr-subscribe-fab" title="S’abonner gratuitement">🔔</button>
+
+<script id="sp-fr-subscribe-fab-script">
+(function(){const fab=document.getElementById('sp-fr-subscribe-fab');if(!fab)return;fab.addEventListener('click',function(){const main=document.getElementById('stockpilot-subscribe-btn');if(main){main.scrollIntoView({behavior:'smooth',block:'center'});main.click();}else{fab.title='Abonnement indisponible sur cette page';}});})();
+</script>
 </body>
 </html>
