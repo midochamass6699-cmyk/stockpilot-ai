@@ -2259,7 +2259,7 @@ input, select, textarea, button {
 </div>
 <script>
 (function(){
-  const config={"aria":"Financial market headlines","label":"MARKET NEWS","loading":"Loading latest financial headlines…","empty":"Financial headlines are temporarily unavailable.","read":"READ STORY","fallback":"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=520&q=75","feed":"https://news.google.com/rss/search?q=%28stocks+OR+%22stock+market%22+OR+earnings+OR+shares%29+-politics+-election+-president+when%3A2d&hl=en-CA&gl=CA&ceid=CA%3Aen"};
+  const config={"aria":"Financial market headlines","label":"MARKET NEWS","loading":"Loading latest financial headlines…","empty":"Financial headlines are temporarily unavailable.","read":"READ STORY","fallback":"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=520&q=75","feed":"https://news.google.com/rss/search?q=%28U.S.+stocks+OR+U.S.+stock+market+OR+NYSE+OR+Nasdaq+OR+earnings%29+-politics+-election+-president+when%3A2d&hl=en-US&gl=US&ceid=US%3Aen"};
   const root=document.getElementById('stockpilot-forex-ticker');
   if(!root || root.dataset.newsReady) return;
   root.dataset.newsReady='1';
@@ -2288,7 +2288,7 @@ input, select, textarea, button {
     let headline=raw;
     if(!item.author&&source!=='Financial news')headline=raw.slice(0,raw.lastIndexOf(source)).replace(/\s[-–|]\s*$/,'').trim();
     title.textContent=headline||raw;
-    meta.textContent=source+(item.pubDate?' · '+new Date(item.pubDate).toLocaleString('en-CA',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'');
+    meta.textContent=source+(item.pubDate?' · '+new Date(item.pubDate).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'');
     link.href=item.link||'https://news.google.com/';
     image.onerror=null;
     image.src=safeImage(item,current);
@@ -3956,8 +3956,8 @@ setInterval(loadStocks,15 * 60 * 1000);
   <div class="sp-side-picks">
     <div class="sp-side-heading">
       <span class="sp-side-star" aria-hidden="true">✦</span>
-      <strong>TOP 3 PICKS</strong>
-      <small>STOCKPILOT WATCHLIST</small>
+      <strong>U.S. MARKET WATCH</strong>
+      <small>NYSE · NASDAQ · STOCKPILOT</small>
     </div>
     <section class="sp-side-group" aria-label="Selected stocks">
       <h2>STOCKS</h2>
@@ -4622,7 +4622,7 @@ body { overflow-x: hidden; }
   const resultEl=document.getElementById('broker-match-result');
   const otherCountryInput=document.getElementById('broker-match-country-other');
   const questions=[
-    {key:'country',title:'Where do you live?',options:['Canada','United States','United Kingdom','Australia','Another country']},
+    {key:'country',title:'Where do you live?',options:['United States','Canada','United Kingdom','Australia','Another country']},
     {key:'assets',title:'What would you like to invest in?',options:['Stocks and ETFs','Stocks, ETFs and crypto','Stocks, ETFs, crypto and other investments']},
     {key:'budget',title:'How much would you initially invest?',options:['Less than $500','$500–$5,000','$5,000–$25,000','More than $25,000']},
     {key:'priority',title:'What matters most when choosing a broker?',options:['Zero-commission stock and ETF trading','Lowest total cost, including currency conversion','Broad international market access','A balance of low costs and investment choice']},
