@@ -76,7 +76,7 @@ f.parentNode.insertBefore(j,f);
         {"@type": "Thing", "name": "Penny stocks"},
         {"@type": "Thing", "name": "Cryptocurrency"}
       ],
-      "inLanguage": "en-CA"
+      "inLanguage": "en-US"
     }
   ]
 }
@@ -2330,9 +2330,9 @@ input, select, textarea, button {
       {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
       {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ"},
       {"proName":"FOREXCOM:DJI","title":"DOW"},
-      {"proName":"TSX:RY","title":"ROYAL BANK"},
-      {"proName":"TSX:SHOP","title":"SHOPIFY"},
-      {"proName":"TSX:TD","title":"TD BANK"},
+      {"proName":"NYSE:JPM","title":"JPMORGAN"},
+      {"proName":"NASDAQ:AMZN","title":"AMAZON"},
+      {"proName":"NYSE:V","title":"VISA"},
       {"proName":"NASDAQ:AAPL","title":"APPLE"},
       {"proName":"NASDAQ:NVDA","title":"NVIDIA"},
       {"proName":"NASDAQ:TSLA","title":"TESLA"},
@@ -4055,7 +4055,7 @@ setInterval(loadStocks,15 * 60 * 1000);
           link.rel = 'noopener noreferrer';
         }
       } else {
-        link.href = './stock-report.html?ticker=' + encodeURIComponent(ticker)
+        link.href = '/stock-report.html?ticker=' + encodeURIComponent(ticker)
           + '&kind=' + encodeURIComponent(kind);
       }
       const rank = document.createElement('span');
@@ -4079,9 +4079,13 @@ setInterval(loadStocks,15 * 60 * 1000);
       return response.json();
     })
     .then(function (data) {
-      const main = Array.isArray(data.main) ? data.main : [];
+      const isUSListing = function (item) {
+        return String(item.market || '').toUpperCase() === 'US';
+      };
+      const main = (Array.isArray(data.main) ? data.main : []).filter(isUSListing);
       const mainSymbols = new Set(main.map(function (item) { return item.ticker; }));
       const penny = (Array.isArray(data.penny) ? data.penny : [])
+        .filter(isUSListing)
         .filter(function (item) { return !mainSymbols.has(item.ticker); });
       addRows(mainTarget, main, 'main');
       addRows(pennyTarget, penny, 'penny');
