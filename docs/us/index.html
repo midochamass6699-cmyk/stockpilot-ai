@@ -2159,6 +2159,52 @@ input, select, textarea, button {
 .stock-mini-chart-empty p{margin:6px 0 0;color:#68778b;font-size:10px;line-height:1.4}
 </style>
 
+
+<style id="stockpilot-bell-subscribe">
+/* Compact bell-led subscription CTA: keeps the existing signup section footprint */
+#stockpilot-alert-signup .weekly-subscribe-cta {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:3px; padding:8px 12px; text-align:center;
+}
+#stockpilot-alert-signup .weekly-subscribe-copy { display:none; }
+#stockpilot-alert-signup #stockpilot-subscribe-btn {
+  width:auto; min-height:0; padding:3px 12px 2px; margin:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:3px; border:0; border-radius:8px; background:transparent;
+  color:#17345f; font-size:12px; line-height:1.2; font-weight:900;
+  box-shadow:none; white-space:normal;
+}
+#stockpilot-alert-signup #stockpilot-subscribe-btn::before {
+  content:"🔔"; display:block; font-size:35px; line-height:1.05;
+  transform-origin:50% 12%; animation:stockpilot-bell-jiggle 2.4s ease-in-out infinite;
+  filter:drop-shadow(0 2px 2px rgba(15,23,42,.16));
+}
+#stockpilot-alert-signup #stockpilot-subscribe-btn::after {
+  content:"Never miss a stock beat!"; display:block; margin-top:1px;
+  color:#526174; font-size:11px; font-weight:600; line-height:1.25;
+}
+#stockpilot-alert-signup #stockpilot-subscribe-btn:hover {
+  background:rgba(37,99,235,.07); transform:none;
+}
+#stockpilot-alert-signup #stockpilot-subscribe-btn:disabled::before {
+  content:"✓"; color:#16834a; animation:none; filter:none; font-size:29px;
+}
+#stockpilot-alert-signup #stockpilot-subscribe-btn:disabled::after {
+  content:"You're on the list!"; 
+}
+#stockpilot-alert-signup #stockpilot-subscribe-status { text-align:center; }
+@keyframes stockpilot-bell-jiggle {
+  0%, 82%, 100% { transform:rotate(0deg); }
+  84% { transform:rotate(12deg); }
+  87% { transform:rotate(-10deg); }
+  90% { transform:rotate(7deg); }
+  93% { transform:rotate(-5deg); }
+  96% { transform:rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #stockpilot-alert-signup #stockpilot-subscribe-btn::before { animation:none; }
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
