@@ -261,6 +261,13 @@ def score_momentum(frame):
 
 def analyze(meta, frame):
     m = score_momentum(frame)
+    # Keep the latest 63 daily adjusted closes (approximately three trading months)
+    # for compact, data-backed sparklines on the homepage stock cards.
+    chart_frame = frame.dropna(subset=["Close"]).tail(63)
+    chart_history = [
+        {"date": date.strftime("%Y-%m-%d"), "close": round(float(close), 6)}
+        for date, close in zip(chart_frame.index, chart_frame["Close"].tolist())
+    ]
     reasons = []
     if m["return_20d"] > 0:
         reasons.append(f"20-day momentum {m['return_20d']:+.1f}%")
@@ -291,6 +298,7 @@ def analyze(meta, frame):
         "quote_time": m["price_date"] + " (daily close)",
         "reason": "; ".join(reasons or ["highest momentum score in the screened candidate pool"]) + ".",
         "risk": "; ".join(risks) + ".",
+        "price_history_3mo": chart_history,
         **m,
     }
 
