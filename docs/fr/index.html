@@ -2181,6 +2181,76 @@ input, select, textarea, button {
 @media(max-width:850px){.trading-desk-header>.kitco-affiliate-banner{width:100%;max-width:340px;flex:0 1 340px}}
 @media(max-width:600px){.weekly-subscribe-cta>.kitco-affiliate-banner{width:100%;max-width:340px;flex:1 1 100%;margin-inline:auto}}
 </style>
+
+<style id="technofront-mobile-picks-layout">
+@media (max-width: 760px) {
+  /* Keep the desktop design intact; compact the market picks for phone screens. */
+  .stock-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 7px !important;
+  }
+  .stock-grid > * { min-width: 0 !important; }
+  .stock-card { padding: 8px !important; border-radius: 9px !important; }
+  .stock-card h3, .stock-card h4 { font-size: 12px !important; line-height: 1.2 !important; overflow-wrap: anywhere; }
+  .stock-card p, .stock-card small { font-size: 10px !important; line-height: 1.35 !important; }
+  .stock-card .stock-price, .stock-card .price { font-size: 13px !important; }
+  .live-trading-desk {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) !important;
+    gap: 10px !important;
+    width: calc(100% - 20px) !important;
+    margin: 10px auto 14px !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+  }
+  .live-trading-desk .trading-desk-header { display: contents !important; }
+  .live-trading-desk .trading-desk-header > div:first-child { order: 1; min-width: 0; }
+  .live-trading-desk .trading-desk-grid { order: 2; display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 9px !important; }
+  .live-trading-desk .subscribe-bell-cta { order: 3; justify-self: start; }
+  .live-trading-desk .kitco-affiliate-banner { order: 4; width: 100%; max-width: 340px; justify-self: center; }
+  .live-trading-desk .trading-desk-tools { order: 5; }
+  .live-trading-desk .trading-desk-note { order: 6; }
+  .live-trading-desk .trading-panel { min-width: 0; padding: 10px !important; }
+  .live-trading-desk .trading-panel-heading { margin-bottom: 8px !important; gap: 7px !important; }
+  .live-trading-desk .trading-panel-heading h2 { font-size: 14px !important; }
+  .live-trading-desk .trading-panel-heading p { font-size: 10px !important; }
+  .live-trading-desk .trading-market-list {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+    gap: 5px !important;
+    min-height: 0 !important;
+  }
+  .live-trading-desk .trading-market-list .sp-market-row {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 4px !important;
+    min-width: 0 !important;
+    padding: 8px 4px !important;
+    text-align: center !important;
+    overflow: hidden;
+  }
+  .live-trading-desk .sp-market-rank { width: 18px !important; height: 18px !important; flex: 0 0 18px; }
+  .live-trading-desk .sp-market-name { min-width: 0; max-width: 100%; }
+  .live-trading-desk .sp-market-name strong { max-width: 100%; font-size: 10px !important; white-space: normal !important; overflow-wrap: anywhere; }
+  .live-trading-desk .sp-market-name small { font-size: 9px !important; }
+  .live-trading-desk .sp-market-values { min-width: 0; text-align: center !important; }
+  .live-trading-desk .sp-market-values strong { font-size: 10px !important; white-space: normal !important; overflow-wrap: anywhere; }
+  .live-trading-desk .sp-market-values small { font-size: 9px !important; }
+  .live-trading-desk .trading-panel-link { margin-top: 8px !important; padding-top: 8px !important; font-size: 11px !important; }
+}
+@media (max-width: 380px) {
+  .stock-grid { gap: 5px !important; }
+  .stock-card { padding: 6px !important; }
+  .stock-card h3, .stock-card h4 { font-size: 11px !important; }
+  .live-trading-desk { width: calc(100% - 14px) !important; padding: 8px !important; }
+  .live-trading-desk .trading-market-list { gap: 3px !important; }
+  .live-trading-desk .trading-market-list .sp-market-row { padding: 6px 2px !important; }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -4739,6 +4809,18 @@ body { overflow-x: hidden; }
 
 <script id="sp-fr-subscribe-fab-script">
 (function(){const fab=document.getElementById('sp-fr-subscribe-fab');if(!fab)return;fab.addEventListener('click',function(){const main=document.getElementById('stockpilot-subscribe-btn');if(main){main.scrollIntoView({behavior:'smooth',block:'center'});main.click();}else{fab.title='Abonnement indisponible sur cette page';}});})();
+</script>
+
+<script id="technofront-mobile-welcome-order">
+(function(){
+  const welcome=document.querySelector('.fr-welcome-banner');
+  const ticker=document.querySelector('.sp-top-picks-ticker');
+  if(!welcome||!ticker||!welcome.parentNode||welcome.parentNode!==ticker.parentNode)return;
+  const mq=window.matchMedia('(max-width: 760px)');
+  function arrange(){ if(mq.matches) welcome.parentNode.insertBefore(ticker,welcome); else welcome.parentNode.insertBefore(welcome,ticker); }
+  arrange();
+  if(mq.addEventListener) mq.addEventListener('change',arrange); else mq.addListener(arrange);
+})();
 </script>
 </body>
 </html>
