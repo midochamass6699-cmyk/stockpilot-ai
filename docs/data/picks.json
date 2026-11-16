@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "updated_at": "2026-11-16T03:46:22.462021+00:00",
+  "updated_at": "2026-11-16T11:53:23.454630+00:00",
   "snapshot_time": "2026-11-16",
   "data_source": "Yahoo Finance public screeners + Yahoo Finance daily historical prices (via yfinance)",
   "data_note": "Free, broad candidate scan from public US and Canadian activity/gainer screeners; not an exhaustive scan of every listed security. End-of-day history may be delayed. Yahoo endpoints are unofficial and can be throttled or changed. Prices are in local trading currencies (USD for US, CAD for Canada).",
@@ -1437,286 +1437,286 @@
       "volume": 1675900
     },
     {
-      "ticker": "CTKB",
-      "company": "Cytek Biosciences, Inc.",
-      "exchange": "NasdaqGS",
+      "ticker": "NRGV",
+      "company": "Energy Vault Holdings, Inc.",
+      "exchange": "NYSE",
       "market": "US",
       "sector": "Unclassified",
       "currency": "USD",
       "quote_time": "2026-11-13 (daily close)",
-      "reason": "20-day momentum +11.2%; 50-day momentum +24.3%; price above 20- and 50-day averages.",
-      "risk": "HIGH RISK \u2014 penny-stock volatility. normal market and company-specific risks remain.",
+      "reason": "20-day momentum +35.6%; 50-day momentum +1.6%; price above 20- and 50-day averages.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. high recent volatility.",
       "price_history_3mo": [
         {
           "date": "2026-08-18",
-          "close": 4.67
+          "close": 3.65
         },
         {
           "date": "2026-08-19",
-          "close": 4.7
+          "close": 3.86
         },
         {
           "date": "2026-08-20",
-          "close": 4.66
+          "close": 3.74
         },
         {
           "date": "2026-08-21",
-          "close": 4.81
+          "close": 3.8
         },
         {
           "date": "2026-08-24",
-          "close": 4.44
+          "close": 3.64
         },
         {
           "date": "2026-08-25",
-          "close": 4.58
+          "close": 3.93
         },
         {
           "date": "2026-08-26",
-          "close": 4.57
+          "close": 3.7
         },
         {
           "date": "2026-08-27",
-          "close": 4.62
+          "close": 3.75
         },
         {
           "date": "2026-08-28",
-          "close": 4.68
+          "close": 3.54
         },
         {
           "date": "2026-08-31",
-          "close": 4.78
+          "close": 3.4
         },
         {
           "date": "2026-09-01",
-          "close": 4.62
+          "close": 3.27
         },
         {
           "date": "2026-09-02",
-          "close": 4.69
+          "close": 3.55
         },
         {
           "date": "2026-09-03",
-          "close": 4.7
+          "close": 3.79
         },
         {
           "date": "2026-09-04",
-          "close": 4.7
+          "close": 3.84
         },
         {
           "date": "2026-09-08",
-          "close": 4.62
+          "close": 4.32
         },
         {
           "date": "2026-09-09",
-          "close": 4.73
+          "close": 4.29
         },
         {
           "date": "2026-09-10",
-          "close": 4.53
+          "close": 4.21
         },
         {
           "date": "2026-09-11",
-          "close": 4.61
+          "close": 4.31
         },
         {
           "date": "2026-09-14",
-          "close": 4.83
+          "close": 4.1
         },
         {
           "date": "2026-09-15",
-          "close": 4.89
+          "close": 4.11
         },
         {
           "date": "2026-09-16",
-          "close": 4.93
+          "close": 3.97
         },
         {
           "date": "2026-09-17",
-          "close": 5.21
+          "close": 4.23
         },
         {
           "date": "2026-09-18",
-          "close": 5.3
+          "close": 4.49
         },
         {
           "date": "2026-09-21",
-          "close": 5.28
+          "close": 4.7
         },
         {
           "date": "2026-09-22",
-          "close": 5.71
+          "close": 4.77
         },
         {
           "date": "2026-09-23",
-          "close": 5.68
+          "close": 4.43
         },
         {
           "date": "2026-09-24",
-          "close": 5.73
+          "close": 4.3
         },
         {
           "date": "2026-09-25",
-          "close": 5.65
+          "close": 4.4
         },
         {
           "date": "2026-09-28",
-          "close": 5.74
+          "close": 4.05
         },
         {
           "date": "2026-09-29",
-          "close": 5.76
+          "close": 3.97
         },
         {
           "date": "2026-09-30",
-          "close": 5.96
+          "close": 3.97
         },
         {
           "date": "2026-10-01",
-          "close": 5.81
+          "close": 3.89
         },
         {
           "date": "2026-10-02",
-          "close": 5.87
+          "close": 3.94
         },
         {
           "date": "2026-10-05",
-          "close": 6.09
+          "close": 3.87
         },
         {
           "date": "2026-10-06",
-          "close": 5.38
+          "close": 3.88
         },
         {
           "date": "2026-10-07",
-          "close": 5.34
+          "close": 3.66
         },
         {
           "date": "2026-10-08",
-          "close": 5.36
+          "close": 3.31
         },
         {
           "date": "2026-10-09",
-          "close": 5.43
+          "close": 3.25
         },
         {
           "date": "2026-10-12",
-          "close": 5.31
+          "close": 3.11
         },
         {
           "date": "2026-10-13",
-          "close": 5.35
+          "close": 3.11
         },
         {
           "date": "2026-10-14",
-          "close": 5.395
+          "close": 2.9
         },
         {
           "date": "2026-10-15",
-          "close": 5.41
+          "close": 3.06
         },
         {
           "date": "2026-10-16",
-          "close": 5.25
+          "close": 2.84
         },
         {
           "date": "2026-10-19",
-          "close": 5.25
+          "close": 2.77
         },
         {
           "date": "2026-10-20",
-          "close": 5.34
+          "close": 2.75
         },
         {
           "date": "2026-10-21",
-          "close": 5.5
+          "close": 2.74
         },
         {
           "date": "2026-10-22",
-          "close": 5.43
+          "close": 2.59
         },
         {
           "date": "2026-10-23",
-          "close": 5.59
+          "close": 2.55
         },
         {
           "date": "2026-10-26",
-          "close": 5.89
+          "close": 2.62
         },
         {
           "date": "2026-10-27",
-          "close": 5.98
+          "close": 2.99
         },
         {
           "date": "2026-10-28",
-          "close": 6.14
+          "close": 3.22
         },
         {
           "date": "2026-10-29",
-          "close": 6.3
+          "close": 3.27
         },
         {
           "date": "2026-10-30",
-          "close": 6.13
+          "close": 3.09
         },
         {
           "date": "2026-11-02",
-          "close": 5.77
+          "close": 2.95
         },
         {
           "date": "2026-11-03",
-          "close": 5.96
+          "close": 3.21
         },
         {
           "date": "2026-11-04",
-          "close": 5.88
+          "close": 3.18
         },
         {
           "date": "2026-11-05",
-          "close": 5.4
+          "close": 2.8
         },
         {
           "date": "2026-11-06",
-          "close": 5.83
+          "close": 3.24
         },
         {
           "date": "2026-11-09",
-          "close": 5.89
+          "close": 3.62
         },
         {
           "date": "2026-11-10",
-          "close": 5.79
+          "close": 3.53
         },
         {
           "date": "2026-11-11",
-          "close": 5.76
+          "close": 3.87
         },
         {
           "date": "2026-11-12",
-          "close": 5.52
+          "close": 3.61
         },
         {
           "date": "2026-11-13",
-          "close": 5.84
+          "close": 3.85
         }
       ],
-      "score": 69.5,
-      "return_5d": 0.17,
-      "return_20d": 11.24,
-      "return_50d": 24.26,
-      "change_percent": 5.8,
-      "rsi": 49.1,
-      "volume_ratio": 1.02,
-      "average_volume_20d": 1261180,
-      "average_dollar_volume_20d": 7344584.18,
-      "volatility_20d": 3.87,
+      "score": 67.7,
+      "return_5d": 18.83,
+      "return_20d": 35.56,
+      "return_50d": 1.58,
+      "change_percent": 6.65,
+      "rsi": 68.1,
+      "volume_ratio": 0.91,
+      "average_volume_20d": 4839660,
+      "average_dollar_volume_20d": 15546919.59,
+      "volatility_20d": 7.38,
       "above_20day_average": true,
       "above_50day_average": true,
-      "ma20": 5.7595,
-      "ma50": 5.5009,
+      "ma20": 3.1225,
+      "ma50": 3.5946,
       "price_date": "2026-11-13",
-      "price": 5.84,
-      "volume": 1280300
+      "price": 3.85,
+      "volume": 4415200
     }
   ],
   "picks": [
@@ -5107,288 +5107,6 @@
       "volume": 3313800
     },
     {
-      "ticker": "SENS",
-      "company": "Senseonics Holdings, Inc.",
-      "exchange": "NasdaqGS",
-      "market": "US",
-      "sector": "Unclassified",
-      "currency": "USD",
-      "quote_time": "2026-11-13 (daily close)",
-      "reason": "20-day momentum +36.2%; 50-day momentum +6.9%; price above 20- and 50-day averages.",
-      "risk": "RSI elevated; short-term pullback risk; high recent volatility.",
-      "price_history_3mo": [
-        {
-          "date": "2026-08-18",
-          "close": 8.69
-        },
-        {
-          "date": "2026-08-19",
-          "close": 9.11
-        },
-        {
-          "date": "2026-08-20",
-          "close": 8.82
-        },
-        {
-          "date": "2026-08-21",
-          "close": 9.71
-        },
-        {
-          "date": "2026-08-24",
-          "close": 9.38
-        },
-        {
-          "date": "2026-08-25",
-          "close": 9.52
-        },
-        {
-          "date": "2026-08-26",
-          "close": 9.34
-        },
-        {
-          "date": "2026-08-27",
-          "close": 9.4
-        },
-        {
-          "date": "2026-08-28",
-          "close": 9.33
-        },
-        {
-          "date": "2026-08-31",
-          "close": 9.23
-        },
-        {
-          "date": "2026-09-01",
-          "close": 9.38
-        },
-        {
-          "date": "2026-09-02",
-          "close": 9.94
-        },
-        {
-          "date": "2026-09-03",
-          "close": 9.9
-        },
-        {
-          "date": "2026-09-04",
-          "close": 9.63
-        },
-        {
-          "date": "2026-09-08",
-          "close": 9.33
-        },
-        {
-          "date": "2026-09-09",
-          "close": 8.72
-        },
-        {
-          "date": "2026-09-10",
-          "close": 8.79
-        },
-        {
-          "date": "2026-09-11",
-          "close": 8.71
-        },
-        {
-          "date": "2026-09-14",
-          "close": 8.84
-        },
-        {
-          "date": "2026-09-15",
-          "close": 8.88
-        },
-        {
-          "date": "2026-09-16",
-          "close": 9.06
-        },
-        {
-          "date": "2026-09-17",
-          "close": 9.43
-        },
-        {
-          "date": "2026-09-18",
-          "close": 9.58
-        },
-        {
-          "date": "2026-09-21",
-          "close": 9.78
-        },
-        {
-          "date": "2026-09-22",
-          "close": 10.06
-        },
-        {
-          "date": "2026-09-23",
-          "close": 9.975
-        },
-        {
-          "date": "2026-09-24",
-          "close": 10.34
-        },
-        {
-          "date": "2026-09-25",
-          "close": 10.0
-        },
-        {
-          "date": "2026-09-28",
-          "close": 9.84
-        },
-        {
-          "date": "2026-09-29",
-          "close": 10.05
-        },
-        {
-          "date": "2026-09-30",
-          "close": 10.17
-        },
-        {
-          "date": "2026-10-01",
-          "close": 9.96
-        },
-        {
-          "date": "2026-10-02",
-          "close": 9.88
-        },
-        {
-          "date": "2026-10-05",
-          "close": 10.31
-        },
-        {
-          "date": "2026-10-06",
-          "close": 9.96
-        },
-        {
-          "date": "2026-10-07",
-          "close": 9.16
-        },
-        {
-          "date": "2026-10-08",
-          "close": 9.02
-        },
-        {
-          "date": "2026-10-09",
-          "close": 8.98
-        },
-        {
-          "date": "2026-10-12",
-          "close": 9.24
-        },
-        {
-          "date": "2026-10-13",
-          "close": 8.92
-        },
-        {
-          "date": "2026-10-14",
-          "close": 8.1
-        },
-        {
-          "date": "2026-10-15",
-          "close": 8.23
-        },
-        {
-          "date": "2026-10-16",
-          "close": 7.77
-        },
-        {
-          "date": "2026-10-19",
-          "close": 8.015
-        },
-        {
-          "date": "2026-10-20",
-          "close": 8.21
-        },
-        {
-          "date": "2026-10-21",
-          "close": 7.97
-        },
-        {
-          "date": "2026-10-22",
-          "close": 7.4
-        },
-        {
-          "date": "2026-10-23",
-          "close": 7.51
-        },
-        {
-          "date": "2026-10-26",
-          "close": 7.48
-        },
-        {
-          "date": "2026-10-27",
-          "close": 8.33
-        },
-        {
-          "date": "2026-10-28",
-          "close": 9.34
-        },
-        {
-          "date": "2026-10-29",
-          "close": 9.75
-        },
-        {
-          "date": "2026-10-30",
-          "close": 9.51
-        },
-        {
-          "date": "2026-11-02",
-          "close": 8.98
-        },
-        {
-          "date": "2026-11-03",
-          "close": 8.86
-        },
-        {
-          "date": "2026-11-04",
-          "close": 9.02
-        },
-        {
-          "date": "2026-11-05",
-          "close": 7.99
-        },
-        {
-          "date": "2026-11-06",
-          "close": 8.59
-        },
-        {
-          "date": "2026-11-09",
-          "close": 9.8
-        },
-        {
-          "date": "2026-11-10",
-          "close": 10.03
-        },
-        {
-          "date": "2026-11-11",
-          "close": 10.42
-        },
-        {
-          "date": "2026-11-12",
-          "close": 10.04
-        },
-        {
-          "date": "2026-11-13",
-          "close": 10.58
-        }
-      ],
-      "score": 72.7,
-      "return_5d": 23.17,
-      "return_20d": 36.16,
-      "return_50d": 6.87,
-      "change_percent": 5.38,
-      "rsi": 70.1,
-      "volume_ratio": 1.19,
-      "average_volume_20d": 937755,
-      "average_dollar_volume_20d": 8748564.01,
-      "volatility_20d": 6.33,
-      "above_20day_average": true,
-      "above_50day_average": true,
-      "ma20": 8.8913,
-      "ma50": 9.1708,
-      "price_date": "2026-11-13",
-      "price": 10.58,
-      "volume": 1118900
-    },
-    {
       "ticker": "STN.TO",
       "company": "Stantec Inc.",
       "exchange": "NYSE",
@@ -6515,288 +6233,6 @@
       "price_date": "2026-11-13",
       "price": 52.81,
       "volume": 12233500
-    },
-    {
-      "ticker": "UPBD",
-      "company": "Upbound Group, Inc.",
-      "exchange": "NasdaqGS",
-      "market": "US",
-      "sector": "Unclassified",
-      "currency": "USD",
-      "quote_time": "2026-11-13 (daily close)",
-      "reason": "20-day momentum +53.3%; 50-day momentum +37.8%; price above 20- and 50-day averages.",
-      "risk": "RSI elevated; short-term pullback risk; high recent volatility.",
-      "price_history_3mo": [
-        {
-          "date": "2026-08-18",
-          "close": 18.694408
-        },
-        {
-          "date": "2026-08-19",
-          "close": 19.01622
-        },
-        {
-          "date": "2026-08-20",
-          "close": 18.080038
-        },
-        {
-          "date": "2026-08-21",
-          "close": 18.333586
-        },
-        {
-          "date": "2026-08-24",
-          "close": 18.694408
-        },
-        {
-          "date": "2026-08-25",
-          "close": 18.879694
-        },
-        {
-          "date": "2026-08-26",
-          "close": 18.95771
-        },
-        {
-          "date": "2026-08-27",
-          "close": 18.811432
-        },
-        {
-          "date": "2026-08-28",
-          "close": 18.743166
-        },
-        {
-          "date": "2026-08-31",
-          "close": 17.845991
-        },
-        {
-          "date": "2026-09-01",
-          "close": 17.963015
-        },
-        {
-          "date": "2026-09-02",
-          "close": 18.333586
-        },
-        {
-          "date": "2026-09-03",
-          "close": 18.206812
-        },
-        {
-          "date": "2026-09-04",
-          "close": 18.509121
-        },
-        {
-          "date": "2026-09-08",
-          "close": 17.992271
-        },
-        {
-          "date": "2026-09-09",
-          "close": 17.660706
-        },
-        {
-          "date": "2026-09-10",
-          "close": 17.748474
-        },
-        {
-          "date": "2026-09-11",
-          "close": 17.855743
-        },
-        {
-          "date": "2026-09-14",
-          "close": 17.797232
-        },
-        {
-          "date": "2026-09-15",
-          "close": 17.309637
-        },
-        {
-          "date": "2026-09-16",
-          "close": 17.338894
-        },
-        {
-          "date": "2026-09-17",
-          "close": 17.22187
-        },
-        {
-          "date": "2026-09-18",
-          "close": 16.705017
-        },
-        {
-          "date": "2026-09-21",
-          "close": 16.470972
-        },
-        {
-          "date": "2026-09-22",
-          "close": 16.363703
-        },
-        {
-          "date": "2026-09-23",
-          "close": 15.593301
-        },
-        {
-          "date": "2026-09-24",
-          "close": 15.476278
-        },
-        {
-          "date": "2026-09-25",
-          "close": 15.690821
-        },
-        {
-          "date": "2026-09-28",
-          "close": 15.398263
-        },
-        {
-          "date": "2026-09-29",
-          "close": 15.23248
-        },
-        {
-          "date": "2026-09-30",
-          "close": 15.310495
-        },
-        {
-          "date": "2026-10-01",
-          "close": 15.290993
-        },
-        {
-          "date": "2026-10-02",
-          "close": 15.515285
-        },
-        {
-          "date": "2026-10-05",
-          "close": 15.33
-        },
-        {
-          "date": "2026-10-06",
-          "close": 15.36
-        },
-        {
-          "date": "2026-10-07",
-          "close": 15.62
-        },
-        {
-          "date": "2026-10-08",
-          "close": 15.69
-        },
-        {
-          "date": "2026-10-09",
-          "close": 15.4
-        },
-        {
-          "date": "2026-10-12",
-          "close": 15.4
-        },
-        {
-          "date": "2026-10-13",
-          "close": 15.41
-        },
-        {
-          "date": "2026-10-14",
-          "close": 15.44
-        },
-        {
-          "date": "2026-10-15",
-          "close": 16.450001
-        },
-        {
-          "date": "2026-10-16",
-          "close": 16.370001
-        },
-        {
-          "date": "2026-10-19",
-          "close": 15.98
-        },
-        {
-          "date": "2026-10-20",
-          "close": 16.32
-        },
-        {
-          "date": "2026-10-21",
-          "close": 16.17
-        },
-        {
-          "date": "2026-10-22",
-          "close": 17.370001
-        },
-        {
-          "date": "2026-10-23",
-          "close": 17.08
-        },
-        {
-          "date": "2026-10-26",
-          "close": 16.99
-        },
-        {
-          "date": "2026-10-27",
-          "close": 16.950001
-        },
-        {
-          "date": "2026-10-28",
-          "close": 16.91
-        },
-        {
-          "date": "2026-10-29",
-          "close": 19.98
-        },
-        {
-          "date": "2026-10-30",
-          "close": 20.700001
-        },
-        {
-          "date": "2026-11-02",
-          "close": 22.84
-        },
-        {
-          "date": "2026-11-03",
-          "close": 22.459999
-        },
-        {
-          "date": "2026-11-04",
-          "close": 24.139999
-        },
-        {
-          "date": "2026-11-05",
-          "close": 24.879999
-        },
-        {
-          "date": "2026-11-06",
-          "close": 24.24
-        },
-        {
-          "date": "2026-11-09",
-          "close": 24.68
-        },
-        {
-          "date": "2026-11-10",
-          "close": 24.66
-        },
-        {
-          "date": "2026-11-11",
-          "close": 25.27
-        },
-        {
-          "date": "2026-11-12",
-          "close": 23.879999
-        },
-        {
-          "date": "2026-11-13",
-          "close": 25.09
-        }
-      ],
-      "score": 67.4,
-      "return_5d": 3.51,
-      "return_20d": 53.27,
-      "return_50d": 37.81,
-      "change_percent": 5.07,
-      "rsi": 80.9,
-      "volume_ratio": 1.14,
-      "average_volume_20d": 1535385,
-      "average_dollar_volume_20d": 32833455.23,
-      "volatility_20d": 5.26,
-      "above_20day_average": true,
-      "above_50day_average": true,
-      "ma20": 20.8295,
-      "ma50": 18.1108,
-      "price_date": "2026-11-13",
-      "price": 25.09,
-      "volume": 1756700
     },
     {
       "ticker": "FOUR",
@@ -10467,288 +9903,6 @@
       "volume": 1675900
     },
     {
-      "ticker": "CTKB",
-      "company": "Cytek Biosciences, Inc.",
-      "exchange": "NasdaqGS",
-      "market": "US",
-      "sector": "Unclassified",
-      "currency": "USD",
-      "quote_time": "2026-11-13 (daily close)",
-      "reason": "20-day momentum +11.2%; 50-day momentum +24.3%; price above 20- and 50-day averages.",
-      "risk": "HIGH RISK \u2014 penny-stock volatility. normal market and company-specific risks remain.",
-      "price_history_3mo": [
-        {
-          "date": "2026-08-18",
-          "close": 4.67
-        },
-        {
-          "date": "2026-08-19",
-          "close": 4.7
-        },
-        {
-          "date": "2026-08-20",
-          "close": 4.66
-        },
-        {
-          "date": "2026-08-21",
-          "close": 4.81
-        },
-        {
-          "date": "2026-08-24",
-          "close": 4.44
-        },
-        {
-          "date": "2026-08-25",
-          "close": 4.58
-        },
-        {
-          "date": "2026-08-26",
-          "close": 4.57
-        },
-        {
-          "date": "2026-08-27",
-          "close": 4.62
-        },
-        {
-          "date": "2026-08-28",
-          "close": 4.68
-        },
-        {
-          "date": "2026-08-31",
-          "close": 4.78
-        },
-        {
-          "date": "2026-09-01",
-          "close": 4.62
-        },
-        {
-          "date": "2026-09-02",
-          "close": 4.69
-        },
-        {
-          "date": "2026-09-03",
-          "close": 4.7
-        },
-        {
-          "date": "2026-09-04",
-          "close": 4.7
-        },
-        {
-          "date": "2026-09-08",
-          "close": 4.62
-        },
-        {
-          "date": "2026-09-09",
-          "close": 4.73
-        },
-        {
-          "date": "2026-09-10",
-          "close": 4.53
-        },
-        {
-          "date": "2026-09-11",
-          "close": 4.61
-        },
-        {
-          "date": "2026-09-14",
-          "close": 4.83
-        },
-        {
-          "date": "2026-09-15",
-          "close": 4.89
-        },
-        {
-          "date": "2026-09-16",
-          "close": 4.93
-        },
-        {
-          "date": "2026-09-17",
-          "close": 5.21
-        },
-        {
-          "date": "2026-09-18",
-          "close": 5.3
-        },
-        {
-          "date": "2026-09-21",
-          "close": 5.28
-        },
-        {
-          "date": "2026-09-22",
-          "close": 5.71
-        },
-        {
-          "date": "2026-09-23",
-          "close": 5.68
-        },
-        {
-          "date": "2026-09-24",
-          "close": 5.73
-        },
-        {
-          "date": "2026-09-25",
-          "close": 5.65
-        },
-        {
-          "date": "2026-09-28",
-          "close": 5.74
-        },
-        {
-          "date": "2026-09-29",
-          "close": 5.76
-        },
-        {
-          "date": "2026-09-30",
-          "close": 5.96
-        },
-        {
-          "date": "2026-10-01",
-          "close": 5.81
-        },
-        {
-          "date": "2026-10-02",
-          "close": 5.87
-        },
-        {
-          "date": "2026-10-05",
-          "close": 6.09
-        },
-        {
-          "date": "2026-10-06",
-          "close": 5.38
-        },
-        {
-          "date": "2026-10-07",
-          "close": 5.34
-        },
-        {
-          "date": "2026-10-08",
-          "close": 5.36
-        },
-        {
-          "date": "2026-10-09",
-          "close": 5.43
-        },
-        {
-          "date": "2026-10-12",
-          "close": 5.31
-        },
-        {
-          "date": "2026-10-13",
-          "close": 5.35
-        },
-        {
-          "date": "2026-10-14",
-          "close": 5.395
-        },
-        {
-          "date": "2026-10-15",
-          "close": 5.41
-        },
-        {
-          "date": "2026-10-16",
-          "close": 5.25
-        },
-        {
-          "date": "2026-10-19",
-          "close": 5.25
-        },
-        {
-          "date": "2026-10-20",
-          "close": 5.34
-        },
-        {
-          "date": "2026-10-21",
-          "close": 5.5
-        },
-        {
-          "date": "2026-10-22",
-          "close": 5.43
-        },
-        {
-          "date": "2026-10-23",
-          "close": 5.59
-        },
-        {
-          "date": "2026-10-26",
-          "close": 5.89
-        },
-        {
-          "date": "2026-10-27",
-          "close": 5.98
-        },
-        {
-          "date": "2026-10-28",
-          "close": 6.14
-        },
-        {
-          "date": "2026-10-29",
-          "close": 6.3
-        },
-        {
-          "date": "2026-10-30",
-          "close": 6.13
-        },
-        {
-          "date": "2026-11-02",
-          "close": 5.77
-        },
-        {
-          "date": "2026-11-03",
-          "close": 5.96
-        },
-        {
-          "date": "2026-11-04",
-          "close": 5.88
-        },
-        {
-          "date": "2026-11-05",
-          "close": 5.4
-        },
-        {
-          "date": "2026-11-06",
-          "close": 5.83
-        },
-        {
-          "date": "2026-11-09",
-          "close": 5.89
-        },
-        {
-          "date": "2026-11-10",
-          "close": 5.79
-        },
-        {
-          "date": "2026-11-11",
-          "close": 5.76
-        },
-        {
-          "date": "2026-11-12",
-          "close": 5.52
-        },
-        {
-          "date": "2026-11-13",
-          "close": 5.84
-        }
-      ],
-      "score": 69.5,
-      "return_5d": 0.17,
-      "return_20d": 11.24,
-      "return_50d": 24.26,
-      "change_percent": 5.8,
-      "rsi": 49.1,
-      "volume_ratio": 1.02,
-      "average_volume_20d": 1261180,
-      "average_dollar_volume_20d": 7344584.18,
-      "volatility_20d": 3.87,
-      "above_20day_average": true,
-      "above_50day_average": true,
-      "ma20": 5.7595,
-      "ma50": 5.5009,
-      "price_date": "2026-11-13",
-      "price": 5.84,
-      "volume": 1280300
-    },
-    {
       "ticker": "NRGV",
       "company": "Energy Vault Holdings, Inc.",
       "exchange": "NYSE",
@@ -10757,7 +9911,7 @@
       "currency": "USD",
       "quote_time": "2026-11-13 (daily close)",
       "reason": "20-day momentum +35.6%; 50-day momentum +1.6%; price above 20- and 50-day averages.",
-      "risk": "high recent volatility.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. high recent volatility.",
       "price_history_3mo": [
         {
           "date": "2026-08-18",
@@ -12724,9 +11878,9 @@
     }
   ],
   "main_candidates_scanned": 82,
-  "main_candidates_eligible": 26,
+  "main_candidates_eligible": 24,
   "penny_candidates_scanned": 82,
-  "penny_candidates_eligible": 10,
+  "penny_candidates_eligible": 9,
   "errors": [
     "US/penny_stocks: HTTP Error 404: Not Found",
     "Canada/penny_stocks: HTTP Error 404: Not Found",
@@ -12771,28 +11925,28 @@
     "COLD.TO: only 0 daily rows; need 55",
     "FRMI.TO: only 0 daily rows; need 55",
     "SOC.TO: only 0 daily rows; need 55",
-    "VISN.TO: only 0 daily rows; need 55",
+    "ANVS.TO: only 0 daily rows; need 55",
     "CDNL.TO: only 0 daily rows; need 55",
+    "VISN.TO: no daily history returned",
     "UNIT.TO: no daily history returned",
     "HAWK.TO: no daily history returned",
     "UAMY.TO: no daily history returned",
     "NMAX.TO: no daily history returned",
-    "SENS.TO: no daily history returned",
     "NRGV.TO: no daily history returned",
+    "NCMI.TO: no daily history returned",
     "ANGX.TO: no daily history returned",
+    "HLLY.TO: no daily history returned",
     "TIGR.TO: no daily history returned",
     "DNUT.TO: no daily history returned",
-    "CTKB.TO: no daily history returned",
-    "ANVS.TO: no daily history returned",
-    "ACCV.TO: no daily history returned",
-    "UPBD.TO: no daily history returned",
     "AGRO.TO: no daily history returned",
+    "ECC.TO: no daily history returned",
+    "ACCV.TO: no daily history returned",
+    "BIRD.TO: no daily history returned",
     "PLTK.TO: no daily history returned",
     "ITG.TO: no daily history returned",
     "TDUP.TO: no daily history returned",
     "VYX.TO: no daily history returned",
     "WLTH.TO: no daily history returned",
-    "ECC.TO: no daily history returned",
     "LAB.TO: no daily history returned"
   ],
   "penny_errors": []
