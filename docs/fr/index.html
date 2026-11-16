@@ -2376,6 +2376,20 @@ input, select, textarea, button {
 
 <section id="stockpilot-fr-margin-guide-banner"><div class="guide-copy"><div class="guide-eyebrow">ÉDUCATION DES INVESTISSEURS · CANADA</div><h2>Comprenez les comptes sur marge avant de négocier</h2><p>Découvrez comment fonctionne l’emprunt pour investir, combien les intérêts peuvent coûter et comment une baisse du marché peut entraîner un appel de marge.</p></div><a href="#margin-account-article">LIRE LE GUIDE SUR LES COMPTES SUR MARGE  →</a></section>
 
+<section class="container" aria-label="Mises à jour gratuites de StockPilot AI" id="stockpilot-alert-signup">
+  <div class="weekly-subscribe-cta">
+    <div class="weekly-subscribe-copy">
+      <span aria-hidden="true" class="weekly-subscribe-icon">🔔</span>
+      <div>
+        <strong id="weekly-subscribe-heading">RECEVEZ LES MISES À JOUR GRATUITES DE STOCKPILOT AI</strong>
+        <small>Recevez une notification dans votre navigateur lorsque nous publions de nouvelles recherches sur les actions, des analyses de marché et des guides éducatifs sur l’investissement.</small>
+      </div>
+    </div>
+    <button id="stockpilot-subscribe-btn" type="button">🔔 RECEVOIR LES MISES À JOUR GRATUITES</button>
+    <p aria-live="polite" id="stockpilot-subscribe-status">Aucun courriel ni paiement requis. Vous pouvez désactiver les notifications à tout moment.</p>
+  </div>
+</section>
+
 <nav aria-label="Market categories" class="category-nav">
 <a class="category-tab active" href="#main-picks">ACTIONS DU JOUR</a>
 <a class="category-tab" href="#penny-picks">PENNY STOCKS</a>
@@ -3689,19 +3703,19 @@ setInterval(loadStocks,15 * 60 * 1000);
     const isSubscribed = subscription && subscription.optedIn === true;
 
     if (isSubscribed) {
-      button.textContent = "✓ YOU'RE SUBSCRIBED";
+      button.textContent = "✓ ABONNEMENT ACTIVÉ";
       button.disabled = true;
-      show("You're subscribed to StockPilot AI daily alerts. Thank you!");
+      show("Votre abonnement aux mises à jour de StockPilot AI est activé. Merci !");
       return;
     }
 
-    button.textContent = "🔔 S’ABONNER GRATUITEMENT";
+    button.textContent = "🔔 RECEVOIR LES MISES À JOUR GRATUITES";
     button.disabled = false;
 
     if (oneSignalClient.Notifications.permissionNative === "denied") {
       show("Notifications are blocked in this browser. Enable them in this site's browser settings, then try again.");
     } else {
-      show("Alertes boursières quotidiennes gratuites. Aucun paiement requis.");
+      show("Aucun courriel ni paiement requis. Vous pouvez désactiver les notifications à tout moment.");
     }
   }
 
@@ -3738,19 +3752,19 @@ setInterval(loadStocks,15 * 60 * 1000);
 
       if (oneSignalClient.User.PushSubscription.optedIn !== true) {
         button.disabled = false;
-        button.textContent = "🔔 S’ABONNER GRATUITEMENT";
+        button.textContent = "🔔 RECEVOIR LES MISES À JOUR GRATUITES";
         show("Subscription not completed. If your browser asked for permission, choose Allow. If no prompt appeared, check browser settings.");
       }
     } catch (error) {
       console.error("StockPilot OneSignal subscription error:", error);
       button.disabled = false;
-      button.textContent = "🔔 S’ABONNER GRATUITEMENT";
+      button.textContent = "🔔 RECEVOIR LES MISES À JOUR GRATUITES";
       show("We couldn't complete the subscription. Check browser notification permissions and try again.");
     } finally {
       clickInProgress = false;
       if (oneSignalClient.User.PushSubscription.optedIn !== true) {
         button.disabled = false;
-        button.textContent = "🔔 S’ABONNER GRATUITEMENT";
+        button.textContent = "🔔 RECEVOIR LES MISES À JOUR GRATUITES";
       }
     }
   });
@@ -4600,7 +4614,7 @@ body { overflow-x: hidden; }
 </style>
 
 
-<button aria-label="S’abonner gratuitement aux alertes StockPilot AI" id="sp-fr-subscribe-fab" title="S’abonner gratuitement">🔔</button>
+<button aria-label="Recevoir les mises à jour gratuites de StockPilot AI" id="sp-fr-subscribe-fab" title="Recevoir les mises à jour gratuites">🔔</button>
 
 <script id="sp-fr-subscribe-fab-script">
 (function(){const fab=document.getElementById('sp-fr-subscribe-fab');if(!fab)return;fab.addEventListener('click',function(){const main=document.getElementById('stockpilot-subscribe-btn');if(main){main.scrollIntoView({behavior:'smooth',block:'center'});main.click();}else{fab.title='Abonnement indisponible sur cette page';}});})();
