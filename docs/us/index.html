@@ -2142,6 +2142,23 @@ input, select, textarea, button {
   .topbar .nav-menu { transition:none; }
 }
 </style>
+
+<style id="stockpilot-three-month-mini-chart">
+.stock-mini-chart{margin:11px 0 8px;padding:9px 10px 7px;border:1px solid #dce5ef;border-radius:8px;background:#f7faff;min-width:0}
+.stock-mini-chart-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#526174;font-size:9px;font-weight:900;letter-spacing:.045em}
+.stock-mini-chart-heading strong{font-size:11px;color:#16845b;letter-spacing:0;white-space:nowrap}
+.stock-mini-chart.down .stock-mini-chart-heading strong{color:#c24148}
+.stock-mini-chart svg{display:block;width:100%;height:48px;margin-top:5px;overflow:visible}
+.stock-mini-chart-grid{stroke:#dfe7f0;stroke-width:1;stroke-dasharray:3 4}
+.stock-mini-chart-area{fill:rgba(22,132,91,.10)}
+.stock-mini-chart-line{fill:none;stroke:#16845b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.stock-mini-chart.down .stock-mini-chart-area{fill:rgba(194,65,72,.09)}
+.stock-mini-chart.down .stock-mini-chart-line{stroke:#c24148}
+.stock-mini-chart-dates{display:flex;justify-content:space-between;color:#77869a;font-size:9px;line-height:1.2}
+.stock-mini-chart-foot{margin-top:4px;color:#77869a;font-size:9px;line-height:1.3}
+.stock-mini-chart-empty p{margin:6px 0 0;color:#68778b;font-size:10px;line-height:1.4}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -3626,6 +3643,68 @@ async function loadCrypto() {
   }
 }
 
+
+/* MINI THREE-MONTH PRICE HISTORY — uses real daily closes from picks.json */
+function renderThreeMonthChart(stock, language) {
+  const copy = {
+    en: {title:"3-MONTH PRICE TREND", change:"3-month change", sessions:"daily closes", empty:"Historical price data will appear after the next successful daily update."},
+    fr: {title:"ÉVOLUTION SUR 3 MOIS", change:"Variation sur 3 mois", sessions:"cours quotidiens", empty:"L’historique des prix apparaîtra après la prochaine mise à jour quotidienne réussie."},
+    de: {title:"KURSVERLAUF ÜBER 3 MONATE", change:"Veränderung in 3 Monaten", sessions:"Tages-Schlusskurse", empty:"Die historischen Kursdaten erscheinen nach der nächsten erfolgreichen täglichen Aktualisierung."},
+    es: {title:"EVOLUCIÓN DE 3 MESES", change:"Variación en 3 meses", sessions:"cierres diarios", empty:"El historial de precios aparecerá después de la próxima actualización diaria."}
+  }[language] || {title:"3-MONTH PRICE TREND", change:"3-month change", sessions:"daily closes", empty:"Historical price data will appear after the next successful daily update."};
+
+  const history = Array.isArray(stock.price_history_3mo)
+    ? stock.price_history_3mo.filter(point => point && point.close !== null && Number.isFinite(Number(point.close)))
+    : [];
+
+  if (history.length < 2) {
+    return `<div class="stock-mini-chart stock-mini-chart-empty">
+      <div class="stock-mini-chart-heading"><span>${copy.title}</span></div>
+      <p>${copy.empty}</p>
+    </div>`;
+  }
+
+  const values = history.map(point => Number(point.close));
+  const first = values[0];
+  const last = values[values.length - 1];
+  const change = first > 0 ? ((last / first) - 1) * 100 : 0;
+  const trend = change < 0 ? "down" : "up";
+  const changeText = (change > 0 ? "+" : "") + change.toFixed(1) + "%";
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || Math.max(Math.abs(max) * 0.01, 0.01);
+  const coords = values.map((value, index) => {
+    const x = 4 + (index / Math.max(values.length - 1, 1)) * 232;
+    const y = 50 - ((value - min) / range) * 42;
+    return x.toFixed(1) + "," + y.toFixed(1);
+  });
+  const startDate = history[0].date || "";
+  const endDate = history[history.length - 1].date || "";
+  const fmtDate = value => {
+    const parsed = new Date(value + "T00:00:00Z");
+    return Number.isNaN(parsed.getTime())
+      ? String(value)
+      : parsed.toLocaleDateString(({en:"en-CA",fr:"fr-CA",de:"de-DE",es:"es-ES"}[language] || "en-CA"), {month:"short", day:"numeric", timeZone:"UTC"});
+  };
+  const ticker = esc(stock.ticker || "");
+  const aria = ticker + " " + copy.title.toLowerCase() + ", " + values.length + " " + copy.sessions;
+  return `<div class="stock-mini-chart ${trend}">
+    <div class="stock-mini-chart-heading">
+      <span>${copy.title}</span>
+      <strong>${changeText}</strong>
+    </div>
+    <svg viewBox="0 0 240 58" role="img" aria-label="${esc(aria)}">
+      <line class="stock-mini-chart-grid" x1="2" y1="8" x2="238" y2="8"></line>
+      <line class="stock-mini-chart-grid" x1="2" y1="29" x2="238" y2="29"></line>
+      <line class="stock-mini-chart-grid" x1="2" y1="50" x2="238" y2="50"></line>
+      <polygon class="stock-mini-chart-area" points="4,54 ${coords.join(" ")} 236,54"></polygon>
+      <polyline class="stock-mini-chart-line" points="${coords.join(" ")}"></polyline>
+    </svg>
+    <div class="stock-mini-chart-dates"><span>${esc(fmtDate(startDate))}</span><span>${esc(fmtDate(endDate))}</span></div>
+    <div class="stock-mini-chart-foot">${values.length} ${copy.sessions} · ${copy.change.toLowerCase()}</div>
+  </div>`;
+}
+
 /* RENDER STOCK */
 function renderStock(s,penny) {
   const ch = Number(s.change_percent);
@@ -3678,6 +3757,7 @@ function renderStock(s,penny) {
         <div class="price">${priceText}</div>
       </div>
       <div class="change ${cls}">${change}</div>
+      ${renderThreeMonthChart(s, "en")}
 
       <div class="card-meta">
         <strong>Momentum score:</strong> ${scoreText}
