@@ -2839,10 +2839,10 @@ input, select, textarea, button {
   type="button"
   class="subscribe-bell-cta"
   onclick="document.getElementById('stockpilot-subscribe-btn')?.click()"
-  aria-label="Subscribe free to StockPilot AI alerts"
+  aria-label="Kostenlose StockPilot-AI-Browserupdates erhalten"
 >
   <span class="subscribe-bell" aria-hidden="true">🔔</span>
-  <span>KOSTENLOS ABONNIEREN</span>
+  <span>KOSTENLOSE UPDATES</span>
 </button>
 <div class="trading-session-card">
 <span class="session-label">IHR MARKTÜBERBLICK</span>
@@ -2893,12 +2893,12 @@ input, select, textarea, button {
     <div class="weekly-subscribe-copy">
       <span aria-hidden="true" class="weekly-subscribe-icon">🔔</span>
       <div>
-        <strong id="weekly-subscribe-heading">KEINE MARKTENTWICKLUNG VERPASSEN</strong>
-        <small>Erhalten Sie kostenlose Browser-Benachrichtigungen, wenn neue Aktienauswahlen, Penny-Stock-Listen und wichtige Marktupdates veröffentlicht werden.</small>
+        <strong id="weekly-subscribe-heading">KOSTENLOSE STOCKPILOT-AI-UPDATES ERHALTEN</strong>
+        <small>Erhalten Sie Browser-Benachrichtigungen, wenn wir neue Aktienrecherchen, Markteinblicke und Anlegerbildungsartikel veröffentlichen.</small>
       </div>
     </div>
-    <button id="stockpilot-subscribe-btn" type="button">🔔 KOSTENLOS ABONNIEREN</button>
-    <p aria-live="polite" id="stockpilot-subscribe-status">Kostenlose tägliche Marktbenachrichtigungen. Keine Zahlung erforderlich.</p>
+    <button id="stockpilot-subscribe-btn" type="button">🔔 KOSTENLOSE UPDATES ERHALTEN</button>
+    <p aria-live="polite" id="stockpilot-subscribe-status">Keine E-Mail-Adresse und keine Zahlung erforderlich. Sie können Benachrichtigungen jederzeit deaktivieren.</p>
   </div>
 </section>
 
@@ -4047,19 +4047,19 @@ setInterval(loadStocks,15 * 60 * 1000);
     const isSubscribed = subscription && subscription.optedIn === true;
 
     if (isSubscribed) {
-      button.textContent = "✓ YOU'RE SUBSCRIBED";
+      button.textContent = "✓ ABONNIERT";
       button.disabled = true;
-      show("You're subscribed to StockPilot AI daily alerts. Thank you!");
+      show("Sie erhalten jetzt StockPilot-AI-Updates. Vielen Dank!");
       return;
     }
 
-    button.textContent = "🔔 KOSTENLOS ABONNIEREN";
+    button.textContent = "🔔 KOSTENLOSE UPDATES ERHALTEN";
     button.disabled = false;
 
     if (oneSignalClient.Notifications.permissionNative === "denied") {
       show("Notifications are blocked in this browser. Enable them in this site's browser settings, then try again.");
     } else {
-      show("Kostenlose tägliche Marktbenachrichtigungen. Keine Zahlung erforderlich.");
+      show("Keine E-Mail-Adresse und keine Zahlung erforderlich. Sie können Benachrichtigungen jederzeit deaktivieren.");
     }
   }
 
@@ -4096,19 +4096,19 @@ setInterval(loadStocks,15 * 60 * 1000);
 
       if (oneSignalClient.User.PushSubscription.optedIn !== true) {
         button.disabled = false;
-        button.textContent = "🔔 KOSTENLOS ABONNIEREN";
+        button.textContent = "🔔 KOSTENLOSE UPDATES ERHALTEN";
         show("Subscription not completed. If your browser asked for permission, choose Allow. If no prompt appeared, check browser settings.");
       }
     } catch (error) {
       console.error("StockPilot OneSignal subscription error:", error);
       button.disabled = false;
-      button.textContent = "🔔 KOSTENLOS ABONNIEREN";
+      button.textContent = "🔔 KOSTENLOSE UPDATES ERHALTEN";
       show("We couldn't complete the subscription. Check browser notification permissions and try again.");
     } finally {
       clickInProgress = false;
       if (oneSignalClient.User.PushSubscription.optedIn !== true) {
         button.disabled = false;
-        button.textContent = "🔔 KOSTENLOS ABONNIEREN";
+        button.textContent = "🔔 KOSTENLOSE UPDATES ERHALTEN";
       }
     }
   });
