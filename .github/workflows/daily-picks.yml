@@ -81,8 +81,3 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Authorization: Key ${ONESIGNAL_REST_API_KEY}" \
             -d "$PAYLOAD"
-
-          
-            git commit -m 'Update daily StockPilot picks'
-            git push
-          fi
