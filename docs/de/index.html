@@ -5344,7 +5344,7 @@ body { overflow-x: hidden; }
  const lookup=document.getElementById('quick-stock-lookup');
  const desk=document.getElementById('live-trading-desk');
  const picks=document.getElementById('crypto-picks');
- const welcome=document.querySelector("#live-trading-desk");
+ const welcome=document.querySelector(".live-trading-desk .trading-desk-header > div:first-child");
  const subscribe=document.getElementById('stockpilot-subscribe-btn');
  let brokerHome=null,lookupHome=null,brokerMade=false,cta=null;
  if(broker&&broker.parentNode){brokerHome=document.createComment('broker original position');broker.parentNode.insertBefore(brokerHome,broker);}
