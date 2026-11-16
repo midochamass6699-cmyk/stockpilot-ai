@@ -3103,5 +3103,62 @@ setInterval(loadStocks,15 * 60 * 1000);
   });
 })();
 </script>
+
+<style id="technofront-mobile-home-order">
+@media(max-width:760px){
+ .stockpilot-top-tools{display:none!important}
+ .tf-mobile-broker{box-sizing:border-box;display:flex;align-items:center;gap:9px;width:calc(100% - 24px);margin:8px auto;padding:9px 12px;border:1px solid #d6ad55;border-radius:10px;background:linear-gradient(100deg,#101923,#183a34);color:#fff;text-decoration:none;font-family:Arial,sans-serif}
+ .tf-mobile-broker>span{font-size:22px;color:#f4d58a;flex:0 0 auto}
+ .tf-mobile-broker strong{display:block;color:#f4d58a;font-size:11px;line-height:1.2;letter-spacing:.04em}
+ .tf-mobile-broker small{display:block;margin-top:3px;color:#edf3f0;font-size:10px;line-height:1.25}
+ .tf-mobile-subscribe{display:flex;align-items:center;justify-content:center;gap:7px;width:max-content;max-width:calc(100% - 24px);margin:8px auto 10px;padding:8px 14px;border:1px solid #d6ad55;border-radius:999px;background:#f4d58a;color:#101923;font-size:12px;font-weight:900;line-height:1.2;box-shadow:0 3px 10px #0002;cursor:pointer}
+ .tf-mobile-subscribe span{font-size:17px}
+ .live-trading-desk .subscribe-bell-cta{justify-self:start!important;margin:0!important;padding:7px 11px!important;font-size:11px!important}
+ #quick-stock-lookup{margin-top:14px!important}
+}
+@media(min-width:761px){.tf-mobile-broker,.tf-mobile-subscribe{display:none!important}}
+</style>
+<a class="tf-mobile-broker" href="#broker-directory" aria-label="Encuentra un bróker"><span>↗</span><strong>ENCUENTRA TU BRÓKER</strong><small>Compara plataformas de inversión</small></a>
+<script id="technofront-mobile-home-order-script">
+(function(){
+ const mq=window.matchMedia('(max-width:760px)');
+ const broker=document.getElementById('stockpilot-find-broker-banner')||document.querySelector('.tf-mobile-broker');
+ const lookup=document.getElementById('quick-stock-lookup');
+ const desk=document.getElementById('live-trading-desk');
+ const picks=document.getElementById('crypto-picks');
+ const welcome=document.querySelector(".seo-intro");
+ const subscribe=document.getElementById('stockpilot-subscribe-btn');
+ let brokerHome=null,lookupHome=null,brokerMade=false,cta=null;
+ if(broker&&broker.parentNode){brokerHome=document.createComment('broker original position');broker.parentNode.insertBefore(brokerHome,broker);}
+ if(lookup&&lookup.parentNode){lookupHome=document.createComment('lookup original position');lookup.parentNode.insertBefore(lookupHome,lookup);}
+ if(!broker&&welcome&&welcome.parentNode){
+   broker=document.createElement('a');broker.className='tf-mobile-broker';
+   broker.href="#broker-directory";
+   broker.setAttribute('aria-label',"Encuentra un bróker");
+   broker.innerHTML="<span>↗</span><span><strong>ENCUENTRA TU BRÓKER</strong><small>Compara plataformas de inversión</small></span>";
+   brokerMade=true;
+ }
+ if(!document.querySelector('.tf-mobile-subscribe')){
+   cta=document.createElement('button');cta.type='button';cta.className='tf-mobile-subscribe';
+   cta.innerHTML="<span aria-hidden=\"true\">🔔</span> RECIBIR ACTUALIZACIONES";
+   cta.addEventListener('click',function(){if(subscribe){subscribe.click();}else{const target=document.getElementById('stockpilot-alert-signup');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}});
+ }
+ function arrange(){
+   if(mq.matches){
+     const anchor=desk||welcome;
+     if(broker&&anchor&&anchor.parentNode)anchor.parentNode.insertBefore(broker,anchor);
+     if(cta&&welcome&&welcome.parentNode)welcome.parentNode.insertBefore(cta,welcome.nextSibling);
+     if(lookup){const target=picks||desk;if(target&&target.parentNode)target.parentNode.insertBefore(lookup,target.nextSibling);}
+   }else{
+     if(brokerMade&&broker&&broker.parentNode)broker.remove();
+     else if(brokerHome&&brokerHome.parentNode)brokerHome.parentNode.insertBefore(broker,brokerHome.nextSibling);
+     if(lookupHome&&lookupHome.parentNode&&lookup)lookupHome.parentNode.insertBefore(lookup,lookupHome.nextSibling);
+     if(cta)cta.remove();
+   }
+ }
+ arrange();
+ if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
+})();
+</script>
 </body>
 </html>
