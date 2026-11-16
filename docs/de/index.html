@@ -3798,13 +3798,33 @@ async function loadCrypto() {
       throw new Error('No cryptocurrency results returned.');
     }
 
+    // Filter unreliable provider quotes before ranking. This also explicitly
+    // excludes PolyGold (POLYGOLD), whose feed has returned impossible values.
     const ranked = data
-      .slice()
+      .filter(coin => {
+        const price = Number(coin.current_price);
+        const volume = Number(coin.total_volume);
+        const marketCap = Number(coin.market_cap);
+        const change24h = Number(coin.price_change_percentage_24h);
+        const hasValidMarketCap = Number.isFinite(marketCap) && marketCap > 0;
+        const hasValidRank = Number.isInteger(Number(coin.market_cap_rank)) && Number(coin.market_cap_rank) > 0;
+        const hasSaneQuote = Number.isFinite(price) && price > 0 && price < 10000000;
+        const hasSaneVolume = Number.isFinite(volume) && volume > 0 && volume < 100000000000;
+        const hasSaneChange = !Number.isFinite(change24h) || Math.abs(change24h) <= 1000;
+        const isKnownBadQuote = String(coin.id || '').toLowerCase() === 'polygold'
+          || String(coin.symbol || '').toUpperCase() === 'POLYGOLD';
+        return !isKnownBadQuote && hasValidMarketCap && hasValidRank
+          && hasSaneQuote && hasSaneVolume && hasSaneChange;
+      })
       .sort((a,b) =>
         (Number(b.total_volume) || 0) -
         (Number(a.total_volume) || 0)
       )
       .slice(0,3);
+
+    if (!ranked.length) {
+      throw new Error('No cryptocurrency results passed the market-data quality checks.');
+    }
 
     cards.innerHTML = ranked
       .map((coin,i) => renderCrypto(coin,i))
