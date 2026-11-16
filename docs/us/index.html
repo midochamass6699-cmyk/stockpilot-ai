@@ -2841,10 +2841,10 @@ input, select, textarea, button {
   type="button"
   class="subscribe-bell-cta"
   onclick="document.getElementById('stockpilot-subscribe-btn')?.click()"
-  aria-label="Subscribe free to StockPilot AI alerts"
+  aria-label="Get free StockPilot AI browser updates"
 >
   <span class="subscribe-bell" aria-hidden="true">🔔</span>
-  <span>SUBSCRIBE FREE</span>
+  <span>GET FREE UPDATES</span>
 </button>
 <div class="trading-session-card">
 <span class="session-label">U.S. MARKET CHECKPOINT</span>
@@ -2895,12 +2895,12 @@ input, select, textarea, button {
     <div class="weekly-subscribe-copy">
       <span aria-hidden="true" class="weekly-subscribe-icon">🔔</span>
       <div>
-        <strong id="weekly-subscribe-heading">NEVER MISS A MARKET MOVE</strong>
-        <small>Get free StockPilot AI browser alerts when new daily stock picks, penny-stock watchlists and important market updates are published.</small>
+        <strong id="weekly-subscribe-heading">GET FREE STOCKPILOT AI UPDATES</strong>
+        <small>Receive browser notifications when we publish new stock research, market insights, and investing education.</small>
       </div>
     </div>
-    <button id="stockpilot-subscribe-btn" type="button">🔔 SUBSCRIBE FREE</button>
-    <p aria-live="polite" id="stockpilot-subscribe-status">Free daily market alerts. No payment required.</p>
+    <button id="stockpilot-subscribe-btn" type="button">🔔 GET FREE UPDATES</button>
+    <p aria-live="polite" id="stockpilot-subscribe-status">No email or payment required. You can turn off notifications anytime.</p>
   </div>
 </section>
 
@@ -3860,17 +3860,17 @@ setInterval(loadStocks,15 * 60 * 1000);
     if (isSubscribed) {
       button.textContent = "✓ YOU'RE SUBSCRIBED";
       button.disabled = true;
-      show("You're subscribed to StockPilot AI daily alerts. Thank you!");
+      show("You're subscribed to StockPilot AI updates. Thank you!");
       return;
     }
 
-    button.textContent = "🔔 SUBSCRIBE FREE";
+    button.textContent = "🔔 GET FREE UPDATES";
     button.disabled = false;
 
     if (oneSignalClient.Notifications.permissionNative === "denied") {
       show("Notifications are blocked in this browser. Enable them in this site's browser settings, then try again.");
     } else {
-      show("Free daily market alerts. No payment required.");
+      show("No email or payment required. You can turn off notifications anytime.");
     }
   }
 
@@ -3907,19 +3907,19 @@ setInterval(loadStocks,15 * 60 * 1000);
 
       if (oneSignalClient.User.PushSubscription.optedIn !== true) {
         button.disabled = false;
-        button.textContent = "🔔 SUBSCRIBE FREE";
+        button.textContent = "🔔 GET FREE UPDATES";
         show("Subscription not completed. If your browser asked for permission, choose Allow. If no prompt appeared, check browser settings.");
       }
     } catch (error) {
       console.error("StockPilot OneSignal subscription error:", error);
       button.disabled = false;
-      button.textContent = "🔔 SUBSCRIBE FREE";
+      button.textContent = "🔔 GET FREE UPDATES";
       show("We couldn't complete the subscription. Check browser notification permissions and try again.");
     } finally {
       clickInProgress = false;
       if (oneSignalClient.User.PushSubscription.optedIn !== true) {
         button.disabled = false;
-        button.textContent = "🔔 SUBSCRIBE FREE";
+        button.textContent = "🔔 GET FREE UPDATES";
       }
     }
   });
