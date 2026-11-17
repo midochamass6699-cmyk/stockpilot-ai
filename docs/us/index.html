@@ -5732,6 +5732,21 @@ body { overflow-x: hidden; }
 })();
 </script>
 
+
+<style id="stockpilot-sitewide-gap-cleanup">
+/* Collapse truly empty semantic blocks and tighten oversized section gaps site-wide. */
+section:empty, article:empty, aside:empty { display:none!important; }
+:where(section, .stock-of-the-week, .visual-intro, .features, .method-section, .resources-section, .about-discuss, .tradingview-banner) {
+  margin-block:8px!important;
+}
+@media (max-width:760px) {
+  :where(section, .stock-of-the-week, .visual-intro, .features, .method-section, .resources-section, .about-discuss, .tradingview-banner) {
+    margin-block:4px!important;
+  }
+  :where(main, .page-content, .content-wrap) { margin-block:0!important; }
+}
+</style>
+
 </body>
 </html>)?'TSX':'NASDAQ');
   symbol.value=isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker;
