@@ -2479,7 +2479,13 @@ input, select, textarea, button {
 
 <section class="sp-market-terminal" id="market-terminal" aria-label="Market Terminal">
  <div class="sp-terminal-top">
-  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><h2>Market Terminal</h2><p>Search U.S. and Canadian stocks or crypto, open interactive charts and compare symbols.</p></div>
+  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><div class="sp-terminal-title-line"><h2>Market Terminal</h2><div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-0" data-sp-tool="0"><span class="sp-terminal-tool-icon" aria-hidden="true">▤</span><span>WATCHLIST</span></button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-1" data-sp-tool="1"><span class="sp-terminal-tool-icon" aria-hidden="true">⌕</span><span>SCREENER</span></button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-2" data-sp-tool="2"><span class="sp-terminal-tool-icon" aria-hidden="true">⌁</span><span>TECHNICALS</span></button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-3" data-sp-tool="3"><span class="sp-terminal-tool-icon" aria-hidden="true">▣</span><span>COMPANY</span></button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-4" data-sp-tool="4"><span class="sp-terminal-tool-icon" aria-hidden="true">◎</span><span>PRACTICE</span></button>
+   </div></div><p>Search U.S. and Canadian stocks or crypto, open interactive charts and compare symbols.</p></div>
  </div>
  <div class="sp-terminal-controls">
    <label>Market<select id="sp-terminal-market"><option value="NASDAQ">U.S. stocks</option><option value="NYSE">NYSE</option><option value="TSX">Canadian stocks</option><option value="BINANCE">Crypto</option></select></label>
@@ -2494,13 +2500,7 @@ input, select, textarea, button {
   <div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Loading interactive chart…</div></div>
   <p class="sp-terminal-disclaimer">Market data is supplied by TradingView. Some exchange quotes may be delayed; chart access and historical price views remain available.</p>
   <div class="sp-terminal-tools" id="sp-terminal-tools">
-   <div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
-    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-0" data-sp-tool="0">WATCHLIST</button>
-    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-1" data-sp-tool="1">SCREENER</button>
-    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-2" data-sp-tool="2">TECHNICALS</button>
-    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-3" data-sp-tool="3">COMPANY</button>
-    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-4" data-sp-tool="4">PRACTICE</button>
-   </div>
+   
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-0" role="tabpanel">
     <h3>Your saved symbols</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-watch-input" type="text" placeholder="Ticker (e.g. AAPL)" aria-label="Ticker (e.g. AAPL)"><button class="primary" id="sp-terminal-watch-add" type="button">ADD</button></div><div id="sp-terminal-watch-list" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">No saved symbols yet. Add a ticker above.</p></div>
    </section>
@@ -3018,6 +3018,15 @@ input, select, textarea, button {
 .sp-terminal-tool-panel .sp-terminal-tool-table-wrap{overflow-x:auto}
 .sp-terminal-ta{height:300px;min-height:250px}
 @media(max-width:600px){.sp-terminal-tools{margin-top:9px;padding-top:8px}.sp-terminal-tool-tabs{gap:5px}.sp-terminal-tool-tabs button{font-size:9px;padding:7px 8px}.sp-terminal-tool-panel{padding:8px}.sp-terminal-tool-list{grid-template-columns:1fr}.sp-terminal-ta{height:280px}}
+
+/* Market Terminal title and tool shortcuts share one compact row. */
+.sp-terminal-title-line{display:flex;align-items:center;gap:16px;flex-wrap:wrap;min-width:0}
+.sp-terminal-title-line h2{margin:0!important;flex:0 0 auto}
+.sp-terminal-title-line .sp-terminal-tool-tabs{display:flex;align-items:center;gap:6px;min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin;padding:2px 0}
+.sp-terminal-title-line .sp-terminal-tool-tabs button{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;border:1px solid #52627a;background:#17263b;color:#dce7f5;border-radius:8px;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.025em;cursor:pointer;white-space:nowrap}
+.sp-terminal-title-line .sp-terminal-tool-tabs button[aria-selected=true]{background:#f2c94c;color:#111827;border-color:#f2c94c}
+.sp-terminal-tool-icon{font-size:14px;line-height:1}
+@media(max-width:700px){.sp-terminal-title-line{align-items:flex-start;gap:9px}.sp-terminal-title-line h2{width:100%}.sp-terminal-title-line .sp-terminal-tool-tabs{width:100%;gap:5px}.sp-terminal-title-line .sp-terminal-tool-tabs button{padding:7px 8px;font-size:9px}}
 </style>
 <script id="sp-market-terminal-script">
 (function(){
@@ -8514,6 +8523,12 @@ body { overflow-x: hidden; }
 /* Keep the market ticker directly under navigation and tighten the mobile top gap. */
 .tradingview-widget-container[style*="height:46px"]{display:block!important;width:100%!important;max-width:100%!important;margin:0!important;overflow:hidden!important}
 @media(max-width:760px){#live-trading-desk{margin-top:4px!important}}
+</style>
+<style id="stockpilot-header-ticker-spacing-fix">
+/* Keep the market ticker tight against the header and free-tools strip. */
+header{margin-bottom:0!important}
+.tradingview-widget-container{margin-top:0!important;margin-bottom:0!important}
+#stockpilot-free-tools{margin-bottom:0!important}
 </style>
 </body>
 </html>
