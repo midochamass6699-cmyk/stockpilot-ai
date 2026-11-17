@@ -4399,91 +4399,7 @@ setInterval(loadStocks,15 * 60 * 1000);
     </div>
   </div>
 </aside>
-<script id="stockpilot-left-picks-banner">
-(function () {
-  const mainTarget = document.getElementById('sideMainPicks');
-  const pennyTarget = document.getElementById('sidePennyPicks');
-  const cryptoTarget = document.getElementById('sideCryptoPicks');
-  if (!mainTarget || !pennyTarget || !cryptoTarget) return;
-
-  function showUnavailable(target, message) {
-    target.textContent = message;
-  }
-
-  function addRows(target, items, kind) {
-    target.replaceChildren();
-    if (!Array.isArray(items) || !items.length) {
-      showUnavailable(target, 'No verified data available');
-      return;
-    }
-    items.slice(0, 3).forEach(function (item, index) {
-      const ticker = String(kind === 'crypto' ? (item.symbol || '') : (item.ticker || '')).toUpperCase();
-      const name = String(item.company || item.name || ticker || 'Market listing');
-      const link = document.createElement('a');
-      link.className = 'sp-side-pick';
-      if (kind === 'crypto') {
-        link.href = item.id
-          ? 'https://www.coingecko.com/en/coins/' + encodeURIComponent(item.id)
-          : '#crypto-picks';
-        if (item.id) {
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-        }
-      } else {
-        link.href = './stock-report.html?ticker=' + encodeURIComponent(ticker)
-          + '&kind=' + encodeURIComponent(kind);
-      }
-      const rank = document.createElement('span');
-      rank.className = 'sp-side-rank';
-      rank.textContent = String(index + 1);
-      const details = document.createElement('span');
-      details.className = 'sp-side-details';
-      const symbol = document.createElement('strong');
-      symbol.textContent = ticker || '—';
-      const company = document.createElement('small');
-      company.textContent = name;
-      details.append(symbol, company);
-      link.append(rank, details);
-      target.appendChild(link);
-    });
-  }
-
-  fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'})
-    .then(function (response) {
-      if (!response.ok) throw new Error('Stock data unavailable');
-      return response.json();
-    })
-    .then(function (data) {
-      const main = Array.isArray(data.main) ? data.main : [];
-      const mainSymbols = new Set(main.map(function (item) { return item.ticker; }));
-      const penny = (Array.isArray(data.penny) ? data.penny : [])
-        .filter(function (item) { return !mainSymbols.has(item.ticker); });
-      addRows(mainTarget, main, 'main');
-      addRows(pennyTarget, penny, 'penny');
-    })
-    .catch(function () {
-      showUnavailable(mainTarget, 'Stock picks unavailable');
-      showUnavailable(pennyTarget, 'Penny picks unavailable');
-    });
-
-  fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false', {cache:'no-store'})
-    .then(function (response) {
-      if (!response.ok) throw new Error('Crypto data unavailable');
-      return response.json();
-    })
-    .then(function (coins) {
-      const ranked = Array.isArray(coins)
-        ? coins.slice().sort(function (a, b) {
-            return (Number(b.total_volume) || 0) - (Number(a.total_volume) || 0);
-          }).slice(0, 3)
-        : [];
-      addRows(cryptoTarget, ranked, 'crypto');
-    })
-    .catch(function () {
-      showUnavailable(cryptoTarget, 'Crypto feed unavailable');
-    });
-})();
-</script>
+<!-- Legacy sidebar loader disabled; consolidated loader below updates every banner target. -->
 <aside aria-label="StockPilot AI brokerage platforms" class="free-side-banner" id="free-right-banner">
 <div class="free-side-track">
 <div class="free-side-message">
@@ -5678,51 +5594,107 @@ body { overflow-x: hidden; }
 
 <script id="stockpilot-left-picks-reliable-loader">
 (function(){
-  const all=(id)=>Array.from(document.querySelectorAll('[id="'+id+'"]'));
-  const mainTargets=all('sideMainPicks');
-  const pennyTargets=all('sidePennyPicks');
-  const cryptoTargets=all('sideCryptoPicks');
-  if(!mainTargets.length&&!pennyTargets.length&&!cryptoTargets.length)return;
-  function render(targets,items,kind){
-    targets.forEach(target=>{
-      target.replaceChildren();
-      if(!Array.isArray(items)||!items.length){
-        const msg=document.createElement('span');
-        msg.className='sp-side-loading';
-        msg.textContent='Market data temporarily unavailable';
-        target.appendChild(msg);return;
-      }
-      items.slice(0,3).forEach((item,index)=>{
-        const ticker=String(kind==='crypto'?(item.symbol||''):(item.ticker||'')).toUpperCase();
-        const name=String(item.company||item.name||ticker||'Market listing');
-        const a=document.createElement('a');a.className='sp-side-pick';
-        if(kind==='crypto'){
-          a.href=item.id?'https://www.coingecko.com/en/coins/'+encodeURIComponent(item.id):'#crypto-picks';
-          if(item.id){a.target='_blank';a.rel='noopener noreferrer';}
-        }else{
-          a.href='./stock-report.html?ticker='+encodeURIComponent(ticker)+'&kind='+kind;
-        }
-        const rank=document.createElement('span');rank.className='sp-side-rank';rank.textContent=String(index+1);
-        const details=document.createElement('span');details.className='sp-side-details';
-        const sym=document.createElement('strong');sym.textContent=ticker||'—';
-        const company=document.createElement('small');company.textContent=name;
-        details.append(sym,company);a.append(rank,details);target.appendChild(a);
-      });
-    });
-  }
-  fetch('/data/picks.json?v='+Date.now(),{cache:'no-store'})
-    .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
-    .then(data=>{
-      const main=Array.isArray(data.main)?data.main:[];
-      const used=new Set(main.map(x=>String(x.ticker||'').toUpperCase()));
-      const penny=(Array.isArray(data.penny)?data.penny:[]).filter(x=>!used.has(String(x.ticker||'').toUpperCase()));
-      render(mainTargets,main,'main');render(pennyTargets,penny,'penny');
-    })
-    .catch(()=>{render(mainTargets,[],'main');render(pennyTargets,[],'penny');});
-  fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false',{cache:'no-store'})
-    .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
-    .then(coins=>render(cryptoTargets,Array.isArray(coins)?coins.slice(0,3):[],'crypto'))
-    .catch(()=>render(cryptoTargets,[],'crypto'));
+ const findAll=id=>Array.from(document.querySelectorAll('[id="'+id+'"]'));
+ const targets={main:findAll('sideMainPicks'),penny:findAll('sidePennyPicks'),crypto:findAll('sideCryptoPicks')};
+ const seed={main:[{"ticker":"WWW","company":"Wolverine World Wide, Inc.","market":"US"},{"ticker":"CHA","company":"Chagee Holdings Limited","market":"US"},{"ticker":"LFTO","company":"Liftoff Mobile, Inc.","market":"US"}],penny:[{"ticker":"ANGX","company":"Angel Studios, Inc.","market":"US"},{"ticker":"PLTK","company":"Playtika Holding Corp.","market":"US"},{"ticker":"NRGV","company":"Energy Vault Holdings, Inc.","market":"US"}],crypto:[{symbol:'BTC',name:'Bitcoin',id:'bitcoin'},{symbol:'ETH',name:'Ethereum',id:'ethereum'},{symbol:'USDT',name:'Tether',id:'tether'}]};
+ function draw(kind,items){
+  targets[kind].forEach(node=>{
+   node.replaceChildren();
+   const rows=(Array.isArray(items)?items:[]).slice(0,3);
+   if(!rows.length){const s=document.createElement('span');s.className='sp-side-loading';s.textContent='Market data temporarily unavailable';node.appendChild(s);return;}
+   rows.forEach((item,i)=>{
+    const ticker=String(kind==='crypto'?(item.symbol||''):(item.ticker||'')).toUpperCase();
+    const name=String(item.company||item.name||ticker);
+    const a=document.createElement('a');a.className='sp-side-pick';
+    a.href=kind==='crypto'?'https://www.coingecko.com/en/coins/'+encodeURIComponent(item.id||ticker.toLowerCase()):'/stock-report.html?ticker='+encodeURIComponent(ticker)+'&kind='+kind;
+    if(kind==='crypto'){a.target='_blank';a.rel='noopener noreferrer';}
+    const rank=document.createElement('span');rank.className='sp-side-rank';rank.textContent=String(i+1);
+    const detail=document.createElement('span');detail.className='sp-side-details';
+    const sym=document.createElement('strong');sym.textContent=ticker;
+    const company=document.createElement('small');company.textContent=name;
+    detail.append(sym,company);a.append(rank,detail);node.appendChild(a);
+   });
+  });
+ }
+ // Paint immediately from the last published snapshot so the banner never starts blank.
+ draw('main',seed.main);draw('penny',seed.penny);draw('crypto',seed.crypto);
+ fetch('/data/picks.json?sidebar='+Date.now(),{cache:'no-store'})
+  .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+  .then(data=>{
+   const usOnly=location.pathname.indexOf('/us/')===0;
+   const filter=x=>!usOnly||String(x.market||'').toUpperCase()==='US';
+   const main=(Array.isArray(data.main)?data.main:[]).filter(filter);
+   const used=new Set(main.map(x=>String(x.ticker||'').toUpperCase()));
+   const penny=(Array.isArray(data.penny)?data.penny:[]).filter(filter).filter(x=>!used.has(String(x.ticker||'').toUpperCase()));
+   draw('main',main);draw('penny',penny);
+  }).catch(()=>{});
+ fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false',{cache:'no-store'})
+  .then(r=>{if(!r.ok)throw new Error('Crypto API unavailable');return r.json();})
+  .then(coins=>draw('crypto',Array.isArray(coins)?coins.slice(0,3):[])).catch(()=>{});
+})();
+</script>
+<style id="stockpilot-readable-market-layout">
+/* Keep all three preview categories in one row while making every label readable. */
+#live-trading-desk .trading-desk-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+#live-trading-desk .trading-panel{min-width:0!important}
+#live-trading-desk .trading-panel-heading h2{font-size:12px!important;line-height:1.2!important}
+#live-trading-desk .trading-market-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:4px!important}
+#live-trading-desk .trading-market-list .sp-market-row{padding:6px 3px!important;min-width:0!important}
+#live-trading-desk .trading-market-list .sp-market-name strong,
+#live-trading-desk .trading-market-list .sp-market-name small,
+#live-trading-desk .trading-market-list .sp-market-values strong,
+#live-trading-desk .trading-market-list .sp-market-values small,
+#live-trading-desk .trading-panel-link{font-size:12px!important;line-height:1.2!important}
+#live-trading-desk .trading-market-list .sp-market-name strong,
+#live-trading-desk .trading-market-list .sp-market-values strong{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;max-width:100%!important}
+#free-left-banner{height:auto!important;min-height:540px!important}
+#free-left-banner .sp-side-picks{height:auto!important;min-height:540px!important;justify-content:flex-start!important;gap:12px!important}
+#free-left-banner .sp-side-heading strong{font-size:18px!important}
+#free-left-banner .sp-side-heading small,
+#free-left-banner .sp-side-group h2,
+#free-left-banner .sp-side-list,
+#free-left-banner .sp-side-pick,
+#free-left-banner .sp-side-details strong,
+#free-left-banner .sp-side-details small,
+#free-left-banner .sp-side-footer small{font-size:12px!important;line-height:1.3!important}
+#free-left-banner .sp-side-list{display:flex!important;flex-direction:column!important;gap:7px!important;min-height:48px!important}
+#free-left-banner .sp-side-pick{display:flex!important;align-items:center!important;gap:8px!important;min-height:32px!important;text-align:left!important}
+#free-left-banner .sp-side-details{display:flex!important;flex-direction:column!important;min-width:0!important}
+#free-left-banner .sp-side-details strong{font-weight:800!important}
+#free-left-banner .sp-side-details small{display:block!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+#free-left-banner .sp-side-rank{font-size:12px!important;flex:0 0 auto!important}
+#free-left-banner .sp-side-group h2{letter-spacing:.06em!important;margin-bottom:6px!important}
+.market-partner-panel{margin-top:14px;padding:14px;border:1px solid rgba(212,177,103,.35);border-radius:12px;background:linear-gradient(145deg,rgba(22,38,57,.92),rgba(12,25,40,.92));display:flex;flex-direction:column;align-items:center;gap:12px}
+.market-partner-panel .subscribe-bell-cta{position:static!important;margin:0!important;box-shadow:none!important}
+.market-partner-panel .kitco-banner-stack{width:100%;max-width:240px;margin:0 auto!important;padding:10px;background:rgba(255,255,255,.04);border-radius:9px}
+.market-partner-panel .kitco-banner-stack img{display:block;width:100%;height:auto}
+.market-partner-panel .kitco-trade-link{font-size:12px!important}
+#stockpilot-free-tools{margin-top:10px!important}
+@media(max-width:760px){
+ #live-trading-desk .trading-desk-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
+ #live-trading-desk .trading-panel{padding:6px 4px!important}
+ #live-trading-desk .trading-panel-heading h2{font-size:12px!important}
+ #live-trading-desk .trading-market-list{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ #live-trading-desk .trading-market-list .sp-market-row{padding:5px 2px!important}
+ #live-trading-desk .trading-market-list .sp-market-name strong,
+ #live-trading-desk .trading-market-list .sp-market-name small,
+ #live-trading-desk .trading-market-list .sp-market-values strong,
+ #live-trading-desk .trading-market-list .sp-market-values small,
+ #live-trading-desk .trading-panel-link{font-size:12px!important}
+ #free-left-banner{width:100%!important;max-width:100%!important;min-height:0!important;height:auto!important}
+ #free-left-banner .sp-side-picks{min-height:0!important;height:auto!important}
+}
+</style>
+<script id="stockpilot-promo-placement">
+(function(){
+ const bell=document.querySelector('body > .subscribe-bell-cta')||document.querySelector('.subscribe-bell-cta');
+ const kitco=document.querySelector('body > .kitco-banner-stack')||document.querySelector('.kitco-banner-stack');
+ const side=document.querySelector('.weekly-feature-side');
+ if(!side)return;
+ let panel=side.querySelector('.market-partner-panel');
+ if(!panel){panel=document.createElement('div');panel.className='market-partner-panel';panel.setAttribute('aria-label','Market updates and partner');side.appendChild(panel);}
+ if(bell&&!panel.contains(bell))panel.appendChild(bell);
+ if(kitco&&!panel.contains(kitco))panel.appendChild(kitco);
 })();
 </script>
 </body>
