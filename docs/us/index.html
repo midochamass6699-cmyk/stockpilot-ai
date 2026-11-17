@@ -5747,6 +5747,57 @@ section:empty, article:empty, aside:empty { display:none!important; }
 }
 </style>
 
+
+<style id="stockpilot-compact-bell-kitco-layout">
+/* Compact updates action beside the welcome heading; keep the Kitco affiliate banner out of the content flow. */
+#sp-compact-updates-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:3px 0 7px;min-height:0}
+#sp-compact-updates-row #stockpilot-subscribe-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;max-width:100%;min-height:32px;margin:0;padding:6px 12px;border:1px solid #c99b17;border-radius:999px;background:#f5c842;color:#172033;font-size:11px;font-weight:900;line-height:1.2;cursor:pointer}
+#sp-compact-updates-row #stockpilot-subscribe-status{margin:0;color:#718096;font-size:10px;line-height:1.25}
+#sp-compact-kitco{display:flex;align-items:center;justify-content:center;gap:10px;width:fit-content;max-width:100%;margin:12px auto;padding:5px 9px;border:1px solid #d8e1ee;border-radius:8px;background:#fff}
+#sp-compact-kitco .kitco-affiliate-banner{flex:0 1 190px;width:190px;min-width:120px;padding:2px;border:0;border-radius:4px}
+#sp-compact-kitco .kitco-affiliate-banner a{max-width:190px}
+#sp-compact-kitco .kitco-trade-link{margin:0!important;font-size:11px!important;white-space:nowrap}
+#sp-compact-kitco .kitco-trade-link a{font-weight:800}
+.subscribe-bell-cta,.tf-mobile-subscribe{display:none!important}
+@media(max-width:760px){
+ #sp-compact-updates-row{gap:5px;margin:2px 0 6px}
+ #sp-compact-updates-row #stockpilot-subscribe-btn{min-height:30px;padding:5px 10px;font-size:10px}
+ #sp-compact-kitco{width:calc(100% - 20px);box-sizing:border-box;justify-content:space-between;gap:7px;margin:8px auto;padding:4px 6px}
+ #sp-compact-kitco .kitco-affiliate-banner{flex:0 1 145px;width:145px;min-width:100px}
+ #sp-compact-kitco .kitco-trade-link{white-space:normal;text-align:left!important;font-size:10px!important;line-height:1.25}
+}
+</style>
+<script id="stockpilot-compact-bell-kitco-layout-script">
+(function(){
+ function compactAffiliateAndUpdates(){
+  var welcome=document.querySelector('#live-trading-desk .trading-desk-header > div:first-child');
+  var title=welcome&&welcome.querySelector('#trading-desk-title');
+  var subscribe=document.getElementById('stockpilot-subscribe-btn');
+  var status=document.getElementById('stockpilot-subscribe-status');
+  if(welcome&&title&&subscribe&&!document.getElementById('sp-compact-updates-row')){
+   var row=document.createElement('div');row.id='sp-compact-updates-row';row.setAttribute('aria-label','Free browser updates');
+   title.parentNode.insertBefore(row,title);
+   row.appendChild(subscribe);
+   if(status)row.appendChild(status);
+   var oldCopy=document.querySelector('.weekly-subscribe-copy');if(oldCopy)oldCopy.remove();
+   var oldCta=document.querySelector('.weekly-subscribe-cta');
+   if(oldCta&&!oldCta.querySelector('#stockpilot-subscribe-btn'))oldCta.remove();
+   var oldSection=document.getElementById('stockpilot-alert-signup');
+   if(oldSection&&!oldSection.querySelector('.weekly-subscribe-cta')&&!oldSection.textContent.trim())oldSection.remove();
+  }
+  var kitco=document.querySelector('.kitco-banner-stack');
+  var footer=document.querySelector('footer');
+  if(kitco&&footer&&!document.getElementById('sp-compact-kitco')){
+   kitco.id='sp-compact-kitco';
+   footer.appendChild(kitco);
+  }
+  document.querySelectorAll('.subscribe-bell-cta,.tf-mobile-subscribe').forEach(function(el){el.remove();});
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',compactAffiliateAndUpdates,{once:true});
+ else compactAffiliateAndUpdates();
+})();
+</script>
+
 </body>
 </html>)?'TSX':'NASDAQ');
   symbol.value=isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker;
