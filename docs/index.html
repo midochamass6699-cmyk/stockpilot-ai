@@ -3498,7 +3498,7 @@ input, select, textarea, button {
 <div class="eyebrow">STOCK MARKET RESEARCH · QUICK ANSWERS</div>
 <h2 id="stock-market-faq-title">Stock Market Research: Top Stocks, Penny Stocks &amp; Crypto FAQs</h2>
 <article class="seo-faq-item"><h3>What does StockPilot AI show?</h3><p>StockPilot AI provides a market overview with selected stocks to watch, a penny-stock screen and leading cryptocurrencies ranked by reported 24-hour trading volume. The lists summarize activity in the available data feeds and are starting points for independent research.</p></article>
-<article class="seo-faq-item"><h3>How are the top stocks selected?</h3><p>The main-stock and penny-stock lists are ranked by reported trading volume within the available stock-data feed. Main-stock candidates are priced above US$10. Provider coverage is limited, so the list is not an exhaustive ranking of every listed security.</p></article>
+<article class="seo-faq-item"><h3>How are the top stocks selected?</h3><p>The daily activity score combines relative trading volume (35%), the size of the latest daily price move (30%), absolute 5-day movement (20%), absolute 20-day movement (10%) and average dollar liquidity (5%), with a modest penalty for unusually high volatility. Both rising and falling shares can qualify. Main stocks must have at least $1 million in 20-day average daily dollar volume; penny stocks must be priced $0.05–$10 and have at least $100,000 in average daily dollar volume. Coverage is limited to the available US and Canadian public screeners, not every listed security.</p></article>
 <article class="seo-faq-item"><h3>What does StockPilot AI mean by penny stocks?</h3><p>For this site's penny-stock screen, qualifying shares are priced from US$0.10 to US$10 when data is available. Definitions vary by market, exchange and data provider. Lower-priced shares can be volatile and carry substantial risk.</p></article>
 <article class="seo-faq-item"><h3>How are the top cryptocurrencies ranked?</h3><p>The crypto section ranks available coins by reported 24-hour trading volume in US dollars. Prices and trading volume can change quickly, and the displayed list is limited to assets available through the CoinGecko feed.</p></article>
 <article class="seo-faq-item"><h3>Where can I compare online brokers?</h3><p>Visit our <a href="/brokers.html">online broker comparison for Canada and the United States</a> to review platform features, fees, withdrawal policies and customer-support information. Confirm current terms and eligibility directly with each provider.</p></article>
@@ -4320,7 +4320,7 @@ function renderStock(s,penny) {
       ${renderThreeMonthChart(s, "en")}
 
       <div class="card-meta">
-        <strong>Momentum score:</strong> ${scoreText}
+        <strong>Market activity score:</strong> ${scoreText}
         <br>
         <strong>Trading volume:</strong>
         ${Number.isFinite(volume) ? volume.toLocaleString() : 'Not provided'}
