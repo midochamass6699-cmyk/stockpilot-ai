@@ -221,25 +221,23 @@ def score_momentum(frame):
     avg_dollar_volume20 = sum(closes[i] * volumes[i] for i in range(len(closes) - 20, len(closes))) / 20
     daily_returns = [pct_change(closes[i], closes[i - 1]) for i in range(len(closes) - 20, len(closes))]
     volatility20 = pstdev(daily_returns) if daily_returns else 0.0
-    score_5d = clamp(50 + ret5 * 4.0)
-    score_20d = clamp(50 + ret20 * 2.0)
-    score_50d = clamp(50 + ret50 * 1.2)
-    score_volume = clamp(50 + 25 * math.log2(max(volume_ratio, 0.01)))
-    trend_score = 100 if last > ma20 and ma20 > ma50 else (80 if last > ma20 and last > ma50 else (60 if last > ma50 else 25))
-    if 50 <= rsi14 <= 70:
-        rsi_penalty = 0
-    elif 70 < rsi14 <= 80:
-        rsi_penalty = rsi14 - 70
-    elif rsi14 > 80:
-        rsi_penalty = 15 + (rsi14 - 80) * 0.5
-    elif 40 <= rsi14 < 50:
-        rsi_penalty = 50 - rsi14
-    else:
-        rsi_penalty = 15 + (40 - rsi14) * 0.5
-    volatility_penalty = min(15.0, max(0.0, volatility20 - 3.0) * 1.5)
-    raw = score_5d * .10 + score_20d * .30 + score_50d * .25 + score_volume * .20 + trend_score * .15
+    # Activity-first score: prioritize unusual participation and meaningful
+    # current price movement, not long-term trend or company fundamentals.
+    score_relative_volume = clamp(50 + 25 * math.log2(max(volume_ratio, 0.01)))
+    score_daily_move = clamp(abs(daily_change) * 8.0)
+    score_5d_activity = clamp(abs(ret5) * 4.0)
+    score_20d_activity = clamp(abs(ret20) * 1.5)
+    score_liquidity = clamp(50 + 10 * math.log10(max(avg_dollar_volume20, 1.0) / 1_000_000))
+    volatility_penalty = min(8.0, max(0.0, volatility20 - 5.0) * 0.6)
+    raw = (
+        score_relative_volume * .35
+        + score_daily_move * .30
+        + score_5d_activity * .20
+        + score_20d_activity * .10
+        + score_liquidity * .05
+    )
     return {
-        "score": round(clamp(raw - rsi_penalty - volatility_penalty), 1),
+        "score": round(clamp(raw - volatility_penalty), 1),
         "return_5d": round(ret5, 2),
         "return_20d": round(ret20, 2),
         "return_50d": round(ret50, 2),
@@ -269,14 +267,11 @@ def analyze(meta, frame):
         for date, close in zip(chart_frame.index, chart_frame["Close"].tolist())
     ]
     reasons = []
-    if m["return_20d"] > 0:
-        reasons.append(f"20-day momentum {m['return_20d']:+.1f}%")
-    if m["return_50d"] > 0:
-        reasons.append(f"50-day momentum {m['return_50d']:+.1f}%")
-    if m["above_20day_average"] and m["above_50day_average"]:
-        reasons.append("price above 20- and 50-day averages")
-    if m["volume_ratio"] >= 1.2:
-        reasons.append(f"volume {m['volume_ratio']:.1f}x its 20-day average")
+    reasons.append(f"daily price move {m['change_percent']:+.2f}%")
+    reasons.append(f"relative volume {m['volume_ratio']:.1f}x its 20-day average")
+    reasons.append(f"5-day move {m['return_5d']:+.1f}%")
+    if m["average_dollar_volume_20d"] > 0:
+        reasons.append(f"20-day average dollar volume ${m['average_dollar_volume_20d']:,.0f}")
     risks = []
     if m["rsi"] >= 70:
         risks.append("RSI elevated; short-term pullback risk")
@@ -304,8 +299,8 @@ def analyze(meta, frame):
 
 
 def eligible(stock, penny=False):
-    if stock["return_20d"] <= 0 or not stock["above_20day_average"]:
-        return False
+    # Keep the list liquid enough to be useful, but do not require positive
+    # momentum: active gainers AND decliners can qualify for a market-activity screen.
     if penny:
         return (PENNY_MIN_PRICE <= stock["price"] <= PENNY_MAX_PRICE
                 and stock["average_dollar_volume_20d"] >= PENNY_MIN_AVG_DOLLAR_VOLUME
@@ -332,7 +327,7 @@ def choose_diversified(ranked, count=3):
 
 
 def main():
-    print("StockPilot Free Momentum v3 — public US + Canada candidate screeners")
+    print("StockPilot Market Activity v4 — public US + Canada candidate screeners")
     universe, universe_errors, screeners_ok = build_universe()
     all_meta = universe.get("US", []) + universe.get("Canada", [])
     # Remove duplicate symbols while preserving first occurrence.
@@ -377,9 +372,11 @@ def main():
             "trading currencies (USD for US, CAD for Canada)."
         ),
         "strategy": (
-            "Momentum score 0–100: 10% 5-day return, 30% 20-day return, 25% 50-day return, "
-            "20% relative volume, 15% trend alignment; deductions for elevated RSI and volatility. "
-            "Requires positive 20-day momentum and price above the 20-day average."
+            "Market activity score 0–100: 35% relative volume, 30% absolute daily price movement, "
+            "20% absolute 5-day movement, 10% absolute 20-day movement, and 5% average dollar liquidity; "
+            "a modest penalty applies to unusually high 20-day volatility. Both gainers and decliners "
+            "can qualify. Main stocks must have 20-day average dollar volume of at least $1 million; "
+            "penny stocks must be priced $0.05–$10 and have at least $100,000 average daily dollar volume."
         ),
         "universe": {
             "markets": ["US", "Canada"],
