@@ -1809,6 +1809,15 @@ html, body { background-color:#F1F5FA !important; }
 }
 </style>
 
+
+<style id="kitco-banner-stack-layout">
+/* Keep the Kitco affiliate image unchanged and stack its separate text link below it. */
+.kitco-banner-stack{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:min(300px,100%);min-width:180px;max-width:340px;flex:0 1 300px;margin-inline:auto}
+.kitco-banner-stack>.kitco-affiliate-banner{width:100%;max-width:300px;min-width:0;flex:0 0 auto}
+.kitco-banner-stack>.kitco-trade-link{display:block;width:100%;margin:0!important;text-align:center;flex:0 0 auto}
+.kitco-banner-stack>.kitco-trade-link a{display:inline-block}
+@media(max-width:600px){.live-trading-desk .kitco-banner-stack{order:4;width:100%;max-width:340px;justify-self:center;flex:0 1 340px}}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -1977,13 +1986,15 @@ html, body { background-color:#F1F5FA !important; }
           </div>
         </div>
         <button id="stockpilot-subscribe-btn" type="button">🔔 RECIBIR ACTUALIZACIONES GRATIS</button>
-        <div class="kitco-affiliate-banner">
+        <div class="kitco-banner-stack">
+<div class="kitco-affiliate-banner">
 <a rel="sponsored" href="https://www.awin1.com/cread.php?s=3794996&v=84579&q=505707&r=3074803">
     <img src="https://www.awin1.com/cshow.php?s=3794996&v=84579&q=505707&r=3074803" border="0" alt="Kitco — precious metals">
 </a>
 </div>
 <div class="kitco-trade-link" style="text-align:center;margin-top:6px;font-size:13px;font-weight:600;">
   <a rel="sponsored" target="_blank" href="https://www.awin1.com/cread.php?s=3794996&v=84579&q=505707&r=3074803" style="text-decoration:underline;">Opere con oro y metales preciosos</a>
+</div>
 </div>
         <p id="stockpilot-subscribe-status" aria-live="polite">No necesitas correo electrónico ni pagar. Puedes desactivar las notificaciones cuando quieras.</p>
       </div>
