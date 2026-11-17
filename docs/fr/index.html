@@ -2454,9 +2454,9 @@ input, select, textarea, button {
  </div>
 </section>
 <nav class="sp-terminal-shortcuts" aria-label="Market categories"><a href="#main-picks">ACTIONS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">CRYPTO</a></nav>
-<section class="sp-market-terminal" id="market-terminal" aria-label="Explorez les marchés dans un seul terminal.">
+<section class="sp-market-terminal" id="market-terminal" aria-label="Terminal des marchés">
  <div class="sp-terminal-top">
-  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACE BOURSIER INTERACTIF</div><h2>Explorez les marchés dans un seul terminal.</h2><p>Recherchez des actions américaines et canadiennes ou des cryptomonnaies, consultez les graphiques et comparez les symboles.</p></div>
+  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACE BOURSIER INTERACTIF</div><h2>Terminal des marchés</h2><p>Recherchez des actions américaines et canadiennes ou des cryptomonnaies, consultez les graphiques et comparez les symboles.</p></div>
  </div>
  <div class="sp-terminal-controls">
    <label>Marché<select id="sp-terminal-market"><option value="NASDAQ">Actions américaines</option><option value="TSX">Actions canadiennes</option><option value="BINANCE">Crypto</option></select></label>
@@ -2464,8 +2464,8 @@ input, select, textarea, button {
    <label>Comparer avec (facultatif)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY ou ETHUSDT" autocomplete="off"></label>
    <button id="sp-terminal-load" type="button">AFFICHER LE GRAPHIQUE</button>
   </div>
- <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace" data-open-label="AGRANDIR LE GRAPHIQUE" data-close-label="FERMER LE GRAPHIQUE">AGRANDIR LE GRAPHIQUE <span aria-hidden="true">↗</span></button></div>
- <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
+ <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="true" aria-controls="sp-terminal-workspace" data-open-label="AGRANDIR LE GRAPHIQUE" data-close-label="FERMER LE TERMINAL">FERMER LE TERMINAL <span aria-hidden="true">×</span></button></div>
+ <div class="sp-terminal-workspace" id="sp-terminal-workspace">
   
   <p class="sp-terminal-tip">Conseil : précisez la bourse, par exemple TSX:SHOP ou NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Chargement du graphique interactif…</div></div><p class="sp-terminal-disclaimer">Données de marché fournies par TradingView. Certains cours peuvent être différés; les graphiques et l’historique restent accessibles.</p>
  </div>
@@ -2530,6 +2530,7 @@ input, select, textarea, button {
   toggle.innerHTML=(opening?toggle.dataset.closeLabel:toggle.dataset.openLabel)+' <span aria-hidden="true">'+(opening?'×':'↗')+'</span>';
   if(opening&&!loaded){draw();loaded=true;}
  });
+ draw();loaded=true;
  load.addEventListener('click',function(){if(workspace.hidden){workspace.hidden=false;toggle.setAttribute('aria-expanded','true');toggle.innerHTML=toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';if(!loaded){loaded=true;}}draw();});
  document.addEventListener('click',function(e){
   const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
