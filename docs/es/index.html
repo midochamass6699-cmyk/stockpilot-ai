@@ -2023,9 +2023,9 @@ html, body { background-color:#F1F5FA !important; }
 
 <!-- MAIN CONTENT -->
 <main class="container" id="top"><nav class="sp-terminal-shortcuts" aria-label="Market categories"><a href="#main-picks">ACCIONES</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">CRIPTO</a></nav>
-<section class="sp-market-terminal" id="market-terminal" aria-label="Explora el mercado en una sola terminal.">
+<section class="sp-market-terminal" id="market-terminal" aria-label="Terminal de mercado">
  <div class="sp-terminal-top">
-  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACIO BURSÁTIL INTERACTIVO</div><h2>Explora el mercado en una sola terminal.</h2><p>Busca acciones de EE. UU. y Canadá o criptomonedas, consulta gráficos interactivos y compara símbolos.</p></div>
+  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACIO BURSÁTIL INTERACTIVO</div><h2>Terminal de mercado</h2><p>Busca acciones de EE. UU. y Canadá o criptomonedas, consulta gráficos interactivos y compara símbolos.</p></div>
  </div>
  <div class="sp-terminal-controls">
    <label>Mercado<select id="sp-terminal-market"><option value="NASDAQ">Acciones de EE. UU.</option><option value="TSX">Acciones de Canadá</option><option value="BINANCE">Cripto</option></select></label>
@@ -2033,8 +2033,8 @@ html, body { background-color:#F1F5FA !important; }
    <label>Comparar con (opcional)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY o ETHUSDT" autocomplete="off"></label>
    <button id="sp-terminal-load" type="button">CARGAR GRÁFICO</button>
   </div>
- <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace" data-open-label="AMPLIAR GRÁFICO" data-close-label="CERRAR GRÁFICO">AMPLIAR GRÁFICO <span aria-hidden="true">↗</span></button></div>
- <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
+ <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="true" aria-controls="sp-terminal-workspace" data-open-label="AMPLIAR GRÁFICO" data-close-label="CERRAR TERMINAL">CERRAR TERMINAL <span aria-hidden="true">×</span></button></div>
+ <div class="sp-terminal-workspace" id="sp-terminal-workspace">
   
   <p class="sp-terminal-tip">Consejo: escribe la bolsa para mayor precisión, por ejemplo TSX:SHOP o NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Cargando gráfico interactivo…</div></div><p class="sp-terminal-disclaimer">Datos de mercado proporcionados por TradingView. Algunas cotizaciones pueden tener retraso; los gráficos y el historial siguen disponibles.</p>
  </div>
@@ -2099,6 +2099,7 @@ html, body { background-color:#F1F5FA !important; }
   toggle.innerHTML=(opening?toggle.dataset.closeLabel:toggle.dataset.openLabel)+' <span aria-hidden="true">'+(opening?'×':'↗')+'</span>';
   if(opening&&!loaded){draw();loaded=true;}
  });
+ draw();loaded=true;
  load.addEventListener('click',function(){if(workspace.hidden){workspace.hidden=false;toggle.setAttribute('aria-expanded','true');toggle.innerHTML=toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';if(!loaded){loaded=true;}}draw();});
  document.addEventListener('click',function(e){
   const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
