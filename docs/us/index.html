@@ -2890,15 +2890,16 @@ input, select, textarea, button {
 <section class="sp-market-terminal" id="market-terminal" aria-label="Explore the market. One terminal.">
  <div class="sp-terminal-top">
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><h2>Explore the market. One terminal.</h2><p>Search U.S. and Canadian stocks or crypto, open interactive charts and compare symbols.</p></div>
-  <button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace">OPEN MARKET TERMINAL <span aria-hidden="true">↗</span></button>
  </div>
- <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
-  <div class="sp-terminal-controls">
+ <div class="sp-terminal-controls">
    <label>Market<select id="sp-terminal-market"><option value="NASDAQ">U.S. stocks</option><option value="TSX">Canadian stocks</option><option value="BINANCE">Crypto</option></select></label>
    <label>Stock or crypto symbol<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT or NYSE:IBM" autocomplete="off"></label>
    <label>Compare with (optional)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY or ETHUSDT" autocomplete="off"></label>
    <button id="sp-terminal-load" type="button">LOAD CHART</button>
   </div>
+ <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace" data-close-label="CLOSE CHART">EXPAND CHART <span aria-hidden="true">↗</span></button></div>
+ <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
+  
   <p class="sp-terminal-tip">Tip: enter an exchange prefix for precise results, e.g. TSX:SHOP or NYSE:IBM.</p>
   <div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Loading interactive chart…</div></div>
   <p class="sp-terminal-disclaimer">Market data is supplied by TradingView. Some exchange quotes may be delayed; chart access and historical price views remain available.</p>
@@ -2940,6 +2941,9 @@ input, select, textarea, button {
 }
 
 @media(max-width:760px){.live-trading-desk .sp-market-terminal{order:3!important}}
+.sp-terminal-actions{display:flex;justify-content:flex-end;margin-top:10px}
+.sp-terminal-actions .sp-terminal-toggle{min-width:160px}
+@media(max-width:700px){.sp-terminal-actions{justify-content:stretch}.sp-terminal-actions .sp-terminal-toggle{width:100%}}
 </style>
 <script id="sp-market-terminal-script">
 (function(){
@@ -2952,7 +2956,7 @@ input, select, textarea, button {
  const load=document.getElementById('sp-terminal-load');
  if(!toggle||!workspace||!chart||toggle.dataset.ready)return;
  toggle.dataset.ready='1';
- toggle.dataset.closeLabel="CLOSE TERMINAL";
+ toggle.dataset.closeLabel="CLOSE CHART";
  let loaded=false;
  function normalize(value,exchange){
   const raw=(value||'').trim().toUpperCase().replace(/\s+/g,'');
@@ -2990,7 +2994,7 @@ input, select, textarea, button {
   toggle.innerHTML=opening?"OPEN MARKET TERMINAL"+' <span aria-hidden="true">↗</span>':toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';
   if(opening&&!loaded){draw();loaded=true;}
  });
- load.addEventListener('click',draw);
+ load.addEventListener('click',function(){if(workspace.hidden){workspace.hidden=false;toggle.setAttribute('aria-expanded','true');toggle.innerHTML="CLOSE CHART"+' <span aria-hidden="true">×</span>';if(!loaded){loaded=true;}}draw();});
  document.addEventListener('click',function(e){
   const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
   if(!row)return;
