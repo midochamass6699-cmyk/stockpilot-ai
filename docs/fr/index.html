@@ -5163,6 +5163,60 @@ body { overflow-x: hidden; }
  .sp-terminal-chart{height:270px!important;min-height:230px!important}
 }
 </style>
+
+<style id="tf-responsive-promo-layout">
+/* Desktop: subscription left, full-size Kitco creative right. Mobile: both move to the page bottom. */
+.tf-promo-layout{box-sizing:border-box;display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:22px!important;width:100%!important;max-width:1180px!important;margin:8px auto 18px!important;padding:0 14px!important;position:relative!important;z-index:2}
+.tf-promo-layout>.subscribe-bell-cta,.tf-promo-layout>#stockpilot-subscribe-btn{order:0!important;align-self:flex-start!important;margin:0!important;flex:0 0 auto!important}
+.tf-promo-layout>.kitco-banner-stack{order:1!important;flex:0 1 520px!important;width:min(520px,58vw)!important;max-width:520px!important;min-width:300px!important;margin:0 0 0 auto!important;align-items:stretch!important}
+.tf-promo-layout>.kitco-banner-stack>.kitco-affiliate-banner{width:100%!important;max-width:520px!important;min-width:0!important}
+.tf-promo-layout>.kitco-banner-stack>.kitco-affiliate-banner img{display:block!important;width:100%!important;max-width:520px!important;height:auto!important;object-fit:contain!important}
+.tf-promo-layout>.kitco-banner-stack>.kitco-trade-link{width:100%!important;text-align:center!important;margin:6px 0 0!important}
+@media(max-width:760px){
+ .tf-promo-layout{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;width:100%!important;margin:12px auto 20px!important;padding:0 12px!important}
+ .tf-promo-layout>.subscribe-bell-cta,.tf-promo-layout>#stockpilot-subscribe-btn{display:none!important}
+ .tf-promo-layout>.kitco-banner-stack{display:flex!important;width:min(100%,520px)!important;max-width:520px!important;min-width:0!important;margin:0 auto!important;align-items:center!important}
+ .tf-promo-layout>.kitco-banner-stack>.kitco-affiliate-banner{width:100%!important;max-width:520px!important}
+ .tf-promo-layout>.kitco-banner-stack>.kitco-affiliate-banner img{width:100%!important;max-width:520px!important;height:auto!important}
+ .tf-promo-layout>.kitco-banner-stack>.kitco-trade-link{width:100%!important;text-align:center!important}
+ .tf-mobile-bottom-ticker{display:block!important;width:100%!important;margin:12px 0!important;order:0!important}
+}
+@media(min-width:761px){.tf-mobile-bottom-ticker{display:revert!important}}
+</style>
+<script id="tf-responsive-promo-layout">
+(function(){
+ const mq=window.matchMedia('(max-width:760px)');
+ const desk=document.getElementById('live-trading-desk');
+ const terminal=document.getElementById('market-terminal');
+ const footer=document.querySelector('footer');
+ const bell=document.querySelector('body > .subscribe-bell-cta')||document.querySelector('.subscribe-bell-cta')||document.getElementById('stockpilot-subscribe-btn');
+ const kitco=document.querySelector('.kitco-banner-stack');
+ if(!kitco)return;
+ let wrap=document.querySelector('.tf-promo-layout');
+ if(!wrap){wrap=document.createElement('div');wrap.className='tf-promo-layout';wrap.setAttribute('aria-label','Subscription and precious metals partner');}
+ if(bell&&!wrap.contains(bell))wrap.appendChild(bell);
+ if(!wrap.contains(kitco))wrap.appendChild(kitco);
+ const ticker=document.querySelector('.sp-top-picks-ticker')||document.querySelector('.marquee')||document.querySelector('.weekly-side-ticker');
+ let tickerHome=null;
+ if(ticker&&ticker.parentNode){tickerHome=document.createComment('ticker original position');ticker.parentNode.insertBefore(tickerHome,ticker);ticker.classList.add('tf-mobile-bottom-ticker');}
+ function place(){
+   if(mq.matches){
+     if(ticker&&footer&&footer.parentNode)footer.parentNode.insertBefore(ticker,footer);
+     else if(ticker&&document.body)document.body.appendChild(ticker);
+     if(footer&&footer.parentNode)footer.parentNode.insertBefore(wrap,footer);
+     else document.body.appendChild(wrap);
+   }else{
+     if(tickerHome&&tickerHome.parentNode)tickerHome.parentNode.insertBefore(ticker,tickerHome.nextSibling);
+     const anchor=terminal||desk;
+     if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(wrap,anchor.nextSibling);
+     else if(footer&&footer.parentNode)footer.parentNode.insertBefore(wrap,footer);
+   }
+ }
+ place();
+ if(mq.addEventListener)mq.addEventListener('change',place);else mq.addListener(place);
+})();
+</script>
+
 </body>
 </html>
 )?'TSX':'NASDAQ');
