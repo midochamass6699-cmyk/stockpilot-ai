@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stock Lookup: Search Stock Prices by Company or Ticker | StockPilot AI</title>
+<meta name="description" content="Look up stocks by company name or ticker symbol. Search U.S. and Canadian listings, compare exchanges, and view the latest available stock price and quote timestamp.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://technofront.org/stock-lookup.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="StockPilot AI">
+<meta property="og:title" content="Stock Lookup: Search Stock Prices by Company or Ticker">
+<meta property="og:description" content="Search U.S. and Canadian stocks by company name or ticker and view the latest available quote.">
+<meta property="og:url" content="https://technofront.org/stock-lookup.html">
+<meta name="theme-color" content="#07111f">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"Stock Lookup: Search Stock Prices by Company or Ticker",
+  "url":"https://technofront.org/stock-lookup.html",
+  "description":"A free stock lookup tool for searching U.S. and Canadian listings by company name or ticker symbol and viewing the latest available quote.",
+  "isPartOf":{"@type":"WebSite","name":"StockPilot AI","url":"https://technofront.org/"},
+  "inLanguage":"en-CA"
+}
+</script>
+<style>
+:root{color-scheme:light;--navy:#0b1626;--navy2:#14263c;--gold:#ffd629;--ink:#172333;--muted:#617084;--line:#dce3eb;--paper:#f4f6f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,Arial,Helvetica,sans-serif}
+a{color:inherit}
+header{background:var(--navy);border-bottom:4px solid var(--gold);color:#fff}
+.nav{max-width:1120px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{font-weight:950;color:var(--gold);text-decoration:none;font-size:20px;letter-spacing:.02em}
+.nav a:last-child{color:#fff;font-size:13px;font-weight:700;text-decoration:none}
+main{max-width:1040px;margin:34px auto;padding:0 20px 50px}
+.hero{padding:30px;border-radius:16px;background:linear-gradient(135deg,#0b1626,#1b3553);color:#fff;box-shadow:0 12px 30px #0b16261a}
+.eyebrow{color:#f5d45b;font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:10px 0}
+.hero p{max-width:760px;color:#d6e0ec;margin:12px 0 0}
+.lookup{margin:22px 0 0;padding:20px;background:#fff;border:1px solid #d7e0e9;border-radius:12px;color:var(--ink)}
+.lookup label{display:block;font-size:13px;font-weight:800;margin-bottom:8px}
+.controls{display:flex;gap:9px}
+input{flex:1;min-width:0;padding:13px 14px;border:1px solid #aebdce;border-radius:8px;font-size:16px;color:#172333}
+button{border:0;border-radius:8px;background:#f2c94c;color:#111827;padding:0 22px;font-weight:900;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #2878df;outline-offset:3px}
+.hint{font-size:12px;color:var(--muted);margin:8px 0 0}
+.output{margin-top:16px;min-height:58px;padding:14px;border-radius:9px;background:#f2f5f8;border:1px solid #e0e6ed;overflow-wrap:anywhere}
+.placeholder{color:#64748b}
+.quote-name{font-size:16px;font-weight:850}
+.quote-price{font-size:32px;font-weight:950;color:#087a43;line-height:1.3}
+.quote-meta,.quote-time{font-size:12px;color:#53657a;margin-top:4px}
+.choices{display:grid;gap:7px;margin-top:10px}
+.choice{padding:10px 12px;text-align:left;background:#fff;border:1px solid #cbd5e1;color:#172333;border-radius:7px}
+.error{color:#a52222;font-weight:700}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.info{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+h2{font-size:20px;line-height:1.25;margin:0 0 9px}
+.info p{font-size:14px;color:#526174;margin:8px 0}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.examples button{padding:7px 11px;background:#eef2f6;border:1px solid #d8e0e8;color:#25364a;font-size:12px}
+.disclosure{margin-top:18px;padding:14px 16px;border-left:4px solid #e4bd27;background:#fff8db;border-radius:7px;font-size:12px;color:#4f4b3d}
+footer{background:var(--navy);color:#c8d4e2;padding:22px;text-align:center;font-size:12px}
+footer a{color:#fff}
+@media(max-width:650px){main{margin:18px auto;padding:0 12px 35px}.hero{padding:22px 17px}.lookup{padding:14px}.controls{flex-direction:column}button{min-height:44px}.content-grid{grid-template-columns:1fr}.nav{padding:12px 14px}}
+</style>
+</head>
+<body>
+<header><nav class="nav" aria-label="Main navigation"><a class="brand" href="/">STOCKPILOT AI</a><a href="/">Back to Technofront market dashboard →</a></nav></header>
+<main>
+<section class="hero">
+<div class="eyebrow">Free market research tool</div>
+<h1>Stock Lookup</h1>
+<p>Search U.S. and Canadian stocks by company name or ticker symbol. Find a listing, confirm its exchange, and check the latest price information currently available from the quote provider.</p>
+<div class="lookup" role="search" aria-label="Stock lookup">
+<label for="stock-query">Company name or ticker symbol</label>
+<div class="controls"><input id="stock-query" type="search" placeholder="Try Tesla, TSLA, MARA, AAPL or SHOP" autocomplete="off"><button id="search-stock" type="button">Search stocks</button></div>
+<p class="hint">You can search by company name or ticker. If several exchanges list the same symbol, choose the listing you want.</p>
+<div class="output" id="stock-output" aria-live="polite"><span class="placeholder">Enter a company name or ticker to look up a stock.</span></div>
+<div class="examples" aria-label="Example searches"><button type="button" data-symbol="TSLA">Tesla (TSLA)</button><button type="button" data-symbol="MARA">MARA</button><button type="button" data-symbol="AAPL">Apple (AAPL)</button><button type="button" data-symbol="NVDA">NVIDIA (NVDA)</button><button type="button" data-symbol="SHOP">Shopify (SHOP)</button></div>
+</div>
+</section>
+<div class="content-grid">
+<section class="info">
+<h2>How to look up a stock</h2>
+<p>Enter a company's name or ticker symbol, then select Search stocks. When multiple listings appear, compare the company name, ticker, and exchange before selecting one.</p>
+<p>The result displays the listing name, ticker, exchange, currency, latest available price, and the quote time supplied by the data provider.</p>
+</section>
+<section class="info">
+<h2>U.S. and Canadian stock symbols</h2>
+<p>A ticker can represent different listings on different exchanges. Canadian listings may use exchange-specific suffixes, while U.S. listings commonly use the ticker alone.</p>
+<p>If a search returns several matches, use the exchange information to identify the listing you intended to research.</p>
+</section>
+</div>
+<div class="disclosure"><strong>Market data note:</strong> Prices and timestamps reflect the latest information returned by the quote provider and may be delayed or unavailable for some listings. This page does not promise real-time quotes. Information is for general research and education, not investment advice or a recommendation to buy or sell a security.</div>
+</main>
+<footer>© StockPilot AI · <a href="/">Technofront market dashboard</a> · <a href="/research.html">Market research</a></footer>
+<script>
+(() => {
+ const API_URL="https://stockpilot-lookup.midochamass6699.workers.dev";
+ const input=document.getElementById("stock-query");
+ const button=document.getElementById("search-stock");
+ const output=document.getElementById("stock-output");
+ async function requestData(params){
+  const url=new URL(API_URL);
+  Object.entries(params).forEach(([key,value])=>{if(value)url.searchParams.set(key,value)});
+  const response=await fetch(url);
+  if(!response.ok)throw new Error("The stock lookup service is temporarily unavailable.");
+  return response.json();
+ }
+ function showError(message){output.replaceChildren();const el=document.createElement("div");el.className="error";el.textContent=message;output.appendChild(el)}
+ function showQuote(quote){
+  if(!quote||!quote.close||!quote.currency){showError("No price is currently available for this listing.");return}
+  const price=Number(quote.close);
+  if(!Number.isFinite(price)){showError("The provider returned an invalid price.");return}
+  const formatted=new Intl.NumberFormat(undefined,{style:"currency",currency:quote.currency}).format(price);
+  const updated=quote.last_quote_at?new Date(Number(quote.last_quote_at)*1000).toLocaleString():(quote.datetime||"Time unavailable");
+  output.replaceChildren();
+  const name=document.createElement("div");name.className="quote-name";name.textContent=quote.name||quote.symbol;
+  const priceEl=document.createElement("div");priceEl.className="quote-price";priceEl.textContent=formatted;
+  const meta=document.createElement("div");meta.className="quote-meta";meta.textContent=[quote.symbol,quote.exchange||"Exchange unavailable",quote.currency].join(" · ");
+  const time=document.createElement("div");time.className="quote-time";time.textContent="Latest available data: "+updated;
+  output.append(name,priceEl,meta,time);
+ }
+ async function getQuote(stock){
+  output.textContent="Loading the latest available quote…";
+  try{
+   const quote=await requestData({action:"quote",symbol:stock.symbol,mic_code:stock.mic_code,exchange:stock.exchange});
+   if(quote.status==="error"||quote.code)throw new Error(quote.message||"Price unavailable.");
+   showQuote(quote);
+  }catch(error){showError(error.message||"Unable to retrieve this price.")}
+ }
+ async function searchStock(){
+  const query=input.value.trim();
+  if(!query){showError("Enter a company name or ticker symbol.");return}
+  output.textContent="Searching available U.S. and Canadian listings…";
+  try{
+   const result=await requestData({action:"search",q:query});
+   const matches=(result.data||[]).slice(0,8);
+   if(!matches.length){showError("No matching listings found. Try another company name or ticker.");return}
+   output.replaceChildren();
+   if(matches.length===1){await getQuote(matches[0]);return}
+   const heading=document.createElement("div");heading.textContent="Choose the listing and exchange:";
+   const choices=document.createElement("div");choices.className="choices";
+   matches.forEach(stock=>{
+    const choice=document.createElement("button");choice.type="button";choice.className="choice";
+    choice.textContent=(stock.name||stock.symbol)+" · "+stock.symbol+" · "+(stock.exchange||stock.country||"Exchange unavailable");
+    choice.addEventListener("click",()=>getQuote(stock));choices.appendChild(choice);
+   });
+   output.append(heading,choices);
+  }catch(error){showError(error.message||"Search failed. Please try again.")}
+ }
+ button.addEventListener("click",searchStock);
+ input.addEventListener("keydown",event=>{if(event.key==="Enter")searchStock()});
+ document.querySelectorAll("[data-symbol]").forEach(el=>el.addEventListener("click",()=>{input.value=el.dataset.symbol;searchStock()}));
+})();
+</script>
+</body>
+</html>
