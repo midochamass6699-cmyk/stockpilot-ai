@@ -5436,6 +5436,116 @@ body { overflow-x: hidden; }
     .catch(()=>render(targets.crypto,[],'crypto'));
 })();
 </script>
+
+<style id="stockpilot-three-across-final">
+/* Exactly three compact market entries on one horizontal line in each category. */
+#live-trading-desk{margin:3px auto 8px!important;padding:10px 12px!important}
+#live-trading-desk .trading-desk-header{margin:0 0 5px!important;padding:0!important}
+#live-trading-desk #trading-desk-title{font-size:clamp(21px,2.4vw,29px)!important;line-height:1.1!important;margin:0 0 3px!important}
+#live-trading-desk .trading-desk-intro{font-size:11px!important;line-height:1.2!important;margin:2px 0 5px!important}
+#live-trading-desk .trading-desk-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important;margin:0 0 6px!important}
+#live-trading-desk .trading-panel{min-width:0!important;padding:7px!important}
+#live-trading-desk .trading-panel-heading{display:block!important;margin:0 0 5px!important}
+#live-trading-desk .trading-panel-icon{display:none!important}
+#live-trading-desk .trading-panel-heading h2{font-size:11px!important;line-height:1.15!important;margin:0!important;white-space:normal!important}
+#live-trading-desk .trading-panel-heading p{display:none!important}
+#live-trading-desk .trading-market-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:3px!important;min-height:0!important}
+#live-trading-desk .trading-market-list .sp-market-row{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;min-width:0!important;padding:4px 2px!important;margin:0!important;border:1px solid #dce4ef!important;border-radius:5px!important;background:#f8fafc!important;text-align:center!important}
+#live-trading-desk .trading-market-list .sp-market-name{display:flex!important;flex-direction:column!important;align-items:center!important;min-width:0!important;max-width:100%!important}
+#live-trading-desk .trading-market-list .sp-market-name strong{font-size:10px!important;line-height:1.1!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;max-width:100%!important}
+#live-trading-desk .trading-market-list .sp-market-name small{font-size:9px!important;line-height:1.1!important}
+#live-trading-desk .trading-market-list .sp-market-values{display:block!important;min-width:0!important;text-align:center!important}
+#live-trading-desk .trading-market-list .sp-market-values strong{font-size:9px!important;line-height:1.1!important;white-space:nowrap!important}
+#live-trading-desk .trading-market-list .sp-market-values small{font-size:8px!important;line-height:1.1!important}
+#live-trading-desk .trading-panel-link{display:block!important;margin:4px 0 0!important;padding:3px 0 0!important;font-size:9px!important;line-height:1.1!important;text-align:center!important}
+#market-terminal{margin:5px auto 12px!important;padding:10px!important}
+#market-terminal .sp-terminal-top h2{font-size:20px!important;margin:2px 0!important}
+#market-terminal .sp-terminal-top p{font-size:10px!important;line-height:1.25!important}
+#market-terminal .sp-terminal-controls{gap:6px!important}
+#market-terminal .sp-terminal-controls input,#market-terminal .sp-terminal-controls select{padding:7px!important}
+#market-terminal .sp-terminal-workspace{margin-top:6px!important;padding-top:6px!important}
+#market-terminal .sp-terminal-tip,#market-terminal .sp-terminal-disclaimer{margin:4px 0!important;font-size:9px!important}
+#market-terminal .sp-terminal-chart{height:420px!important;min-height:320px!important}
+#market-terminal .sp-terminal-actions{margin-top:4px!important}
+@media(max-width:700px){
+ #live-trading-desk{width:calc(100% - 10px)!important;padding:7px 5px!important;margin:2px auto 6px!important}
+ #live-trading-desk .trading-desk-header{display:block!important;margin:0 0 4px!important}
+ #live-trading-desk #trading-desk-title{font-size:18px!important}
+ #live-trading-desk .trading-desk-intro{font-size:9px!important}
+ #live-trading-desk .trading-desk-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:4px!important}
+ #live-trading-desk .trading-panel{padding:5px 3px!important;border-radius:7px!important}
+ #live-trading-desk .trading-panel-heading h2{font-size:9px!important;min-height:21px!important}
+ #live-trading-desk .trading-market-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:2px!important}
+ #live-trading-desk .trading-market-list .sp-market-row{padding:3px 1px!important}
+ #live-trading-desk .trading-market-list .sp-market-name strong{font-size:8px!important}
+ #live-trading-desk .trading-market-list .sp-market-name small{font-size:7px!important}
+ #live-trading-desk .trading-market-list .sp-market-values strong{font-size:7px!important}
+ #live-trading-desk .trading-market-list .sp-market-values small{display:none!important}
+ #live-trading-desk .trading-panel-link{font-size:7px!important}
+ #market-terminal{margin:4px 5px 10px!important;padding:8px!important}
+ #market-terminal .sp-terminal-top h2{font-size:18px!important}
+ #market-terminal .sp-terminal-controls{grid-template-columns:1fr 1fr!important}
+ #market-terminal .sp-terminal-controls label:nth-child(2),#market-terminal .sp-terminal-controls label:nth-child(3),#market-terminal .sp-terminal-controls button{grid-column:span 2!important}
+ #market-terminal .sp-terminal-controls button{width:100%!important}
+ #market-terminal .sp-terminal-chart{height:340px!important;min-height:280px!important}
+}
+@media(max-width:360px){
+ #live-trading-desk .trading-panel-heading h2{font-size:8px!important}
+ #live-trading-desk .trading-market-list .sp-market-name strong{font-size:7px!important}
+ #market-terminal .sp-terminal-chart{height:300px!important;min-height:250px!important}
+}
+</style>
+
+<script id="stockpilot-left-picks-reliable-loader">
+(function(){
+  const all=(id)=>Array.from(document.querySelectorAll('[id="'+id+'"]'));
+  const mainTargets=all('sideMainPicks');
+  const pennyTargets=all('sidePennyPicks');
+  const cryptoTargets=all('sideCryptoPicks');
+  if(!mainTargets.length&&!pennyTargets.length&&!cryptoTargets.length)return;
+  function render(targets,items,kind){
+    targets.forEach(target=>{
+      target.replaceChildren();
+      if(!Array.isArray(items)||!items.length){
+        const msg=document.createElement('span');
+        msg.className='sp-side-loading';
+        msg.textContent='Market data temporarily unavailable';
+        target.appendChild(msg);return;
+      }
+      items.slice(0,3).forEach((item,index)=>{
+        const ticker=String(kind==='crypto'?(item.symbol||''):(item.ticker||'')).toUpperCase();
+        const name=String(item.company||item.name||ticker||'Market listing');
+        const a=document.createElement('a');a.className='sp-side-pick';
+        if(kind==='crypto'){
+          a.href=item.id?'https://www.coingecko.com/en/coins/'+encodeURIComponent(item.id):'#crypto-picks';
+          if(item.id){a.target='_blank';a.rel='noopener noreferrer';}
+        }else{
+          a.href='./stock-report.html?ticker='+encodeURIComponent(ticker)+'&kind='+kind;
+        }
+        const rank=document.createElement('span');rank.className='sp-side-rank';rank.textContent=String(index+1);
+        const details=document.createElement('span');details.className='sp-side-details';
+        const sym=document.createElement('strong');sym.textContent=ticker||'—';
+        const company=document.createElement('small');company.textContent=name;
+        details.append(sym,company);a.append(rank,details);target.appendChild(a);
+      });
+    });
+  }
+  const root=location.pathname.startsWith('/us/')?'/us/':location.pathname.startsWith('/de/')?'/de/':'/';
+  fetch(root+'data/picks.json?v='+Date.now(),{cache:'no-store'})
+    .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(data=>{
+      const main=Array.isArray(data.main)?data.main:[];
+      const used=new Set(main.map(x=>String(x.ticker||'').toUpperCase()));
+      const penny=(Array.isArray(data.penny)?data.penny:[]).filter(x=>!used.has(String(x.ticker||'').toUpperCase()));
+      render(mainTargets,main,'main');render(pennyTargets,penny,'penny');
+    })
+    .catch(()=>{render(mainTargets,[],'main');render(pennyTargets,[],'penny');});
+  fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false',{cache:'no-store'})
+    .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(coins=>render(cryptoTargets,Array.isArray(coins)?coins.slice(0,3):[],'crypto'))
+    .catch(()=>render(cryptoTargets,[],'crypto'));
+})();
+</script>
 </body>
 </html>)?'TSX':'NASDAQ');
   symbol.value=isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker;
