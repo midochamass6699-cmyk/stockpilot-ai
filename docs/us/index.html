@@ -2438,7 +2438,7 @@ input, select, textarea, button {
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><h2>Market Terminal</h2><p>Search U.S. and Canadian stocks or crypto, open interactive charts and compare symbols.</p></div>
  </div>
  <div class="sp-terminal-controls">
-   <label>Market<select id="sp-terminal-market"><option value="NASDAQ">U.S. stocks</option><option value="TSX">Canadian stocks</option><option value="BINANCE">Crypto</option></select></label>
+   <label>Market<select id="sp-terminal-market"><option value="NASDAQ">U.S. stocks</option><option value="NYSE">NYSE</option><option value="TSX">Canadian stocks</option><option value="BINANCE">Crypto</option></select></label>
    <label>Stock or crypto symbol<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT or NYSE:IBM" autocomplete="off"></label>
    <label>Compare with (optional)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY or ETHUSDT" autocomplete="off"></label>
    <button id="sp-terminal-load" type="button">LOAD CHART</button>
@@ -3011,8 +3011,7 @@ input, select, textarea, button {
   const ticker=row.querySelector('.sp-market-name small')?.textContent.trim().toUpperCase();
   if(!ticker)return;
   const isCrypto=!!row.closest('#deskCrypto,#previewCrypto');
-  const price=row.querySelector('.sp-market-values strong')?.textContent||'';
-  const exchange=isCrypto?'BINANCE':(price.includes('CA$')?'TSX':'NASDAQ');
+  const exchange=isCrypto?'BINANCE':(row.dataset.exchange||market.value);
   openWithSymbol(isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker,exchange);
  });
  symbol.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});
@@ -3725,7 +3724,7 @@ function setMarketPreview(id, items, kind) {
       positive = Number.isFinite(ch) && ch >= 0;
       href = symbol ? 'https://finance.yahoo.com/quote/' + encodeURIComponent(symbol) : '#main-picks';
     }
-    return `<a class="sp-market-row" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
+    return `<a class="sp-market-row" data-exchange="${previewEscape(kind === 'crypto' ? 'BINANCE' : (item.exchange || ''))}" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
       <span class="sp-market-rank">${index + 1}</span>
       <span class="sp-market-name"><strong>${previewEscape(name)}</strong><small>${previewEscape(symbol)}</small></span>
       <span class="sp-market-values"><strong>${previewEscape(price)}</strong><small class="${positive ? 'sp-market-up' : 'sp-market-down'}">${previewEscape(change)}</small></span>
@@ -5336,9 +5335,11 @@ body { overflow-x: hidden; }
   fetch('/data/picks.json?frontfix='+Date.now(),{cache:'no-store'})
     .then(r=>{if(!r.ok)throw new Error('Picks feed unavailable');return r.json();})
     .then(data=>{
-      const main=Array.isArray(data.main)?data.main:[];
+      const onlyUS=location.pathname.indexOf('/us/')===0;
+      const marketFilter=x=>!onlyUS||String(x.market||'').toUpperCase()==='US';
+      const main=(Array.isArray(data.main)?data.main:[]).filter(marketFilter);
       const used=new Set(main.map(x=>String(x.ticker||'').toUpperCase()));
-      const penny=(Array.isArray(data.penny)?data.penny:[]).filter(x=>!used.has(String(x.ticker||'').toUpperCase()));
+      const penny=(Array.isArray(data.penny)?data.penny:[]).filter(marketFilter).filter(x=>!used.has(String(x.ticker||'').toUpperCase()));
       render(targets.main,main,'main');render(targets.penny,penny,'penny');
     })
     .catch(()=>{render(targets.main,[],'main');render(targets.penny,[],'penny');});
@@ -5408,47 +5409,7 @@ body { overflow-x: hidden; }
 }
 </style>
 
-<script id="stockpilot-left-picks-reliable-loader">
-(function(){
- const findAll=id=>Array.from(document.querySelectorAll('[id="'+id+'"]'));
- const targets={main:findAll('sideMainPicks'),penny:findAll('sidePennyPicks'),crypto:findAll('sideCryptoPicks')};
- const seed={main:[{"ticker":"WWW","company":"Wolverine World Wide, Inc.","market":"US"},{"ticker":"CHA","company":"Chagee Holdings Limited","market":"US"},{"ticker":"LFTO","company":"Liftoff Mobile, Inc.","market":"US"}],penny:[{"ticker":"ANGX","company":"Angel Studios, Inc.","market":"US"},{"ticker":"PLTK","company":"Playtika Holding Corp.","market":"US"},{"ticker":"NRGV","company":"Energy Vault Holdings, Inc.","market":"US"}],crypto:[{symbol:'BTC',name:'Bitcoin',id:'bitcoin'},{symbol:'ETH',name:'Ethereum',id:'ethereum'},{symbol:'USDT',name:'Tether',id:'tether'}]};
- function draw(kind,items){
-  targets[kind].forEach(node=>{
-   node.replaceChildren();
-   const rows=(Array.isArray(items)?items:[]).slice(0,3);
-   if(!rows.length){const s=document.createElement('span');s.className='sp-side-loading';s.textContent='Market data temporarily unavailable';node.appendChild(s);return;}
-   rows.forEach((item,i)=>{
-    const ticker=String(kind==='crypto'?(item.symbol||''):(item.ticker||'')).toUpperCase();
-    const name=String(item.company||item.name||ticker);
-    const a=document.createElement('a');a.className='sp-side-pick';
-    a.href=kind==='crypto'?'https://www.coingecko.com/en/coins/'+encodeURIComponent(item.id||ticker.toLowerCase()):'/stock-report.html?ticker='+encodeURIComponent(ticker)+'&kind='+kind;
-    if(kind==='crypto'){a.target='_blank';a.rel='noopener noreferrer';}
-    const rank=document.createElement('span');rank.className='sp-side-rank';rank.textContent=String(i+1);
-    const detail=document.createElement('span');detail.className='sp-side-details';
-    const sym=document.createElement('strong');sym.textContent=ticker;
-    const company=document.createElement('small');company.textContent=name;
-    detail.append(sym,company);a.append(rank,detail);node.appendChild(a);
-   });
-  });
- }
- // Paint immediately from the last published snapshot so the banner never starts blank.
- draw('main',seed.main);draw('penny',seed.penny);draw('crypto',seed.crypto);
- fetch('/data/picks.json?sidebar='+Date.now(),{cache:'no-store'})
-  .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
-  .then(data=>{
-   const usOnly=location.pathname.indexOf('/us/')===0;
-   const filter=x=>!usOnly||String(x.market||'').toUpperCase()==='US';
-   const main=(Array.isArray(data.main)?data.main:[]).filter(filter);
-   const used=new Set(main.map(x=>String(x.ticker||'').toUpperCase()));
-   const penny=(Array.isArray(data.penny)?data.penny:[]).filter(filter).filter(x=>!used.has(String(x.ticker||'').toUpperCase()));
-   draw('main',main);draw('penny',penny);
-  }).catch(()=>{});
- fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false',{cache:'no-store'})
-  .then(r=>{if(!r.ok)throw new Error('Crypto API unavailable');return r.json();})
-  .then(coins=>draw('crypto',Array.isArray(coins)?coins.slice(0,3):[])).catch(()=>{});
-})();
-</script>
+
 <style id="stockpilot-readable-market-layout">
 /* Keep all three preview categories in one row while making every label readable. */
 #live-trading-desk .trading-desk-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
@@ -6707,121 +6668,8 @@ setInterval(loadStocks,15 * 60 * 1000);
 })();
 </script>
 <!-- STOCKPILOT AI FREE-ACCESS SIDE BANNERS -->
-<aside aria-label="StockPilot AI top market watchlists" class="free-side-banner" id="free-left-banner">
-  <div class="sp-side-picks">
-    <div class="sp-side-heading">
-      <span class="sp-side-star" aria-hidden="true">✦</span>
-      <strong>U.S. MARKET WATCH</strong>
-      <small>NYSE · NASDAQ · STOCKPILOT</small>
-    </div>
-    <section class="sp-side-group" aria-label="Selected stocks">
-      <h2>STOCKS</h2>
-      <div class="sp-side-list" id="sideMainPicks"><span class="sp-side-loading">Loading picks…</span></div>
-    </section>
-    <section class="sp-side-group sp-side-penny" aria-label="Selected penny stocks">
-      <h2>PENNY STOCKS</h2>
-      <div class="sp-side-list" id="sidePennyPicks"><span class="sp-side-loading">Loading picks…</span></div>
-    </section>
-    <section class="sp-side-group sp-side-crypto" aria-label="Leading cryptocurrencies">
-      <h2>CRYPTO</h2>
-      <div class="sp-side-list" id="sideCryptoPicks"><span class="sp-side-loading">Loading market data…</span></div>
-    </section>
-    <div class="sp-side-footer">
-      <strong>100% FREE</strong>
-      <span>NO PAYWALL</span>
-      <small>Research only · Not financial advice</small>
-    </div>
-  </div>
-</aside>
-<script id="stockpilot-left-picks-banner">
-(function () {
-  const mainTarget = document.getElementById('sideMainPicks');
-  const pennyTarget = document.getElementById('sidePennyPicks');
-  const cryptoTarget = document.getElementById('sideCryptoPicks');
-  if (!mainTarget || !pennyTarget || !cryptoTarget) return;
 
-  function showUnavailable(target, message) {
-    target.textContent = message;
-  }
 
-  function addRows(target, items, kind) {
-    target.replaceChildren();
-    if (!Array.isArray(items) || !items.length) {
-      showUnavailable(target, 'No verified data available');
-      return;
-    }
-    items.slice(0, 3).forEach(function (item, index) {
-      const ticker = String(kind === 'crypto' ? (item.symbol || '') : (item.ticker || '')).toUpperCase();
-      const name = String(item.company || item.name || ticker || 'Market listing');
-      const link = document.createElement('a');
-      link.className = 'sp-side-pick';
-      if (kind === 'crypto') {
-        link.href = item.id
-          ? 'https://www.coingecko.com/en/coins/' + encodeURIComponent(item.id)
-          : '#crypto-picks';
-        if (item.id) {
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-        }
-      } else {
-        link.href = '/stock-report.html?ticker=' + encodeURIComponent(ticker)
-          + '&kind=' + encodeURIComponent(kind);
-      }
-      const rank = document.createElement('span');
-      rank.className = 'sp-side-rank';
-      rank.textContent = String(index + 1);
-      const details = document.createElement('span');
-      details.className = 'sp-side-details';
-      const symbol = document.createElement('strong');
-      symbol.textContent = ticker || '—';
-      const company = document.createElement('small');
-      company.textContent = name;
-      details.append(symbol, company);
-      link.append(rank, details);
-      target.appendChild(link);
-    });
-  }
-
-  fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'})
-    .then(function (response) {
-      if (!response.ok) throw new Error('Stock data unavailable');
-      return response.json();
-    })
-    .then(function (data) {
-      const isUSListing = function (item) {
-        return String(item.market || '').toUpperCase() === 'US';
-      };
-      const main = (Array.isArray(data.main) ? data.main : []).filter(isUSListing);
-      const mainSymbols = new Set(main.map(function (item) { return item.ticker; }));
-      const penny = (Array.isArray(data.penny) ? data.penny : [])
-        .filter(isUSListing)
-        .filter(function (item) { return !mainSymbols.has(item.ticker); });
-      addRows(mainTarget, main, 'main');
-      addRows(pennyTarget, penny, 'penny');
-    })
-    .catch(function () {
-      showUnavailable(mainTarget, 'Stock picks unavailable');
-      showUnavailable(pennyTarget, 'Penny picks unavailable');
-    });
-
-  fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false', {cache:'no-store'})
-    .then(function (response) {
-      if (!response.ok) throw new Error('Crypto data unavailable');
-      return response.json();
-    })
-    .then(function (coins) {
-      const ranked = Array.isArray(coins)
-        ? coins.slice().sort(function (a, b) {
-            return (Number(b.total_volume) || 0) - (Number(a.total_volume) || 0);
-          }).slice(0, 3)
-        : [];
-      addRows(cryptoTarget, ranked, 'crypto');
-    })
-    .catch(function () {
-      showUnavailable(cryptoTarget, 'Crypto feed unavailable');
-    });
-})();
-</script>
 <aside aria-label="U.S. brokerage platforms" class="free-side-banner" id="free-right-banner"><div class="free-side-track"><div class="free-side-message"><strong class="broker-scroll-heading">U.S. ONLINE BROKERAGES</strong>
 <a class="broker-scroll-item" href="https://www.fidelity.com/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=fidelity.com&amp;sz=128"/><span>Fidelity</span></a>
 <a class="broker-scroll-item" href="https://www.schwab.com/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://www.google.com/s2/favicons?domain=schwab.com&amp;sz=128"/><span>Charles Schwab</span></a>
