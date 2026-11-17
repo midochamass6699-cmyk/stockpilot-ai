@@ -2195,6 +2195,7 @@ input, select, textarea, button {
   .live-trading-desk .trading-desk-header { display:flex !important; flex-direction:column !important; align-items:stretch !important; order:1 !important; gap:12px !important; }
   .live-trading-desk .trading-desk-header > div:first-child { order: 1; min-width: 0; }
   .live-trading-desk .market-partner-panel { order: 2; }
+  .live-trading-desk #market-terminal { order: 3; }
   .live-trading-desk .trading-desk-grid { order: 2; display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 9px !important; }
   .live-trading-desk .trading-desk-tools { order: 5; }
   .live-trading-desk .trading-desk-note { order: 6; }
@@ -5405,7 +5406,7 @@ body { overflow-x: hidden; }
         const name=String(item.company||item.name||ticker||'Market listing');
         const a=document.createElement('a');
         a.className='sp-side-pick';
-        a.href=kind==='crypto'?(item.id?'https://www.coingecko.com/en/coins/'+encodeURIComponent(item.id):'#crypto-picks'):'./stock-report.html?ticker='+encodeURIComponent(ticker)+'&kind='+kind;
+        a.href=kind==='crypto'?(item.source_url||(item.id?'https://www.coingecko.com/en/coins/'+encodeURIComponent(item.id):'#crypto-picks')):'./stock-report.html?ticker='+encodeURIComponent(ticker)+'&kind='+kind;
         if(kind==='crypto'&&item.id){a.target='_blank';a.rel='noopener noreferrer';}
         const rank=document.createElement('span');rank.className='sp-side-rank';rank.textContent=String(index+1);
         const details=document.createElement('span');details.className='sp-side-details';
