@@ -5512,6 +5512,110 @@ body { overflow-x: hidden; }
  if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
 })();
 </script>
+
+<style id="stockpilot-front-page-terminal-layout">
+/* Put the market terminal in the visitor's first view. */
+#live-trading-desk{margin-top:4px!important;padding-top:0!important}
+.trading-desk-header{margin:0 auto 8px!important;padding:5px 12px!important}
+#trading-desk-title{font-size:clamp(23px,2.5vw,31px)!important;line-height:1.12!important;margin:0 0 5px!important}
+.trading-desk-intro{font-size:12px!important;margin:3px 0 8px!important}
+.trading-desk-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important;margin:0 auto 8px!important}
+.trading-panel{min-width:0!important;padding:9px!important}
+.trading-panel-heading{gap:6px!important;margin-bottom:6px!important}
+.trading-panel-icon{flex-basis:25px!important;width:25px!important;height:25px!important;font-size:15px!important}
+.trading-panel-heading h2{font-size:clamp(10px,1.15vw,14px)!important;line-height:1.15!important}
+.trading-panel-heading p{font-size:9px!important;line-height:1.2!important;margin:2px 0 0!important}
+.trading-market-list{display:grid!important;grid-template-columns:1fr!important;gap:3px!important}
+.trading-market-list .sp-market-row{min-width:0!important;padding:4px 5px!important;margin:0!important;border-radius:5px!important;font-size:10px!important;line-height:1.15!important}
+.trading-market-list .sp-market-name,.trading-market-list .sp-market-values{font-size:10px!important}
+.trading-panel-link{font-size:9px!important;margin-top:5px!important;padding-top:5px!important}
+.sp-market-terminal{margin:7px auto 16px!important;padding:12px!important}
+.sp-terminal-top h2{font-size:21px!important;margin:3px 0!important}
+.sp-terminal-top p{font-size:11px!important;line-height:1.3!important}
+.sp-terminal-controls{gap:7px!important}
+.sp-terminal-controls label{font-size:10px!important}
+.sp-terminal-controls input,.sp-terminal-controls select{padding:8px!important;font-size:12px!important}
+.sp-terminal-controls button{padding:9px 12px!important}
+.sp-terminal-workspace{margin-top:8px!important;padding-top:8px!important}
+.sp-terminal-tip,.sp-terminal-disclaimer{font-size:10px!important;margin:5px 0!important}
+.sp-terminal-chart{height:390px!important;min-height:300px!important}
+.sp-terminal-actions{margin-top:5px!important}
+@media(max-width:760px){
+ #live-trading-desk{width:100%!important}
+ .trading-desk-header{padding:3px 10px!important;margin-bottom:5px!important}
+ #trading-desk-title{font-size:21px!important}
+ .trading-desk-intro{font-size:10px!important}
+ .trading-desk-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important;padding:0 7px!important}
+ .trading-panel{padding:6px 4px!important;border-radius:8px!important}
+ .trading-panel-heading{display:block!important;text-align:center!important;margin-bottom:4px!important}
+ .trading-panel-icon{display:none!important}
+ .trading-panel-heading h2{font-size:10px!important;min-height:24px!important}
+ .trading-panel-heading p{display:none!important}
+ .trading-market-list{display:grid!important;gap:2px!important}
+ .trading-market-list .sp-market-row{padding:3px 2px!important;font-size:8px!important;overflow:hidden!important}
+ .trading-market-list .sp-market-name,.trading-market-list .sp-market-values{font-size:8px!important;white-space:nowrap!important}
+ .trading-market-list .sp-market-values{display:none!important}
+ .trading-panel-link{font-size:8px!important;line-height:1.1!important;padding:3px 0 0!important}
+ .sp-market-terminal{margin:6px 7px 14px!important;padding:10px!important}
+ .sp-terminal-top h2{font-size:19px!important}
+ .sp-terminal-top p{font-size:10px!important}
+ .sp-terminal-controls{grid-template-columns:1fr 1fr!important}
+ .sp-terminal-controls label:nth-child(2),.sp-terminal-controls label:nth-child(3){grid-column:span 2!important}
+ .sp-terminal-controls button{grid-column:span 2!important;width:100%!important}
+ .sp-terminal-chart{height:310px!important;min-height:260px!important}
+}
+@media(max-width:380px){
+ .trading-panel-heading h2{font-size:9px!important}
+ .trading-market-list .sp-market-row{font-size:7px!important}
+ .sp-terminal-chart{height:270px!important;min-height:230px!important}
+}
+</style>
+<script id="stockpilot-side-picks-unified-fix">
+(function(){
+  const banners=[...document.querySelectorAll('.free-side-banner .sp-side-picks')];
+  if(!banners.length)return;
+  const targets={
+    main:banners.map(b=>b.querySelector('#sideMainPicks')).filter(Boolean),
+    penny:banners.map(b=>b.querySelector('#sidePennyPicks')).filter(Boolean),
+    crypto:banners.map(b=>b.querySelector('#sideCryptoPicks')).filter(Boolean)
+  };
+  function render(list,items,kind){
+    list.forEach(target=>{
+      target.replaceChildren();
+      if(!Array.isArray(items)||!items.length){
+        target.textContent='Data temporarily unavailable';
+        return;
+      }
+      items.slice(0,3).forEach((item,index)=>{
+        const ticker=String(kind==='crypto'?(item.symbol||''):(item.ticker||'')).toUpperCase();
+        const name=String(item.company||item.name||ticker||'Market listing');
+        const a=document.createElement('a');
+        a.className='sp-side-pick';
+        a.href=kind==='crypto'?(item.id?'https://www.coingecko.com/en/coins/'+encodeURIComponent(item.id):'#crypto-picks'):'./stock-report.html?ticker='+encodeURIComponent(ticker)+'&kind='+kind;
+        if(kind==='crypto'&&item.id){a.target='_blank';a.rel='noopener noreferrer';}
+        const rank=document.createElement('span');rank.className='sp-side-rank';rank.textContent=String(index+1);
+        const details=document.createElement('span');details.className='sp-side-details';
+        const symbol=document.createElement('strong');symbol.textContent=ticker||'—';
+        const company=document.createElement('small');company.textContent=name;
+        details.append(symbol,company);a.append(rank,details);target.append(a);
+      });
+    });
+  }
+  fetch('/data/picks.json?frontfix='+Date.now(),{cache:'no-store'})
+    .then(r=>{if(!r.ok)throw new Error('Picks feed unavailable');return r.json();})
+    .then(data=>{
+      const main=Array.isArray(data.main)?data.main:[];
+      const used=new Set(main.map(x=>String(x.ticker||'').toUpperCase()));
+      const penny=(Array.isArray(data.penny)?data.penny:[]).filter(x=>!used.has(String(x.ticker||'').toUpperCase()));
+      render(targets.main,main,'main');render(targets.penny,penny,'penny');
+    })
+    .catch(()=>{render(targets.main,[],'main');render(targets.penny,[],'penny');});
+  fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false',{cache:'no-store'})
+    .then(r=>{if(!r.ok)throw new Error('Crypto feed unavailable');return r.json();})
+    .then(coins=>render(targets.crypto,Array.isArray(coins)?coins.slice(0,3):[],'crypto'))
+    .catch(()=>render(targets.crypto,[],'crypto'));
+})();
+</script>
 </body>
 </html>
 )?'TSX':'NASDAQ');
