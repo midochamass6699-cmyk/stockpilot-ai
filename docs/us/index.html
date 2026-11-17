@@ -2448,6 +2448,31 @@ input, select, textarea, button {
   <p class="sp-terminal-tip">Tip: enter an exchange prefix for precise results, e.g. TSX:SHOP or NYSE:IBM.</p>
   <div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Loading interactive chart…</div></div>
   <p class="sp-terminal-disclaimer">Market data is supplied by TradingView. Some exchange quotes may be delayed; chart access and historical price views remain available.</p>
+  <div class="sp-terminal-tools" id="sp-terminal-tools">
+   <div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-0" data-sp-tool="0">WATCHLIST</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-1" data-sp-tool="1">SCREENER</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-2" data-sp-tool="2">TECHNICALS</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-3" data-sp-tool="3">COMPANY</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-4" data-sp-tool="4">PRACTICE</button>
+   </div>
+   <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-0" role="tabpanel">
+    <h3>Your saved symbols</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-watch-input" type="text" placeholder="Ticker (e.g. AAPL)" aria-label="Ticker (e.g. AAPL)"><button class="primary" id="sp-terminal-watch-add" type="button">ADD</button></div><div id="sp-terminal-watch-list" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">No saved symbols yet. Add a ticker above.</p></div>
+   </section>
+   <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-1" role="tabpanel">
+    <h3>Momentum screen · daily snapshot</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-screen-search" type="search" placeholder="Search symbols or companies" aria-label="Search symbols or companies"><select id="sp-terminal-screen-kind" aria-label="Momentum screen · daily snapshot"><option value="all">All</option><option value="main">Main</option><option value="penny">Under $10</option></select></div><div id="sp-terminal-screen-results" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">Loading market snapshot…</p></div>
+   </section>
+   <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-2" role="tabpanel">
+    <h3>TECHNICALS</h3><p>Technical analysis for the selected symbol. TradingView data may be delayed.</p><div id="sp-terminal-ta-widget" class="sp-terminal-ta"><p class="sp-terminal-tool-muted">Technical analysis for the selected symbol. TradingView data may be delayed.</p></div>
+   </section>
+   <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-3" role="tabpanel">
+    <h3>Company snapshot</h3><div id="sp-terminal-company-facts"><p>Choose a stock from the screener or load a symbol above.</p></div>
+   </section>
+   <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-4" role="tabpanel">
+    <h3>Paper portfolio · educational only</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-paper-symbol" type="text" placeholder="Ticker (e.g. AAPL)" aria-label="Ticker (e.g. AAPL)"><input id="sp-terminal-paper-units" type="number" min="0.0001" step="any" placeholder="Units" aria-label="Units"><input id="sp-terminal-paper-entry" type="number" min="0.0001" step="any" placeholder="Entry price" aria-label="Entry price"><button class="primary" id="sp-terminal-paper-add" type="button">ADD PRACTICE POSITION</button></div><div id="sp-terminal-paper-list"><p class="sp-terminal-tool-muted">No practice positions saved.</p></div>
+   </section>
+   <p class="sp-terminal-tool-muted">These are research and learning tools, not investment advice. Screener values use the latest available daily snapshot.</p>
+  </div>
  </div>
  <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="true" aria-controls="sp-terminal-workspace" data-open-label="EXPAND CHART" data-close-label="COLLAPSE TERMINAL">COLLAPSE TERMINAL <span aria-hidden="true">×</span></button></div>
 </section>
@@ -2951,6 +2976,36 @@ input, select, textarea, button {
 .sp-terminal-actions{display:flex;justify-content:flex-end;margin-top:10px}
 .sp-terminal-actions .sp-terminal-toggle{min-width:160px}
 @media(max-width:700px){.sp-terminal-actions{justify-content:stretch}.sp-terminal-actions .sp-terminal-toggle{width:100%}}
+
+/* Compact terminal tools: only the tab strip is visible until opened. */
+.sp-terminal-tools{margin:12px 0 2px;border-top:1px solid #ffffff20;padding-top:10px}
+.sp-terminal-tool-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:1px 0 6px}
+.sp-terminal-tool-tabs button{flex:0 0 auto;border:1px solid #52627a;background:#17263b;color:#dce7f5;border-radius:7px;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.035em;cursor:pointer}
+.sp-terminal-tool-tabs button[aria-selected=true]{background:#f2c94c;color:#111827;border-color:#f2c94c}
+.sp-terminal-tool-panel{display:none;margin-top:8px;padding:11px;background:#101d30;border:1px solid #33445d;border-radius:9px;min-width:0}
+.sp-terminal-tool-panel.is-active{display:block}
+.sp-terminal-tool-panel h3{margin:0 0 8px;color:#fff;font-size:13px}
+.sp-terminal-tool-panel p{margin:5px 0;color:#b9c7d9;font-size:11px;line-height:1.45}
+.sp-terminal-tool-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:7px 0}
+.sp-terminal-tool-panel input,.sp-terminal-tool-panel select{min-width:0;max-width:100%;box-sizing:border-box;border:1px solid #52627a;border-radius:6px;background:#f8fafc;color:#152033;padding:7px 8px;font-size:12px}
+.sp-terminal-tool-panel button{border:1px solid #61738c;border-radius:6px;background:#243852;color:#fff;padding:7px 9px;font-size:10px;font-weight:850;cursor:pointer}
+.sp-terminal-tool-panel button.primary{background:#f2c94c;color:#111827;border-color:#f2c94c}
+.sp-terminal-tool-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:6px;margin-top:8px}
+.sp-terminal-tool-card{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px;background:#17263b;border:1px solid #34465e;border-radius:7px;min-width:0}
+.sp-terminal-tool-card strong{display:block;color:#fff;font-size:11px;overflow-wrap:anywhere}
+.sp-terminal-tool-card small{display:block;color:#aebbd0;font-size:10px;margin-top:2px}
+.sp-terminal-tool-card .sp-terminal-tool-actions{display:flex;gap:4px;flex:0 0 auto}
+.sp-terminal-tool-muted{color:#aebbd0;font-size:10px}
+.sp-terminal-tool-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:7px;margin:8px 0}
+.sp-terminal-tool-metric{padding:8px;background:#17263b;border:1px solid #34465e;border-radius:7px}
+.sp-terminal-tool-metric small{display:block;color:#aebbd0;font-size:9px;text-transform:uppercase}
+.sp-terminal-tool-metric strong{display:block;color:#fff;font-size:13px;margin-top:3px}
+.sp-terminal-tool-panel table{width:100%;border-collapse:collapse;font-size:10px;color:#dce7f5}
+.sp-terminal-tool-panel th,.sp-terminal-tool-panel td{padding:6px 5px;text-align:left;border-bottom:1px solid #ffffff18;white-space:nowrap}
+.sp-terminal-tool-panel th{color:#aebbd0;font-size:9px;text-transform:uppercase}
+.sp-terminal-tool-panel .sp-terminal-tool-table-wrap{overflow-x:auto}
+.sp-terminal-ta{height:300px;min-height:250px}
+@media(max-width:600px){.sp-terminal-tools{margin-top:9px;padding-top:8px}.sp-terminal-tool-tabs{gap:5px}.sp-terminal-tool-tabs button{font-size:9px;padding:7px 8px}.sp-terminal-tool-panel{padding:8px}.sp-terminal-tool-list{grid-template-columns:1fr}.sp-terminal-ta{height:280px}}
 </style>
 <script id="sp-market-terminal-script">
 (function(){
@@ -3043,6 +3098,36 @@ input, select, textarea, button {
   if(market.value==='BINANCE'&&symbol.value==='AAPL')symbol.value='BTCUSDT';
   else if(market.value!=='BINANCE'&&symbol.value==='BTCUSDT')symbol.value='AAPL';
  });
+})();
+</script>
+<script id="sp-terminal-tools-script">
+(function(){
+ const root=document.getElementById('sp-terminal-tools');if(!root||root.dataset.ready)return;root.dataset.ready='1';
+ const lang="en";const labels={"emptyWatch":"No saved symbols yet. Add a ticker above.","emptyPractice":"No practice positions saved.","remove":"REMOVE","cost":"Practice cost basis","companyHint":"Choose a stock from the screener or load a symbol above.","techHint":"Technical analysis for the selected symbol. TradingView data may be delayed."};
+ const $=id=>document.getElementById(id);const market=$('sp-terminal-market'),symbol=$('sp-terminal-symbol'),compare=$('sp-terminal-compare'),load=$('sp-terminal-load');
+ const safe=(v)=>String(v==null?'':v);const esc=(v)=>safe(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const currency=v=>safe(v||'USD');const fmt=(v,d=2)=>Number.isFinite(Number(v))?Number(v).toFixed(d):'—';
+ let picks={main:[],penny:[]};let activeTicker='AAPL';let activeExchange='NASDAQ';
+ const fetchPicks=fetch('/data/picks.json?terminal-tools='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.'; });
+ function currentSymbol(){const raw=(symbol?.value||activeTicker).trim().toUpperCase();if(raw.includes(':'))return raw;const ex=market?.value||activeExchange;return (ex==='BINANCE'?'BINANCE':ex)+':'+raw;}
+ function loadTicker(ticker,exchange){if(!ticker)return;const m=$('sp-terminal-market'),s=$('sp-terminal-symbol');const ex=String(exchange||'NASDAQ').toUpperCase();if(m)m.value=ex.includes('NYSE')?'NYSE':ex.includes('TSX')?'TSX':ex.includes('BINANCE')?'BINANCE':'NASDAQ';if(s)s.value=ticker;activeTicker=ticker;activeExchange=m?.value||'NASDAQ';if(load)load.click();renderCompany();}
+ root.querySelectorAll('[data-sp-tool]').forEach(btn=>btn.addEventListener('click',()=>{const n=btn.dataset.spTool;root.querySelectorAll('[data-sp-tool]').forEach(b=>b.setAttribute('aria-selected',String(b===btn)));root.querySelectorAll('.sp-terminal-tool-panel').forEach(p=>p.classList.toggle('is-active',p.id==='sp-terminal-tool-panel-'+n));if(n==='2')renderTechnical();if(n==='3')renderCompany();}));
+ function getSaved(key,fallback){try{const v=JSON.parse(localStorage.getItem(key)||'null');return Array.isArray(v)?v:fallback;}catch(e){return fallback;}}
+ function save(key,v){try{localStorage.setItem(key,JSON.stringify(v));}catch(e){}}
+ const watchKey='stockpilot-terminal-watchlist-v1',paperKey='stockpilot-terminal-practice-v1';
+ function renderWatch(){const host=$('sp-terminal-watch-list'),items=getSaved(watchKey,[]);host.replaceChildren();if(!items.length){host.textContent=labels.emptyWatch;return;}items.forEach(item=>{const card=document.createElement('div');card.className='sp-terminal-tool-card';const info=document.createElement('div');const strong=document.createElement('strong');strong.textContent=item.ticker;const small=document.createElement('small');small.textContent=item.exchange||'NASDAQ';info.append(strong,small);const actions=document.createElement('div');actions.className='sp-terminal-tool-actions';const open=document.createElement('button');open.textContent='CHART';open.addEventListener('click',()=>loadTicker(item.ticker,item.exchange));const del=document.createElement('button');del.textContent='×';del.setAttribute('aria-label',labels.remove);del.addEventListener('click',()=>{save(watchKey,items.filter(x=>x.ticker!==item.ticker));renderWatch();});actions.append(open,del);card.append(info,actions);host.append(card);});}
+ $('sp-terminal-watch-add').addEventListener('click',()=>{const input=$('sp-terminal-watch-input'),ticker=input.value.trim().toUpperCase().replace(/\\s+/g,'');if(!ticker)return;const items=getSaved(watchKey,[]);if(!items.some(x=>x.ticker===ticker)){items.push({ticker,exchange:market?.value||'NASDAQ'});save(watchKey,items);}input.value='';renderWatch();});
+ $('sp-terminal-watch-input').addEventListener('keydown',e=>{if(e.key==='Enter')$('sp-terminal-watch-add').click();});renderWatch();
+ function allPicks(){return [...picks.main.map(x=>({...x,_kind:'main'})),...picks.penny.map(x=>({...x,_kind:'penny'}))];}
+ function renderScreener(){const host=$('sp-terminal-screen-results');if(!host)return;const term=$('sp-terminal-screen-search').value.trim().toLowerCase(),kind=$('sp-terminal-screen-kind').value;const list=allPicks().filter(x=>(kind==='all'||x._kind===kind)&&(!term||safe(x.ticker).toLowerCase().includes(term)||safe(x.company).toLowerCase().includes(term))).slice(0,12);host.replaceChildren();if(!list.length){host.textContent='No matching symbols in the current snapshot.';return;}list.forEach(x=>{const card=document.createElement('div');card.className='sp-terminal-tool-card';const info=document.createElement('div'),name=document.createElement('strong'),meta=document.createElement('small');name.textContent=x.ticker+' · '+safe(x.company);meta.textContent=currency(x.currency)+' '+fmt(x.price)+' · '+(Number.isFinite(Number(x.change_percent))?fmt(x.change_percent)+'%':'—')+' · '+safe(x.exchange);info.append(name,meta);const open=document.createElement('button');open.textContent='CHART';open.addEventListener('click',()=>loadTicker(x.ticker,x.exchange));card.append(info,open);host.append(card);});}
+ $('sp-terminal-screen-search').addEventListener('input',renderScreener);$('sp-terminal-screen-kind').addEventListener('change',renderScreener);
+ function selectedPick(){const raw=(symbol?.value||activeTicker).trim().toUpperCase().split(':').pop();return allPicks().find(x=>safe(x.ticker).toUpperCase()===raw);}
+ function renderCompany(){const host=$('sp-terminal-company-facts');if(!host)return;const x=selectedPick();if(!x){host.textContent=labels.companyHint;return;}const metrics=[['PRICE',currency(x.currency)+' '+fmt(x.price)],['DAY CHANGE',fmt(x.change_percent)+'%'],['20D RETURN',fmt(x.return_20d)+'%'],['VOLUME',Number(x.volume||0).toLocaleString()],['EXCHANGE',safe(x.exchange)],['DATA DATE',safe(x.price_date||x.quote_time)]];host.replaceChildren();const grid=document.createElement('div');grid.className='sp-terminal-tool-metrics';metrics.forEach(([k,v])=>{const box=document.createElement('div');box.className='sp-terminal-tool-metric';const small=document.createElement('small');small.textContent=k;const strong=document.createElement('strong');strong.textContent=v;box.append(small,strong);grid.append(box);});const reason=document.createElement('p');reason.textContent=safe(x.reason);const risk=document.createElement('p');risk.textContent='Risk context: '+safe(x.risk);host.append(grid,reason,risk);}
+ function renderTechnical(){const host=$('sp-terminal-ta-widget');if(!host||host.dataset.loaded)return;host.dataset.loaded='1';const sym=currentSymbol();host.replaceChildren();const box=document.createElement('div');box.className='tradingview-widget-container';box.style.width='100%';box.style.height='100%';const widget=document.createElement('div');widget.className='tradingview-widget-container__widget';box.append(widget);const script=document.createElement('script');script.async=true;script.src='https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';script.textContent=JSON.stringify({interval:'1D',width:'100%',isTransparent:true,height:'100%',symbol:sym,showIntervalTabs:true,displayMode:'single',locale:lang,colorTheme:'dark'});box.append(script);host.append(box);}
+ function renderPaper(){const host=$('sp-terminal-paper-list'),items=getSaved(paperKey,[]);host.replaceChildren();if(!items.length){host.textContent=labels.emptyPractice;return;}let total=0;const table=document.createElement('div');table.className='sp-terminal-tool-table-wrap';const t=document.createElement('table');const head=document.createElement('thead');head.innerHTML='<tr><th>SYMBOL</th><th>'+esc('UNITS')+'</th><th>'+esc('ENTRY')+'</th><th>'+esc(labels.cost)+'</th><th></th></tr>';t.append(head);const body=document.createElement('tbody');items.forEach((x,i)=>{const cost=Number(x.units)*Number(x.entry);total+=cost;const tr=document.createElement('tr');[x.ticker,fmt(x.units,4),fmt(x.entry,4),currency(x.currency)+' '+fmt(cost)].forEach(v=>{const td=document.createElement('td');td.textContent=safe(v);tr.append(td);});const td=document.createElement('td'),del=document.createElement('button');del.textContent='×';del.setAttribute('aria-label',labels.remove);del.addEventListener('click',()=>{items.splice(i,1);save(paperKey,items);renderPaper();});td.append(del);tr.append(td);body.append(tr);});t.append(body);table.append(t);const summary=document.createElement('p');summary.textContent=labels.cost+': '+total.toFixed(2)+' (practice only)';host.append(table,summary);}
+ $('sp-terminal-paper-add').addEventListener('click',()=>{const ticker=$('sp-terminal-paper-symbol').value.trim().toUpperCase(),units=Number($('sp-terminal-paper-units').value),entry=Number($('sp-terminal-paper-entry').value);if(!ticker||!(units>0)||!(entry>0))return;const items=getSaved(paperKey,[]);items.push({ticker,units,entry,currency:'USD'});save(paperKey,items);$('sp-terminal-paper-symbol').value='';$('sp-terminal-paper-units').value='';$('sp-terminal-paper-entry').value='';renderPaper();});renderPaper();
+ symbol?.addEventListener('change',()=>{activeTicker=symbol.value.trim().toUpperCase();activeExchange=market?.value||activeExchange;renderCompany();const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}});market?.addEventListener('change',()=>{activeExchange=market.value;const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}});
+ fetchPicks;
 })();
 </script>
 <div class="trading-desk-tools">
