@@ -2455,14 +2455,18 @@ input, select, textarea, button {
 </section>
 <nav class="sp-terminal-shortcuts" aria-label="Market categories"><a href="#main-picks">ACTIONS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">CRYPTO</a></nav>
 <section class="sp-market-terminal" id="market-terminal" aria-label="Explorez les marchés dans un seul terminal.">
- <div class="sp-terminal-top"><div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACE BOURSIER INTERACTIF</div><h2>Explorez les marchés dans un seul terminal.</h2><p>Recherchez des actions américaines et canadiennes ou des cryptomonnaies, consultez les graphiques et comparez les symboles.</p></div><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace">OUVRIR LE TERMINAL <span aria-hidden="true">↗</span></button></div>
- <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
-  <div class="sp-terminal-controls">
+ <div class="sp-terminal-top">
+  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACE BOURSIER INTERACTIF</div><h2>Explorez les marchés dans un seul terminal.</h2><p>Recherchez des actions américaines et canadiennes ou des cryptomonnaies, consultez les graphiques et comparez les symboles.</p></div>
+ </div>
+ <div class="sp-terminal-controls">
    <label>Marché<select id="sp-terminal-market"><option value="NASDAQ">Actions américaines</option><option value="TSX">Actions canadiennes</option><option value="BINANCE">Crypto</option></select></label>
    <label>Symbole boursier ou crypto<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT ou NYSE:IBM" autocomplete="off"></label>
    <label>Comparer avec (facultatif)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY ou ETHUSDT" autocomplete="off"></label>
    <button id="sp-terminal-load" type="button">AFFICHER LE GRAPHIQUE</button>
   </div>
+ <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace" data-close-label="FERMER LE GRAPHIQUE">AGRANDIR LE GRAPHIQUE <span aria-hidden="true">↗</span></button></div>
+ <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
+  
   <p class="sp-terminal-tip">Conseil : précisez la bourse, par exemple TSX:SHOP ou NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Chargement du graphique interactif…</div></div><p class="sp-terminal-disclaimer">Données de marché fournies par TradingView. Certains cours peuvent être différés; les graphiques et l’historique restent accessibles.</p>
  </div>
 </section>
@@ -2473,6 +2477,9 @@ input, select, textarea, button {
 .sp-terminal-top h2{margin:7px 0 4px;color:#fff;font-size:clamp(20px,2.4vw,29px);line-height:1.15}.sp-terminal-top p{margin:0;color:#bdc9d9;font-size:13px;line-height:1.5}.sp-terminal-toggle,.sp-terminal-controls button{border:0;border-radius:10px;background:#f2c94c;color:#111827;padding:13px 17px;font-size:12px;font-weight:900;letter-spacing:.035em;cursor:pointer;white-space:nowrap}.sp-terminal-toggle:hover,.sp-terminal-controls button:hover{background:#ffdb69}
 .sp-terminal-workspace{margin-top:18px;border-top:1px solid #ffffff20;padding-top:16px}.sp-terminal-controls{display:grid;grid-template-columns:minmax(130px,.85fr) minmax(160px,1.25fr) minmax(150px,1fr) auto;gap:10px;align-items:end}.sp-terminal-controls label{display:flex;flex-direction:column;gap:6px;color:#d7e0ec;font-size:11px;font-weight:800}.sp-terminal-controls input,.sp-terminal-controls select{width:100%;min-width:0;box-sizing:border-box;background:#f8fafc;color:#152033;border:1px solid #64748b;border-radius:8px;padding:11px 10px;font-size:13px}.sp-terminal-tip,.sp-terminal-disclaimer{font-size:11px;line-height:1.5;color:#aebbd0;margin:10px 0}.sp-terminal-chart{height:530px;min-height:400px;background:#0b1220;border:1px solid #334155;border-radius:10px;overflow:hidden}.sp-terminal-chart .tradingview-widget-container,.sp-terminal-chart .tradingview-widget-container__widget{width:100%;height:100%}.sp-terminal-chart iframe{width:100%!important;height:100%!important}.sp-terminal-chart-placeholder{height:100%;display:grid;place-items:center;color:#b8c6d8;font-size:13px}
 @media(max-width:700px){.sp-market-terminal{margin:12px 0 20px;padding:14px;border-radius:13px}.sp-terminal-top{display:block}.sp-terminal-top p{font-size:12px}.sp-terminal-toggle{width:100%;margin-top:12px;padding:14px}.sp-terminal-controls{grid-template-columns:1fr 1fr}.sp-terminal-controls label:nth-child(2),.sp-terminal-controls label:nth-child(3){grid-column:span 2}.sp-terminal-controls button{grid-column:span 2;width:100%;padding:14px}.sp-terminal-chart{height:460px;min-height:360px}.sp-terminal-shortcuts{gap:6px}.sp-terminal-shortcuts a{font-size:10px;padding:7px 9px}}@media(max-width:380px){.sp-terminal-controls{grid-template-columns:1fr}.sp-terminal-controls label,.sp-terminal-controls label:nth-child(2),.sp-terminal-controls label:nth-child(3),.sp-terminal-controls button{grid-column:1}}
+.sp-terminal-actions{display:flex;justify-content:flex-end;margin-top:10px}
+.sp-terminal-actions .sp-terminal-toggle{min-width:160px}
+@media(max-width:700px){.sp-terminal-actions{justify-content:stretch}.sp-terminal-actions .sp-terminal-toggle{width:100%}}
 </style>
 <script id="sp-market-terminal-script">
 (function(){
@@ -2485,7 +2492,7 @@ input, select, textarea, button {
  const load=document.getElementById('sp-terminal-load');
  if(!toggle||!workspace||!chart||toggle.dataset.ready)return;
  toggle.dataset.ready='1';
- toggle.dataset.closeLabel="FERMER LE TERMINAL";
+ toggle.dataset.closeLabel="FERMER LE GRAPHIQUE";
  let loaded=false;
  function normalize(value,exchange){
   const raw=(value||'').trim().toUpperCase().replace(/\s+/g,'');
@@ -2523,7 +2530,7 @@ input, select, textarea, button {
   toggle.innerHTML=opening?"OUVRIR LE TERMINAL"+' <span aria-hidden="true">↗</span>':toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';
   if(opening&&!loaded){draw();loaded=true;}
  });
- load.addEventListener('click',draw);
+ load.addEventListener('click',function(){if(workspace.hidden){workspace.hidden=false;toggle.setAttribute('aria-expanded','true');toggle.innerHTML="FERMER LE GRAPHIQUE"+' <span aria-hidden="true">×</span>';if(!loaded){loaded=true;}}draw();});
  document.addEventListener('click',function(e){
   const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
   if(!row)return;
