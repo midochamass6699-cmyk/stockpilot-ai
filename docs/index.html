@@ -2295,6 +2295,40 @@ input, select, textarea, button {
 </button>
 </nav>
 </header>
+
+<div class="tradingview-widget-container" style="width:100%; height:46px; background:#ffffff;">
+<div class="tradingview-widget-container__widget"></div>
+<script async="" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" type="text/javascript">
+  {
+    "symbols": [
+      {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
+      {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ"},
+      {"proName":"FOREXCOM:DJI","title":"DOW"},
+      {"proName":"TSX:RY","title":"ROYAL BANK"},
+      {"proName":"TSX:SHOP","title":"SHOPIFY"},
+      {"proName":"TSX:TD","title":"TD BANK"},
+      {"proName":"NASDAQ:AAPL","title":"APPLE"},
+      {"proName":"NASDAQ:NVDA","title":"NVIDIA"},
+      {"proName":"NASDAQ:TSLA","title":"TESLA"},
+      {"proName":"NASDAQ:MSFT","title":"MICROSOFT"},
+      {"proName":"NASDAQ:AMZN","title":"AMAZON"},
+      {"proName":"NASDAQ:GOOGL","title":"GOOGLE"},
+      {"proName":"NASDAQ:META","title":"META"},
+      {"proName":"NASDAQ:AMD","title":"AMD"},
+      {"proName":"NASDAQ:PLTR","title":"PALANTIR"},
+      {"proName":"NYSE:JPM","title":"JPMORGAN"},
+      {"proName":"BITSTAMP:BTCUSD","title":"BITCOIN"},
+      {"proName":"BITSTAMP:ETHUSD","title":"ETHEREUM"}
+    ],
+    "showSymbolLogo": true,
+"colorTheme": "light",
+"isTransparent": false,
+    "displayMode": "adaptive",
+    "locale": "en"
+  }
+  </script>
+</div>
+
 <!-- COMPACT FREE TOOLS BANNER -->
 <style>
 #stockpilot-free-tools{width:100%;min-height:44px;box-sizing:border-box;background:#14243b;border-top:1px solid #294866;border-bottom:1px solid #294866;display:flex;align-items:center;justify-content:center;padding:6px 12px;font-family:Arial,sans-serif;overflow-x:auto}
@@ -2518,39 +2552,6 @@ input, select, textarea, button {
     <span class="tool-item free">100% FREE</span>
   </div>
 </div>
-<div class="tradingview-widget-container" style="width:100%; height:46px; background:#ffffff;">
-<div class="tradingview-widget-container__widget"></div>
-<script async="" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" type="text/javascript">
-  {
-    "symbols": [
-      {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
-      {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ"},
-      {"proName":"FOREXCOM:DJI","title":"DOW"},
-      {"proName":"TSX:RY","title":"ROYAL BANK"},
-      {"proName":"TSX:SHOP","title":"SHOPIFY"},
-      {"proName":"TSX:TD","title":"TD BANK"},
-      {"proName":"NASDAQ:AAPL","title":"APPLE"},
-      {"proName":"NASDAQ:NVDA","title":"NVIDIA"},
-      {"proName":"NASDAQ:TSLA","title":"TESLA"},
-      {"proName":"NASDAQ:MSFT","title":"MICROSOFT"},
-      {"proName":"NASDAQ:AMZN","title":"AMAZON"},
-      {"proName":"NASDAQ:GOOGL","title":"GOOGLE"},
-      {"proName":"NASDAQ:META","title":"META"},
-      {"proName":"NASDAQ:AMD","title":"AMD"},
-      {"proName":"NASDAQ:PLTR","title":"PALANTIR"},
-      {"proName":"NYSE:JPM","title":"JPMORGAN"},
-      {"proName":"BITSTAMP:BTCUSD","title":"BITCOIN"},
-      {"proName":"BITSTAMP:ETHUSD","title":"ETHEREUM"}
-    ],
-    "showSymbolLogo": true,
-"colorTheme": "light",
-"isTransparent": false,
-    "displayMode": "adaptive",
-    "locale": "en"
-  }
-  </script>
-</div>
-
 <div class="stockpilot-top-tools">
 <!-- FIND YOUR BROKER: slim, high-visibility banner above the Live Trading Desk -->
 <a aria-label="Find your broker and explore brokerage platforms" class="find-broker-banner" href="/brokers.html" id="stockpilot-find-broker-banner">
@@ -8420,5 +8421,11 @@ body { overflow-x: hidden; }
  if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
 })();
 </script>
+
+<style id="stockpilot-ticker-top-spacing-fix">
+/* Keep the market ticker directly under navigation and tighten the mobile top gap. */
+.tradingview-widget-container[style*="height:46px"]{display:block!important;width:100%!important;max-width:100%!important;margin:0!important;overflow:hidden!important}
+@media(max-width:760px){#live-trading-desk{margin-top:4px!important}}
+</style>
 </body>
 </html>
