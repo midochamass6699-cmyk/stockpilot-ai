@@ -3545,7 +3545,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
    if(status)row.appendChild(status);
    var oldCopy=document.querySelector('.weekly-subscribe-copy');if(oldCopy)oldCopy.remove();
    var oldCta=document.querySelector('.weekly-subscribe-cta');
-   if(oldCta&&!oldCta.querySelector('#stockpilot-subscribe-btn'))oldCta.remove();
+   if(oldCta&&!oldCta.querySelector('#stockpilot-subscribe-btn')&&!oldCta.querySelector('.kitco-banner-stack'))oldCta.remove();
    var oldSection=document.getElementById('stockpilot-alert-signup');
    if(oldSection&&!oldSection.querySelector('.weekly-subscribe-cta')&&!oldSection.textContent.trim())oldSection.remove();
   }
@@ -3555,6 +3555,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
    kitco.id='sp-compact-kitco';
    footer.appendChild(kitco);
   }
+  var leftoverCta=document.querySelector('.weekly-subscribe-cta');if(leftoverCta&&!leftoverCta.querySelector('#stockpilot-subscribe-btn')&&!leftoverCta.querySelector('.kitco-banner-stack'))leftoverCta.remove();
   document.querySelectorAll('.subscribe-bell-cta,.tf-mobile-subscribe').forEach(function(el){el.remove();});
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',compactAffiliateAndUpdates,{once:true});
