@@ -2459,7 +2459,7 @@ input, select, textarea, button {
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACE BOURSIER INTERACTIF</div><h2>Terminal des marchés</h2><p>Recherchez des actions américaines et canadiennes ou des cryptomonnaies, consultez les graphiques et comparez les symboles.</p></div>
  </div>
  <div class="sp-terminal-controls">
-   <label>Marché<select id="sp-terminal-market"><option value="NASDAQ">Actions américaines</option><option value="TSX">Actions canadiennes</option><option value="BINANCE">Crypto</option></select></label>
+   <label>Marché<select id="sp-terminal-market"><option value="NASDAQ">Actions américaines</option><option value="NYSE">NYSE</option><option value="TSX">Actions canadiennes</option><option value="BINANCE">Crypto</option></select></label>
    <label>Symbole boursier ou crypto<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT ou NYSE:IBM" autocomplete="off"></label>
    <label>Comparer avec (facultatif)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY ou ETHUSDT" autocomplete="off"></label>
    <button id="sp-terminal-load" type="button">AFFICHER LE GRAPHIQUE</button>
@@ -2539,8 +2539,7 @@ input, select, textarea, button {
   const ticker=row.querySelector('.sp-market-name small')?.textContent.trim().toUpperCase();
   if(!ticker)return;
   const isCrypto=!!row.closest('#deskCrypto,#previewCrypto');
-  const price=row.querySelector('.sp-market-values strong')?.textContent||'';
-  const exchange=isCrypto?'BINANCE':(price.includes('CA$')?'TSX':'NASDAQ');
+  const exchange=isCrypto?'BINANCE':(row.dataset.exchange||market.value);
   openWithSymbol(isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker,exchange);
  });
  symbol.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});
@@ -3618,7 +3617,7 @@ function setMarketPreview(id, items, kind, rate) {
       positive = Number.isFinite(ch) && ch >= 0;
       href = symbol ? 'https://finance.yahoo.com/quote/' + encodeURIComponent(symbol) : '#main-picks';
     }
-    return `<a class="sp-market-row" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
+    return `<a class="sp-market-row" data-exchange="${previewEscape(kind === 'crypto' ? 'BINANCE' : (item.exchange || ''))}" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
       <span class="sp-market-rank">${index + 1}</span>
       <span class="sp-market-name"><strong>${previewEscape(name)}</strong><small>${previewEscape(symbol)}</small></span>
       <span class="sp-market-values"><strong>${previewEscape(price)}</strong><small class="${positive ? 'sp-market-up' : 'sp-market-down'}">${previewEscape(change)}</small></span>
@@ -6320,34 +6319,7 @@ setInterval(loadStocks,15 * 60 * 1000);
 })();
 </script>
 <!-- STOCKPILOT AI : LISTE VERTICALE DES ACTIONS À SUIVRE -->
-<aside aria-label="Actions canadiennes et américaines à suivre" class="free-side-banner" id="free-left-banner">
- <div class="sp-watch-track" aria-hidden="true">
-  <div class="sp-watch-list">
-   <div class="sp-watch-heading"><strong>ACTIONS À SUIVRE</strong><small>MARCHÉS CANADIEN & AMÉRICAIN</small></div>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/SHOP.TO/" target="_blank" rel="noopener"><b>SHOP</b><span>Shopify</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/RY.TO/" target="_blank" rel="noopener"><b>RY</b><span>Banque Royale</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/TD.TO/" target="_blank" rel="noopener"><b>TD</b><span>Banque TD</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/ENB.TO/" target="_blank" rel="noopener"><b>ENB</b><span>Enbridge</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/CNQ.TO/" target="_blank" rel="noopener"><b>CNQ</b><span>Canadian Natural</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/BNS.TO/" target="_blank" rel="noopener"><b>BNS</b><span>Banque Scotia</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/NVDA/" target="_blank" rel="noopener"><b>NVDA</b><span>Nvidia</span><small>NASDAQ</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/AAPL/" target="_blank" rel="noopener"><b>AAPL</b><span>Apple</span><small>NASDAQ</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/MSFT/" target="_blank" rel="noopener"><b>MSFT</b><span>Microsoft</span><small>NASDAQ</small></a>
-  </div>
-  <div class="sp-watch-list" aria-hidden="true">
-   <div class="sp-watch-heading"><strong>ACTIONS À SUIVRE</strong><small>MARCHÉS CANADIEN & AMÉRICAIN</small></div>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/SHOP.TO/" tabindex="-1"><b>SHOP</b><span>Shopify</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/RY.TO/" tabindex="-1"><b>RY</b><span>Banque Royale</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/TD.TO/" tabindex="-1"><b>TD</b><span>Banque TD</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/ENB.TO/" tabindex="-1"><b>ENB</b><span>Enbridge</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/CNQ.TO/" tabindex="-1"><b>CNQ</b><span>Canadian Natural</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/BNS.TO/" tabindex="-1"><b>BNS</b><span>Banque Scotia</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/NVDA/" tabindex="-1"><b>NVDA</b><span>Nvidia</span><small>NASDAQ</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/AAPL/" tabindex="-1"><b>AAPL</b><span>Apple</span><small>NASDAQ</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/MSFT/" tabindex="-1"><b>MSFT</b><span>Microsoft</span><small>NASDAQ</small></a>
-  </div>
- </div>
-</aside>
+
 <style id="sp-fr-watchlist-style">
 #free-left-banner{height:570px;background:linear-gradient(180deg,#102746,#07182D);border-color:#29466B}
 #free-left-banner .sp-watch-track{display:flex;flex-direction:column;animation:spWatchDown 34s linear infinite;will-change:transform}
