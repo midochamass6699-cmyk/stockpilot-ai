@@ -2973,14 +2973,38 @@ input, select, textarea, button {
  toggle.dataset.ready='1';
  toggle.dataset.closeLabel="CLOSE CHART";
  let loaded=false;
- function normalize(value,exchange){
-  const raw=(value||'').trim().toUpperCase().replace(/\s+/g,'');
-  return !raw?'':(raw.includes(':')?raw:exchange+':'+raw);
+ let picksExchangeMap = Object.create(null);
+ const picksExchangeReady = fetch('/data/picks.json?terminal-map=' + Date.now(), {cache:'no-store'})
+  .then(response => response.ok ? response.json() : Promise.reject(new Error('Picks feed unavailable')))
+  .then(data => {
+   [...(Array.isArray(data.main)?data.main:[]), ...(Array.isArray(data.penny)?data.penny:[])].forEach(item => {
+    const ticker=String(item.ticker||'').trim().toUpperCase();
+    if(ticker) picksExchangeMap[ticker]=tvExchange(item.exchange,'NASDAQ');
+   });
+  })
+  .catch(error => console.warn('StockPilot exchange lookup:',error));
+ function tvExchange(exchange,fallback){
+  const value=String(exchange||'').trim().toUpperCase();
+  if(value.includes('NASDAQ')||value.includes('NASDAQGS')||value.includes('NASDAQGM')||value.includes('NASDAQCM'))return 'NASDAQ';
+  if(value.includes('NYSE')||value.includes('NEW YORK'))return 'NYSE';
+  if(value==='TSX'||value.includes('TORONTO'))return 'TSX';
+  if(value.includes('TSXV')||value.includes('VENTURE'))return 'TSXV';
+  if(value.includes('BINANCE'))return 'BINANCE';
+  return fallback||'NASDAQ';
  }
- function draw(){
-  const ticker=normalize(symbol.value,market.value);
-  if(!ticker){symbol.focus();return;}
-  const compareTicker=normalize(compare.value,market.value);
+ async function normalize(value,exchange){
+  const raw=(value||'').trim().toUpperCase().replace(/\\s+/g,'');
+  if(!raw)return '';
+  if(raw.includes(':'))return raw;
+  await picksExchangeReady;
+  return (picksExchangeMap[raw]||tvExchange(exchange,'NASDAQ'))+':'+raw;
+ }
+ async function draw(){
+  const rawSymbol=symbol.value.trim();
+  if(!rawSymbol){symbol.focus();return;}
+  const ticker=await normalize(rawSymbol,market.value);
+  if(!ticker)return;
+  const compareTicker=compare.value.trim()?await normalize(compare.value,market.value):'';
   chart.innerHTML='<div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div><div style="height:32px;display:flex;align-items:center;justify-content:center"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" style="font:11px Arial;color:#94a3b8;text-decoration:none">Charting powered by TradingView</a></div></div>';
   const host=chart.querySelector('.tradingview-widget-container__widget');
   const script=document.createElement('script');
@@ -2993,7 +3017,7 @@ input, select, textarea, button {
  }
  function openWithSymbol(ticker,exchange){
   if(!ticker)return;
-  market.value=exchange;
+  market.value=tvExchange(exchange,market.value||'NASDAQ');
   symbol.value=ticker;
   workspace.hidden=false;
   toggle.setAttribute('aria-expanded','true');
@@ -4774,9 +4798,9 @@ body { overflow-x: hidden; }
   box-shadow:0 8px 24px rgba(7,17,31,.16);
   color:#fff;
 }
-#free-left-banner { left:calc(50% - 780px); }
-#free-right-banner { right:calc(50% - 780px); }
-@media (min-width:1600px) {
+#free-left-banner { left:calc(50% - 750px); }
+#free-right-banner { right:calc(50% - 750px); }
+@media (min-width:1500px) {
   .free-side-banner { display:block; }
 }
 .free-side-track {
