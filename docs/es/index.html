@@ -2047,7 +2047,1178 @@ html, body { background-color:#F1F5FA !important; }
 (function(){const toggle=document.getElementById('sp-terminal-toggle'),workspace=document.getElementById('sp-terminal-workspace'),chart=document.getElementById('sp-terminal-chart'),market=document.getElementById('sp-terminal-market'),symbol=document.getElementById('sp-terminal-symbol'),compare=document.getElementById('sp-terminal-compare'),load=document.getElementById('sp-terminal-load');if(!toggle||!workspace||!chart||toggle.dataset.ready)return;toggle.dataset.ready='1';let loaded=false;
 function normalize(value,exchange){const raw=(value||'').trim().toUpperCase().replace(/\s+/g,'');return !raw?'':raw.includes(':')?raw:exchange+':'+raw;}
 function draw(){const ticker=normalize(symbol.value,market.value);if(!ticker){symbol.focus();return;}const compareTicker=normalize(compare.value,market.value);chart.innerHTML='<div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div><div style="height:32px;display:flex;align-items:center;justify-content:center"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" style="font:11px Arial;color:#94a3b8;text-decoration:none">Charting powered by TradingView</a></div></div>';const host=chart.querySelector('.tradingview-widget-container__widget'),script=document.createElement('script');script.type='text/javascript';script.async=true;script.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';const config={autosize:true,symbol:ticker,interval:'D',timezone:'America/Toronto',theme:'dark',style:'1',locale:'es',allow_symbol_change:true,calendar:false,hide_side_toolbar:false,withdateranges:true,details:true,hotlist:false,show_popup_button:false,support_host:'https://www.tradingview.com'};if(compareTicker)config.compareSymbols=[{symbol:compareTicker,position:'SameScale'}];script.textContent=JSON.stringify(config);host.appendChild(script);}
-toggle.addEventListener('click',function(){const opening=workspace.hidden;workspace.hidden=!opening;toggle.setAttribute('aria-expanded',String(opening));toggle.innerHTML=opening?'CERRAR TERMINAL <span aria-hidden="true">×</span>':'ABRIR TERMINAL <span aria-hidden="true">↗</span>';if(opening&&!loaded){draw();loaded=true;}});load.addEventListener('click',draw);symbol.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});compare.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});market.addEventListener('change',function(){if(market.value==='BINANCE'&&symbol.value==='AAPL')symbol.value='BTCUSDT';else if(market.value!=='BINANCE'&&symbol.value==='BTCUSDT')symbol.value='AAPL';});})();
+toggle.addEventListener('click',function(){const opening=workspace.hidden;workspace.hidden=!opening;toggle.setAttribute('aria-expanded',String(opening));toggle.innerHTML=opening?'CERRAR TERMINAL <span aria-hidden="true">×</span>':'ABRIR TERMINAL <span aria-hidden="true">↗</span>';if(opening&&!loaded){draw();loaded=true;}});load.addEventListener('click',draw);toggle.dataset.closeLabel='CERRAR TERMINAL';
+ document.addEventListener('click',function(e){
+  const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
+  if(!row)return;
+  e.preventDefault();
+  const ticker=row.querySelector('.sp-market-name small')?.textContent.trim().toUpperCase();
+  if(!ticker)return;
+  const isCrypto=!!row.closest('#deskCrypto,#previewCrypto');
+  const price=row.querySelector('.sp-market-values strong')?.textContent||'';
+  market.value=isCrypto?'BINANCE':(price.includes('CA,e=>{if(e.key==='Enter')draw();});compare.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});market.addEventListener('change',function(){if(market.value==='BINANCE'&&symbol.value==='AAPL')symbol.value='BTCUSDT';else if(market.value!=='BINANCE'&&symbol.value==='BTCUSDT')symbol.value='AAPL';});})();
+</script>
+<section class="picks-top" id="main-picks">
+<div class="section-head">
+<div>
+<div class="eyebrow">DATOS REALES DEL MERCADO · ANÁLISIS DIARIO</div>
+<h2>Selección principal de acciones de hoy</h2>
+<p>
+          Tres acciones con alta actividad de negociación, seleccionadas del flujo de datos disponible y clasificadas por volumen informado. Utiliza esta selección diaria como punto de partida para investigar las empresas.
+        </p>
+</div>
+</div>
+<div class="updated" id="updated">
+      Cargando datos diarios del mercado…
+    </div>
+<div class="stock-grid" id="mainStocks">
+<div class="empty">Cargando selección principal de acciones…</div>
+</div>
+</section>
+
+<!-- TRADINGVIEW AFFILIATE BANNER -->
+<div class="container">
+<div class="tradingview-banner">
+<a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">
+<img alt="TradingVer - Advanced Charts and Smarter Decisions" src="../assets/tradingview-banner.png"/>
+</a>
+<p class="affiliate-disclosure">
+      StockPilot AI may earn a commission if you subscribe,
+      at no additional cost to you.
+    </p>
+</div>
+</div>
+<section class="penny-section" id="penny-picks">
+<div class="section-head">
+<div>
+<div class="eyebrow">PRECIO MÁS BAJO · MAYOR RIESGO</div>
+<h2>Penny stocks para seguir</h2>
+<p>
+          Three qualifying stocks priced from US$0.10 to US$10,
+          when available.
+        </p>
+</div>
+</div>
+<div class="stock-grid" id="pennyStocks">
+<div class="empty">Cargando selección de penny stocks…</div>
+</div>
+</section><section class="crypto-section" id="crypto-picks">
+<div class="section-head">
+<div>
+<div class="eyebrow">
+          CRIPTOMONEDAS MARKET · RANKED BY 24-HOUR VOLUME
+        </div>
+<h2>Las 3 principales criptomonedas por volumen de negociación en 24 horas</h2>
+<p>
+          Automatically ranked by reported 24-hour trading volume
+          in USD. Rankings can change throughout the day.
+        </p>
+</div>
+</div>
+<div class="updated" id="cryptoUpdated">
+      Cargando datos del mercado de criptomonedas…
+    </div>
+<div class="stock-grid" id="cryptoCards">
+<div class="empty">Cargando las tres principales criptomonedas…</div>
+</div>
+<div class="crypto-note">
+      Crypto prices and volumes can change rapidly.
+      Data is supplied by CoinGecko. This is market information,
+      not investment advice.
+    </div>
+</section>
+<!-- BROKER AND BANK TRADING DIRECTORY -->
+<section class="broker-directory" id="broker-directory" aria-labelledby="broker-directory-title">
+  <div class="broker-heading">
+    <div>
+      <div class="eyebrow">EXPLORA TUS OPCIONES DE INVERSIÓN</div>
+      <h2 id="broker-directory-title">Dónde operar</h2>
+      <p class="broker-intro">
+        Found a company you want to research further? Explore online brokerage platforms
+        and bank-owned investing services available to Canadian investors. Visit each
+        provider's official website to review account options, supported markets and fees.
+      </p>
+    </div>
+    <div class="broker-heading-mark" aria-hidden="true">↗</div>
+  </div>
+
+  <div class="broker-group">
+    <div class="broker-group-title">
+      <h3>Plataformas de corretaje en línea</h3>
+      <span>Plataformas independientes</span>
+    </div>
+    <div class="broker-grid">
+      <article class="broker-card">
+        <div class="broker-monogram">Q</div>
+        <div class="broker-card-copy"><h4>Questrade</h4><p>Herramientas de inversión autónoma y negociación.</p></div>
+        <a href="https://www.questrade.com/" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">IB</div>
+        <div class="broker-card-copy"><h4>Interactive Brokers</h4><p>Plataformas de inversión en varios mercados y negociación activa.</p></div>
+        <a href="https://www.interactivebrokers.ca/" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">W</div>
+        <div class="broker-card-copy"><h4>Wealthsimple</h4><p>Acciones, ETF y otros productos de inversión autónoma.</p></div>
+        <a href="https://www.wealthsimple.com/en-ca" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">QT</div>
+        <div class="broker-card-copy"><h4>Qtrade Direct Investing</h4><p>Inversión en línea y cuentas de corretaje autónomas.</p></div>
+        <a href="https://www.qtrade.ca/en/investor.html" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">M</div>
+        <div class="broker-card-copy"><h4>Moomoo</h4><p>Plataforma de negociación y herramientas de análisis de mercado.</p></div>
+        <a href="https://www.moomoo.com/ca" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a>
+      </article>
+      <article class="broker-card">
+        <div class="broker-monogram">Wb</div>
+        <div class="broker-card-copy"><h4>Webull Canada</h4><p>Herramientas de negociación autónoma y datos de mercado.</p></div>
+        <a href="https://www.webull.ca/" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a>
+      </article>
+    </div>
+  </div>
+
+  <div class="broker-group">
+    <div class="broker-group-title">
+      <h3>Plataformas de inversión bancaria</h3>
+      <span>Servicios de inversión de instituciones financieras</span>
+    </div>
+    <div class="broker-grid broker-grid-banks">
+      <article class="broker-card"><div class="broker-monogram">TD</div><div class="broker-card-copy"><h4>TD Direct Investing</h4><p>Servicios de inversión autónoma de TD.</p></div><a href="https://www.td.com/ca/en/investing/direct-investing" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">RBC</div><div class="broker-card-copy"><h4>RBC Direct Investing</h4><p>Servicios de inversión en línea de RBC.</p></div><a href="https://www.rbcdirectinvesting.com/" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">BMO</div><div class="broker-card-copy"><h4>BMO InvestorLine</h4><p>Self-directed investing from BMO.</p></div><a href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">CIBC</div><div class="broker-card-copy"><h4>CIBC Investor's Edge</h4><p>Online brokerage from CIBC.</p></div><a href="https://www.investorsedge.cibc.com/en/home.html" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">Sc</div><div class="broker-card-copy"><h4>Scotia iTRADE</h4><p>Servicios de inversión autónoma de Scotiabank.</p></div><a href="https://www.scotiaitrade.com/" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">NB</div><div class="broker-card-copy"><h4>National Bank Direct Brokerage</h4><p>Corretaje en línea de National Bank.</p></div><a href="https://nbdb.ca/" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a></article>
+      <article class="broker-card"><div class="broker-monogram">D</div><div class="broker-card-copy"><h4>Disnat</h4><p>Corretaje en línea de Desjardins.</p></div><a href="https://www.disnat.com/en" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a></article>
+    </div>
+  </div>
+
+  <div class="broker-group broker-special-group">
+    <div class="broker-group-title">
+      <h3>Operaciones de Forex y CFD</h3>
+      <span>Diferente de comprar acciones directamente</span>
+    </div>
+    <article class="broker-card broker-cfd-card">
+      <div class="broker-monogram">CMC</div>
+      <div class="broker-card-copy"><h4>CMC Markets</h4><p>Operaciones en línea de Forex y contratos por diferencia (CFD). Los CFD son productos apalancados y no representan la propiedad de las acciones subyacentes.</p></div>
+      <a href="https://www.cmcmarkets.com/en-ca" target="_blank" rel="noopener noreferrer">Visitar sitio oficial <span aria-hidden="true">↗</span></a>
+    </article>
+  </div>
+
+  <div class="broker-disclosure">
+    <strong>Antes de abrir una cuenta:</strong> Compare commissions, account fees, foreign-exchange costs,
+    available investments, market access, account eligibility and the risks of margin or leveraged products.
+    Products and services vary by provider and province. Check registration and disciplinary information
+    using the <a href="https://www.securities-administrators.ca/investor-tools/are-they-registered/" target="_blank" rel="noopener noreferrer">Canadian Securities Administrators' National Registration Search</a>.
+    StockPilot AI is providing this directory for general information only. Listing a provider is not an endorsement,
+    recommendation or guarantee that a particular account or product is available to you. StockPilot AI is not
+    currently representing that it receives compensation from these providers.
+  </div>
+</section>
+
+<!-- CRIPTOMONEDASCURRENCY PICKS -->
+
+<!-- MAIN STOCK PICKS -->
+
+<!-- PENNY STOCK PICKS -->
+
+<!-- MARKET EXCHANGE COVERAGE -->
+<section class="market-coverage" id="market-coverage">
+<div class="eyebrow">NORTH AMERICAN EQUITY MARKETS</div>
+<h2>Mercados destacados</h2>
+<p class="market-coverage-intro">
+      StockPilot is being developed to screen eligible companies listed
+      on major US and Canadian exchanges. Explore the four target markets.
+    </p>
+<div class="market-grid">
+<article class="market-card">
+<a href="https://www.nyse.com/" rel="noopener noreferrer" target="_blank">
+<img alt="Facade of the Bolsa de Nueva York on Wall Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"/>
+<div class="market-card-body">
+<div class="market-region">United States</div>
+<h3>NYSE ↗</h3>
+<p>Bolsa de Nueva York</p>
+</div>
+</a>
+<small class="market-photo-credit">Photo: Donatingpictures · Wikimedia Commons · CC BY-SA 4.0</small>
+</article>
+<article class="market-card">
+<a href="https://www.nasdaq.com/" rel="noopener noreferrer" target="_blank">
+<img alt="NASDAQ MarketSite studio in Times Square" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"/>
+<div class="market-card-body">
+<div class="market-region">United States</div>
+<h3>NASDAQ ↗</h3>
+<p>Mercado bursátil NASDAQ</p>
+</div>
+</a>
+<small class="market-photo-credit">Photo: Luis Villa del Campo · Wikimedia Commons · CC BY 2.0</small>
+</article>
+<article class="market-card">
+<a href="https://www.tsx.com/" rel="noopener noreferrer" target="_blank">
+<img alt="Historic Bolsa de Toronto building on Bay Street" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"/>
+<div class="market-card-body">
+<div class="market-region">Canada</div>
+<h3>TSX ↗</h3>
+<p>Bolsa de Toronto</p>
+</div>
+</a>
+<small class="market-photo-credit">Historic exchange building photo: nodomain.cc · Wikimedia Commons · CC BY 2.0</small>
+</article>
+<article class="market-card">
+<a href="https://www.tsx.com/en/venture" rel="noopener noreferrer" target="_blank">
+<img alt="Toronto financial district skyline" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"/>
+<div class="market-card-body">
+<div class="market-region">Canada</div>
+<h3>TSX Venture ↗</h3>
+<p>Bolsa TSX Venture</p>
+</div>
+</a>
+<small class="market-photo-credit">Toronto financial district photo: Gregory Karastergios · Wikimedia Commons · CC0</small>
+</article>
+</div>
+<p class="market-coverage-note">
+<strong>Nota sobre cobertura:</strong> Estas son las bolsas que StockPilot busca cubrir; esto no significa que se analicen actualmente todos los valores cotizados. La cobertura real depende de las fuentes de datos y de la información empresarial verificada disponible para el sistema de análisis diario.
+    </p>
+</section>
+<!-- STOCK MARKET RESEARCH FAQ: USEFUL LONG-TAIL SEARCH CONTENT -->
+<section class="seo-faq" id="stock-market-faq" aria-labelledby="stock-market-faq-title">
+  <div class="eyebrow">INVESTIGACIÓN BURSÁTIL · RESPUESTAS RÁPIDAS</div>
+  <h2 id="stock-market-faq-title">Acciones, penny stocks y criptomonedas: preguntas frecuentes</h2>
+  <article class="seo-faq-item">
+    <h3>¿Qué son las selecciones diarias de acciones?</h3>
+    <p>Las selecciones diarias de acciones son una lista breve de títulos elegidos para analizar en un día determinado. StockPilot AI destaca acciones con actividad de negociación según el volumen informado en su fuente de datos. Aparecer en la lista significa que la acción cumple los criterios del sitio; no es una predicción ni una recomendación de compra.</p>
+  </article>
+  <article class="seo-faq-item">
+    <h3>¿Cómo selecciona StockPilot AI las acciones más negociadas?</h3>
+    <p>Las listas de acciones principales y penny stocks se clasifican según el volumen de negociación informado en la fuente de datos disponible. Las acciones principales candidatas cotizan por encima de 10 USD. La cobertura de la fuente es limitada y no constituye una clasificación exhaustiva de todos los valores cotizados.</p>
+  </article>
+  <article class="seo-faq-item">
+    <h3>¿Qué entiende StockPilot AI por penny stocks?</h3>
+    <p>En el filtro de penny stocks de este sitio, las acciones elegibles tienen un precio de entre 0,10 y 10 USD cuando hay datos disponibles. La definición de penny stock puede variar según el mercado, la bolsa y el proveedor de datos. Las acciones de bajo precio pueden ser volátiles y conllevan riesgos importantes.</p>
+  </article>
+  <article class="seo-faq-item">
+    <h3>¿Cómo se clasifican las principales criptomonedas?</h3>
+    <p>La sección de criptomonedas clasifica los activos disponibles según el volumen de negociación informado durante las últimas 24 horas en dólares estadounidenses. Los precios y volúmenes pueden cambiar rápidamente. El proveedor de datos es CoinGecko y la lista se limita a los activos disponibles en la fuente.</p>
+  </article>
+  <article class="seo-faq-item">
+    <h3>¿StockPilot AI ofrece asesoramiento financiero?</h3>
+    <p>No. StockPilot AI ofrece información general del mercado con fines educativos y de investigación. Las listas no son asesoramiento financiero personalizado ni recomendaciones para comprar o vender valores. Verifica la información con fuentes primarias y ten en cuenta tu situación financiera y tolerancia al riesgo.</p>
+  </article>
+</section>
+
+<!-- SELECTION METHODOLOGY -->
+<section class="method-section" id="selection-methodology">
+<div class="eyebrow">CÓMO FUNCIONAN LAS LISTAS DIARIAS</div>
+<h2>Cómo selecciona StockPilot AI las oportunidades del mercado</h2>
+<p>
+      StockPilot AI destaca la actividad del mercado; no promete resultados de inversión. Las listas de acciones principales y penny stocks se clasifican según el volumen de negociación informado en la fuente de datos disponible.
+    </p>
+<p>
+      Las acciones principales candidatas cotizan por encima de 10 USD. Las penny stocks candidatas cotizan entre 0,10 y 10 USD, cuando hay datos que cumplen los criterios.
+    </p>
+<p>
+      La lista de criptomonedas clasifica los activos disponibles según el volumen de negociación informado durante 24 horas en dólares estadounidenses. Alpha Vantage proporciona los datos bursátiles y CoinGecko los datos del mercado de criptomonedas.
+    </p>
+<p>
+      La cobertura de los proveedores, los horarios de publicación y la disponibilidad de datos pueden afectar las listas. La fuente bursátil no ofrece una clasificación exhaustiva de todos los valores cotizados.
+    </p>
+<p>
+      El volumen de negociación mide la actividad del mercado, no la calidad de una empresa, su rendimiento futuro ni su idoneidad para un inversionista particular. Verifica siempre la información actual y realiza tu propia investigación.
+    </p>
+</section>
+<!-- FINANCIAL RESOURCES -->
+<section class="resources-section" id="financial-resources">
+<div class="section-head">
+<div>
+<div class="eyebrow">EXPLORA LOS MERCADOS</div>
+<h2>Recursos financieros</h2>
+<p>
+          Sitios externos útiles para investigar el mercado, consultar gráficos, documentos corporativos y datos de criptomonedas.
+        </p>
+</div>
+</div>
+<div class="resources-grid">
+<article class="resource-card">
+<div class="resource-mark">Y!</div>
+<div class="resource-copy">
+<h3>Yahoo Finance</h3>
+<p>Cotizaciones, perfiles de empresas y noticias del mercado.</p>
+<a href="https://finance.yahoo.com/" rel="noopener noreferrer" target="_blank">
+            Explorar Yahoo Finance ↗
+          </a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">TV</div>
+<div class="resource-copy">
+<h3>TradingVer</h3>
+<p>Gráficos interactivos e indicadores técnicos.</p>
+<a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">
+            Explorar TradingVer ↗
+          </a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">N</div>
+<div class="resource-copy">
+<h3>Nasdaq</h3>
+<p>Información del mercado, noticias de bolsas y cotizaciones.</p>
+<a href="https://www.nasdaq.com/" rel="noopener noreferrer" target="_blank">
+            Visitar Nasdaq ↗
+          </a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">SEC</div>
+<div class="resource-copy">
+<h3>SEC EDGAR</h3>
+<p>Documentos oficiales de empresas estadounidenses.</p>
+<a href="https://www.sec.gov/edgar/search/" rel="noopener noreferrer" target="_blank">
+            Buscar documentos ↗
+          </a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">CG</div>
+<div class="resource-copy">
+<h3>CoinGecko</h3>
+<p>Precios de criptomonedas y clasificaciones por volumen de negociación.</p>
+<a href="https://www.coingecko.com/" rel="noopener noreferrer" target="_blank">
+            Explorar CoinGecko ↗
+          </a>
+</div>
+</article>
+<article class="resource-card">
+<div class="resource-mark">i</div>
+<div class="resource-copy">
+<h3>Investopedia</h3>
+<p>Explicaciones educativas sobre inversión y mercados.</p>
+<a href="https://www.investopedia.com/" rel="noopener noreferrer" target="_blank">
+            Aprende con Investopedia ↗
+          </a>
+</div>
+</article>
+</div>
+<p class="crypto-note">
+      These are independent third-party websites.
+      StockPilot AI does not control their content.
+    </p>
+</section>
+<!-- MARKET INSIGHTS -->
+<section class="visual-intro" id="market-insights">
+<article class="visual-card dark">
+<div class="visual-art">📊</div>
+<div class="visual-copy">
+<div class="eyebrow">TU CENTRO DE ANÁLISIS</div>
+<h2>Información clara. Mejores preguntas.</h2>
+<p>
+          Compare market activity and learn what to investigate
+          before making an investment decision.
+        </p>
+</div>
+</article>
+</section>
+<!-- FEATURES -->
+<section class="features">
+<article class="feature">
+<div class="feature-art">📈</div>
+<div>
+<h3>Sigue el mercado</h3>
+<p>Explora la actividad diaria de las acciones y los movimientos del mercado.</p>
+</div>
+</article>
+<article class="feature">
+<div class="feature-art">₿</div>
+<div>
+<h3>Explora las criptomonedas</h3>
+<p>Descubre criptomonedas clasificadas por volumen de negociación.</p>
+</div>
+</article>
+<article class="feature">
+<div class="feature-art">🚀</div>
+<div>
+<h3>Sigue aprendiendo</h3>
+<p>Sigue aprendiendo y realiza tu propia investigación financiera.</p>
+</div>
+</article>
+</section>
+<!-- ABOUT AND DISCUSSION -->
+<section class="about-discuss">
+<article class="panel" id="about">
+<div class="eyebrow">LA HISTORIA DEL PROYECTO</div>
+<h2>Por qué creé StockPilot AI</h2>
+<p>
+        I created StockPilot AI with one simple idea:
+        make daily stock-market research easier to follow.
+      </p>
+<p>
+        The market moves quickly, and finding useful information
+        can take time. I wanted to build a straightforward place
+        where people can explore actively traded stocks, discover
+        penny stocks and review key market information without
+        unnecessary clutter.
+      </p>
+<p>
+        StockPilot AI is an independent project built to make
+        market information easier to access. It is a starting
+        point for research—not a substitute for your own decisions.
+      </p>
+</article>
+<article class="panel" id="discussion">
+<div class="eyebrow">LA COMUNIDAD STOCKPILOT</div>
+<h2>Únete al debate</h2>
+<p>
+        What stocks are you watching? Share your research,
+        questions and market observations with the community.
+      </p>
+<div class="giscus"></div>
+<script async="" crossorigin="anonymous" data-category="comments" data-category-id="DIC_kwDOVhw6W84DKfeM" data-emit-metadata="0" data-input-position="top" data-lang="es" data-mapping="pathname" data-reactions-enabled="1" data-repo="midochamass6699-cmyk/stockpilot-ai" data-repo-id="R_kgDOVhw6Ww" data-strict="0" data-theme="light" src="https://giscus.app/client.js">
+</script>
+</article>
+</section>
+<!-- CONTACTO FORM -->
+<section class="contact-section" id="contact">
+<div class="eyebrow">PONTE EN CONTACTOO</div>
+<h2>Contacta con StockPilot AI</h2>
+<p class="contact-intro">
+      Questions, suggestions or business inquiries?
+      Send us a message.
+    </p>
+<form class="contact-form" id="contactForm">
+<div>
+<label for="contactName">Tu nombre</label>
+<input autocomplete="name" id="contactName" required="" type="text"/>
+</div>
+<div>
+<label for="contactEmail">Correo electrónico</label>
+<input autocomplete="email" id="contactEmail" required="" type="email"/>
+</div>
+<div class="full">
+<label for="contactAsunto">Asunto</label>
+<input id="contactAsunto" required="" type="text"/>
+</div>
+<div class="full">
+<label for="contactMensaje">Mensaje</label>
+<textarea id="contactMensaje" required=""></textarea>
+</div>
+<button type="submit">ENVIAR MENSAJE</button>
+</form>
+<p class="contact-note">
+      Your email application will open with your message ready
+      to send. You can review it before sending.
+    </p>
+</section>
+<!-- TECHNOFRONT FOUNDER OPINION -->
+<section class="tf-founder-opinion" aria-labelledby="tf-founder-opinion-title" style="max-width:1180px;margin:34px auto 28px;padding:26px 28px;background:linear-gradient(135deg,#101923 0%,#183a34 100%);border:1px solid #b89449;border-left:4px solid #d6ad55;border-radius:14px;color:#edf3f0;box-sizing:border-box;">
+  <div style="color:#d6ad55;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;">TECHNOFRONT · EDITORIAL</div>
+  <h2 id="tf-founder-opinion-title" style="margin:0 0 8px;color:#fff;font-size:clamp(22px,3vw,30px);line-height:1.2;">La opinión del fundador</h2>
+  <h3 style="margin:0 0 16px;color:#d6ad55;font-size:17px;font-weight:600;">Otra perspectiva sobre la inversión</h3>
+  <p style="margin:0 0 13px;color:#e0e9e4;font-size:15px;line-height:1.75;">Los acontecimientos recientes relacionados con NVIDIA nos recuerdan que ninguna empresa, independientemente de su tamaño o reputación, está libre de situaciones inesperadas. Mi interés personal siempre ha estado en las empresas más pequeñas y las penny stocks. Creo que investigar a fondo, comprender los fundamentos de una empresa e identificar oportunidades emergentes son aspectos esenciales para evaluar estas inversiones. También creo que los inversores deben conocer su propio horizonte de inversión. No todo el mundo quiere mantener las mismas acciones durante años. Los movimientos del mercado a corto plazo pueden ofrecer oportunidades, pero también conllevan riesgos considerables. Tanto si se invierte a través de un banco como de un bróker en línea, lo más importante es saber en qué se invierte, comprender los riesgos y tomar decisiones informadas.</p>
+  <p style="margin:0 0 18px;color:#fff;font-size:15px;font-weight:700;line-height:1.65;">Mi filosofía es sencilla: investigar primero, cuestionarlo todo y no confundir nunca un precio bajo por acción con una buena inversión.</p>
+  <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(214,173,85,.35);padding-top:13px;color:#d6ad55;font-size:12px;font-weight:700;">
+    <span>Fundador · TechnoFront</span><span style="color:#b8c7c0;font-weight:400;">Opinión personal con fines informativos. No constituye asesoramiento financiero.</span>
+  </div>
+</section>
+<!-- END TECHNOFRONT FOUNDER OPINION -->
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+<strong>Importante:</strong>
+    StockPilot AI provides market information for educational
+    and research purposes only. Picks are selected from the
+    available data feed and do not represent every stock in
+    the market. Prices and volume may be delayed. Nothing on
+    this website is financial advice or a recommendation to
+    buy or sell securities.
+  </div>
+</main>
+<!-- FOOTER -->
+<footer>
+<strong>STOCKPILOT AI</strong>
+<p>
+    Investigación bursátil diaria gratuita · Actividad del mercado · Debate entre inversionistas
+  </p>
+<div class="privacy-policy" id="privacy-policy">
+  <h3>Política de privacidad</h3>
+  <p>StockPilot AI respeta tu privacidad. Cuando visitas este sitio, se puede procesar información técnica básica, como el tipo de navegador, el dispositivo, la dirección IP y las páginas visitadas, para operar, proteger y mejorar el sitio.</p>
+  <p>Este sitio utiliza Google Analytics para comprender cómo lo utilizan los visitantes y Google AdSense para mostrar anuncios. Google y sus socios publicitarios pueden utilizar cookies o tecnologías similares para personalizar y medir anuncios, limitar su repetición y ayudar a prevenir el fraude. Los proveedores externos procesan la información según sus propias políticas de privacidad.</p>
+  <p>Puedes controlar las cookies desde la configuración de tu navegador. También puedes revisar o cambiar la configuración de personalización de anuncios de Google en <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Center</a> y consultar cómo utiliza Google la información en sitios asociados en su <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">partner-site privacy information</a>.</p>
+  <p>StockPilot AI puede incluir enlaces a sitios externos y funciones de debate integradas. Esos sitios y servicios de terceros pueden recopilar información conforme a sus propias políticas de privacidad. StockPilot AI no controla sus prácticas de datos.</p>
+  <p>Esta política puede actualizarse cuando cambien las funciones del sitio o los requisitos legales.</p>
+</div>
+<p>
+    © <span id="year"></span> StockPilot AI ·
+    Solo con fines educativos · No es asesoramiento financiero
+  </p>
+<a href="#top">Volver arriba ↑</a>
+<!-- Compteur de visiteurs https://counter.gratis BEGINN -->
+<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" id="cg_de43d061" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
+<!-- Compteur de visiteurs https://counter.gratis ENDE -->
+</footer>
+<!-- WEBSITE JAVASCRIPT -->
+<script>
+
+/* SAFE HTML TEXT */
+function esc(value) {
+  return String(value ?? '').replace(/[&<>"']/g, function(c) {
+    return {
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[c];
+  });
+}
+
+/* CRIPTOMONEDAS CARD */
+function renderCrypto(c,index) {
+
+  const price = Number(c.current_price);
+  const volume = Number(c.total_volume);
+  const change = Number(c.price_change_percentage_24h);
+
+  const validChange = Number.isFinite(change);
+
+  const changeClass = validChange
+    ? (change >= 0 ? 'positive' : 'negative')
+    : '';
+
+  const changeText = validChange
+    ? `${change > 0 ? '+' : ''}${change.toFixed(2)}% (24h)`
+    : 'Variación de 24 h no disponible';
+
+  const priceText = Number.isFinite(price)
+    ? '$' + price.toLocaleString('en-US', {
+        minimumFractionDigits:2,
+        maximumFractionDigits:price < 1 ? 6 : 2
+      })
+    : 'Precio no disponible';
+
+  const volumeText = Number.isFinite(volume)
+    ? '$' + volume.toLocaleString('en-US', {
+        maximumFractionDigits:0
+      })
+    : 'No disponible';
+
+  const image = c.image
+    ? `<img class="crypto-logo" src="${esc(c.image)}" alt="" loading="lazy">`
+    : '';
+
+  const symbol = esc(String(c.symbol || '').toUpperCase());
+
+  const url = 'https://www.coingecko.com/en/coins/'
+    + encodeURIComponent(c.id || '');
+
+  return `
+    <article class="stock-card crypto-card">
+
+      <span class="crypto-rank">
+        #${index+1} POR VOLUMEN DE 24 H
+      </span>
+
+      ${image}
+
+      <h3>${esc(c.name || symbol)}</h3>
+
+      <div class="ticker">
+        <a class="ticker-symbol-link"
+           href="${url}"
+           target="_blank"
+           rel="noopener noreferrer">
+          ${symbol}
+        </a>
+        · CRIPTOMONEDAS
+      </div>
+
+      <div class="price">${priceText}</div>
+
+      <div class="change ${changeClass}">
+        ${changeText}
+      </div>
+
+      <div class="card-meta">
+        <strong>Volumen de negociación en 24 h:</strong> ${volumeText}
+      </div>
+
+      <a class="stock-link"
+         href="${url}"
+         target="_blank"
+         rel="noopener noreferrer">
+        Ver ${symbol} detalles del mercado ↗
+      </a>
+
+    </article>
+  `;
+}
+
+/* LOAD CRIPTOMONEDAS */
+async function loadCrypto() {
+
+  const cards = document.getElementById('cryptoCards');
+  const updated = document.getElementById('cryptoUpdated');
+
+  try {
+
+    const url =
+      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false';
+
+    const response = await fetch(url, {
+      cache:'no-store'
+    });
+
+    if (!response.ok) {
+      throw new Error('Crypto provider returned HTTP ' + response.status);
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error('No cryptocurrency results returned.');
+    }
+
+    // Filter unreliable provider quotes before ranking. This also explicitly
+    // excludes PolyGold (POLYGOLD), whose feed has returned impossible values.
+    const ranked = data
+      .filter(coin => {
+        const price = Number(coin.current_price);
+        const volume = Number(coin.total_volume);
+        const marketCap = Number(coin.market_cap);
+        const change24h = Number(coin.price_change_percentage_24h);
+        const hasValidMarketCap = Number.isFinite(marketCap) && marketCap > 0;
+        const hasValidRank = Number.isInteger(Number(coin.market_cap_rank)) && Number(coin.market_cap_rank) > 0;
+        const hasSaneQuote = Number.isFinite(price) && price > 0 && price < 10000000;
+        const hasSaneVolume = Number.isFinite(volume) && volume > 0 && volume < 100000000000;
+        const hasSaneChange = !Number.isFinite(change24h) || Math.abs(change24h) <= 1000;
+        const isKnownBadQuote = String(coin.id || '').toLowerCase() === 'polygold'
+          || String(coin.symbol || '').toUpperCase() === 'POLYGOLD';
+        return !isKnownBadQuote && hasValidMarketCap && hasValidRank
+          && hasSaneQuote && hasSaneVolume && hasSaneChange;
+      })
+      .sort((a,b) =>
+        (Number(b.total_volume) || 0) -
+        (Number(a.total_volume) || 0)
+      )
+      .slice(0,3);
+
+    if (!ranked.length) {
+      throw new Error('No cryptocurrency results passed the market-data quality checks.');
+    }
+
+    cards.innerHTML = ranked
+      .map((coin,i) => renderCrypto(coin,i))
+      .join('');
+
+    updated.textContent =
+      'Última actualización: ' + new Date().toLocaleString() +
+      ' · Clasificadas por volumen de negociación en USD durante 24 horas · Fuente: CoinGecko';
+
+  } catch(error) {
+
+    cards.innerHTML =
+      '<div class="empty">Los datos de criptomonedas no están disponibles temporalmente. Vuelve a cargar la página más tarde.</div>';
+
+    updated.textContent =
+      'Datos de criptomonedas no disponibles temporalmente.';
+
+    console.error('StockPilot crypto data:',error);
+  }
+}
+
+
+/* MINI THREE-MONTH PRICE HISTORY — uses real daily closes from picks.json */
+function renderThreeMonthChart(stock, language) {
+  const copy = {
+    en: {title:"3-MONTH PRICE TREND", change:"3-month change", sessions:"daily closes", empty:"Historical price data will appear after the next successful daily update."},
+    fr: {title:"ÉVOLUTION SUR 3 MOIS", change:"Variation sur 3 mois", sessions:"cours quotidiens", empty:"L’historique des prix apparaîtra après la prochaine mise à jour quotidienne réussie."},
+    de: {title:"KURSVERLAUF ÜBER 3 MONATE", change:"Veränderung in 3 Monaten", sessions:"Tages-Schlusskurse", empty:"Die historischen Kursdaten erscheinen nach der nächsten erfolgreichen täglichen Aktualisierung."},
+    es: {title:"EVOLUCIÓN DE 3 MESES", change:"Variación en 3 meses", sessions:"cierres diarios", empty:"El historial de precios aparecerá después de la próxima actualización diaria."}
+  }[language] || {title:"3-MONTH PRICE TREND", change:"3-month change", sessions:"daily closes", empty:"Historical price data will appear after the next successful daily update."};
+
+  const history = Array.isArray(stock.price_history_3mo)
+    ? stock.price_history_3mo.filter(point => point && point.close !== null && Number.isFinite(Number(point.close)))
+    : [];
+
+  if (history.length < 2) {
+    return `<div class="stock-mini-chart stock-mini-chart-empty">
+      <div class="stock-mini-chart-heading"><span>${copy.title}</span></div>
+      <p>${copy.empty}</p>
+    </div>`;
+  }
+
+  const values = history.map(point => Number(point.close));
+  const first = values[0];
+  const last = values[values.length - 1];
+  const change = first > 0 ? ((last / first) - 1) * 100 : 0;
+  const trend = change < 0 ? "down" : "up";
+  const changeText = (change > 0 ? "+" : "") + change.toFixed(1) + "%";
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || Math.max(Math.abs(max) * 0.01, 0.01);
+  const coords = values.map((value, index) => {
+    const x = 4 + (index / Math.max(values.length - 1, 1)) * 232;
+    const y = 50 - ((value - min) / range) * 42;
+    return x.toFixed(1) + "," + y.toFixed(1);
+  });
+  const startDate = history[0].date || "";
+  const endDate = history[history.length - 1].date || "";
+  const fmtDate = value => {
+    const parsed = new Date(value + "T00:00:00Z");
+    return Number.isNaN(parsed.getTime())
+      ? String(value)
+      : parsed.toLocaleDateString(({en:"en-CA",fr:"fr-CA",de:"de-DE",es:"es-ES"}[language] || "en-CA"), {month:"short", day:"numeric", timeZone:"UTC"});
+  };
+  const ticker = esc(stock.ticker || "");
+  const aria = ticker + " " + copy.title.toLowerCase() + ", " + values.length + " " + copy.sessions;
+  return `<div class="stock-mini-chart ${trend}">
+    <div class="stock-mini-chart-heading">
+      <span>${copy.title}</span>
+      <strong>${changeText}</strong>
+    </div>
+    <svg viewBox="0 0 240 58" role="img" aria-label="${esc(aria)}">
+      <line class="stock-mini-chart-grid" x1="2" y1="8" x2="238" y2="8"></line>
+      <line class="stock-mini-chart-grid" x1="2" y1="29" x2="238" y2="29"></line>
+      <line class="stock-mini-chart-grid" x1="2" y1="50" x2="238" y2="50"></line>
+      <polygon class="stock-mini-chart-area" points="4,54 ${coords.join(" ")} 236,54"></polygon>
+      <polyline class="stock-mini-chart-line" points="${coords.join(" ")}"></polyline>
+    </svg>
+    <div class="stock-mini-chart-dates"><span>${esc(fmtDate(startDate))}</span><span>${esc(fmtDate(endDate))}</span></div>
+    <div class="stock-mini-chart-foot">${values.length} ${copy.sessions} · ${copy.change.toLowerCase()}</div>
+  </div>`;
+}
+
+/* RENDER STOCK */
+function renderStock(s,penny) {
+  const ch = Number(s.change_percent);
+  const valid = Number.isFinite(ch);
+  const price = Number(s.price);
+  const volume = Number(s.volume);
+  const score = Number(s.score);
+
+  const cls = valid ? (ch >= 0 ? 'positive' : 'negative') : '';
+  const change = valid
+    ? `${ch > 0 ? '+' : ''}${ch.toFixed(2)}% today`
+    : 'Variación diaria no disponible';
+
+  const currency = s.currency === 'CAD' ? 'CA$' : 'US$';
+  const priceText = Number.isFinite(price) && price > 0
+    ? currency + price.toLocaleString('en-CA', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: price < 1 ? 4 : 2
+      })
+    : 'Precio no disponible';
+
+  const scoreText = Number.isFinite(score)
+    ? `${score.toFixed(1)} / 100`
+    : 'No disponible';
+
+  const ticker = esc(s.ticker || '');
+  const link = 'https://finance.yahoo.com/quote/'
+    + encodeURIComponent(s.ticker || '');
+
+  return `
+    <article class="stock-card ${penny ? 'penny' : ''}">
+      <h3>${esc(s.company || s.ticker || 'Unknown company')}</h3>
+      <div class="ticker">
+        <a class="ticker-symbol-link"
+           href="${link}"
+           target="_blank"
+           rel="noopener noreferrer">${ticker}</a>
+        ${s.exchange ? ' · ' + esc(s.exchange) : ''}
+        ${s.market ? ' · ' + esc(s.market) : ''}
+      </div>
+
+      <div class="price">${priceText}</div>
+      <div class="change ${cls}">${change}</div>
+      ${renderThreeMonthChart(s, "es")}
+
+      <div class="card-meta">
+        <strong>Puntuación de impulso:</strong> ${scoreText}
+        <br>
+        <strong>Volumen de negociación:</strong>
+        ${Number.isFinite(volume) ? volume.toLocaleString() : 'No disponible'}
+        <br>
+        <strong>Motivo de selección:</strong>
+        ${esc(s.reason || 'Market activity')}
+        <br>
+        <strong>Fecha de cotización:</strong>
+        ${esc(s.price_date || s.quote_time || 'No disponible')}
+        <br>
+        <strong>Riesgo:</strong>
+        ${esc(s.risk || (penny ? 'Alto' : 'Revisar cuidadosamente'))}
+      </div>
+
+      <a class="stock-link"
+         href="${link}"
+         target="_blank"
+         rel="noopener noreferrer">
+        Investigar ${ticker} en Yahoo Finance ↗
+      </a>
+    </article>
+  `;
+}
+/* LOAD DAILY STOCK PICKS */
+async function loadStocks() {
+
+  const main = document.getElementById('mainStocks');
+  const penny = document.getElementById('pennyStocks');
+  const updated = document.getElementById('updated');
+
+  try {
+
+    const response = await fetch(
+      '../data/picks.json?t=' + Date.now(),
+      {cache:'no-store'}
+    );
+
+    if (!response.ok) {
+      throw new Error('Market data file returned HTTP ' + response.status);
+    }
+
+    const data = await response.json();
+
+    if (data.status === 'error') {
+      throw new Error(data.error || 'The latest stock update failed.');
+    }
+
+    const mainPicks = Array.isArray(data.main)
+      ? data.main
+      : [];
+
+    const pennyPicks = Array.isArray(data.penny)
+      ? data.penny
+      : [];
+
+    const mainTickers = new Set(
+      mainPicks.map(stock => stock.ticker)
+    );
+
+    const filteredPenny = pennyPicks.filter(
+      stock => !mainTickers.has(stock.ticker)
+    );
+
+    main.innerHTML = mainPicks.length
+      ? mainPicks.slice(0,3)
+          .map(stock => renderStock(stock,false))
+          .join('')
+      : '<div class="empty">No hay selecciones principales verificadas disponibles en este momento.</div>';
+
+    penny.innerHTML = filteredPenny.length
+      ? filteredPenny.slice(0,3)
+          .map(stock => renderStock(stock,true))
+          .join('')
+      : '<div class="empty">No hay penny stocks que cumplan los criterios en este momento.</div>';
+
+    const stamp = data.updated_at || data.generated_at_utc;
+
+    updated.textContent =
+      'Última actualización: ' +
+      (stamp ? new Date(stamp).toLocaleString() : 'date unavailable') +
+      ((data.source || data.data_source)
+        ? ' · Fuente de datos: ' + (data.source || data.data_source)
+        : '');
+
+    if (mainPicks.length !== 3 || filteredPenny.length !== 3) {
+      updated.textContent +=
+        ' · Actualmente hay menos de seis selecciones que cumplen los criterios.';
+    }
+
+  } catch(error) {
+
+    main.innerHTML =
+      '<div class="empty">Los datos de las acciones principales no están disponibles temporalmente. Vuelve a intentarlo más tarde.</div>';
+
+    penny.innerHTML =
+      '<div class="empty">Los datos de penny stocks no están disponibles temporalmente. Vuelve a intentarlo más tarde.</div>';
+
+    updated.textContent =
+      'Datos del mercado no disponibles temporalmente.';
+
+    console.error('StockPilot stocks:',error);
+  }
+}
+
+/* CONTACTO FORM */
+document.getElementById('contactForm')
+  .addEventListener('submit',function(event) {
+
+    event.preventDefault();
+
+    const recipient = 'midochamass6699@gmail.com';
+
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const subject = document.getElementById('contactAsunto').value.trim();
+    const message = document.getElementById('contactMensaje').value.trim();
+
+    const body =
+      'Name: ' + name +
+      '\nEmail: ' + email +
+      '\n\n' + message;
+
+    const mailto =
+      'mailto:' + recipient +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+});
+
+/* START WEBSITE */
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+
+loadCrypto();
+loadStocks();
+
+/* AUTOMATIC REFRESH */
+setInterval(loadCrypto,5 * 60 * 1000);
+setInterval(loadStocks,15 * 60 * 1000);
+
+</script>
+<!-- Removed abandoned Google Sheets voting script. -->
+
+
+<script>
+(function () {
+  const button = document.getElementById("stockpilot-subscribe-btn");
+  const status = document.getElementById("stockpilot-subscribe-status");
+  if (!button || !status) return;
+
+  let oneSignalClient = null;
+  let initFailed = false;
+  let clickInProgress = false;
+
+  function show(text) {
+    status.textContent = text;
+  }
+
+  function updateSubscribeButton() {
+    if (!oneSignalClient) return;
+
+    const subscription = oneSignalClient.User.PushSubscription;
+    const isSubscribed = subscription && subscription.optedIn === true;
+
+    if (isSubscribed) {
+      button.textContent = "✓ SUSCRIPCIÓN ACTIVADA";
+      button.disabled = true;
+      show("Tu suscripción a las actualizaciones de StockPilot AI está activada. ¡Gracias!");
+      return;
+    }
+
+    button.textContent = "🔔 RECIBIR ACTUALIZACIONES GRATIS";
+    button.disabled = false;
+
+    if (oneSignalClient.Notifications.permissionNative === "denied") {
+      show("Notifications are blocked in this browser. Enable them in this site's browser settings, then try again.");
+    } else {
+      show("No necesitas correo electrónico ni pagar. Puedes desactivar las notificaciones cuando quieras.");
+    }
+  }
+
+  // Attach the click handler immediately, so the button always gives feedback.
+  button.addEventListener("click", async function () {
+    if (clickInProgress) return;
+
+    if (!oneSignalClient) {
+      show(initFailed
+        ? "The notification service could not start. Refresh the page and try again."
+        : "The notification service is still connecting. Please try again in a moment.");
+      return;
+    }
+
+    if (!oneSignalClient.Notifications.isPushSupported()) {
+      show("Push notifications are not supported by this browser or device.");
+      return;
+    }
+
+    if (oneSignalClient.Notifications.permissionNative === "denied") {
+      show("Notifications are blocked. Open your browser's site settings for technofront.org and allow notifications.");
+      return;
+    }
+
+    clickInProgress = true;
+    button.disabled = true;
+    button.textContent = "CONNECTING...";
+    show("Requesting notification permission...");
+
+    try {
+      // optIn() prompts for permission when needed and subscribes this browser.
+      await oneSignalClient.User.PushSubscription.optIn();
+      updateSubscribeButton();
+
+      if (oneSignalClient.User.PushSubscription.optedIn !== true) {
+        button.disabled = false;
+        button.textContent = "🔔 RECIBIR ACTUALIZACIONES GRATIS";
+        show("Subscription not completed. If your browser asked for permission, choose Allow. If no prompt appeared, check browser settings.");
+      }
+    } catch (error) {
+      console.error("StockPilot OneSignal subscription error:", error);
+      button.disabled = false;
+      button.textContent = "🔔 RECIBIR ACTUALIZACIONES GRATIS";
+      show("We couldn't complete the subscription. Check browser notification permissions and try again.");
+    } finally {
+      clickInProgress = false;
+      if (oneSignalClient.User.PushSubscription.optedIn !== true) {
+        button.disabled = false;
+        button.textContent = "🔔 RECIBIR ACTUALIZACIONES GRATIS";
+      }
+    }
+  });
+
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  window.OneSignalDeferred.push(async function (OneSignal) {
+    try {
+      await OneSignal.init({
+        appId: "e88adecc-e047-49d3-afa9-559d28f8fcc3",
+        safari_web_id: "web.onesignal.auto.4ed01e00-f557-41b7-a4bd-c51172d553fd",
+        notifyButton: { enable: false }
+      });
+
+      oneSignalClient = OneSignal;
+
+      if (!OneSignal.Notifications.isPushSupported()) {
+        button.disabled = true;
+        show("Push notifications are not supported by this browser or device.");
+        return;
+      }
+
+      OneSignal.User.PushSubscription.addEventListener("change", updateSubscribeButton);
+      updateSubscribeButton();
+    } catch (error) {
+      initFailed = true;
+      console.error("StockPilot OneSignal initialization error:", error);
+      show("The notification service could not start. Please refresh and try again.");
+    }
+  });
+})();
+</script>
+
+
+<!-- Expedia affiliate side banners: left and right -->
+<div id="expedia-left-banner" aria-label="Expedia beach getaway affiliate banner">
+  <div class="eg-affiliate-banners"
+       data-program="us-expedia"
+       data-network="pz"
+       data-layout="wide-skyscraper"
+       data-image="sailing"
+       data-message="sun-seeker-find-perfect-beach-getaway"
+       data-camref="1011l5ugbw"
+       data-pubref=""
+       data-link="home"></div>
+</div>
+
+<div id="expedia-right-banner" aria-label="Expedia car rental affiliate banner">
+  <div class="eg-affiliate-banners"
+       data-program="us-expedia"
+       data-network="pz"
+       data-layout="wide-skyscraper"
+       data-image="sailing"
+       data-message="find-perfect-car-rental"
+       data-camref="1011l5ugbw"
+       data-pubref=""
+       data-link="home"></div>
+</div>
+
+<!-- Load Expedia's banner script once for both placements. -->
+<script class="eg-affiliate-banners-script" src="https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"></script>
+
+<script id="stockpilot-mobile-navigation">
+(function () {
+  const toggle = document.querySelector('.topbar .nav-toggle');
+  const menu = document.getElementById('primary-navigation');
+  if (!toggle || !menu) return;
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+  }
+  toggle.addEventListener('click', function () {
+    const opening = !menu.classList.contains('is-open');
+    menu.classList.toggle('is-open', opening);
+    toggle.setAttribute('aria-expanded', String(opening));
+    toggle.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
+  });
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 760) closeMenu();
+  });
+})();
+</script>
+
+<style id="technofront-mobile-home-order">
+@media(max-width:760px){
+ .stockpilot-top-tools{display:none!important}
+ .tf-mobile-broker{box-sizing:border-box;display:flex;align-items:center;gap:9px;width:calc(100% - 24px);margin:8px auto;padding:9px 12px;border:1px solid #d6ad55;border-radius:10px;background:linear-gradient(100deg,#101923,#183a34);color:#fff;text-decoration:none;font-family:Arial,sans-serif}
+ .tf-mobile-broker>span{font-size:22px;color:#f4d58a;flex:0 0 auto}
+ .tf-mobile-broker strong{display:block;color:#f4d58a;font-size:11px;line-height:1.2;letter-spacing:.04em}
+ .tf-mobile-broker small{display:block;margin-top:3px;color:#edf3f0;font-size:10px;line-height:1.25}
+ .tf-mobile-subscribe{display:flex;align-items:center;justify-content:center;gap:7px;width:max-content;max-width:calc(100% - 24px);margin:8px auto 10px;padding:8px 14px;border:1px solid #d6ad55;border-radius:999px;background:#f4d58a;color:#101923;font-size:12px;font-weight:900;line-height:1.2;box-shadow:0 3px 10px #0002;cursor:pointer}
+ .tf-mobile-subscribe span{font-size:17px}
+ #live-trading-desk .subscribe-bell-cta{display:none!important} #sp-fr-subscribe-fab{display:none!important}
+ #quick-stock-lookup{margin-top:14px!important}
+}
+@media(min-width:761px){.tf-mobile-broker,.tf-mobile-subscribe{display:none!important}}
+</style>
+<a class="tf-mobile-broker" href="#broker-directory" aria-label="Encuentra un bróker"><span>↗</span><strong>ENCUENTRA TU BRÓKER</strong><small>Compara plataformas de inversión</small></a>
+<script id="technofront-mobile-home-order-script">
+(function(){
+ const mq=window.matchMedia('(max-width:760px)');
+ let broker=document.getElementById('stockpilot-find-broker-banner')||document.querySelector('.tf-mobile-broker');
+ const lookup=document.getElementById('quick-stock-lookup');
+ const desk=document.getElementById('live-trading-desk');
+ const picks=document.getElementById('crypto-picks');
+ const welcome=document.querySelector(".seo-intro");
+ const subscribe=document.getElementById('stockpilot-subscribe-btn');
+ let brokerHome=null,lookupHome=null,brokerMade=false,cta=null;
+ if(broker&&broker.parentNode){brokerHome=document.createComment('broker original position');broker.parentNode.insertBefore(brokerHome,broker);}
+ if(lookup&&lookup.parentNode){lookupHome=document.createComment('lookup original position');lookup.parentNode.insertBefore(lookupHome,lookup);}
+ if(!broker&&welcome&&welcome.parentNode){
+   broker=document.createElement('a');broker.className='tf-mobile-broker';
+   broker.href="#broker-directory";
+   broker.setAttribute('aria-label',"Encuentra un bróker");
+   broker.innerHTML="<span>↗</span><span><strong>ENCUENTRA TU BRÓKER</strong><small>Compara plataformas de inversión</small></span>";
+   brokerMade=true;
+ }
+ if(!document.querySelector('.tf-mobile-subscribe')){
+   cta=document.createElement('button');cta.type='button';cta.className='tf-mobile-subscribe';
+   cta.innerHTML="<span aria-hidden=\"true\">🔔</span> RECIBIR ACTUALIZACIONES";
+   cta.addEventListener('click',function(){if(subscribe){subscribe.click();}else{const target=document.getElementById('stockpilot-alert-signup');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}});
+ }
+ function arrange(){
+   if(mq.matches){
+     const anchor=desk||welcome;
+     if(broker&&anchor&&anchor.parentNode)anchor.parentNode.insertBefore(broker,anchor);
+     if(cta&&welcome&&welcome.parentNode)welcome.parentNode.insertBefore(cta,welcome.nextSibling);
+     if(lookup){const target=picks||desk;if(target&&target.parentNode)target.parentNode.insertBefore(lookup,target.nextSibling);}
+   }else{
+     if(brokerMade&&broker&&broker.parentNode)broker.remove();
+     else if(brokerHome&&brokerHome.parentNode)brokerHome.parentNode.insertBefore(broker,brokerHome.nextSibling);
+     if(lookupHome&&lookupHome.parentNode&&lookup)lookupHome.parentNode.insertBefore(lookup,lookupHome.nextSibling);
+     if(cta)cta.remove();
+   }
+ }
+ arrange();
+ if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
+})();
+</script>
+</body>
+</html>
+)?'TSX':'NASDAQ');
+  symbol.value=isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker;
+  workspace.hidden=false;toggle.setAttribute('aria-expanded','true');
+  toggle.innerHTML=toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';
+  loaded=true;draw();workspace.scrollIntoView({behavior:'smooth',block:'start'});
+ });
+ symbol.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});compare.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});market.addEventListener('change',function(){if(market.value==='BINANCE'&&symbol.value==='AAPL')symbol.value='BTCUSDT';else if(market.value!=='BINANCE'&&symbol.value==='BTCUSDT')symbol.value='AAPL';});})();
 </script>
 <section class="picks-top" id="main-picks">
 <div class="section-head">
