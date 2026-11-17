@@ -2886,14 +2886,18 @@ input, select, textarea, button {
 </div>
 
 <section class="sp-market-terminal" id="market-terminal" aria-label="Märkte entdecken – alles in einem Terminal.">
- <div class="sp-terminal-top"><div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERAKTIVER MARKT-ARBEITSPLATZ</div><h2>Märkte entdecken – alles in einem Terminal.</h2><p>Suchen Sie US- und kanadische Aktien oder Kryptowährungen, öffnen Sie interaktive Charts und vergleichen Sie Symbole.</p></div><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace">MARKT-TERMINAL ÖFFNEN <span aria-hidden="true">↗</span></button></div>
- <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
-  <div class="sp-terminal-controls">
+ <div class="sp-terminal-top">
+  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERAKTIVER MARKT-ARBEITSPLATZ</div><h2>Märkte entdecken – alles in einem Terminal.</h2><p>Suchen Sie US- und kanadische Aktien oder Kryptowährungen, öffnen Sie interaktive Charts und vergleichen Sie Symbole.</p></div>
+ </div>
+ <div class="sp-terminal-controls">
    <label>Markt<select id="sp-terminal-market"><option value="NASDAQ">US-Aktien</option><option value="TSX">Kanadische Aktien</option><option value="BINANCE">Krypto</option></select></label>
    <label>Aktien- oder Krypto-Symbol<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT oder NYSE:IBM" autocomplete="off"></label>
    <label>Vergleichen mit (optional)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY oder ETHUSDT" autocomplete="off"></label>
    <button id="sp-terminal-load" type="button">CHART LADEN</button>
   </div>
+ <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace" data-close-label="CHART SCHLIESSEN">CHART ERWEITERN <span aria-hidden="true">↗</span></button></div>
+ <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
+  
   <p class="sp-terminal-tip">Tipp: Geben Sie für genaue Ergebnisse die Börse an, z. B. TSX:SHOP oder NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Interaktiver Chart wird geladen…</div></div><p class="sp-terminal-disclaimer">Marktdaten von TradingView. Einige Börsenkurse können verzögert sein; Charts und historische Kursdaten bleiben verfügbar.</p>
  </div>
 </section>
@@ -2918,6 +2922,9 @@ input, select, textarea, button {
 }
 
 @media(max-width:760px){.live-trading-desk .sp-market-terminal{order:3!important}}
+.sp-terminal-actions{display:flex;justify-content:flex-end;margin-top:10px}
+.sp-terminal-actions .sp-terminal-toggle{min-width:160px}
+@media(max-width:700px){.sp-terminal-actions{justify-content:stretch}.sp-terminal-actions .sp-terminal-toggle{width:100%}}
 </style>
 <script id="sp-market-terminal-script">
 (function(){
@@ -2930,7 +2937,7 @@ input, select, textarea, button {
  const load=document.getElementById('sp-terminal-load');
  if(!toggle||!workspace||!chart||toggle.dataset.ready)return;
  toggle.dataset.ready='1';
- toggle.dataset.closeLabel="TERMINAL SCHLIESSEN";
+ toggle.dataset.closeLabel="CHART SCHLIESSEN";
  let loaded=false;
  function normalize(value,exchange){
   const raw=(value||'').trim().toUpperCase().replace(/\s+/g,'');
@@ -2968,7 +2975,7 @@ input, select, textarea, button {
   toggle.innerHTML=opening?"MARKT-TERMINAL ÖFFNEN"+' <span aria-hidden="true">↗</span>':toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';
   if(opening&&!loaded){draw();loaded=true;}
  });
- load.addEventListener('click',draw);
+ load.addEventListener('click',function(){if(workspace.hidden){workspace.hidden=false;toggle.setAttribute('aria-expanded','true');toggle.innerHTML="CHART SCHLIESSEN"+' <span aria-hidden="true">×</span>';if(!loaded){loaded=true;}}draw();});
  document.addEventListener('click',function(e){
   const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
   if(!row)return;
