@@ -2336,6 +2336,150 @@ input, select, textarea, button {
 </style>
 
 <!-- STOCKPILOT AI MARKET TICKER -->
+
+<!-- END STOCKPILOT AI MARKET TICKER -->
+</div>
+
+<!-- The free-access message now appears in the two vertical side banners. -->
+
+<!-- BROKER FINDER + QUICK STOCK LOOKUP: compact side-by-side tools -->
+
+
+<style id="stockpilot-quick-lookup-layout-fix">
+/* Compact two-column broker + stock lookup row */
+.stockpilot-top-tools {
+  width: min(1200px, calc(100% - 36px));
+  margin: 12px auto 10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 12px;
+}
+.stockpilot-top-tools .find-broker-banner {
+  width: 100%;
+  min-width: 0;
+  min-height: 82px;
+  height: 100%;
+  margin: 0;
+  padding: 10px 14px;
+}
+.stockpilot-top-tools #quick-stock-lookup {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  min-height: 82px;
+  height: 100%;
+  margin: 0;
+  padding: 9px 12px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+  border-radius: 11px;
+}
+.stockpilot-top-tools #quick-stock-lookup .qsl-heading {
+  margin: 0 0 4px;
+  font-size: 13px;
+}
+.stockpilot-top-tools #quick-stock-lookup .qsl-controls input {
+  height: 32px;
+  font-size: 12px;
+}
+.stockpilot-top-tools #quick-stock-lookup .qsl-controls button {
+  padding: 0 11px;
+  font-size: 11px;
+}
+.stockpilot-top-tools #quick-stock-lookup .qsl-output {
+  min-height: 22px;
+  font-size: 11px;
+}
+.stockpilot-top-tools #quick-stock-lookup .qsl-price {
+  font-size: 18px;
+}
+.stockpilot-top-tools #quick-stock-lookup .qsl-details,
+.stockpilot-top-tools #quick-stock-lookup .qsl-updated {
+  font-size: 10px;
+}
+@media (max-width: 700px) {
+  .stockpilot-top-tools {
+    width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+  .stockpilot-top-tools .find-broker-banner,
+  .stockpilot-top-tools #quick-stock-lookup {
+    min-height: 76px;
+  }
+}
+</style>
+<!-- LIVE TRADING DESK: REPLACES THE WEEKLY STOCK OPINION -->
+<section aria-labelledby="trading-desk-title" class="live-trading-desk" id="live-trading-desk">
+<div class="trading-desk-header">
+<div>
+<div class="trading-desk-kicker"><span aria-hidden="true" class="trading-pulse"></span> STOCKPILOT AI · U.S. MARKET MONITOR</div>
+
+
+
+<h1 id="trading-desk-title">Welcome to TechnoFront.org, winning picks to help you optimize your portfolio.</h1>
+<p class="trading-desk-intro">U.S.-Listed Stock Research · NYSE &amp; Nasdaq Market Coverage · USD Market Data · Independent Investor Education</p>
+</div>
+
+  <button
+  type="button"
+  class="subscribe-bell-cta"
+  onclick="document.getElementById('stockpilot-subscribe-btn')?.click()"
+  aria-label="Get free StockPilot AI browser updates"
+>
+  <span class="subscribe-bell" aria-hidden="true">🔔</span>
+  <span>GET FREE UPDATES</span>
+</button>
+<div class="kitco-banner-stack">
+<div class="trading-session-card kitco-affiliate-banner">
+<a rel="sponsored" href="https://www.awin1.com/cread.php?s=3794996&v=84579&q=505707&r=3074803">
+    <img src="https://www.awin1.com/cshow.php?s=3794996&v=84579&q=505707&r=3074803" border="0" alt="Kitco — precious metals">
+</a>
+</div>
+<div class="kitco-trade-link" style="text-align:center;margin-top:6px;font-size:13px;font-weight:600;">
+  <a rel="sponsored" target="_blank" href="https://www.awin1.com/cread.php?s=3794996&v=84579&q=505707&r=3074803" style="text-decoration:underline;">Trade Gold & Precious Metals</a>
+</div>
+</div>
+</div>
+<div class="trading-desk-grid">
+<article class="trading-panel trading-panel-main">
+<div class="trading-panel-heading"><span class="trading-panel-icon">🇺🇸</span><div><h2>Top 3 U.S. Stocks to Watch</h2><p>U.S.-listed candidates from the daily screen</p></div></div>
+<div aria-live="polite" class="trading-market-list" id="deskMainStocks"><div class="trading-loading">Loading stock data…</div></div>
+<a class="trading-panel-link" href="#main-picks">Explore all stock picks <span aria-hidden="true">→</span></a>
+</article>
+<article class="trading-panel trading-panel-penny">
+<div class="trading-panel-heading"><span class="trading-panel-icon">⚡</span><div><h2>U.S. Penny Stocks to Watch</h2><p>U.S.-listed lower-priced shares · Higher risk</p></div></div>
+<div aria-live="polite" class="trading-market-list" id="deskPennyStocks"><div class="trading-loading">Loading penny stocks…</div></div>
+<a class="trading-panel-link" href="#penny-picks">Explore penny stocks <span aria-hidden="true">→</span></a>
+</article>
+<article class="trading-panel trading-panel-crypto">
+<div class="trading-panel-heading"><span class="trading-panel-icon">₿</span><div><h2>Global Crypto Market in USD</h2><p>Worldwide digital assets ranked by 24-hour volume</p></div></div>
+<div aria-live="polite" class="trading-market-list" id="deskCrypto"><div class="trading-loading">Loading crypto data…</div></div>
+<a class="trading-panel-link" href="#crypto-picks">Explore crypto market <span aria-hidden="true">→</span></a>
+</article>
+</div>
+
+<section class="sp-market-terminal" id="market-terminal" aria-label="Market Terminal">
+ <div class="sp-terminal-top">
+  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><h2>Market Terminal</h2><p>Search U.S. and Canadian stocks or crypto, open interactive charts and compare symbols.</p></div>
+ </div>
+ <div class="sp-terminal-controls">
+   <label>Market<select id="sp-terminal-market"><option value="NASDAQ">U.S. stocks</option><option value="TSX">Canadian stocks</option><option value="BINANCE">Crypto</option></select></label>
+   <label>Stock or crypto symbol<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT or NYSE:IBM" autocomplete="off"></label>
+   <label>Compare with (optional)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY or ETHUSDT" autocomplete="off"></label>
+   <button id="sp-terminal-load" type="button">LOAD CHART</button>
+  </div>
+ 
+ <div class="sp-terminal-workspace" id="sp-terminal-workspace">
+  
+  <p class="sp-terminal-tip">Tip: enter an exchange prefix for precise results, e.g. TSX:SHOP or NYSE:IBM.</p>
+  <div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Loading interactive chart…</div></div>
+  <p class="sp-terminal-disclaimer">Market data is supplied by TradingView. Some exchange quotes may be delayed; chart access and historical price views remain available.</p>
+ </div>
+ <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="true" aria-controls="sp-terminal-workspace" data-open-label="EXPAND CHART" data-close-label="COLLAPSE TERMINAL">COLLAPSE TERMINAL <span aria-hidden="true">×</span></button></div>
+</section>
+
 <div class="tradingview-widget-container" style="width:100%; height:46px; background:#ffffff;">
 <div class="tradingview-widget-container__widget"></div>
 <script async="" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" type="text/javascript">
@@ -2368,12 +2512,7 @@ input, select, textarea, button {
   }
   </script>
 </div>
-<!-- END STOCKPILOT AI MARKET TICKER -->
-</div>
 
-<!-- The free-access message now appears in the two vertical side banners. -->
-
-<!-- BROKER FINDER + QUICK STOCK LOOKUP: compact side-by-side tools -->
 <div class="stockpilot-top-tools">
 <!-- FIND YOUR BROKER: slim, high-visibility banner above the Live Trading Desk -->
 <a aria-label="Find your broker and explore brokerage platforms" class="find-broker-banner" href="/us/brokers.html" id="stockpilot-find-broker-banner">
@@ -2771,140 +2910,6 @@ input, select, textarea, button {
 </script>
 <!-- END QUICK STOCK LOOKUP -->
 </div>
-
-<style id="stockpilot-quick-lookup-layout-fix">
-/* Compact two-column broker + stock lookup row */
-.stockpilot-top-tools {
-  width: min(1200px, calc(100% - 36px));
-  margin: 12px auto 10px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: stretch;
-  gap: 12px;
-}
-.stockpilot-top-tools .find-broker-banner {
-  width: 100%;
-  min-width: 0;
-  min-height: 82px;
-  height: 100%;
-  margin: 0;
-  padding: 10px 14px;
-}
-.stockpilot-top-tools #quick-stock-lookup {
-  width: 100%;
-  max-width: none;
-  min-width: 0;
-  min-height: 82px;
-  height: 100%;
-  margin: 0;
-  padding: 9px 12px;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 5px;
-  border-radius: 11px;
-}
-.stockpilot-top-tools #quick-stock-lookup .qsl-heading {
-  margin: 0 0 4px;
-  font-size: 13px;
-}
-.stockpilot-top-tools #quick-stock-lookup .qsl-controls input {
-  height: 32px;
-  font-size: 12px;
-}
-.stockpilot-top-tools #quick-stock-lookup .qsl-controls button {
-  padding: 0 11px;
-  font-size: 11px;
-}
-.stockpilot-top-tools #quick-stock-lookup .qsl-output {
-  min-height: 22px;
-  font-size: 11px;
-}
-.stockpilot-top-tools #quick-stock-lookup .qsl-price {
-  font-size: 18px;
-}
-.stockpilot-top-tools #quick-stock-lookup .qsl-details,
-.stockpilot-top-tools #quick-stock-lookup .qsl-updated {
-  font-size: 10px;
-}
-@media (max-width: 700px) {
-  .stockpilot-top-tools {
-    width: calc(100% - 24px);
-    grid-template-columns: 1fr;
-    gap: 9px;
-  }
-  .stockpilot-top-tools .find-broker-banner,
-  .stockpilot-top-tools #quick-stock-lookup {
-    min-height: 76px;
-  }
-}
-</style>
-<!-- LIVE TRADING DESK: REPLACES THE WEEKLY STOCK OPINION -->
-<section aria-labelledby="trading-desk-title" class="live-trading-desk" id="live-trading-desk">
-<div class="trading-desk-header">
-<div>
-<div class="trading-desk-kicker"><span aria-hidden="true" class="trading-pulse"></span> STOCKPILOT AI · U.S. MARKET MONITOR</div>
-
-
-
-<h1 id="trading-desk-title">Welcome to TechnoFront.org, winning picks to help you optimize your portfolio.</h1>
-<p class="trading-desk-intro">U.S.-Listed Stock Research · NYSE &amp; Nasdaq Market Coverage · USD Market Data · Independent Investor Education</p>
-</div>
-
-  <button
-  type="button"
-  class="subscribe-bell-cta"
-  onclick="document.getElementById('stockpilot-subscribe-btn')?.click()"
-  aria-label="Get free StockPilot AI browser updates"
->
-  <span class="subscribe-bell" aria-hidden="true">🔔</span>
-  <span>GET FREE UPDATES</span>
-</button>
-<div class="kitco-banner-stack">
-<div class="trading-session-card kitco-affiliate-banner">
-<a rel="sponsored" href="https://www.awin1.com/cread.php?s=3794996&v=84579&q=505707&r=3074803">
-    <img src="https://www.awin1.com/cshow.php?s=3794996&v=84579&q=505707&r=3074803" border="0" alt="Kitco — precious metals">
-</a>
-</div>
-<div class="kitco-trade-link" style="text-align:center;margin-top:6px;font-size:13px;font-weight:600;">
-  <a rel="sponsored" target="_blank" href="https://www.awin1.com/cread.php?s=3794996&v=84579&q=505707&r=3074803" style="text-decoration:underline;">Trade Gold & Precious Metals</a>
-</div>
-</div>
-</div>
-<div class="trading-desk-grid">
-<article class="trading-panel trading-panel-main">
-<div class="trading-panel-heading"><span class="trading-panel-icon">🇺🇸</span><div><h2>Top 3 U.S. Stocks to Watch</h2><p>U.S.-listed candidates from the daily screen</p></div></div>
-<div aria-live="polite" class="trading-market-list" id="deskMainStocks"><div class="trading-loading">Loading stock data…</div></div>
-<a class="trading-panel-link" href="#main-picks">Explore all stock picks <span aria-hidden="true">→</span></a>
-</article>
-<article class="trading-panel trading-panel-penny">
-<div class="trading-panel-heading"><span class="trading-panel-icon">⚡</span><div><h2>U.S. Penny Stocks to Watch</h2><p>U.S.-listed lower-priced shares · Higher risk</p></div></div>
-<div aria-live="polite" class="trading-market-list" id="deskPennyStocks"><div class="trading-loading">Loading penny stocks…</div></div>
-<a class="trading-panel-link" href="#penny-picks">Explore penny stocks <span aria-hidden="true">→</span></a>
-</article>
-<article class="trading-panel trading-panel-crypto">
-<div class="trading-panel-heading"><span class="trading-panel-icon">₿</span><div><h2>Global Crypto Market in USD</h2><p>Worldwide digital assets ranked by 24-hour volume</p></div></div>
-<div aria-live="polite" class="trading-market-list" id="deskCrypto"><div class="trading-loading">Loading crypto data…</div></div>
-<a class="trading-panel-link" href="#crypto-picks">Explore crypto market <span aria-hidden="true">→</span></a>
-</article>
-</div>
-
-<section class="sp-market-terminal" id="market-terminal" aria-label="Explore the market. One terminal.">
- <div class="sp-terminal-top">
-  <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><h2>Explore the market. One terminal.</h2><p>Search U.S. and Canadian stocks or crypto, open interactive charts and compare symbols.</p></div>
- </div>
- <div class="sp-terminal-controls">
-   <label>Market<select id="sp-terminal-market"><option value="NASDAQ">U.S. stocks</option><option value="TSX">Canadian stocks</option><option value="BINANCE">Crypto</option></select></label>
-   <label>Stock or crypto symbol<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT or NYSE:IBM" autocomplete="off"></label>
-   <label>Compare with (optional)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY or ETHUSDT" autocomplete="off"></label>
-   <button id="sp-terminal-load" type="button">LOAD CHART</button>
-  </div>
- <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace" data-open-label="EXPAND CHART" data-close-label="CLOSE CHART">EXPAND CHART <span aria-hidden="true">↗</span></button></div>
- <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
-  
-  <p class="sp-terminal-tip">Tip: enter an exchange prefix for precise results, e.g. TSX:SHOP or NYSE:IBM.</p>
-  <div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Loading interactive chart…</div></div>
-  <p class="sp-terminal-disclaimer">Market data is supplied by TradingView. Some exchange quotes may be delayed; chart access and historical price views remain available.</p>
- </div>
-</section>
 <style id="sp-market-terminal-style">
 .sp-terminal-shortcuts{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:8px auto 12px}
 .sp-terminal-shortcuts a{display:inline-flex;padding:7px 12px;border:1px solid #d9dee8;border-radius:999px;background:#f8fafc;color:#243247;text-decoration:none;font-size:11px;font-weight:850;letter-spacing:.04em}
@@ -2994,6 +2999,7 @@ input, select, textarea, button {
   toggle.innerHTML=(opening?toggle.dataset.closeLabel:toggle.dataset.openLabel)+' <span aria-hidden="true">'+(opening?'×':'↗')+'</span>';
   if(opening&&!loaded){draw();loaded=true;}
  });
+ draw();loaded=true;
  load.addEventListener('click',function(){if(workspace.hidden){workspace.hidden=false;toggle.setAttribute('aria-expanded','true');toggle.innerHTML=toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';if(!loaded){loaded=true;}}draw();});
  document.addEventListener('click',function(e){
   const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
