@@ -2453,6 +2453,97 @@ input, select, textarea, button {
  </a>
  </div>
 </section>
+<nav class="sp-terminal-shortcuts" aria-label="Market categories"><a href="#main-picks">ACTIONS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">CRYPTO</a></nav>
+<section class="sp-market-terminal" id="market-terminal" aria-label="Explorez les marchés dans un seul terminal.">
+ <div class="sp-terminal-top"><div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACE BOURSIER INTERACTIF</div><h2>Explorez les marchés dans un seul terminal.</h2><p>Recherchez des actions américaines et canadiennes ou des cryptomonnaies, consultez les graphiques et comparez les symboles.</p></div><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace">OUVRIR LE TERMINAL <span aria-hidden="true">↗</span></button></div>
+ <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
+  <div class="sp-terminal-controls">
+   <label>Marché<select id="sp-terminal-market"><option value="NASDAQ">Actions américaines</option><option value="TSX">Actions canadiennes</option><option value="BINANCE">Crypto</option></select></label>
+   <label>Symbole boursier ou crypto<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT ou NYSE:IBM" autocomplete="off"></label>
+   <label>Comparer avec (facultatif)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY ou ETHUSDT" autocomplete="off"></label>
+   <button id="sp-terminal-load" type="button">AFFICHER LE GRAPHIQUE</button>
+  </div>
+  <p class="sp-terminal-tip">Conseil : précisez la bourse, par exemple TSX:SHOP ou NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Chargement du graphique interactif…</div></div><p class="sp-terminal-disclaimer">Données de marché fournies par TradingView. Certains cours peuvent être différés; les graphiques et l’historique restent accessibles.</p>
+ </div>
+</section>
+<style id="sp-market-terminal-style">
+.sp-terminal-shortcuts{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:8px auto 12px}.sp-terminal-shortcuts a{display:inline-flex;padding:7px 12px;border:1px solid #d9dee8;border-radius:999px;background:#f8fafc;color:#243247;text-decoration:none;font-size:11px;font-weight:850;letter-spacing:.04em}
+.sp-market-terminal{margin:16px auto 24px;padding:clamp(15px,2vw,23px);max-width:1200px;border:1px solid #334155;border-radius:17px;background:linear-gradient(135deg,#0b1220,#111c2e 65%,#17243a);color:#f8fafc;box-shadow:0 12px 32px #0b122022;position:relative;z-index:2}
+.sp-terminal-top{display:flex;align-items:center;justify-content:space-between;gap:18px}.sp-terminal-eyebrow{font-size:10px;letter-spacing:1.5px;font-weight:900;color:#f3c84b;text-transform:uppercase;display:flex;align-items:center;gap:8px}.sp-terminal-eyebrow span{width:8px;height:8px;border-radius:50%;background:#35d39a;box-shadow:0 0 0 4px #35d39a22}
+.sp-terminal-top h2{margin:7px 0 4px;color:#fff;font-size:clamp(20px,2.4vw,29px);line-height:1.15}.sp-terminal-top p{margin:0;color:#bdc9d9;font-size:13px;line-height:1.5}.sp-terminal-toggle,.sp-terminal-controls button{border:0;border-radius:10px;background:#f2c94c;color:#111827;padding:13px 17px;font-size:12px;font-weight:900;letter-spacing:.035em;cursor:pointer;white-space:nowrap}.sp-terminal-toggle:hover,.sp-terminal-controls button:hover{background:#ffdb69}
+.sp-terminal-workspace{margin-top:18px;border-top:1px solid #ffffff20;padding-top:16px}.sp-terminal-controls{display:grid;grid-template-columns:minmax(130px,.85fr) minmax(160px,1.25fr) minmax(150px,1fr) auto;gap:10px;align-items:end}.sp-terminal-controls label{display:flex;flex-direction:column;gap:6px;color:#d7e0ec;font-size:11px;font-weight:800}.sp-terminal-controls input,.sp-terminal-controls select{width:100%;min-width:0;box-sizing:border-box;background:#f8fafc;color:#152033;border:1px solid #64748b;border-radius:8px;padding:11px 10px;font-size:13px}.sp-terminal-tip,.sp-terminal-disclaimer{font-size:11px;line-height:1.5;color:#aebbd0;margin:10px 0}.sp-terminal-chart{height:530px;min-height:400px;background:#0b1220;border:1px solid #334155;border-radius:10px;overflow:hidden}.sp-terminal-chart .tradingview-widget-container,.sp-terminal-chart .tradingview-widget-container__widget{width:100%;height:100%}.sp-terminal-chart iframe{width:100%!important;height:100%!important}.sp-terminal-chart-placeholder{height:100%;display:grid;place-items:center;color:#b8c6d8;font-size:13px}
+@media(max-width:700px){.sp-market-terminal{margin:12px 0 20px;padding:14px;border-radius:13px}.sp-terminal-top{display:block}.sp-terminal-top p{font-size:12px}.sp-terminal-toggle{width:100%;margin-top:12px;padding:14px}.sp-terminal-controls{grid-template-columns:1fr 1fr}.sp-terminal-controls label:nth-child(2),.sp-terminal-controls label:nth-child(3){grid-column:span 2}.sp-terminal-controls button{grid-column:span 2;width:100%;padding:14px}.sp-terminal-chart{height:460px;min-height:360px}.sp-terminal-shortcuts{gap:6px}.sp-terminal-shortcuts a{font-size:10px;padding:7px 9px}}@media(max-width:380px){.sp-terminal-controls{grid-template-columns:1fr}.sp-terminal-controls label,.sp-terminal-controls label:nth-child(2),.sp-terminal-controls label:nth-child(3),.sp-terminal-controls button{grid-column:1}}
+</style>
+<script id="sp-market-terminal-script">
+(function(){
+ const toggle=document.getElementById('sp-terminal-toggle');
+ const workspace=document.getElementById('sp-terminal-workspace');
+ const chart=document.getElementById('sp-terminal-chart');
+ const market=document.getElementById('sp-terminal-market');
+ const symbol=document.getElementById('sp-terminal-symbol');
+ const compare=document.getElementById('sp-terminal-compare');
+ const load=document.getElementById('sp-terminal-load');
+ if(!toggle||!workspace||!chart||toggle.dataset.ready)return;
+ toggle.dataset.ready='1';
+ toggle.dataset.closeLabel="FERMER LE TERMINAL";
+ let loaded=false;
+ function normalize(value,exchange){
+  const raw=(value||'').trim().toUpperCase().replace(/\s+/g,'');
+  return !raw?'':(raw.includes(':')?raw:exchange+':'+raw);
+ }
+ function draw(){
+  const ticker=normalize(symbol.value,market.value);
+  if(!ticker){symbol.focus();return;}
+  const compareTicker=normalize(compare.value,market.value);
+  chart.innerHTML='<div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div><div style="height:32px;display:flex;align-items:center;justify-content:center"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" style="font:11px Arial;color:#94a3b8;text-decoration:none">Charting powered by TradingView</a></div></div>';
+  const host=chart.querySelector('.tradingview-widget-container__widget');
+  const script=document.createElement('script');
+  script.type='text/javascript';script.async=true;
+  script.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+  const config={autosize:true,symbol:ticker,interval:'D',timezone:'America/Toronto',theme:'dark',style:'1',locale:"fr",allow_symbol_change:true,calendar:false,hide_side_toolbar:false,withdateranges:true,details:true,hotlist:false,show_popup_button:false,support_host:'https://www.tradingview.com'};
+  if(compareTicker)config.compareSymbols=[{symbol:compareTicker,position:'SameScale'}];
+  script.textContent=JSON.stringify(config);
+  host.appendChild(script);
+ }
+ function openWithSymbol(ticker,exchange){
+  if(!ticker)return;
+  market.value=exchange;
+  symbol.value=ticker;
+  workspace.hidden=false;
+  toggle.setAttribute('aria-expanded','true');
+  toggle.innerHTML=toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';
+  loaded=true;
+  draw();
+  workspace.scrollIntoView({behavior:'smooth',block:'start'});
+ }
+ toggle.addEventListener('click',function(){
+  const opening=workspace.hidden;
+  workspace.hidden=!opening;
+  toggle.setAttribute('aria-expanded',String(opening));
+  toggle.innerHTML=opening?"OUVRIR LE TERMINAL"+' <span aria-hidden="true">↗</span>':toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';
+  if(opening&&!loaded){draw();loaded=true;}
+ });
+ load.addEventListener('click',draw);
+ document.addEventListener('click',function(e){
+  const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
+  if(!row)return;
+  e.preventDefault();
+  const ticker=row.querySelector('.sp-market-name small')?.textContent.trim().toUpperCase();
+  if(!ticker)return;
+  const isCrypto=!!row.closest('#deskCrypto,#previewCrypto');
+  const price=row.querySelector('.sp-market-values strong')?.textContent||'';
+  const exchange=isCrypto?'BINANCE':(price.includes('CA$')?'TSX':'NASDAQ');
+  openWithSymbol(isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker,exchange);
+ });
+ symbol.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});
+ compare.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});
+ market.addEventListener('change',function(){
+  if(market.value==='BINANCE'&&symbol.value==='AAPL')symbol.value='BTCUSDT';
+  else if(market.value!=='BINANCE'&&symbol.value==='BTCUSDT')symbol.value='AAPL';
+ });
+})();
+</script>
+
 <script id="sp-fr-top-picks-ticker-script">
 (function(){
  const track=document.getElementById('spFrTopPicksTrack'); if(!track)return;
@@ -2746,96 +2837,7 @@ input, select, textarea, button {
   </div>
   <p class="sp-education-note">Contenu éducatif uniquement. Ces guides ne constituent pas des conseils financiers personnalisés ni des recommandations d’achat, de vente ou de négociation de produits financiers.</p>
 </section>
-<nav class="sp-terminal-shortcuts" aria-label="Market categories"><a href="#main-picks">ACTIONS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">CRYPTO</a></nav>
-<section class="sp-market-terminal" id="market-terminal" aria-label="Explorez les marchés dans un seul terminal.">
- <div class="sp-terminal-top"><div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACE BOURSIER INTERACTIF</div><h2>Explorez les marchés dans un seul terminal.</h2><p>Recherchez des actions américaines et canadiennes ou des cryptomonnaies, consultez les graphiques et comparez les symboles.</p></div><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="false" aria-controls="sp-terminal-workspace">OUVRIR LE TERMINAL <span aria-hidden="true">↗</span></button></div>
- <div class="sp-terminal-workspace" id="sp-terminal-workspace" hidden>
-  <div class="sp-terminal-controls">
-   <label>Marché<select id="sp-terminal-market"><option value="NASDAQ">Actions américaines</option><option value="TSX">Actions canadiennes</option><option value="BINANCE">Crypto</option></select></label>
-   <label>Symbole boursier ou crypto<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT ou NYSE:IBM" autocomplete="off"></label>
-   <label>Comparer avec (facultatif)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY ou ETHUSDT" autocomplete="off"></label>
-   <button id="sp-terminal-load" type="button">AFFICHER LE GRAPHIQUE</button>
-  </div>
-  <p class="sp-terminal-tip">Conseil : précisez la bourse, par exemple TSX:SHOP ou NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Chargement du graphique interactif…</div></div><p class="sp-terminal-disclaimer">Données de marché fournies par TradingView. Certains cours peuvent être différés; les graphiques et l’historique restent accessibles.</p>
- </div>
-</section>
-<style id="sp-market-terminal-style">
-.sp-terminal-shortcuts{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:8px auto 12px}.sp-terminal-shortcuts a{display:inline-flex;padding:7px 12px;border:1px solid #d9dee8;border-radius:999px;background:#f8fafc;color:#243247;text-decoration:none;font-size:11px;font-weight:850;letter-spacing:.04em}
-.sp-market-terminal{margin:16px auto 24px;padding:clamp(15px,2vw,23px);max-width:1200px;border:1px solid #334155;border-radius:17px;background:linear-gradient(135deg,#0b1220,#111c2e 65%,#17243a);color:#f8fafc;box-shadow:0 12px 32px #0b122022;position:relative;z-index:2}
-.sp-terminal-top{display:flex;align-items:center;justify-content:space-between;gap:18px}.sp-terminal-eyebrow{font-size:10px;letter-spacing:1.5px;font-weight:900;color:#f3c84b;text-transform:uppercase;display:flex;align-items:center;gap:8px}.sp-terminal-eyebrow span{width:8px;height:8px;border-radius:50%;background:#35d39a;box-shadow:0 0 0 4px #35d39a22}
-.sp-terminal-top h2{margin:7px 0 4px;color:#fff;font-size:clamp(20px,2.4vw,29px);line-height:1.15}.sp-terminal-top p{margin:0;color:#bdc9d9;font-size:13px;line-height:1.5}.sp-terminal-toggle,.sp-terminal-controls button{border:0;border-radius:10px;background:#f2c94c;color:#111827;padding:13px 17px;font-size:12px;font-weight:900;letter-spacing:.035em;cursor:pointer;white-space:nowrap}.sp-terminal-toggle:hover,.sp-terminal-controls button:hover{background:#ffdb69}
-.sp-terminal-workspace{margin-top:18px;border-top:1px solid #ffffff20;padding-top:16px}.sp-terminal-controls{display:grid;grid-template-columns:minmax(130px,.85fr) minmax(160px,1.25fr) minmax(150px,1fr) auto;gap:10px;align-items:end}.sp-terminal-controls label{display:flex;flex-direction:column;gap:6px;color:#d7e0ec;font-size:11px;font-weight:800}.sp-terminal-controls input,.sp-terminal-controls select{width:100%;min-width:0;box-sizing:border-box;background:#f8fafc;color:#152033;border:1px solid #64748b;border-radius:8px;padding:11px 10px;font-size:13px}.sp-terminal-tip,.sp-terminal-disclaimer{font-size:11px;line-height:1.5;color:#aebbd0;margin:10px 0}.sp-terminal-chart{height:530px;min-height:400px;background:#0b1220;border:1px solid #334155;border-radius:10px;overflow:hidden}.sp-terminal-chart .tradingview-widget-container,.sp-terminal-chart .tradingview-widget-container__widget{width:100%;height:100%}.sp-terminal-chart iframe{width:100%!important;height:100%!important}.sp-terminal-chart-placeholder{height:100%;display:grid;place-items:center;color:#b8c6d8;font-size:13px}
-@media(max-width:700px){.sp-market-terminal{margin:12px 0 20px;padding:14px;border-radius:13px}.sp-terminal-top{display:block}.sp-terminal-top p{font-size:12px}.sp-terminal-toggle{width:100%;margin-top:12px;padding:14px}.sp-terminal-controls{grid-template-columns:1fr 1fr}.sp-terminal-controls label:nth-child(2),.sp-terminal-controls label:nth-child(3){grid-column:span 2}.sp-terminal-controls button{grid-column:span 2;width:100%;padding:14px}.sp-terminal-chart{height:460px;min-height:360px}.sp-terminal-shortcuts{gap:6px}.sp-terminal-shortcuts a{font-size:10px;padding:7px 9px}}@media(max-width:380px){.sp-terminal-controls{grid-template-columns:1fr}.sp-terminal-controls label,.sp-terminal-controls label:nth-child(2),.sp-terminal-controls label:nth-child(3),.sp-terminal-controls button{grid-column:1}}
-</style>
-<script id="sp-market-terminal-script">
-(function(){
- const toggle=document.getElementById('sp-terminal-toggle');
- const workspace=document.getElementById('sp-terminal-workspace');
- const chart=document.getElementById('sp-terminal-chart');
- const market=document.getElementById('sp-terminal-market');
- const symbol=document.getElementById('sp-terminal-symbol');
- const compare=document.getElementById('sp-terminal-compare');
- const load=document.getElementById('sp-terminal-load');
- if(!toggle||!workspace||!chart||toggle.dataset.ready)return;
- toggle.dataset.ready='1';
- toggle.dataset.closeLabel="FERMER LE TERMINAL";
- let loaded=false;
- function normalize(value,exchange){
-  const raw=(value||'').trim().toUpperCase().replace(/\s+/g,'');
-  return !raw?'':(raw.includes(':')?raw:exchange+':'+raw);
- }
- function draw(){
-  const ticker=normalize(symbol.value,market.value);
-  if(!ticker){symbol.focus();return;}
-  const compareTicker=normalize(compare.value,market.value);
-  chart.innerHTML='<div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div><div style="height:32px;display:flex;align-items:center;justify-content:center"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" style="font:11px Arial;color:#94a3b8;text-decoration:none">Charting powered by TradingView</a></div></div>';
-  const host=chart.querySelector('.tradingview-widget-container__widget');
-  const script=document.createElement('script');
-  script.type='text/javascript';script.async=true;
-  script.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-  const config={autosize:true,symbol:ticker,interval:'D',timezone:'America/Toronto',theme:'dark',style:'1',locale:"fr",allow_symbol_change:true,calendar:false,hide_side_toolbar:false,withdateranges:true,details:true,hotlist:false,show_popup_button:false,support_host:'https://www.tradingview.com'};
-  if(compareTicker)config.compareSymbols=[{symbol:compareTicker,position:'SameScale'}];
-  script.textContent=JSON.stringify(config);
-  host.appendChild(script);
- }
- function openWithSymbol(ticker,exchange){
-  if(!ticker)return;
-  market.value=exchange;
-  symbol.value=ticker;
-  workspace.hidden=false;
-  toggle.setAttribute('aria-expanded','true');
-  toggle.innerHTML=toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';
-  loaded=true;
-  draw();
-  workspace.scrollIntoView({behavior:'smooth',block:'start'});
- }
- toggle.addEventListener('click',function(){
-  const opening=workspace.hidden;
-  workspace.hidden=!opening;
-  toggle.setAttribute('aria-expanded',String(opening));
-  toggle.innerHTML=opening?"OUVRIR LE TERMINAL"+' <span aria-hidden="true">↗</span>':toggle.dataset.closeLabel+' <span aria-hidden="true">×</span>';
-  if(opening&&!loaded){draw();loaded=true;}
- });
- load.addEventListener('click',draw);
- document.addEventListener('click',function(e){
-  const row=e.target.closest('#deskMainStocks .sp-market-row,#deskPennyStocks .sp-market-row,#deskCrypto .sp-market-row,#previewMainStocks .sp-market-row,#previewPennyStocks .sp-market-row,#previewCrypto .sp-market-row');
-  if(!row)return;
-  e.preventDefault();
-  const ticker=row.querySelector('.sp-market-name small')?.textContent.trim().toUpperCase();
-  if(!ticker)return;
-  const isCrypto=!!row.closest('#deskCrypto,#previewCrypto');
-  const price=row.querySelector('.sp-market-values strong')?.textContent||'';
-  const exchange=isCrypto?'BINANCE':(price.includes('CA$')?'TSX':'NASDAQ');
-  openWithSymbol(isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker,exchange);
- });
- symbol.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});
- compare.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});
- market.addEventListener('change',function(){
-  if(market.value==='BINANCE'&&symbol.value==='AAPL')symbol.value='BTCUSDT';
-  else if(market.value!=='BINANCE'&&symbol.value==='BTCUSDT')symbol.value='AAPL';
- });
-})();
-</script>
+
 <section class="picks-top" id="main-picks">
 <div class="section-head">
 <div>
