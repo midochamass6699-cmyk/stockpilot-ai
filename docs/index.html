@@ -2254,6 +2254,10 @@ input, select, textarea, button {
 .kitco-banner-stack>.kitco-affiliate-banner{width:100%;max-width:300px;min-width:0;flex:0 0 auto}
 .kitco-banner-stack>.kitco-trade-link{display:block;width:100%;margin:0!important;text-align:center;flex:0 0 auto}
 .kitco-banner-stack>.kitco-trade-link a{display:inline-block}
+.kitco-banner-stack{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:6px!important;}
+.kitco-banner-stack>.kitco-affiliate-banner{display:flex!important;visibility:visible!important;opacity:1!important;order:0!important;}
+.kitco-banner-stack>.kitco-affiliate-banner img{display:block!important;width:100%!important;height:auto!important;visibility:visible!important;opacity:1!important;}
+.kitco-banner-stack>.kitco-trade-link{order:1!important;}
 @media(max-width:600px){.live-trading-desk .kitco-banner-stack{order:4;width:100%;max-width:340px;justify-self:center;flex:0 1 340px}}
 </style>
 </head>
@@ -2494,7 +2498,7 @@ input, select, textarea, button {
   <span>GET FREE UPDATES</span>
 </button>
 <div class="kitco-banner-stack">
-<div class="trading-session-card kitco-affiliate-banner">
+<div class="kitco-affiliate-banner">
 <a rel="sponsored" href="https://www.awin1.com/cread.php?s=3794996&v=84579&q=505707&r=3074803">
     <img src="https://www.awin1.com/cshow.php?s=3794996&v=84579&q=505707&r=3074803" border="0" alt="Kitco — precious metals">
 </a>
@@ -5633,7 +5637,7 @@ body { overflow-x: hidden; }
  }
  if(!document.querySelector('.tf-mobile-subscribe')){
    cta=document.createElement('button');cta.type='button';cta.className='tf-mobile-subscribe';
-   cta.innerHTML="<span aria-hidden=\"true\">🔔</span> RECIBIR ACTUALIZACIONES";
+   cta.innerHTML="<span aria-hidden=\"true\">🔔</span> GET FREE UPDATES";
    cta.addEventListener('click',function(){if(subscribe){subscribe.click();}else{const target=document.getElementById('stockpilot-alert-signup');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}});
  }
  function arrange(){
@@ -8342,7 +8346,7 @@ body { overflow-x: hidden; }
  }
  if(!document.querySelector('.tf-mobile-subscribe')){
    cta=document.createElement('button');cta.type='button';cta.className='tf-mobile-subscribe';
-   cta.innerHTML="<span aria-hidden=\"true\">🔔</span> RECIBIR ACTUALIZACIONES";
+   cta.innerHTML="<span aria-hidden=\"true\">🔔</span> GET FREE UPDATES";
    cta.addEventListener('click',function(){if(subscribe){subscribe.click();}else{const target=document.getElementById('stockpilot-alert-signup');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}});
  }
  function arrange(){
