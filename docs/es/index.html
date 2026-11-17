@@ -2028,7 +2028,7 @@ html, body { background-color:#F1F5FA !important; }
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACIO BURSÁTIL INTERACTIVO</div><h2>Terminal de mercado</h2><p>Busca acciones de EE. UU. y Canadá o criptomonedas, consulta gráficos interactivos y compara símbolos.</p></div>
  </div>
  <div class="sp-terminal-controls">
-   <label>Mercado<select id="sp-terminal-market"><option value="NASDAQ">Acciones de EE. UU.</option><option value="TSX">Acciones de Canadá</option><option value="BINANCE">Cripto</option></select></label>
+   <label>Mercado<select id="sp-terminal-market"><option value="NASDAQ">Acciones de EE. UU.</option><option value="NYSE">NYSE</option><option value="TSX">Acciones de Canadá</option><option value="BINANCE">Cripto</option></select></label>
    <label>Símbolo bursátil o cripto<input id="sp-terminal-symbol" type="text" value="AAPL" placeholder="AAPL, SHOP, BTCUSDT o NYSE:IBM" autocomplete="off"></label>
    <label>Comparar con (opcional)<input id="sp-terminal-compare" type="text" placeholder="MSFT, RY o ETHUSDT" autocomplete="off"></label>
    <button id="sp-terminal-load" type="button">CARGAR GRÁFICO</button>
@@ -2108,8 +2108,7 @@ html, body { background-color:#F1F5FA !important; }
   const ticker=row.querySelector('.sp-market-name small')?.textContent.trim().toUpperCase();
   if(!ticker)return;
   const isCrypto=!!row.closest('#deskCrypto,#previewCrypto');
-  const price=row.querySelector('.sp-market-values strong')?.textContent||'';
-  const exchange=isCrypto?'BINANCE':(price.includes('CA$')?'TSX':'NASDAQ');
+  const exchange=isCrypto?'BINANCE':(row.dataset.exchange||market.value);
   openWithSymbol(isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker,exchange);
  });
  symbol.addEventListener('keydown',e=>{if(e.key==='Enter')draw();});
