@@ -3363,7 +3363,7 @@ input, select, textarea, button {
 <div class="eyebrow">STOCK MARKET RESEARCH · QUICK ANSWERS</div>
 <h2 id="stock-market-faq-title">U.S. Stock Market Research: Stocks, Penny Stocks &amp; Crypto FAQs</h2>
 <article class="seo-faq-item"><h3>What does StockPilot AI show?</h3><p>StockPilot AI provides a market overview with selected stocks to watch, a penny-stock screen and leading cryptocurrencies ranked by reported 24-hour trading volume. The lists summarize activity in the available data feeds and are starting points for independent research.</p></article>
-<article class="seo-faq-item"><h3>How are the top stocks selected?</h3><p>The available U.S. candidate set is screened using a 0–100 momentum score. The published methodology weights 5-day, 20-day and 50-day returns, relative volume and trend alignment, with deductions for elevated RSI and volatility. Candidates must have positive 20-day momentum and trade above their 20-day average. Main-stock candidates are priced above US$10; the penny-stock screen uses US$0.10 to US$10 when data is available. The feed is limited and is not an exhaustive scan of every U.S. listing.</p></article>
+<article class="seo-faq-item"><h3>How are the top stocks selected?</h3><p>The U.S. candidate set is ranked using a 0–100 market activity score: 35% relative volume, 30% absolute daily price movement, 20% absolute 5-day movement, 10% absolute 20-day movement and 5% average dollar liquidity, with a modest penalty for unusually high volatility. Both gainers and decliners can qualify. Main stocks must have at least US$1 million in 20-day average daily dollar volume; penny stocks must be priced US$0.05–US$10 and have at least US$100,000 in average daily dollar volume. The feed is limited to available public screeners and is not an exhaustive scan of every U.S. listing.</p></article>
 <article class="seo-faq-item"><h3>What does StockPilot AI mean by penny stocks?</h3><p>For this site's penny-stock screen, qualifying shares are priced from US$0.10 to US$10 when data is available. Definitions vary by market, exchange and data provider. Lower-priced shares can be volatile and carry substantial risk.</p></article>
 <article class="seo-faq-item"><h3>How are the top cryptocurrencies ranked?</h3><p>The crypto section ranks available coins by reported 24-hour trading volume in US dollars. Prices and trading volume can change quickly, and the displayed list is limited to assets available through the CoinGecko feed.</p></article>
 <article class="seo-faq-item"><h3>Where can I compare online brokers?</h3><p>Visit our <a href="/us/brokers.html">U.S. brokerage directory</a> for a starting list of firms and research the current account terms, fees and eligibility directly with each provider.</p></article>
@@ -4110,7 +4110,7 @@ function renderStock(s,penny) {
       ${renderThreeMonthChart(s, "en")}
 
       <div class="card-meta">
-        <strong>Momentum score:</strong> ${scoreText}
+        <strong>Market activity score:</strong> ${scoreText}
         <br>
         <strong>Trading volume:</strong>
         ${Number.isFinite(volume) ? volume.toLocaleString() : 'Not provided'}
