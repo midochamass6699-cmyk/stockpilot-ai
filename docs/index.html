@@ -2203,7 +2203,6 @@ input, select, textarea, button {
   }
   .live-trading-desk .trading-desk-header { display:flex !important; flex-direction:column !important; align-items:stretch !important; order:1 !important; gap:12px !important; }
   .live-trading-desk .trading-desk-header > div:first-child { order: 1; min-width: 0; }
-  .live-trading-desk .market-partner-panel { order: 2; }
   .live-trading-desk #market-terminal { order: 3; }
   .live-trading-desk .trading-desk-grid { order: 2; display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 9px !important; }
   .live-trading-desk .trading-desk-tools { order: 5; }
@@ -5767,32 +5766,35 @@ body { overflow-x: hidden; }
 #free-left-banner .sp-side-rank{font-size:12px!important;flex:0 0 auto!important}
 #free-left-banner .sp-side-group h2{letter-spacing:.06em!important;margin-bottom:6px!important}
 .market-partner-panel{
-  box-sizing:border-box;flex:0 0 248px;min-width:210px;max-width:270px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:10px;padding:13px;border:1px solid #D8E1EE;border-radius:13px;
-  background:linear-gradient(145deg,#FFFFFF,#F1F5FB);
-  box-shadow:0 7px 20px rgba(7,17,31,.08);
+  box-sizing:border-box;width:min(1200px,calc(100% - 36px));min-height:58px;
+  margin:8px auto 12px;padding:7px 14px;display:flex;flex-direction:row;
+  align-items:center;justify-content:center;gap:18px;
+  border:1px solid #D8E1EE;border-radius:10px;
+  background:linear-gradient(90deg,#F7F9FC,#FFFFFF 48%,#F7F9FC);
+  box-shadow:0 4px 14px rgba(7,17,31,.055);
 }
 .market-partner-panel .subscribe-bell-cta{
-  position:static!important;margin:0!important;box-shadow:none!important;
-  min-width:0!important;width:100%;max-width:100%!important;
-  border-radius:9px!important;
+  position:static!important;inset:auto!important;transform:none!important;
+  margin:0!important;box-shadow:none!important;flex:0 0 auto;
+  width:auto!important;min-width:0!important;max-width:none!important;
+  min-height:38px;padding:8px 15px!important;border-radius:8px!important;
+  white-space:nowrap;
 }
 .market-partner-panel .kitco-banner-stack{
-  box-sizing:border-box;width:100%;max-width:220px;min-width:0;
-  margin:0 auto!important;padding:7px;background:#fff;border:1px solid #D8E1EE;border-radius:9px;
+  box-sizing:border-box;display:flex;flex-direction:row;align-items:center;
+  justify-content:center;gap:12px;width:auto;max-width:none;min-width:0;
+  margin:0!important;padding:0;background:transparent;border:0;box-shadow:none;
 }
-.market-partner-panel .kitco-banner-stack img{display:block;width:100%;height:auto}
-.market-partner-panel .kitco-trade-link{font-size:12px!important}
-@media(max-width:850px){
- .trading-desk-header{align-items:stretch!important}
- .market-partner-panel{flex:0 1 auto;width:100%;max-width:none;flex-direction:row;flex-wrap:wrap}
- .market-partner-panel .subscribe-bell-cta{width:auto;max-width:190px!important}
- .market-partner-panel .kitco-banner-stack{width:min(220px,100%);margin:0!important}
-}
-@media(max-width:560px){
- .market-partner-panel{padding:10px;gap:9px}
- .market-partner-panel .subscribe-bell-cta{min-width:145px!important}
+.market-partner-panel .kitco-affiliate-banner{flex:0 1 190px;width:190px;max-width:190px;margin:0!important;padding:0!important}
+.market-partner-panel .kitco-affiliate-banner a{display:block;line-height:0}
+.market-partner-panel .kitco-affiliate-banner img{display:block;width:100%;height:auto;max-height:44px;object-fit:contain}
+.market-partner-panel .kitco-trade-link{margin:0!important;font-size:12px!important;white-space:nowrap}
+@media(max-width:600px){
+ .market-partner-panel{width:calc(100% - 20px);min-height:0;padding:9px 8px;gap:9px;flex-wrap:wrap}
+ .market-partner-panel .subscribe-bell-cta{font-size:11px!important;padding:8px 10px!important}
+ .market-partner-panel .kitco-banner-stack{gap:8px}
+ .market-partner-panel .kitco-affiliate-banner{flex-basis:150px;width:150px;max-width:150px}
+ .market-partner-panel .kitco-trade-link{font-size:11px!important}
 }
 #stockpilot-free-tools{margin-top:10px!important}
 @media(max-width:760px){
@@ -5813,19 +5815,20 @@ body { overflow-x: hidden; }
 <script id="stockpilot-promo-placement">
 (function(){
  const desk=document.getElementById('live-trading-desk');
- const header=desk&&desk.querySelector('.trading-desk-header');
+ const terminal=document.getElementById('market-terminal');
  const bell=desk&&desk.querySelector('.subscribe-bell-cta');
  const kitco=desk&&desk.querySelector('.kitco-banner-stack');
- if(!header||!bell||!kitco)return;
- let panel=header.querySelector('.market-partner-panel');
+ if(!desk||!terminal||!bell||!kitco)return;
+ let panel=document.getElementById('market-partner-panel');
  if(!panel){
    panel=document.createElement('aside');
+   panel.id='market-partner-panel';
    panel.className='market-partner-panel';
    panel.setAttribute('aria-label','Free market updates and Kitco partner banner');
-   header.appendChild(panel);
  }
  if(!panel.contains(bell))panel.appendChild(bell);
  if(!panel.contains(kitco))panel.appendChild(kitco);
+ if(terminal.nextElementSibling!==panel)terminal.insertAdjacentElement('afterend',panel);
 })();
 </script>
 </body>
