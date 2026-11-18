@@ -2319,6 +2319,55 @@ input, select, textarea, button {
 </button>
 </nav>
 </header>
+<style id="tf-market-pulse-style">
+.tf-market-pulse{width:100%;height:46px;box-sizing:border-box;display:flex;align-items:stretch;overflow:hidden;background:#101b2b;border-top:1px solid #263b55;border-bottom:1px solid #263b55;font-family:Arial,sans-serif}
+.tf-market-pulse-brand{flex:0 0 132px;min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 10px;box-sizing:border-box;background:#14243b;color:#f2c66d;font-size:10px;font-weight:900;letter-spacing:.07em;white-space:nowrap;position:relative;z-index:3}
+.tf-market-pulse-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#35c98a;box-shadow:0 0 0 3px #35c98a22}
+.tf-market-pulse-livefeed{position:relative;flex:1;min-width:0;height:46px;overflow:hidden;background:#101b2b}
+.tf-market-pulse-fallback{position:absolute;inset:0;z-index:0;display:flex;align-items:center;padding:0 14px;color:#d7e2f0;font:700 11px/1 Arial,sans-serif;letter-spacing:.035em;white-space:nowrap;overflow:hidden}
+.tf-market-pulse-livefeed .tradingview-widget-container{position:relative;z-index:1;width:100%!important;height:46px!important;background:transparent!important;overflow:hidden}
+.tf-market-pulse-livefeed .tradingview-widget-container__widget{width:100%;height:46px;overflow:hidden}
+@media(max-width:600px){.tf-market-pulse{height:42px}.tf-market-pulse-brand{flex-basis:108px;padding:0 7px;gap:6px;font-size:9px;letter-spacing:.035em}.tf-market-pulse-livefeed,.tf-market-pulse-livefeed .tradingview-widget-container,.tf-market-pulse-livefeed .tradingview-widget-container__widget{height:42px!important}.tf-market-pulse-fallback{font-size:10px;padding:0 9px}}
+</style>
+<div class="tf-market-pulse" role="region" aria-label="ACTUALITÉS MARCHÉ">
+  <div class="tf-market-pulse-brand"><span class="tf-market-pulse-dot" aria-hidden="true"></span><strong>ACTUALITÉS MARCHÉ</strong></div>
+  <div class="tf-market-pulse-livefeed">
+    <div class="tf-market-pulse-fallback" aria-hidden="true">S&P 500  ·  NASDAQ  ·  DOW JONES  ·  TSX  ·  APPLE  ·  NVIDIA  ·  BITCOIN  ·  ETHEREUM</div>
+    <div class="tradingview-widget-container" style="width:100%; height:46px; background:#ffffff;">
+<div class="tradingview-widget-container__widget"></div>
+<script type="application/json" data-stockpilot-deferred-src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
+  {
+    "symbols": [
+      {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
+      {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ"},
+      {"proName":"FOREXCOM:DJI","title":"DOW"},
+      {"proName":"TSX:RY","title":"ROYAL BANK"},
+      {"proName":"TSX:SHOP","title":"SHOPIFY"},
+      {"proName":"TSX:TD","title":"TD BANK"},
+      {"proName":"NASDAQ:AAPL","title":"APPLE"},
+      {"proName":"NASDAQ:NVDA","title":"NVIDIA"},
+      {"proName":"NASDAQ:TSLA","title":"TESLA"},
+      {"proName":"NASDAQ:MSFT","title":"MICROSOFT"},
+      {"proName":"NASDAQ:AMZN","title":"AMAZON"},
+      {"proName":"NASDAQ:GOOGL","title":"GOOGLE"},
+      {"proName":"NASDAQ:META","title":"META"},
+      {"proName":"NASDAQ:AMD","title":"AMD"},
+      {"proName":"NASDAQ:PLTR","title":"PALANTIR"},
+      {"proName":"NYSE:JPM","title":"JPMORGAN"},
+      {"proName":"BITSTAMP:BTCUSD","title":"BITCOIN"},
+      {"proName":"BITSTAMP:ETHUSD","title":"ETHEREUM"}
+    ],
+    "showSymbolLogo": true,
+"colorTheme": "dark",
+"isTransparent": true,
+    "displayMode": "adaptive",
+    "locale": "fr"
+  }
+  </script>
+</div>
+  </div>
+</div>
+
 <details class="fx-converter" id="stockpilot-fx-converter">
   <summary>Convertisseur USD ⇄ CAD</summary>
   <div class="fx-panel">
@@ -5438,6 +5487,22 @@ section:empty, article:empty, aside:empty { display:none!important; }
   }
 }
 </style>
+<script id="stockpilot-deferred-ticker-loader">
+(function(){
+  function loadTicker(){
+    document.querySelectorAll('script[type="application/json"][data-stockpilot-deferred-src]').forEach(function(config){
+      var liveScript=document.createElement('script');
+      liveScript.async=true;
+      liveScript.type='text/javascript';
+      liveScript.src=config.getAttribute('data-stockpilot-deferred-src');
+      liveScript.textContent=config.textContent;
+      config.parentNode.replaceChild(liveScript,config);
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){window.setTimeout(loadTicker,180);},{once:true});
+  else window.setTimeout(loadTicker,180);
+})();
+</script>
 </body>
 </html>
 )?'TSX':'NASDAQ');
