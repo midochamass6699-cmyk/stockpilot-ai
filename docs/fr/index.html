@@ -2162,7 +2162,7 @@ input, select, textarea, button {
 
 <style id="sp-fr-top-picks-ticker-style">
 .sp-top-picks-ticker{width:100%;overflow:hidden;min-height:116px;margin:0 0 18px;border-top:2px solid #d6ad55;border-bottom:2px solid #d6ad55;background:linear-gradient(90deg,#07182d,#102b4b 50%,#07182d);color:#fff}
-.sp-ticker-track{display:flex;align-items:stretch;width:max-content;gap:10px;padding:9px 12px;animation:spTopTicker 48s linear infinite}
+.sp-ticker-track{display:flex;align-items:stretch;width:max-content;gap:10px;padding:9px 0;animation:spTopTicker 48s linear infinite;will-change:transform}
 .sp-top-picks-ticker:hover .sp-ticker-track{animation-play-state:paused}
 .sp-ticker-message{width:205px;min-height:94px;flex:0 0 205px;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px 12px;border:1px solid #4773a5;border-radius:9px;background:#0d2440;text-align:center}
 .sp-ticker-message strong{font-size:13px;color:#ffe36b;line-height:1.2}
@@ -2473,36 +2473,39 @@ input, select, textarea, button {
 <style>
 .fr-welcome-banner{
   width:min(1240px,calc(100% - 36px));
-  margin:16px auto;
-  padding:22px 24px;
+  margin:8px auto;
+  padding:11px 18px;
   box-sizing:border-box;
   border:1px solid #d6ad55;
-  border-radius:12px;
+  border-radius:10px;
   background:linear-gradient(120deg,#101923 0%,#183a34 100%);
   text-align:center;
-  box-shadow:0 8px 24px rgba(16,25,35,.12);
+  box-shadow:0 5px 16px rgba(16,25,35,.10);
 }
 .fr-welcome-banner h1{
-  margin:0;
+  margin:0 auto;
+  max-width:980px;
   color:#f4d58a;
-  font-size:clamp(23px,3vw,34px);
-  line-height:1.2;
+  font-size:clamp(18px,2.1vw,25px);
+  line-height:1.15;
   font-weight:850;
-  letter-spacing:-.025em;
+  letter-spacing:-.02em;
 }
 .fr-welcome-banner p{
-  margin:8px 0 0;
+  margin:4px 0 0;
   color:#f3f6f8;
-  font-size:clamp(14px,1.6vw,17px);
-  line-height:1.5;
+  font-size:clamp(12px,1.2vw,14px);
+  line-height:1.35;
 }
 @media(max-width:600px){
-  .fr-welcome-banner{width:calc(100% - 24px);margin:12px auto;padding:17px 14px}
+  .fr-welcome-banner{width:calc(100% - 24px);margin:7px auto;padding:10px 12px}
+  .fr-welcome-banner h1{font-size:18px}
+  .fr-welcome-banner p{font-size:12px}
 }
 </style>
 <section class="fr-welcome-banner" aria-labelledby="fr-welcome-title">
-  <h1 id="fr-welcome-title">Bienvenue sur TechnoFront.org : des sélections gagnantes pour vous aider à optimiser votre portefeuille.</h1>
-  <p>Vous trouverez ici des actions à surveiller, des penny stocks et des cryptomonnaies.</p>
+  <h1 id="fr-welcome-title">Bienvenue sur TechnoFront.org</h1>
+  <p>Actions, penny stocks et cryptomonnaies à surveiller.</p>
 </section>
 
 <!-- ACTION DU JOUR : TEST SUR LA PAGE FRANÇAISE -->
@@ -2812,13 +2815,31 @@ input, select, textarea, button {
   const chart=vals.length>1?'<svg viewBox="0 0 100 32" preserveAspectRatio="none" aria-label="Mini graphique sur trois mois"><polyline points="'+points+'"/></svg>':'<span>Historique à venir</span>';
   return '<a class="sp-top-pick" href="./recherche.html?ticker='+encodeURIComponent(p.ticker)+'&kind=main"><span class="sp-pick-rank">TOP PICK</span><span class="sp-pick-name">'+esc(p.company||p.ticker)+'</span><strong class="sp-pick-ticker">'+esc(p.ticker)+'</strong><strong class="sp-pick-price">'+money(p.price,p.currency)+'</strong><span class="sp-pick-change '+(up?'up':'down')+'">'+(up?'▲':'▼')+' '+(up?'+':'')+ch.toFixed(2)+' %</span><span class="sp-pick-chart">'+chart+'</span><small>ÉVOLUTION · 3 MOIS</small></a>';
  }
- function render(items){
-  if(!Array.isArray(items)||!items.length)return;
-  const cards=items.slice(0,3).map(card).join('');
-  const promo='<div class="sp-ticker-message"><strong>🏆 TOP 3 SÉLECTIONS STOCKPILOT</strong><span>ACTIONS · PENNY STOCKS · CRYPTO</span><b>100 % GRATUIT</b><small>Aucune barrière payante · Données informatives</small></div>';
-  track.innerHTML=promo+cards+promo+cards;
- }
- fetch('../data/picks.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Picks indisponibles');return r.json();}).then(d=>render(d.main)).catch(()=>{});
+ const promo='<div class="sp-ticker-message"><strong>🏆 TOP 3 SÉLECTIONS STOCKPILOT</strong><span>ACTIONS · PENNY STOCKS · CRYPTO</span><b>100 % GRATUIT</b><small>Aucune barrière payante · Données informatives</small></div>';
+  let latestItems=[],lastWidth=0;
+  function render(items){
+   if(!Array.isArray(items)||!items.length)return;
+   latestItems=items.slice(0,3);
+   const group=promo+latestItems.map(card).join('');
+   const measure=document.createElement('div');
+   measure.className='sp-ticker-track';
+   measure.style.cssText='position:absolute;left:-99999px;top:0;visibility:hidden;animation:none;width:max-content;padding:9px 0';
+   measure.innerHTML=group;
+   document.body.appendChild(measure);
+   const groupWidth=measure.getBoundingClientRect().width;
+   measure.remove();
+   const copies=Math.max(2,Math.ceil((window.innerWidth+80)/Math.max(groupWidth,1))+1);
+   const sequence=group.repeat(copies);
+   track.innerHTML=sequence+sequence;
+   track.style.animation='none';
+   void track.offsetWidth;
+   track.style.animation='';
+   lastWidth=window.innerWidth;
+  }
+  window.addEventListener('resize',()=>{
+   if(Math.abs(window.innerWidth-lastWidth)>100&&latestItems.length)render(latestItems);
+  });
+  fetch('../data/picks.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Picks indisponibles');return r.json();}).then(d=>render(d.main)).catch(()=>{});
 })();
 </script>
 <!-- The free-access message now appears in the two vertical side banners. -->
@@ -7593,3 +7614,13 @@ header{margin-bottom:0!important}
 </style>
 </body>
 </html>
+
+
+<!-- Keep the French Top Picks ribbon immediately below the compact welcome banner on desktop and mobile. -->
+<script id="sp-fr-welcome-ticker-order">
+(function(){
+ const welcome=document.querySelector('.fr-welcome-banner');
+ const ticker=document.querySelector('.sp-top-picks-ticker');
+ if(welcome&&ticker&&welcome.parentNode===ticker.parentNode)welcome.parentNode.insertBefore(ticker,welcome.nextSibling);
+})();
+</script>
