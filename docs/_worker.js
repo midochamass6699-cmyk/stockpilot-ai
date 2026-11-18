@@ -20,10 +20,12 @@ export default {
     if (!html.includes("/assets/privacy-consent.js")) {
       html = html.replace(/<\/head>/i, '<script defer src="/assets/privacy-consent.js"></script>\n</head>');
     }
-    if (["/", "/fr/", "/es/", "/de/", "/us/"].includes(url.pathname)) {
+    // Normalize directory routes so consent-gated advertising works at /fr, /fr/, or /fr/index.html.
+    const pagePath = url.pathname.replace(/index\.html$/i, "").replace(/\/$/, "") || "/";
+    if (["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) {
       html = html.replace(/<html\b/i, '<html data-site-advertising="true"');
     }
-    if (["/", "/de/", "/us/"].includes(url.pathname)) {
+    if (["/", "/de", "/us"].includes(pagePath)) {
       html = html.replace(/<html\b/i, '<html data-site-impact="true"');
     }
     const headers = new Headers(response.headers);
