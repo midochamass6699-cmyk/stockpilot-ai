@@ -2505,6 +2505,37 @@ input, select, textarea, button {
   <p>Vous trouverez ici des actions à surveiller, des penny stocks et des cryptomonnaies.</p>
 </section>
 
+<!-- ACTION DU JOUR : TEST SUR LA PAGE FRANÇAISE -->
+<style id="sp-fr-stock-of-day-style">
+#sp-fr-stock-of-day{display:flex;align-items:center;gap:14px;width:calc(100% - 32px);max-width:1180px;margin:0 auto 16px;padding:13px 18px;border:1px solid rgba(214,173,85,.72);border-left:4px solid #d6ad55;border-radius:12px;background:linear-gradient(100deg,#081a30,#102b49 58%,#0a1b31);color:#fff;text-decoration:none;box-shadow:0 5px 18px rgba(0,0,0,.16)}
+#sp-fr-stock-of-day .sp-day-logo{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;overflow:hidden;border-radius:10px;background:#fff;color:#102b49;font-size:17px;font-weight:950}
+#sp-fr-stock-of-day .sp-day-logo img{width:100%;height:100%;object-fit:contain;padding:5px}
+#sp-fr-stock-of-day .sp-day-copy{min-width:0;flex:1}
+#sp-fr-stock-of-day .sp-day-eyebrow{display:block;margin-bottom:3px;color:#f1d477;font-size:10px;font-weight:900;letter-spacing:.13em}
+#sp-fr-stock-of-day .sp-day-name{display:block;overflow:hidden;color:#fff;font-size:15px;font-weight:850;text-overflow:ellipsis;white-space:nowrap}
+#sp-fr-stock-of-day .sp-day-ticker{display:block;margin-top:2px;color:#b9cde3;font-size:11px;font-weight:750;letter-spacing:.08em}
+#sp-fr-stock-of-day .sp-day-cta{flex:0 0 auto;color:#f1d477;font-size:11px;font-weight:900}
+@media(max-width:600px){#sp-fr-stock-of-day{width:calc(100% - 24px);gap:10px;padding:11px 12px}#sp-fr-stock-of-day .sp-day-logo{width:42px;height:42px;flex-basis:42px}#sp-fr-stock-of-day .sp-day-name{font-size:13px}#sp-fr-stock-of-day .sp-day-cta{font-size:9px}}
+</style>
+<a id="sp-fr-stock-of-day" href="./recherche.html" aria-label="Action du jour StockPilot AI">
+ <span class="sp-day-logo" id="spFrDayLogo" aria-hidden="true">SP</span>
+ <span class="sp-day-copy"><span class="sp-day-eyebrow">★ ACTION DU JOUR</span><strong class="sp-day-name" id="spFrDayName">Chargement de la sélection…</strong><span class="sp-day-ticker" id="spFrDayTicker">SÉLECTION QUOTIDIENNE STOCKPILOT</span></span>
+ <span class="sp-day-cta">DÉCOUVRIR →</span>
+</a>
+<script id="sp-fr-stock-of-day-script">
+(function(){
+ const host=document.getElementById('sp-fr-stock-of-day');if(!host)return;
+ const name=document.getElementById('spFrDayName'),ticker=document.getElementById('spFrDayTicker'),logo=document.getElementById('spFrDayLogo');
+ fetch('../data/picks.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(d=>{
+  const p=Array.isArray(d.main)?d.main[0]:null;if(!p||!p.ticker)throw Error();
+  const symbol=String(p.ticker).toUpperCase();name.textContent=p.company||symbol;
+  ticker.textContent=symbol+' · '+(p.market==='Canada'?'BOURSE CANADIENNE':'BOURSE AMÉRICAINE');
+  host.href='./recherche.html?ticker='+encodeURIComponent(symbol)+'&kind=main';
+  const img=document.createElement('img');img.alt='';img.loading='lazy';img.src='https://financialmodelingprep.com/image-stock/'+encodeURIComponent(symbol)+'.png';img.onerror=()=>img.remove();logo.textContent=symbol.slice(0,2);logo.replaceChildren(img);
+ }).catch(()=>{name.textContent='Sélection du jour indisponible';ticker.textContent='Données temporairement indisponibles';});
+})();
+</script>
+
 <!-- STOCKPILOT AI : BANDEAU DES TOP 3 SÉLECTIONS -->
 <section class="sp-top-picks-ticker" aria-label="Les trois meilleures sélections StockPilot AI, cours et évolution">
  <div class="sp-ticker-track" id="spFrTopPicksTrack">
