@@ -3,28 +3,36 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://technofront.org/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://technofront.org/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://technofront.org/fr/"/>
+  <loc>https://technofront.org/</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://technofront.org/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://technofront.org/de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
 
   <url>
-    <loc>https://technofront.org/fr/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://technofront.org/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://technofront.org/fr/"/>
+  <loc>https://technofront.org/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://technofront.org/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://technofront.org/de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
+    <lastmod>2026-11-18</lastmod>
   </url>
 
   <url>
-    <loc>https://technofront.org/es/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://technofront.org/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://technofront.org/fr/"/>
+  <loc>https://technofront.org/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://technofront.org/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://technofront.org/de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
+    <lastmod>2026-11-18</lastmod>
   </url>
 
   <url>
@@ -48,7 +56,16 @@
     <loc>https://technofront.org/fr/courtiers.html</loc>
     <lastmod>2026-11-14</lastmod>
   </url>
-  <url><loc>https://technofront.org/de/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url>
+  <loc>https://technofront.org/de/</loc><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://technofront.org/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://technofront.org/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
+    <lastmod>2026-11-18</lastmod>
+  </url>
 
   <url>
     <loc>https://technofront.org/financial-education.html</loc>
@@ -97,14 +114,14 @@
   </url>
 
   <url>
-    <loc>https://technofront.org/us/</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/"/>
+  <loc>https://technofront.org/us/</loc>
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://technofront.org/de/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/"/>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://technofront.org/es/"/>
-    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://technofront.org/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/"/>
+    <lastmod>2026-11-18</lastmod>
   </url>
 
   <url>
