@@ -2327,6 +2327,7 @@ input, select, textarea, button {
 .tf-market-pulse-fallback{position:absolute;inset:0;z-index:0;display:flex;align-items:center;padding:0 14px;color:#d7e2f0;font:700 11px/1 Arial,sans-serif;letter-spacing:.035em;white-space:nowrap;overflow:hidden}
 .tf-market-pulse-livefeed .tradingview-widget-container{position:relative;z-index:1;width:100%!important;height:46px!important;background:transparent!important;overflow:hidden}
 .tf-market-pulse-livefeed .tradingview-widget-container__widget{width:100%;height:46px;overflow:hidden}
+.tf-market-pulse-livefeed:has(iframe) .tf-market-pulse-fallback{display:none!important}
 @media(max-width:600px){.tf-market-pulse{height:42px}.tf-market-pulse-brand{flex-basis:108px;padding:0 7px;gap:6px;font-size:9px;letter-spacing:.035em}.tf-market-pulse-livefeed,.tf-market-pulse-livefeed .tradingview-widget-container,.tf-market-pulse-livefeed .tradingview-widget-container__widget{height:42px!important}.tf-market-pulse-fallback{font-size:10px;padding:0 9px}}
 </style>
 <div class="tf-market-pulse" role="region" aria-label="ACTUALITÉS MARCHÉ">
@@ -2359,7 +2360,7 @@ input, select, textarea, button {
     ],
     "showSymbolLogo": true,
 "colorTheme": "dark",
-"isTransparent": true,
+"isTransparent": false,
     "displayMode": "adaptive",
     "locale": "fr"
   }
