@@ -121,7 +121,7 @@
     const b=document.createElement("section");b.id="tf-privacy-banner";b.setAttribute("role","region");b.setAttribute("aria-label",t[0]);
     b.innerHTML="<h2>"+t[0]+"</h2><p>"+t[1]+"</p><div class=\"tf-privacy-actions\">"+
       "<button class=\"tf-privacy-primary\" id=\"tf-privacy-accept\" type=\"button\">"+t[2]+"</button>"+
-      "<button class=\"tf-privacy-secondary\" id=\"tf-privacy-reject\" type=\"button\">"+t[3]+"</button>"+
+      "<button class=\"tf-privacy-primary\" id=\"tf-privacy-reject\" type=\"button\">"+t[3]+"</button>"+
       "<button class=\"tf-privacy-secondary\" id=\"tf-privacy-customize\" type=\"button\">"+t[4]+"</button></div>";
     document.body.appendChild(b);
     b.querySelector("#tf-privacy-accept").addEventListener("click",()=>saveChoice({analytics:true,advertising:true}));
