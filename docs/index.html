@@ -2271,10 +2271,23 @@ input, select, textarea, button {
 </style>
 
 <style id="stockpilot-visitor-counter-style">
-#stockpilot-visitor-number{display:flex;justify-content:flex-end;align-items:center;gap:5px;max-width:1200px;margin:0 auto;padding:0 20px 7px;color:#f4d35e;font:700 11px/1.3 Arial,sans-serif;white-space:nowrap}
-#stockpilot-visitor-number strong{color:#fff;font-size:13px;font-variant-numeric:tabular-nums}
+.nav-bottom-row{position:relative;display:flex;align-items:center;justify-content:flex-end;flex:1 0 100%;width:100%;min-height:44px}
+#stockpilot-visitor-number{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px;padding:9px 17px;border:1px solid #e8b900;border-radius:999px;background:#202020;color:#ffd629;font:800 14px/1.15 Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;box-shadow:0 2px 9px #0006;z-index:2}
+#stockpilot-visitor-number strong{color:#fff;font-size:17px;font-variant-numeric:tabular-nums}
 #stockpilot-visitor-number .visitor-short{display:none}
-@media(max-width:600px){#stockpilot-visitor-number{padding:0 12px 6px;font-size:10px}#stockpilot-visitor-number .visitor-full{display:none}#stockpilot-visitor-number .visitor-short{display:inline}}
+@media(max-width:760px){
+ .nav-bottom-row{min-height:40px;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px solid #ffffff2b}
+ #stockpilot-visitor-number{position:relative;left:auto;top:auto;transform:none;padding:7px 10px;font-size:12px;gap:5px}
+ #stockpilot-visitor-number strong{font-size:15px}
+ #stockpilot-visitor-number .visitor-full{display:none}
+ #stockpilot-visitor-number .visitor-short{display:inline}
+ .topbar .language-switch{justify-content:flex-end;align-self:auto;justify-self:auto;padding-top:0;margin:0 0 0 auto!important;border-top:0;gap:6px}
+ .topbar .language-switch a{padding:5px 2px}
+}
+@media(max-width:390px){
+ #stockpilot-visitor-number{padding:6px 8px;font-size:11px}
+ #stockpilot-visitor-number strong{font-size:14px}
+}
 </style>
 
 </head>
@@ -2299,21 +2312,7 @@ input, select, textarea, button {
 <a href="/ai-assisted-trading.html">AI TRADING</a>
 <a href="/margin-account-guide.html">MARGIN GUIDE</a>
 </div>
-<div aria-label="Choose language" class="language-switch">
-<a class="edition-link" href="/" lang="en-CA" aria-label="Canadian edition">🇨🇦 CANADA</a>
-<a class="edition-link" href="/us/" lang="en-US" aria-label="United States edition">🇺🇸 UNITED STATES</a>
-<span aria-hidden="true">|</span><a href="/de/" lang="de" aria-label="Deutsch">DE</a>
-<a href="/fr/" lang="fr">FR</a>
-<span aria-hidden="true">|</span>
-<a href="/es/" lang="es">ES</a>
-</div>
-</div>
-<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
-<span></span><span></span><span></span>
-</button>
-</nav>
-<div id="stockpilot-visitor-number" aria-live="polite"><span class="visitor-full">You are visitor #</span><span class="visitor-short">Visitor #</span><strong id="stockpilot-visitor-value">…</strong></div>
-
+<div class="nav-bottom-row">
 </header>
 <style id="tf-market-pulse-style">
 .tf-market-pulse{width:100%;height:46px;box-sizing:border-box;display:flex;align-items:stretch;overflow:hidden;background:#101b2b;border-top:1px solid #263b55;border-bottom:1px solid #263b55;font-family:Arial,sans-serif}
