@@ -8140,32 +8140,32 @@ body{font-size:16px}
 </style>
 
 <style id="sp-merged-stock-terminal-style">
-/* Slim single-banner layout: prioritize only the key stock details and terminal link. */
-#sp-stock-of-day{box-sizing:border-box!important;display:flex!important;flex-flow:row nowrap!important;align-items:center!important;gap:10px!important;padding:8px 12px!important;margin:8px auto 12px!important;min-height:0!important;height:auto!important;max-width:100%;overflow:hidden!important}
+/* Keep every banner element grouped together around the center. */
+#sp-stock-of-day{box-sizing:border-box!important;display:flex!important;flex-flow:row nowrap!important;align-items:center!important;justify-content:center!important;gap:10px!important;padding:8px 12px!important;margin:8px auto 12px!important;min-height:0!important;height:auto!important;width:fit-content!important;max-width:100%!important;overflow:hidden!important}
 #sp-stock-of-day *{box-sizing:border-box;min-width:0}
 #sp-stock-of-day .sp-day-logo{width:34px!important;height:34px!important;min-width:34px!important;flex:0 0 34px!important;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #sp-stock-of-day .sp-day-logo img{width:100%;height:100%;object-fit:contain}
-#sp-stock-of-day .sp-day-copy{display:flex!important;flex:1 1 170px!important;flex-direction:column!important;gap:1px!important;min-width:120px!important;overflow:hidden}
+#sp-stock-of-day .sp-day-copy{display:flex!important;flex:0 1 185px!important;flex-direction:column!important;gap:1px!important;min-width:105px!important;max-width:185px!important;overflow:hidden}
 #sp-stock-of-day .sp-day-eyebrow{font-size:9px!important;line-height:1.15!important;letter-spacing:.06em;white-space:nowrap}
 #sp-stock-of-day .sp-day-name{display:block!important;font-size:14px!important;line-height:1.2!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
 #sp-stock-of-day .sp-day-ticker{display:block!important;font-size:10px!important;line-height:1.2!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
 #sp-stock-of-day .sp-day-meta{display:none!important}
-#sp-stock-of-day .sp-day-stats{display:flex!important;flex:0 1 auto!important;flex-flow:row nowrap!important;align-items:center!important;gap:12px!important;padding:0!important;margin:0!important;border:0!important}
+#sp-stock-of-day .sp-day-stats{display:flex!important;flex:0 0 auto!important;flex-flow:row nowrap!important;align-items:center!important;gap:12px!important;padding:0!important;margin:0!important;border:0!important}
 #sp-stock-of-day .sp-day-stat{display:flex!important;flex:0 1 auto!important;flex-direction:column!important;gap:1px!important;min-width:0!important}
 #sp-stock-of-day .sp-day-stat:nth-child(n+3){display:none!important}
 #sp-stock-of-day .sp-day-stat-label{display:block!important;font-size:9px!important;line-height:1.1!important;white-space:nowrap!important}
 #sp-stock-of-day .sp-day-stat-value{display:block!important;font-size:13px!important;line-height:1.15!important;white-space:nowrap!important}
 #sp-stock-of-day .sp-day-updated,#sp-stock-of-day .sp-day-source{display:none!important}
-#sp-stock-of-day .sp-day-terminal-copy{display:flex!important;flex:0 1 auto!important;flex-direction:column!important;gap:1px!important;min-width:0!important;padding:0 0 0 10px!important;border-left:1px solid #ffffff30!important;white-space:nowrap}
+#sp-stock-of-day .sp-day-terminal-copy{display:flex!important;flex:0 0 auto!important;flex-direction:column!important;gap:1px!important;min-width:0!important;padding:0 0 0 10px!important;border-left:1px solid #ffffff30!important;white-space:nowrap}
 #sp-stock-of-day .sp-day-terminal-copy strong{display:block!important;color:#f1d477;font-size:10px!important;line-height:1.2!important;white-space:nowrap}
 #sp-stock-of-day .sp-day-terminal-copy small{display:none!important}
 #sp-stock-of-day .sp-day-terminal-link{display:inline-flex!important;flex:0 0 auto!important;align-items:center!important;justify-content:center!important;padding:7px 9px!important;border:1px solid #f1d477!important;border-radius:6px!important;background:#f1d477!important;color:#102033!important;font-size:10px!important;font-weight:900!important;line-height:1.15!important;text-decoration:none!important;white-space:nowrap!important}
 #sp-stock-of-day .sp-day-cta{display:inline-block!important;flex:0 0 auto!important;margin:0!important;padding:0!important;font-size:10px!important;line-height:1.2!important;white-space:nowrap!important;color:#f1d477!important}
 #sp-stock-of-day .sp-day-bell{display:inline-flex!important;flex:0 0 28px!important;width:28px!important;height:28px!important;min-width:28px!important;align-items:center!important;justify-content:center!important;padding:0!important}
 @media(max-width:760px){
-#sp-stock-of-day{flex-wrap:wrap!important;gap:6px 9px!important;padding:8px 10px!important}
+#sp-stock-of-day{width:100%!important;flex-wrap:wrap!important;gap:6px 9px!important;padding:8px 10px!important}
 #sp-stock-of-day .sp-day-logo{width:30px!important;height:30px!important;min-width:30px!important;flex-basis:30px!important}
-#sp-stock-of-day .sp-day-copy{flex:1 1 145px!important;min-width:110px!important}
+#sp-stock-of-day .sp-day-copy{flex:0 1 145px!important;min-width:100px!important;max-width:145px!important}
 #sp-stock-of-day .sp-day-stats{flex:0 0 auto!important;gap:9px!important}
 #sp-stock-of-day .sp-day-stat-label{font-size:8px!important}
 #sp-stock-of-day .sp-day-stat-value{font-size:12px!important}
@@ -8175,10 +8175,10 @@ body{font-size:16px}
 #sp-stock-of-day .sp-day-bell{width:25px!important;height:25px!important;min-width:25px!important;flex-basis:25px!important}
 }
 @media(max-width:420px){
+#sp-stock-of-day{justify-content:center!important}
 #sp-stock-of-day .sp-day-stats{gap:7px!important}
 #sp-stock-of-day .sp-day-stat:nth-child(2){display:none!important}
 #sp-stock-of-day .sp-day-terminal-copy{display:none!important}
-#sp-stock-of-day .sp-day-terminal-link{margin-left:auto!important}
 }
 </style>
 </body>
