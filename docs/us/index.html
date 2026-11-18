@@ -8140,49 +8140,45 @@ body{font-size:16px}
 </style>
 
 <style id="sp-merged-stock-terminal-style">
-/* Collision-proof layout: each information group gets its own grid row. */
-#sp-stock-of-day{box-sizing:border-box;display:grid!important;grid-template-columns:48px minmax(0,1fr) auto;grid-template-rows:auto auto auto auto auto;align-items:center;column-gap:13px;row-gap:9px;padding:14px 16px!important;margin:10px auto 14px!important;min-width:0;overflow:visible}
+/* Slim single-banner layout: prioritize only the key stock details and terminal link. */
+#sp-stock-of-day{box-sizing:border-box!important;display:flex!important;flex-flow:row nowrap!important;align-items:center!important;gap:10px!important;padding:8px 12px!important;margin:8px auto 12px!important;min-height:0!important;height:auto!important;max-width:100%;overflow:hidden!important}
 #sp-stock-of-day *{box-sizing:border-box;min-width:0}
-#sp-stock-of-day .sp-day-logo{grid-column:1;grid-row:1 / span 2;align-self:center}
-#sp-stock-of-day .sp-day-copy{grid-column:2 / 4;grid-row:1;align-self:center;min-width:0;display:flex;flex-direction:column;gap:3px}
-#sp-stock-of-day .sp-day-name{display:block;line-height:1.25!important;overflow-wrap:anywhere;white-space:normal}
-#sp-stock-of-day .sp-day-ticker,#sp-stock-of-day .sp-day-meta{display:block;line-height:1.4!important;overflow-wrap:anywhere}
-#sp-stock-of-day .sp-day-stats{grid-column:1 / -1;grid-row:2;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:10px 16px;padding-top:9px;border-top:1px solid #ffffff25}
-#sp-stock-of-day .sp-day-stat{flex:1 1 82px;min-width:72px;display:flex;flex-direction:column;gap:3px}
-#sp-stock-of-day .sp-day-stat-label{display:block;line-height:1.3!important;overflow-wrap:anywhere}
-#sp-stock-of-day .sp-day-stat-value{display:block;line-height:1.25!important;white-space:normal;overflow-wrap:anywhere}
-#sp-stock-of-day .sp-day-updated{display:block;line-height:1.3}
-#sp-stock-of-day .sp-day-source{grid-column:1 / -1;grid-row:3;display:block;line-height:1.35;overflow-wrap:anywhere}
-#sp-stock-of-day .sp-day-terminal-copy{grid-column:1 / 3;grid-row:4;align-self:center;min-width:0;border-left:1px solid #ffffff30;padding-left:13px}
-#sp-stock-of-day .sp-day-terminal-copy strong{display:block;color:#f1d477;font-size:12px;font-weight:950;letter-spacing:.07em;line-height:1.35;overflow-wrap:anywhere}
-#sp-stock-of-day .sp-day-terminal-copy small{display:block;margin-top:4px;color:#d3e0ef;font-size:11px;font-weight:750;line-height:1.45;white-space:normal;overflow-wrap:anywhere}
-#sp-stock-of-day .sp-day-terminal-link{grid-column:3;grid-row:4;align-self:center;justify-self:end;display:inline-flex;justify-content:center;align-items:center;max-width:100%;white-space:normal;text-align:center;overflow-wrap:anywhere;padding:10px 12px;border:1px solid #f1d477;border-radius:7px;background:#f1d477;color:#102033!important;text-decoration:none;font-size:12px;font-weight:950;line-height:1.3}
-#sp-stock-of-day .sp-day-terminal-link:hover{background:#ffe69a}
-#sp-stock-of-day .sp-day-cta{grid-column:2;grid-row:5;justify-self:start;align-self:center;display:inline-block;max-width:100%;font-size:12px!important;line-height:1.4!important;color:#f1d477;text-decoration:underline;text-underline-offset:3px;white-space:normal}
-#sp-stock-of-day .sp-day-bell{grid-column:3;grid-row:5;justify-self:end;align-self:center}
-#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-source{display:none}
-#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-terminal-copy{grid-column:1 / 3}
+#sp-stock-of-day .sp-day-logo{width:34px!important;height:34px!important;min-width:34px!important;flex:0 0 34px!important;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#sp-stock-of-day .sp-day-logo img{width:100%;height:100%;object-fit:contain}
+#sp-stock-of-day .sp-day-copy{display:flex!important;flex:1 1 170px!important;flex-direction:column!important;gap:1px!important;min-width:120px!important;overflow:hidden}
+#sp-stock-of-day .sp-day-eyebrow{font-size:9px!important;line-height:1.15!important;letter-spacing:.06em;white-space:nowrap}
+#sp-stock-of-day .sp-day-name{display:block!important;font-size:14px!important;line-height:1.2!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+#sp-stock-of-day .sp-day-ticker{display:block!important;font-size:10px!important;line-height:1.2!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+#sp-stock-of-day .sp-day-meta{display:none!important}
+#sp-stock-of-day .sp-day-stats{display:flex!important;flex:0 1 auto!important;flex-flow:row nowrap!important;align-items:center!important;gap:12px!important;padding:0!important;margin:0!important;border:0!important}
+#sp-stock-of-day .sp-day-stat{display:flex!important;flex:0 1 auto!important;flex-direction:column!important;gap:1px!important;min-width:0!important}
+#sp-stock-of-day .sp-day-stat:nth-child(n+3){display:none!important}
+#sp-stock-of-day .sp-day-stat-label{display:block!important;font-size:9px!important;line-height:1.1!important;white-space:nowrap!important}
+#sp-stock-of-day .sp-day-stat-value{display:block!important;font-size:13px!important;line-height:1.15!important;white-space:nowrap!important}
+#sp-stock-of-day .sp-day-updated,#sp-stock-of-day .sp-day-source{display:none!important}
+#sp-stock-of-day .sp-day-terminal-copy{display:flex!important;flex:0 1 auto!important;flex-direction:column!important;gap:1px!important;min-width:0!important;padding:0 0 0 10px!important;border-left:1px solid #ffffff30!important;white-space:nowrap}
+#sp-stock-of-day .sp-day-terminal-copy strong{display:block!important;color:#f1d477;font-size:10px!important;line-height:1.2!important;white-space:nowrap}
+#sp-stock-of-day .sp-day-terminal-copy small{display:none!important}
+#sp-stock-of-day .sp-day-terminal-link{display:inline-flex!important;flex:0 0 auto!important;align-items:center!important;justify-content:center!important;padding:7px 9px!important;border:1px solid #f1d477!important;border-radius:6px!important;background:#f1d477!important;color:#102033!important;font-size:10px!important;font-weight:900!important;line-height:1.15!important;text-decoration:none!important;white-space:nowrap!important}
+#sp-stock-of-day .sp-day-cta{display:inline-block!important;flex:0 0 auto!important;margin:0!important;padding:0!important;font-size:10px!important;line-height:1.2!important;white-space:nowrap!important;color:#f1d477!important}
+#sp-stock-of-day .sp-day-bell{display:inline-flex!important;flex:0 0 28px!important;width:28px!important;height:28px!important;min-width:28px!important;align-items:center!important;justify-content:center!important;padding:0!important}
 @media(max-width:760px){
-#sp-stock-of-day{grid-template-columns:42px minmax(0,1fr);grid-template-rows:auto auto auto auto auto auto;gap:9px 10px;padding:13px 12px!important}
-#sp-stock-of-day .sp-day-logo{grid-column:1;grid-row:1;width:42px;height:42px;flex-basis:42px}
-#sp-stock-of-day .sp-day-copy{grid-column:2;grid-row:1}
-#sp-stock-of-day .sp-day-name{font-size:16px!important}
-#sp-stock-of-day .sp-day-ticker,#sp-stock-of-day .sp-day-meta{font-size:12px!important}
-#sp-stock-of-day .sp-day-stats{grid-column:1 / -1;grid-row:2;gap:9px 12px;padding-top:9px}
-#sp-stock-of-day .sp-day-stat{flex:1 1 68px;min-width:64px}
-#sp-stock-of-day .sp-day-stat-label{font-size:10px!important}
-#sp-stock-of-day .sp-day-stat-value{font-size:14px!important}
-#sp-stock-of-day .sp-day-source{grid-column:1 / -1;grid-row:3}
-#sp-stock-of-day .sp-day-terminal-copy{grid-column:1 / -1;grid-row:4;border-left:0;border-top:1px solid #ffffff25;padding:9px 0 0}
-#sp-stock-of-day .sp-day-terminal-copy strong{font-size:12px}
-#sp-stock-of-day .sp-day-terminal-copy small{font-size:11px}
-#sp-stock-of-day .sp-day-terminal-link{grid-column:2;grid-row:5;justify-self:start;padding:10px 12px}
-#sp-stock-of-day .sp-day-cta{grid-column:2;grid-row:6;font-size:12px!important}
-#sp-stock-of-day .sp-day-bell{grid-column:1;grid-row:6;justify-self:start;width:30px;height:30px;min-width:30px}
-#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-terminal-copy{grid-column:1 / -1;grid-row:2}
-#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-terminal-link{grid-column:2;grid-row:3}
-#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-cta{grid-column:2;grid-row:4}
-#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-bell{grid-column:1;grid-row:4}
+#sp-stock-of-day{flex-wrap:wrap!important;gap:6px 9px!important;padding:8px 10px!important}
+#sp-stock-of-day .sp-day-logo{width:30px!important;height:30px!important;min-width:30px!important;flex-basis:30px!important}
+#sp-stock-of-day .sp-day-copy{flex:1 1 145px!important;min-width:110px!important}
+#sp-stock-of-day .sp-day-stats{flex:0 0 auto!important;gap:9px!important}
+#sp-stock-of-day .sp-day-stat-label{font-size:8px!important}
+#sp-stock-of-day .sp-day-stat-value{font-size:12px!important}
+#sp-stock-of-day .sp-day-terminal-copy{padding-left:8px!important}
+#sp-stock-of-day .sp-day-terminal-link{padding:7px 8px!important;font-size:9px!important}
+#sp-stock-of-day .sp-day-cta{font-size:9px!important}
+#sp-stock-of-day .sp-day-bell{width:25px!important;height:25px!important;min-width:25px!important;flex-basis:25px!important}
+}
+@media(max-width:420px){
+#sp-stock-of-day .sp-day-stats{gap:7px!important}
+#sp-stock-of-day .sp-day-stat:nth-child(2){display:none!important}
+#sp-stock-of-day .sp-day-terminal-copy{display:none!important}
+#sp-stock-of-day .sp-day-terminal-link{margin-left:auto!important}
 }
 </style>
 </body>
