@@ -67,6 +67,21 @@
     if (!advertisingPage || advertisingLoaded) return;
     advertisingLoaded = true;
     const a=document.createElement("script"); a.async=true; a.crossOrigin="anonymous"; a.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+ADS_CLIENT; document.head.appendChild(a);
+    const kitco=document.getElementById("tf-kitco-fr-ad");
+    if(kitco && !kitco.hasChildNodes()){
+      const link=document.createElement("a");
+      link.href="https://www.awin1.com/cread.php?s=4710617&v=84579&q=505707&r=3074803";
+      link.rel="sponsored";
+      link.target="_blank";
+      link.setAttribute("aria-label","Voir Kitco (annonce partenaire)");
+      const img=document.createElement("img");
+      img.src="https://www.awin1.com/cshow.php?s=4710617&v=84579&q=505707&r=3074803";
+      img.alt="Kitco — métaux précieux";
+      img.loading="lazy";
+      img.decoding="async";
+      link.appendChild(img);
+      kitco.appendChild(link);
+    }
     if (impactPage) {
       const i=document.createElement("script"); i.async=true; i.src=IMPACT_SRC;
       i.onload=()=>{try{if(window.impactStat){window.impactStat("transformLinks");window.impactStat("trackImpression");}}catch(_){}};
