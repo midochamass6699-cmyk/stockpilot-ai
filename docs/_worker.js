@@ -22,7 +22,7 @@ export default {
     }
     // Normalize directory routes so consent-gated advertising works at /fr, /fr/, or /fr/index.html.
     const pagePath = url.pathname.replace(/index\.html$/i, "").replace(/\/$/, "") || "/";
-    if (["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) {
+    if (["/", "/fr", "/es", "/de", "/us"].includes(pagePath) && !/\bdata-site-advertising=/i.test(html.slice(0, html.indexOf(">") + 1))) {
       html = html.replace(/<html\b/i, '<html data-site-advertising="true"');
     }
     if (["/", "/de", "/us"].includes(pagePath)) {
