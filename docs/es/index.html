@@ -1880,9 +1880,21 @@ html, body { background-color:#F1F5FA !important; }
 </button>
 </nav>
 </header>
-
-<!-- STOCKPILOT AI MARKET TICKER -->
-<div class="tradingview-widget-container"
+<style id="tf-market-pulse-style">
+.tf-market-pulse{width:100%;height:46px;box-sizing:border-box;display:flex;align-items:stretch;overflow:hidden;background:#101b2b;border-top:1px solid #263b55;border-bottom:1px solid #263b55;font-family:Arial,sans-serif}
+.tf-market-pulse-brand{flex:0 0 132px;min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 10px;box-sizing:border-box;background:#14243b;color:#f2c66d;font-size:10px;font-weight:900;letter-spacing:.07em;white-space:nowrap;position:relative;z-index:3}
+.tf-market-pulse-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#35c98a;box-shadow:0 0 0 3px #35c98a22}
+.tf-market-pulse-livefeed{position:relative;flex:1;min-width:0;height:46px;overflow:hidden;background:#101b2b}
+.tf-market-pulse-fallback{position:absolute;inset:0;z-index:0;display:flex;align-items:center;padding:0 14px;color:#d7e2f0;font:700 11px/1 Arial,sans-serif;letter-spacing:.035em;white-space:nowrap;overflow:hidden}
+.tf-market-pulse-livefeed .tradingview-widget-container{position:relative;z-index:1;width:100%!important;height:46px!important;background:transparent!important;overflow:hidden}
+.tf-market-pulse-livefeed .tradingview-widget-container__widget{width:100%;height:46px;overflow:hidden}
+@media(max-width:600px){.tf-market-pulse{height:42px}.tf-market-pulse-brand{flex-basis:108px;padding:0 7px;gap:6px;font-size:9px;letter-spacing:.035em}.tf-market-pulse-livefeed,.tf-market-pulse-livefeed .tradingview-widget-container,.tf-market-pulse-livefeed .tradingview-widget-container__widget{height:42px!important}.tf-market-pulse-fallback{font-size:10px;padding:0 9px}}
+</style>
+<div class="tf-market-pulse" role="region" aria-label="PULSO DEL MERCADO">
+  <div class="tf-market-pulse-brand"><span class="tf-market-pulse-dot" aria-hidden="true"></span><strong>PULSO DEL MERCADO</strong></div>
+  <div class="tf-market-pulse-livefeed">
+    <div class="tf-market-pulse-fallback" aria-hidden="true">S&P 500  ·  NASDAQ  ·  DOW JONES  ·  TSX  ·  APPLE  ·  NVIDIA  ·  BITCOIN  ·  ETHEREUM</div>
+    <div class="tradingview-widget-container"
      style="width:100%; height:46px; background:#ffffff;">
 
   <div class="tradingview-widget-container__widget"></div>
@@ -1910,13 +1922,19 @@ html, body { background-color:#F1F5FA !important; }
       {"proName":"BITSTAMP:ETHUSD","title":"ETHEREUM"}
     ],
     "showSymbolLogo": true,
-"colorTheme": "light",
-"isTransparent": false,
+"colorTheme": "dark",
+"isTransparent": true,
     "displayMode": "adaptive",
     "locale": "es"
   }
   </script>
 </div>
+  </div>
+</div>
+
+
+<!-- STOCKPILOT AI MARKET TICKER -->
+
 <!-- END STOCKPILOT AI MARKET TICKER -->
 
 <!-- MOVING BANNER -->
