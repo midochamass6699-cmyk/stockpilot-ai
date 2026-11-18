@@ -25,7 +25,6 @@ export default {
     }
     const headers = new Headers(response.headers);
     headers.delete("content-length"); headers.delete("content-encoding"); headers.delete("etag");
-    headers.set("cache-control", "public, max-age=0, must-revalidate");
     return new Response(html, { status: response.status, statusText: response.statusText, headers });
   }
 };
