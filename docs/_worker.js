@@ -23,6 +23,9 @@ export default {
     if (["/", "/fr/", "/es/", "/de/", "/us/"].includes(url.pathname)) {
       html = html.replace(/<html\b/i, '<html data-site-advertising="true"');
     }
+    if (["/", "/de/", "/us/"].includes(url.pathname)) {
+      html = html.replace(/<html\b/i, '<html data-site-impact="true"');
+    }
     const headers = new Headers(response.headers);
     headers.delete("content-length"); headers.delete("content-encoding"); headers.delete("etag");
     return new Response(html, { status: response.status, statusText: response.statusText, headers });
