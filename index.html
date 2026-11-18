@@ -87,7 +87,7 @@
 @media(max-width:600px){.contact-form{grid-template-columns:1fr}.contact-form .full{grid-column:auto}.contact-form button{width:100%}}
 
 /* StockPilot unique visitor number */
-.visitor-counter{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;margin-left:auto;padding:6px 10px;border:1px solid #5b542f;border-radius:7px;background:#171717;color:#f4d35e;font-size:11px;font-weight:700;white-space:nowrap;line-height:1.2}
+.visitor-counter[hidden]{display:none}.visitor-counter{display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;margin-left:auto;padding:6px 10px;border:1px solid #5b542f;border-radius:7px;background:#171717;color:#f4d35e;font-size:11px;font-weight:700;white-space:nowrap;line-height:1.2}
 .visitor-counter strong{color:#fff;font-size:13px;font-variant-numeric:tabular-nums}
 @media(max-width:760px){.visitor-counter{align-self:flex-end;margin-top:-3px;margin-left:0;padding:5px 8px;font-size:10px}.visitor-counter strong{font-size:12px}}
 
@@ -107,7 +107,7 @@
 </style>
 </head>
 <body>
-<header class="topbar"><nav class="nav"><a class="brand" href="#top"><span class="brandmark">↗</span> STOCKPILOT AI</a><div class="navlinks"><a href="#top">HOME</a><a href="#crypto-picks">TOP CRYPTO</a><a href="#main-picks">DAILY PICKS</a><a href="#market-insights">MARKET INSIGHTS</a><a href="#financial-resources">RESOURCES</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a><a class="nav-cta" href="#discussion">DISCUSSION</a></div></nav><span id="stockpilot-visitor-number" class="visitor-counter" aria-live="polite" hidden><span class="visitor-full">You are visitor #</span><span class="visitor-short">Visitor #</span><strong id="stockpilot-visitor-value"></strong></span></header>
+<header class="topbar"><nav class="nav"><a class="brand" href="#top"><span class="brandmark">↗</span> STOCKPILOT AI</a><div class="navlinks"><a href="#top">HOME</a><a href="#crypto-picks">TOP CRYPTO</a><a href="#main-picks">DAILY PICKS</a><a href="#market-insights">MARKET INSIGHTS</a><a href="#financial-resources">RESOURCES</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a><a class="nav-cta" href="#discussion">DISCUSSION</a></div><span id="stockpilot-visitor-number" class="visitor-counter" aria-live="polite" hidden><span class="visitor-full">You are visitor #</span><span class="visitor-short">Visitor #</span><strong id="stockpilot-visitor-value"></strong></span></nav></header>
 <details class="fx-converter" id="stockpilot-fx-converter">
   <summary>USD ⇄ CAD Converter</summary>
   <div class="fx-panel">
