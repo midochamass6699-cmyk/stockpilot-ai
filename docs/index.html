@@ -4643,30 +4643,41 @@ setInterval(loadStocks,15 * 60 * 1000);
 })();
 </script>
 <!-- STOCKPILOT AI FREE-ACCESS SIDE BANNERS -->
-<aside aria-label="StockPilot AI top market watchlists" class="free-side-banner" id="free-left-banner">
-  <div class="sp-side-picks">
-    <div class="sp-side-heading">
-      <span class="sp-side-star" aria-hidden="true">✦</span>
-      <strong>TOP 3 PICKS</strong>
-      <small>STOCKPILOT WATCHLIST</small>
+<aside aria-label="StockPilot AI website directory" class="free-side-banner" id="free-left-banner">
+  <div class="sp-directory">
+    <div class="sp-directory-head">
+      <span aria-hidden="true">✦</span>
+      <strong>EXPLORE STOCKPILOT</strong>
+      <small>YOUR PLATFORM DIRECTORY</small>
     </div>
-    <section class="sp-side-group" aria-label="Selected stocks">
-      <h2>STOCKS</h2>
-      <div class="sp-side-list" id="sideMainPicks"><span class="sp-side-loading">Loading picks…</span></div>
-    </section>
-    <section class="sp-side-group sp-side-penny" aria-label="Selected penny stocks">
-      <h2>PENNY STOCKS</h2>
-      <div class="sp-side-list" id="sidePennyPicks"><span class="sp-side-loading">Loading picks…</span></div>
-    </section>
-    <section class="sp-side-group sp-side-crypto" aria-label="Leading cryptocurrencies">
-      <h2>CRYPTO</h2>
-      <div class="sp-side-list" id="sideCryptoPicks"><span class="sp-side-loading">Loading market data…</span></div>
-    </section>
-    <div class="sp-side-footer">
-      <strong>100% FREE</strong>
-      <span>NO PAYWALL</span>
-      <small>Research only · Not financial advice</small>
-    </div>
+    <nav class="sp-directory-links" aria-label="Explore StockPilot AI">
+      <section class="sp-directory-group">
+        <h2>MARKET PICKS</h2>
+        <a href="#main-picks"><span>↗</span> Top Stocks</a>
+        <a href="#penny-picks"><span>↗</span> Penny Stocks</a>
+        <a href="#crypto-picks"><span>↗</span> Cryptocurrency</a>
+      </section>
+      <section class="sp-directory-group">
+        <h2>RESEARCH &amp; ANALYSIS</h2>
+        <a href="#quick-stock-lookup"><span>↗</span> Stock Lookup</a>
+        <a href="#market-coverage"><span>↗</span> Market Coverage</a>
+        <a href="#selection-methodology"><span>↗</span> Selection Method</a>
+      </section>
+      <section class="sp-directory-group">
+        <h2>INVESTING TOOLS</h2>
+        <a href="#broker-directory"><span>↗</span> Broker Directory</a>
+        <a href="/options-explained.html"><span>↗</span> Options Guide</a>
+        <a href="/ai-assisted-trading.html"><span>↗</span> AI Trading</a>
+        <a href="/financial-education.html"><span>↗</span> Investor Education</a>
+      </section>
+      <section class="sp-directory-group">
+        <h2>MARKET INSIGHTS</h2>
+        <a href="#market-insights"><span>↗</span> Insights &amp; Updates</a>
+        <a href="#financial-resources"><span>↗</span> Financial Resources</a>
+      </section>
+    </nav>
+    <a class="sp-directory-subscribe" href="#stockpilot-alert-signup"><span aria-hidden="true">♢</span> GET FREE DAILY UPDATES</a>
+    <div class="sp-directory-foot">100% FREE <span>·</span> RESEARCH ONLY</div>
   </div>
 </aside>
 <!-- Legacy sidebar loader disabled; consolidated loader below updates every banner target. -->
@@ -8594,3 +8605,24 @@ header{margin-bottom:0!important}
 </script>
 </body>
 </html>
+
+
+<style id="stockpilot-left-directory-style">
+/* Left skyscraper becomes a compact, clickable site directory. */
+#free-left-banner{height:570px!important;background:linear-gradient(180deg,#102746 0%,#07182D 100%)!important;border:1px solid #29466B!important;overflow:hidden!important}
+#free-left-banner .sp-directory{height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:12px 9px 9px;color:#eef5ff;font-family:Arial,sans-serif;text-align:left}
+#free-left-banner .sp-directory-head{text-align:center;padding:1px 0 10px;border-bottom:1px solid #345276}
+#free-left-banner .sp-directory-head>span{display:block;color:#f2c66d;font-size:18px;line-height:1.1;margin-bottom:4px}
+#free-left-banner .sp-directory-head strong{display:block;color:#fff;font-size:12px;line-height:1.2;letter-spacing:.055em}
+#free-left-banner .sp-directory-head small{display:block;color:#9fc5f5;font-size:7px;font-weight:800;letter-spacing:.12em;margin-top:5px}
+#free-left-banner .sp-directory-links{display:flex;flex-direction:column;gap:9px;padding:10px 0 8px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#526f91 transparent}
+#free-left-banner .sp-directory-group h2{margin:0 0 4px;color:#f2c66d;font-size:8px;line-height:1.2;letter-spacing:.12em}
+#free-left-banner .sp-directory-group a{display:flex;align-items:center;gap:5px;padding:4px 4px;border-radius:4px;color:#e8f0fb;text-decoration:none;font-size:9px;font-weight:700;line-height:1.25}
+#free-left-banner .sp-directory-group a span{color:#78aef2;font-size:10px}
+#free-left-banner .sp-directory-group a:hover,#free-left-banner .sp-directory-group a:focus-visible{background:#1b3c60;color:#fff;outline:1px solid #78aef2}
+#free-left-banner .sp-directory-subscribe{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:auto;padding:8px 4px;border:1px solid #d7b95c;border-radius:6px;background:linear-gradient(90deg,#f2c66d,#e9b94d);color:#142238;text-align:center;text-decoration:none;font-size:8px;font-weight:900;letter-spacing:.025em}
+#free-left-banner .sp-directory-subscribe:hover{filter:brightness(1.08)}
+#free-left-banner .sp-directory-foot{padding-top:7px;text-align:center;color:#b9cce3;font-size:7px;font-weight:800;letter-spacing:.08em}
+#free-left-banner .sp-directory-foot span{color:#f2c66d;padding:0 3px}
+@media(prefers-reduced-motion:reduce){#free-left-banner .sp-directory-group a{transition:none}}
+</style>
