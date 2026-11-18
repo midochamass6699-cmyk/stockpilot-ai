@@ -83,7 +83,7 @@ export default {
     // Place one copy beside the language links and one beside the mobile menu toggle.
     const langClose = '</div>\n</div>\n<button class="nav-toggle"';
     if (html.includes(langClose)) {
-      html = html.replace(langClose, '</div>\n' + desktopMarkup + '\n</div>\n' + mobileMarkup + '\\n<button class="nav-toggle"');
+      html = html.replace(langClose, '</div>\n' + desktopMarkup + '\n</div>\n' + mobileMarkup + '\n<button class="nav-toggle"');
     } else {
       html = html.replace('<button class="nav-toggle"', mobileMarkup + '<button class="nav-toggle"');
     }
