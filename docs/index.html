@@ -4660,20 +4660,15 @@ setInterval(loadStocks,15 * 60 * 1000);
       <section class="sp-directory-group">
         <h2>RESEARCH &amp; ANALYSIS</h2>
         <a href="#quick-stock-lookup"><span>↗</span> Stock Lookup</a>
-        <a href="#market-coverage"><span>↗</span> Market Coverage</a>
-        <a href="#selection-methodology"><span>↗</span> Selection Method</a>
       </section>
       <section class="sp-directory-group">
         <h2>INVESTING TOOLS</h2>
         <a href="#broker-directory"><span>↗</span> Broker Directory</a>
         <a href="/options-explained.html"><span>↗</span> Options Guide</a>
-        <a href="/ai-assisted-trading.html"><span>↗</span> AI Trading</a>
-        <a href="/financial-education.html"><span>↗</span> Investor Education</a>
       </section>
       <section class="sp-directory-group">
         <h2>MARKET INSIGHTS</h2>
         <a href="#market-insights"><span>↗</span> Insights &amp; Updates</a>
-        <a href="#financial-resources"><span>↗</span> Financial Resources</a>
       </section>
     </nav>
     <a class="sp-directory-subscribe" href="#stockpilot-alert-signup"><span aria-hidden="true">♢</span> GET FREE DAILY UPDATES</a>
@@ -8603,6 +8598,8 @@ header{margin-bottom:0!important}
  place();
 })();
 </script>
+<aside id="sp-terminal-promo" class="sp-terminal-promo" aria-label="Explore the Market Terminal"><div class="sp-terminal-promo-copy"><strong>MAKE MORE OF THE MARKET</strong><span>Use the Market Terminal to build a watchlist, screen stocks and explore technical charts.</span><small>WATCHLIST <i>·</i> SCREENER <i>·</i> TECHNICALS</small></div><a href="#market-terminal">OPEN MARKET TERMINAL <b>→</b></a></aside>
+
 </body>
 </html>
 
@@ -8613,16 +8610,29 @@ header{margin-bottom:0!important}
 #free-left-banner .sp-directory{height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:12px 9px 9px;color:#eef5ff;font-family:Arial,sans-serif;text-align:left}
 #free-left-banner .sp-directory-head{text-align:center;padding:1px 0 10px;border-bottom:1px solid #345276}
 #free-left-banner .sp-directory-head>span{display:block;color:#f2c66d;font-size:18px;line-height:1.1;margin-bottom:4px}
-#free-left-banner .sp-directory-head strong{display:block;color:#fff;font-size:12px;line-height:1.2;letter-spacing:.055em}
-#free-left-banner .sp-directory-head small{display:block;color:#9fc5f5;font-size:7px;font-weight:800;letter-spacing:.12em;margin-top:5px}
-#free-left-banner .sp-directory-links{display:flex;flex-direction:column;gap:9px;padding:10px 0 8px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#526f91 transparent}
-#free-left-banner .sp-directory-group h2{margin:0 0 4px;color:#f2c66d;font-size:8px;line-height:1.2;letter-spacing:.12em}
-#free-left-banner .sp-directory-group a{display:flex;align-items:center;gap:5px;padding:4px 4px;border-radius:4px;color:#e8f0fb;text-decoration:none;font-size:9px;font-weight:700;line-height:1.25}
+#free-left-banner .sp-directory-head strong{display:block;color:#fff;font-size:14px;line-height:1.2;letter-spacing:.055em}
+#free-left-banner .sp-directory-head small{display:block;color:#9fc5f5;font-size:9px;font-weight:800;letter-spacing:.12em;margin-top:5px}
+#free-left-banner .sp-directory-links{display:flex;flex-direction:column;gap:12px;padding:11px 0 8px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#526f91 transparent}
+#free-left-banner .sp-directory-group h2{margin:0 0 5px;color:#f2c66d;font-size:10px;line-height:1.2;letter-spacing:.12em}
+#free-left-banner .sp-directory-group a{display:flex;align-items:center;gap:7px;padding:6px 5px;border-radius:4px;color:#e8f0fb;text-decoration:none;font-size:12px;font-weight:750;line-height:1.25}
 #free-left-banner .sp-directory-group a span{color:#78aef2;font-size:10px}
 #free-left-banner .sp-directory-group a:hover,#free-left-banner .sp-directory-group a:focus-visible{background:#1b3c60;color:#fff;outline:1px solid #78aef2}
-#free-left-banner .sp-directory-subscribe{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:auto;padding:8px 4px;border:1px solid #d7b95c;border-radius:6px;background:linear-gradient(90deg,#f2c66d,#e9b94d);color:#142238;text-align:center;text-decoration:none;font-size:8px;font-weight:900;letter-spacing:.025em}
+#free-left-banner .sp-directory-subscribe{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:auto;padding:10px 4px;border:1px solid #d7b95c;border-radius:6px;background:linear-gradient(90deg,#f2c66d,#e9b94d);color:#142238;text-align:center;text-decoration:none;font-size:9px;font-weight:950;letter-spacing:.025em}
 #free-left-banner .sp-directory-subscribe:hover{filter:brightness(1.08)}
 #free-left-banner .sp-directory-foot{padding-top:7px;text-align:center;color:#b9cce3;font-size:7px;font-weight:800;letter-spacing:.08em}
 #free-left-banner .sp-directory-foot span{color:#f2c66d;padding:0 3px}
 @media(prefers-reduced-motion:reduce){#free-left-banner .sp-directory-group a{transition:none}}
+</style>
+
+<style id="sp-terminal-promo-style">
+.sp-terminal-promo{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;width:calc(100% - 32px);max-width:1180px;margin:7px auto 18px;padding:12px 16px;border:1px solid #345477;border-left:4px solid #e2bd5b;border-radius:10px;background:linear-gradient(105deg,#102b49,#0a1b30 72%);color:#fff;font-family:Arial,sans-serif}
+.sp-terminal-promo-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sp-terminal-promo-copy strong{color:#f2d47e;font-size:11px;font-weight:900;letter-spacing:.09em}
+.sp-terminal-promo-copy>span{color:#f1f5fb;font-size:13px;font-weight:650;line-height:1.35}
+.sp-terminal-promo-copy small{color:#9db8d7;font-size:9px;font-weight:900;letter-spacing:.09em}
+.sp-terminal-promo-copy i{color:#e2bd5b;font-style:normal;padding:0 3px}
+.sp-terminal-promo>a{flex:0 0 auto;display:inline-flex;align-items:center;gap:9px;padding:10px 13px;border-radius:6px;background:#edc65f;color:#17263b;text-decoration:none;font-size:10px;font-weight:950;letter-spacing:.035em}
+.sp-terminal-promo>a:hover{background:#ffdc7b}
+.sp-terminal-promo>a b{font-size:15px}
+@media(max-width:650px){.sp-terminal-promo{align-items:stretch;flex-direction:column;gap:9px;width:calc(100% - 24px);padding:11px 12px}.sp-terminal-promo-copy>span{font-size:12px}.sp-terminal-promo>a{justify-content:center;width:100%;box-sizing:border-box}}
 </style>
