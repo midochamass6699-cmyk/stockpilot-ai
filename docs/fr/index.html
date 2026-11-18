@@ -2305,6 +2305,104 @@ input, select, textarea, button {
 }
 </style>
 
+<style id="sp-fr-header-two-row-fix">
+/* French header: two clean navigation rows, with visitor count and language links below. */
+@media (min-width: 761px) {
+  .topbar .nav {
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) auto !important;
+    grid-template-rows:auto auto auto !important;
+    align-items:center !important;
+    column-gap:18px !important;
+    row-gap:7px !important;
+    min-height:0 !important;
+    height:auto !important;
+    padding:9px 18px 8px !important;
+  }
+  .topbar .brand {
+    grid-column:1;
+    grid-row:1;
+    justify-self:start;
+  }
+  .topbar .nav-toggle { display:none !important; }
+  .topbar .nav-menu { display:contents !important; }
+  .topbar .navlinks {
+    grid-column:1 / -1 !important;
+    grid-row:2 !important;
+    display:grid !important;
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    align-items:center !important;
+    justify-content:stretch !important;
+    gap:5px 14px !important;
+    width:100% !important;
+    min-width:0 !important;
+  }
+  .topbar .navlinks a {
+    display:block !important;
+    min-width:0 !important;
+    padding:5px 4px !important;
+    text-align:center !important;
+    white-space:normal !important;
+    overflow-wrap:anywhere;
+    line-height:1.25 !important;
+    font-size:11px !important;
+  }
+  .topbar .nav-bottom-row {
+    grid-column:1 / -1 !important;
+    grid-row:3 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    width:100% !important;
+    min-height:42px !important;
+    margin:0 !important;
+    padding:5px 0 0 !important;
+    border-top:1px solid #ffffff2b !important;
+  }
+  #stockpilot-visitor-number {
+    left:50% !important;
+    top:50% !important;
+    transform:translate(-50%,-50%) !important;
+  }
+  .topbar .language-switch {
+    display:flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    position:relative !important;
+    z-index:3 !important;
+    align-items:center !important;
+    justify-content:center !important;
+    margin:0 0 0 auto !important;
+    padding:3px !important;
+    gap:5px !important;
+    border:1px solid #52647d !important;
+    border-radius:999px !important;
+    background:#0B1A31 !important;
+  }
+  .topbar .language-switch a {
+    display:inline-block !important;
+    min-width:34px !important;
+    padding:5px 8px !important;
+    color:#EAF1FF !important;
+    text-decoration:none !important;
+    text-align:center !important;
+    font-size:11px !important;
+    font-weight:900 !important;
+  }
+  .topbar .language-switch a[aria-current="page"] {
+    border-radius:999px !important;
+    background:#2563EB !important;
+    color:#fff !important;
+  }
+}
+@media (max-width:760px) {
+  .topbar .nav-bottom-row .language-switch {
+    display:flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
