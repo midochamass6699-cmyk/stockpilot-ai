@@ -73,7 +73,7 @@ export default {
     const contentType = response.headers.get("content-type") || "";
     if (!response.ok || !contentType.includes("text/html")) return response;
 
-    const pagePath = url.pathname.replace(/index\\.html$/i, "").replace(/\\/$/, "") || "/";
+    const pagePath = url.pathname.replace(/index\.html$/i, "").replace(/\/$/, "") || "/";
     if (!["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) return response;
 
     let html = await response.text();
@@ -81,9 +81,9 @@ export default {
     const mobileMarkup = '<span id="tf-visitor-counter-mobile" aria-live="polite">YOU ARE VISITOR NUMBER …</span>';
 
     // Place one copy beside the language links and one beside the mobile menu toggle.
-    const langClose = '</div>\\n</div>\\n<button class="nav-toggle"';
+    const langClose = '</div>\n</div>\n<button class="nav-toggle"';
     if (html.includes(langClose)) {
-      html = html.replace(langClose, '</div>\\n' + desktopMarkup + '\\n</div>\\n' + mobileMarkup + '\\n<button class="nav-toggle"');
+      html = html.replace(langClose, '</div>\n' + desktopMarkup + '\n</div>\n' + mobileMarkup + '\\n<button class="nav-toggle"');
     } else {
       html = html.replace('<button class="nav-toggle"', mobileMarkup + '<button class="nav-toggle"');
     }
