@@ -2260,6 +2260,14 @@ input, select, textarea, button {
 .kitco-banner-stack>.kitco-trade-link{order:1!important;}
 @media(max-width:600px){.live-trading-desk .kitco-banner-stack{order:4;width:100%;max-width:340px;justify-self:center;flex:0 1 340px}}
 </style>
+
+<style id="stockpilot-visitor-counter-style">
+#stockpilot-visitor-number{display:flex;justify-content:flex-end;align-items:center;gap:5px;max-width:1200px;margin:0 auto;padding:0 20px 7px;color:#f4d35e;font:700 11px/1.3 Arial,sans-serif;white-space:nowrap}
+#stockpilot-visitor-number strong{color:#fff;font-size:13px;font-variant-numeric:tabular-nums}
+#stockpilot-visitor-number .visitor-short{display:none}
+@media(max-width:600px){#stockpilot-visitor-number{padding:0 12px 6px;font-size:10px}#stockpilot-visitor-number .visitor-full{display:none}#stockpilot-visitor-number .visitor-short{display:inline}}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2294,6 +2302,8 @@ input, select, textarea, button {
 <span></span><span></span><span></span>
 </button>
 </nav>
+<div id="stockpilot-visitor-number" aria-live="polite"><span class="visitor-full">You are visitor #</span><span class="visitor-short">Visitor #</span><strong id="stockpilot-visitor-value">…</strong></div>
+
 </header>
 <style id="tf-market-pulse-style">
 .tf-market-pulse{width:100%;height:46px;box-sizing:border-box;display:flex;align-items:stretch;overflow:hidden;background:#101b2b;border-top:1px solid #263b55;border-bottom:1px solid #263b55;font-family:Arial,sans-serif}
@@ -5890,6 +5900,19 @@ section:empty, article:empty, aside:empty { display:none!important; }
   }
 }
 </style>
+
+<script id="stockpilot-visitor-counter-script">
+(function(){
+ var value=document.getElementById('stockpilot-visitor-value');
+ var badge=document.getElementById('stockpilot-visitor-number');
+ if(!value||!badge)return;
+ fetch('/api/visitor',{method:'GET',credentials:'same-origin',cache:'no-store'})
+  .then(function(response){if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
+  .then(function(data){var n=Number(data&&data.visitor_number);if(!Number.isSafeInteger(n)||n<1)throw new Error('Invalid visitor number');value.textContent=n.toLocaleString();})
+  .catch(function(error){value.textContent='—';console.warn('StockPilot visitor counter:',error);});
+})();
+</script>
+
 </body>
 </html>)?'TSX':'NASDAQ');
   symbol.value=isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker;
