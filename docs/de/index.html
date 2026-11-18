@@ -8301,11 +8301,11 @@ header{margin-bottom:0!important}
   const move=p.reason&&p.reason.match(/daily price move\s+([+-]?\d+(?:\.\d+)?)%/i);
   const volume=p.reason&&p.reason.match(/relative volume\s+([\d.]+)x/i);
   const parts=[];
-  if(move){const n=Number(move[1]);parts.push((n>0?'+':'')+Math.abs(n).toLocaleString(locale,{maximumFractionDigits:2})+'% '+"TAGESBEWEGUNG");}
+  if(move){const n=Number(move[1]);parts.push((n>0?'+':'')+n.toLocaleString(locale,{maximumFractionDigits:2})+'% '+"TAGESBEWEGUNG");}
   if(volume)parts.push(Number(volume[1]).toLocaleString(locale,{maximumFractionDigits:1})+'× '+"RELATIVES VOLUMEN");
   meta.textContent=parts.join(' · ');
   host.href='#main-picks';
-  const img=document.createElement('img');img.alt='';img.loading='lazy';img.src='https://financialmodelingprep.com/image-stock/'+encodeURIComponent(symbol)+'.png';img.onerror=()=>img.remove();logo.textContent=symbol.slice(0,2);logo.replaceChildren(img);
+  const img=document.createElement('img');img.alt='';img.loading='lazy';img.src='https://financialmodelingprep.com/image-stock/'+encodeURIComponent(symbol)+'.png';img.onerror=()=>{img.remove();logo.textContent=symbol.slice(0,2);};logo.textContent=symbol.slice(0,2);logo.replaceChildren(img);
  }).catch(()=>{name.textContent="Tagesauswahl nicht verfügbar";ticker.textContent='StockPilot AI';meta.textContent='';});
  const place=()=>{const feed=document.querySelector('.tf-market-pulse-livefeed');const region=feed&&(feed.closest('[role="region"]')||feed.parentElement);if(region&&region.parentNode)region.parentNode.insertBefore(host,region.nextSibling);else{const target=document.getElementById('live-trading-desk')||document.getElementById('main-picks');if(target&&target.parentNode)target.parentNode.insertBefore(host,target);}};
  place();
