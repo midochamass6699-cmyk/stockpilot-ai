@@ -4724,5 +4724,44 @@ header{margin-bottom:0!important}
 .tradingview-widget-container{margin-top:0!important;margin-bottom:0!important}
 #stockpilot-free-tools{margin-bottom:0!important}
 </style>
+<style id="sp-stock-of-day-global-style">
+#sp-stock-of-day{box-sizing:border-box;display:flex;align-items:center;gap:14px;width:calc(100% - 32px);max-width:1180px;margin:12px auto 16px;padding:12px 18px;border:1px solid rgba(214,173,85,.72);border-left:4px solid #d6ad55;border-radius:12px;background:linear-gradient(100deg,#081a30,#102b49 58%,#0a1b31);color:#fff;text-decoration:none;box-shadow:0 5px 18px rgba(0,0,0,.16)}
+#sp-stock-of-day .sp-day-logo{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;overflow:hidden;border-radius:10px;background:#fff;color:#102b49;font-size:17px;font-weight:950}
+#sp-stock-of-day .sp-day-logo img{width:100%;height:100%;object-fit:contain;padding:5px;box-sizing:border-box}
+#sp-stock-of-day .sp-day-copy{min-width:0;flex:1}
+#sp-stock-of-day .sp-day-eyebrow{display:block;margin-bottom:3px;color:#f1d477;font-size:10px;font-weight:900;letter-spacing:.13em}
+#sp-stock-of-day .sp-day-name{display:block;overflow:hidden;color:#fff;font-size:15px;font-weight:850;text-overflow:ellipsis;white-space:nowrap}
+#sp-stock-of-day .sp-day-ticker{display:block;margin-top:2px;color:#b9cde3;font-size:10px;font-weight:750;letter-spacing:.07em}
+#sp-stock-of-day .sp-day-meta{display:block;margin-top:3px;color:#9edbb9;font-size:10px;font-weight:800;letter-spacing:.025em}
+#sp-stock-of-day .sp-day-cta{flex:0 0 auto;color:#f1d477;font-size:11px;font-weight:900}
+@media(max-width:600px){#sp-stock-of-day{width:calc(100% - 24px);gap:10px;padding:10px 12px;margin:9px auto 12px}#sp-stock-of-day .sp-day-logo{width:42px;height:42px;flex-basis:42px}#sp-stock-of-day .sp-day-name{font-size:13px}#sp-stock-of-day .sp-day-meta{font-size:9px}#sp-stock-of-day .sp-day-cta{font-size:9px}}
+</style>
+<a id="sp-stock-of-day" href="#main-picks" aria-label="Acción del día — StockPilot AI">
+ <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
+ <span class="sp-day-copy"><span class="sp-day-eyebrow">★ ACCIÓN DEL DÍA</span><strong class="sp-day-name" id="spDayName">Cargando la acción del día…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
+ <span class="sp-day-cta">VER ACCIÓN →</span>
+</a>
+<script id="sp-stock-of-day-data">
+(function(){
+ const host=document.getElementById('sp-stock-of-day');if(!host)return;
+ const name=document.getElementById('spDayName'),ticker=document.getElementById('spDayTicker'),meta=document.getElementById('spDayMeta'),logo=document.getElementById('spDayLogo');
+ const locale="es-ES";
+ fetch('/data/picks.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Market data unavailable');return r.json();}).then(d=>{
+  const p=Array.isArray(d.main)?d.main[0]:null;if(!p||!p.ticker)throw Error('No featured stock');
+  const symbol=String(p.ticker).toUpperCase();name.textContent=p.company||symbol;
+  ticker.textContent=symbol+' · '+String(p.exchange||'').toUpperCase()+' · '+"MERCADO DE EE.UU.";
+  const move=p.reason&&p.reason.match(/daily price move\s+([+-]?\d+(?:\.\d+)?)%/i);
+  const volume=p.reason&&p.reason.match(/relative volume\s+([\d.]+)x/i);
+  const parts=[];
+  if(move){const n=Number(move[1]);parts.push((n>0?'+':'')+Math.abs(n).toLocaleString(locale,{maximumFractionDigits:2})+'% '+"MOVIMIENTO DIARIO");}
+  if(volume)parts.push(Number(volume[1]).toLocaleString(locale,{maximumFractionDigits:1})+'× '+"VOLUMEN RELATIVO");
+  meta.textContent=parts.join(' · ');
+  host.href='#main-picks';
+  const img=document.createElement('img');img.alt='';img.loading='lazy';img.src='https://financialmodelingprep.com/image-stock/'+encodeURIComponent(symbol)+'.png';img.onerror=()=>img.remove();logo.textContent=symbol.slice(0,2);logo.replaceChildren(img);
+ }).catch(()=>{name.textContent="Selección del día no disponible";ticker.textContent='StockPilot AI';meta.textContent='';});
+ const place=()=>{const feed=document.querySelector('.tf-market-pulse-livefeed');const region=feed&&(feed.closest('[role="region"]')||feed.parentElement);if(region&&region.parentNode)region.parentNode.insertBefore(host,region.nextSibling);else{const target=document.getElementById('live-trading-desk')||document.getElementById('main-picks');if(target&&target.parentNode)target.parentNode.insertBefore(host,target);}};
+ place();
+})();
+</script>
 </body>
 </html>
