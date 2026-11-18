@@ -7691,25 +7691,69 @@ header{margin-bottom:0!important}
 #sp-stock-of-day .sp-day-cta{flex:0 0 auto;color:#f1d477;font-size:11px;font-weight:900}
 @media(max-width:600px){#sp-stock-of-day{width:calc(100% - 24px);gap:10px;padding:10px 12px;margin:9px auto 12px}#sp-stock-of-day .sp-day-logo{width:42px;height:42px;flex-basis:42px}#sp-stock-of-day .sp-day-name{font-size:13px}#sp-stock-of-day .sp-day-meta{font-size:9px}#sp-stock-of-day .sp-day-cta{font-size:9px}}
 </style>
+<style id="sp-stock-of-day-live-stats">
+/* Fill the Stock of the Day banner with real quote and activity metrics. */
+#sp-stock-of-day{flex-wrap:wrap;column-gap:16px;row-gap:10px}
+#sp-stock-of-day .sp-day-copy{flex:1 1 190px}
+#sp-stock-of-day .sp-day-stats{display:grid;grid-template-columns:repeat(5,minmax(72px,1fr));align-items:center;gap:8px;flex:1 1 470px;min-width:0}
+#sp-stock-of-day .sp-day-stat{display:flex;flex-direction:column;gap:4px;min-width:0;padding:5px 8px;border-left:1px solid #ffffff24}
+#sp-stock-of-day .sp-day-stat-label{color:#9eb4ce;font-size:8px;font-weight:850;letter-spacing:.09em;white-space:nowrap}
+#sp-stock-of-day .sp-day-stat-value{color:#fff;font-size:15px;font-weight:900;line-height:1.1;white-space:nowrap;font-variant-numeric:tabular-nums}
+#sp-stock-of-day .sp-day-stat-value.up{color:#63e6a5}
+#sp-stock-of-day .sp-day-stat-value.down{color:#ff8989}
+#sp-stock-of-day .sp-day-source{flex-basis:100%;margin-left:62px;margin-top:-5px;color:#8198b4;font-size:8px;line-height:1.2}
+@media(max-width:760px){
+ #sp-stock-of-day .sp-day-stats{flex:1 1 100%;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px}
+ #sp-stock-of-day .sp-day-stat{padding:5px 4px}
+ #sp-stock-of-day .sp-day-stat-label{font-size:7px;letter-spacing:.035em;white-space:normal}
+ #sp-stock-of-day .sp-day-stat-value{font-size:12px}
+ #sp-stock-of-day .sp-day-source{margin-left:0;margin-top:0}
+}
+@media(max-width:420px){
+ #sp-stock-of-day .sp-day-stats{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:7px}
+ #sp-stock-of-day .sp-day-stat-value{font-size:13px}
+}
+</style>
 <a id="sp-stock-of-day" href="#main-picks" aria-label="Action du jour — StockPilot AI">
  <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
  <span class="sp-day-copy"><span class="sp-day-eyebrow">★ ACTION DU JOUR</span><strong class="sp-day-name" id="spDayName">Chargement de l’action du jour…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
+ <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
+  <span class="sp-day-stat"><span class="sp-day-stat-label">PRIX</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VARIATION</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VOLUME</span><strong class="sp-day-stat-value" id="spDayVolume">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">5 JOURS</span><strong class="sp-day-stat-value" id="spDayFiveDay">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VOL. RELATIF</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
+ </span>
+ <span class="sp-day-source" id="spDaySource">Données de clôture · —</span>
  <span class="sp-day-cta">DÉCOUVRIR →</span>
 </a>
 <script id="sp-stock-of-day-data">
 (function(){
  const host=document.getElementById('sp-stock-of-day');if(!host)return;
  const name=document.getElementById('spDayName'),ticker=document.getElementById('spDayTicker'),meta=document.getElementById('spDayMeta'),logo=document.getElementById('spDayLogo');
+ const priceEl=document.getElementById('spDayPrice'),moveEl=document.getElementById('spDayMove'),volumeEl=document.getElementById('spDayVolume'),fiveEl=document.getElementById('spDayFiveDay'),relEl=document.getElementById('spDayRelVolume'),sourceEl=document.getElementById('spDaySource');
  const locale="fr-CA";
+ const compact=n=>new Intl.NumberFormat(locale,{notation:'compact',maximumFractionDigits:2}).format(n);
+ const signed=n=>(n>0?'+':'')+n.toLocaleString(locale,{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
+ const color=(el,n)=>{el.classList.toggle('up',n>0);el.classList.toggle('down',n<0);};
  fetch('/data/picks.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Market data unavailable');return r.json();}).then(d=>{
   const p=Array.isArray(d.main)?d.main[0]:null;if(!p||!p.ticker)throw Error('No featured stock');
-  const symbol=String(p.ticker).toUpperCase();name.textContent=p.company||symbol;
+  const symbol=String(p.ticker).toUpperCase(),currency=p.currency|| (p.market==='Canada'?'CAD':'USD');
+  name.textContent=p.company||symbol;
   ticker.textContent=symbol+' · '+String(p.exchange||'').toUpperCase()+' · '+(p.market==='Canada'?"MARCHÉ CANADIEN":"MARCHÉ AMÉRICAIN");
-  const move=p.reason&&p.reason.match(/daily price move\s+([+-]?\d+(?:\.\d+)?)%/i);
-  const volume=p.reason&&p.reason.match(/relative volume\s+([\d.]+)x/i);
+  const move=Number(p.change_percent),five=Number(p.return_5d),rel=Number(p.volume_ratio),price=Number(p.price),volume=Number(p.volume);
+  if(Number.isFinite(price)&&price>0)priceEl.textContent=new Intl.NumberFormat(locale,{style:'currency',currency,maximumFractionDigits:2}).format(price);
+  if(Number.isFinite(move)){moveEl.textContent=signed(move);color(moveEl,move);}
+  if(Number.isFinite(volume)&&volume>=0)volumeEl.textContent=compact(volume);
+  if(Number.isFinite(five)){fiveEl.textContent=signed(five);color(fiveEl,five);}
+  if(Number.isFinite(rel)&&rel>0)relEl.textContent=rel.toLocaleString(locale,{maximumFractionDigits:2})+'×';
+  const date=p.price_date||p.quote_time||d.snapshot_time||'';
+  sourceEl.textContent="Clôture du "+date+' · '+currency;
+  const reason=p.reason||'';
+  const volumeMatch=reason.match(/relative volume\s+([\d.]+)x/i);
   const parts=[];
-  if(move){const n=Number(move[1]);parts.push((n>0?'+':'')+n.toLocaleString(locale,{maximumFractionDigits:2})+'% '+"VARIATION DU JOUR");}
-  if(volume)parts.push(Number(volume[1]).toLocaleString(locale,{maximumFractionDigits:1})+'× '+"VOLUME RELATIF");
+  if(Number.isFinite(move))parts.push(signed(move)+' '+"VARIATION DU JOUR");
+  if(volumeMatch)parts.push(Number(volumeMatch[1]).toLocaleString(locale,{maximumFractionDigits:1})+'× '+"VOLUME RELATIF");
   meta.textContent=parts.join(' · ');
   host.href='#main-picks';
   const img=document.createElement('img');img.alt='';img.loading='lazy';img.src='https://financialmodelingprep.com/image-stock/'+encodeURIComponent(symbol)+'.png';img.onerror=()=>{img.remove();logo.textContent=symbol.slice(0,2);};logo.textContent=symbol.slice(0,2);logo.replaceChildren(img);
