@@ -8533,23 +8533,33 @@ header{margin-bottom:0!important}
  #sp-stock-of-day .sp-day-stats{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:7px}
  #sp-stock-of-day .sp-day-stat-value{font-size:13px}
 }
+
+#sp-stock-of-day .sp-day-updated{display:block;margin-top:3px;color:#f1d477;font-size:7px;font-weight:850;letter-spacing:.055em;line-height:1.1}
+#sp-stock-of-day .sp-day-bell{display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;margin-left:auto;border:1px solid #d6ad55;border-radius:50%;background:#142f4d;color:#f1d477;font-size:15px;cursor:pointer;animation:spDayBellJiggle 2.6s ease-in-out infinite}
+#sp-stock-of-day .sp-day-bell:hover{background:#25496d;transform:scale(1.08)}
+#sp-stock-of-day .sp-day-bell:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@keyframes spDayBellJiggle{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(13deg)}92%{transform:rotate(-11deg)}95%{transform:rotate(7deg)}98%{transform:rotate(-3deg)}}
+@media(prefers-reduced-motion:reduce){#sp-stock-of-day .sp-day-bell{animation:none}}
+@media(max-width:600px){#sp-stock-of-day .sp-day-updated{font-size:6px}#sp-stock-of-day .sp-day-bell{width:28px;height:28px;flex-basis:28px;font-size:14px}}
 </style>
-<a id="sp-stock-of-day" href="#main-picks" aria-label="Stock of the day — StockPilot AI">
+<div id="sp-stock-of-day" role="region" aria-label="StockPilot AI stock of the day">
  <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
  <span class="sp-day-copy"><span class="sp-day-eyebrow">★ STOCK OF THE DAY</span><strong class="sp-day-name" id="spDayName">Loading today's stock…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
  <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
-  <span class="sp-day-stat"><span class="sp-day-stat-label">LAST PRICE</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">LAST PRICE</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong><small class="sp-day-updated">UPDATED DAILY</small></span>
   <span class="sp-day-stat"><span class="sp-day-stat-label">DAY MOVE</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
   <span class="sp-day-stat"><span class="sp-day-stat-label">VOLUME</span><strong class="sp-day-stat-value" id="spDayVolume">—</strong></span>
   <span class="sp-day-stat"><span class="sp-day-stat-label">5-DAY MOVE</span><strong class="sp-day-stat-value" id="spDayFiveDay">—</strong></span>
   <span class="sp-day-stat"><span class="sp-day-stat-label">REL. VOLUME</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
  </span>
  <span class="sp-day-source" id="spDaySource">Closing data · —</span>
- <span class="sp-day-cta">EXPLORE →</span>
-</a>
+ <button class="sp-day-bell" id="spDaySubscribeBell" type="button" aria-label="Subscribe to StockPilot AI notifications" title="Subscribe to StockPilot AI notifications">🔔</button><a class="sp-day-cta" href="#main-picks">EXPLORE →</a>
+</div>
 <script id="sp-stock-of-day-data">
 (function(){
  const host=document.getElementById('sp-stock-of-day');if(!host)return;
+ const bell=document.getElementById('spDaySubscribeBell');if(bell)bell.addEventListener('click',function(){const subscribe=document.getElementById('stockpilot-subscribe-btn');if(subscribe){subscribe.click();}else{const target=document.getElementById('stockpilot-subscribe-status');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}});
+
  const name=document.getElementById('spDayName'),ticker=document.getElementById('spDayTicker'),meta=document.getElementById('spDayMeta'),logo=document.getElementById('spDayLogo');
  const priceEl=document.getElementById('spDayPrice'),moveEl=document.getElementById('spDayMove'),volumeEl=document.getElementById('spDayVolume'),fiveEl=document.getElementById('spDayFiveDay'),relEl=document.getElementById('spDayRelVolume'),sourceEl=document.getElementById('spDaySource');
  const locale="en-US";
