@@ -68,14 +68,15 @@ export default {
     // Show the shared visit number on the five homepage editions only.
     if (["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) {
       const counterMarkup = '<span id="tf-visitor-counter" aria-live="polite">YOU ARE VISITOR NUMBER …</span>';
-      const navClose = '</div>\\n</div>\\n<button class="nav-toggle"';
-      if (html.includes(navClose)) {
-        html = html.replace(navClose, '</div>\\n' + counterMarkup + '\\n</div>\\n<button class="nav-toggle"');
+      const toggleAt = html.indexOf('<button class="nav-toggle"');
+      if (toggleAt >= 0) {
+        const menuCloseAt = html.lastIndexOf('</div>', toggleAt);
+        if (menuCloseAt >= 0) html = html.slice(0, menuCloseAt) + counterMarkup + html.slice(menuCloseAt);
       }
-      const counterStyle = '<style id="tf-visitor-counter-style">#tf-visitor-counter{display:inline-flex;align-items:center;justify-content:center;align-self:flex-end;margin:2px 0 0 auto;padding:5px 10px;border:1px solid #ffd629;border-radius:999px;background:#101010;color:#ffd629;font:800 10px/1.2 Arial,sans-serif;letter-spacing:.035em;white-space:nowrap} @media(max-width:760px){#tf-visitor-counter{align-self:center;margin:8px auto 0;font-size:10px}} </style>';
-      html = html.replace(/<\\/head>/i, counterStyle + '</head>');
+      const counterStyle = '<style id="tf-visitor-counter-style">#tf-visitor-counter{display:inline-flex;align-items:center;justify-content:center;align-self:flex-end;margin:2px 0 0 auto;padding:5px 10px;border:1px solid #ffd629;border-radius:999px;background:#101010;color:#ffd629;font:800 10px/1.2 Arial,sans-serif;letter-spacing:.035em;white-space:nowrap}@media(max-width:760px){#tf-visitor-counter{align-self:center;margin:8px auto 0;font-size:10px}}</style>';
+      html = html.replace("</head>", counterStyle + "</head>");
       const counterScript = '<script id="tf-visitor-counter-script">(function(){var el=document.getElementById("tf-visitor-counter");if(!el)return;fetch("/api/visitor-number",{cache:"no-store",credentials:"same-origin"}).then(function(r){if(!r.ok)throw new Error("counter unavailable");return r.json()}).then(function(data){if(Number.isFinite(Number(data.visitorNumber)))el.textContent="YOU ARE VISITOR NUMBER "+Number(data.visitorNumber).toLocaleString("en-CA")}).catch(function(){el.hidden=true})})();</script>';
-      html = html.replace(/<\\/body>/i, counterScript + '</body>');
+      html = html.replace("</body>", counterScript + "</body>");
     }
 
     const headers = new Headers(response.headers);
