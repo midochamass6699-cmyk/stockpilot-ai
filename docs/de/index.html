@@ -8297,7 +8297,7 @@ header{margin-bottom:0!important}
  fetch('/data/picks.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Market data unavailable');return r.json();}).then(d=>{
   const p=Array.isArray(d.main)?d.main[0]:null;if(!p||!p.ticker)throw Error('No featured stock');
   const symbol=String(p.ticker).toUpperCase();name.textContent=p.company||symbol;
-  ticker.textContent=symbol+' · '+String(p.exchange||'').toUpperCase()+' · '+"US-MARKT";
+  ticker.textContent=symbol+' · '+String(p.exchange||'').toUpperCase()+' · '+(p.market==='Canada'?"KANADISCHER MARKT":"US-MARKT");
   const move=p.reason&&p.reason.match(/daily price move\s+([+-]?\d+(?:\.\d+)?)%/i);
   const volume=p.reason&&p.reason.match(/relative volume\s+([\d.]+)x/i);
   const parts=[];
