@@ -2173,6 +2173,14 @@ input, select, textarea, button {
 @media(prefers-reduced-motion:reduce){.sp-ticker-track{animation:none}}
 @media(max-width:760px){.sp-top-picks-ticker{min-height:108px}.sp-ticker-track{animation-duration:38s}.sp-ticker-message,.sp-top-pick{width:190px;flex-basis:190px}}
 </style>
+
+<style id="tf-kitco-fr-ad-style">
+.tf-kitco-fr-ad-wrap{box-sizing:border-box;width:min(340px,calc(100% - 28px));margin:10px auto 14px;padding:8px 10px 10px;border:1px solid #d6ad55;border-radius:12px;background:linear-gradient(135deg,#fff 0%,#f2f6fa 55%,#fff7df 100%);box-shadow:0 5px 18px rgba(16,25,35,.12);text-align:center}
+.tf-kitco-fr-ad-label{margin-bottom:6px;color:#657286;font:700 9px/1.2 Arial,sans-serif;letter-spacing:.14em}
+.tf-kitco-fr-ad{display:flex;justify-content:center;align-items:center;min-height:1px}
+.tf-kitco-fr-ad a{display:block;max-width:100%;line-height:0}
+.tf-kitco-fr-ad img{display:block;width:100%;max-width:300px;height:auto;border:0;border-radius:5px}
+</style>
 <style id="kitco-affiliate-banner-style">
 .kitco-affiliate-banner{box-sizing:border-box;flex:0 1 300px;width:min(300px,100%);min-width:180px;display:flex;align-items:center;justify-content:center;padding:7px;background:#FFFFFF;border:1px solid #D8E1EE;border-radius:10px;overflow:hidden}
 .kitco-affiliate-banner a{display:block;width:100%;max-width:300px;line-height:0}
@@ -2457,6 +2465,11 @@ input, select, textarea, button {
   <span class="sp-pick-chart"><svg viewBox="0 0 100 32" preserveAspectRatio="none" aria-label="Mini graphique de tendance sur trois mois"><polyline points="0.0,22.4 6.7,22.3 13.3,21.5 20.0,23.6 26.7,23.9 33.3,26.4 40.0,28.0 46.7,26.8 53.3,24.5 60.0,21.4 66.7,19.3 73.3,18.1 80.0,19.1 86.7,18.5 93.3,18.1 100.0,6.0"/></svg></span><small>ÉVOLUTION · 3 MOIS</small>
  </a>
  </div>
+</section>
+<!-- KITCO AFFILIATE BANNER: loads only after advertising consent -->
+<section class="tf-kitco-fr-ad-wrap" aria-label="Publicité Kitco">
+  <div class="tf-kitco-fr-ad-label">PUBLICITÉ</div>
+  <div id="tf-kitco-fr-ad" class="tf-kitco-fr-ad" aria-live="polite"></div>
 </section>
 <nav class="sp-terminal-shortcuts" aria-label="Market categories"><a href="#main-picks">ACTIONS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">CRYPTO</a></nav>
 <section class="sp-market-terminal" id="market-terminal" aria-label="Terminal des marchés">
@@ -5135,11 +5148,14 @@ body { overflow-x: hidden; }
 (function(){
   const welcome=document.querySelector('.fr-welcome-banner');
   const ticker=document.querySelector('.sp-top-picks-ticker');
-  if(!welcome||!ticker||!welcome.parentNode||welcome.parentNode!==ticker.parentNode)return;
-  const mq=window.matchMedia('(max-width: 760px)');
-  function arrange(){ if(mq.matches) welcome.parentNode.insertBefore(ticker,welcome); else welcome.parentNode.insertBefore(welcome,ticker); }
+  const ad=document.querySelector('.tf-kitco-fr-ad-wrap');
+  if(!welcome||!ticker||!ad||!welcome.parentNode)return;
+  function arrange(){
+    const parent=welcome.parentNode;
+    parent.insertBefore(ticker,welcome);
+    parent.insertBefore(ad,welcome);
+  }
   arrange();
-  if(mq.addEventListener) mq.addEventListener('change',arrange); else mq.addListener(arrange);
 })();
 </script>
 
