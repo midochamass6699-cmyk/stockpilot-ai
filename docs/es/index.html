@@ -4736,11 +4736,12 @@ header{margin-bottom:0!important}
 #sp-stock-of-day .sp-day-cta{flex:0 0 auto;color:#f1d477;font-size:11px;font-weight:900}
 @media(max-width:600px){#sp-stock-of-day{width:calc(100% - 24px);gap:10px;padding:10px 12px;margin:9px auto 12px}#sp-stock-of-day .sp-day-logo{width:42px;height:42px;flex-basis:42px}#sp-stock-of-day .sp-day-name{font-size:13px}#sp-stock-of-day .sp-day-meta{font-size:9px}#sp-stock-of-day .sp-day-cta{font-size:9px}}
 </style>
-<a id="sp-stock-of-day" href="#main-picks" aria-label="Acción del día — StockPilot AI">
+<div id="sp-stock-of-day" role="region" aria-label="Acción del día y terminal de mercado">
  <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
  <span class="sp-day-copy"><span class="sp-day-eyebrow">★ ACCIÓN DEL DÍA</span><strong class="sp-day-name" id="spDayName">Cargando la acción del día…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
- <span class="sp-day-cta">VER ACCIÓN →</span>
-</a>
+ <a class="sp-day-cta" href="#main-picks">VER ACCIÓN →</a>
+<span class="sp-day-terminal-copy"><strong>TERMINAL DE MERCADO</strong><small>LISTAS · FILTRO DE ACCIONES · ANÁLISIS TÉCNICO</small></span><a class="sp-day-terminal-link" href="#market-terminal">ABRIR TERMINAL →</a>
+</div>
 <script id="sp-stock-of-day-data">
 (function(){
  const host=document.getElementById('sp-stock-of-day');if(!host)return;
@@ -4763,8 +4764,7 @@ header{margin-bottom:0!important}
  place();
 })();
 </script>
-<aside id="sp-terminal-promo" class="sp-terminal-promo" aria-label="Explora el terminal de mercado"><div class="sp-terminal-promo-copy"><strong>EXPLORA MÁS EL MERCADO</strong><span>Crea una lista de seguimiento, filtra acciones y consulta gráficos técnicos.</span><small>LISTA DE SEGUIMIENTO <i>·</i> FILTRO <i>·</i> ANÁLISIS TÉCNICO</small></div><a href="#market-terminal">ABRIR TERMINAL <b>→</b></a></aside>
-<script id="sp-terminal-promo-position">(function(){var day=document.getElementById('sp-stock-of-day'),promo=document.getElementById('sp-terminal-promo');if(day&&promo&&day.parentNode)day.insertAdjacentElement('afterend',promo);})();</script>
+
 
 <style id="sp-global-readability-update">
 /* Global readability pass: keep the compact design, make important copy easier to read. */
@@ -4795,6 +4795,26 @@ body{font-size:16px}
 }
 </style>
 
+<style id="sp-merged-stock-terminal-style">
+#sp-stock-of-day{display:grid!important;grid-template-columns:48px minmax(135px,1fr) minmax(260px,1.7fr) minmax(175px,1.1fr) auto;grid-template-rows:auto auto;align-items:center;column-gap:13px;row-gap:3px;padding:11px 15px!important;margin:10px auto 14px!important}
+#sp-stock-of-day .sp-day-logo{grid-column:1;grid-row:1 / span 2}
+#sp-stock-of-day .sp-day-copy{grid-column:2;grid-row:1 / span 2;align-self:center}
+#sp-stock-of-day .sp-day-stats{grid-column:3;grid-row:1;align-self:end;min-width:0;display:flex;justify-content:space-around;gap:9px}
+#sp-stock-of-day .sp-day-source{grid-column:3;grid-row:2;align-self:start;font-size:10px;color:#9fb6cf}
+#sp-stock-of-day .sp-day-terminal-copy{grid-column:4;grid-row:1 / span 2;min-width:0;border-left:1px solid #ffffff30;padding-left:14px}
+#sp-stock-of-day .sp-day-terminal-copy strong{display:block;color:#f1d477;font-size:12px;font-weight:950;letter-spacing:.09em;line-height:1.25}
+#sp-stock-of-day .sp-day-terminal-copy small{display:block;margin-top:5px;color:#d3e0ef;font-size:10px;font-weight:750;line-height:1.45}
+#sp-stock-of-day .sp-day-terminal-link{grid-column:5;grid-row:1;align-self:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;padding:10px 12px;border:1px solid #f1d477;border-radius:7px;background:#f1d477;color:#102033!important;text-decoration:none;font-size:11px;font-weight:950;line-height:1.2}
+#sp-stock-of-day .sp-day-terminal-link:hover{background:#ffe69a}
+#sp-stock-of-day .sp-day-cta{grid-column:2;grid-row:2;justify-self:start;align-self:start;font-size:10px!important;color:#f1d477;text-decoration:underline;text-underline-offset:3px}
+#sp-stock-of-day .sp-day-bell{grid-column:5;grid-row:2;justify-self:center;align-self:center}
+#sp-stock-of-day:not(:has(.sp-day-stats)){grid-template-columns:48px minmax(130px,1fr) minmax(175px,1.2fr) auto}
+#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-terminal-copy{grid-column:3}
+#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-terminal-link{grid-column:4}
+#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-source{display:none}
+@media(max-width:980px){#sp-stock-of-day{grid-template-columns:44px minmax(125px,1fr) minmax(220px,1.4fr) auto;column-gap:10px}#sp-stock-of-day .sp-day-terminal-copy{grid-column:3;grid-row:2;border-left:0;padding:0}#sp-stock-of-day .sp-day-terminal-link{grid-column:4;grid-row:1}#sp-stock-of-day .sp-day-stats{grid-column:3;grid-row:1}#sp-stock-of-day .sp-day-source{display:none}#sp-stock-of-day .sp-day-bell{grid-column:4;grid-row:2}#sp-stock-of-day:not(:has(.sp-day-stats)){grid-template-columns:44px minmax(125px,1fr) minmax(180px,1fr) auto}}
+@media(max-width:680px){#sp-stock-of-day{grid-template-columns:42px minmax(0,1fr) auto;grid-template-rows:auto auto auto;gap:8px 10px;padding:11px 12px!important}#sp-stock-of-day .sp-day-logo{grid-column:1;grid-row:1;width:42px;height:42px;flex-basis:42px}#sp-stock-of-day .sp-day-copy{grid-column:2 / 4;grid-row:1}#sp-stock-of-day .sp-day-name{font-size:15px!important}#sp-stock-of-day .sp-day-stats{grid-column:1 / 4;grid-row:2;display:flex;flex-wrap:wrap;justify-content:space-between;gap:7px 12px;padding-top:7px;border-top:1px solid #ffffff25}#sp-stock-of-day .sp-day-stat{min-width:55px}#sp-stock-of-day .sp-day-stat-label{font-size:9px!important}#sp-stock-of-day .sp-day-stat-value{font-size:13px!important}#sp-stock-of-day .sp-day-source{display:none}#sp-stock-of-day .sp-day-terminal-copy{grid-column:1 / 3;grid-row:3;border-left:0;padding:0}#sp-stock-of-day .sp-day-terminal-copy strong{font-size:11px}#sp-stock-of-day .sp-day-terminal-copy small{font-size:9px;margin-top:3px}#sp-stock-of-day .sp-day-terminal-link{grid-column:3;grid-row:3;padding:9px 8px;font-size:10px}#sp-stock-of-day .sp-day-cta{grid-column:2;grid-row:3;justify-self:start;font-size:10px!important}#sp-stock-of-day .sp-day-bell{display:none!important}#sp-stock-of-day:not(:has(.sp-day-stats)){grid-template-rows:auto auto}#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-terminal-copy{grid-column:1 / 3;grid-row:2}#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-terminal-link{grid-column:3;grid-row:2}#sp-stock-of-day:not(:has(.sp-day-stats)) .sp-day-cta{grid-column:2;grid-row:3}}
+</style>
 </body>
 </html>
 
