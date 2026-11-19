@@ -48,6 +48,13 @@ export default {
       return fetch(request);
     }
 
+    // Normalize language homepages to their trailing-slash canonical URLs.
+    // Keep the query string and use a permanent redirect for search engines.
+    if (url.pathname === "/fr" || url.pathname === "/es") {
+      url.pathname += "/";
+      return Response.redirect(url.toString(), 301);
+    }
+
     // Only route the Canadian/US root homepage by visitor country.
     if (url.pathname === "/" || url.pathname === "/index.html") {
       const savedChoice = readCookie(request.headers.get("Cookie"), COOKIE_NAME);
