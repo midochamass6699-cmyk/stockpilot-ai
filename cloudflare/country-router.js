@@ -77,34 +77,8 @@ export default {
     }
 
     const response = await fetch(request);
-    const contentType = response.headers.get("content-type") || "";
-    if (!response.ok || !contentType.includes("text/html")) return response;
-
-    const pagePath = url.pathname.replace(/index\.html$/i, "").replace(/\/$/, "") || "/";
-    if (!["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) return response;
-
-    let html = await response.text();
-    const desktopMarkup = '<span id="tf-visitor-counter" aria-live="polite">YOU ARE VISITOR NUMBER …</span>';
-    const mobileMarkup = '<span id="tf-visitor-counter-mobile" aria-live="polite">YOU ARE VISITOR NUMBER …</span>';
-
-    // Place one copy beside the language links and one beside the mobile menu toggle.
-    const langClose = '</div>\n</div>\n<button class="nav-toggle"';
-    if (html.includes(langClose)) {
-      html = html.replace(langClose, '</div>\n' + desktopMarkup + '\n</div>\n' + mobileMarkup + '\n<button class="nav-toggle"');
-    } else {
-      html = html.replace('<button class="nav-toggle"', mobileMarkup + '<button class="nav-toggle"');
-    }
-
-    const style = '<style id="tf-visitor-counter-style">#tf-visitor-counter{display:inline-flex;align-items:center;justify-content:center;margin:2px 0 0 auto;padding:5px 10px;border:1px solid #ffd629;border-radius:999px;background:#101010;color:#ffd629;font:800 10px/1.2 Arial,sans-serif;letter-spacing:.035em;white-space:nowrap}#tf-visitor-counter-mobile{display:none}@media(max-width:760px){#tf-visitor-counter{display:none!important}#tf-visitor-counter-mobile{display:inline-flex;align-items:center;justify-content:center;position:absolute;right:60px;top:50%;transform:translateY(-50%);max-width:calc(100% - 150px);overflow:hidden;text-overflow:ellipsis;padding:5px 7px;border:1px solid #ffd629;border-radius:999px;background:#101010;color:#ffd629;font:800 9px/1.2 Arial,sans-serif;white-space:nowrap}.topbar .nav{position:relative}}</style>';
-    html = html.replace("</head>", style + "</head>");
-
-    const script = '<script id="tf-visitor-counter-script">(function(){var els=[document.getElementById("tf-visitor-counter"),document.getElementById("tf-visitor-counter-mobile")].filter(Boolean);if(!els.length)return;fetch("/api/visitor-number",{cache:"no-store",credentials:"same-origin"}).then(function(r){if(!r.ok)throw new Error("counter unavailable");return r.json()}).then(function(data){if(Number.isFinite(Number(data.visitorNumber))){var label="YOU ARE VISITOR NUMBER "+Number(data.visitorNumber).toLocaleString("en-CA");els.forEach(function(el){el.textContent=label})}}).catch(function(){els.forEach(function(el){el.hidden=true})})})();</script>';
-    html = html.replace("</body>", script + "</body>");
-
-    const headers = new Headers(response.headers);
-    headers.delete("content-length");
-    headers.delete("content-encoding");
-    headers.delete("etag");
-    return new Response(html, { status: response.status, statusText: response.statusText, headers });
+    // The homepage HTML contains the single centered counter badge.
+    // Do not inject a second counter beside the language selector.
+    return response;
   }
 };
