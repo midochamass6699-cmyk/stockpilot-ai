@@ -5640,42 +5640,71 @@ section:empty, article:empty, aside:empty { display:none!important; }
 </script>
 
 <style id="tf-fr-market-three-column-style">
-#tf-fr-market-overview{width:min(1440px,calc(100% - 30px));margin:14px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
-#tf-fr-market-overview .tf-fr-market-column{min-width:0;background:#fff;border:1px solid #dce3eb;border-radius:12px;padding:13px;box-shadow:0 4px 16px rgba(20,35,55,.07);color:#17243a}
-#tf-fr-market-overview .tf-fr-market-column>section{display:block!important;margin:0!important;padding:0!important;border:0!important;background:#fff!important;color:#17243a!important}
-#tf-fr-market-overview .section-head{margin:0 0 10px!important}
-#tf-fr-market-overview .section-head h2{font-size:clamp(16px,1.45vw,20px)!important;line-height:1.2!important;color:#14263e!important;margin:0 0 6px!important}
-#tf-fr-market-overview .section-head p{font-size:11px!important;line-height:1.45!important;color:#566579!important;margin:0!important}
-#tf-fr-market-overview .eyebrow{font-size:9px!important;color:#8a6b19!important}
-#tf-fr-market-overview .stock-grid{grid-template-columns:minmax(0,1fr)!important;gap:9px!important}
-#tf-fr-market-overview .stock-card{padding:11px!important;background:#fff!important;color:#17243a!important;border:1px solid #e0e6ed!important;border-top:3px solid #d6ad55!important;box-shadow:0 2px 8px #17243a0a!important}
-#tf-fr-market-overview .stock-card h3{font-size:14px!important;color:#17243a!important}
-#tf-fr-market-overview .stock-card .price{font-size:21px!important;color:#17243a!important}
-#tf-fr-market-overview .card-meta{font-size:10px!important;color:#536174!important}
-#tf-fr-market-overview .updated{font-size:10px!important;color:#65758a!important;margin:6px 0 9px!important}
-#tf-fr-market-overview .crypto-note{font-size:10px!important;color:#64748b!important}
-#tf-fr-market-overview .kitco-banner-stack{display:block!important;width:100%;margin:12px auto 0!important;padding:10px!important;background:#fff!important;border:1px solid #e1e6ed!important;border-radius:10px!important;box-sizing:border-box}
-#tf-fr-market-overview .kitco-affiliate-banner{width:100%!important;max-width:300px!important;margin:0 auto!important;flex:0 1 300px!important;background:#fff!important}
-#tf-fr-market-overview .kitco-trade-link a{color:#765b17!important}
+/* Homepage introduction only: compact live previews around the Kitco advertisement.
+   Full market sections remain in their original positions below the terminal. */
+#tf-fr-market-overview{width:min(1440px,calc(100% - 30px));margin:14px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.9fr) minmax(0,1fr);gap:14px;align-items:start}
+#tf-fr-market-overview .tf-fr-market-column{min-width:0;background:#fff;border:1px solid #dce3eb;border-radius:12px;padding:12px;box-shadow:0 4px 16px rgba(20,35,55,.07);color:#17243a}
+#tf-fr-market-overview .tf-fr-market-column h2{margin:0 0 9px;color:#14263e;font-size:16px;line-height:1.2}
+#tf-fr-market-overview .tf-fr-market-preview{display:grid;gap:6px;min-width:0}
+#tf-fr-market-overview .sp-market-row{display:flex;align-items:center;gap:7px;min-width:0;padding:8px 7px;border:1px solid #e6ebf1;border-radius:8px;background:#fbfcfe;color:#17243a;text-decoration:none}
+#tf-fr-market-overview .sp-market-rank{display:grid;place-items:center;flex:0 0 20px;width:20px;height:20px;border-radius:50%;background:#eef2f7;color:#45566d;font-size:10px;font-weight:900}
+#tf-fr-market-overview .sp-market-name{display:flex;flex:1;flex-direction:column;min-width:0;gap:1px}
+#tf-fr-market-overview .sp-market-name strong{overflow:hidden;color:#17243a;font-size:12px;text-overflow:ellipsis;white-space:nowrap}
+#tf-fr-market-overview .sp-market-name small{color:#68778b;font-size:10px}
+#tf-fr-market-overview .sp-market-values{display:flex;flex-direction:column;align-items:flex-end;min-width:0;gap:1px}
+#tf-fr-market-overview .sp-market-values strong{color:#17243a;font-size:11px;white-space:nowrap}
+#tf-fr-market-overview .sp-market-values small{font-size:10px;font-weight:800;white-space:nowrap}
+#tf-fr-market-overview .sp-market-up{color:#087a43}
+#tf-fr-market-overview .sp-market-down{color:#bd2929}
+#tf-fr-market-overview .sp-market-loading{padding:10px;color:#68778b;font-size:11px}
+#tf-fr-market-overview .kitco-banner-stack{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;max-width:340px;margin:12px auto 0;padding:9px;border:1px solid #e1e6ed;border-radius:10px;background:#fff;box-sizing:border-box}
+#tf-fr-market-overview .kitco-affiliate-banner{width:100%;max-width:300px;margin:0 auto}
+#tf-fr-market-overview .kitco-trade-link{width:100%;text-align:center}
+#tf-fr-market-overview .kitco-trade-link a{color:#765b17}
 @media(max-width:900px){#tf-fr-market-overview{grid-template-columns:repeat(2,minmax(0,1fr))}#tf-fr-market-overview .tf-fr-market-column:nth-child(2){grid-column:1/-1;grid-row:2}}
-@media(max-width:600px){#tf-fr-market-overview{width:calc(100% - 20px);grid-template-columns:minmax(0,1fr);gap:10px;margin:10px auto 18px}#tf-fr-market-overview .tf-fr-market-column{padding:11px}#tf-fr-market-overview .tf-fr-market-column:nth-child(2){grid-column:auto;grid-row:auto}}
+@media(max-width:600px){#tf-fr-market-overview{width:calc(100% - 20px);grid-template-columns:minmax(0,1fr);gap:10px;margin:10px auto 18px}#tf-fr-market-overview .tf-fr-market-column:nth-child(2){grid-column:auto;grid-row:auto}}
 </style>
 <script id="tf-fr-market-three-column-script">
 (function(){
  const welcome=document.querySelector('.fr-welcome-banner');
- const main=document.getElementById('main-picks');
- const crypto=document.getElementById('crypto-picks');
- const penny=document.getElementById('penny-picks');
+ const mainSource=document.getElementById('previewMainStocks');
+ const cryptoSource=document.getElementById('previewCrypto');
+ const pennySource=document.getElementById('previewPennyStocks');
  const kitco=document.querySelector('.weekly-subscribe-cta .kitco-banner-stack');
- if(!welcome||!main||!crypto||!penny||document.getElementById('tf-fr-market-overview'))return;
- const grid=document.createElement('div');grid.id='tf-fr-market-overview';
- const left=document.createElement('div');left.className='tf-fr-market-column';left.setAttribute('aria-label','Top 3 actions');
- const center=document.createElement('div');center.className='tf-fr-market-column';center.setAttribute('aria-label','Top 3 cryptomonnaies et publicité Kitco');
- const right=document.createElement('div');right.className='tf-fr-market-column';right.setAttribute('aria-label','Top 3 penny stocks');
- left.appendChild(main);center.appendChild(crypto);right.appendChild(penny);
- if(kitco)center.appendChild(kitco);
- grid.append(left,center,right);
+ if(!welcome||document.getElementById('tf-fr-market-overview'))return;
+
+ const grid=document.createElement('section');
+ grid.id='tf-fr-market-overview';
+ grid.setAttribute('aria-label','Aperçu des marchés');
+ const makeColumn=(title,id,label)=>{
+   const column=document.createElement('div');
+   column.className='tf-fr-market-column';
+   column.setAttribute('aria-label',label);
+   const heading=document.createElement('h2');
+   heading.textContent=title;
+   const preview=document.createElement('div');
+   preview.className='tf-fr-market-preview';
+   preview.id=id;
+   preview.innerHTML='<div class="sp-market-loading">Chargement des données…</div>';
+   column.append(heading,preview);
+   return {column,preview};
+ };
+ const main=makeColumn('3 actions à surveiller','tf-fr-preview-main','Aperçu des trois principales actions');
+ const crypto=makeColumn('3 cryptomonnaies','tf-fr-preview-crypto','Aperçu des trois principales cryptomonnaies');
+ const penny=makeColumn('3 penny stocks','tf-fr-preview-penny','Aperçu des trois penny stocks');
+ if(kitco)crypto.column.appendChild(kitco);
+ grid.append(main.column,crypto.column,penny.column);
  welcome.insertAdjacentElement('afterend',grid);
+
+ const mirror=(source,target)=>{
+   if(!source||!target)return;
+   const copy=()=>{target.innerHTML=source.innerHTML;};
+   copy();
+   new MutationObserver(copy).observe(source,{childList:true,subtree:true,characterData:true});
+ };
+ mirror(mainSource,main.preview);
+ mirror(cryptoSource,crypto.preview);
+ mirror(pennySource,penny.preview);
 })();
 </script>
 </body>
