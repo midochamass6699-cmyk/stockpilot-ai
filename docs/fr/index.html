@@ -5597,9 +5597,9 @@ section:empty, article:empty, aside:empty { display:none!important; }
  var value=document.getElementById('stockpilot-visitor-value');
  var badge=document.getElementById('stockpilot-visitor-number');
  if(!value||!badge)return;
- fetch('https://stockpilot-country-router.midochamass6699.workers.dev/api/visitor',{method:'GET',mode:'cors',credentials:'omit',cache:'no-store'})
+ fetch('/api/visitor-number',{method:'GET',credentials:'same-origin',cache:'no-store'})
   .then(function(response){if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
-  .then(function(data){var n=Number(data&&data.visitor_number);if(!Number.isSafeInteger(n)||n<1)throw new Error('Invalid visitor number');value.textContent=n.toLocaleString();})
+  .then(function(data){var n=Number(data&&data.visitorNumber);if(!Number.isSafeInteger(n)||n<1)throw new Error('Invalid visitor number');value.textContent=n.toLocaleString();})
   .catch(function(error){value.textContent='—';console.warn('StockPilot visitor counter:',error);});
 })();
 </script>
