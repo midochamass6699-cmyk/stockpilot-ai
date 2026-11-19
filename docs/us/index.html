@@ -7037,46 +7037,7 @@ setInterval(loadStocks,15 * 60 * 1000);
 <a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=fidelity.com&amp;sz=128"/><span>Fidelity</span></a><a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=schwab.com&amp;sz=128"/><span>Charles Schwab</span></a><a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=vanguard.com&amp;sz=128"/><span>Vanguard</span></a><a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=robinhood.com&amp;sz=128"/><span>Robinhood</span></a><a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=interactivebrokers.com&amp;sz=128"/><span>Interactive Brokers</span></a><a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=firstrade.com&amp;sz=128"/><span>Firstrade</span></a><a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=webull.com&amp;sz=128"/><span>Webull</span></a><strong class="broker-scroll-heading">U.S. INVESTOR RESOURCES</strong><a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=investor.gov&amp;sz=128"/><span>SEC Investor.gov</span></a><a class="broker-scroll-item"><img loading="lazy" decoding="async" alt="" src="https://www.google.com/s2/favicons?domain=finra.org&amp;sz=128"/><span>FINRA BrokerCheck</span></a></div></div></aside>
 <!-- FULL MARGIN ACCOUNT ARTICLE: EXPANDS ON THIS HOMEPAGE -->
 
-<script>
-(function () {
-  const carousel = document.getElementById('stockpilot-slideshow');
-  if (!carousel) return;
-  const slides = Array.from(carousel.querySelectorAll('.sp-slide'));
-  const dots = Array.from(carousel.querySelectorAll('.sp-dot'));
-  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let current = 0;
-  let timer = null;
-  function showSlide(index) {
-    current = (index + slides.length) % slides.length;
-    slides.forEach((slide, i) => {
-      const active = i === current;
-      slide.classList.toggle('is-active', active);
-      slide.setAttribute('aria-hidden', active ? 'false' : 'true');
-    });
-    dots.forEach((dot, i) => {
-      const active = i === current;
-      dot.classList.toggle('is-active', active);
-      if (active) dot.setAttribute('aria-current', 'true');
-      else dot.removeAttribute('aria-current');
-    });
-  }
-  function stop() { if (timer) window.clearInterval(timer); timer = null; }
-  function start() {
-    stop();
-    if (!reducedMotion) timer = window.setInterval(() => showSlide(current + 1), 3000);
-  }
-  carousel.querySelector('[data-sp-prev]').addEventListener('click', () => { showSlide(current - 1); start(); });
-  carousel.querySelector('[data-sp-next]').addEventListener('click', () => { showSlide(current + 1); start(); });
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); start(); }));
-  carousel.addEventListener('mouseenter', stop);
-  carousel.addEventListener('mouseleave', start);
-  carousel.addEventListener('focusin', stop);
-  carousel.addEventListener('focusout', event => { if (!carousel.contains(event.relatedTarget)) start(); });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
-  showSlide(0);
-  start();
-})();
-</script>
+
 <style id="stockpilot-mobile-responsive-fixes">
 /* Responsive layout pass: retain the desktop design and make every section usable on phones. */
 *, *::before, *::after { box-sizing: border-box; }
@@ -7632,89 +7593,7 @@ body { overflow-x: hidden; }
   .broker-match-panel { animation:none !important; }
 }
 </style>
-<script>
-(function(){
-  const root=document.getElementById('broker-match-widget');
-  if(!root) return;
-  const startBtn=document.getElementById('broker-match-start');
-  const panel=document.getElementById('broker-match-panel');
-  const questionEl=document.getElementById('broker-match-question');
-  const optionsEl=document.getElementById('broker-match-options');
-  const countEl=document.getElementById('broker-match-count');
-  const fillEl=document.getElementById('broker-match-progress-fill');
-  const nextBtn=document.getElementById('broker-match-next');
-  const stepEl=document.getElementById('broker-match-step');
-  const resultEl=document.getElementById('broker-match-result');
-  const otherCountryInput=document.getElementById('broker-match-country-other');
-  const questions=[
-    {key:'country',title:'Where do you live?',options:['United States','Canada','United Kingdom','Australia','Another country']},
-    {key:'assets',title:'What would you like to invest in?',options:['Stocks and ETFs','Stocks, ETFs and crypto','Stocks, ETFs, crypto and other investments']},
-    {key:'budget',title:'How much would you initially invest?',options:['Less than $500','$500–$5,000','$5,000–$25,000','More than $25,000']},
-    {key:'priority',title:'What matters most when choosing a broker?',options:['Zero-commission stock and ETF trading','Lowest total cost, including currency conversion','Broad international market access','A balance of low costs and investment choice']},
-    {key:'style',title:'How often do you expect to trade?',options:['A few times a year','A few times a month','Several times a week','I am not sure yet']}
-  ];
-  let index=0; const answers={};
-  function draw(){
-    const q=questions[index];
-    if(q.key!=='country') otherCountryInput.hidden=true;
-    countEl.textContent='QUESTION '+(index+1)+' OF '+questions.length;
-    questionEl.textContent=q.title;
-    fillEl.style.width=((index+1)/questions.length*100)+'%';
-    optionsEl.innerHTML='';
-    q.options.forEach((value,i)=>{
-      const label=document.createElement('label'); label.className='broker-match-option';
-      const input=document.createElement('input'); input.type='radio'; input.name='broker-match-answer'; input.value=value;
-      input.addEventListener('change',()=>{answers[q.key]=value; if(q.key==='country'){otherCountryInput.hidden=value!=='Another country'; if(value!=='Another country') otherCountryInput.value='';} nextBtn.disabled=false;});
-      const span=document.createElement('span'); span.textContent=value; label.append(input,span); optionsEl.append(label);
-    });
-    nextBtn.disabled=!answers[q.key] || (q.key==='country' && answers[q.key]==='Another country' && !otherCountryInput.value.trim());
-    nextBtn.innerHTML=index===questions.length-1?'SHOW MY BEST MATCH <span aria-hidden="true">→</span>':'CONTINUE <span aria-hidden="true">→</span>' ;
-  }
-  function showResult(){
-    const canada=answers.country==='Canada';
-    const usa=answers.country==='United States';
-    const wantsCrypto=answers.assets && answers.assets.toLowerCase().includes('crypto');
-    let broker,why,caveat,url;
-    const activeTrading=answers.style==='Several times a week';
-    const largerAccount=answers.budget==='$5,000–$25,000' || answers.budget==='More than $25,000';
-    const globalAccess=answers.priority==='Broad international market access';
-    if(canada && wantsCrypto){
-      broker='Wealthsimple'; url='https://www.wealthsimple.com/en-ca/invest';
-      why='Among the listed platforms, Wealthsimple is the closest fit for a Canadian beginner who wants both stocks/ETFs and crypto. It offers $0 commissions on listed Canadian and U.S. securities.';
-      caveat='Important: $0 stock/ETF commissions do not mean every investment is free. Currency conversion charges apply, and crypto has separate costs. Confirm the current crypto fee schedule and product eligibility before opening an account.';
-    } else if(canada && (activeTrading || largerAccount || globalAccess)){
-      broker='Interactive Brokers'; url='https://www.interactivebrokers.ca/';
-      why='Your answers point toward broader market access or more frequent trading. Interactive Brokers offers access to many international markets and a broad range of products, which may suit that profile better than a simple zero-commission offer.';
-      caveat='This is not a zero-commission promise: commissions depend on market and pricing plan. Crypto access varies by country and account entity. Compare the local fee schedule before applying.';
-    } else if(canada){
-      broker='Webull Canada'; url='https://www.webull.ca/';
-      why='Your answers prioritize low-cost stock and ETF investing without requiring crypto or extensive international access. Webull Canada advertises $0 commissions on U.S. and Canadian stocks and ETFs.';
-      caveat='This match prioritizes stock/ETF commissions. Review market-data, currency-conversion, account and other charges, and confirm current regulatory protections before opening an account.';
-    } else if(usa){
-      broker='Webull'; url='https://www.webull.com/';
-      why='Webull is a fee-focused candidate in the listed directory for U.S. stock and ETF trading, with commission-free trading advertised for eligible securities.';
-      caveat='Product access, crypto availability, account protections and fees depend on your state and account type. Confirm current details directly with Webull before applying.';
-    } else {
-      broker='Interactive Brokers'; url='https://www.interactivebrokers.com/';
-      why='Interactive Brokers has broad international reach among the brokers in this directory and publishes a country-eligibility list. It is the most practical starting point for checking access in '+(answers.countryText || answers.country)+'.';
-      caveat='This is a reach-and-market-access match, not a zero-commission promise. Commissions, available products and crypto access vary by country and account entity. Check the official country list and local fee schedule before applying.';
-    }
-    stepEl.hidden=true; resultEl.hidden=false;
-    resultEl.innerHTML='';
-    const kicker=document.createElement('div'); kicker.className='match-kicker'; kicker.textContent='YOUR STOCKPILOT AI MATCH';
-    const title=document.createElement('h3'); title.textContent=broker;
-    const para=document.createElement('p'); para.textContent=why;
-    const warning=document.createElement('p'); warning.className='match-caveat'; warning.textContent=caveat;
-    const link=document.createElement('a'); link.href=url; link.target='_blank'; link.rel='noopener noreferrer'; link.textContent='VISIT OFFICIAL BROKER WEBSITE ↗';
-    const restart=document.createElement('button'); restart.type='button'; restart.className='broker-match-restart'; restart.textContent='START AGAIN'; restart.addEventListener('click',()=>{index=0; Object.keys(answers).forEach(k=>delete answers[k]); otherCountryInput.value=''; otherCountryInput.hidden=true; resultEl.hidden=true; stepEl.hidden=false; draw(); panel.hidden=true; startBtn.hidden=false; startBtn.setAttribute('aria-expanded','false');});
-    resultEl.append(kicker,title,para,warning,link,restart);
-  }
-  startBtn.addEventListener('click',()=>{panel.hidden=false; startBtn.hidden=true; startBtn.setAttribute('aria-expanded','true'); draw(); panel.scrollIntoView({behavior:'smooth',block:'nearest'});});
-  otherCountryInput.addEventListener('input',()=>{if(answers.country==='Another country') nextBtn.disabled=!otherCountryInput.value.trim();});
-  nextBtn.addEventListener('click',()=>{const q=questions[index]; if(!answers[q.key]) return; if(q.key==='country' && answers.country==='Another country'){if(!otherCountryInput.value.trim()){otherCountryInput.focus();return;} answers.countryText=otherCountryInput.value.trim();} if(index<questions.length-1){index++;draw();}else{showResult();}});
-  draw();
-})();
-</script>
+
 <style id="broker-widget-under-stock-of-week">
 /* Keep the broker matcher inside the left Stock of the Week column. */
 .weekly-feature-copy > .broker-match-widget {
@@ -7780,33 +7659,7 @@ body { overflow-x: hidden; }
 }
 </style>
 <!-- Cloudflare Web Analytics --><!-- End Cloudflare Web Analytics -->
-<script id="stockpilot-mobile-navigation">
-(function () {
-  const toggle = document.querySelector('.topbar .nav-toggle');
-  const menu = document.getElementById('primary-navigation');
-  if (!toggle || !menu) return;
-  function closeMenu() {
-    menu.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-  }
-  toggle.addEventListener('click', function () {
-    const opening = !menu.classList.contains('is-open');
-    menu.classList.toggle('is-open', opening);
-    toggle.setAttribute('aria-expanded', String(opening));
-    toggle.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
-  });
-  menu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', closeMenu);
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 760) closeMenu();
-  });
-})();
-</script>
+
 
 <style id="stockpilot-left-picks-banner-style">
 /* Replace the scrolling free-access promotion with a compact live market watchlist. */
@@ -7997,47 +7850,7 @@ body { overflow-x: hidden; }
 }
 @media(min-width:761px){.tf-mobile-broker,.tf-mobile-subscribe{display:none!important}}
 </style>
-<script id="technofront-mobile-home-order-script">
-(function(){
- const mq=window.matchMedia('(max-width:760px)');
- let broker=document.getElementById('stockpilot-find-broker-banner')||document.querySelector('.tf-mobile-broker');
- const lookup=document.getElementById('quick-stock-lookup');
- const desk=document.getElementById('live-trading-desk');
- const picks=document.getElementById('crypto-picks');
- const welcome=document.querySelector(".live-trading-desk .trading-desk-header > div:first-child");
- const subscribe=document.getElementById('stockpilot-subscribe-btn');
- let brokerHome=null,lookupHome=null,brokerMade=false,cta=null;
- if(broker&&broker.parentNode){brokerHome=document.createComment('broker original position');broker.parentNode.insertBefore(brokerHome,broker);}
- if(lookup&&lookup.parentNode){lookupHome=document.createComment('lookup original position');lookup.parentNode.insertBefore(lookupHome,lookup);}
- if(!broker&&welcome&&welcome.parentNode){
-   broker=document.createElement('a');broker.className='tf-mobile-broker';
-   broker.href="#broker-directory";
-   broker.setAttribute('aria-label',"Encuentra un bróker");
-   broker.innerHTML="<span>↗</span><span><strong>ENCUENTRA TU BRÓKER</strong><small>Compara plataformas de inversión</small></span>";
-   brokerMade=true;
- }
- if(!document.querySelector('.tf-mobile-subscribe')){
-   cta=document.createElement('button');cta.type='button';cta.className='tf-mobile-subscribe';
-   cta.innerHTML="<span aria-hidden=\"true\">🔔</span> GET FREE UPDATES";
-   cta.addEventListener('click',function(){if(subscribe){subscribe.click();}else{const target=document.getElementById('stockpilot-alert-signup');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}});
- }
- function arrange(){
-   if(mq.matches){
-     const anchor=desk||welcome;
-     if(broker&&anchor&&anchor.parentNode)anchor.parentNode.insertBefore(broker,anchor);
-     if(cta&&welcome&&welcome.parentNode)welcome.parentNode.insertBefore(cta,welcome.nextSibling);
-     if(lookup){const target=picks||desk;if(target&&target.parentNode)target.parentNode.insertBefore(lookup,target.nextSibling);}
-   }else{
-     if(brokerMade&&broker&&broker.parentNode)broker.remove();
-     else if(brokerHome&&brokerHome.parentNode)brokerHome.parentNode.insertBefore(broker,brokerHome.nextSibling);
-     if(lookupHome&&lookupHome.parentNode&&lookup)lookupHome.parentNode.insertBefore(lookup,lookupHome.nextSibling);
-     if(cta)cta.remove();
-   }
- }
- arrange();
- if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
-})();
-</script>
+
 <style id="stockpilot-header-ticker-spacing-fix">
 /* Keep the market ticker tight against the header and free-tools strip. */
 header{margin-bottom:0!important}
