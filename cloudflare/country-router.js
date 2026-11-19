@@ -77,8 +77,22 @@ export default {
     }
 
     const response = await fetch(request);
-    // The homepage HTML contains the single centered counter badge.
-    // Do not inject a second counter beside the language selector.
-    return response;
+    const contentType = response.headers.get("content-type") || "";
+    if (!response.ok || !contentType.includes("text/html")) return response;
+
+    const pagePath = url.pathname.replace(/index\\.html$/i, "").replace(/\\/$/, "") || "/";
+    if (!["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) return response;
+
+    let html = await response.text();
+    // Populate the one counter already centered in the navigation.
+    // Do not create a second counter beside the language selector.
+    const script = '<script id="tf-visitor-counter-script">(function(){var el=document.getElementById("tf-visitor-counter");if(!el)return;fetch("/api/visitor-number",{cache:"no-store",credentials:"same-origin"}).then(function(r){if(!r.ok)throw new Error("counter unavailable");return r.json()}).then(function(data){var n=Number(data&&data.visitorNumber);if(Number.isSafeInteger(n)&&n>0){el.textContent="YOU ARE VISITOR NUMBER "+n.toLocaleString("en-CA")}else{throw new Error("invalid counter value")}}).catch(function(){el.textContent="VISITOR COUNT UNAVAILABLE"})})();</script>';
+    html = html.replace("</body>", script + "</body>");
+
+    const headers = new Headers(response.headers);
+    headers.delete("content-length");
+    headers.delete("content-encoding");
+    headers.delete("etag");
+    return new Response(html, { status: response.status, statusText: response.statusText, headers });
   }
 };
