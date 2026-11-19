@@ -3787,9 +3787,7 @@ input, select, textarea, button {
     For educational purposes only · Not financial advice
   </p>
 <a href="#top">Retour en haut ↑</a>
-<!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" decoding="async" id="cg_de43d061" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" decoding="async" loading="lazy" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
-<!-- Compteur de visiteurs https://counter.gratis ENDE -->
+
 <p>
   General Support: <a href="mailto:support@technofront.org">support@technofront.org</a>
 <br/>
@@ -5599,7 +5597,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
  var value=document.getElementById('stockpilot-visitor-value');
  var badge=document.getElementById('stockpilot-visitor-number');
  if(!value||!badge)return;
- fetch('/api/visitor',{method:'GET',credentials:'same-origin',cache:'no-store'})
+ fetch('https://stockpilot-country-router.midochamass6699.workers.dev/api/visitor',{method:'GET',mode:'cors',credentials:'omit',cache:'no-store'})
   .then(function(response){if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
   .then(function(data){var n=Number(data&&data.visitor_number);if(!Number.isSafeInteger(n)||n<1)throw new Error('Invalid visitor number');value.textContent=n.toLocaleString();})
   .catch(function(error){value.textContent='—';console.warn('StockPilot visitor counter:',error);});
@@ -6287,9 +6285,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
     For educational purposes only · Not financial advice
   </p>
 <a href="#top">Retour en haut ↑</a>
-<!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" decoding="async" id="cg_de43d061" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" decoding="async" loading="lazy" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
-<!-- Compteur de visiteurs https://counter.gratis ENDE -->
+
 <p>
   General Support: <a href="mailto:support@technofront.org">support@technofront.org</a>
 <br/>
