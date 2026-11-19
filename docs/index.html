@@ -2290,6 +2290,52 @@ input, select, textarea, button {
 }
 </style>
 
+
+<style id="stockpilot-layout-stability">
+/* Reserve space for live market data and third-party charts to reduce CLS. */
+.live-trading-desk {
+  min-height: 420px;
+}
+.live-trading-desk .trading-desk-grid {
+  min-height: 250px;
+  align-items: stretch;
+}
+.live-trading-desk .trading-market-list {
+  min-height: 150px;
+}
+.sp-market-terminal {
+  min-width: 0;
+}
+.sp-terminal-chart {
+  height: 530px;
+  min-height: 530px;
+  contain: layout;
+}
+.sp-terminal-chart iframe,
+.sp-terminal-chart .tradingview-widget-container,
+.sp-terminal-chart .tradingview-widget-container__widget {
+  height: 100%;
+}
+@media (max-width: 760px) {
+  .live-trading-desk {
+    min-height: 390px;
+  }
+  .live-trading-desk .trading-desk-grid {
+    min-height: 210px;
+  }
+  .live-trading-desk .trading-market-list {
+    min-height: 130px;
+  }
+  .sp-market-terminal {
+    overflow: clip;
+  }
+  .sp-terminal-chart {
+    height: 430px;
+    min-height: 430px;
+  }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
