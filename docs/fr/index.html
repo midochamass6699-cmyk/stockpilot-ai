@@ -2160,32 +2160,6 @@ input, select, textarea, button {
 
 
 
-<style id="sp-fr-top-picks-ticker-style">
-.sp-top-picks-ticker{width:100%;overflow:hidden;min-height:116px;margin:0 0 18px;border-top:2px solid #d6ad55;border-bottom:2px solid #d6ad55;background:linear-gradient(90deg,#07182d,#102b4b 50%,#07182d);color:#fff}
-.sp-ticker-track{display:flex;align-items:stretch;width:max-content;gap:10px;padding:9px 0;animation:spTopTicker 48s linear infinite;will-change:transform}
-.sp-top-picks-ticker:hover .sp-ticker-track{animation-play-state:paused}
-.sp-ticker-message{width:205px;min-height:94px;flex:0 0 205px;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px 12px;border:1px solid #4773a5;border-radius:9px;background:#0d2440;text-align:center}
-.sp-ticker-message strong{font-size:13px;color:#ffe36b;line-height:1.2}
-.sp-ticker-message span{font-size:9px;font-weight:900;letter-spacing:.08em;color:#b8d5f6}
-.sp-ticker-message b{font-size:18px;color:#6ee7a1}
-.sp-ticker-message small{font-size:8px;color:#b8cbe0}
-.sp-top-pick{width:205px;min-height:94px;flex:0 0 205px;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto auto 29px auto;column-gap:8px;padding:8px 10px;border:1px solid #345276;border-radius:9px;background:#102746;color:#fff;text-decoration:none}
-.sp-pick-rank{grid-column:1/-1;color:#ffdf64;font-size:8px;font-weight:950;letter-spacing:.1em}
-.sp-pick-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px;color:#c5d9f0}
-.sp-pick-ticker{font-size:12px;line-height:1.1}
-.sp-pick-price{grid-column:2;grid-row:2/4;align-self:center;color:#fff;font-size:15px;white-space:nowrap}
-.sp-pick-change{font-size:9px;font-weight:900}
-.sp-pick-change.up{color:#55e58c}.sp-pick-change.down{color:#ff8585}
-.sp-pick-chart{grid-column:1/-1;height:27px;display:block}
-.sp-pick-chart svg{width:100%;height:27px;overflow:visible}
-.sp-pick-chart polyline{fill:none;stroke:#5ee58c;stroke-width:2;vector-effect:non-scaling-stroke}
-.sp-top-pick:has(.sp-pick-change.down) .sp-pick-chart polyline{stroke:#ff8585}
-.sp-top-pick small{grid-column:1/-1;color:#91b2d7;font-size:7px;letter-spacing:.08em}
-@keyframes spTopTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.sp-ticker-track{animation:none}}
-@media(max-width:760px){.sp-top-picks-ticker{min-height:108px}.sp-ticker-track{animation-duration:38s}.sp-ticker-message,.sp-top-pick{width:190px;flex-basis:190px}}
-</style>
-
 <style id="tf-kitco-fr-ad-style">
 .tf-kitco-fr-ad-wrap{box-sizing:border-box;width:min(340px,calc(100% - 28px));margin:10px auto 14px;padding:8px 10px 10px;border:1px solid #d6ad55;border-radius:12px;background:linear-gradient(135deg,#fff 0%,#f2f6fa 55%,#fff7df 100%);box-shadow:0 5px 18px rgba(16,25,35,.12);text-align:center}
 .tf-kitco-fr-ad-label{margin-bottom:6px;color:#657286;font:700 9px/1.2 Arial,sans-serif;letter-spacing:.14em}
@@ -2403,6 +2377,18 @@ input, select, textarea, button {
   }
 }
 </style>
+<style id="sp-fr-subscribe-fab-position-fix">
+#sp-fr-subscribe-fab{left:20px!important;right:auto!important;bottom:20px!important;z-index:99970!important}
+@media(max-width:600px){#sp-fr-subscribe-fab{left:12px!important;right:auto!important;bottom:13px!important}}
+</style>
+<style id="tf-stocky-robot-style">
+#tf-stocky-launch{background:linear-gradient(135deg,#14283a,#0b1725)!important;color:#fff!important;border:1px solid #d6ad55!important;border-radius:999px!important;padding:9px 15px 9px 10px!important;box-shadow:0 7px 22px #0007!important}
+#tf-stocky-launch .tf-stocky-mark{width:34px!important;height:34px!important;flex:0 0 34px!important;border-radius:10px!important;background:#f1d47d!important;color:#172638!important;font-size:22px!important}
+#tf-stocky-launch>span:last-child{font-size:14px;letter-spacing:.01em}
+#tf-stocky-avatar{font-size:27px!important;background:#f1d47d!important;color:#172638!important}
+#tf-stocky-launch{right:20px!important;left:auto!important;bottom:20px!important;z-index:99980!important}
+@media(max-width:600px){#tf-stocky-launch{right:12px!important;left:auto!important;bottom:13px!important;padding:7px 11px 7px 8px!important}#tf-stocky-launch .tf-stocky-mark{width:30px!important;height:30px!important;flex-basis:30px!important}}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2607,49 +2593,7 @@ input, select, textarea, button {
   <p>Actions, penny stocks et cryptomonnaies à surveiller.</p>
 </section>
 
-<!-- STOCKPILOT AI : BANDEAU DES TOP 3 SÉLECTIONS -->
-<section class="sp-top-picks-ticker" aria-label="Les trois meilleures sélections StockPilot AI, cours et évolution">
- <div class="sp-ticker-track" id="spFrTopPicksTrack">
-  <div class="sp-ticker-message"><strong>🏆 TOP 3 SÉLECTIONS STOCKPILOT</strong><span>ACTIONS · PENNY STOCKS · CRYPTO</span><b>100 % GRATUIT</b><small>Aucune barrière payante · Données informatives</small></div>
-  <a class="sp-top-pick" href="./recherche.html?ticker=WWW&kind=main" aria-label="Wolverine World Wide, Inc. (WWW), 24,89 $ US, variation +8.83 pour cent">
-  <span class="sp-pick-rank">TOP PICK</span><span class="sp-pick-name">Wolverine World Wide, Inc.</span>
-  <strong class="sp-pick-ticker">WWW</strong><strong class="sp-pick-price">24,89 $ US</strong>
-  <span class="sp-pick-change up">▲ +8.83 %</span>
-  <span class="sp-pick-chart"><svg viewBox="0 0 100 32" preserveAspectRatio="none" aria-label="Mini graphique de tendance sur trois mois"><polyline points="0.0,24.7 6.7,25.0 13.3,27.4 20.0,28.0 26.7,23.8 33.3,22.9 40.0,20.4 46.7,19.5 53.3,11.7 60.0,19.2 66.7,20.7 73.3,18.1 80.0,19.2 86.7,18.2 93.3,14.3 100.0,6.0"/></svg></span><small>ÉVOLUTION · 3 MOIS</small>
- </a>
-  <a class="sp-top-pick" href="./recherche.html?ticker=CHA&kind=main" aria-label="Chagee Holdings Limited (CHA), 14,37 $ US, variation +6.37 pour cent">
-  <span class="sp-pick-rank">TOP PICK</span><span class="sp-pick-name">Chagee Holdings Limited</span>
-  <strong class="sp-pick-ticker">CHA</strong><strong class="sp-pick-price">14,37 $ US</strong>
-  <span class="sp-pick-change up">▲ +6.37 %</span>
-  <span class="sp-pick-chart"><svg viewBox="0 0 100 32" preserveAspectRatio="none" aria-label="Mini graphique de tendance sur trois mois"><polyline points="0.0,22.5 6.7,22.1 13.3,23.4 20.0,28.0 26.7,25.3 33.3,25.0 40.0,20.0 46.7,20.5 53.3,19.1 60.0,23.2 66.7,21.9 73.3,20.8 80.0,21.9 86.7,22.7 93.3,13.1 100.0,6.0"/></svg></span><small>ÉVOLUTION · 3 MOIS</small>
- </a>
-  <a class="sp-top-pick" href="./recherche.html?ticker=LFTO&kind=main" aria-label="Liftoff Mobile, Inc. (LFTO), 24,44 $ US, variation +30.63 pour cent">
-  <span class="sp-pick-rank">TOP PICK</span><span class="sp-pick-name">Liftoff Mobile, Inc.</span>
-  <strong class="sp-pick-ticker">LFTO</strong><strong class="sp-pick-price">24,44 $ US</strong>
-  <span class="sp-pick-change up">▲ +30.63 %</span>
-  <span class="sp-pick-chart"><svg viewBox="0 0 100 32" preserveAspectRatio="none" aria-label="Mini graphique de tendance sur trois mois"><polyline points="0.0,22.4 6.7,22.3 13.3,21.5 20.0,23.6 26.7,23.9 33.3,26.4 40.0,28.0 46.7,26.8 53.3,24.5 60.0,21.4 66.7,19.3 73.3,18.1 80.0,19.1 86.7,18.5 93.3,18.1 100.0,6.0"/></svg></span><small>ÉVOLUTION · 3 MOIS</small>
- </a>
-  <div class="sp-ticker-message sp-ticker-message-repeat"><strong>🏆 TOP 3 SÉLECTIONS STOCKPILOT</strong><span>ACTIONS · PENNY STOCKS · CRYPTO</span><b>100 % GRATUIT</b><small>Aucune barrière payante · Données informatives</small></div>
-  <a class="sp-top-pick" href="./recherche.html?ticker=WWW&kind=main" aria-label="Wolverine World Wide, Inc. (WWW), 24,89 $ US, variation +8.83 pour cent">
-  <span class="sp-pick-rank">TOP PICK</span><span class="sp-pick-name">Wolverine World Wide, Inc.</span>
-  <strong class="sp-pick-ticker">WWW</strong><strong class="sp-pick-price">24,89 $ US</strong>
-  <span class="sp-pick-change up">▲ +8.83 %</span>
-  <span class="sp-pick-chart"><svg viewBox="0 0 100 32" preserveAspectRatio="none" aria-label="Mini graphique de tendance sur trois mois"><polyline points="0.0,24.7 6.7,25.0 13.3,27.4 20.0,28.0 26.7,23.8 33.3,22.9 40.0,20.4 46.7,19.5 53.3,11.7 60.0,19.2 66.7,20.7 73.3,18.1 80.0,19.2 86.7,18.2 93.3,14.3 100.0,6.0"/></svg></span><small>ÉVOLUTION · 3 MOIS</small>
- </a>
-  <a class="sp-top-pick" href="./recherche.html?ticker=CHA&kind=main" aria-label="Chagee Holdings Limited (CHA), 14,37 $ US, variation +6.37 pour cent">
-  <span class="sp-pick-rank">TOP PICK</span><span class="sp-pick-name">Chagee Holdings Limited</span>
-  <strong class="sp-pick-ticker">CHA</strong><strong class="sp-pick-price">14,37 $ US</strong>
-  <span class="sp-pick-change up">▲ +6.37 %</span>
-  <span class="sp-pick-chart"><svg viewBox="0 0 100 32" preserveAspectRatio="none" aria-label="Mini graphique de tendance sur trois mois"><polyline points="0.0,22.5 6.7,22.1 13.3,23.4 20.0,28.0 26.7,25.3 33.3,25.0 40.0,20.0 46.7,20.5 53.3,19.1 60.0,23.2 66.7,21.9 73.3,20.8 80.0,21.9 86.7,22.7 93.3,13.1 100.0,6.0"/></svg></span><small>ÉVOLUTION · 3 MOIS</small>
- </a>
-  <a class="sp-top-pick" href="./recherche.html?ticker=LFTO&kind=main" aria-label="Liftoff Mobile, Inc. (LFTO), 24,44 $ US, variation +30.63 pour cent">
-  <span class="sp-pick-rank">TOP PICK</span><span class="sp-pick-name">Liftoff Mobile, Inc.</span>
-  <strong class="sp-pick-ticker">LFTO</strong><strong class="sp-pick-price">24,44 $ US</strong>
-  <span class="sp-pick-change up">▲ +30.63 %</span>
-  <span class="sp-pick-chart"><svg viewBox="0 0 100 32" preserveAspectRatio="none" aria-label="Mini graphique de tendance sur trois mois"><polyline points="0.0,22.4 6.7,22.3 13.3,21.5 20.0,23.6 26.7,23.9 33.3,26.4 40.0,28.0 46.7,26.8 53.3,24.5 60.0,21.4 66.7,19.3 73.3,18.1 80.0,19.1 86.7,18.5 93.3,18.1 100.0,6.0"/></svg></span><small>ÉVOLUTION · 3 MOIS</small>
- </a>
- </div>
-</section>
+
 <!-- KITCO AFFILIATE BANNER: loads only after advertising consent -->
 <section class="tf-kitco-fr-ad-wrap" aria-label="Publicité Kitco">
   <div class="tf-kitco-fr-ad-label">PUBLICITÉ</div>
@@ -5346,21 +5290,6 @@ body { overflow-x: hidden; }
 (function(){const fab=document.getElementById('sp-fr-subscribe-fab');if(!fab)return;fab.addEventListener('click',function(){const main=document.getElementById('stockpilot-subscribe-btn');if(main){main.scrollIntoView({behavior:'smooth',block:'center'});main.click();}else{fab.title='Abonnement indisponible sur cette page';}});})();
 </script>
 
-<script id="technofront-mobile-welcome-order">
-(function(){
-  const welcome=document.querySelector('.fr-welcome-banner');
-  const ticker=document.querySelector('.sp-top-picks-ticker');
-  const ad=document.querySelector('.tf-kitco-fr-ad-wrap');
-  if(!welcome||!ticker||!ad||!welcome.parentNode)return;
-  function arrange(){
-    const parent=welcome.parentNode;
-    parent.insertBefore(ticker,welcome);
-    parent.insertBefore(ad,welcome);
-  }
-  arrange();
-})();
-</script>
-
 <style id="technofront-mobile-home-order">
 @media(max-width:760px){
  .stockpilot-top-tools{display:none!important}
@@ -5377,48 +5306,6 @@ body { overflow-x: hidden; }
 @media(min-width:761px){.tf-mobile-broker,.tf-mobile-subscribe{display:none!important}}
 </style>
 <a class="tf-mobile-broker" href="./courtiers.html" aria-label="Trouver un courtier en ligne"><span>↗</span><strong>TROUVEZ VOTRE COURTIER</strong><small>Comparer les plateformes de placement</small></a>
-<script id="technofront-mobile-home-order-script">
-(function(){
- const mq=window.matchMedia('(max-width:760px)');
- let broker=document.getElementById('stockpilot-find-broker-banner')||document.querySelector('.tf-mobile-broker');
- const lookup=document.getElementById('quick-stock-lookup');
- const desk=document.getElementById('live-trading-desk');
- const picks=document.getElementById('crypto-picks');
- const welcome=document.querySelector(".fr-welcome-banner");
- const subscribe=document.getElementById('stockpilot-subscribe-btn');
- let brokerHome=null,lookupHome=null,brokerMade=false,cta=null;
- if(broker&&broker.parentNode){brokerHome=document.createComment('broker original position');broker.parentNode.insertBefore(brokerHome,broker);}
- if(lookup&&lookup.parentNode){lookupHome=document.createComment('lookup original position');lookup.parentNode.insertBefore(lookupHome,lookup);}
- if(!broker&&welcome&&welcome.parentNode){
-   broker=document.createElement('a');broker.className='tf-mobile-broker';
-   broker.href="./courtiers.html";
-   broker.setAttribute('aria-label',"Trouver un courtier en ligne");
-   broker.innerHTML="<span>↗</span><span><strong>TROUVEZ VOTRE COURTIER</strong><small>Comparer les plateformes de placement</small></span>";
-   brokerMade=true;
- }
- if(!document.querySelector('.tf-mobile-subscribe')){
-   cta=document.createElement('button');cta.type='button';cta.className='tf-mobile-subscribe';
-   cta.innerHTML="<span aria-hidden=\"true\">🔔</span> RECEVOIR LES MISES À JOUR";
-   cta.addEventListener('click',function(){if(subscribe){subscribe.click();}else{const target=document.getElementById('stockpilot-alert-signup');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}});
- }
- function arrange(){
-   if(mq.matches){
-     const anchor=desk||welcome;
-     if(broker&&anchor&&anchor.parentNode)anchor.parentNode.insertBefore(broker,anchor);
-     if(cta&&welcome&&welcome.parentNode)welcome.parentNode.insertBefore(cta,welcome.nextSibling);
-     if(lookup){const target=picks||desk;if(target&&target.parentNode)target.parentNode.insertBefore(lookup,target.nextSibling);}
-   }else{
-     if(brokerMade&&broker&&broker.parentNode)broker.remove();
-     else if(brokerHome&&brokerHome.parentNode)brokerHome.parentNode.insertBefore(broker,brokerHome.nextSibling);
-     if(lookupHome&&lookupHome.parentNode&&lookup)lookupHome.parentNode.insertBefore(lookup,lookupHome.nextSibling);
-     if(cta)cta.remove();
-   }
- }
- arrange();
- if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
-})();
-</script>
-
 <style id="stockpilot-front-page-terminal-layout">
 /* Put the market terminal in the visitor's first view. */
 #live-trading-desk{margin-top:4px!important;padding-top:0!important}
@@ -5688,11 +5575,11 @@ section:empty, article:empty, aside:empty { display:none!important; }
 @media(max-width:600px){#tf-stocky-launch{right:13px;bottom:14px;padding:9px 12px;font-size:12px}#tf-stocky-panel{right:10px;bottom:68px;width:calc(100vw - 20px);height:min(570px,calc(100dvh - 88px))}}
 </style>
 <button id="tf-stocky-launch" type="button" aria-expanded="false" aria-controls="tf-stocky-panel">
- <span class="tf-stocky-mark" aria-hidden="true">✦</span><span>Ask Stocky</span>
+ <span class="tf-stocky-mark" aria-hidden="true">🤖</span><span>Ask Stocky</span>
 </button>
 <section id="tf-stocky-panel" role="dialog" aria-label="Ask Stocky, assistant Technofront" aria-hidden="true">
  <header id="tf-stocky-head">
-  <span id="tf-stocky-avatar" aria-hidden="true">✦</span>
+  <span id="tf-stocky-avatar" aria-hidden="true">🤖</span>
   <span><strong>Ask Stocky</strong><small>Votre guide StockPilot AI</small></span>
   <button id="tf-stocky-close" type="button" aria-label="Fermer">×</button>
  </header>
@@ -5752,6 +5639,45 @@ section:empty, article:empty, aside:empty { display:none!important; }
 })();
 </script>
 
+<style id="tf-fr-market-three-column-style">
+#tf-fr-market-overview{width:min(1440px,calc(100% - 30px));margin:14px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+#tf-fr-market-overview .tf-fr-market-column{min-width:0;background:#fff;border:1px solid #dce3eb;border-radius:12px;padding:13px;box-shadow:0 4px 16px rgba(20,35,55,.07);color:#17243a}
+#tf-fr-market-overview .tf-fr-market-column>section{display:block!important;margin:0!important;padding:0!important;border:0!important;background:#fff!important;color:#17243a!important}
+#tf-fr-market-overview .section-head{margin:0 0 10px!important}
+#tf-fr-market-overview .section-head h2{font-size:clamp(16px,1.45vw,20px)!important;line-height:1.2!important;color:#14263e!important;margin:0 0 6px!important}
+#tf-fr-market-overview .section-head p{font-size:11px!important;line-height:1.45!important;color:#566579!important;margin:0!important}
+#tf-fr-market-overview .eyebrow{font-size:9px!important;color:#8a6b19!important}
+#tf-fr-market-overview .stock-grid{grid-template-columns:minmax(0,1fr)!important;gap:9px!important}
+#tf-fr-market-overview .stock-card{padding:11px!important;background:#fff!important;color:#17243a!important;border:1px solid #e0e6ed!important;border-top:3px solid #d6ad55!important;box-shadow:0 2px 8px #17243a0a!important}
+#tf-fr-market-overview .stock-card h3{font-size:14px!important;color:#17243a!important}
+#tf-fr-market-overview .stock-card .price{font-size:21px!important;color:#17243a!important}
+#tf-fr-market-overview .card-meta{font-size:10px!important;color:#536174!important}
+#tf-fr-market-overview .updated{font-size:10px!important;color:#65758a!important;margin:6px 0 9px!important}
+#tf-fr-market-overview .crypto-note{font-size:10px!important;color:#64748b!important}
+#tf-fr-market-overview .kitco-banner-stack{display:block!important;width:100%;margin:12px auto 0!important;padding:10px!important;background:#fff!important;border:1px solid #e1e6ed!important;border-radius:10px!important;box-sizing:border-box}
+#tf-fr-market-overview .kitco-affiliate-banner{width:100%!important;max-width:300px!important;margin:0 auto!important;flex:0 1 300px!important;background:#fff!important}
+#tf-fr-market-overview .kitco-trade-link a{color:#765b17!important}
+@media(max-width:900px){#tf-fr-market-overview{grid-template-columns:repeat(2,minmax(0,1fr))}#tf-fr-market-overview .tf-fr-market-column:nth-child(2){grid-column:1/-1;grid-row:2}}
+@media(max-width:600px){#tf-fr-market-overview{width:calc(100% - 20px);grid-template-columns:minmax(0,1fr);gap:10px;margin:10px auto 18px}#tf-fr-market-overview .tf-fr-market-column{padding:11px}#tf-fr-market-overview .tf-fr-market-column:nth-child(2){grid-column:auto;grid-row:auto}}
+</style>
+<script id="tf-fr-market-three-column-script">
+(function(){
+ const welcome=document.querySelector('.fr-welcome-banner');
+ const main=document.getElementById('main-picks');
+ const crypto=document.getElementById('crypto-picks');
+ const penny=document.getElementById('penny-picks');
+ const kitco=document.querySelector('.weekly-subscribe-cta .kitco-banner-stack');
+ if(!welcome||!main||!crypto||!penny||document.getElementById('tf-fr-market-overview'))return;
+ const grid=document.createElement('div');grid.id='tf-fr-market-overview';
+ const left=document.createElement('div');left.className='tf-fr-market-column';left.setAttribute('aria-label','Top 3 actions');
+ const center=document.createElement('div');center.className='tf-fr-market-column';center.setAttribute('aria-label','Top 3 cryptomonnaies et publicité Kitco');
+ const right=document.createElement('div');right.className='tf-fr-market-column';right.setAttribute('aria-label','Top 3 penny stocks');
+ left.appendChild(main);center.appendChild(crypto);right.appendChild(penny);
+ if(kitco)center.appendChild(kitco);
+ grid.append(left,center,right);
+ welcome.insertAdjacentElement('afterend',grid);
+})();
+</script>
 </body>
 </html>
 )?'TSX':'NASDAQ');
