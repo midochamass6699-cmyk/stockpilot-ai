@@ -80,7 +80,7 @@ export default {
     const contentType = response.headers.get("content-type") || "";
     if (!response.ok || !contentType.includes("text/html")) return response;
 
-    const pagePath = url.pathname.replace(/index\\.html$/i, "").replace(/\\/$/, "") || "/";
+    const pagePath = url.pathname.replace(/index\.html$/i, "").replace(/\/$/, "") || "/";
     if (!["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) return response;
 
     let html = await response.text();
