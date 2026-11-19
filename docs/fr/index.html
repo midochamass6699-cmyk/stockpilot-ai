@@ -4346,8 +4346,7 @@ document.getElementById('contactForm')
 document.getElementById('year').textContent =
   new Date().getFullYear();
 
-loadCrypto();
-loadStocks();
+/* Preview targets are created near the end of the page before the initial data load. */
 
 /* AUTOMATIC REFRESH */
 setInterval(loadCrypto,5 * 60 * 1000);
@@ -5661,16 +5660,13 @@ section:empty, article:empty, aside:empty { display:none!important; }
 #tf-fr-market-overview .kitco-affiliate-banner{width:100%;max-width:300px;margin:0 auto}
 #tf-fr-market-overview .kitco-trade-link{width:100%;text-align:center}
 #tf-fr-market-overview .kitco-trade-link a{color:#765b17}
-@media(max-width:900px){#tf-fr-market-overview{grid-template-columns:repeat(2,minmax(0,1fr))}#tf-fr-market-overview .tf-fr-market-column:nth-child(2){grid-column:1/-1;grid-row:2}}
+@media(min-width:1600px){#tf-fr-market-overview{width:min(1200px,calc(100% - 400px));}}\n@media(max-width:900px){#tf-fr-market-overview{grid-template-columns:repeat(2,minmax(0,1fr))}#tf-fr-market-overview .tf-fr-market-column:nth-child(2){grid-column:1/-1;grid-row:2}}
 @media(max-width:600px){#tf-fr-market-overview{width:calc(100% - 20px);grid-template-columns:minmax(0,1fr);gap:10px;margin:10px auto 18px}#tf-fr-market-overview .tf-fr-market-column:nth-child(2){grid-column:auto;grid-row:auto}}
 </style>
 <script id="tf-fr-market-three-column-script">
 (function(){
  const welcome=document.querySelector('.fr-welcome-banner');
- const mainSource=document.getElementById('previewMainStocks');
- const cryptoSource=document.getElementById('previewCrypto');
- const pennySource=document.getElementById('previewPennyStocks');
- const kitco=document.querySelector('.weekly-subscribe-cta .kitco-banner-stack');
+ const kitco=document.querySelector('#stockpilot-alert-signup .kitco-banner-stack');
  if(!welcome||document.getElementById('tf-fr-market-overview'))return;
 
  const grid=document.createElement('section');
@@ -5689,22 +5685,18 @@ section:empty, article:empty, aside:empty { display:none!important; }
    column.append(heading,preview);
    return {column,preview};
  };
- const main=makeColumn('3 actions à surveiller','tf-fr-preview-main','Aperçu des trois principales actions');
- const crypto=makeColumn('3 cryptomonnaies','tf-fr-preview-crypto','Aperçu des trois principales cryptomonnaies');
- const penny=makeColumn('3 penny stocks','tf-fr-preview-penny','Aperçu des trois penny stocks');
+ // These IDs are the exact targets populated by loadStocks() and loadCrypto().
+ const main=makeColumn('3 actions à surveiller','previewMainStocks','Aperçu des trois principales actions');
+ const crypto=makeColumn('3 cryptomonnaies','previewCrypto','Aperçu des trois principales cryptomonnaies');
+ const penny=makeColumn('3 penny stocks','previewPennyStocks','Aperçu des trois penny stocks');
  if(kitco)crypto.column.appendChild(kitco);
  grid.append(main.column,crypto.column,penny.column);
  welcome.insertAdjacentElement('afterend',grid);
 
- const mirror=(source,target)=>{
-   if(!source||!target)return;
-   const copy=()=>{target.innerHTML=source.innerHTML;};
-   copy();
-   new MutationObserver(copy).observe(source,{childList:true,subtree:true,characterData:true});
- };
- mirror(mainSource,main.preview);
- mirror(cryptoSource,crypto.preview);
- mirror(pennySource,penny.preview);
+ // The original data loaders run earlier in the page. Run them again now that
+ // their preview targets exist, so the homepage cards populate immediately.
+ if(typeof loadCrypto==='function')loadCrypto();
+ if(typeof loadStocks==='function')loadStocks();
 })();
 </script>
 </body>
