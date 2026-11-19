@@ -2321,6 +2321,13 @@ input, select, textarea, button {
 </button>
 </nav>
 </header>
+<style id="stockpilot-visitor-counter-style">
+#stockpilot-visitor-number{display:flex;align-items:center;justify-content:center;gap:7px;width:max-content;max-width:calc(100% - 24px);margin:8px auto 10px;padding:8px 16px;border:1px solid #e8b900;border-radius:999px;background:#202020;color:#ffd629;font:800 14px/1.15 Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;box-shadow:0 2px 9px #0006;box-sizing:border-box}
+#stockpilot-visitor-number strong{color:#fff;font-size:17px;font-variant-numeric:tabular-nums}
+@media(max-width:600px){#stockpilot-visitor-number{font-size:12px;padding:7px 12px;margin:7px auto 9px}#stockpilot-visitor-number strong{font-size:15px}}
+</style>
+<div id="stockpilot-visitor-number" aria-live="polite"><span>Visitor count</span><strong id="stockpilot-visitor-value">…</strong></div>
+
 <style id="tf-market-pulse-style">
 .tf-market-pulse{width:100%;height:46px;box-sizing:border-box;display:flex;align-items:stretch;overflow:hidden;background:#101b2b;border-top:1px solid #263b55;border-bottom:1px solid #263b55;font-family:Arial,sans-serif}
 .tf-market-pulse-brand{flex:0 0 132px;min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 10px;box-sizing:border-box;background:#14243b;color:#f2c66d;font-size:10px;font-weight:900;letter-spacing:.07em;white-space:nowrap;position:relative;z-index:3}
@@ -3839,9 +3846,7 @@ input, select, textarea, button {
     For educational purposes only · Not financial advice
   </p>
 <a href="#top">Nach oben ↑</a>
-<!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" decoding="async" id="cg_de43d061" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" decoding="async" loading="lazy" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
-<!-- Compteur de visiteurs https://counter.gratis ENDE -->
+
 <p>
   Allgemeiner Support: <a href="mailto:support@technofront.org">support@technofront.org</a>
 <br/>
@@ -6046,6 +6051,10 @@ section:empty, article:empty, aside:empty { display:none!important; }
   }
 }
 </style>
+
+<script id="stockpilot-visitor-counter-script">
+(function(){var value=document.getElementById("stockpilot-visitor-value");var badge=document.getElementById("stockpilot-visitor-number");if(!value||!badge)return;fetch("https://stockpilot-country-router.midochamass6699.workers.dev/api/visitor",{method:"GET",mode:"cors",credentials:"omit",cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();}).then(function(data){var n=Number(data&&data.visitor_number);if(!Number.isSafeInteger(n)||n<1)throw new Error("Invalid visitor number");value.textContent=n.toLocaleString();}).catch(function(e){value.textContent="—";console.warn("StockPilot visitor counter:",e);});})();
+</script>
 </body>
 </html>
 )?'TSX':'NASDAQ');
@@ -6667,9 +6676,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
     For educational purposes only · Not financial advice
   </p>
 <a href="#top">Nach oben ↑</a>
-<!-- Compteur de visiteurs https://counter.gratis BEGINN -->
-<a href="https://counter.gratis/?language=fr&amp;ID=de43d061" target="_top"><img alt="Free Counter" decoding="async" id="cg_de43d061" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" title="Counter Statistics"/><noscript><img alt="Free Counter" decoding="async" loading="lazy" src="https://besucherzaehler.gratis/counter.php?ID=de43d061&amp;STYLE=180" title="Counter Statistics"/></noscript></a><script>(function(i,c){i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'+screen.height+'&REF='+encodeURIComponent(document.referrer)+'&LOC='+encodeURIComponent(location.href)+'&NAVI='+encodeURIComponent(navigator.userAgent)})(document.getElementById('cg_de43d061'),'https://besucherzaehler.gratis/counter.php?ID=de43d061&STYLE=180')</script>
-<!-- Compteur de visiteurs https://counter.gratis ENDE -->
+
 <p>
   Allgemeiner Support: <a href="mailto:support@technofront.org">support@technofront.org</a>
 <br/>
