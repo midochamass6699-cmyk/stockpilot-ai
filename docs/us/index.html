@@ -2261,27 +2261,6 @@ input, select, textarea, button {
 @media(max-width:600px){.live-trading-desk .kitco-banner-stack{order:4;width:100%;max-width:340px;justify-self:center;flex:0 1 340px}}
 </style>
 
-<style id="stockpilot-visitor-counter-style">
-.nav-bottom-row{position:relative;display:flex;align-items:center;justify-content:flex-end;flex:1 0 100%;width:100%;min-height:44px}
-#stockpilot-visitor-number{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px;padding:9px 17px;border:1px solid #e8b900;border-radius:999px;background:#202020;color:#ffd629;font:800 14px/1.15 Arial,sans-serif;letter-spacing:.02em;white-space:nowrap;box-shadow:0 2px 9px #0006;z-index:2}
-#stockpilot-visitor-number strong{color:#fff;font-size:17px;font-variant-numeric:tabular-nums}
-#stockpilot-visitor-number .visitor-short{display:none}
-@media(max-width:760px){
- .nav-bottom-row{flex:0 0 auto;min-height:40px;justify-content:flex-end;gap:8px;padding-top:10px;border-top:1px solid #ffffff2b}
- #stockpilot-visitor-number{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:7px 10px;font-size:12px;gap:5px}
- #stockpilot-visitor-number strong{font-size:15px}
- #stockpilot-visitor-number .visitor-full{display:none}
- #stockpilot-visitor-number .visitor-short{display:inline}
- .topbar .language-switch{justify-content:flex-end;align-self:auto;justify-self:auto;padding-top:0;margin:0 0 0 auto!important;border-top:0;gap:6px}
- .topbar .language-switch a{padding:5px 2px}
-}
-@media(max-width:390px){
- #stockpilot-visitor-number{padding:6px 8px;font-size:11px}
- #stockpilot-visitor-number strong{font-size:14px}
-}
-</style>
-
-
 <style id="stockpilot-layout-stability">
 /* Keep live market cards at a predictable size while asynchronous quotes load. */
 @media (min-width: 761px) {
@@ -2311,6 +2290,16 @@ input, select, textarea, button {
 .trading-desk-tagline strong{display:block;color:#1D4ED8;font-size:10px;letter-spacing:.12em;margin-bottom:5px}
 @media(max-width:700px){.trading-desk-header{flex-direction:column;gap:10px}.trading-desk-tagline{width:100%;box-sizing:border-box;flex-basis:auto;text-align:left;margin-top:0}}
 </style>
+<style id="stockpilot-visitor-counter-style">
+.nav-bottom-row{position:relative;display:flex;align-items:center;justify-content:flex-end;flex:1 0 100%;width:100%;min-height:44px}
+.nav-bottom-row #tf-visitor-counter{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;max-width:calc(100% - 24px);margin:0!important;padding:8px 16px!important;border:1px solid #e8b900!important;border-radius:999px!important;background:#202020!important;color:#ffd629!important;font:800 13px/1.15 Arial,sans-serif!important;letter-spacing:.02em;white-space:nowrap;box-shadow:0 2px 9px #0006;z-index:3}
+#primary-navigation>#tf-visitor-counter{display:none!important}
+#primary-navigation~#tf-visitor-counter-mobile{display:none!important}
+@media(max-width:760px){
+ .nav-bottom-row{flex:0 0 auto;min-height:44px;justify-content:flex-end;gap:8px;padding-top:8px;border-top:1px solid #ffffff2b}
+ .nav-bottom-row #tf-visitor-counter{font-size:11px!important;padding:6px 9px!important}
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2333,7 +2322,7 @@ input, select, textarea, button {
 <a href="/us/margin-account-guide.html">MARGIN GUIDE</a>
 </div>
 <div class="nav-bottom-row">
-<div id="stockpilot-visitor-number" aria-live="polite"><span class="visitor-full">You are visitor #</span><span class="visitor-short">Visitor #</span><strong id="stockpilot-visitor-value">…</strong></div>
+<span id="tf-visitor-counter" aria-live="polite">YOU ARE VISITOR NUMBER …</span>
 <div aria-label="Choose language" class="language-switch">
 <a class="edition-link" href="/" lang="en-CA" aria-label="Canadian edition">🇨🇦 CANADA</a>
 <a class="edition-link" href="/us/" lang="en-US" aria-label="United States edition">🇺🇸 UNITED STATES</a>
@@ -5976,18 +5965,6 @@ section:empty, article:empty, aside:empty { display:none!important; }
   }
 }
 </style>
-
-<script id="stockpilot-visitor-counter-script">
-(function(){
- var value=document.getElementById('stockpilot-visitor-value');
- var badge=document.getElementById('stockpilot-visitor-number');
- if(!value||!badge)return;
- fetch('/api/visitor-number',{method:'GET',credentials:'same-origin',cache:'no-store'})
-  .then(function(response){if(!response.ok)throw new Error('HTTP '+response.status);return response.json();})
-  .then(function(data){var n=Number(data&&data.visitorNumber);if(!Number.isSafeInteger(n)||n<1)throw new Error('Invalid visitor number');value.textContent=n.toLocaleString();})
-  .catch(function(error){value.textContent='—';console.warn('StockPilot visitor counter:',error);});
-})();
-</script>
 
 </body>
 </html>)?'TSX':'NASDAQ');
