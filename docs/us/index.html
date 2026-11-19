@@ -8182,6 +8182,99 @@ body{font-size:16px}
 #sp-stock-of-day .sp-day-terminal-copy{display:none!important}
 }
 </style>
+<style id="tf-stocky-style">
+#tf-stocky-launch{position:fixed;right:22px;bottom:22px;z-index:99980;display:flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid #e7c75b;border-radius:999px;background:linear-gradient(135deg,#f5d978,#d8a92e);color:#17202b;font:800 14px/1.1 Arial,sans-serif;box-shadow:0 8px 28px #0008;cursor:pointer}
+#tf-stocky-launch:hover{filter:brightness(1.06);transform:translateY(-1px)}
+#tf-stocky-launch .tf-stocky-mark{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#182536;color:#f6d66f;font-size:17px}
+#tf-stocky-panel{position:fixed;right:22px;bottom:82px;z-index:99981;display:none;flex-direction:column;width:min(370px,calc(100vw - 28px));height:min(560px,calc(100dvh - 115px));overflow:hidden;border:1px solid #35475d;border-radius:18px;background:#0b1422;color:#edf3fb;box-shadow:0 18px 55px #000b;font:14px/1.45 Arial,sans-serif}
+#tf-stocky-panel[aria-hidden="false"]{display:flex}
+#tf-stocky-panel *{box-sizing:border-box}
+#tf-stocky-head{display:flex;align-items:center;gap:10px;padding:14px 15px;background:linear-gradient(110deg,#15283b,#101c2b);border-bottom:1px solid #29394d}
+#tf-stocky-avatar{display:grid;place-items:center;flex:0 0 39px;height:39px;border-radius:12px;background:#26364a;color:#f3d46f;font-size:22px}
+#tf-stocky-head strong{display:block;font-size:15px;color:#fff}
+#tf-stocky-head small{display:block;margin-top:2px;color:#9eb4ca;font-size:11px}
+#tf-stocky-close{margin-left:auto;border:0;background:transparent;color:#b9c7d8;font-size:24px;cursor:pointer}
+#tf-stocky-messages{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:11px;overscroll-behavior:contain}
+.tf-stocky-msg{max-width:94%;padding:10px 12px;border-radius:13px;background:#172538;color:#eaf1f9;overflow-wrap:anywhere}
+.tf-stocky-msg.user{align-self:flex-end;background:#263b51;color:#fff}
+.tf-stocky-msg p{margin:0 0 7px}.tf-stocky-msg p:last-child{margin-bottom:0}
+.tf-stocky-suggestions{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.tf-stocky-suggestions button{border:1px solid #53657b;border-radius:999px;padding:7px 10px;background:#101c2b;color:#dce8f5;font-size:11px;cursor:pointer}
+.tf-stocky-suggestions button:hover{border-color:#e4c35b;color:#f6dc83}
+.tf-stocky-stock{display:block;margin-top:8px;padding:9px;border:1px solid #33465c;border-radius:10px;background:#101d2d}
+.tf-stocky-stock strong{color:#f5d779}.tf-stocky-stock small{display:block;color:#9fb2c7;font-size:10px;margin-top:3px}
+.tf-stocky-stock a,.tf-stocky-link{display:inline-block;margin-top:6px;color:#f3d46f;font-weight:700;text-decoration:none}
+#tf-stocky-form{display:flex;gap:8px;padding:11px;border-top:1px solid #29394d;background:#101b2a}
+#tf-stocky-input{min-width:0;flex:1;border:1px solid #40536a;border-radius:11px;padding:11px 12px;background:#091321;color:#fff;font:13px Arial,sans-serif;outline:none}
+#tf-stocky-input:focus{border-color:#e4c35b}
+#tf-stocky-send{border:0;border-radius:11px;padding:0 14px;background:#e8c75d;color:#182331;font-weight:900;cursor:pointer}
+#tf-stocky-note{padding:0 13px 10px;background:#101b2a;color:#8397ad;font-size:9px}
+@media(max-width:600px){#tf-stocky-launch{right:13px;bottom:14px;padding:9px 12px;font-size:12px}#tf-stocky-panel{right:10px;bottom:68px;width:calc(100vw - 20px);height:min(570px,calc(100dvh - 88px))}}
+</style>
+<button id="tf-stocky-launch" type="button" aria-expanded="false" aria-controls="tf-stocky-panel">
+ <span class="tf-stocky-mark" aria-hidden="true">🤖</span><span>Ask Trader</span>
+</button>
+<section id="tf-stocky-panel" role="dialog" aria-label="Ask Trader, assistant Technofront" aria-hidden="true">
+ <header id="tf-stocky-head">
+  <span id="tf-stocky-avatar" aria-hidden="true">🤖</span>
+  <span><strong>Ask Trader</strong><small>Your StockPilot AI guide</small></span>
+  <button id="tf-stocky-close" type="button" aria-label="Close">×</button>
+ </header>
+ <div id="tf-stocky-messages" aria-live="polite">
+  <div class="tf-stocky-msg"><p>Bonjour! Je suis Trader. Je peux vous aider à trouver les sélections du jour, comprendre nos outils et naviguer sur Technofront.</p><p>What would you like to explore?</p><div class="tf-stocky-suggestions"><button type="button" data-stocky-prompt="Show me the top three penny stocks">Top penny stocks</button><button type="button" data-stocky-prompt="Show me the top three stocks">Top stocks</button><button type="button" data-stocky-prompt="How do I use the terminal?">Terminal help</button></div></div>
+ </div>
+ <form id="tf-stocky-form">
+  <input id="tf-stocky-input" type="text" maxlength="240" autocomplete="off" placeholder="Posez une question à Trader…" aria-label="Your question"/>
+  <button id="tf-stocky-send" type="submit" aria-label="Send">➤</button>
+ </form>
+ <div id="tf-stocky-note">Trader utilise les informations publiées sur ce site. Les données de marché peuvent être différées. Ceci n'est pas un conseil financier.</div>
+</section>
+<script id="tf-stocky-script">
+(function(){
+ const launch=document.getElementById('tf-stocky-launch'),panel=document.getElementById('tf-stocky-panel'),close=document.getElementById('tf-stocky-close'),messages=document.getElementById('tf-stocky-messages'),form=document.getElementById('tf-stocky-form'),input=document.getElementById('tf-stocky-input');
+ if(!launch||!panel||!messages||launch.dataset.ready)return;launch.dataset.ready='1';
+ let picks=null;
+ const feed=fetch('/data/picks.json?stocky='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('feed');return r.json()}).then(d=>{picks=d;return d}).catch(()=>null);
+ const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const fmt=(v,c)=>Number.isFinite(Number(v))?new Intl.NumberFormat('fr-CA',{style:'currency',currency:c||'USD',maximumFractionDigits:Number(v)<1?4:2}).format(Number(v)):'—';
+ function add(html,who){const el=document.createElement('div');el.className='tf-stocky-msg'+(who?' '+who:'');el.innerHTML=html;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;}
+ function showStocks(kind){
+  const arr=picks&&Array.isArray(picks[kind])?picks[kind]:[];
+  if(!arr.length)return '<p>I can't access the picks right now. Please try again later.</p>';
+  const title=kind==='penny'?'Current penny stock picks':'Current top stock picks';
+  let out='<p><strong>'+title+'</strong></p>';
+  arr.slice(0,3).forEach((s,i)=>{
+   const change=Number(s.change_percent),sign=change>0?'+':'';
+   const currency=s.currency||(s.market==='Canada'?'CAD':'USD');
+   const url='./recherche.html?ticker='+encodeURIComponent(s.ticker)+'&kind='+(kind==='penny'?'penny':'main');
+   out+='<div class="tf-stocky-stock"><strong>'+(i+1)+'. '+esc(s.ticker)+' — '+esc(s.company)+'</strong><div>'+fmt(s.price,currency)+' · <span style="color:'+(change>=0?'#67dfa7':'#ff9292')+'">'+sign+(Number.isFinite(change)?change.toFixed(2)+'%':'—')+'</span></div><small>'+esc(s.exchange||s.market||'')+' · Data as of '+esc(s.price_date||s.quote_time||'date not specified')+'</small><a href="'+url+'">View details →</a></div>';
+  });
+  out+='<small style="display:block;margin-top:8px;color:#9fb2c7">Site selections, not personalized recommendations. Prices may be delayed.</small>';
+  return out;
+ }
+ function answer(q){
+  const t=q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  if(/bonjour|salut|allo|bonsoir|hello/.test(t))return '<p>Hello! I can help with today's picks, penny stocks, and Technofront tools.</p>';
+  if(/penny|petite capitalisation|small cap/.test(t))return showStocks('penny');
+  if(/top|princip|selection|actions a surveiller|meilleures actions|stocks/.test(t))return showStocks('main');
+  const tokens=q.toUpperCase().split(/[^A-Z0-9.]+/);
+  const all=picks?[...(picks.main||[]),...(picks.penny||[])]:[];
+  const tickerMatch=all.find(s=>tokens.includes(String(s.ticker||'').toUpperCase()));
+  if(tickerMatch){const kind=(picks.penny||[]).some(s=>s.ticker===tickerMatch.ticker)?'penny':'main';return showStocks(kind);}
+  if(/terminal|graphique|indicateur|watchlist|liste de suivi/.test(t))return '<p>Le terminal de marché regroupe les graphiques, les indicateurs techniques, les outils de comparaison et votre liste de suivi locale.</p><a class="tf-stocky-link" href="#market-terminal">Open the terminal →</a>';
+  if(/screener|filtre|recherche|trouver une action/.test(t))return '<p>Use our stock screener to explore stocks and view available profiles.</p><a class="tf-stocky-link" href="./recherche.html">Open the stock screener →</a>';
+  if(/crypto|cryptomonna/.test(t))return '<p>You can explore the cryptocurrency section on the homepage.</p><a class="tf-stocky-link" href="#crypto-picks">View cryptocurrencies →</a>';
+  if(/outil|gratuit|fonction/.test(t))return '<p>Technofront offers stock picks, penny stocks, cryptocurrencies, a market terminal, and educational resources.</p><a class="tf-stocky-link" href="#market-terminal">Explore the tools →</a>';
+  return '<p>I'm the Technofront site guide. I can currently help with stock picks, penny stocks, the terminal, the screener, and cryptocurrencies.</p><div class="tf-stocky-suggestions"><button type="button" data-stocky-prompt="Show me the top three penny stocks">Top penny stocks</button><button type="button" data-stocky-prompt="Show me the top three stocks">Top stocks</button><button type="button" data-stocky-prompt="How do I use the terminal?">Terminal</button></div>';
+ }
+ function send(q){const text=q.trim();if(!text)return;add('<p>'+esc(text)+'</p>','user');input.value='';const wait=document.createElement('div');wait.className='tf-stocky-msg';wait.textContent='Je consulte les informations du site…';messages.appendChild(wait);feed.then(()=>{wait.remove();add(answer(text));});}
+ launch.addEventListener('click',()=>{const open=panel.getAttribute('aria-hidden')==='true';panel.setAttribute('aria-hidden',String(!open));launch.setAttribute('aria-expanded',String(open));if(open)input.focus();});
+ close.addEventListener('click',()=>{panel.setAttribute('aria-hidden','true');launch.setAttribute('aria-expanded','false');launch.focus();});
+ form.addEventListener('submit',e=>{e.preventDefault();send(input.value);});
+ messages.addEventListener('click',e=>{const b=e.target.closest('[data-stocky-prompt]');if(b)send(b.dataset.stockyPrompt);});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.getAttribute('aria-hidden')==='false'){panel.setAttribute('aria-hidden','true');launch.setAttribute('aria-expanded','false');}});
+})();
+</script>
 </body>
 </html>
 <style id="sp-terminal-promo-style">
