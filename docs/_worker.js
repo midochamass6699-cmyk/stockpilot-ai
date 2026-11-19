@@ -65,24 +65,8 @@ export default {
       html = html.replace(/<html\\b/i, '<html data-site-impact="true"');
     }
 
-    // Show the shared visit number on the five homepage editions only.
-    if (["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) {
-      const counterMarkup = '<span id="tf-visitor-counter" aria-live="polite">YOU ARE VISITOR NUMBER …</span>';
-      const toggleAt = html.indexOf('<button class="nav-toggle"');
-      if (toggleAt >= 0) {
-        const menuCloseAt = html.lastIndexOf('</div>', toggleAt);
-        if (menuCloseAt >= 0) html = html.slice(0, menuCloseAt) + counterMarkup + html.slice(menuCloseAt);
-      }
-      const mobileMarkup = '<span id="tf-visitor-counter-mobile" aria-live="polite">YOU ARE VISITOR NUMBER …</span>';
-      const toggleInsertAt = html.indexOf('<button class="nav-toggle"');
-      if (toggleInsertAt >= 0) html = html.slice(0, toggleInsertAt) + mobileMarkup + html.slice(toggleInsertAt);
-      const counterStyle = '<style id="tf-visitor-counter-style">#tf-visitor-counter{display:inline-flex;align-items:center;justify-content:center;align-self:flex-end;margin:2px 0 0 auto;padding:5px 10px;border:1px solid #ffd629;border-radius:999px;background:#101010;color:#ffd629;font:800 10px/1.2 Arial,sans-serif;letter-spacing:.035em;white-space:nowrap}#tf-visitor-counter-mobile{display:none}@media(max-width:760px){.topbar .nav{position:relative}#tf-visitor-counter{display:none!important}#tf-visitor-counter-mobile{display:inline-flex;align-items:center;justify-content:center;position:absolute;right:60px;top:50%;transform:translateY(-50%);max-width:calc(100% - 150px);overflow:hidden;text-overflow:ellipsis;padding:5px 7px;border:1px solid #ffd629;border-radius:999px;background:#101010;color:#ffd629;font:800 9px/1.2 Arial,sans-serif;white-space:nowrap}}</style>';
-      html = html.replace("</head>", counterStyle + "</head>");
-      const counterScript = '<script id="tf-visitor-counter-script">(function(){var els=[document.getElementById("tf-visitor-counter"),document.getElementById("tf-visitor-counter-mobile")].filter(Boolean);if(!els.length)return;fetch("/api/visitor-number",{cache:"no-store",credentials:"same-origin"}).then(function(r){if(!r.ok)throw new Error("counter unavailable");return r.json()}).then(function(data){if(Number.isFinite(Number(data.visitorNumber))){var label="YOU ARE VISITOR NUMBER "+Number(data.visitorNumber).toLocaleString("en-CA");els.forEach(function(el){el.textContent=label})}}).catch(function(){els.forEach(function(el){el.hidden=true})})})();</script>';
-      html = html.replace("</body>", counterScript + "</body>");
-    }
-
-    const headers = new Headers(response.headers);
+    // The homepage HTML owns the single centered visitor counter.
+    // Avoid injecting a second header/mobile counter.    const headers = new Headers(response.headers);
     headers.delete("content-length");
     headers.delete("content-encoding");
     headers.delete("etag");
