@@ -2306,6 +2306,11 @@ input, select, textarea, button {
 }
 </style>
 
+<style id="trading-desk-tagline-critical">
+.trading-desk-tagline{flex:0 0 min(390px,38%);align-self:flex-start;margin-top:8px;padding:13px 16px;border:1px solid #C9D8F0;border-radius:12px;background:#EAF1FC;color:#12335F;font-size:clamp(14px,1.5vw,18px);font-weight:850;line-height:1.35;text-align:right}
+.trading-desk-tagline strong{display:block;color:#1D4ED8;font-size:10px;letter-spacing:.12em;margin-bottom:5px}
+@media(max-width:700px){.trading-desk-header{flex-direction:column;gap:10px}.trading-desk-tagline{width:100%;box-sizing:border-box;flex-basis:auto;text-align:left;margin-top:0}}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2507,7 +2512,7 @@ input, select, textarea, button {
     min-height: 76px;
   }
 }
-.trading-desk-tagline{flex:0 0 min(390px,38%);align-self:flex-start;margin-top:8px;padding:13px 16px;border:1px solid #C9D8F0;border-radius:12px;background:#EAF1FC;color:#12335F;font-size:clamp(14px,1.5vw,18px);font-weight:850;line-height:1.35;text-align:right}.trading-desk-tagline strong{display:block;color:#1D4ED8;font-size:10px;letter-spacing:.12em;margin-bottom:5px}@media(max-width:700px){.trading-desk-header{flex-direction:column;gap:10px}.trading-desk-tagline{width:100%;box-sizing:border-box;flex-basis:auto;text-align:left;margin-top:0}}
+/* Tagline styling moved to the document head so the LCP text can be styled earlier. */
 </style>
 <!-- LIVE TRADING DESK: REPLACES THE WEEKLY STOCK OPINION -->
 <section aria-labelledby="trading-desk-title" class="live-trading-desk" id="live-trading-desk">
