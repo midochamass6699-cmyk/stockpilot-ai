@@ -2527,8 +2527,19 @@ main li + li { margin-top: 0.35em; }
 .tradingview-text-banner:hover .tradingview-text-banner-cta{filter:brightness(1.08)}
 @media(max-width:600px){.tradingview-text-banner{flex-direction:column;gap:8px;padding:18px 14px}.tradingview-text-banner-cta{min-height:44px;align-items:center;justify-content:center}}
 </style>
+<style id="stockpilot-accessibility-basics">
+/* WCAG-oriented baseline improvements; existing visual theme is retained. */
+.sp-skip-link{position:absolute;z-index:100000;top:8px;left:8px;transform:translateY(-160%);padding:12px 16px;border:2px solid #fff;border-radius:6px;background:#102746;color:#fff;font-weight:800;text-decoration:underline}
+.sp-skip-link:focus{transform:translateY(0);outline:3px solid #f2c66d;outline-offset:3px}
+:focus-visible{outline:3px solid #f2c66d!important;outline-offset:3px!important}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{scroll-margin-top:90px}
+button,a,input,select,textarea{touch-action:manipulation}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
+<a class="sp-skip-link" href="#main-content">Skip to main content</a>
+
 <!-- NAVIGATION -->
 <header class="topbar">
 <nav class="nav" aria-label="Main navigation">
@@ -2860,6 +2871,7 @@ main li + li { margin-top: 0.35em; }
     <div class="qsl-controls">
       <input
         id="qsl-input"
+        aria-label="Search for a company name or stock ticker"
         type="search"
         placeholder="Enter a company name or ticker..."
         autocomplete="off"
@@ -3482,7 +3494,7 @@ main li + li { margin-top: 0.35em; }
 </nav>
 <!-- PRIMARY HOMEPAGE TOPIC AND SEARCH INTRODUCTION -->
 <!-- MAIN CONTENT -->
-<main class="container" id="top">
+<main id="main-content" class="container" id="top">
 <style id="sp-education-hub-style">
 #sp-education-hub{margin:10px 0 30px;padding:clamp(20px,3vw,30px);border:1px solid #DED8CA;border-top:4px solid #D9784F;border-radius:18px;background:linear-gradient(145deg,#FFFEFA 0%,#F8F5ED 100%);box-shadow:0 12px 30px rgba(24,58,52,.07)}
 #sp-education-hub .sp-education-heading{max-width:780px;margin:0 0 18px}
@@ -8869,7 +8881,7 @@ body{font-size:16px}
   <div class="tf-stocky-msg"><p>Bonjour! Je suis Trader. Je peux vous aider à trouver les sélections du jour, comprendre nos outils et naviguer sur Technofront.</p><p>Was möchtest du entdecken?</p><div class="tf-stocky-suggestions"><button type="button" data-stocky-prompt="Zeig mir die drei besten Penny Stocks">Top Penny Stocks</button><button type="button" data-stocky-prompt="Zeig mir die drei wichtigsten Aktien">Top-Aktien</button><button type="button" data-stocky-prompt="Wie benutze ich das Terminal?">Terminal-Hilfe</button></div></div>
  </div>
  <form id="tf-stocky-form">
-  <input id="tf-stocky-input" type="text" maxlength="240" autocomplete="off" placeholder="Posez une question à Trader…" aria-label="Deine Frage"/>
+  <input id="tf-stocky-input" type="text" maxlength="240" autocomplete="off" placeholder="Posez une question à Trader…" aria-label="Posez une question à Trader"/>
   <button id="tf-stocky-send" type="submit" aria-label="Senden">➤</button>
  </form>
  <div id="tf-stocky-note">Trader utilise les informations publiées sur ce site. Les données de marché peuvent être différées. Ceci n'est pas un conseil financier.</div>
