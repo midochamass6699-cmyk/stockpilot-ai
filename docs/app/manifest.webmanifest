@@ -1,8 +1,8 @@
 {
   "id": "/app/",
-  "name": "Technofront Stocks",
-  "short_name": "TF Stocks",
-  "description": "Mobile-first stock and cryptocurrency market research from Technofront.",
+  "name": "Technofront.org",
+  "short_name": "Technofront",
+  "description": "Mobile-first market research and financial information from Technofront.org.",
   "start_url": "/app/",
   "scope": "/app/",
   "display": "standalone",
