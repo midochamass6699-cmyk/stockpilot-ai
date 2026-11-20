@@ -1982,6 +1982,47 @@ body{background:#f1f5f9!important;color:var(--sp-ink)!important}
 #free-left-banner .sp-side-list{min-width:0}
 .sp-layout-reservation{pointer-events:none!important;visibility:hidden!important}
 </style>
+
+<style id="stockpilot-readable-content">
+/* Readability improvements: clearer body copy and comfortable line lengths. */
+main p,
+main li,
+.method-section p,
+.panel p,
+.stock-of-the-week p,
+.visual-copy p,
+.feature p,
+.resource-copy p,
+.about-discuss p,
+.seo-content p,
+.faq-section p {
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 72ch;
+}
+main h1, main h2, main h3 {
+  line-height: 1.25;
+  text-wrap: balance;
+}
+main p + p { margin-top: 0.85em; }
+main li + li { margin-top: 0.35em; }
+@media (max-width: 700px) {
+  main p,
+  main li,
+  .method-section p,
+  .panel p,
+  .stock-of-the-week p,
+  .visual-copy p,
+  .feature p,
+  .resource-copy p,
+  .about-discuss p,
+  .seo-content p,
+  .faq-section p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
