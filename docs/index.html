@@ -2518,6 +2518,15 @@ main li + li { margin-top: 0.35em; }
 }
 </style>
 
+<style id="tradingview-text-banner-webfix">
+.tradingview-text-banner{box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 22px;width:100%;min-height:108px;padding:20px 24px;border:1px solid #293b53;border-radius:14px;background:linear-gradient(115deg,#101b2b,#1b2b41 58%,#0c1726);color:#fff;text-decoration:none;text-align:center;box-shadow:0 8px 24px #0b172522}
+.tradingview-text-banner-brand{font-size:clamp(24px,4vw,34px);font-weight:850;letter-spacing:-.04em;color:#fff}
+.tradingview-text-banner-copy{font-size:clamp(13px,2vw,16px);font-weight:650;color:#cbd7e7}
+.tradingview-text-banner-copy i{color:#42b889;font-style:normal;padding:0 4px}
+.tradingview-text-banner-cta{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:7px;background:#42b889;color:#071b18;font-size:13px;font-weight:850}
+.tradingview-text-banner:hover .tradingview-text-banner-cta{filter:brightness(1.08)}
+@media(max-width:600px){.tradingview-text-banner{flex-direction:column;gap:8px;padding:18px 14px}.tradingview-text-banner-cta{min-height:44px;align-items:center;justify-content:center}}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -3599,8 +3608,10 @@ main li + li { margin-top: 0.35em; }
 <!-- TRADINGVIEW AFFILIATE BANNER -->
 <div class="container">
 <div class="tradingview-banner">
-<a href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank">
-<img alt="TradingView - Advanced Charts and Smarter Decisions" decoding="async" fetchpriority="high" loading="eager" src="assets/tradingview-banner.png"/>
+<a class="tradingview-text-banner" href="https://www.tradingview.com/?aff_id=1174186" rel="sponsored noopener noreferrer" target="_blank" aria-label="Visit TradingView">
+<span class="tradingview-text-banner-brand">TradingView</span>
+<span class="tradingview-text-banner-copy">Advanced Charts <i aria-hidden="true">•</i> Smarter Decisions</span>
+<span class="tradingview-text-banner-cta">Explore TradingView <b aria-hidden="true">↗</b></span>
 </a>
 <p class="affiliate-disclosure">
       StockPilot AI may earn a commission if you subscribe,
