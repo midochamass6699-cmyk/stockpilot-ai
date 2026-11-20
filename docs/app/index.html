@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="Technofront Stocks — a mobile-first market research dashboard with daily stock picks, penny stocks and cryptocurrency activity.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>Technofront Stocks</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#111c2e;--panel2:#162338;--line:#24334b;--text:#f3f6fc;--muted:#91a0b7;--green:#32d49a;--red:#ff7185;--gold:#f6c85f;--blue:#75a9ff;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#1b3151 0,transparent 45%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;padding-bottom:calc(86px + env(safe-area-inset-bottom))}
+button,input{font:inherit}button{cursor:pointer}.shell{width:min(100%,760px);margin:auto;padding:0 16px}.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0 14px;gap:12px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:.2px}.logo{width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,#f8d76b,#e5a92c);color:#121a27;display:grid;place-items:center;font-size:22px;font-weight:1000;box-shadow:0 5px 18px #e5a92c33}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:650;letter-spacing:1.4px}.top-actions{display:flex;gap:8px}.icon-btn,.lang-btn{border:1px solid var(--line);background:#132039;color:var(--text);border-radius:12px;min-width:42px;height:42px;padding:0 11px}.lang-btn{font-size:11px;font-weight:850;color:var(--gold)}
+.greeting{padding:15px 0 18px}.eyebrow{color:var(--gold);font-size:10px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase}.greeting h1{font-size:clamp(27px,7vw,36px);line-height:1.12;letter-spacing:-1.2px;margin:5px 0}.greeting p{margin:6px 0 0;color:var(--muted);font-size:13px}.status-line{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:11px;margin-top:12px}.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 0 4px #32d49a18}
+.market-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:0 0 23px}.metric{background:linear-gradient(145deg,#17253b,#101a2b);border:1px solid var(--line);border-radius:15px;padding:12px 11px;min-width:0}.metric label{display:block;color:var(--muted);font-size:10px;font-weight:750;letter-spacing:.4px}.metric strong{display:block;font-size:17px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric small{display:block;color:var(--muted);font-size:9px;margin-top:2px}
+.section{margin:23px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}.section-head h2{font-size:19px;letter-spacing:-.4px;margin:3px 0 0}.section-head p{color:var(--muted);font-size:11px;margin:3px 0 0}.subtle-btn{border:1px solid var(--line);background:#132039;color:var(--blue);padding:7px 10px;border-radius:10px;font-size:11px;font-weight:800}
+.feature-card{border:1px solid #344660;border-radius:20px;padding:17px;background:linear-gradient(130deg,#1a2d49,#121d30 72%);margin-bottom:12px;position:relative;overflow:hidden}.feature-card:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:#4c8de51a;right:-55px;top:-65px}.feature-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.pill{font-size:9px;font-weight:900;letter-spacing:.7px;padding:5px 8px;border-radius:99px;background:#f6c85f1a;color:var(--gold);border:1px solid #f6c85f30}.feature-card h3{font-size:16px;margin:10px 0 2px}.feature-card p{font-size:11px;color:var(--muted);margin:0}.pick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stock{background:linear-gradient(150deg,#142239,#101a2a);border:1px solid var(--line);border-radius:16px;padding:13px;min-width:0;transition:border-color .2s}.stock:active{border-color:#59739b}.stock-head{display:flex;justify-content:space-between;gap:7px;align-items:flex-start}.stock-name{font-size:13px;font-weight:800;line-height:1.3;overflow-wrap:anywhere}.ticker{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.5px;margin-top:3px}.market-tag{font-size:8px;color:var(--gold);background:#f6c85f12;border-radius:6px;padding:4px 5px;white-space:nowrap;font-weight:850}.price{font-size:22px;font-weight:900;letter-spacing:-.6px;margin-top:12px}.change{font-size:11px;font-weight:850;margin-top:1px}.up{color:var(--green)}.down{color:var(--red)}.stock-meta{border-top:1px solid #26364d;margin-top:11px;padding-top:9px;color:var(--muted);font-size:10px;line-height:1.6}.stock-meta b{color:#cbd5e4;font-weight:700}.stock-link{display:inline-flex;margin-top:9px;color:var(--blue);font-size:10px;font-weight:850;text-decoration:none}
+.crypto-list{display:grid;gap:9px}.crypto{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:12px}.coin-icon{width:38px;height:38px;border-radius:13px;background:#23344f;display:grid;place-items:center;font-size:16px;font-weight:900;color:var(--gold);flex:0 0 38px}.coin-info{min-width:0;flex:1}.coin-info strong{display:block;font-size:13px}.coin-info small{display:block;color:var(--muted);font-size:10px}.coin-price{text-align:right;font-weight:850;font-size:13px;white-space:nowrap}.coin-price small{display:block;color:var(--muted);font-size:9px;font-weight:650}
+.searchbox{display:flex;gap:9px;align-items:center;background:#111d30;border:1px solid var(--line);border-radius:14px;padding:0 13px;margin-bottom:12px}.searchbox span{color:var(--muted)}.searchbox input{width:100%;background:transparent;border:0;outline:0;color:var(--text);padding:13px 0;font-size:13px;min-width:0}.search-results{display:grid;gap:8px}.row-stock{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;background:var(--panel);border:1px solid var(--line);border-radius:13px}.row-stock strong{font-size:12px;display:block}.row-stock small{font-size:10px;color:var(--muted)}.row-stock .right{text-align:right;white-space:nowrap;font-weight:850;font-size:12px}
+.converter{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:15px}.converter-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.converter label{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}.converter input,.converter select{width:100%;border:1px solid var(--line);border-radius:10px;background:#0d1727;color:var(--text);padding:11px;font-size:13px}.conversion-result{font-size:21px;font-weight:900;margin-top:12px}.note{color:var(--muted);font-size:10px;margin-top:5px}
+.disclaimer{background:#1b2433;border:1px solid #39465b;border-radius:14px;padding:13px;color:#b4bfd0;font-size:10px;margin:25px 0 16px}.disclaimer strong{color:var(--gold)}.empty,.loading{grid-column:1/-1;padding:17px;text-align:center;color:var(--muted);font-size:12px;background:var(--panel);border:1px dashed var(--line);border-radius:14px}
+.bottom-nav{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:#0d1727ed;backdrop-filter:blur(18px);border-top:1px solid #26364d;display:grid;grid-template-columns:repeat(4,1fr);max-width:760px;margin:auto}.nav-item{border:0;background:transparent;color:#8291a8;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 2px;font-size:9px;font-weight:800}.nav-item .nav-icon{font-size:18px;line-height:1.2}.nav-item.active{color:var(--gold)}
+.toast{position:fixed;left:50%;bottom:95px;transform:translateX(-50%);background:#eaf5ef;color:#12251d;border-radius:10px;padding:9px 13px;font-size:11px;font-weight:800;z-index:50;display:none;box-shadow:0 8px 28px #0006}
+@media(min-width:620px){.pick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.shell{padding:0 22px}.bottom-nav{border-left:1px solid #26364d;border-right:1px solid #26364d;border-radius:16px 16px 0 0}}
+@media(max-width:360px){.shell{padding:0 12px}.pick-grid{grid-template-columns:1fr}.market-strip{gap:6px}.metric{padding:10px 8px}.metric strong{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+ <div class="brand"><div class="logo">↗</div><div>TECHNOFRONT STOCKS<small>MARKET INTELLIGENCE</small></div></div>
+ <div class="top-actions"><button class="lang-btn" id="langBtn" aria-label="Switch language">EN</button><button class="icon-btn" id="refreshBtn" aria-label="Refresh market data">↻</button><button class="icon-btn" id="installBtn" aria-label="Install app" hidden>＋</button></div>
+</header>
+<main>
+<section class="greeting" id="home">
+ <div class="eyebrow" data-en="YOUR DAILY MARKET BRIEFING" data-fr="VOTRE RÉSUMÉ BOURSIER QUOTIDIEN">YOUR DAILY MARKET BRIEFING</div>
+ <h1 data-en="The market, made clearer." data-fr="La Bourse, plus claire.">The market, made clearer.</h1>
+ <p data-en="Daily stock ideas, active penny stocks and crypto market activity — in one place." data-fr="Idées boursières, actions à faible prix et activité crypto — au même endroit.">Daily stock ideas, active penny stocks and crypto market activity — in one place.</p>
+ <div class="status-line"><span class="dot"></span><span id="lastUpdated">Connecting to market data…</span></div>
+</section>
+<section class="market-strip" aria-label="Market overview">
+ <div class="metric"><label data-en="STOCK PICKS" data-fr="ACTIONS SUIVIES">STOCK PICKS</label><strong id="stockCount">—</strong><small data-en="Daily selection" data-fr="Sélection quotidienne">Daily selection</small></div>
+ <div class="metric"><label data-en="CRYPTO ASSETS" data-fr="ACTIFS CRYPTO">CRYPTO ASSETS</label><strong id="cryptoCount">—</strong><small data-en="By 24h volume" data-fr="Par volume 24 h">By 24h volume</small></div>
+ <div class="metric"><label>USD / CAD</label><strong id="fxMetric">—</strong><small data-en="Reference rate" data-fr="Taux de référence">Reference rate</small></div>
+</section>
+<section class="section" id="daily">
+ <div class="section-head"><div><div class="eyebrow" data-en="TECHNOFRONT SELECTION" data-fr="SÉLECTION TECHNOFRONT">TECHNOFRONT SELECTION</div><h2 data-en="Daily stock picks" data-fr="Sélection du jour">Daily stock picks</h2><p data-en="Market data from the existing StockPilot feed" data-fr="Données du flux StockPilot existant">Market data from the existing StockPilot feed</p></div><button class="subtle-btn" id="allStocksBtn" data-en="Explore ↓" data-fr="Explorer ↓">Explore ↓</button></div>
+ <div class="feature-card"><div class="feature-top"><span class="pill" data-en="DAILY RESEARCH" data-fr="RECHERCHE QUOTIDIENNE">DAILY RESEARCH</span><span class="eyebrow">TF / AI</span></div><h3 data-en="Follow activity. Do your own research." data-fr="Suivez l’activité. Faites vos recherches.">Follow activity. Do your own research.</h3><p data-en="Selections are based on available market data, not promises or buy signals." data-fr="Les sélections reposent sur les données disponibles, pas sur des promesses ni des signaux d’achat.">Selections are based on available market data, not promises or buy signals.</p></div>
+ <div class="pick-grid" id="mainPicks"><div class="loading">Loading verified stock data…</div></div>
+</section>
+<section class="section" id="penny">
+ <div class="section-head"><div><div class="eyebrow" data-en="HIGHER VOLATILITY" data-fr="VOLATILITÉ PLUS ÉLEVÉE">HIGHER VOLATILITY</div><h2 data-en="Penny stock watchlist" data-fr="Liste d’actions à faible prix">Penny stock watchlist</h2><p data-en="Review risk and liquidity before drawing conclusions." data-fr="Évaluez le risque et la liquidité avant toute conclusion.">Review risk and liquidity before drawing conclusions.</p></div></div>
+ <div class="pick-grid" id="pennyPicks"><div class="loading">Loading penny stock data…</div></div>
+</section>
+<section class="section" id="crypto">
+ <div class="section-head"><div><div class="eyebrow" data-en="24-HOUR MARKET ACTIVITY" data-fr="ACTIVITÉ DU MARCHÉ SUR 24 H">24-HOUR MARKET ACTIVITY</div><h2 data-en="Most-traded crypto" data-fr="Cryptomonnaies les plus échangées">Most-traded crypto</h2><p data-en="Ranked by reported 24-hour trading volume." data-fr="Classées selon le volume déclaré sur 24 h.">Ranked by reported 24-hour trading volume.</p></div></div>
+ <div class="crypto-list" id="cryptoList"><div class="loading">Loading crypto market data…</div></div>
+</section>
+<section class="section" id="explore">
+ <div class="section-head"><div><div class="eyebrow" data-en="FIND A SYMBOL" data-fr="RECHERCHER UN SYMBOLE">FIND A SYMBOL</div><h2 data-en="Explore your watchlist" data-fr="Explorer la liste">Explore your watchlist</h2></div></div>
+ <div class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search company or ticker…" aria-label="Search company or ticker"></div>
+ <div class="search-results" id="searchResults"><div class="empty">Your available stock picks will appear here.</div></div>
+</section>
+<section class="section" id="tools">
+ <div class="section-head"><div><div class="eyebrow" data-en="QUICK TOOL" data-fr="OUTIL RAPIDE">QUICK TOOL</div><h2 data-en="Currency converter" data-fr="Convertisseur de devises">Currency converter</h2></div></div>
+ <div class="converter"><div class="converter-row"><div><label for="fxAmount" data-en="AMOUNT" data-fr="MONTANT">AMOUNT</label><input id="fxAmount" type="number" min="0" step="any" value="100" inputmode="decimal"></div><div><label for="fxDirection" data-en="CONVERT" data-fr="CONVERSION">CONVERT</label><select id="fxDirection"><option value="USD-CAD">USD → CAD</option><option value="CAD-USD">CAD → USD</option></select></div></div><div class="conversion-result" id="fxResult">Rate loading…</div><div class="note" id="fxNote">Indicative reference rate. Not a transaction quote.</div></div>
+</section>
+<div class="disclaimer"><strong data-en="Important:" data-fr="Important :">Important:</strong> <span data-en="Market information is provided for educational and research purposes only. Prices and volumes may be delayed or unavailable. Small-cap and penny stocks can be highly volatile. Nothing here is financial advice or a recommendation to buy or sell securities." data-fr="Les informations boursières sont fournies à des fins éducatives et de recherche seulement. Les prix et volumes peuvent être retardés ou indisponibles. Les petites capitalisations peuvent être très volatiles. Ceci ne constitue pas un conseil financier ni une recommandation d’achat ou de vente.">Market information is provided for educational and research purposes only. Prices and volumes may be delayed or unavailable. Small-cap and penny stocks can be highly volatile. Nothing here is financial advice or a recommendation to buy or sell securities.</span></div>
+</main>
+</div>
+<nav class="bottom-nav" aria-label="Main navigation">
+ <button class="nav-item active" data-target="home"><span class="nav-icon">⌂</span><span data-en="Home" data-fr="Accueil">Home</span></button>
+ <button class="nav-item" data-target="daily"><span class="nav-icon">▤</span><span data-en="Stocks" data-fr="Actions">Stocks</span></button>
+ <button class="nav-item" data-target="crypto"><span class="nav-icon">◈</span><span data-en="Crypto" data-fr="Crypto">Crypto</span></button>
+ <button class="nav-item" data-target="explore"><span class="nav-icon">⌕</span><span data-en="Explore" data-fr="Explorer">Explore</span></button>
+</nav>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(function(){
+'use strict';
+var state={main:[],penny:[],crypto:[],rate:null,lang:'en',installPrompt:null,lastFetch:null};
+var $=function(id){return document.getElementById(id)};
+function text(en,fr){return state.lang==='fr'?fr:en}
+function money(value,currency,digits){if(!Number.isFinite(value))return '—';return new Intl.NumberFormat(state.lang==='fr'?'fr-CA':'en-CA',{style:'currency',currency:currency,maximumFractionDigits:digits==null?2:digits}).format(value)}
+function escapeHtml(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function showToast(message){var t=$('toast');t.textContent=message;t.style.display='block';clearTimeout(showToast.timer);showToast.timer=setTimeout(function(){t.style.display='none'},2400)}
+function priceLabel(value){if(!Number.isFinite(value)||value<=0)return '—';var usd=money(value,'USD');if(!Number.isFinite(state.rate))return usd;return usd+' · '+money(value*state.rate,'CAD')}
+function renderStock(item,isPenny){
+ var change=Number(item.change_percent),price=Number(item.price),volume=Number(item.volume);
+ var cls=Number.isFinite(change)?(change>=0?'up':'down'):'';
+ var changeText=Number.isFinite(change)?((change>0?'+':'')+change.toFixed(2)+'% '+text('today','aujourd’hui')):text('Daily change unavailable','Variation quotidienne indisponible');
+ var ticker=escapeHtml(item.ticker||'—'),company=escapeHtml(item.company||item.ticker||'Company');
+ var quote=escapeHtml(item.price_date||item.quote_time||text('Date unavailable','Date indisponible'));
+ var reason=escapeHtml(item.reason||text('Market activity','Activité du marché'));
+ var risk=escapeHtml(item.risk||(isPenny?'High':'Review carefully'));
+ var href='https://finance.yahoo.com/quote/'+encodeURIComponent(item.ticker||'');
+ return '<article class="stock"><div class="stock-head"><div><div class="stock-name">'+company+'</div><div class="ticker">'+ticker+(item.exchange?' · '+escapeHtml(item.exchange):'')+'</div></div><span class="market-tag">'+(isPenny?'PENNY':'DAILY')+'</span></div><div class="price">'+priceLabel(price)+'</div><div class="change '+cls+'">'+changeText+'</div><div class="stock-meta"><b>'+text('Volume:','Volume :')+'</b> '+(Number.isFinite(volume)?volume.toLocaleString():'—')+'<br><b>'+text('Why selected:','Pourquoi :')+'</b> '+reason+'<br><b>'+text('Quote date:','Date du cours :')+'</b> '+quote+'<br><b>'+text('Risk:','Risque :')+'</b> '+risk+'</div><a class="stock-link" href="'+href+'" target="_blank" rel="noopener noreferrer">'+text('Research on Yahoo Finance ↗','Consulter Yahoo Finance ↗')+'</a></article>';
+}
+function renderCrypto(item,index){
+ var symbol=escapeHtml(String(item.symbol||'').toUpperCase()),name=escapeHtml(item.name||symbol),price=Number(item.current_price),volume=Number(item.total_volume),change=Number(item.price_change_percentage_24h);
+ var icon=item.image?'<img src="'+escapeHtml(item.image)+'" alt="" width="38" height="38" style="border-radius:13px;object-fit:contain;background:#fff">':'<div class="coin-icon">'+escapeHtml(symbol.slice(0,1)||'◈')+'</div>';
+ var ch=Number.isFinite(change)?'<small class="'+(change>=0?'up':'down')+'">'+(change>0?'+':'')+change.toFixed(2)+'% · 24h</small>':'<small>24h change unavailable</small>';
+ return '<div class="crypto">'+icon+'<div class="coin-info"><strong>'+name+'</strong><small>'+symbol+' · #'+(index+1)+' '+text('by volume','par volume')+'</small></div><div class="coin-price">'+priceLabel(price)+ch+'</div></div>';
+}
+async function loadStocks(){
+ var stamp=$('lastUpdated');
+ try{
+  var response=await fetch('../data/picks.json?ts='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw new Error('Stock feed HTTP '+response.status);
+  var data=await response.json();
+  if(data.status==='error')throw new Error(data.error||'Stock feed reported an error');
+  state.main=Array.isArray(data.main)?data.main.slice(0,3):[];
+  var mainTickers=new Set(state.main.map(function(x){return x.ticker}));
+  state.penny=Array.isArray(data.penny)?data.penny.filter(function(x){return !mainTickers.has(x.ticker)}).slice(0,3):[];
+  $('mainPicks').innerHTML=state.main.length?state.main.map(function(x){return renderStock(x,false)}).join(''):'<div class="empty">'+text('No verified daily picks are available right now.','Aucune sélection quotidienne vérifiée pour le moment.')+'</div>';
+  $('pennyPicks').innerHTML=state.penny.length?state.penny.map(function(x){return renderStock(x,true)}).join(''):'<div class="empty">'+text('No qualifying penny stock picks are available right now.','Aucune action admissible dans cette catégorie pour le moment.')+'</div>';
+  state.lastFetch=data.updated_at||data.generated_at_utc||new Date().toISOString();
+  stamp.textContent=text('Stock feed updated ','Flux d’actions mis à jour ')+new Date(state.lastFetch).toLocaleString(state.lang==='fr'?'fr-CA':'en-CA');
+  renderSearch();updateMetrics();
+ }catch(error){
+  $('mainPicks').innerHTML='<div class="empty">'+text('Stock data temporarily unavailable.','Données boursières temporairement indisponibles.')+'</div>';
+  $('pennyPicks').innerHTML='<div class="empty">'+text('Penny stock data temporarily unavailable.','Données des actions à faible prix temporairement indisponibles.')+'</div>';
+  stamp.textContent=text('Stock feed unavailable · ','Flux boursier indisponible · ')+error.message;
+  console.warn('Technofront Stocks:',error);
+ }
+}
+async function loadCrypto(){
+ try{
+  var response=await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false',{cache:'no-store'});
+  if(!response.ok)throw new Error('Crypto feed HTTP '+response.status);
+  var data=await response.json();
+  if(!Array.isArray(data))throw new Error('Invalid crypto response');
+  state.crypto=data.slice().sort(function(a,b){return (Number(b.total_volume)||0)-(Number(a.total_volume)||0)}).slice(0,3);
+  $('cryptoList').innerHTML=state.crypto.length?state.crypto.map(renderCrypto).join(''):'<div class="empty">No crypto data available.</div>';
+  updateMetrics();
+ }catch(error){$('cryptoList').innerHTML='<div class="empty">'+text('Crypto data temporarily unavailable.','Données crypto temporairement indisponibles.')+'</div>';console.warn(error)}
+}
+async function loadRate(){
+ try{
+  var response=await fetch('https://api.frankfurter.dev/v2/rate/usd/cad',{cache:'no-store'});
+  if(!response.ok)throw new Error('FX HTTP '+response.status);
+  var data=await response.json(),rate=Number(data.rate);
+  if(!Number.isFinite(rate)||rate<=0)throw new Error('Invalid FX rate');
+  state.rate=rate;updateMetrics();calculateFx();renderPicks();
+ }catch(error){$('fxResult').textContent=text('Exchange rate unavailable','Taux de change indisponible');console.warn(error)}
+}
+function renderPicks(){
+ $('mainPicks').innerHTML=state.main.length?state.main.map(function(x){return renderStock(x,false)}).join(''):$('mainPicks').innerHTML;
+ $('pennyPicks').innerHTML=state.penny.length?state.penny.map(function(x){return renderStock(x,true)}).join(''):$('pennyPicks').innerHTML;
+}
+function updateMetrics(){$('stockCount').textContent=String(state.main.length+state.penny.length);$('cryptoCount').textContent=String(state.crypto.length);$('fxMetric').textContent=Number.isFinite(state.rate)?state.rate.toFixed(3):'—'}
+function renderSearch(){
+ var q=$('searchInput').value.trim().toLowerCase(),items=state.main.map(function(x){return Object.assign({kind:'DAILY'},x)}).concat(state.penny.map(function(x){return Object.assign({kind:'PENNY'},x)}));
+ if(q)items=items.filter(function(x){return String(x.company||'').toLowerCase().includes(q)||String(x.ticker||'').toLowerCase().includes(q)});
+ $('searchResults').innerHTML=items.length?items.map(function(x){return '<div class="row-stock"><div><strong>'+escapeHtml(x.company||x.ticker)+'</strong><small>'+escapeHtml(x.ticker)+' · '+x.kind+'</small></div><div class="right">'+priceLabel(Number(x.price))+'<small style="display:block;color:var(--muted);font-weight:600">'+(Number.isFinite(Number(x.change_percent))?Number(x.change_percent).toFixed(2)+'%':'—')+'</small></div></div>'}).join(''):'<div class="empty">'+text('No matching stocks in the current daily feed.','Aucune action correspondante dans le flux quotidien actuel.')+'</div>';
+}
+function calculateFx(){
+ var amount=Number($('fxAmount').value),direction=$('fxDirection').value;
+ if(!Number.isFinite(amount)||amount<0){$('fxResult').textContent=text('Enter a valid amount','Entrez un montant valide');return}
+ if(!Number.isFinite(state.rate)){$('fxResult').textContent=text('Rate unavailable','Taux indisponible');return}
+ var reverse=direction==='CAD-USD',converted=reverse?amount/state.rate:amount*state.rate,currency=reverse?'USD':'CAD';
+ $('fxResult').textContent=money(converted,currency);
+ $('fxNote').textContent='1 USD = '+state.rate.toFixed(4)+' CAD · '+text('Indicative reference rate.','Taux de référence indicatif.');
+}
+function renderLanguage(){
+ document.documentElement.lang=state.lang==='fr'?'fr-CA':'en-CA';
+ document.querySelectorAll('[data-en]').forEach(function(el){el.textContent=el.getAttribute(state.lang==='fr'?'data-fr':'data-en')});
+ $('langBtn').textContent=state.lang.toUpperCase();
+ $('searchInput').placeholder=text('Search company or ticker…','Rechercher une entreprise ou un symbole…');
+ renderPicks();renderSearch();calculateFx();
+}
+$('langBtn').addEventListener('click',function(){state.lang=state.lang==='en'?'fr':'en';renderLanguage()});
+$('refreshBtn').addEventListener('click',function(){showToast(text('Refreshing market data…','Actualisation des données…'));loadAll()});
+$('allStocksBtn').addEventListener('click',function(){$('explore').scrollIntoView({behavior:'smooth'})});
+$('searchInput').addEventListener('input',renderSearch);
+$('fxAmount').addEventListener('input',calculateFx);$('fxDirection').addEventListener('change',calculateFx);
+document.querySelectorAll('.nav-item').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.nav-item').forEach(function(x){x.classList.remove('active')});btn.classList.add('active');$(btn.getAttribute('data-target')).scrollIntoView({behavior:'smooth',block:'start'})})});
+var install=$('installBtn');window.addEventListener('beforeinstallprompt',function(event){event.preventDefault();state.installPrompt=event;install.hidden=false});
+install.addEventListener('click',async function(){if(!state.installPrompt)return;state.installPrompt.prompt();await state.installPrompt.userChoice;state.installPrompt=null;install.hidden=true});
+async function loadAll(){await Promise.all([loadStocks(),loadCrypto(),loadRate()])}
+loadAll();setInterval(loadStocks,15*60*1000);setInterval(loadCrypto,5*60*1000);setInterval(loadRate,60*60*1000);
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(error){console.warn('Service worker registration failed:',error)})})}
+})();
+</script>
+</body>
+</html>
