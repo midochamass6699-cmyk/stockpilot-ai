@@ -2536,6 +2536,43 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 button,a,input,select,textarea{touch-action:manipulation}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
+
+<style id="stockpilot-mobile-broker-placement">
+/* On phones, let visitors see the stock lookup before the broker promotion. */
+@media (max-width: 650px) {
+  .stockpilot-top-tools {
+    display: flex;
+    flex-direction: column;
+  }
+  #quick-stock-lookup { order: 1; }
+  #stockpilot-find-broker-banner {
+    order: 2;
+    width: calc(100% - 24px);
+    min-height: 0;
+    margin: 14px auto 18px;
+    padding: 9px 11px;
+    gap: 8px;
+  }
+  #stockpilot-find-broker-banner .find-broker-icon {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+    font-size: 17px;
+  }
+  #stockpilot-find-broker-banner .find-broker-text strong {
+    font-size: 14px;
+  }
+  #stockpilot-find-broker-banner .find-broker-text span {
+    font-size: 9px;
+  }
+  #stockpilot-find-broker-banner .find-broker-action {
+    min-height: 33px;
+    padding: 0 8px;
+    font-size: 8px;
+  }
+}
+</style>
+
 </head>
 <body>
 <a class="sp-skip-link" href="#main-content">Skip to main content</a>
