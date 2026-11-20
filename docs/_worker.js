@@ -65,6 +65,25 @@ export default {
       html = html.replace(/<html\b/i, '<html data-site-impact="true"');
     }
 
+    // Add Statcounter to every HTML page served by this Pages Worker.
+    // Existing page-level copies are left untouched to prevent duplicate tracking.
+    if (!html.includes("sc_project=13368384")) {
+      const statcounterCode = `<!-- Default Statcounter code for technofront https://technofront.org -->
+<script type="text/javascript">
+var sc_project=13368384;
+var sc_invisible=1;
+var sc_security="58d29d99";
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/13368384/0/58d29d99/1/" alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->`;
+      html = html.replace(/<\\/body>/i, statcounterCode + "\\n</body>");
+    }
+
     // The homepage HTML owns the single centered visitor counter.
     // Avoid injecting a second header/mobile counter.
     const headers = new Headers(response.headers);
