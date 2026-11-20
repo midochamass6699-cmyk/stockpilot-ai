@@ -5,3 +5,8 @@ compatibility_date = "2026-11-15"
 routes = [
   { pattern = "technofront.org/*", zone_name = "technofront.org" }
 ]
+
+[[d1_databases]]
+binding = "VISITOR_DB"
+database_name = "stockpilot-visitor-counter"
+database_id = "ba5e9778-0343-4b0a-bd1c-5678c3930e98"
