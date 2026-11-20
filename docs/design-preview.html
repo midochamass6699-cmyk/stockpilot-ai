@@ -6219,57 +6219,54 @@ section:empty, article:empty, aside:empty { display:none!important; }
 
 
 <style id="sp-design-preview-overrides">
-/* PREVIEW ONLY: larger, clearer market sections */
+/* Preview redesign: larger, stacked market cards; original data and scripts remain intact */
 #sp-design-preview-banner{position:relative;z-index:99999;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:12px 18px;background:#10243a;color:#fff;border-bottom:3px solid #e8c45c;font:14px/1.35 Arial,sans-serif;text-align:center}
 #sp-design-preview-banner strong{color:#f2d47e;letter-spacing:.1em;font-size:12px}
 #sp-design-preview-banner a{color:#10243a;background:#f2d47e;padding:7px 12px;border-radius:6px;text-decoration:none;font-weight:800}
-#main-picks,#penny-picks,#crypto-picks{padding:30px 24px 24px;margin:20px 0;background:#fff;border:1px solid #e1e7ee;border-radius:16px;box-shadow:0 8px 26px rgba(12,28,48,.07)}
-#main-picks .section-head h2,#penny-picks .section-head h2,#crypto-picks .section-head h2{font-size:clamp(25px,3vw,34px);line-height:1.15;color:#10243a}
-#main-picks .section-head p,#penny-picks .section-head p,#crypto-picks .section-head p{font-size:15px;line-height:1.6;max-width:760px;color:#536274}
-#main-picks .updated,#crypto-picks .updated{font-size:13px;margin:12px 0 16px}
-#main-picks .stock-grid,#penny-picks .stock-grid,#crypto-picks .stock-grid{grid-template-columns:1fr!important;gap:12px}
-#main-picks .stock-card,#penny-picks .stock-card,#crypto-picks .stock-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px 18px;padding:19px 22px;border:1px solid #dce4ed;border-left:5px solid #d9b344;border-radius:12px;box-shadow:0 3px 12px rgba(12,28,48,.05);min-height:100px}
-#main-picks .stock-card h3,#penny-picks .stock-card h3,#crypto-picks .stock-card h3{font-size:19px;line-height:1.3;color:#142b45}
-#main-picks .stock-card .ticker,#penny-picks .stock-card .ticker,#crypto-picks .stock-card .ticker{font-size:13px}
-#main-picks .stock-card .price,#penny-picks .stock-card .price,#crypto-picks .stock-card .price{font-size:26px;margin:0;text-align:right}
-#main-picks .stock-card .stock-price-row,#penny-picks .stock-card .stock-price-row{grid-column:1/-1;gap:12px;margin-top:7px}
-#main-picks .stock-card .stock-logo-wrap,#penny-picks .stock-card .stock-logo-wrap{width:46px;height:46px;flex-basis:46px}
-#main-picks .stock-card .stock-company-logo,#penny-picks .stock-card .stock-company-logo{padding:4px}
-#main-picks .stock-card .change,#penny-picks .stock-card .change,#crypto-picks .stock-card .change{font-size:14px}
-#main-picks .stock-card .card-meta,#penny-picks .stock-card .card-meta,#crypto-picks .stock-card .card-meta{grid-column:1/-1;font-size:13px;line-height:1.55;margin-top:9px;padding-top:10px}
-#main-picks .stock-card .stock-link,#penny-picks .stock-card .stock-link,#crypto-picks .stock-card .stock-link{font-size:13px}
-#penny-picks{background:linear-gradient(145deg,#fffdf6,#fff);border-color:#eadfbf}
-#penny-picks .stock-card{border-left-color:#d4a72c}
-#crypto-picks{background:linear-gradient(145deg,#f7fbff,#fff);border-color:#d7e4f2}
-#crypto-picks .stock-card{border-left-color:#3978b9}
-#crypto-picks .stock-card .crypto-logo{width:42px;height:42px;float:none;grid-column:1;grid-row:1}
-#crypto-picks .stock-card .crypto-rank{font-size:11px;padding:5px 9px}
-#sp-stock-of-day{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:15px;width:min(1180px,calc(100% - 36px))!important;margin:22px auto!important;padding:22px 24px!important;border:1px solid #d7e2ed!important;border-left:6px solid #e5bd50!important;border-radius:16px!important;background:linear-gradient(110deg,#102b49,#0b1b2d)!important;box-shadow:0 10px 30px rgba(4,18,34,.18)!important;color:#fff!important;min-height:130px}
-#sp-stock-of-day .sp-day-logo{width:64px!important;height:64px!important;min-width:64px!important;flex-basis:64px!important;font-size:22px!important}
-#sp-stock-of-day .sp-day-copy{min-width:0!important;gap:5px!important}
+#main-picks,#penny-picks,#crypto-picks{padding:30px 24px 24px;margin:22px 0;background:#fff;border:1px solid #dce5ef;border-radius:16px;box-shadow:0 8px 26px rgba(12,28,48,.07)}
+#main-picks .section-head h2,#penny-picks .section-head h2,#crypto-picks .section-head h2{font-size:clamp(26px,3vw,36px);line-height:1.15}
+#main-picks .section-head p,#penny-picks .section-head p,#crypto-picks .section-head p{font-size:16px;line-height:1.6;max-width:760px}
+#main-picks .stock-grid,#penny-picks .stock-grid,#crypto-picks .stock-grid{grid-template-columns:1fr!important;gap:14px}
+#main-picks .stock-card,#penny-picks .stock-card,#crypto-picks .stock-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 18px;padding:20px 22px;border:1px solid #dce4ed;border-top:0;border-left:5px solid #d5aa3d;border-radius:13px;box-shadow:0 4px 14px rgba(12,28,48,.06);min-width:0}
+#main-picks .stock-card h3,#penny-picks .stock-card h3,#crypto-picks .stock-card h3{font-size:20px;line-height:1.3;grid-column:1}
+#main-picks .stock-card .ticker,#penny-picks .stock-card .ticker,#crypto-picks .stock-card .ticker{font-size:13px;grid-column:1}
+#main-picks .stock-card .stock-price-row,#penny-picks .stock-card .stock-price-row{grid-column:2;grid-row:1/3;align-self:center;gap:12px;margin:0}
+#main-picks .stock-card .stock-logo-wrap,#penny-picks .stock-card .stock-logo-wrap{width:48px;height:48px;flex-basis:48px}
+#main-picks .stock-card .stock-company-logo,#penny-picks .stock-card .stock-company-logo{max-width:40px;max-height:40px;object-fit:contain}
+#main-picks .stock-card .price,#penny-picks .stock-card .price,#crypto-picks .stock-card .price{font-size:27px;font-weight:900;margin:0}
+#main-picks .stock-card .change,#penny-picks .stock-card .change{grid-column:1/-1;font-size:15px;font-weight:800;margin-top:8px}
+#main-picks .stock-card .stock-mini-chart,#penny-picks .stock-card .stock-mini-chart{grid-column:1/-1;min-height:90px}
+#main-picks .stock-card .card-meta,#penny-picks .stock-card .card-meta,#crypto-picks .stock-card .card-meta{grid-column:1/-1;font-size:14px;line-height:1.65;margin-top:10px;padding-top:12px;border-top:1px solid #edf1f5}
+#main-picks .stock-card .stock-insight,#penny-picks .stock-card .stock-insight{grid-column:1/-1;font-size:14px;line-height:1.6}
+#main-picks .stock-card .stock-link,#penny-picks .stock-card .stock-link,#crypto-picks .stock-card .stock-link{grid-column:1/-1;font-size:14px;font-weight:800}
+#penny-picks{background:#fffdf7;border-color:#eadfbe}
+#penny-picks .stock-card{border-left-color:#d5a62c}
+#crypto-picks{background:#f7fbff;border-color:#d8e5f3}
+#crypto-picks .stock-card{border-left-color:#3679b8}
+#sp-stock-of-day{display:grid!important;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:16px;width:min(1180px,calc(100% - 36px))!important;margin:24px auto!important;padding:24px!important;border:1px solid #d7e2ed!important;border-left:6px solid #e5bd50!important;border-radius:16px!important;background:linear-gradient(110deg,#102b49,#0b1b2d)!important;box-shadow:0 10px 30px rgba(4,18,34,.18)!important;color:#fff!important;min-height:140px}
+#sp-stock-of-day .sp-day-logo{width:62px!important;height:62px!important;min-width:62px!important;flex-basis:62px!important;font-size:22px!important}
+#sp-stock-of-day .sp-day-copy{min-width:0!important;gap:6px!important}
 #sp-stock-of-day .sp-day-eyebrow{font-size:12px!important;letter-spacing:.12em!important;color:#f3d77e!important}
-#sp-stock-of-day .sp-day-name{font-size:23px!important;line-height:1.2!important;color:#fff!important}
-#sp-stock-of-day .sp-day-ticker,#sp-stock-of-day .sp-day-meta{font-size:13px!important;color:#c3d3e4!important}
+#sp-stock-of-day .sp-day-name{font-size:24px!important;line-height:1.2!important;color:#fff!important}
+#sp-stock-of-day .sp-day-ticker,#sp-stock-of-day .sp-day-meta{font-size:14px!important;color:#c3d3e4!important}
 #sp-stock-of-day .sp-day-stats{display:flex!important;flex-wrap:wrap!important;gap:16px!important}
-#sp-stock-of-day .sp-day-stat{min-width:76px!important}
+#sp-stock-of-day .sp-day-stat{min-width:78px!important}
 #sp-stock-of-day .sp-day-stat-label{font-size:10px!important;color:#9fb8d1!important}
-#sp-stock-of-day .sp-day-stat-value{font-size:18px!important;color:#fff!important}
-#sp-stock-of-day .sp-day-source{font-size:10px!important;color:#a9bfd5!important}
+#sp-stock-of-day .sp-day-stat-value{font-size:19px!important;color:#fff!important}
+#sp-stock-of-day .sp-day-source{font-size:11px!important;color:#a9bfd5!important}
 #sp-stock-of-day .sp-day-cta,#sp-stock-of-day .sp-day-terminal-copy,#sp-stock-of-day .sp-day-terminal-link{display:none!important}
-#sp-stock-of-day .sp-day-bell{width:38px!important;height:38px!important;flex-basis:38px!important}
 @media(max-width:760px){
  #main-picks,#penny-picks,#crypto-picks{padding:20px 14px;margin:14px 0;border-radius:12px}
- #main-picks .stock-card,#penny-picks .stock-card,#crypto-picks .stock-card{padding:16px;gap:5px 10px}
- #main-picks .stock-card h3,#penny-picks .stock-card h3,#crypto-picks .stock-card h3{font-size:17px}
- #main-picks .stock-card .price,#penny-picks .stock-card .price,#crypto-picks .stock-card .price{font-size:23px}
+ #main-picks .stock-card,#penny-picks .stock-card,#crypto-picks .stock-card{padding:16px;gap:6px 10px}
+ #main-picks .stock-card h3,#penny-picks .stock-card h3,#crypto-picks .stock-card h3{font-size:18px}
+ #main-picks .stock-card .stock-price-row,#penny-picks .stock-card .stock-price-row{grid-column:1/-1;grid-row:auto;justify-content:flex-start;margin-top:8px}
+ #main-picks .stock-card .price,#penny-picks .stock-card .price,#crypto-picks .stock-card .price{font-size:25px}
  #sp-stock-of-day{grid-template-columns:48px minmax(0,1fr)!important;width:calc(100% - 24px)!important;padding:16px!important;gap:10px!important}
  #sp-stock-of-day .sp-day-logo{width:46px!important;height:46px!important;min-width:46px!important;flex-basis:46px!important}
- #sp-stock-of-day .sp-day-name{font-size:19px!important}
- #sp-stock-of-day .sp-day-stats{grid-column:1/-1!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;padding-top:10px;border-top:1px solid #ffffff26}
+ #sp-stock-of-day .sp-day-name{font-size:20px!important}
+ #sp-stock-of-day .sp-day-stats{grid-column:1/-1!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;padding-top:12px;border-top:1px solid #ffffff26}
  #sp-stock-of-day .sp-day-stat{min-width:0!important}
- #sp-stock-of-day .sp-day-stat-label{font-size:10px!important}
- #sp-stock-of-day .sp-day-stat-value{font-size:17px!important}
- #sp-stock-of-day .sp-day-bell{grid-column:2;justify-self:end}
+ #sp-stock-of-day .sp-day-stat-value{font-size:18px!important}
 }
 </style>
 
