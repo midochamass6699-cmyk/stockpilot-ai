@@ -7855,13 +7855,12 @@ header{margin-bottom:0!important}
   <span class="sp-day-stat"><span class="sp-day-stat-label">VOL. RELATIF</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
  </span>
  <span class="sp-day-source" id="spDaySource">Données de clôture · —</span>
- <button class="sp-day-bell" id="spDaySubscribeBell" type="button" aria-label="S’abonner aux notifications de StockPilot AI" title="S’abonner aux notifications de StockPilot AI">🔔</button><a class="sp-day-cta" href="#main-picks">VOIR L’ACTION →</a>
+ <a class="sp-day-cta" href="#main-picks">VOIR L’ACTION →</a>
 <span class="sp-day-terminal-copy"><strong>TERMINAL DES MARCHÉS</strong><small>LISTES DE SUIVI · FILTRE D’ACTIONS · ANALYSE TECHNIQUE</small></span><a class="sp-day-terminal-link" href="#market-terminal">OUVRIR LE TERMINAL →</a>
 </div>
 <script id="sp-stock-of-day-data">
 (function(){
  const host=document.getElementById('sp-stock-of-day');if(!host)return;
- const bell=document.getElementById('spDaySubscribeBell');if(bell)bell.addEventListener('click',function(){const subscribe=document.getElementById('stockpilot-subscribe-btn');if(subscribe){subscribe.click();}else{const target=document.getElementById('stockpilot-subscribe-status');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});}});
 
  const name=document.getElementById('spDayName'),ticker=document.getElementById('spDayTicker'),meta=document.getElementById('spDayMeta'),logo=document.getElementById('spDayLogo');
  const priceEl=document.getElementById('spDayPrice'),moveEl=document.getElementById('spDayMove'),volumeEl=document.getElementById('spDayVolume'),fiveEl=document.getElementById('spDayFiveDay'),relEl=document.getElementById('spDayRelVolume'),sourceEl=document.getElementById('spDaySource');
