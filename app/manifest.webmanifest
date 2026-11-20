@@ -1,0 +1,16 @@
+{
+  "id": "/app/",
+  "name": "Technofront Stocks",
+  "short_name": "TF Stocks",
+  "description": "Mobile-first stock and cryptocurrency market research from Technofront.",
+  "start_url": "/app/",
+  "scope": "/app/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "lang": "en-CA",
+  "icons": [
+    { "src": "/app/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
