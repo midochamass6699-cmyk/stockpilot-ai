@@ -80,14 +80,34 @@ export default {
     const contentType = response.headers.get("content-type") || "";
     if (!response.ok || !contentType.includes("text/html")) return response;
 
-    const pagePath = url.pathname.replace(/index\.html$/i, "").replace(/\/$/, "") || "/";
-    if (!["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) return response;
-
+    const pagePath = url.pathname.replace(/index\\.html$/i, "").replace(/\\/$/, "") || "/";
     let html = await response.text();
-    // Populate the one counter already centered in the navigation.
+
+    // Add Statcounter to every HTML page served by this domain.
+    // Keep existing page-level copies, and avoid adding a duplicate tracker.
+    if (!html.includes("sc_project=13368384")) {
+      const statcounterCode = `<!-- Default Statcounter code for technofront https://technofront.org -->
+<script type="text/javascript">
+var sc_project=13368384;
+var sc_invisible=1;
+var sc_security="58d29d99";
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/13368384/0/58d29d99/1/" alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->`;
+      html = html.replace(/<\\/body>/i, statcounterCode + "\\n</body>");
+    }
+
+    // Populate the existing visitor counter only on the language homepages.
     // Do not create a second counter beside the language selector.
-    const script = '<script id="tf-visitor-counter-script">(function(){var el=document.getElementById("tf-visitor-counter");if(!el)return;fetch("/api/visitor-number",{cache:"no-store",credentials:"same-origin"}).then(function(r){if(!r.ok)throw new Error("counter unavailable");return r.json()}).then(function(data){var n=Number(data&&data.visitorNumber);if(Number.isSafeInteger(n)&&n>0){el.textContent="YOU ARE VISITOR NUMBER "+n.toLocaleString("en-CA")}else{throw new Error("invalid counter value")}}).catch(function(){el.textContent="VISITOR COUNT UNAVAILABLE"})})();</script>';
-    html = html.replace("</body>", script + "</body>");
+    if (["/", "/fr", "/es", "/de", "/us"].includes(pagePath)) {
+      const visitorCounterScript = '<script id="tf-visitor-counter-script">(function(){var el=document.getElementById("tf-visitor-counter");if(!el)return;fetch("/api/visitor-number",{cache:"no-store",credentials:"same-origin"}).then(function(r){if(!r.ok)throw new Error("counter unavailable");return r.json()}).then(function(data){var n=Number(data&&data.visitorNumber);if(Number.isSafeInteger(n)&&n>0){el.textContent="YOU ARE VISITOR NUMBER "+n.toLocaleString("en-CA")}else{throw new Error("invalid counter value")}}).catch(function(){el.textContent="VISITOR COUNT UNAVAILABLE"})})();</script>';
+      html = html.replace("</body>", visitorCounterScript + "</body>");
+    }
 
     const headers = new Headers(response.headers);
     headers.delete("content-length");
