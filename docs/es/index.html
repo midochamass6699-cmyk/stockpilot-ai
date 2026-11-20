@@ -1973,7 +1973,8 @@ body{background:#f1f5f9!important;color:var(--sp-ink)!important}
 @media(prefers-reduced-motion:reduce){#main-picks .stock-card,#penny-picks .stock-card,#crypto-picks .stock-card{transition:none!important}}
 </style>
 <style id="stockpilot-cls-stability-guard">
-/* Prevent late content movement in the market desk and fixed side directory. */
+/* Reserve the welcome-row slot and prevent late movement in the market desk and fixed side directory. */
+#live-trading-desk .trading-desk-header>div:first-child:not(.tf-compact-row-ready)::before{content:"";display:block;height:42px;}
 #live-trading-desk,.live-trading-desk,#market-terminal,.sp-market-terminal{min-width:0;box-sizing:border-box}
 #free-left-banner.free-side-banner{width:150px;min-width:150px;max-width:150px;box-sizing:border-box}
 #free-left-banner .sp-directory{width:100%;min-width:0;box-sizing:border-box}
@@ -3791,7 +3792,8 @@ section:empty, article:empty, aside:empty { display:none!important; }
    title.parentNode.insertBefore(row,title);
    row.appendChild(invite);
    row.appendChild(subscribe);
-   if(status)row.appendChild(status);
+   if(status){reserveLayoutSlot(status);row.appendChild(status);}
+   welcome.classList.add('tf-compact-row-ready');
    var oldCopy=document.querySelector('.weekly-subscribe-copy');if(oldCopy){reserveLayoutSlot(oldCopy);oldCopy.remove();}
    var oldCta=document.querySelector('.weekly-subscribe-cta');
    if(oldCta&&!oldCta.querySelector('#stockpilot-subscribe-btn')&&!oldCta.querySelector('.kitco-banner-stack')){reserveLayoutSlot(oldCta);oldCta.remove();}
