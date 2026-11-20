@@ -2448,6 +2448,76 @@ main li + li { margin-top: 0.35em; }
   }
 }
 </style>
+
+<style id="technofront-mobile-audit-fix">
+/* Mobile audit fixes: keep desktop styling unchanged. */
+@media (max-width: 760px) {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+  body { min-width: 0; }
+  img, video, iframe, svg, canvas { max-width: 100%; }
+  main, header, footer, section, article, nav, aside,
+  .container, .wrapper, .content, .inner, .live-trading-desk,
+  #live-trading-desk, #market-terminal, .sp-market-terminal {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .nav, .topbar, .nav-menu, .navlinks {
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .navlinks { gap: 6px; }
+  .navlinks a, .nav-menu a, .topbar a,
+  button, input[type="button"], input[type="submit"],
+  .tf-free-tools-cta, .find-broker-action {
+    min-height: 44px;
+  }
+  .navlinks a, .nav-menu a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 9px;
+    line-height: 1.3;
+    white-space: normal;
+  }
+  main p, main li, .panel p, .seo-content p, .faq-section p {
+    overflow-wrap: anywhere;
+  }
+  table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  #margin-account-article table {
+    min-width: 520px;
+    max-width: none;
+  }
+  #free-left-banner.free-side-banner {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .navlinks { gap: 4px; }
+  .navlinks a, .nav-menu a {
+    padding: 9px 7px;
+    font-size: 12px;
+  }
+  h1 { overflow-wrap: anywhere; }
+  .live-trading-desk, #live-trading-desk,
+  #market-terminal, .sp-market-terminal {
+    width: calc(100% - 16px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sp-terminal-promo { width: calc(100% - 16px); }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
