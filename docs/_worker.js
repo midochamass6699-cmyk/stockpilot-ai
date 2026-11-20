@@ -81,7 +81,7 @@ href="https://statcounter.com/" target="_blank"><img class="statcounter"
 src="https://c.statcounter.com/13368384/0/58d29d99/1/" alt="Web Analytics"
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->`;
-      html = html.replace(/<\\/body>/i, statcounterCode + "\\n</body>");
+      html = html.replace(/<\/body>/i, statcounterCode + "\n</body>");
     }
 
     // The homepage HTML owns the single centered visitor counter.
