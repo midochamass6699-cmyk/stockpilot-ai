@@ -1972,6 +1972,15 @@ body{background:#f1f5f9!important;color:var(--sp-ink)!important}
 }
 @media(prefers-reduced-motion:reduce){#main-picks .stock-card,#penny-picks .stock-card,#crypto-picks .stock-card{transition:none!important}}
 </style>
+<style id="stockpilot-cls-stability-guard">
+/* Prevent late content movement in the market desk and fixed side directory. */
+#live-trading-desk,.live-trading-desk,#market-terminal,.sp-market-terminal{min-width:0;box-sizing:border-box}
+#free-left-banner.free-side-banner{width:150px;min-width:150px;max-width:150px;box-sizing:border-box}
+#free-left-banner .sp-directory{width:100%;min-width:0;box-sizing:border-box}
+#free-left-banner .sp-directory-links{display:flex;width:100%;min-width:0;max-width:100%;flex:1 1 auto;box-sizing:border-box;overflow-x:hidden}
+#free-left-banner .sp-side-list{min-width:0}
+.sp-layout-reservation{pointer-events:none!important;visibility:hidden!important}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -3556,6 +3565,18 @@ setInterval(loadStocks,15 * 60 * 1000);
 <a class="tf-mobile-broker" href="#broker-directory" aria-label="Encuentra un bróker"><span>↗</span><strong>ENCUENTRA TU BRÓKER</strong><small>Compara plataformas de inversión</small></a>
 <script id="technofront-mobile-home-order-script">
 (function(){
+ function reserveLayoutSlot(node){
+  if(!node||!node.parentNode||node.dataset.spLayoutReserved==='1')return;
+  var rect=node.getBoundingClientRect();
+  if(!rect.width&&!rect.height)return;
+  var cs=window.getComputedStyle(node);
+  var slot=document.createElement('div');
+  slot.className='sp-layout-reservation';
+  slot.setAttribute('aria-hidden','true');
+  slot.style.cssText='display:block!important;box-sizing:border-box!important;flex:none!important;width:'+rect.width+'px!important;height:'+rect.height+'px!important;min-height:'+rect.height+'px!important;margin:'+cs.margin+'!important;visibility:hidden!important;pointer-events:none!important;';
+  node.parentNode.insertBefore(slot,node);
+  node.dataset.spLayoutReserved='1';
+}
  const mq=window.matchMedia('(max-width:760px)');
  let broker=document.getElementById('stockpilot-find-broker-banner')||document.querySelector('.tf-mobile-broker');
  const lookup=document.getElementById('quick-stock-lookup');
@@ -3684,8 +3705,8 @@ setInterval(loadStocks,15 * 60 * 1000);
  if(!kitco)return;
  let wrap=document.querySelector('.tf-promo-layout');
  if(!wrap){wrap=document.createElement('div');wrap.className='tf-promo-layout';wrap.setAttribute('aria-label','Subscription and precious metals partner');}
- if(bell&&!wrap.contains(bell))wrap.appendChild(bell);
- if(!wrap.contains(kitco))wrap.appendChild(kitco);
+ if(bell&&!wrap.contains(bell)){reserveLayoutSlot(bell);wrap.appendChild(bell);}
+ if(!wrap.contains(kitco)){reserveLayoutSlot(kitco);wrap.appendChild(kitco);}
  const ticker=document.querySelector('.sp-top-picks-ticker')||document.querySelector('.marquee')||document.querySelector('.weekly-side-ticker');
  let tickerHome=null;
  if(ticker&&ticker.parentNode){tickerHome=document.createComment('ticker original position');ticker.parentNode.insertBefore(tickerHome,ticker);ticker.classList.add('tf-mobile-bottom-ticker');}
@@ -3746,6 +3767,18 @@ section:empty, article:empty, aside:empty { display:none!important; }
 </style>
 <script id="stockpilot-compact-bell-kitco-layout-script">
 (function(){
+ function reserveLayoutSlot(node){
+  if(!node||!node.parentNode||node.dataset.spLayoutReserved==='1')return;
+  var rect=node.getBoundingClientRect();
+  if(!rect.width&&!rect.height)return;
+  var cs=window.getComputedStyle(node);
+  var slot=document.createElement('div');
+  slot.className='sp-layout-reservation';
+  slot.setAttribute('aria-hidden','true');
+  slot.style.cssText='display:block!important;box-sizing:border-box!important;flex:none!important;width:'+rect.width+'px!important;height:'+rect.height+'px!important;min-height:'+rect.height+'px!important;margin:'+cs.margin+'!important;visibility:hidden!important;pointer-events:none!important;';
+  node.parentNode.insertBefore(slot,node);
+  node.dataset.spLayoutReserved='1';
+}
  function compactAffiliateAndUpdates(){
   var welcome=document.querySelector('#live-trading-desk .trading-desk-header > div:first-child');
   var title=welcome&&welcome.querySelector('#trading-desk-title');
@@ -3754,24 +3787,26 @@ section:empty, article:empty, aside:empty { display:none!important; }
   if(welcome&&title&&subscribe&&!document.getElementById('sp-compact-updates-row')){
    var row=document.createElement('div');row.id='sp-compact-updates-row';row.setAttribute('aria-label','Free browser updates');
    var invite=document.createElement('span');invite.className='sp-compact-updates-copy';invite.textContent='Alertas gratis sobre nuevas investigaciones y análisis del mercado';
+   reserveLayoutSlot(subscribe);
    title.parentNode.insertBefore(row,title);
    row.appendChild(invite);
    row.appendChild(subscribe);
    if(status)row.appendChild(status);
-   var oldCopy=document.querySelector('.weekly-subscribe-copy');if(oldCopy)oldCopy.remove();
+   var oldCopy=document.querySelector('.weekly-subscribe-copy');if(oldCopy){reserveLayoutSlot(oldCopy);oldCopy.remove();}
    var oldCta=document.querySelector('.weekly-subscribe-cta');
-   if(oldCta&&!oldCta.querySelector('#stockpilot-subscribe-btn')&&!oldCta.querySelector('.kitco-banner-stack'))oldCta.remove();
+   if(oldCta&&!oldCta.querySelector('#stockpilot-subscribe-btn')&&!oldCta.querySelector('.kitco-banner-stack')){reserveLayoutSlot(oldCta);oldCta.remove();}
    var oldSection=document.getElementById('stockpilot-alert-signup');
-   if(oldSection&&!oldSection.querySelector('.weekly-subscribe-cta')&&!oldSection.textContent.trim())oldSection.remove();
+   if(oldSection&&!oldSection.querySelector('.weekly-subscribe-cta')&&!oldSection.textContent.trim()){reserveLayoutSlot(oldSection);oldSection.remove();}
   }
   var kitco=document.querySelector('.kitco-banner-stack');
   var footer=document.querySelector('footer');
   if(kitco&&footer&&!document.getElementById('sp-compact-kitco')){
+   reserveLayoutSlot(kitco);
    kitco.id='sp-compact-kitco';
    footer.appendChild(kitco);
   }
   var leftoverCta=document.querySelector('.weekly-subscribe-cta');if(leftoverCta&&!leftoverCta.querySelector('#stockpilot-subscribe-btn')&&!leftoverCta.querySelector('.kitco-banner-stack'))leftoverCta.remove();
-  document.querySelectorAll('.subscribe-bell-cta,.tf-mobile-subscribe').forEach(function(el){el.remove();});
+  document.querySelectorAll('.subscribe-bell-cta,.tf-mobile-subscribe').forEach(function(el){reserveLayoutSlot(el);el.remove();});
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',compactAffiliateAndUpdates,{once:true});
  else compactAffiliateAndUpdates();
