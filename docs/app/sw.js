@@ -1,4 +1,4 @@
-const CACHE_NAME = "technofront-stocks-v1";
+const CACHE_NAME = "technofront-stocks-v2";
 const APP_SHELL = ["/app/", "/app/index.html", "/app/manifest.webmanifest", "/app/icon.svg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
