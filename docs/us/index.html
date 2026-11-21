@@ -8339,3 +8339,63 @@ body{font-size:16px}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-actions .sp-terminal-toggle,.live-trading-desk .tf-two-panel-grid .sp-terminal-controls button{background:#F2C94C!important;color:#07182B!important}
 @media(max-width:760px){.live-trading-desk .tf-market-collection .trading-desk-grid{grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection .trading-panel-heading h2{font-size:13px!important}.live-trading-desk .tf-market-collection .trading-market-list .sp-market-row{grid-template-columns:30px minmax(0,1fr) auto!important;padding:7px!important}.live-trading-desk .tf-market-collection .trading-market-list .sp-market-name strong{font-size:12px!important}.live-trading-desk .tf-market-collection .trading-market-list .sp-market-name small{font-size:10px!important}}
 </style>
+
+<style id="technofront-stacked-market-categories-v3">
+/* One market-list column: stocks first, penny stocks second, crypto third. */
+.live-trading-desk .trading-desk-grid,
+.live-trading-desk .tf-market-collection .trading-desk-grid{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ grid-auto-flow:row!important;
+ gap:10px!important;
+ align-items:stretch!important;
+ width:100%!important;
+}
+.live-trading-desk .trading-desk-grid>.trading-panel{
+ display:flex!important;
+ flex-direction:column!important;
+ width:100%!important;
+ min-width:0!important;
+ padding:10px!important;
+}
+.live-trading-desk .trading-desk-grid .trading-panel-heading{
+ display:flex!important;
+ flex-direction:row!important;
+ align-items:center!important;
+ gap:8px!important;
+ text-align:left!important;
+}
+.live-trading-desk .trading-desk-grid .trading-market-list{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ gap:5px!important;
+ width:100%!important;
+ min-width:0!important;
+}
+.live-trading-desk .trading-desk-grid .trading-market-list .sp-market-row{
+ display:grid!important;
+ grid-template-columns:30px minmax(0,1fr) auto!important;
+ align-items:center!important;
+ gap:8px!important;
+ width:100%!important;
+ min-width:0!important;
+ padding:6px 8px!important;
+}
+.live-trading-desk .trading-desk-grid .trading-market-list .sp-market-logo-wrap{
+ display:grid!important;
+ place-items:center!important;
+ width:26px!important;
+ height:26px!important;
+}
+.live-trading-desk .trading-desk-grid .trading-market-list .sp-market-logo{
+ width:24px!important;
+ height:24px!important;
+ object-fit:contain!important;
+}
+.live-trading-desk .trading-desk-grid .trading-market-list .sp-market-name{min-width:0!important}
+.live-trading-desk .trading-desk-grid .trading-panel-link{margin-top:7px!important}
+@media(max-width:760px){
+ .live-trading-desk .trading-desk-grid{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ .live-trading-desk .trading-desk-grid .trading-market-list .sp-market-row{grid-template-columns:30px minmax(0,1fr) auto!important}
+}
+</style>
