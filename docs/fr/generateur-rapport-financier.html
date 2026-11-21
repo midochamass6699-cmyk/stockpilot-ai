@@ -39,6 +39,65 @@
 <section class="panel"><h2>Dates, sources et limites des données</h2><p>Les états financiers sont publiés pour des trimestres ou des exercices précis; ils ne sont pas mis à jour en continu. Un rapport devrait indiquer la dernière période disponible, la date de consultation et les liens vers les divulgations originales.</p><p>Les cours boursiers et les nouvelles ont leurs propres heures de publication ou de mise à jour. Ils peuvent être retardés et dépendent de la couverture et des licences du fournisseur. Il ne faut pas qualifier une donnée de temps réel sans confirmation du fournisseur.</p><div class="note"><strong>La transparence est essentielle :</strong> indiquez la source, la période, la date de consultation et tout retard ou renseignement manquant. N’inventez jamais de chiffres pour combler les lacunes.</div></section>
 <section class="panel faq"><h2>Foire aux questions</h2><details><summary>Un rapport financier constitue-t-il un conseil en placement?</summary><p>Non. Il résume et explique des renseignements généraux. Il ne détermine pas si un placement convient à une personne et ne constitue pas une recommandation d’achat ou de vente.</p></details><details><summary>Les états financiers sont-ils mis à jour chaque jour?</summary><p>Non. Les entreprises publient leurs états financiers selon un calendrier. Les cours et les nouvelles peuvent être actualisés plus souvent, mais leurs heures et retards éventuels doivent être indiqués séparément.</p></details><details><summary>Peut-on comparer deux entreprises?</summary><p>Oui, à des fins éducatives, en vérifiant que les périodes, devises et mesures comptables sont comparables. Les modèles d’affaires différents peuvent rendre certaines comparaisons trompeuses.</p></details><details><summary>Un PDF téléchargé se met-il à jour automatiquement?</summary><p>Non. Un PDF représente un instantané des renseignements disponibles au moment de sa création. Il faut produire un nouveau rapport pour intégrer les divulgations plus récentes.</p></details></section>
 <p class="muted">Poursuivez avec les <a href="/fr/education-financiere.html">ressources d’éducation financière de StockPilot AI</a> et le <a href="/fr/actions/">répertoire des entreprises</a>.</p>
+
+<section class="panel" id="report-builder">
+ <div class="eyebrow" style="color:#087b60">FEUILLE DE RECHERCHE PERSONNALISÉE</div>
+ <h2>Créez votre PDF de recherche sur une entreprise</h2>
+ <p class="muted">Choisissez une entreprise et les sujets à étudier. Cette première version crée une feuille de travail éducative et imprimable. Elle ne récupère pas et n’invente pas de chiffres financiers.</p>
+ <form id="report-form">
+  <div class="grid">
+   <label>Nom de l’entreprise<input required maxlength="100" name="company" placeholder="Ex. : Société Exemple" style="display:block;width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;margin-top:5px"></label>
+   <label>Symbole boursier (facultatif)<input maxlength="20" name="ticker" placeholder="Ex. : EXM" style="display:block;width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;margin-top:5px"></label>
+   <label>Bourse / marché (facultatif)<input maxlength="60" name="exchange" placeholder="Ex. : Nasdaq / TSX" style="display:block;width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;margin-top:5px"></label>
+   <label>Niveau d’apprentissage<select name="level" style="display:block;width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;margin-top:5px"><option>Débutant</option><option>Intermédiaire</option><option>Avancé</option></select></label>
+  </div>
+  <h3>Choisissez les sections du rapport</h3>
+  <div class="grid">
+   <label class="item"><input type="checkbox" name="topic" value="profile" checked> Profil et modèle d’affaires</label>
+   <label class="item"><input type="checkbox" name="topic" value="revenue" checked> Revenus et rentabilité</label>
+   <label class="item"><input type="checkbox" name="topic" value="balance" checked> Actifs, passifs et dette</label>
+   <label class="item"><input type="checkbox" name="topic" value="cash" checked> Flux de trésorerie</label>
+   <label class="item"><input type="checkbox" name="topic" value="history"> Résultats financiers historiques</label>
+   <label class="item"><input type="checkbox" name="topic" value="industry"> Secteur et contexte commercial</label>
+   <label class="item"><input type="checkbox" name="topic" value="glossary"> Explication des termes financiers</label>
+   <label class="item"><input type="checkbox" name="topic" value="questions"> Questions d’étude et notes</label>
+  </div>
+  <p><button class="cta" type="submit">Créer ma feuille PDF</button></p>
+  <p class="muted" id="builder-status" role="status">Aucun compte, courriel ou paiement requis. Vos réponses restent dans cette session du navigateur.</p>
+ </form>
+</section>
+<section id="print-report" aria-live="polite"></section>
+<style>
+#report-builder input:focus,#report-builder select:focus{outline:2px solid #0c7c60;outline-offset:2px}
+@media print{body{background:#fff!important;color:#111!important}.top,main>.hero,.wrap.section>*:not(#report-builder):not(#print-report),#report-builder,.footer{display:none!important}#print-report{display:block!important}#print-report .print-page{break-after:page;padding:12mm 10mm;font:11pt/1.5 Arial,sans-serif;color:#111}#print-report h1{font-size:25pt;color:#0b1b30}#print-report h2{font-size:16pt;color:#173653;border-bottom:1px solid #aaa;padding-bottom:5px}#print-report .meta{color:#444}#print-report .write-lines{height:48px;border-bottom:1px solid #bbb;margin:8px 0}#print-report a{color:#111;text-decoration:underline}.print-only-note{background:#f2f5f8;padding:10px;border:1px solid #ddd}}
+</style>
+<script>
+(function(){
+ const form=document.getElementById('report-form');if(!form)return;
+ const labels={
+  profile:['Profil et modèle d’affaires','Décrivez les principaux produits ou services, les clients, les secteurs d’activité et les sources de revenus de l’entreprise.'],
+  revenue:['Revenus et rentabilité','Inscrivez les revenus, le bénéfice brut, le résultat opérationnel et le bénéfice net publiés. Précisez la devise, la période et la source.'],
+  balance:['Actifs, passifs et dette','Examinez les actifs, les passifs, les emprunts déclarés et les capitaux propres. Indiquez la date du bilan.'],
+  cash:['Flux de trésorerie','Examinez les flux liés aux activités opérationnelles, d’investissement et de financement. Expliquez les variations à l’aide des divulgations de l’entreprise.'],
+  history:['Résultats financiers historiques','Comparez des périodes financières équivalentes. Utilisez la même devise, la même base comptable et des périodes de durée comparable.'],
+  industry:['Secteur et contexte commercial','Décrivez le secteur, l’environnement commercial et les notions pertinentes. Distinguez les faits sourcés de vos observations.'],
+  glossary:['Termes financiers expliqués','Définissez dans vos propres mots les termes rencontrés dans les documents de l’entreprise.'],
+  questions:['Questions d’étude et notes','Notez les questions à approfondir, la source et la page de chaque réponse ainsi que les éléments qui restent incertains.']
+ };
+ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ form.addEventListener('submit',function(e){
+  e.preventDefault();const fd=new FormData(form),company=String(fd.get('company')||'').trim(),ticker=String(fd.get('ticker')||'').trim(),exchange=String(fd.get('exchange')||'').trim(),level=String(fd.get('level')||'Débutant');
+  const chosen=Array.from(form.querySelectorAll('input[name="topic"]:checked')).map(x=>x.value),status=document.getElementById('builder-status');
+  if(!company){status.textContent='Veuillez saisir le nom de l’entreprise.';return}if(!chosen.length){status.textContent='Choisissez au moins une section.';return}
+  const now=new Date(),date=now.toLocaleString('fr-CA',{dateStyle:'long',timeStyle:'short'});
+  const sections=chosen.map((key,i)=>'<section><h2>'+(i+1)+'. '+esc(labels[key][0])+'</h2><p>'+esc(labels[key][1])+'</p><p><strong>Renseignements et constatations :</strong></p><div class="write-lines"></div><div class="write-lines"></div><p><strong>Source, date du document et page :</strong></p><div class="write-lines"></div><p><strong>Questions ou observations :</strong></p><div class="write-lines"></div></section>').join('');
+  document.getElementById('print-report').innerHTML='<article class="print-page"><div style="color:#087b60;font-weight:bold;letter-spacing:2px">STOCKPILOT AI · ÉDUCATION FINANCIÈRE</div><h1>Feuille de recherche financière sur une entreprise</h1><h2>'+esc(company)+'</h2><p class="meta">'+(ticker?'Symbole : '+esc(ticker)+' · ':'')+(exchange?'Marché : '+esc(exchange)+' · ':'')+'Niveau : '+esc(level)+'</p><p class="meta">Créé le : '+esc(date)+'</p><div class="print-only-note"><strong>Important :</strong> cette feuille éducative ne contient pas automatiquement de données financières. Saisissez les chiffres uniquement après vérification des documents originaux de l’entreprise. Indiquez la source, la période, la devise et la date de consultation. Ce document ne constitue pas un conseil en placement ni une recommandation d’achat ou de vente.</div><h2>Mode d’emploi</h2><p>Utilisez les sections choisies pour organiser votre étude. Vérifiez chaque chiffre dans les rapports publiés par l’entreprise et les dépôts réglementaires pertinents. Un champ vide ne signifie pas zéro.</p></article><article class="print-page">'+sections+'</article><article class="print-page"><h2>Sources et vérification</h2><p>Pour chaque chiffre, indiquez le document original, sa date de publication, la période visée, l’URL et le numéro de page.</p><div class="write-lines"></div><div class="write-lines"></div><div class="write-lines"></div><h2>Méthodologie et limites</h2><p>Notez les données manquantes, les changements de définitions comptables, les estimations, les retraitements, les différences de devises ou les périodes non comparables.</p><div class="write-lines"></div><p class="meta">Feuille éducative StockPilot AI · '+esc(date)+'</p></article>';
+  status.textContent='Votre feuille est prête. Dans la fenêtre d’impression, choisissez « Enregistrer au format PDF ».';
+  window.print();
+ });
+})();
+</script>
+
 </div></main>
 <footer class="footer"><div class="wrap">© StockPilot AI · <a href="/fr/">Accueil</a> · <a href="/financial-report-generator.html" lang="en-CA">English version</a><p>Information éducative seulement. Ne constitue pas un conseil en placement ni une recommandation d’achat ou de vente.</p></div></footer>
 </body></html>
