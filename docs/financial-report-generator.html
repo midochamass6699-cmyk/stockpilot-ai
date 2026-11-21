@@ -20,7 +20,7 @@
 <p class="status" id="builder-status" role="status">Reports use historical company facts filed with the U.S. SEC. Coverage varies by company and accounting standard.</p>
 </section>
 <section class="panel" id="report-output" hidden></section>
-<section id="report-controls" hidden><button class="btn" id="pdf-button" type="button">⇩  Download PDF / Print</button></section>
+<section id="report-controls" hidden><button class="btn" id="pdf-button" type="button">⇩  Save as PDF / Print</button></section>
 <div class="guide-content">
 <section class="panel"><h2>What information is included?</h2><p>Where reported in SEC company facts, the report displays revenue, gross profit, operating income, net income, assets, liabilities, shareholders’ equity, cash balances and cash flows. It shows up to three annual periods where available and links to SEC filings.</p><p class="muted">This first data connection focuses on U.S. SEC registrants and US-GAAP facts. Some issuers, foreign reporting standards or individual metrics may not be covered. Missing data is labelled rather than estimated.</p></section>
 <section class="panel"><h2>How to read the report</h2><p>Compare matching fiscal periods and note whether a value is a year-end balance or a full-year result. Check the linked filing for definitions, accounting policies, restatements and additional context. Financial statement values are historical disclosures, not live share prices.</p><div class="notice"><strong>Educational use:</strong> this report organizes published information. It is not a forecast, personal financial advice, or a recommendation to buy or sell any security.</div></section>
@@ -58,7 +58,7 @@
       ["Operating margin","operatingMargin"],
       ["Net profit margin","netMargin"],
       ["Total debt (current + long-term)","totalDebt"],
-      ["Total debt change","debtChange"]
+      ["Total debt change","debtChange"],["Operating cash flow change","operatingCashFlowChange"]
     ];
     const vals={};
     ends.forEach((end,i)=>{
@@ -78,11 +78,11 @@
   }
   function analysisNotes(data,ends){
     const latest=ends[0],prior=ends[1];if(!latest||!prior)return '<p class="report-meta">At least two comparable annual periods are required for year-over-year analysis.</p>';
-    const rev=getValue(data,"revenue",latest),prevRev=getValue(data,"revenue",prior),op=getValue(data,"operatingIncome",latest),net=getValue(data,"netIncome",latest),gross=getValue(data,"grossProfit",latest);
+    const rev=getValue(data,"revenue",latest),prevRev=getValue(data,"revenue",prior),ocf=getValue(data,"operatingCashFlow",latest),prevOcf=getValue(data,"operatingCashFlow",prior),op=getValue(data,"operatingIncome",latest),net=getValue(data,"netIncome",latest),gross=getValue(data,"grossProfit",latest);
     const growth=prevRev&&rev!=null?((rev/prevRev)-1)*100:null;
     const gm=ratio(gross,rev),om=ratio(op,rev),nm=ratio(net,rev);
     const fmt=v=>v==null?"not available":pct(v);
-    return '<ul class="analysis-notes"><li>Revenue changed '+fmt(growth)+' year over year.</li><li>Gross profit represented '+fmt(gm)+' of reported revenue.</li><li>Operating income represented '+fmt(om)+' of reported revenue; net income represented '+fmt(nm)+'.</li><li>These ratios are calculated from reported annual figures and do not explain the causes of changes.</li></ul>';
+    return '<ul class="analysis-notes"><li>Revenue changed '+fmt(growth)+' year over year.</li><li>Operating cash flow changed '+fmt(cashGrowth)+' year over year.</li><li>Gross profit represented '+fmt(gm)+' of reported revenue.</li><li>Operating income represented '+fmt(om)+' of reported revenue; net income represented '+fmt(nm)+'.</li><li>These ratios are calculated from reported annual figures and do not explain the causes of changes.</li></ul>';
   }
  function render(data){
   const ends=[...new Set(data.metrics.flatMap(m=>m.values.map(v=>v.periodEnd)))].sort().reverse().slice(0,3);
