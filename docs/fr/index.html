@@ -5880,51 +5880,79 @@ section:empty, article:empty, aside:empty { display:none!important; }
 </style>
 <script id="tf-fr-market-three-column-script">
 (function(){
- function reserveLayoutSlot(node){
-  if(!node||!node.parentNode||node.dataset.spLayoutReserved==='1')return;
-  var rect=node.getBoundingClientRect();
-  if(!rect.width&&!rect.height)return;
-  var cs=window.getComputedStyle(node);
-  var slot=document.createElement('div');
-  slot.className='sp-layout-reservation';
-  slot.setAttribute('aria-hidden','true');
-  slot.style.cssText='display:block!important;box-sizing:border-box!important;flex:none!important;width:'+rect.width+'px!important;height:'+rect.height+'px!important;min-height:'+rect.height+'px!important;margin:'+cs.margin+'!important;visibility:hidden!important;pointer-events:none!important;';
-  node.parentNode.insertBefore(slot,node);
-  node.dataset.spLayoutReserved='1';
-}
  const welcome=document.querySelector('.fr-welcome-banner');
- const kitco=document.querySelector('#stockpilot-alert-signup .kitco-banner-stack');
  if(!welcome||document.getElementById('tf-fr-market-overview'))return;
-
- const grid=document.createElement('section');
- grid.id='tf-fr-market-overview';
- grid.setAttribute('aria-label','Aperçu des marchés');
- const makeColumn=(title,id,label)=>{
-   const column=document.createElement('div');
-   column.className='tf-fr-market-column';
-   column.setAttribute('aria-label',label);
-   const heading=document.createElement('h2');
-   heading.textContent=title;
-   const preview=document.createElement('div');
-   preview.className='tf-fr-market-preview';
-   preview.id=id;
-   preview.innerHTML='<div class="sp-market-loading">Chargement des données…</div>';
-   column.append(heading,preview);
-   return {column,preview};
- };
- // These IDs are the exact targets populated by loadStocks() and loadCrypto().
- const main=makeColumn('3 actions à surveiller','previewMainStocks','Aperçu des trois principales actions');
- const crypto=makeColumn('3 cryptomonnaies','previewCrypto','Aperçu des trois principales cryptomonnaies');
- const penny=makeColumn('3 penny stocks','previewPennyStocks','Aperçu des trois penny stocks');
- if(kitco){reserveLayoutSlot(kitco);crypto.column.appendChild(kitco);}
- grid.append(main.column,crypto.column,penny.column);
- welcome.insertAdjacentElement('afterend',grid);
+ const oldChildren=Array.from(welcome.children);
+ const intro=document.createElement('div');intro.className='tf-fr-welcome-copy';
+ const featured=document.createElement('div');featured.className='tf-fr-featured';
+ featured.innerHTML='<span class="tf-fr-featured-label">ACTION VEDETTE DU JOUR</span><strong class="tf-fr-featured-name">Sélection quotidienne</strong><small class="tf-fr-featured-note">Données de marché en cours de chargement</small>';
+ oldChildren.forEach(n=>intro.appendChild(n));
+ welcome.append(intro,featured);
+ const grid=document.createElement('section');grid.id='tf-fr-market-overview';grid.setAttribute('aria-label','Terminal des marchés et sélections');
+ const left=document.createElement('div');left.className='tf-fr-market-column tf-fr-terminal-column';
+ const right=document.createElement('div');right.className='tf-fr-market-column tf-fr-picks-column';
+ const terminal=document.getElementById('market-terminal');
+ if(terminal){left.appendChild(terminal);}
+ else{left.innerHTML='<h2>Terminal des marchés</h2><p>Le terminal sera bientôt disponible.</p>';}
+ right.innerHTML='<h2>NOS MEILLEURS CHOIX</h2><p class="tf-fr-picks-subtitle">Trois actions, trois penny stocks et trois cryptomonnaies — selon les données disponibles.</p>';
+ function group(title,id,label){
+  const section=document.createElement('section');section.className='tf-fr-pick-group';section.setAttribute('aria-label',label);
+  const h=document.createElement('h3');h.textContent=title;
+  const target=document.createElement('div');target.className='tf-fr-market-preview';target.id=id;
+  target.innerHTML='<div class="sp-market-loading">Chargement des données…</div>';
+  section.append(h,target);right.appendChild(section);return target;
+ }
+ group('ACTIONS · TOP 3','previewMainStocks','Trois actions à surveiller');
+ group('PENNY STOCKS · TOP 3','previewPennyStocks','Trois penny stocks à surveiller');
+ group('CRYPTO · TOP 3','previewCrypto','Trois cryptomonnaies');
+ grid.append(left,right);welcome.insertAdjacentElement('afterend',grid);
+ const shortcuts=document.querySelector('.sp-terminal-shortcuts');if(shortcuts)shortcuts.hidden=true;
+ const kitco=document.querySelector('#stockpilot-alert-signup .kitco-banner-stack');
+ if(kitco){const marker=document.createElement('div');marker.className='tf-fr-ad-after-overview';grid.insertAdjacentElement('afterend',marker);marker.appendChild(kitco);}
  welcome.classList.add('tf-fr-overview-ready');
-
- // The original data loaders run earlier in the page. Run them again now that
- // their preview targets exist, so the homepage cards populate immediately.
+ const style=document.createElement('style');style.id='tf-fr-home-overview-layout';
+ style.textContent=`
+ .fr-welcome-banner{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:22px!important;text-align:left!important;padding:17px 22px!important}
+ .tf-fr-welcome-copy{flex:1 1 48%;min-width:0}.tf-fr-welcome-copy h1{margin:0!important}.tf-fr-welcome-copy p{margin:6px 0 0!important}
+ .tf-fr-featured{flex:0 1 48%;min-width:220px;display:flex;flex-direction:column;gap:4px;padding:11px 15px;border:1px solid #52706b;border-radius:9px;background:#0b171c;color:#fff}
+ .tf-fr-featured-label{color:#f4d58a;font-size:10px;font-weight:900;letter-spacing:.12em}.tf-fr-featured-name{font-size:18px;line-height:1.2;color:#fff}.tf-fr-featured-note{font-size:10px;color:#b8c9c5}
+ #tf-fr-market-overview{display:grid!important;grid-template-columns:minmax(0,2fr) minmax(0,3fr)!important;gap:14px!important;width:min(1500px,calc(100% - 32px))!important;margin:12px auto 22px!important;align-items:stretch!important}
+ #tf-fr-market-overview .tf-fr-market-column{min-width:0!important;min-height:620px!important;padding:13px!important;border:1px solid #d8d1bd!important;border-radius:12px!important;background:#fff!important;box-sizing:border-box!important;overflow:hidden!important}
+ #tf-fr-market-overview .tf-fr-market-column>h2{margin:0 0 9px!important;font-size:18px!important;color:#152638!important}
+ #tf-fr-market-overview .tf-fr-terminal-column #market-terminal{margin:0!important;width:100%!important;max-width:none!important;min-height:570px!important}
+ #tf-fr-market-overview .tf-fr-terminal-column .sp-terminal-chart{height:330px!important;min-height:330px!important}
+ #tf-fr-market-overview .tf-fr-picks-subtitle{margin:0 0 10px!important;font-size:11px!important;color:#5e6874!important}
+ #tf-fr-market-overview .tf-fr-pick-group{margin:0 0 10px!important;padding:8px!important;border:1px solid #e6e0d1!important;border-radius:8px!important;background:#faf9f5!important}
+ #tf-fr-market-overview .tf-fr-pick-group h3{margin:0 0 6px!important;font-size:11px!important;letter-spacing:.07em!important;color:#7c620e!important}
+ #tf-fr-market-overview .tf-fr-market-preview{min-height:0!important}
+ #tf-fr-market-overview .tf-fr-market-preview .stock-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}
+ #tf-fr-market-overview .tf-fr-market-preview .stock-card{min-width:0!important;padding:8px!important;border-radius:7px!important}
+ #tf-fr-market-overview .tf-fr-market-preview .stock-card h3{font-size:11px!important;overflow-wrap:anywhere}
+ #tf-fr-market-overview .tf-fr-market-preview .price{font-size:14px!important}
+ #tf-fr-market-overview .tf-fr-market-preview .ticker{font-size:9px!important}
+ #tf-fr-market-overview .tf-fr-market-preview .change{font-size:9px!important}
+ .tf-fr-ad-after-overview{width:min(1180px,calc(100% - 32px));margin:8px auto}
+ @media(max-width:900px){.fr-welcome-banner{align-items:stretch!important;flex-direction:column!important}#tf-fr-market-overview{grid-template-columns:minmax(0,1fr)!important}#tf-fr-market-overview .tf-fr-market-column{min-height:0!important}#tf-fr-market-overview .tf-fr-terminal-column #market-terminal{min-height:0!important}}
+ @media(max-width:600px){.tf-fr-featured{min-width:0!important}.fr-welcome-banner{width:calc(100% - 20px)!important;margin:8px auto!important}#tf-fr-market-overview{width:calc(100% - 20px)!important;gap:10px!important}#tf-fr-market-overview .tf-fr-market-preview .stock-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+ `;
+ document.head.appendChild(style);
  if(typeof loadCrypto==='function')loadCrypto();
  if(typeof loadStocks==='function')loadStocks();
+ function syncFeatured(){
+  const first=document.querySelector('#previewMainStocks .stock-card');
+  if(!first)return;
+  const name=first.querySelector('h3')?.textContent?.trim()||first.textContent.trim().slice(0,70);
+  const ticker=first.querySelector('.ticker')?.textContent?.trim()||'';
+  const price=first.querySelector('.price')?.textContent?.trim()||'';
+  const change=first.querySelector('.change')?.textContent?.trim()||'';
+  const out=featured.querySelector('.tf-fr-featured-name');
+  const note=featured.querySelector('.tf-fr-featured-note');
+  if(out)out.textContent=[name,ticker].filter(Boolean).join(' · ');
+  if(note)note.textContent=[price,change].filter(Boolean).join('  |  ')||'Sélection issue des données de marché disponibles';
+ }
+ const observer=new MutationObserver(syncFeatured);
+ const target=document.getElementById('previewMainStocks');if(target)observer.observe(target,{childList:true,subtree:true});
+ setTimeout(syncFeatured,1200);
 })();
 </script>
 </body>
