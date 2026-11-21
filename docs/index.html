@@ -6161,6 +6161,10 @@ body { overflow-x: hidden; }
  const welcome=document.querySelector(".live-trading-desk .trading-desk-header > div:first-child");
  const subscribe=document.getElementById('stockpilot-subscribe-btn');
  let brokerHome=null,lookupHome=null,brokerMade=false,cta=null;
+ const tools=document.getElementById('stockpilot-free-tools');
+ const stockOfDay=document.getElementById('sp-stock-of-day');
+ let toolsHome=null;
+ if(tools&&tools.parentNode){toolsHome=document.createComment('free tools original position');tools.parentNode.insertBefore(toolsHome,tools);}
  if(broker&&broker.parentNode){brokerHome=document.createComment('broker original position');broker.parentNode.insertBefore(brokerHome,broker);}
  if(lookup&&lookup.parentNode){lookupHome=document.createComment('lookup original position');lookup.parentNode.insertBefore(lookupHome,lookup);}
  if(!broker&&welcome&&welcome.parentNode){
@@ -6177,12 +6181,14 @@ body { overflow-x: hidden; }
  }
  function arrange(){
    if(mq.matches){
+     if(tools&&stockOfDay&&stockOfDay.parentNode)stockOfDay.parentNode.insertBefore(tools,stockOfDay.nextSibling);
      const anchor=desk||welcome;
      const footer=document.querySelector('footer');
      if(broker){if(footer&&footer.parentNode)footer.parentNode.insertBefore(broker,footer);else document.body.appendChild(broker);}
      if(cta&&welcome&&welcome.parentNode)welcome.parentNode.insertBefore(cta,welcome.nextSibling);
      if(lookup){const target=picks||desk;if(target&&target.parentNode)target.parentNode.insertBefore(lookup,target.nextSibling);}
    }else{
+     if(toolsHome&&toolsHome.parentNode)toolsHome.parentNode.insertBefore(tools,toolsHome.nextSibling);
      if(brokerMade&&broker&&broker.parentNode)broker.remove();
      else if(brokerHome&&brokerHome.parentNode)brokerHome.parentNode.insertBefore(broker,brokerHome.nextSibling);
      if(lookupHome&&lookupHome.parentNode&&lookup)lookupHome.parentNode.insertBefore(lookup,lookupHome.nextSibling);
@@ -6421,7 +6427,7 @@ body { overflow-x: hidden; }
  .market-partner-panel .kitco-affiliate-banner{flex-basis:150px;width:150px;max-width:150px}
  .market-partner-panel .kitco-trade-link{font-size:11px!important}
 }
-#stockpilot-free-tools{margin-top:10px!important}
+#stockpilot-free-tools{margin-top:0!important;margin-bottom:0!important}
 @media(max-width:760px){
  #live-trading-desk .trading-desk-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important}
  #live-trading-desk .trading-panel{padding:6px 4px!important}
@@ -8822,7 +8828,7 @@ header{margin-bottom:0!important}
 #sp-stock-of-day .sp-day-ticker{display:block;margin-top:2px;color:#b9cde3;font-size:10px;font-weight:750;letter-spacing:.07em}
 #sp-stock-of-day .sp-day-meta{display:block;margin-top:3px;color:#9edbb9;font-size:10px;font-weight:800;letter-spacing:.025em}
 #sp-stock-of-day .sp-day-cta{flex:0 0 auto;color:#f1d477;font-size:11px;font-weight:900}
-@media(max-width:600px){#sp-stock-of-day{width:calc(100% - 24px);gap:10px;padding:10px 12px;margin:9px auto 12px}#sp-stock-of-day .sp-day-logo{width:42px;height:42px;flex-basis:42px}#sp-stock-of-day .sp-day-name{font-size:13px}#sp-stock-of-day .sp-day-meta{font-size:9px}#sp-stock-of-day .sp-day-cta{font-size:9px}}
+@media(max-width:600px){#sp-stock-of-day{width:calc(100% - 24px);gap:10px;padding:10px 12px;margin:9px auto 0}#sp-stock-of-day .sp-day-logo{width:42px;height:42px;flex-basis:42px}#sp-stock-of-day .sp-day-name{font-size:13px}#sp-stock-of-day .sp-day-meta{font-size:9px}#sp-stock-of-day .sp-day-cta{font-size:9px}}
 </style>
 <style id="sp-stock-of-day-live-stats">
 /* Fill the Stock of the Day banner with real quote and activity metrics. */
