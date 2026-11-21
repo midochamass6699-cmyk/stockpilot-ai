@@ -6178,7 +6178,8 @@ body { overflow-x: hidden; }
  function arrange(){
    if(mq.matches){
      const anchor=desk||welcome;
-     if(broker&&anchor&&anchor.parentNode)anchor.parentNode.insertBefore(broker,anchor);
+     const footer=document.querySelector('footer');
+     if(broker){if(footer&&footer.parentNode)footer.parentNode.insertBefore(broker,footer);else document.body.appendChild(broker);}
      if(cta&&welcome&&welcome.parentNode)welcome.parentNode.insertBefore(cta,welcome.nextSibling);
      if(lookup){const target=picks||desk;if(target&&target.parentNode)target.parentNode.insertBefore(lookup,target.nextSibling);}
    }else{
