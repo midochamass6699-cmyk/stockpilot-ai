@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StockPilot AI — Homepage Design Preview</title>
+<style>
+:root{--ink:#111;--yellow:#ffd629;--cream:#f8f5e9;--muted:#6b6b6b;--line:#e8e1ce;--green:#16a36a}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:#171717;font-family:Inter,Arial,sans-serif}
+.previewbar{background:#fff5c7;border-bottom:1px solid #e8d98d;padding:9px 18px;text-align:center;font-size:12px;font-weight:800;color:#594700;letter-spacing:.2px}
+header{background:#101010;border-bottom:4px solid var(--yellow);color:#fff}
+nav{max-width:1180px;margin:auto;padding:13px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.brand{font-weight:950;color:var(--yellow);font-size:19px;letter-spacing:.5px}.links{display:flex;gap:19px;flex-wrap:wrap;font-size:11px;font-weight:800}.links span{color:#fff}
+.wrap{width:min(1160px,calc(100% - 34px));margin:auto}
+.stockday{padding:25px 0 18px}
+.eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:900;color:#8a6b00}
+h1{font-size:29px;letter-spacing:-.8px;margin:4px 0 4px}
+.sub{color:var(--muted);font-size:12px;margin:0}
+.stockstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:15px}
+.stock{background:#fff;border:1px solid var(--line);border-top:4px solid #111;border-radius:9px;padding:12px 14px;box-shadow:0 4px 13px #00000008}
+.stock strong{font-size:15px}.ticker{font-size:10px;color:#777;font-weight:800}.price{font-size:22px;font-weight:950;margin-top:6px}.gain{font-size:11px;color:var(--green);font-weight:900}
+.section-title{display:flex;justify-content:space-between;align-items:end;margin:17px 0 11px;gap:12px}.section-title h2{font-size:19px;margin:0}.section-title p{font-size:11px;color:#777;margin:3px 0 0}
+.feature-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:190px 190px;gap:13px;margin-bottom:30px}
+.terminal{grid-row:1/3;background:#0d131b;border:1px solid #293544;border-radius:13px;overflow:hidden;color:#dbe7f5;box-shadow:0 9px 24px #10182022;display:flex;flex-direction:column}
+.termbar{display:flex;align-items:center;gap:6px;padding:11px 13px;background:#17212d;border-bottom:1px solid #2b3948;font-size:10px;color:#aebdce;font-weight:800;letter-spacing:.8px}
+.dot{width:7px;height:7px;border-radius:50%;background:#f0bd35}.dot:nth-child(2){background:#4bbd83}.dot:nth-child(3){background:#e16c6c}
+.termname{margin-left:7px}.termbody{padding:14px 15px;display:flex;flex-direction:column;gap:12px;flex:1}
+.termheadline{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#a9bacd}.live{color:#5be0a0;font-size:9px;font-weight:900}
+.quote{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #293746;padding-bottom:10px}.quote strong{font-size:26px;color:#fff;letter-spacing:-.7px}.quote small{display:block;color:#91a2b6;font-size:9px;margin-top:2px}.quote .up{color:#59d99b;font-size:11px;font-weight:900}
+.chart{height:62px;width:100%}.chart svg{width:100%;height:100%}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.metric{background:#17222e;border:1px solid #263544;border-radius:6px;padding:7px}.metric span{display:block;font-size:8px;color:#8ea0b4}.metric b{font-size:11px;color:#eaf2fb}
+.termfoot{margin-top:auto;padding-top:8px;border-top:1px solid #293746;color:#8799ac;font-size:9px;display:flex;justify-content:space-between}
+.tile{position:relative;overflow:hidden;border-radius:13px;min-width:0;background:#18212a;box-shadow:0 7px 20px #0000001b;isolation:isolate}
+.tile:before{content:"";position:absolute;inset:0;background-image:var(--photo);background-size:cover;background-position:center;z-index:-2;transition:transform .4s}
+.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#070b12e8 0%,#07101a5c 58%,#07101a12 100%);z-index:-1}
+.tile:hover:before{transform:scale(1.04)}
+.tilecopy{position:absolute;left:16px;right:14px;bottom:14px;color:#fff}.tag{display:inline-block;background:var(--yellow);color:#111;border-radius:4px;padding:4px 7px;font-size:8px;font-weight:950;letter-spacing:.8px;margin-bottom:6px}
+.tile h3{font-size:17px;line-height:1.12;margin:0 0 4px}.tile p{font-size:10px;color:#e1e7ed;margin:0;max-width:95%}.tile .arrow{position:absolute;right:14px;top:13px;width:29px;height:29px;border-radius:50%;background:#ffffffdf;color:#111;display:grid;place-items:center;font-size:15px;font-weight:900}
+.note{margin:3px 0 25px;color:#777;font-size:10px;text-align:center}
+@media(max-width:720px){nav{align-items:flex-start;flex-direction:column}.links{gap:12px}.feature-grid{grid-template-columns:1fr 1fr;grid-template-rows:250px 165px 165px}.terminal{grid-column:1/-1;grid-row:auto}.tile h3{font-size:15px}}
+@media(max-width:480px){.wrap{width:calc(100% - 24px)}.stockstrip{grid-template-columns:1fr 1fr}.stockstrip .stock:last-child{display:none}.feature-grid{grid-template-columns:1fr 1fr;grid-template-rows:260px 155px 155px;gap:9px}.terminal{grid-column:1/-1}.termbody{padding:11px}.quote strong{font-size:23px}.tilecopy{left:11px;bottom:11px}.tile h3{font-size:14px}.tile p{font-size:9px}.tile .arrow{width:25px;height:25px;right:9px;top:9px}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="previewbar">DESIGN PREVIEW · NOT LIVE ON THE MAIN HOMEPAGE · Changes here will not affect visitors</div>
+<header><nav><div class="brand">↗ STOCKPILOT AI</div><div class="links"><span>HOME</span><span>TOP CRYPTO</span><span>DAILY PICKS</span><span>MARKET INSIGHTS</span><span>RESOURCES</span></div></nav></header>
+<main class="wrap">
+<section class="stockday">
+<div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
+<h1>Stock of the Day</h1>
+<p class="sub">A quick look at today's featured market opportunity.</p>
+<div class="stockstrip">
+<div class="stock"><strong>Featured Company</strong><div class="ticker">NASDAQ · SAMPLE</div><div class="price">$24.86</div><div class="gain">▲ 3.42% today</div></div>
+<div class="stock"><strong>Market Snapshot</strong><div class="ticker">MARKET ACTIVITY</div><div class="price">18.6M</div><div class="gain">Volume overview</div></div>
+<div class="stock"><strong>Daily Range</strong><div class="ticker">SESSION RANGE</div><div class="price">$23.90–$25.10</div><div class="gain">Illustrative preview</div></div>
+</div>
+</section>
+<div class="section-title"><div><div class="eyebrow">EXPLORE STOCKPILOT</div><h2>Tools, insights &amp; market intelligence</h2><p>Four visual entry points, arranged together directly below Stock of the Day.</p></div></div>
+<section class="feature-grid" aria-label="StockPilot tools and featured content">
+<article class="terminal">
+<div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="termname">STOCKPILOT TERMINAL / LIVE VIEW</span><span style="margin-left:auto">● CONNECTED</span></div>
+<div class="termbody">
+<div class="termheadline"><span>MARKET OVERVIEW</span><span class="live">● MARKET OPEN</span></div>
+<div class="quote"><div><strong>SPY <span style="font-size:11px;color:#a7b8ca">S&amp;P 500 ETF</span></strong><small>US EQUITIES · SAMPLE DATA</small></div><div style="text-align:right"><strong>$586.42</strong><div class="up">+1.28% ▲</div></div></div>
+<div class="chart"><svg viewBox="0 0 420 70" preserveAspectRatio="none" aria-label="Illustrative market line chart"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#37d89a" stop-opacity=".28"/><stop offset="1" stop-color="#37d89a" stop-opacity="0"/></linearGradient></defs><path d="M0 58 L28 52 L54 55 L80 37 L105 43 L132 29 L160 35 L188 23 L215 30 L240 16 L265 27 L291 18 L316 23 L343 8 L370 14 L397 3 L420 7 L420 70 L0 70Z" fill="url(#fill)"/><path d="M0 58 L28 52 L54 55 L80 37 L105 43 L132 29 L160 35 L188 23 L215 30 L240 16 L265 27 L291 18 L316 23 L343 8 L370 14 L397 3 L420 7" fill="none" stroke="#54dfa6" stroke-width="2.4"/></svg></div>
+<div class="metrics"><div class="metric"><span>VOLUME</span><b>42.8M</b></div><div class="metric"><span>DAY HIGH</span><b>$588.10</b></div><div class="metric"><span>DAY LOW</span><b>$579.36</b></div></div>
+<div class="termfoot"><span>MARKET DATA PREVIEW · NOT LIVE</span><span>OPEN TERMINAL ↗</span></div>
+</div></article>
+<article class="tile" style="--photo:url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1000&q=85')"><span class="arrow">↗</span><div class="tilecopy"><span class="tag">MARKET TOOLS</span><h3>Trading Tools</h3><p>Explore charts, indicators and tools for market research.</p></div></article>
+<article class="tile" style="--photo:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85')"><span class="arrow">↗</span><div class="tilecopy"><span class="tag">LEARN &amp; EXPLORE</span><h3>Stock Insights</h3><p>Discover company information, market themes and explainers.</p></div></article>
+<article class="tile" style="--photo:url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1000&q=85')"><span class="arrow">↗</span><div class="tilecopy"><span class="tag">STRATEGY LAB</span><h3>Options Simulator</h3><p>Understand options concepts in a simulated learning environment.</p></div></article>
+</section>
+<p class="note">All figures and chart values in this preview are illustrative only. This page is a design mock-up, not a live market feed.</p>
+</main>
+</body></html>
