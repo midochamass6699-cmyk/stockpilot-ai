@@ -1933,7 +1933,16 @@ input, select, textarea, button {
 /* Rotating hot-stock messages are styled in the dedicated block below. */
 
 <style id="stockpilot-report-banner-styles">
-.report-generator-banner{display:flex;align-items:center;gap:16px;width:min(1120px,calc(100% - 32px));margin:16px auto 18px;padding:14px 18px;border:1px solid #29486b;border-radius:12px;background:linear-gradient(110deg,#09182b,#122a45);color:#f7fbff;text-decoration:none;box-shadow:0 8px 22px #07111f20;transition:transform .18s ease,border-color .18s ease}.report-generator-banner:hover{transform:translateY(-2px);border-color:#43c9a1}.report-generator-banner-icon{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;border-radius:10px;background:#1b3855;color:#65e0ba;font-size:25px}.report-generator-banner-copy{min-width:0;flex:1}.report-generator-banner-kicker{display:block;margin-bottom:2px;color:#78e2bf;font-size:10px;font-weight:900;letter-spacing:1.2px}.report-generator-banner-title{display:block;font-size:clamp(15px,2vw,19px);font-weight:900;line-height:1.25}.report-generator-banner-description{display:block;margin-top:3px;color:#c5d2e1;font-size:12px;line-height:1.45}.report-generator-banner-action{flex:0 0 auto;padding:10px 14px;border-radius:7px;background:#55d6a9;color:#06251c;font-size:12px;font-weight:900;white-space:nowrap}@media(max-width:620px){.report-generator-banner{gap:10px;padding:12px}.report-generator-banner-icon{flex-basis:40px;width:40px;height:40px;font-size:21px}.report-generator-banner-description{font-size:11px}.report-generator-banner-action{padding:9px 10px;font-size:11px;white-space:normal;text-align:center;max-width:112px}}
+.report-generator-banner{display:flex;align-items:center;gap:13px;width:min(1120px,calc(100% - 32px));margin:10px auto 12px;padding:9px 14px;border:1px solid #29486b;border-radius:10px;background:linear-gradient(110deg,#09182b,#122a45);color:#f7fbff;text-decoration:none;box-shadow:0 5px 15px #07111f18;transition:border-color .18s ease}
+.report-generator-banner:hover{border-color:#43c9a1}
+.report-generator-banner-icon{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border-radius:8px;background:#1b3855;color:#65e0ba;font-size:21px}
+.report-generator-banner-copy{display:flex;align-items:center;gap:10px;min-width:0;flex:1;white-space:nowrap}
+.report-generator-banner-kicker{flex:0 0 auto;color:#78e2bf;font-size:9px;font-weight:900;letter-spacing:1px}
+.report-generator-banner-title{display:block;font-size:14px;font-weight:900;line-height:1.2}
+.report-generator-banner-description{display:block;margin:0;color:#c5d2e1;font-size:11px;line-height:1.3}
+.report-generator-banner-action{display:flex;align-items:center;justify-content:center;gap:7px;flex:0 0 auto;padding:9px 12px;border-radius:7px;background:#55d6a9;color:#06251c;font-size:11px;font-weight:900;white-space:nowrap}
+@media(max-width:760px){.report-generator-banner{gap:9px;padding:9px 10px}.report-generator-banner-copy{flex-wrap:wrap;gap:3px 8px;white-space:normal}.report-generator-banner-kicker{font-size:8px}.report-generator-banner-title{font-size:12px}.report-generator-banner-description{flex-basis:100%;font-size:10px}.report-generator-banner-action{padding:8px 9px;font-size:10px}}
+@media(max-width:480px){.report-generator-banner{align-items:center;gap:8px}.report-generator-banner-icon{flex-basis:32px;width:32px;height:32px;font-size:18px}.report-generator-banner-copy{display:block}.report-generator-banner-kicker{display:block;margin-bottom:2px}.report-generator-banner-title{font-size:11px}.report-generator-banner-description{margin-top:2px;font-size:9px}.report-generator-banner-action{max-width:104px;white-space:normal;text-align:center;line-height:1.2}}
 </style>
 </style>
 <script defer="" src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
@@ -2922,10 +2931,10 @@ main p, main li, .section-head p, .updated, .card-meta {
 <div class="trading-desk-tagline"><strong>YOUR MARKET PIT STOP</strong>Your Market Pit Stop — Where Real Data Fuels Better Insights.</div>
   </div>
 
-<a class="report-generator-banner" href="/financial-report-generator.html" aria-label="Explore the free company financial report generator">
+<a class="report-generator-banner" href="/financial-report-generator.html#report-builder" aria-label="Generate your free company financial report PDF">
   <span class="report-generator-banner-icon" aria-hidden="true">▤</span>
-  <span class="report-generator-banner-copy"><span class="report-generator-banner-kicker">FREE FINANCIAL EDUCATION TOOL · NO REGISTRATION</span><span class="report-generator-banner-title">Build Your Own Company Financial Report</span><span class="report-generator-banner-description">Learn what to include in a clear PDF covering company fundamentals, financial statements, revenue and cash flow.</span></span>
-  <span class="report-generator-banner-action">Explore the guide →</span>
+  <span class="report-generator-banner-copy"><span class="report-generator-banner-kicker">FREE PDF</span><span class="report-generator-banner-title">Create a Company Financial Report</span><span class="report-generator-banner-description">Choose the topics. Learn the numbers. Build your own PDF.</span></span>
+  <span class="report-generator-banner-action">Generate Your Free PDF <span aria-hidden="true">→</span></span>
 </a>
 <div class="tf-two-panel-grid">
  <div class="tf-market-collection" aria-label="Market lists">
