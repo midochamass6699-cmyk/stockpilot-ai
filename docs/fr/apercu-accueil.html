@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aperçu de la nouvelle page d’accueil | Technofront StockPilot</title>
+<style>
+:root{color-scheme:dark;--bg:#07111f;--panel:#101d2d;--line:#26384e;--muted:#9aabc0;--white:#f4f7fb;--green:#38d6a6;--blue:#5b9cff;--gold:#f4c542}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:14px/1.5 Inter,Arial,sans-serif}
+header{height:64px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 4%;background:#091625}
+.brand{font-weight:900;letter-spacing:.08em}.brand b{color:var(--green)}nav{display:flex;gap:22px;color:#c4d0df;font-size:11px;font-weight:800;letter-spacing:.08em}
+.page{max-width:1500px;margin:24px auto;padding:0 22px}
+.side-note{position:fixed;top:90px;width:112px;height:570px;border:1px dashed #31445d;border-radius:10px;background:#0b1726;display:flex;align-items:center;justify-content:center;color:#71849b;font-size:10px;letter-spacing:.12em;writing-mode:vertical-rl}
+.side-note.left{left:12px}.side-note.right{right:12px}
+.welcome{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:center;padding:22px 26px;border:1px solid #29435c;border-left:4px solid var(--green);border-radius:13px;background:linear-gradient(105deg,#14283a,#101d2d 65%,#162b3c);margin-bottom:18px}
+.kicker{font-size:10px;font-weight:900;letter-spacing:.17em;color:var(--green);margin:0 0 5px}.welcome h1{font-size:clamp(22px,3vw,34px);line-height:1.1;margin:0}.welcome p{color:var(--muted);margin:7px 0 0}
+.feature{border-left:1px solid #38506a;padding-left:22px;display:flex;align-items:center;justify-content:space-between;gap:16px}.feature-label{color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.13em}.feature h2{font-size:22px;margin:4px 0}.feature small{color:var(--muted)}.feature-symbol{width:54px;height:54px;border-radius:14px;background:#20384c;display:grid;place-items:center;font-weight:900;font-size:20px;color:var(--green)}
+.columns{display:grid;grid-template-columns:minmax(280px, .82fr) minmax(0,1.38fr);gap:18px;align-items:stretch}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px;min-width:0;min-height:480px}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.panel h2{font-size:15px;letter-spacing:.09em;margin:0}.tag{font-size:9px;color:var(--green);border:1px solid #28634f;border-radius:30px;padding:4px 8px;font-weight:900}
+.terminal-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}.metric{background:#0b1725;border:1px solid #1e3045;border-radius:8px;padding:9px}.metric small{display:block;color:var(--muted);font-size:9px}.metric strong{font-size:16px}.up{color:var(--green)}.down{color:#ff7d83}
+.chart{height:178px;border:1px solid #20354b;border-radius:9px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 43px,#1b2b3e 44px),repeating-linear-gradient(to right,transparent 0,transparent 64px,#1b2b3e 65px),#0a1624;overflow:hidden;margin-bottom:13px}
+.chart svg{width:100%;height:100%}.market-list{display:grid;gap:7px}.market-row{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border:1px solid #203247;border-radius:8px;background:#0b1725;font-size:11px}.market-row span:first-child{color:#c6d2df}.market-row strong{font-size:11px}
+.picks-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.pick-group{grid-column:1/-1;color:var(--green);font-size:10px;font-weight:900;letter-spacing:.14em;margin:5px 0 -3px}
+.pick{border:1px solid #263b52;background:#0b1725;border-radius:9px;padding:11px;min-width:0;display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:center}
+.logo{width:34px;height:34px;border-radius:9px;background:#1c3349;display:grid;place-items:center;font-weight:900;color:#dceaff;font-size:12px}.pick strong{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pick small{display:block;color:var(--muted);font-size:10px}.pick .quote{grid-column:1/-1;display:flex;justify-content:space-between;border-top:1px solid #203247;padding-top:7px;margin-top:2px;font-size:11px}
+.below{margin-top:22px;border:1px dashed #30445b;border-radius:12px;padding:18px;color:#9aabc0;text-align:center}
+.disclaimer{margin:13px 0 0;color:#788ba2;font-size:10px}
+@media(max-width:1100px){.side-note{display:none}.page{max-width:900px}}
+@media(max-width:720px){nav{display:none}.welcome{grid-template-columns:1fr}.feature{border-left:0;border-top:1px solid #38506a;padding:14px 0 0}.columns{grid-template-columns:1fr}.panel{min-height:0}.picks-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.chart{height:150px}}
+@media(max-width:420px){.picks-grid{grid-template-columns:1fr}.page{padding:0 12px}.welcome{padding:18px}}
+</style>
+</head>
+<body>
+<header><div class="brand">TECHNOFRONT <b>↗</b> <span style="color:#9aabc0;font-weight:600">STOCKPILOT AI</span></div><nav><span>ACCUEIL</span><span>ACTIONS</span><span>PENNY STOCKS</span><span>CRYPTO</span><span>RECHERCHE</span><span>FR</span></nav></header>
+<div class="side-note left">ESPACE PUBLICITAIRE — CONSERVÉ</div><div class="side-note right">ESPACE PUBLICITAIRE — CONSERVÉ</div>
+<main class="page">
+<section class="welcome">
+<div><p class="kicker">TECHNOFRONT · STOCKPILOT AI</p><h1>BIENVENUE CHEZ TECHNOFRONT</h1><p>Votre aperçu quotidien des marchés, des actions et des cryptomonnaies.</p></div>
+<div class="feature"><div><span class="feature-label">ACTION À L’AFFICHE DU JOUR</span><h2>Action vedette</h2><small>Symbole · cours · variation du jour</small></div><div class="feature-symbol">★</div></div>
+</section>
+<section class="columns">
+<article class="panel">
+<div class="panel-head"><h2>TERMINAL DES MARCHÉS</h2><span class="tag">APERÇU</span></div>
+<div class="terminal-summary">
+<div class="metric"><small>S&amp;P 500</small><strong>—</strong><small>Variation : —</small></div>
+<div class="metric"><small>NASDAQ</small><strong>—</strong><small>Variation : —</small></div>
+<div class="metric"><small>TSX COMPOSITE</small><strong>—</strong><small>Variation : —</small></div>
+<div class="metric"><small>BITCOIN</small><strong>—</strong><small>Variation : —</small></div>
+</div>
+<div class="chart" aria-label="Zone du graphique du marché"><svg viewBox="0 0 600 180" preserveAspectRatio="none"><polyline points="0,132 40,120 78,126 115,98 152,108 190,82 228,93 265,67 304,77 342,54 380,70 418,42 456,56 495,31 535,45 570,22 600,30" fill="none" stroke="#38d6a6" stroke-width="3"/><polyline points="0,150 40,142 78,147 115,130 152,136 190,116 228,121 265,104 304,112 342,92 380,104 418,83 456,94 495,75 535,82 570,65 600,72" fill="none" stroke="#5b9cff" stroke-width="2"/></svg></div>
+<div class="market-list">
+<div class="market-row"><span>Dow Jones</span><strong>— <span class="up">—</span></strong></div>
+<div class="market-row"><span>TSX 60</span><strong>— <span class="up">—</span></strong></div>
+<div class="market-row"><span>Ethereum</span><strong>— <span class="down">—</span></strong></div>
+<div class="market-row"><span>Dollar canadien</span><strong>—</strong></div>
+</div>
+</article>
+<article class="panel">
+<div class="panel-head"><h2>NOS MEILLEURS CHOIX</h2><span class="tag">9 ACTIFS À SUIVRE</span></div>
+<div class="picks-grid">
+<div class="pick-group">ACTIONS · 3 SÉLECTIONS</div>
+<div class="pick"><div class="logo">A</div><div><strong>Apple</strong><small>AAPL · NASDAQ</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+<div class="pick"><div class="logo">N</div><div><strong>NVIDIA</strong><small>NVDA · NASDAQ</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+<div class="pick"><div class="logo">T</div><div><strong>Tesla</strong><small>TSLA · NASDAQ</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+<div class="pick-group">PENNY STOCKS · 3 SÉLECTIONS</div>
+<div class="pick"><div class="logo">S</div><div><strong>SoFi Technologies</strong><small>SOFI · NASDAQ</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+<div class="pick"><div class="logo">B</div><div><strong>BigBear.ai</strong><small>BBAI · NYSE</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+<div class="pick"><div class="logo">O</div><div><strong>Ondas Holdings</strong><small>ONDS · NASDAQ</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+<div class="pick-group">CRYPTO · 3 SÉLECTIONS</div>
+<div class="pick"><div class="logo">₿</div><div><strong>Bitcoin</strong><small>BTC · CRYPTO</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+<div class="pick"><div class="logo">Ξ</div><div><strong>Ethereum</strong><small>ETH · CRYPTO</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+<div class="pick"><div class="logo">S</div><div><strong>Solana</strong><small>SOL · CRYPTO</small></div><div class="quote"><span>Cours : —</span><b>—</b></div></div>
+</div>
+<p class="disclaimer">Maquette visuelle : les cours et variations seront reliés aux flux de données du site. Les actifs affichés ici sont des exemples de présentation, pas des recommandations.</p>
+</article>
+</section>
+<section class="below">CONTENU ACTUEL DE LA PAGE D’ACCUEIL — CONSERVÉ SOUS CETTE NOUVELLE SECTION</section>
+</main>
+</body>
+</html>
