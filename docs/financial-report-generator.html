@@ -50,8 +50,8 @@
   function dateLabel(iso){const p=String(iso).split("-").map(Number);return new Date(p[0],p[1]-1,p[2]).toLocaleDateString("en-CA",{year:"numeric",month:"short",day:"numeric"})}
   function pct(v){return v==null||!Number.isFinite(v)?"Not available":(v>=0?"+":"")+v.toFixed(1)+"%"}
   function ratio(a,b){return a==null||b==null||b===0?null:(a/b)*100}
-  function getValue(key,end){const m=data.metrics.find(x=>x.key===key);const v=m&&m.values.find(x=>x.periodEnd===end);return v&&Number.isFinite(Number(v.value))?Number(v.value):null}
-  function calculatedRows(){
+  function getValue(data,key,end){const m=data.metrics.find(x=>x.key===key);const v=m&&m.values.find(x=>x.periodEnd===end);return v&&Number.isFinite(Number(v.value))?Number(v.value):null}
+  function calculatedRows(data,ends){
     const defs=[
       ["Revenue growth","revenueGrowth"],
       ["Gross profit margin","grossMargin"],
@@ -62,11 +62,11 @@
     ];
     const vals={};
     ends.forEach((end,i)=>{
-      const rev=getValue("revenue",end),gross=getValue("grossProfit",end),op=getValue("operatingIncome",end),net=getValue("netIncome",end);
-      const debtParts=[getValue("currentDebt",end),getValue("longTermDebt",end)].filter(v=>v!=null);
+      const rev=getValue(data,"revenue",end),gross=getValue(data,"grossProfit",end),op=getValue(data,"operatingIncome",end),net=getValue(data,"netIncome",end);
+      const debtParts=[getValue(data,"currentDebt",end),getValue(data,"longTermDebt",end)].filter(v=>v!=null);
       const debt=debtParts.length?debtParts.reduce((a,b)=>a+b,0):null;
-      const prior=ends[i+1],priorRev=prior?getValue("revenue",prior):null;
-      const priorDebt=prior?[getValue("currentDebt",prior),getValue("longTermDebt",prior)].filter(v=>v!=null):[];
+      const prior=ends[i+1],priorRev=prior?getValue(data,"revenue",prior):null;
+      const priorDebt=prior?[getValue(data,"currentDebt",prior),getValue(data,"longTermDebt",prior)].filter(v=>v!=null):[];
       const priorDebtTotal=priorDebt.length?priorDebt.reduce((a,b)=>a+b,0):null;
       vals[end]={
         revenueGrowth:priorRev!=null&&priorRev!==0&&rev!=null?((rev/priorRev)-1)*100:null,
@@ -76,9 +76,9 @@
     });
     return defs.map(([label,key])=>'<tr><td>'+label+'</td>'+ends.map(end=>{const v=vals[end][key];return '<td>'+((key==="totalDebt")?(v==null?"Not available":money(v)):pct(v))+'</td>'}).join("")+'</tr>').join("");
   }
-  function analysisNotes(){
+  function analysisNotes(data,ends){
     const latest=ends[0],prior=ends[1];if(!latest||!prior)return '<p class="report-meta">At least two comparable annual periods are required for year-over-year analysis.</p>';
-    const rev=getValue("revenue",latest),prevRev=getValue("revenue",prior),op=getValue("operatingIncome",latest),net=getValue("netIncome",latest),gross=getValue("grossProfit",latest);
+    const rev=getValue(data,"revenue",latest),prevRev=getValue(data,"revenue",prior),op=getValue(data,"operatingIncome",latest),net=getValue(data,"netIncome",latest),gross=getValue(data,"grossProfit",latest);
     const growth=prevRev&&rev!=null?((rev/prevRev)-1)*100:null;
     const gm=ratio(gross,rev),om=ratio(op,rev),nm=ratio(net,rev);
     const fmt=v=>v==null?"not available":pct(v);
@@ -94,7 +94,7 @@
   '<h2>Reported financial figures</h2><p class="report-meta">Historical annual values · USD · periods are shown by fiscal period end. Balance-sheet figures are point-in-time values; income and cash-flow figures cover the fiscal year.</p>'+
   (hasData?'<div class="table-wrap"><table><thead><tr><th>Financial measure</th>'+headings.map(h=>'<th>'+esc(h)+'</th>').join("")+'</tr></thead><tbody>'+rows+'</tbody></table></div>':'<div class="notice">No supported annual US-GAAP facts were returned for this company. We will not substitute or estimate missing values.</div>')+
   '<h2 style="margin-top:26px">Calculated financial analysis</h2><p class="report-meta">Ratios and changes below are calculated from the reported figures above. They are not additional SEC-reported line items.</p>'+
-  (hasData?'<div class="table-wrap analysis-table"><table><thead><tr><th>Calculated measure</th>'+headings.map(h=>'<th>'+esc(h)+'</th>').join("")+'</tr></thead><tbody>'+calculatedRows()+'</tbody></table></div>'+analysisNotes():'')+
+  (hasData?'<div class="table-wrap analysis-table"><table><thead><tr><th>Calculated measure</th>'+headings.map(h=>'<th>'+esc(h)+'</th>').join("")+'</tr></thead><tbody>'+calculatedRows(data,ends)+'</tbody></table></div>'+analysisNotes(data,ends):'')+
   '<h2 style="margin-top:26px">Original SEC filings</h2>'+(filings?'<ul class="source-list">'+filings+'</ul>':'<p>No recent supported filing links were returned.</p>')+
   '<div class="notice"><strong>Source and limitations:</strong> '+esc(data.source)+'. Figures are historical disclosures, not live market quotes. Coverage depends on the company’s filings and SEC taxonomy. “Not reported” means this report did not find a supported value for that period; it does not mean zero. Verify each item in the original filing before relying on it.</div>'+
   '<p class="report-meta">Generated by StockPilot AI · Educational information only · Not investment advice.</p>';
