@@ -48,6 +48,7 @@
 <script>
 (function(){
  const API_BASE="https://api.technofront.org";
+ const params=new URLSearchParams(window.location.search),incomingCik=params.get("cik"),incomingName=params.get("name"),incomingTicker=params.get("ticker"),incomingQuery=params.get("query");
  const query=document.getElementById("company-query"),searchBtn=document.getElementById("search-button"),results=document.getElementById("company-results"),selected=document.getElementById("selected-company"),generateBtn=document.getElementById("generate-button"),status=document.getElementById("builder-status"),output=document.getElementById("report-output"),controls=document.getElementById("report-controls");
  let selectedCik=null;
  const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -82,6 +83,8 @@
   '<div class="notice"><strong>Sources et limites :</strong> '+esc(data.source)+'. Les chiffres sont historiques et non des cours boursiers en temps réel. La couverture dépend des dépôts de l’entreprise et de la taxonomie SEC. « Non déclaré » signifie qu’aucune valeur prise en charge n’a été trouvée pour cette période; cela ne signifie pas zéro. Vérifiez les données dans le dépôt original.</div><p class="report-meta">Généré par StockPilot AI · Information éducative seulement · Ne constitue pas un conseil en placement.</p>';
   output.hidden=false;controls.hidden=false}
  generateBtn.addEventListener("click",async()=>{if(!selectedCik)return;generateBtn.disabled=true;status.textContent="Récupération des dépôts et données financières SEC EDGAR…";output.hidden=true;controls.hidden=true;try{const d=await api("/api/company?cik="+encodeURIComponent(selectedCik));render(d);status.textContent="Rapport généré à partir des données SEC EDGAR. Vérifiez les liens et les périodes."}catch(e){status.textContent=e.message}finally{generateBtn.disabled=false}});
+ if(incomingQuery){query.value=incomingQuery;search()}
+ if(incomingCik){selectedCik=incomingCik;selected.hidden=false;selected.textContent="Entreprise sélectionnée : "+(incomingName||incomingTicker||"Entreprise choisie")+(incomingTicker?" ("+incomingTicker+")":"")+" · CIK SEC "+selectedCik;generateBtn.disabled=false;}
  document.getElementById("report-language").addEventListener("change",e=>{if(e.target.value!=="en")return;const p=new URLSearchParams();if(selectedCik)p.set("cik",selectedCik);if(selectedName)p.set("name",selectedName);if(incomingTicker)p.set("ticker",incomingTicker);window.location.href="/financial-report-generator.html?"+p.toString()+"#report-builder";});
  document.getElementById("pdf-button").addEventListener("click",()=>window.print());
 })();
