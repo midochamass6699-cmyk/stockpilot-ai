@@ -2938,7 +2938,7 @@ main p, main li, .section-head p, .updated, .card-meta {
 <form class="tf-company-quick-form" id="tf-company-quick-form">
 <label for="tf-company-name">Create your personalized company report</label>
 <input id="tf-company-name" name="company" type="search" placeholder="Enter company name or ticker" autocomplete="off" minlength="2" required>
-<button id="tf-company-submit" type="submit">Generate Report <span aria-hidden="true">→</span></button>
+<button id="tf-company-submit" type="submit">Continue to Report <span aria-hidden="true">→</span></button>
 <p id="tf-company-status" role="status" aria-live="polite"></p>
 </form>
 </div>
@@ -6759,13 +6759,13 @@ section:empty, article:empty, aside:empty { display:none!important; }
    if(!data.results||!data.results.length){status.textContent="No matching SEC company found. Try its legal name or ticker.";return}
    if(data.results.length>1){
     const exact=data.results.find(x=>String(x.name).toLowerCase()===q.toLowerCase()||String(x.ticker).toLowerCase()===q.toLowerCase());
-    if(exact){window.location.href="/financial-report-generator.html?cik="+encodeURIComponent(exact.cik)+"&name="+encodeURIComponent(exact.name)+"&ticker="+encodeURIComponent(exact.ticker)+"&autogenerate=1#report-output";return}
+    if(exact){window.location.href="/financial-report-generator.html?cik="+encodeURIComponent(exact.cik)+"&name="+encodeURIComponent(exact.name)+"&ticker="+encodeURIComponent(exact.ticker)+"#report-builder";return}
     status.textContent="Several matches found. Opening company lookup so you can select the exact company.";
     window.location.href="/financial-report-generator.html?query="+encodeURIComponent(q)+"#report-builder";
     return;
    }
    const company=data.results[0];
-   window.location.href="/financial-report-generator.html?cik="+encodeURIComponent(company.cik)+"&name="+encodeURIComponent(company.name)+"&ticker="+encodeURIComponent(company.ticker)+"&autogenerate=1#report-output";
+   window.location.href="/financial-report-generator.html?cik="+encodeURIComponent(company.cik)+"&name="+encodeURIComponent(company.name)+"&ticker="+encodeURIComponent(company.ticker)+"#report-builder";
   }catch(error){status.textContent=error.message||"Unable to search company records."}
   finally{button.disabled=false}
  });
