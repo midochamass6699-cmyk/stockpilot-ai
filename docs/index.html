@@ -9191,3 +9191,103 @@ var sc_security="58d29d99";
 @media(max-width:900px){.live-trading-desk .tf-two-panel-grid{grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection,.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{min-height:0!important}.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:420px!important;min-height:360px!important}}
 @media(max-width:760px){.live-trading-desk .tf-two-panel-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important}.live-trading-desk .tf-market-collection{padding:9px!important}.live-trading-desk .tf-market-collection .trading-panel{padding:8px 4px!important}.live-trading-desk .tf-market-collection .trading-panel-heading{display:flex!important;text-align:left!important}.live-trading-desk .tf-market-collection .trading-panel-heading p{display:block!important}.live-trading-desk .tf-market-collection .trading-market-list{display:grid!important;grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection .trading-market-list .sp-market-row{display:grid!important;grid-template-columns:32px minmax(0,1fr) auto!important}.live-trading-desk .tf-market-collection .trading-panel-link{display:flex!important;font-size:10px!important}.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{order:initial!important}.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:390px!important;min-height:320px!important}}
 </style>
+
+<style id="technofront-market-layout-v2">
+/* Horizontal market categories and the original dark terminal appearance */
+.trading-desk-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;align-items:stretch!important}
+.trading-desk-grid .trading-panel{display:flex!important;flex-direction:column!important;min-width:0!important;padding:10px!important;border-radius:10px!important}
+.trading-desk-grid .trading-panel-heading{display:flex!important;align-items:center!important;gap:7px!important;min-width:0!important}
+.trading-desk-grid .trading-panel-heading h2{font-size:12px!important;line-height:1.2!important}
+.trading-desk-grid .trading-panel-heading p{font-size:9px!important;line-height:1.2!important}
+.trading-desk-grid .trading-panel-icon{width:25px!important;height:25px!important;flex:0 0 25px!important;font-size:13px!important}
+.trading-desk-grid .trading-market-list{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:5px!important;min-height:0!important}
+.trading-desk-grid .trading-market-list .sp-market-row{display:grid!important;grid-template-columns:25px minmax(0,1fr) auto!important;align-items:center!important;gap:5px!important;padding:6px 5px!important;min-width:0!important}
+.trading-desk-grid .trading-market-list .sp-market-logo-wrap{width:23px!important;height:23px!important;display:grid!important;place-items:center!important}
+.trading-desk-grid .trading-market-list .sp-market-logo{width:22px!important;height:22px!important;object-fit:contain!important}
+.trading-desk-grid .trading-market-list .sp-market-name{min-width:0!important}
+.trading-desk-grid .trading-market-list .sp-market-name strong{font-size:10px!important}
+.trading-desk-grid .trading-market-list .sp-market-name small{font-size:9px!important}
+.trading-desk-grid .trading-market-list .sp-market-values strong{font-size:10px!important}
+.trading-desk-grid .trading-market-list .sp-market-values small{font-size:9px!important}
+.trading-desk-grid .trading-panel-link{margin-top:auto!important;padding-top:7px!important;font-size:10px!important}
+.tf-two-panel-grid>.sp-market-terminal,.sp-market-terminal{
+ background:linear-gradient(145deg,#07182B 0%,#0B2038 55%,#102B49 100%)!important;
+ border:1px solid #294664!important;border-top:4px solid #E4B83F!important;
+ color:#F1F5FB!important;box-shadow:0 10px 28px rgba(0,0,0,.20)!important;
+}
+.sp-terminal-top h2{color:#F8FAFC!important}
+.sp-terminal-eyebrow{color:#F2C94C!important}
+.sp-terminal-top p,.sp-terminal-tip,.sp-terminal-disclaimer{color:#B7C7DA!important}
+.sp-terminal-workspace{border-top-color:#294664!important}
+.sp-terminal-controls label{color:#D7E2F0!important}
+.sp-terminal-controls input,.sp-terminal-controls select{
+ background:#102943!important;color:#F8FAFC!important;border:1px solid #36516F!important;
+}
+.sp-terminal-chart{background:#071426!important;border:1px solid #294664!important;border-radius:10px!important}
+.sp-terminal-chart-placeholder{color:#B7C7DA!important}
+.sp-terminal-tool-tabs button{background:#102943!important;color:#DCE8F6!important;border-color:#36516F!important}
+.sp-terminal-tool-tabs button[aria-selected=true]{background:#245CFF!important;color:#fff!important;border-color:#245CFF!important}
+.sp-terminal-tool-panel{background:#0D233B!important;border-color:#294664!important;color:#E6EEF8!important}
+.sp-terminal-tool-panel h3,.sp-terminal-tool-panel strong{color:#F8FAFC!important}
+.sp-terminal-tool-panel p,.sp-terminal-tool-muted{color:#B7C7DA!important}
+.sp-terminal-tool-card,.sp-terminal-tool-metric{background:#102943!important;border-color:#36516F!important}
+.sp-terminal-tool-card strong,.sp-terminal-tool-metric strong{color:#F8FAFC!important}
+.sp-terminal-tool-card small,.sp-terminal-tool-metric small{color:#B7C7DA!important}
+.sp-terminal-tool-panel table{color:#E6EEF8!important}
+.sp-terminal-tool-panel th{color:#B7C7DA!important}
+.sp-terminal-actions .sp-terminal-toggle,.sp-terminal-controls button{background:#F2C94C!important;color:#07182B!important}
+#sp-stock-of-day.in-market-tagline{
+ display:flex!important;align-items:center!important;gap:9px!important;width:100%!important;max-width:none!important;
+ min-height:0!important;margin:10px 0 0!important;padding:8px 10px!important;
+ border:1px solid #294664!important;border-left:3px solid #E4B83F!important;border-radius:9px!important;
+ background:linear-gradient(110deg,#07182B,#102B49)!important;box-shadow:none!important;color:#fff!important;
+}
+#sp-stock-of-day.in-market-tagline:before{display:none!important}
+#sp-stock-of-day.in-market-tagline .sp-day-logo{width:34px!important;height:34px!important;min-width:34px!important;flex:0 0 34px!important;border-radius:8px!important}
+#sp-stock-of-day.in-market-tagline .sp-day-copy{min-width:0!important;flex:1!important}
+#sp-stock-of-day.in-market-tagline .sp-day-eyebrow{font-size:9px!important;margin:0 0 2px!important}
+#sp-stock-of-day.in-market-tagline .sp-day-name{font-size:12px!important;white-space:normal!important;line-height:1.2!important}
+#sp-stock-of-day.in-market-tagline .sp-day-ticker{font-size:9px!important}
+#sp-stock-of-day.in-market-tagline .sp-day-meta{font-size:9px!important}
+#sp-stock-of-day.in-market-tagline .sp-day-stats,
+#sp-stock-of-day.in-market-tagline .sp-day-source,
+#sp-stock-of-day.in-market-tagline .sp-day-cta,
+#sp-stock-of-day.in-market-tagline .sp-day-terminal-copy,
+#sp-stock-of-day.in-market-tagline .sp-day-terminal-link,
+#sp-stock-of-day.in-market-tagline .sp-day-bell{display:none!important}
+@media(max-width:1100px){
+ .trading-desk-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}
+ .trading-desk-grid .trading-panel{padding:7px!important}
+ .trading-desk-grid .trading-panel-heading h2{font-size:11px!important}
+ .trading-desk-grid .trading-market-list .sp-market-row{grid-template-columns:22px minmax(0,1fr) auto!important;gap:4px!important;padding:5px 3px!important}
+}
+@media(max-width:760px){
+ .tf-two-panel-grid{grid-template-columns:minmax(0,1fr)!important}
+ .trading-desk-grid{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ .trading-desk-grid .trading-panel{padding:9px!important}
+ .trading-desk-grid .trading-panel-heading h2{font-size:13px!important}
+ .trading-desk-grid .trading-panel-heading p{font-size:10px!important}
+ .trading-desk-grid .trading-market-list .sp-market-row{grid-template-columns:30px minmax(0,1fr) auto!important;gap:7px!important;padding:7px!important}
+ .trading-desk-grid .trading-market-list .sp-market-logo-wrap{width:28px!important;height:28px!important}
+ .trading-desk-grid .trading-market-list .sp-market-logo{width:26px!important;height:26px!important}
+ .trading-desk-grid .trading-market-list .sp-market-name strong{font-size:12px!important}
+ .trading-desk-grid .trading-market-list .sp-market-name small{font-size:10px!important}
+ .trading-desk-grid .trading-market-list .sp-market-values strong{font-size:11px!important}
+ .trading-desk-grid .trading-market-list .sp-market-values small{font-size:10px!important}
+}
+</style>
+<script id="technofront-stock-day-placement-v2">
+(function(){
+ const moveStockDay=()=>{
+  const stock=document.getElementById('sp-stock-of-day');
+  let target=document.querySelector('.trading-desk-tagline');
+  if(!target && document.getElementById('live-trading-desk')){
+   const header=document.querySelector('#live-trading-desk .trading-desk-header');
+   if(header){target=document.createElement('div');target.className='trading-desk-tagline';target.innerHTML='<strong>YOUR MARKET PIT STOP</strong><span>Your Market Pit Stop — Where Real Data Fuels Better Insights.</span>';header.appendChild(target);}
+  }
+  if(stock && target && !target.contains(stock)){stock.classList.add('in-market-tagline');target.appendChild(stock);}
+ };
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',moveStockDay,{once:true});else moveStockDay();
+ setTimeout(moveStockDay,300);
+})();
+</script>
