@@ -2518,6 +2518,8 @@ input, select, textarea, button {
 </div>
 <div class="trading-desk-tagline"><strong>YOUR MARKET PIT STOP</strong>Your Market Pit Stop — Where Real Data Fuels Better Insights.</div>
   </div>
+<div class="tf-two-panel-grid">
+ <div class="tf-market-collection" aria-label="Market lists">
 <div class="trading-desk-grid">
 <article class="trading-panel trading-panel-main">
 <div class="trading-panel-heading"><span class="trading-panel-icon">🇺🇸</span><div><h2>Top 3 U.S. Stocks to Watch</h2><p>U.S.-listed candidates from the daily screen</p></div></div>
@@ -2535,7 +2537,7 @@ input, select, textarea, button {
 <a class="trading-panel-link" href="#crypto-picks">Explore crypto market <span aria-hidden="true">→</span></a>
 </article>
 </div>
-
+ </div>
 <section class="sp-market-terminal" id="market-terminal" aria-label="Market Terminal">
  <div class="sp-terminal-top">
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><div class="sp-terminal-title-line"><h2>Market Terminal</h2><div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
@@ -2580,6 +2582,9 @@ input, select, textarea, button {
  </div>
  <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="true" aria-controls="sp-terminal-workspace" data-open-label="EXPAND CHART" data-close-label="COLLAPSE TERMINAL">COLLAPSE TERMINAL <span aria-hidden="true">×</span></button></div>
 </section>
+</div>
+
+
 
 <button
   type="button"
@@ -8160,4 +8165,42 @@ body{font-size:16px}
 .tf-free-tools-cta span{color:#17251f;font-size:16px}
 .live-trading-desk .trading-desk-header > div:first-child h1,.fr-welcome-banner h1,.seo-intro h1{display:inline-block!important;vertical-align:middle;margin:0!important}
 @media(max-width:760px){.tf-free-tools-cta{margin:8px 0 0 0;padding:8px 12px;font-size:12px;white-space:normal}.live-trading-desk .trading-desk-header > div:first-child h1,.fr-welcome-banner h1,.seo-intro h1{display:block!important;margin-bottom:2px!important}}
+</style>
+
+<style id="technofront-two-panel-terminal-layout">
+.live-trading-desk .tf-two-panel-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:14px!important;align-items:stretch!important;width:100%;min-width:0;margin-top:14px}
+.live-trading-desk .tf-market-collection{min-width:0;min-height:510px;height:100%;padding:12px!important;border:1px solid #D8E1EE!important;border-top:4px solid #2563EB!important;border-radius:14px!important;background:linear-gradient(145deg,#fff 0%,#F4F7FC 100%)!important;box-shadow:0 8px 22px rgba(7,17,31,.07)!important;color:#10213D!important}
+.live-trading-desk .tf-market-collection .trading-desk-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:5px!important;min-width:0!important;height:100%}
+.live-trading-desk .tf-market-collection .trading-panel{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:5px!important;min-width:0!important;padding:8px 7px!important;border:0!important;border-bottom:1px solid #DCE5F0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+.live-trading-desk .tf-market-collection .trading-panel:last-child{border-bottom:0!important}
+.live-trading-desk .tf-market-collection .trading-panel-heading{margin:0!important;gap:8px!important}
+.live-trading-desk .tf-market-collection .trading-panel-heading h2{font-size:13px!important;color:#10213D!important}
+.live-trading-desk .tf-market-collection .trading-panel-heading p{font-size:10px!important;color:#64748B!important}
+.live-trading-desk .tf-market-collection .trading-panel-icon{width:28px!important;height:28px!important;flex-basis:28px!important;font-size:16px!important}
+.live-trading-desk .tf-market-collection .trading-market-list{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:4px!important;min-height:0!important;height:auto!important;overflow:visible!important}
+.live-trading-desk .tf-market-collection .trading-market-list .sp-market-row{grid-template-columns:32px minmax(0,1fr) auto!important;gap:7px!important;padding:5px 7px!important;min-height:34px!important;border:1px solid #E1E8F2!important;border-radius:7px!important;background:#fff!important}
+.live-trading-desk .tf-market-collection .sp-market-row:hover{background:#EFF5FF!important}
+.live-trading-desk .tf-market-collection .trading-panel-link{margin-top:2px!important;padding-top:4px!important;border-top:0!important;font-size:10px!important;justify-content:flex-end!important}
+.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{width:100%!important;max-width:none!important;min-width:0!important;min-height:510px!important;height:100%!important;margin:0!important;padding:14px!important;overflow:hidden!important;border:1px solid #C9D8F0!important;border-top:4px solid #E4B83F!important;border-radius:14px!important;background:linear-gradient(145deg,#F7FAFF 0%,#EAF1FC 100%)!important;color:#10213D!important;box-shadow:0 8px 22px rgba(7,17,31,.07)!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-eyebrow{color:#1D4ED8!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-top h2{color:#10213D!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-top p,.live-trading-desk .tf-two-panel-grid .sp-terminal-tip,.live-trading-desk .tf-two-panel-grid .sp-terminal-disclaimer{color:#52647A!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-workspace{border-top-color:#CBD8EA!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-controls label{color:#334A68!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-controls input,.live-trading-desk .tf-two-panel-grid .sp-terminal-controls select{background:#fff!important;color:#152B45!important;border-color:#C7D5E8!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:360px!important;min-height:320px!important;background:#F5F8FD!important;border:1px solid #C9D8EA!important;border-radius:10px!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-chart-placeholder{color:#52647A!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-tabs button{background:#fff!important;color:#23416B!important;border-color:#C9D8EA!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-tabs button[aria-selected=true]{background:#245CFF!important;color:#fff!important;border-color:#245CFF!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-panel{background:#fff!important;border-color:#D5E0EF!important;color:#172B45!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-panel h3,.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-panel strong{color:#10213D!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-panel p,.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-muted{color:#5B6D84!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-card,.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-metric{background:#F3F7FC!important;border-color:#D8E3F0!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-card strong,.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-metric strong{color:#10213D!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-card small,.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-metric small{color:#64748B!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-panel table{color:#243B59!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-tool-panel th{color:#52647A!important}
+.live-trading-desk .tf-two-panel-grid .sp-terminal-actions .sp-terminal-toggle{background:#F2C94C!important;color:#10213D!important}
+@media(max-width:900px){.live-trading-desk .tf-two-panel-grid{grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection,.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{min-height:0!important}.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:420px!important;min-height:360px!important}}
+@media(max-width:760px){.live-trading-desk .tf-two-panel-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important}.live-trading-desk .tf-market-collection{padding:9px!important}.live-trading-desk .tf-market-collection .trading-panel{padding:8px 4px!important}.live-trading-desk .tf-market-collection .trading-panel-heading{display:flex!important;text-align:left!important}.live-trading-desk .tf-market-collection .trading-panel-heading p{display:block!important}.live-trading-desk .tf-market-collection .trading-market-list{display:grid!important;grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection .trading-market-list .sp-market-row{display:grid!important;grid-template-columns:32px minmax(0,1fr) auto!important}.live-trading-desk .tf-market-collection .trading-panel-link{display:flex!important;font-size:10px!important}.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{order:initial!important}.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:390px!important;min-height:320px!important}}
 </style>
