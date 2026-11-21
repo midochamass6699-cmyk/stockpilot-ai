@@ -2549,6 +2549,100 @@ main li + li { margin-top: 0.35em; }
   }
 }
 </style>
+
+<style id="technofront-contrast-polish">
+/* Color and contrast refinement only — preserve all page content and layout. */
+:root {
+  --tf-page-bg: #edf1f5;
+  --tf-surface: #ffffff;
+  --tf-ink: #17283d;
+  --tf-muted: #52647a;
+  --tf-navy: #203650;
+  --tf-border: #d5dee8;
+  --tf-gold: #d7ac56;
+}
+html, body { background: var(--tf-page-bg) !important; color: var(--tf-ink); }
+body { background-image: none !important; }
+main { color: var(--tf-ink); }
+.topbar {
+  background: var(--tf-navy) !important;
+  border-bottom: 3px solid var(--tf-gold) !important;
+  box-shadow: 0 4px 18px rgba(24,42,63,.16) !important;
+}
+.topbar .brand, .topbar .navlinks a { color: #fff !important; }
+.topbar .navlinks a:hover { color: #f2d58f !important; }
+.topbar .brandmark {
+  background: #f2d58f !important;
+  color: #203650 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+main section:not(.sp-market-terminal) { color: var(--tf-ink); }
+.panel, .visual-card, .feature, .resource-card, .faq-item,
+.stock-card, .trading-panel, .trading-desk-tools a {
+  border-color: var(--tf-border) !important;
+}
+.stock-card, .panel, .visual-card, .feature, .resource-card, .faq-item {
+  box-shadow: 0 7px 22px rgba(28,48,70,.055) !important;
+}
+main h1, main h2, main h3, main h4,
+.section-head h1, .section-head h2 {
+  color: #172b43;
+}
+main p, main li, .section-head p, .updated, .card-meta {
+  color: #465a70;
+}
+/* Keep every company, broker and market logo crisp on a clean light tile. */
+.stock-logo-wrap, .sp-market-logo-wrap, .sp-day-logo,
+.broker-logo-wrap, .company-logo-wrap, .logo-container {
+  background: #fff !important;
+  border: 1px solid #dce4ed !important;
+  box-shadow: 0 2px 8px rgba(20,40,62,.09) !important;
+}
+.stock-logo-wrap img, .sp-market-logo-wrap img, .sp-day-logo img,
+.broker-logo-wrap img, .company-logo-wrap img, .logo-container img,
+.brand img, img.stock-company-logo, img.crypto-logo {
+  object-fit: contain !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+/* The market terminal stays light, including the chart canvas and controls. */
+.sp-market-terminal {
+  background: linear-gradient(145deg,#ffffff 0%,#f3f7fb 100%) !important;
+  color: #17283d !important;
+  border: 1px solid #d2dce7 !important;
+  box-shadow: 0 12px 30px rgba(26,47,70,.09) !important;
+}
+.sp-market-terminal h1, .sp-market-terminal h2, .sp-market-terminal h3,
+.sp-market-terminal strong, .sp-market-terminal label,
+.sp-market-terminal .sp-terminal-top,
+.sp-market-terminal .sp-terminal-top p {
+  color: #1b3049 !important;
+}
+.sp-market-terminal p, .sp-market-terminal small,
+.sp-market-terminal .sp-terminal-tip,
+.sp-market-terminal .sp-terminal-disclaimer {
+  color: #52647a !important;
+}
+.sp-market-terminal input, .sp-market-terminal select,
+.sp-market-terminal textarea, .sp-market-terminal button {
+  background-color: #fff !important;
+  color: #17283d !important;
+  border-color: #cbd6e2 !important;
+}
+.sp-terminal-chart {
+  background: #fff !important;
+  border: 1px solid #d5dee8 !important;
+  box-shadow: inset 0 1px 3px rgba(20,40,62,.035);
+}
+.sp-terminal-chart-placeholder {
+  background: #fff !important;
+  color: #52647a !important;
+}
+@media (max-width: 760px) {
+  .sp-market-terminal { background: #f7f9fc !important; }
+}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2628,7 +2722,7 @@ main li + li { margin-top: 0.35em; }
       {"proName":"BITSTAMP:ETHUSD","title":"ETHEREUM"}
     ],
     "showSymbolLogo": true,
-"colorTheme": "dark",
+"colorTheme": "light",
 "isTransparent": false,
     "displayMode": "adaptive",
     "locale": "fr"
@@ -2902,7 +2996,7 @@ main li + li { margin-top: 0.35em; }
   const script=document.createElement('script');
   script.type='text/javascript';script.async=true;
   script.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-  const config={autosize:true,symbol:ticker,interval:'D',timezone:'America/Toronto',theme:'dark',style:'1',locale:"fr",allow_symbol_change:true,calendar:false,hide_side_toolbar:false,withdateranges:true,details:true,hotlist:false,show_popup_button:false,support_host:'https://www.tradingview.com'};
+  const config={autosize:true,symbol:ticker,interval:'D',timezone:'America/Toronto',theme:'light',style:'1',locale:"fr",allow_symbol_change:true,calendar:false,hide_side_toolbar:false,withdateranges:true,details:true,hotlist:false,show_popup_button:false,support_host:'https://www.tradingview.com'};
   if(compareTicker)config.compareSymbols=[{symbol:compareTicker,position:'SameScale'}];
   script.textContent=JSON.stringify(config);
   host.appendChild(script);
@@ -2968,7 +3062,7 @@ main li + li { margin-top: 0.35em; }
  $('sp-terminal-screen-search').addEventListener('input',renderScreener);$('sp-terminal-screen-kind').addEventListener('change',renderScreener);
  function selectedPick(){const raw=(symbol?.value||activeTicker).trim().toUpperCase().split(':').pop();return allPicks().find(x=>safe(x.ticker).toUpperCase()===raw);}
  function renderCompany(){const host=$('sp-terminal-company-facts');if(!host)return;const x=selectedPick();if(!x){host.textContent=labels.companyHint;return;}const metrics=[['PRICE',currency(x.currency)+' '+fmt(x.price)],['DAY CHANGE',fmt(x.change_percent)+'%'],['20D RETURN',fmt(x.return_20d)+'%'],['VOLUME',Number(x.volume||0).toLocaleString()],['EXCHANGE',safe(x.exchange)],['DATA DATE',safe(x.price_date||x.quote_time)]];host.replaceChildren();const grid=document.createElement('div');grid.className='sp-terminal-tool-metrics';metrics.forEach(([k,v])=>{const box=document.createElement('div');box.className='sp-terminal-tool-metric';const small=document.createElement('small');small.textContent=k;const strong=document.createElement('strong');strong.textContent=v;box.append(small,strong);grid.append(box);});const reason=document.createElement('p');reason.textContent=safe(x.reason);const risk=document.createElement('p');risk.textContent='Risk context: '+safe(x.risk);host.append(grid,reason,risk);}
- function renderTechnical(){const host=$('sp-terminal-ta-widget');if(!host||host.dataset.loaded)return;host.dataset.loaded='1';const sym=currentSymbol();host.replaceChildren();const box=document.createElement('div');box.className='tradingview-widget-container';box.style.width='100%';box.style.height='100%';const widget=document.createElement('div');widget.className='tradingview-widget-container__widget';box.append(widget);const script=document.createElement('script');script.async=true;script.src='https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';script.textContent=JSON.stringify({interval:'1D',width:'100%',isTransparent:true,height:'100%',symbol:sym,showIntervalTabs:true,displayMode:'single',locale:lang,colorTheme:'dark'});box.append(script);host.append(box);}
+ function renderTechnical(){const host=$('sp-terminal-ta-widget');if(!host||host.dataset.loaded)return;host.dataset.loaded='1';const sym=currentSymbol();host.replaceChildren();const box=document.createElement('div');box.className='tradingview-widget-container';box.style.width='100%';box.style.height='100%';const widget=document.createElement('div');widget.className='tradingview-widget-container__widget';box.append(widget);const script=document.createElement('script');script.async=true;script.src='https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';script.textContent=JSON.stringify({interval:'1D',width:'100%',isTransparent:true,height:'100%',symbol:sym,showIntervalTabs:true,displayMode:'single',locale:lang,colorTheme:'light'});box.append(script);host.append(box);}
  function renderPaper(){const host=$('sp-terminal-paper-list'),items=getSaved(paperKey,[]);host.replaceChildren();if(!items.length){host.textContent=labels.emptyPractice;return;}let total=0;const table=document.createElement('div');table.className='sp-terminal-tool-table-wrap';const t=document.createElement('table');const head=document.createElement('thead');head.innerHTML='<tr><th>SYMBOL</th><th>'+esc(labels.units)+'</th><th>'+esc(labels.entry)+'</th><th>'+esc(labels.cost)+'</th><th></th></tr>';t.append(head);const body=document.createElement('tbody');items.forEach((x,i)=>{const cost=Number(x.units)*Number(x.entry);total+=cost;const tr=document.createElement('tr');[x.ticker,fmt(x.units,4),fmt(x.entry,4),currency(x.currency)+' '+fmt(cost)].forEach(v=>{const td=document.createElement('td');td.textContent=safe(v);tr.append(td);});const td=document.createElement('td'),del=document.createElement('button');del.textContent='×';del.setAttribute('aria-label',labels.remove);del.addEventListener('click',()=>{items.splice(i,1);save(paperKey,items);renderPaper();});td.append(del);tr.append(td);body.append(tr);});t.append(body);table.append(t);const summary=document.createElement('p');summary.textContent=labels.cost+': '+total.toFixed(2)+' (practice only)';host.append(table,summary);}
  $('sp-terminal-paper-add').addEventListener('click',()=>{const ticker=$('sp-terminal-paper-symbol').value.trim().toUpperCase(),units=Number($('sp-terminal-paper-units').value),entry=Number($('sp-terminal-paper-entry').value);if(!ticker||!(units>0)||!(entry>0))return;const items=getSaved(paperKey,[]);const known=allPicks().find(x=>safe(x.ticker).toUpperCase()===ticker);items.push({ticker,units,entry,currency:known?.currency||((market?.value==='TSX')?'CAD':'USD')});save(paperKey,items);$('sp-terminal-paper-symbol').value='';$('sp-terminal-paper-units').value='';$('sp-terminal-paper-entry').value='';renderPaper();});renderPaper();
  symbol?.addEventListener('change',()=>{activeTicker=symbol.value.trim().toUpperCase();activeExchange=market?.value||activeExchange;renderCompany();const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}});market?.addEventListener('change',()=>{activeExchange=market.value;const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}});
