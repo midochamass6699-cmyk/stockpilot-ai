@@ -64,10 +64,10 @@
     ends.forEach((end,i)=>{
       const rev=getValue(data,"revenue",end),gross=getValue(data,"grossProfit",end),op=getValue(data,"operatingIncome",end),net=getValue(data,"netIncome",end);
       const debtParts=[getValue(data,"currentDebt",end),getValue(data,"longTermDebt",end)].filter(v=>v!=null);
-      const debt=debtParts.length?debtParts.reduce((a,b)=>a+b,0):null;
+      const debt=debtParts.length===2?debtParts.reduce((a,b)=>a+b,0):null;
       const prior=ends[i+1],priorRev=prior?getValue(data,"revenue",prior):null;
       const priorDebt=prior?[getValue(data,"currentDebt",prior),getValue(data,"longTermDebt",prior)].filter(v=>v!=null):[];
-      const priorDebtTotal=priorDebt.length?priorDebt.reduce((a,b)=>a+b,0):null;
+      const priorDebtTotal=priorDebt.length===2?priorDebt.reduce((a,b)=>a+b,0):null;
       const ocf=getValue(data,"operatingCashFlow",end),priorOcf=prior?getValue(data,"operatingCashFlow",prior):null;
       vals[end]={operatingCashFlowChange:priorOcf!=null&&priorOcf!==0&&ocf!=null?((ocf/priorOcf)-1)*100:null,
         revenueGrowth:priorRev!=null&&priorRev!==0&&rev!=null?((rev/priorRev)-1)*100:null,
