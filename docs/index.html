@@ -9412,3 +9412,22 @@ var sc_security="58d29d99";
  .live-trading-desk .trading-desk-grid .trading-market-list .sp-market-row{grid-template-columns:30px minmax(0,1fr) auto!important}
 }
 </style>
+
+
+<style id="technofront-homepage-final-market-stack-fix">
+/* Final cascade override: keep the three market categories stacked in the LEFT panel.
+   The outer two-panel layout remains unchanged, so Market Terminal stays on the right. */
+#live-trading-desk .tf-market-collection .trading-desk-grid,
+#live-trading-desk .trading-desk-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-auto-flow: row !important;
+  gap: 12px !important;
+  width: 100% !important;
+  align-items: stretch !important;
+}
+#live-trading-desk .tf-market-collection .trading-desk-grid > .trading-panel {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+</style>
