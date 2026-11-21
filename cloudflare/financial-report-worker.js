@@ -69,7 +69,7 @@ function pickFacts(facts, metric, cik) {
     const unitName = metric.key === "shares" ? "shares" : "USD";
     const unit = item.units[unitName] || (metric.key === "shares" ? null : item.units.USD);
     if (!unit) continue;
-    const eligible = unit.filter(x => ["10-K","10-Q","20-F","40-F"].includes(x.form) && x.end && x.filed);
+    const eligible = unit.filter(x => ["10-K","20-F","40-F"].includes(x.form) && x.fp === "FY" && x.end && x.filed);
     const filtered = eligible.filter(x => metric.kind === "instant"
       ? !x.start
       : !!x.start && ((new Date(x.end)-new Date(x.start))/(86400000)) >= 300 && ((new Date(x.end)-new Date(x.start))/(86400000)) <= 400 && x.fp === "FY");
