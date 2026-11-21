@@ -81,7 +81,7 @@ function pickFacts(facts, metric, cik, filingDocuments) {
     const result = [...byEnd.values()].sort((a,b) => b.end.localeCompare(a.end)).slice(0,3).map(f => ({
       periodEnd:f.end, fiscalYear:Number(f.end.slice(0,4)), value:f.val, unit:unitName,
       filed:f.filed, form:f.form,
-      sourceUrl:archiveUrl(cik, f.accn, filingDocuments.get(f.accn))
+      sourceUrl:archiveUrl(cik, f.accn, filingDocuments.get(String(f.accn || "").replace(/-/g, "")) || filingDocuments.get(f.accn))
     }));
     if (result.length) return { key:metric.key, label:metric.label, values:result, tag };
   }
@@ -99,7 +99,7 @@ async function getCompany(cik, env) {
     accession:recent.accessionNumber[i], document:recent.primaryDocument[i]
   })).filter(x => ["10-K","10-Q","20-F","40-F"].includes(x.form))
     .slice(0,12).map(x => ({...x, url:archiveUrl(cik,x.accession,x.document)}));
-  const filingDocuments = new Map(forms.map((form,i) => [recent.accessionNumber[i], recent.primaryDocument[i]]));
+  const filingDocuments = new Map(forms.map((form,i) => [String(recent.accessionNumber[i] || "").replace(/-/g, ""), recent.primaryDocument[i]]));
   const facts = companyFacts.facts && companyFacts.facts["us-gaap"] ? companyFacts.facts["us-gaap"] : {};
   const metrics = METRICS.map(m => pickFacts(facts,m,cik,filingDocuments));
   return {
