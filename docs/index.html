@@ -6141,6 +6141,7 @@ body { overflow-x: hidden; }
 </style>
 <script id="technofront-mobile-home-order-script">
 (function(){
+ function initMobileHomeOrder(){
  function reserveLayoutSlot(node){
   if(!node||!node.parentNode||node.dataset.spLayoutReserved==='1')return;
   var rect=node.getBoundingClientRect();
@@ -6197,6 +6198,8 @@ body { overflow-x: hidden; }
  }
  arrange();
  if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initMobileHomeOrder,{once:true});else initMobileHomeOrder();
 })();
 </script>
 
