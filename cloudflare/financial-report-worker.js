@@ -62,7 +62,7 @@ async function searchCompanies(q, env) {
     seen.add(id); return true;
   }).slice(0, 12).map(x => ({ cik:cleanCik(x.cik_str), ticker:x.ticker, name:x.title }));
 }
-function pickFacts(facts, metric, cik) {
+function pickFacts(facts, metric, cik, filingDocuments) {
   for (const tag of metric.tags) {
     const item = facts[tag];
     if (!item || !item.units) continue;
@@ -79,9 +79,9 @@ function pickFacts(facts, metric, cik) {
       if (!prior || f.filed > prior.filed) byEnd.set(f.end, f);
     }
     const result = [...byEnd.values()].sort((a,b) => b.end.localeCompare(a.end)).slice(0,3).map(f => ({
-      periodEnd:f.end, fiscalYear:f.fy || null, value:f.val, unit:unitName,
+      periodEnd:f.end, fiscalYear:Number(f.end.slice(0,4)), value:f.val, unit:unitName,
       filed:f.filed, form:f.form,
-      sourceUrl:archiveUrl(cik, f.accn, null)
+      sourceUrl:archiveUrl(cik, f.accn, filingDocuments.get(f.accn))
     }));
     if (result.length) return { key:metric.key, label:metric.label, values:result, tag };
   }
@@ -99,8 +99,9 @@ async function getCompany(cik, env) {
     accession:recent.accessionNumber[i], document:recent.primaryDocument[i]
   })).filter(x => ["10-K","10-Q","20-F","40-F"].includes(x.form))
     .slice(0,12).map(x => ({...x, url:archiveUrl(cik,x.accession,x.document)}));
+  const filingDocuments = new Map(forms.map((form,i) => [recent.accessionNumber[i], recent.primaryDocument[i]]));
   const facts = companyFacts.facts && companyFacts.facts["us-gaap"] ? companyFacts.facts["us-gaap"] : {};
-  const metrics = METRICS.map(m => pickFacts(facts,m,cik));
+  const metrics = METRICS.map(m => pickFacts(facts,m,cik,filingDocuments));
   return {
     company:submissions.name || companyFacts.entityName || "Unknown company",
     cik, sic:submissions.sic || null, industry:submissions.sicDescription || null,
