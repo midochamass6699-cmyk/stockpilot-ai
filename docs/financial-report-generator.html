@@ -68,7 +68,8 @@
       const prior=ends[i+1],priorRev=prior?getValue(data,"revenue",prior):null;
       const priorDebt=prior?[getValue(data,"currentDebt",prior),getValue(data,"longTermDebt",prior)].filter(v=>v!=null):[];
       const priorDebtTotal=priorDebt.length?priorDebt.reduce((a,b)=>a+b,0):null;
-      vals[end]={
+      const ocf=getValue(data,"operatingCashFlow",end),priorOcf=prior?getValue(data,"operatingCashFlow",prior):null;
+      vals[end]={operatingCashFlowChange:priorOcf!=null&&priorOcf!==0&&ocf!=null?((ocf/priorOcf)-1)*100:null,
         revenueGrowth:priorRev!=null&&priorRev!==0&&rev!=null?((rev/priorRev)-1)*100:null,
         grossMargin:ratio(gross,rev),operatingMargin:ratio(op,rev),netMargin:ratio(net,rev),
         totalDebt:debt,debtChange:priorDebtTotal!=null&&priorDebtTotal!==0&&debt!=null?((debt/priorDebtTotal)-1)*100:null
@@ -80,6 +81,7 @@
     const latest=ends[0],prior=ends[1];if(!latest||!prior)return '<p class="report-meta">At least two comparable annual periods are required for year-over-year analysis.</p>';
     const rev=getValue(data,"revenue",latest),prevRev=getValue(data,"revenue",prior),ocf=getValue(data,"operatingCashFlow",latest),prevOcf=getValue(data,"operatingCashFlow",prior),op=getValue(data,"operatingIncome",latest),net=getValue(data,"netIncome",latest),gross=getValue(data,"grossProfit",latest);
     const growth=prevRev&&rev!=null?((rev/prevRev)-1)*100:null;
+    const cashGrowth=prevOcf!=null&&prevOcf!==0&&ocf!=null?((ocf/prevOcf)-1)*100:null;
     const gm=ratio(gross,rev),om=ratio(op,rev),nm=ratio(net,rev);
     const fmt=v=>v==null?"not available":pct(v);
     return '<ul class="analysis-notes"><li>Revenue changed '+fmt(growth)+' year over year.</li><li>Operating cash flow changed '+fmt(cashGrowth)+' year over year.</li><li>Gross profit represented '+fmt(gm)+' of reported revenue.</li><li>Operating income represented '+fmt(om)+' of reported revenue; net income represented '+fmt(nm)+'.</li><li>These ratios are calculated from reported annual figures and do not explain the causes of changes.</li></ul>';
