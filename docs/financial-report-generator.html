@@ -30,6 +30,8 @@
 <script>
 (function(){
  const API_BASE="https://api.technofront.org";
+ const params=new URLSearchParams(window.location.search);
+ const incomingCik=params.get("cik"),incomingName=params.get("name"),incomingTicker=params.get("ticker"),incomingQuery=params.get("query");
  const query=document.getElementById("company-query"), searchBtn=document.getElementById("search-button"), results=document.getElementById("company-results"), selected=document.getElementById("selected-company"), generateBtn=document.getElementById("generate-button"), status=document.getElementById("builder-status"), output=document.getElementById("report-output"), controls=document.getElementById("report-controls");
  let selectedCik=null, selectedName="";
  const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -107,6 +109,13 @@
   catch(e){status.textContent=e.message}
   finally{generateBtn.disabled=false}
  });
+ if(incomingQuery){query.value=incomingQuery;search()}
+ if(incomingCik){
+  selectedCik=incomingCik;selectedName=incomingName||incomingTicker||"Selected company";
+  selected.hidden=false;selected.textContent="Selected: "+selectedName+(incomingTicker?" ("+incomingTicker+")":"")+" · SEC CIK "+selectedCik;
+  generateBtn.disabled=false;
+  if(params.get("autogenerate")==="1")generateBtn.click();
+ }
  document.getElementById("pdf-button").addEventListener("click",()=>window.print());
 })();
 </script></body></html>
