@@ -8615,31 +8615,32 @@ body{font-size:16px}
 
 
 <style id="sp-stock-of-day-visibility-boost">
-/* Enlarge the existing Stock of the Day banner without changing its position or page layout. */
-#sp-stock-of-day{gap:18px;padding:18px 22px}
-#sp-stock-of-day .sp-day-logo{width:60px;height:60px;flex-basis:60px;font-size:20px}
-#sp-stock-of-day .sp-day-eyebrow{font-size:12px;margin-bottom:5px}
-#sp-stock-of-day .sp-day-name{font-size:19px}
-#sp-stock-of-day .sp-day-ticker{font-size:12px;margin-top:4px}
-#sp-stock-of-day .sp-day-meta{font-size:12px;margin-top:5px}
-#sp-stock-of-day .sp-day-stats{gap:10px}
-#sp-stock-of-day .sp-day-stat{padding:7px 10px}
-#sp-stock-of-day .sp-day-stat-label{font-size:9px}
-#sp-stock-of-day .sp-day-stat-value{font-size:18px}
-#sp-stock-of-day .sp-day-updated{font-size:8px}
-#sp-stock-of-day .sp-day-source{margin-left:78px;font-size:9px}
-#sp-stock-of-day .sp-day-bell{width:36px;height:36px;flex-basis:36px;font-size:17px}
-#sp-stock-of-day .sp-day-cta{font-size:13px}
-#sp-stock-of-day .sp-day-terminal-copy strong{font-size:12px}
-#sp-stock-of-day .sp-day-terminal-copy small{font-size:9px}
+/* Make the Stock of the Day panel visibly larger in its existing top-right tagline position.
+   The earlier compact in-market-tagline rules used !important and overrode the generic sizing. */
+#sp-stock-of-day.in-market-tagline{
+  gap:14px!important;
+  padding:16px 18px!important;
+  min-height:92px!important;
+  border-width:1px!important;
+  border-left-width:4px!important;
+  border-radius:12px!important;
+  box-shadow:0 6px 18px rgba(0,0,0,.22)!important;
+}
+#sp-stock-of-day.in-market-tagline .sp-day-logo{
+  width:54px!important;height:54px!important;min-width:54px!important;flex:0 0 54px!important;border-radius:10px!important;
+}
+#sp-stock-of-day.in-market-tagline .sp-day-copy{
+  min-width:0!important;flex:1 1 auto!important;max-width:none!important;gap:3px!important;
+}
+#sp-stock-of-day.in-market-tagline .sp-day-eyebrow{font-size:11px!important;line-height:1.2!important;margin:0 0 3px!important;letter-spacing:.09em!important}
+#sp-stock-of-day.in-market-tagline .sp-day-name{font-size:18px!important;line-height:1.25!important;font-weight:900!important;white-space:normal!important}
+#sp-stock-of-day.in-market-tagline .sp-day-ticker{font-size:11px!important;line-height:1.25!important}
+#sp-stock-of-day.in-market-tagline .sp-day-meta{display:block!important;font-size:10px!important;line-height:1.25!important}
 @media(max-width:760px){
- #sp-stock-of-day{gap:12px;padding:14px 15px}
- #sp-stock-of-day .sp-day-logo{width:50px;height:50px;flex-basis:50px}
- #sp-stock-of-day .sp-day-name{font-size:16px}
- #sp-stock-of-day .sp-day-eyebrow{font-size:10px}
- #sp-stock-of-day .sp-day-ticker,#sp-stock-of-day .sp-day-meta{font-size:10px}
- #sp-stock-of-day .sp-day-stat-value{font-size:14px}
- #sp-stock-of-day .sp-day-source{margin-left:0}
- #sp-stock-of-day .sp-day-cta{font-size:11px}
+ #sp-stock-of-day.in-market-tagline{gap:10px!important;padding:12px 13px!important;min-height:76px!important}
+ #sp-stock-of-day.in-market-tagline .sp-day-logo{width:44px!important;height:44px!important;min-width:44px!important;flex-basis:44px!important}
+ #sp-stock-of-day.in-market-tagline .sp-day-eyebrow{font-size:10px!important}
+ #sp-stock-of-day.in-market-tagline .sp-day-name{font-size:15px!important}
+ #sp-stock-of-day.in-market-tagline .sp-day-ticker,#sp-stock-of-day.in-market-tagline .sp-day-meta{font-size:10px!important}
 }
 </style>
