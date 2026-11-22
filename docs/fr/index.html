@@ -4089,54 +4089,54 @@ function insightText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
 
-function insightNumber(value, digits=1) {
-  if(value===null||value===undefined||value==='')return null;
-  const n=Number(value);
-  return Number.isFinite(n)?n.toLocaleString('fr-CA',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
+function insightNumber(value,digits=1){
+ if(value===null||value===undefined||value==='')return null;
+ const n=Number(value);return Number.isFinite(n)?n.toLocaleString('fr-CA',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
 }
-function getStockInsight(s, penny) {
-  const company=insightText(s.company||s.ticker||'Cette société'),parts=[];
-  const pct=(v)=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+' %';};
-  const addReturn=(label,value)=>{const v=pct(value);if(v!==null)parts.push(label+' : '+v);};
-  if(s.above_20day_average===true&&s.above_50day_average===true)parts.push('Le dernier cours se situe au-dessus des moyennes mobiles de 20 et 50 séances, ce qui montre un alignement des tendances à court et moyen terme.');
-  else if(s.above_20day_average===true&&s.above_50day_average===false)parts.push('Le cours dépasse sa moyenne de 20 séances, mais reste sous celle de 50 séances : l’amélioration à court terme n’est pas encore confirmée à moyen terme.');
-  else if(s.above_20day_average===false&&s.above_50day_average===true)parts.push('Le cours est sous sa moyenne de 20 séances tout en restant au-dessus de celle de 50 séances; le tableau de tendance est mitigé.');
-  else if(s.above_20day_average===false&&s.above_50day_average===false)parts.push('Le cours est sous ses moyennes mobiles de 20 et 50 séances, ce qui indique une tendance plus faible malgré sa présence dans le filtre d’activité.');
-  addReturn('Rendement sur 5 séances',s.return_5d);addReturn('20 séances',s.return_20d);addReturn('50 séances',s.return_50d);
-  const vr=Number(s.volume_ratio);
-  if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))parts.push(vr>=1.5?'Le volume atteint '+vr.toFixed(1)+' fois sa moyenne sur 20 séances, signe d’une participation particulièrement active.':vr<=0.75?'Le volume atteint '+vr.toFixed(1)+' fois sa moyenne sur 20 séances; le mouvement récent s’accompagne donc d’une activité plus faible que d’habitude.':'Le volume atteint '+vr.toFixed(1)+' fois sa moyenne sur 20 séances, près de son niveau récent habituel.');
-  const liq=Number(s.average_dollar_volume_20d);
-  if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)parts.push('Le volume quotidien moyen en dollars sur 20 séances est de '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('fr-CA',{maximumFractionDigits:0})+', ce qui donne un aperçu de la liquidité.');
-  const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
-  if(f&&s.score_basis==='SEC fundamentals + market data'){
-    parts.push('Des données financières issues des dépôts SEC sont également disponibles'+(f.fiscal_year?' pour l’exercice '+f.fiscal_year:'')+'.');
-    if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))parts.push('Le chiffre d’affaires déclaré a évolué de '+pct(f.revenue_growth_percent)+' sur un an.');
-    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.operatingIncome)))parts.push('La marge opérationnelle déclarée est de '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+' %.');
-    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.netIncome)))parts.push('La marge nette déclarée est de '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+' %.');
-    if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined&&Number.isFinite(Number(m.operatingCashFlow)))parts.push('Les flux de trésorerie d’exploitation déclarés sont '+(Number(m.operatingCashFlow)>=0?'positifs':'négatifs')+' dans les dernières données annuelles disponibles.');
-    if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined&&Number.isFinite(Number(m.liabilities)))parts.push('Les passifs déclarés représentent '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+' % de l’actif.');
-  }else parts.push('Les données fondamentales SEC étaient absentes ou insuffisantes pour une évaluation équilibrée; cette sélection repose donc uniquement sur les données de marché.');
-  if(Number(s.rsi)>=70)parts.push('Le RSI est élevé à '+insightNumber(s.rsi,1)+'; le mouvement récent pourrait être étiré.');
-  if(Number(s.volatility_20d)>=5)parts.push('La volatilité récente sur 20 séances est élevée à '+insightNumber(s.volatility_20d,2)+' %.');
-  if(penny)parts.push('Comme il s’agit d’un titre à faible prix, la volatilité, la liquidité limitée et les écarts de négociation peuvent être plus importants. Consultez attentivement les documents de la société et les risques.');
-  else parts.push('Ces observations décrivent les données du filtre; elles ne mesurent pas à elles seules la qualité globale de l’entreprise ni ses résultats futurs.');
-  return company+' figure dans la sélection parce que ses données de marché et, lorsque la couverture est suffisante, ses données financières déclarées se démarquent dans le relevé actuel. '+parts.join(' ');
+function getStockInsight(s,penny){
+ const company=insightText(s.company||s.ticker||'Cette société'),signals=[];
+ const pct=v=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+' %';};
+ let trend='';
+ if(s.above_20day_average===true&&s.above_50day_average===true)trend='Le dernier cours dépasse les moyennes mobiles de 20 et 50 séances, ce qui montre un alignement des tendances à court et moyen terme.';
+ else if(s.above_20day_average===true&&s.above_50day_average===false)trend='Le cours dépasse sa moyenne de 20 séances, mais reste sous celle de 50 séances; l’amélioration à court terme n’est pas encore confirmée à moyen terme.';
+ else if(s.above_20day_average===false&&s.above_50day_average===true)trend='Le cours est sous sa moyenne de 20 séances, mais au-dessus de celle de 50 séances; la tendance est mitigée.';
+ else if(s.above_20day_average===false&&s.above_50day_average===false)trend='Le cours est sous les moyennes mobiles de 20 et 50 séances, ce qui indique une tendance plus faible malgré sa présence dans le filtre d’activité.';
+ if(trend)signals.push(trend);
+ const returns=[['5 séances',s.return_5d],['20 séances',s.return_20d],['50 séances',s.return_50d]].filter(x=>x[1]!==null&&x[1]!==undefined&&Number.isFinite(Number(x[1]))).map(x=>x[0]+' '+pct(x[1]));
+ if(returns.length)signals.push('Rendements observés : '+returns.join(', ')+'.');
+ const activity=[],vr=Number(s.volume_ratio),liq=Number(s.average_dollar_volume_20d);
+ if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))activity.push('volume à '+vr.toFixed(1)+' fois sa moyenne sur 20 séances');
+ if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)activity.push('volume quotidien moyen en dollars sur 20 séances de '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('fr-CA',{maximumFractionDigits:0}));
+ if(activity.length)signals.push('Activité et liquidité : '+activity.join('; ')+'.');
+ const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
+ if(f&&s.score_basis==='SEC fundamentals + market data'){
+  const facts=[];
+  if(f.fiscal_year)facts.push('exercice '+f.fiscal_year);
+  if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))facts.push('croissance du chiffre d’affaires '+pct(f.revenue_growth_percent));
+  if(m.revenue&&Number(m.revenue)!==0&&m.operatingIncome!==null&&m.operatingIncome!==undefined)facts.push('marge opérationnelle '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+' %');
+  if(m.revenue&&Number(m.revenue)!==0&&m.netIncome!==null&&m.netIncome!==undefined)facts.push('marge nette '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+' %');
+  if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined)facts.push('flux de trésorerie d’exploitation '+(Number(m.operatingCashFlow)>=0?'positifs':'négatifs'));
+  if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined)facts.push('passifs représentant '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+' % de l’actif');
+  signals.push('Indicateurs disponibles des dépôts SEC ('+facts.join('; ')+').');
+ }else signals.push('Les données fondamentales SEC étaient absentes ou insuffisantes pour une évaluation équilibrée; cette sélection repose donc uniquement sur les données de marché.');
+ const cautions=[];
+ if(Number(s.rsi)>=70)cautions.push('RSI élevé à '+insightNumber(s.rsi,1));
+ if(Number(s.volatility_20d)>=5)cautions.push('volatilité élevée sur 20 séances ('+insightNumber(s.volatility_20d,2)+' %)');
+ if(penny)cautions.push('les titres à faible prix peuvent présenter une volatilité accrue, une liquidité plus faible et des écarts plus importants');
+ if(cautions.length)signals.push('Contexte de risque : '+cautions.join('; ')+'.');
+ return company+' figure dans le filtre actuel parce que ses signaux de marché'+(f&&s.score_basis==='SEC fundamentals + market data'?' et ses indicateurs SEC':'')+' se démarquent. '+signals.join(' ')+' Ces observations décrivent les données disponibles, pas la qualité de l’entreprise ni ses résultats futurs.';
 }
-function getCryptoInsight(c,index) {
-  const name=insightText(c.name||c.symbol||'Cette cryptomonnaie'),symbol=String(c.symbol||'').toUpperCase(),parts=[];
-  const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h);
-  if(volume>0)parts.push('Elle se classe au rang #'+(index+1)+' de ce groupe selon le volume déclaré sur 24 heures, soit environ '+volume.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US.');
-  if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))parts.push('Sa variation de prix sur 24 heures est de '+(change>0?'+':'')+change.toFixed(2)+' %.');
-  const cap=Number(c.market_cap);
-  if(cap>0)parts.push('Sa capitalisation boursière déclarée est d’environ '+cap.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US.');
-  const rank=Number(c.market_cap_rank);
-  if(rank>0)parts.push('Rang CoinGecko selon la capitalisation : #'+rank+'.');
-  const fdv=Number(c.fully_diluted_valuation);
-  if(fdv>0&&cap>0)parts.push('Sa valorisation entièrement diluée est d’environ '+fdv.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US, à comparer à sa capitalisation actuelle.');
-  if(cap>0&&volume>0)parts.push('Le volume sur 24 heures représente '+(volume/cap*100).toFixed(1)+' % de la capitalisation déclarée; il s’agit d’une mesure de rotation, pas d’achats nets.');
-  if(['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol))parts.push('Il s’agit d’une cryptomonnaie stable; son volume élevé reflète surtout les échanges et les règlements, et non le potentiel de variation d’un actif volatil classique.');
-  parts.push('Ce classement met en évidence l’activité déclarée, pas la qualité du projet ni ses résultats futurs. Vérifiez séparément la liquidité, l’offre de jetons et les informations propres au projet.');
-  return name+' est mise en évidence en raison de son activité de négociation actuelle. '+parts.join(' ');
+function getCryptoInsight(c,index){
+ const name=insightText(c.name||c.symbol||'Cette cryptomonnaie'),symbol=String(c.symbol||'').toUpperCase(),facts=[];
+ const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h),cap=Number(c.market_cap),rank=Number(c.market_cap_rank),fdv=Number(c.fully_diluted_valuation);
+ if(volume>0)facts.push('volume sur 24 heures de '+volume.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US (rang #'+(index+1)+' dans ce groupe)');
+ if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))facts.push('variation sur 24 heures de '+(change>0?'+':'')+change.toFixed(2)+' %');
+ if(cap>0)facts.push('capitalisation boursière de '+cap.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US');
+ if(rank>0)facts.push('rang CoinGecko selon la capitalisation #'+rank);
+ if(fdv>0&&cap>0)facts.push('valorisation entièrement diluée de '+fdv.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US');
+ if(cap>0&&volume>0)facts.push('rotation sur 24 heures équivalant à '+(volume/cap*100).toFixed(1)+' % de la capitalisation');
+ const stable=['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol);
+ return name+' est mise en évidence pour son activité de négociation déclarée. '+(facts.length?'Données CoinGecko disponibles : '+facts.join('; ')+'. ':'')+(stable?'En tant que cryptomonnaie stable, son volume reflète surtout les échanges et les règlements, et non le comportement d’un actif volatil classique. ':'')+'Le volume mesure la rotation, pas les achats nets ni la qualité du projet; vérifiez la liquidité, l’offre de jetons et les informations du projet.';
 }
 
 /* USD to CAD display helper: fetched live and cached for one hour. */
@@ -6600,54 +6600,54 @@ function insightText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
 
-function insightNumber(value, digits=1) {
-  if(value===null||value===undefined||value==='')return null;
-  const n=Number(value);
-  return Number.isFinite(n)?n.toLocaleString('fr-CA',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
+function insightNumber(value,digits=1){
+ if(value===null||value===undefined||value==='')return null;
+ const n=Number(value);return Number.isFinite(n)?n.toLocaleString('fr-CA',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
 }
-function getStockInsight(s, penny) {
-  const company=insightText(s.company||s.ticker||'Cette société'),parts=[];
-  const pct=(v)=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+' %';};
-  const addReturn=(label,value)=>{const v=pct(value);if(v!==null)parts.push(label+' : '+v);};
-  if(s.above_20day_average===true&&s.above_50day_average===true)parts.push('Le dernier cours se situe au-dessus des moyennes mobiles de 20 et 50 séances, ce qui montre un alignement des tendances à court et moyen terme.');
-  else if(s.above_20day_average===true&&s.above_50day_average===false)parts.push('Le cours dépasse sa moyenne de 20 séances, mais reste sous celle de 50 séances : l’amélioration à court terme n’est pas encore confirmée à moyen terme.');
-  else if(s.above_20day_average===false&&s.above_50day_average===true)parts.push('Le cours est sous sa moyenne de 20 séances tout en restant au-dessus de celle de 50 séances; le tableau de tendance est mitigé.');
-  else if(s.above_20day_average===false&&s.above_50day_average===false)parts.push('Le cours est sous ses moyennes mobiles de 20 et 50 séances, ce qui indique une tendance plus faible malgré sa présence dans le filtre d’activité.');
-  addReturn('Rendement sur 5 séances',s.return_5d);addReturn('20 séances',s.return_20d);addReturn('50 séances',s.return_50d);
-  const vr=Number(s.volume_ratio);
-  if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))parts.push(vr>=1.5?'Le volume atteint '+vr.toFixed(1)+' fois sa moyenne sur 20 séances, signe d’une participation particulièrement active.':vr<=0.75?'Le volume atteint '+vr.toFixed(1)+' fois sa moyenne sur 20 séances; le mouvement récent s’accompagne donc d’une activité plus faible que d’habitude.':'Le volume atteint '+vr.toFixed(1)+' fois sa moyenne sur 20 séances, près de son niveau récent habituel.');
-  const liq=Number(s.average_dollar_volume_20d);
-  if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)parts.push('Le volume quotidien moyen en dollars sur 20 séances est de '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('fr-CA',{maximumFractionDigits:0})+', ce qui donne un aperçu de la liquidité.');
-  const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
-  if(f&&s.score_basis==='SEC fundamentals + market data'){
-    parts.push('Des données financières issues des dépôts SEC sont également disponibles'+(f.fiscal_year?' pour l’exercice '+f.fiscal_year:'')+'.');
-    if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))parts.push('Le chiffre d’affaires déclaré a évolué de '+pct(f.revenue_growth_percent)+' sur un an.');
-    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.operatingIncome)))parts.push('La marge opérationnelle déclarée est de '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+' %.');
-    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.netIncome)))parts.push('La marge nette déclarée est de '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+' %.');
-    if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined&&Number.isFinite(Number(m.operatingCashFlow)))parts.push('Les flux de trésorerie d’exploitation déclarés sont '+(Number(m.operatingCashFlow)>=0?'positifs':'négatifs')+' dans les dernières données annuelles disponibles.');
-    if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined&&Number.isFinite(Number(m.liabilities)))parts.push('Les passifs déclarés représentent '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+' % de l’actif.');
-  }else parts.push('Les données fondamentales SEC étaient absentes ou insuffisantes pour une évaluation équilibrée; cette sélection repose donc uniquement sur les données de marché.');
-  if(Number(s.rsi)>=70)parts.push('Le RSI est élevé à '+insightNumber(s.rsi,1)+'; le mouvement récent pourrait être étiré.');
-  if(Number(s.volatility_20d)>=5)parts.push('La volatilité récente sur 20 séances est élevée à '+insightNumber(s.volatility_20d,2)+' %.');
-  if(penny)parts.push('Comme il s’agit d’un titre à faible prix, la volatilité, la liquidité limitée et les écarts de négociation peuvent être plus importants. Consultez attentivement les documents de la société et les risques.');
-  else parts.push('Ces observations décrivent les données du filtre; elles ne mesurent pas à elles seules la qualité globale de l’entreprise ni ses résultats futurs.');
-  return company+' figure dans la sélection parce que ses données de marché et, lorsque la couverture est suffisante, ses données financières déclarées se démarquent dans le relevé actuel. '+parts.join(' ');
+function getStockInsight(s,penny){
+ const company=insightText(s.company||s.ticker||'Cette société'),signals=[];
+ const pct=v=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+' %';};
+ let trend='';
+ if(s.above_20day_average===true&&s.above_50day_average===true)trend='Le dernier cours dépasse les moyennes mobiles de 20 et 50 séances, ce qui montre un alignement des tendances à court et moyen terme.';
+ else if(s.above_20day_average===true&&s.above_50day_average===false)trend='Le cours dépasse sa moyenne de 20 séances, mais reste sous celle de 50 séances; l’amélioration à court terme n’est pas encore confirmée à moyen terme.';
+ else if(s.above_20day_average===false&&s.above_50day_average===true)trend='Le cours est sous sa moyenne de 20 séances, mais au-dessus de celle de 50 séances; la tendance est mitigée.';
+ else if(s.above_20day_average===false&&s.above_50day_average===false)trend='Le cours est sous les moyennes mobiles de 20 et 50 séances, ce qui indique une tendance plus faible malgré sa présence dans le filtre d’activité.';
+ if(trend)signals.push(trend);
+ const returns=[['5 séances',s.return_5d],['20 séances',s.return_20d],['50 séances',s.return_50d]].filter(x=>x[1]!==null&&x[1]!==undefined&&Number.isFinite(Number(x[1]))).map(x=>x[0]+' '+pct(x[1]));
+ if(returns.length)signals.push('Rendements observés : '+returns.join(', ')+'.');
+ const activity=[],vr=Number(s.volume_ratio),liq=Number(s.average_dollar_volume_20d);
+ if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))activity.push('volume à '+vr.toFixed(1)+' fois sa moyenne sur 20 séances');
+ if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)activity.push('volume quotidien moyen en dollars sur 20 séances de '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('fr-CA',{maximumFractionDigits:0}));
+ if(activity.length)signals.push('Activité et liquidité : '+activity.join('; ')+'.');
+ const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
+ if(f&&s.score_basis==='SEC fundamentals + market data'){
+  const facts=[];
+  if(f.fiscal_year)facts.push('exercice '+f.fiscal_year);
+  if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))facts.push('croissance du chiffre d’affaires '+pct(f.revenue_growth_percent));
+  if(m.revenue&&Number(m.revenue)!==0&&m.operatingIncome!==null&&m.operatingIncome!==undefined)facts.push('marge opérationnelle '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+' %');
+  if(m.revenue&&Number(m.revenue)!==0&&m.netIncome!==null&&m.netIncome!==undefined)facts.push('marge nette '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+' %');
+  if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined)facts.push('flux de trésorerie d’exploitation '+(Number(m.operatingCashFlow)>=0?'positifs':'négatifs'));
+  if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined)facts.push('passifs représentant '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+' % de l’actif');
+  signals.push('Indicateurs disponibles des dépôts SEC ('+facts.join('; ')+').');
+ }else signals.push('Les données fondamentales SEC étaient absentes ou insuffisantes pour une évaluation équilibrée; cette sélection repose donc uniquement sur les données de marché.');
+ const cautions=[];
+ if(Number(s.rsi)>=70)cautions.push('RSI élevé à '+insightNumber(s.rsi,1));
+ if(Number(s.volatility_20d)>=5)cautions.push('volatilité élevée sur 20 séances ('+insightNumber(s.volatility_20d,2)+' %)');
+ if(penny)cautions.push('les titres à faible prix peuvent présenter une volatilité accrue, une liquidité plus faible et des écarts plus importants');
+ if(cautions.length)signals.push('Contexte de risque : '+cautions.join('; ')+'.');
+ return company+' figure dans le filtre actuel parce que ses signaux de marché'+(f&&s.score_basis==='SEC fundamentals + market data'?' et ses indicateurs SEC':'')+' se démarquent. '+signals.join(' ')+' Ces observations décrivent les données disponibles, pas la qualité de l’entreprise ni ses résultats futurs.';
 }
-function getCryptoInsight(c,index) {
-  const name=insightText(c.name||c.symbol||'Cette cryptomonnaie'),symbol=String(c.symbol||'').toUpperCase(),parts=[];
-  const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h);
-  if(volume>0)parts.push('Elle se classe au rang #'+(index+1)+' de ce groupe selon le volume déclaré sur 24 heures, soit environ '+volume.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US.');
-  if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))parts.push('Sa variation de prix sur 24 heures est de '+(change>0?'+':'')+change.toFixed(2)+' %.');
-  const cap=Number(c.market_cap);
-  if(cap>0)parts.push('Sa capitalisation boursière déclarée est d’environ '+cap.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US.');
-  const rank=Number(c.market_cap_rank);
-  if(rank>0)parts.push('Rang CoinGecko selon la capitalisation : #'+rank+'.');
-  const fdv=Number(c.fully_diluted_valuation);
-  if(fdv>0&&cap>0)parts.push('Sa valorisation entièrement diluée est d’environ '+fdv.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US, à comparer à sa capitalisation actuelle.');
-  if(cap>0&&volume>0)parts.push('Le volume sur 24 heures représente '+(volume/cap*100).toFixed(1)+' % de la capitalisation déclarée; il s’agit d’une mesure de rotation, pas d’achats nets.');
-  if(['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol))parts.push('Il s’agit d’une cryptomonnaie stable; son volume élevé reflète surtout les échanges et les règlements, et non le potentiel de variation d’un actif volatil classique.');
-  parts.push('Ce classement met en évidence l’activité déclarée, pas la qualité du projet ni ses résultats futurs. Vérifiez séparément la liquidité, l’offre de jetons et les informations propres au projet.');
-  return name+' est mise en évidence en raison de son activité de négociation actuelle. '+parts.join(' ');
+function getCryptoInsight(c,index){
+ const name=insightText(c.name||c.symbol||'Cette cryptomonnaie'),symbol=String(c.symbol||'').toUpperCase(),facts=[];
+ const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h),cap=Number(c.market_cap),rank=Number(c.market_cap_rank),fdv=Number(c.fully_diluted_valuation);
+ if(volume>0)facts.push('volume sur 24 heures de '+volume.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US (rang #'+(index+1)+' dans ce groupe)');
+ if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))facts.push('variation sur 24 heures de '+(change>0?'+':'')+change.toFixed(2)+' %');
+ if(cap>0)facts.push('capitalisation boursière de '+cap.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US');
+ if(rank>0)facts.push('rang CoinGecko selon la capitalisation #'+rank);
+ if(fdv>0&&cap>0)facts.push('valorisation entièrement diluée de '+fdv.toLocaleString('fr-CA',{maximumFractionDigits:0})+' $ US');
+ if(cap>0&&volume>0)facts.push('rotation sur 24 heures équivalant à '+(volume/cap*100).toFixed(1)+' % de la capitalisation');
+ const stable=['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol);
+ return name+' est mise en évidence pour son activité de négociation déclarée. '+(facts.length?'Données CoinGecko disponibles : '+facts.join('; ')+'. ':'')+(stable?'En tant que cryptomonnaie stable, son volume reflète surtout les échanges et les règlements, et non le comportement d’un actif volatil classique. ':'')+'Le volume mesure la rotation, pas les achats nets ni la qualité du projet; vérifiez la liquidité, l’offre de jetons et les informations du projet.';
 }
 
 /* USD to CAD display helper: fetched live and cached for one hour. */
