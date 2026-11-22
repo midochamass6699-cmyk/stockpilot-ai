@@ -3278,7 +3278,7 @@ input, select, textarea, button {
  toggle.dataset.closeLabel="CLOSE CHART";
  let loaded=false;
  let picksExchangeMap = Object.create(null);
- const picksExchangeReady = fetch('/data/picks.json')
+ const picksExchangeReady = fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'})
   .then(response => response.ok ? response.json() : Promise.reject(new Error('Picks feed unavailable')))
   .then(data => {
    [...(Array.isArray(data.main)?data.main:[]), ...(Array.isArray(data.penny)?data.penny:[])].forEach(item => {
@@ -3357,7 +3357,7 @@ input, select, textarea, button {
  const safe=(v)=>String(v==null?'':v);const esc=(v)=>safe(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const currency=v=>safe(v||'USD');const fmt=(v,d=2)=>Number.isFinite(Number(v))?Number(v).toFixed(d):'—';
  let picks={main:[],penny:[]};let activeTicker='AAPL';let activeExchange='NASDAQ';
- const fetchPicks=fetch('/data/picks.json').then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.'; });
+ const fetchPicks=fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.'; });
  function currentSymbol(){const raw=(symbol?.value||activeTicker).trim().toUpperCase();if(raw.includes(':'))return raw;const ex=market?.value||activeExchange;return (ex==='BINANCE'?'BINANCE':ex)+':'+raw;}
  function loadTicker(ticker,exchange){if(!ticker)return;const m=$('sp-terminal-market'),s=$('sp-terminal-symbol');const ex=String(exchange||'NASDAQ').toUpperCase();if(m)m.value=ex.includes('NYSE')?'NYSE':ex.includes('TSX')?'TSX':ex.includes('BINANCE')?'BINANCE':'NASDAQ';if(s)s.value=ticker;activeTicker=ticker;activeExchange=m?.value||'NASDAQ';const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}if(load)load.click();renderCompany();}
  root.querySelectorAll('[data-sp-tool]').forEach(btn=>btn.addEventListener('click',()=>{const n=btn.dataset.spTool;root.querySelectorAll('[data-sp-tool]').forEach(b=>b.setAttribute('aria-selected',String(b===btn)));root.querySelectorAll('.sp-terminal-tool-panel').forEach(p=>p.classList.toggle('is-active',p.id==='sp-terminal-tool-panel-'+n));if(n==='2')renderTechnical();if(n==='3')renderCompany();}));
@@ -4386,7 +4386,7 @@ async function loadStocks() {
 
   try {
 
-    const response = await fetch('/data/picks.json');
+    const response = await fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'});
 
     if (!response.ok) {
       throw new Error('Market data file returned HTTP ' + response.status);
@@ -5751,7 +5751,7 @@ body { overflow-x: hidden; }
       });
     });
   }
-  fetch('/data/picks.json')
+  fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'})
     .then(r=>{if(!r.ok)throw new Error('Picks feed unavailable');return r.json();})
     .then(data=>{
       const onlyUS=location.pathname.indexOf('/us/')===0;
@@ -6809,7 +6809,7 @@ function setMarketPreview(id, items, kind) {
 }
 
 /* LOAD CRYPTO */
-async function loadCrypto() {
+async function loadCryptoLegacy() {
 
   const cards = document.getElementById('cryptoCards');
   const updated = document.getElementById('cryptoUpdated');
@@ -7043,7 +7043,7 @@ async function loadStocks() {
 
   try {
 
-    const response = await fetch('/data/picks.json');
+    const response = await fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'});
 
     if (!response.ok) {
       throw new Error('Market data file returned HTTP ' + response.status);
@@ -8068,7 +8068,7 @@ header{margin-bottom:0!important}
  const compact=n=>new Intl.NumberFormat(locale,{notation:'compact',maximumFractionDigits:2}).format(n);
  const signed=n=>(n>0?'+':'')+n.toLocaleString(locale,{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
  const color=(el,n)=>{el.classList.toggle('up',n>0);el.classList.toggle('down',n<0);};
- fetch('/data/picks.json').then(r=>{if(!r.ok)throw Error('Market data unavailable');return r.json();}).then(d=>{
+ fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Market data unavailable');return r.json();}).then(d=>{
   const p=(d.stock_of_day&&d.stock_of_day.US)||((Array.isArray(d.main)?d.main:[]).find(x=>x.market==='US'))||((Array.isArray(d.penny)?d.penny:[]).find(x=>x.market==='US'))||null;if(!p||!p.ticker)throw Error('No featured stock');
   const symbol=String(p.ticker).toUpperCase(),currency=p.currency|| (p.market==='Canada'?'CAD':'USD');
   name.textContent=p.company||symbol;
@@ -8219,7 +8219,7 @@ body{font-size:16px}
  const launch=document.getElementById('tf-stocky-launch'),panel=document.getElementById('tf-stocky-panel'),close=document.getElementById('tf-stocky-close'),messages=document.getElementById('tf-stocky-messages'),form=document.getElementById('tf-stocky-form'),input=document.getElementById('tf-stocky-input');
  if(!launch||!panel||!messages||launch.dataset.ready)return;launch.dataset.ready='1';
  let picks=null;
- const feed=fetch('/data/picks.json').then(r=>{if(!r.ok)throw Error('feed');return r.json()}).then(d=>{picks=d;return d}).catch(()=>null);
+ const feed=fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'}).then(r=>{if(!r.ok)throw Error('feed');return r.json()}).then(d=>{picks=d;return d}).catch(()=>null);
  const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const fmt=(v,c)=>Number.isFinite(Number(v))?new Intl.NumberFormat('fr-CA',{style:'currency',currency:c||'USD',maximumFractionDigits:Number(v)<1?4:2}).format(Number(v)):'—';
  function add(html,who){const el=document.createElement('div');el.className='tf-stocky-msg'+(who?' '+who:'');el.innerHTML=html;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;}
