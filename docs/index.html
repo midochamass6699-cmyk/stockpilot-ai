@@ -4428,68 +4428,54 @@ function insightText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
 
-function getStockInsight(s, penny) {
-  const supplied = insightText(s.why_watch || s.analysis || s.editorial || s.description || s.company_description || s.business_summary);
-  if (supplied) return supplied;
-
-  const reason = insightText(s.reason);
-  const change = Number(s.change_percent);
-  const volume = Number(s.volume);
-  const score = Number(s.score);
-  const ticker = String(s.ticker || 'This company').toUpperCase();
-  const company = insightText(s.company || ticker);
-  const parts = [];
-
-  if (reason && !/^market activity$/i.test(reason) && !/^not available$/i.test(reason)) {
-    parts.push(`${company} stands out in today’s screen because ${reason.replace(/[.\s]+$/, '')}.`);
-  } else if (Number.isFinite(score)) {
-    parts.push(`${company} earned a ${score.toFixed(1)} out of 100 screening score, making it one of the names selected for a closer look today.`);
-  } else {
-    parts.push(`${company} appears in today’s market screen and is worth monitoring for changes in trading activity and price behavior.`);
-  }
-
-  if (Number.isFinite(volume) && volume > 0) {
-    parts.push(`Reported trading volume is ${volume.toLocaleString('en-US')} shares, a useful measure of current market participation.`);
-  }
-  if (Number.isFinite(change)) {
-    parts.push(`The share price is ${change >= 0 ? 'up' : 'down'} ${Math.abs(change).toFixed(2)}% today, so investors can watch whether that move continues or reverses.`);
-  }
-
-  if (penny) {
-    parts.push('Because lower-priced shares can be thinly traded and highly volatile, check liquidity, company disclosures and the reason for the move before taking any action.');
-  } else {
-    parts.push('Treat these signals as a research starting point: confirm the latest company news and financial results, and watch whether market activity is sustained.');
-  }
-  return parts.join(' ');
+function insightNumber(value, digits=1) {
+  if(value===null||value===undefined||value==='')return null;
+  const n=Number(value);
+  return Number.isFinite(n)?n.toLocaleString('en-US',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
 }
-
-function getCryptoInsight(c) {
-  const symbol = String(c.symbol || '').toUpperCase();
-  const name = insightText(c.name || symbol || 'This cryptocurrency');
-  const volume = Number(c.total_volume);
-  const change = Number(c.price_change_percentage_24h);
-  const descriptions = {
-    BTC: 'Bitcoin is the largest and most established crypto asset. Its price, liquidity and institutional demand often influence sentiment across the wider digital-asset market.',
-    ETH: 'Ethereum supports a broad ecosystem of smart contracts, decentralized applications and tokenized assets. Network use, fees and developer activity are important themes to follow.',
-    USDT: 'Tether is a widely used US-dollar stablecoin that supports trading and transfers across crypto markets. Its high turnover mainly reflects its role as a trading and settlement asset, not the same kind of price-growth opportunity as a volatile coin.',
-    USDC: 'USD Coin is a dollar-pegged stablecoin used for payments, transfers and crypto-market liquidity. Its activity is more about settlement and adoption than conventional price appreciation.',
-    BNB: 'BNB is used across the BNB Chain ecosystem and related services. Network activity, ecosystem adoption and regulatory developments are key factors to monitor.',
-    XRP: 'XRP is designed for value transfer and is associated with the XRP Ledger payment ecosystem. Adoption, network activity and regulatory developments can influence investor attention.',
-    SOL: 'Solana is a high-throughput blockchain used for decentralized applications, trading and digital assets. Network reliability, application activity and ecosystem growth are useful indicators.',
-    DOGE: 'Dogecoin is a highly recognized, community-driven cryptocurrency. Social attention and market sentiment can have a significant influence, which also makes volatility an important risk.',
-    TRX: 'TRON is a blockchain network used for digital-asset transfers and decentralized applications. Stablecoin flows and network activity are useful areas to monitor.',
-    ADA: 'Cardano is a smart-contract blockchain focused on a research-led development approach. Adoption, application growth and delivery of network upgrades are important watch points.',
-    LINK: 'Chainlink provides oracle infrastructure that connects smart contracts with external data and services. Integration growth and demand for on-chain data infrastructure are key themes.',
-    TON: 'The Open Network is a blockchain ecosystem associated with Telegram-linked distribution and applications. User adoption, ecosystem activity and execution are important to follow.',
-    LTC: 'Litecoin is an established cryptocurrency designed for peer-to-peer payments. Payment usage, liquidity and its position among older digital assets are relevant indicators.',
-    BCH: 'Bitcoin Cash focuses on peer-to-peer payments. Merchant usage, transaction activity and liquidity help provide context beyond short-term price movements.'
-  };
-  const base = descriptions[symbol] || `${name} ranks among the most actively traded cryptocurrencies in this snapshot. Its trading volume signals current market attention, but volume alone does not show whether buyers or sellers are in control.`;
-  const extra = [];
-  if (Number.isFinite(volume) && volume > 0) extra.push(`Its reported 24-hour trading volume is approximately US$${volume.toLocaleString('en-US', {maximumFractionDigits: 0})}.`);
-  if (Number.isFinite(change)) extra.push(`The 24-hour price move is ${change >= 0 ? 'positive' : 'negative'} at ${change > 0 ? '+' : ''}${change.toFixed(2)}%.`);
-  extra.push('Watch liquidity, market-wide sentiment and relevant project developments; crypto assets can experience sharp losses.');
-  return base + ' ' + extra.join(' ');
+function getStockInsight(s, penny) {
+  const company=insightText(s.company||s.ticker||'This company'),parts=[];
+  const pct=(v)=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+'%';};
+  const addReturn=(label,value)=>{const v=pct(value);if(v!==null)parts.push(label+' '+v);};
+  if(s.above_20day_average===true&&s.above_50day_average===true)parts.push('The latest price is above both its 20- and 50-day moving averages, showing aligned short- and medium-term trend conditions.');
+  else if(s.above_20day_average===true&&s.above_50day_average===false)parts.push('The latest price is above its 20-day average but below its 50-day average, indicating a short-term improvement that has not yet aligned with the medium-term trend.');
+  else if(s.above_20day_average===false&&s.above_50day_average===true)parts.push('The latest price is below its 20-day average while remaining above its 50-day average, a mixed trend picture worth monitoring.');
+  else if(s.above_20day_average===false&&s.above_50day_average===false)parts.push('The latest price is below both its 20- and 50-day moving averages, indicating weaker trend conditions despite its appearance in the activity screen.');
+  addReturn('Recent return — 5 days:',s.return_5d);addReturn('20 days:',s.return_20d);addReturn('50 days:',s.return_50d);
+  const vr=Number(s.volume_ratio);
+  if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))parts.push(vr>=1.5?'Trading volume is '+vr.toFixed(1)+'× its 20-day average, indicating unusually active participation.':vr<=0.75?'Trading volume is '+vr.toFixed(1)+'× its 20-day average, so the recent move is occurring on lighter-than-usual activity.':'Trading volume is '+vr.toFixed(1)+'× its 20-day average, close to its recent norm.');
+  const liq=Number(s.average_dollar_volume_20d);
+  if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)parts.push('Average daily dollar volume over 20 sessions is '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('en-US',{maximumFractionDigits:0})+', providing context on trading liquidity.');
+  const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
+  if(f&&s.score_basis==='SEC fundamentals + market data'){
+    parts.push('SEC company-filing data is also available'+(f.fiscal_year?' for fiscal year '+f.fiscal_year:'')+'.');
+    if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))parts.push('Reported revenue changed '+pct(f.revenue_growth_percent)+' year over year.');
+    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.operatingIncome)))parts.push('The latest reported operating margin is '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+'%.');
+    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.netIncome)))parts.push('The latest reported net margin is '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+'%.');
+    if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined&&Number.isFinite(Number(m.operatingCashFlow)))parts.push('Reported operating cash flow is '+(Number(m.operatingCashFlow)>=0?'positive':'negative')+' in the latest available annual data.');
+    if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined&&Number.isFinite(Number(m.liabilities)))parts.push('Reported liabilities represent '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+'% of assets.');
+  }else parts.push('SEC fundamentals were unavailable or did not meet the minimum coverage needed for a balanced filing-based assessment; this selection therefore reflects market data only.');
+  if(Number(s.rsi)>=70)parts.push('RSI is elevated at '+insightNumber(s.rsi,1)+', so the recent move may be extended.');
+  if(Number(s.volatility_20d)>=5)parts.push('Recent 20-session volatility is elevated at '+insightNumber(s.volatility_20d,2)+'%.');
+  if(penny)parts.push('As a lower-priced security, it may carry greater volatility, thinner liquidity and wider trading spreads; review the company disclosures and risk information carefully.');
+  else parts.push('These observations explain the data behind the screen, not the company’s overall quality or future performance.');
+  return company+' is included because its available market and, where sufficiently covered, filing data stood out in the current research screen. '+parts.join(' ');
+}
+function getCryptoInsight(c,index) {
+  const name=insightText(c.name||c.symbol||'This cryptocurrency'),symbol=String(c.symbol||'').toUpperCase(),parts=[];
+  const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h);
+  if(volume>0)parts.push('It ranks #'+(index+1)+' in this displayed group by reported 24-hour trading volume, approximately US$'+volume.toLocaleString('en-US',{maximumFractionDigits:0})+'.');
+  if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))parts.push('Its 24-hour price change is '+(change>0?'+':'')+change.toFixed(2)+'%.');
+  const cap=Number(c.market_cap);
+  if(cap>0)parts.push('Reported market capitalization is approximately US$'+cap.toLocaleString('en-US',{maximumFractionDigits:0})+'.');
+  const rank=Number(c.market_cap_rank);
+  if(rank>0)parts.push('CoinGecko market-cap rank: #'+rank+'.');
+  const fdv=Number(c.fully_diluted_valuation);
+  if(fdv>0&&cap>0)parts.push('Fully diluted valuation is approximately US$'+fdv.toLocaleString('en-US',{maximumFractionDigits:0})+', compared with the reported market capitalization.');
+  if(cap>0&&volume>0)parts.push('The 24-hour volume is '+(volume/cap*100).toFixed(1)+'% of reported market capitalization, a measure of turnover rather than net buying.');
+  if(['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol))parts.push('This is a stablecoin, so its high turnover primarily reflects trading and settlement activity; it should not be interpreted like the price movement of a typical volatile crypto asset.');
+  parts.push('The list highlights reported market activity, not project quality or future performance. Check liquidity, token supply information and project-specific disclosures independently.');
+  return name+' is highlighted because of its current trading activity. '+parts.join(' ');
 }
 
 /* CRYPTO CARD */
@@ -4567,7 +4553,7 @@ function renderCrypto(c,index) {
 
       <section class="stock-insight" aria-label="Why this cryptocurrency is worth watching">
         <h4>Why it’s worth watching</h4>
-        <p>${esc(getCryptoInsight(c))}</p>
+        <p>${esc(getCryptoInsight(c,index))}</p>
       </section>
 
       <a class="stock-link"
@@ -7449,68 +7435,54 @@ function insightText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
 
-function getStockInsight(s, penny) {
-  const supplied = insightText(s.why_watch || s.analysis || s.editorial || s.description || s.company_description || s.business_summary);
-  if (supplied) return supplied;
-
-  const reason = insightText(s.reason);
-  const change = Number(s.change_percent);
-  const volume = Number(s.volume);
-  const score = Number(s.score);
-  const ticker = String(s.ticker || 'This company').toUpperCase();
-  const company = insightText(s.company || ticker);
-  const parts = [];
-
-  if (reason && !/^market activity$/i.test(reason) && !/^not available$/i.test(reason)) {
-    parts.push(`${company} stands out in today’s screen because ${reason.replace(/[.\s]+$/, '')}.`);
-  } else if (Number.isFinite(score)) {
-    parts.push(`${company} earned a ${score.toFixed(1)} out of 100 screening score, making it one of the names selected for a closer look today.`);
-  } else {
-    parts.push(`${company} appears in today’s market screen and is worth monitoring for changes in trading activity and price behavior.`);
-  }
-
-  if (Number.isFinite(volume) && volume > 0) {
-    parts.push(`Reported trading volume is ${volume.toLocaleString('en-US')} shares, a useful measure of current market participation.`);
-  }
-  if (Number.isFinite(change)) {
-    parts.push(`The share price is ${change >= 0 ? 'up' : 'down'} ${Math.abs(change).toFixed(2)}% today, so investors can watch whether that move continues or reverses.`);
-  }
-
-  if (penny) {
-    parts.push('Because lower-priced shares can be thinly traded and highly volatile, check liquidity, company disclosures and the reason for the move before taking any action.');
-  } else {
-    parts.push('Treat these signals as a research starting point: confirm the latest company news and financial results, and watch whether market activity is sustained.');
-  }
-  return parts.join(' ');
+function insightNumber(value, digits=1) {
+  if(value===null||value===undefined||value==='')return null;
+  const n=Number(value);
+  return Number.isFinite(n)?n.toLocaleString('en-US',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
 }
-
-function getCryptoInsight(c) {
-  const symbol = String(c.symbol || '').toUpperCase();
-  const name = insightText(c.name || symbol || 'This cryptocurrency');
-  const volume = Number(c.total_volume);
-  const change = Number(c.price_change_percentage_24h);
-  const descriptions = {
-    BTC: 'Bitcoin is the largest and most established crypto asset. Its price, liquidity and institutional demand often influence sentiment across the wider digital-asset market.',
-    ETH: 'Ethereum supports a broad ecosystem of smart contracts, decentralized applications and tokenized assets. Network use, fees and developer activity are important themes to follow.',
-    USDT: 'Tether is a widely used US-dollar stablecoin that supports trading and transfers across crypto markets. Its high turnover mainly reflects its role as a trading and settlement asset, not the same kind of price-growth opportunity as a volatile coin.',
-    USDC: 'USD Coin is a dollar-pegged stablecoin used for payments, transfers and crypto-market liquidity. Its activity is more about settlement and adoption than conventional price appreciation.',
-    BNB: 'BNB is used across the BNB Chain ecosystem and related services. Network activity, ecosystem adoption and regulatory developments are key factors to monitor.',
-    XRP: 'XRP is designed for value transfer and is associated with the XRP Ledger payment ecosystem. Adoption, network activity and regulatory developments can influence investor attention.',
-    SOL: 'Solana is a high-throughput blockchain used for decentralized applications, trading and digital assets. Network reliability, application activity and ecosystem growth are useful indicators.',
-    DOGE: 'Dogecoin is a highly recognized, community-driven cryptocurrency. Social attention and market sentiment can have a significant influence, which also makes volatility an important risk.',
-    TRX: 'TRON is a blockchain network used for digital-asset transfers and decentralized applications. Stablecoin flows and network activity are useful areas to monitor.',
-    ADA: 'Cardano is a smart-contract blockchain focused on a research-led development approach. Adoption, application growth and delivery of network upgrades are important watch points.',
-    LINK: 'Chainlink provides oracle infrastructure that connects smart contracts with external data and services. Integration growth and demand for on-chain data infrastructure are key themes.',
-    TON: 'The Open Network is a blockchain ecosystem associated with Telegram-linked distribution and applications. User adoption, ecosystem activity and execution are important to follow.',
-    LTC: 'Litecoin is an established cryptocurrency designed for peer-to-peer payments. Payment usage, liquidity and its position among older digital assets are relevant indicators.',
-    BCH: 'Bitcoin Cash focuses on peer-to-peer payments. Merchant usage, transaction activity and liquidity help provide context beyond short-term price movements.'
-  };
-  const base = descriptions[symbol] || `${name} ranks among the most actively traded cryptocurrencies in this snapshot. Its trading volume signals current market attention, but volume alone does not show whether buyers or sellers are in control.`;
-  const extra = [];
-  if (Number.isFinite(volume) && volume > 0) extra.push(`Its reported 24-hour trading volume is approximately US$${volume.toLocaleString('en-US', {maximumFractionDigits: 0})}.`);
-  if (Number.isFinite(change)) extra.push(`The 24-hour price move is ${change >= 0 ? 'positive' : 'negative'} at ${change > 0 ? '+' : ''}${change.toFixed(2)}%.`);
-  extra.push('Watch liquidity, market-wide sentiment and relevant project developments; crypto assets can experience sharp losses.');
-  return base + ' ' + extra.join(' ');
+function getStockInsight(s, penny) {
+  const company=insightText(s.company||s.ticker||'This company'),parts=[];
+  const pct=(v)=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+'%';};
+  const addReturn=(label,value)=>{const v=pct(value);if(v!==null)parts.push(label+' '+v);};
+  if(s.above_20day_average===true&&s.above_50day_average===true)parts.push('The latest price is above both its 20- and 50-day moving averages, showing aligned short- and medium-term trend conditions.');
+  else if(s.above_20day_average===true&&s.above_50day_average===false)parts.push('The latest price is above its 20-day average but below its 50-day average, indicating a short-term improvement that has not yet aligned with the medium-term trend.');
+  else if(s.above_20day_average===false&&s.above_50day_average===true)parts.push('The latest price is below its 20-day average while remaining above its 50-day average, a mixed trend picture worth monitoring.');
+  else if(s.above_20day_average===false&&s.above_50day_average===false)parts.push('The latest price is below both its 20- and 50-day moving averages, indicating weaker trend conditions despite its appearance in the activity screen.');
+  addReturn('Recent return — 5 days:',s.return_5d);addReturn('20 days:',s.return_20d);addReturn('50 days:',s.return_50d);
+  const vr=Number(s.volume_ratio);
+  if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))parts.push(vr>=1.5?'Trading volume is '+vr.toFixed(1)+'× its 20-day average, indicating unusually active participation.':vr<=0.75?'Trading volume is '+vr.toFixed(1)+'× its 20-day average, so the recent move is occurring on lighter-than-usual activity.':'Trading volume is '+vr.toFixed(1)+'× its 20-day average, close to its recent norm.');
+  const liq=Number(s.average_dollar_volume_20d);
+  if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)parts.push('Average daily dollar volume over 20 sessions is '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('en-US',{maximumFractionDigits:0})+', providing context on trading liquidity.');
+  const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
+  if(f&&s.score_basis==='SEC fundamentals + market data'){
+    parts.push('SEC company-filing data is also available'+(f.fiscal_year?' for fiscal year '+f.fiscal_year:'')+'.');
+    if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))parts.push('Reported revenue changed '+pct(f.revenue_growth_percent)+' year over year.');
+    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.operatingIncome)))parts.push('The latest reported operating margin is '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+'%.');
+    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.netIncome)))parts.push('The latest reported net margin is '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+'%.');
+    if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined&&Number.isFinite(Number(m.operatingCashFlow)))parts.push('Reported operating cash flow is '+(Number(m.operatingCashFlow)>=0?'positive':'negative')+' in the latest available annual data.');
+    if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined&&Number.isFinite(Number(m.liabilities)))parts.push('Reported liabilities represent '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+'% of assets.');
+  }else parts.push('SEC fundamentals were unavailable or did not meet the minimum coverage needed for a balanced filing-based assessment; this selection therefore reflects market data only.');
+  if(Number(s.rsi)>=70)parts.push('RSI is elevated at '+insightNumber(s.rsi,1)+', so the recent move may be extended.');
+  if(Number(s.volatility_20d)>=5)parts.push('Recent 20-session volatility is elevated at '+insightNumber(s.volatility_20d,2)+'%.');
+  if(penny)parts.push('As a lower-priced security, it may carry greater volatility, thinner liquidity and wider trading spreads; review the company disclosures and risk information carefully.');
+  else parts.push('These observations explain the data behind the screen, not the company’s overall quality or future performance.');
+  return company+' is included because its available market and, where sufficiently covered, filing data stood out in the current research screen. '+parts.join(' ');
+}
+function getCryptoInsight(c,index) {
+  const name=insightText(c.name||c.symbol||'This cryptocurrency'),symbol=String(c.symbol||'').toUpperCase(),parts=[];
+  const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h);
+  if(volume>0)parts.push('It ranks #'+(index+1)+' in this displayed group by reported 24-hour trading volume, approximately US$'+volume.toLocaleString('en-US',{maximumFractionDigits:0})+'.');
+  if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))parts.push('Its 24-hour price change is '+(change>0?'+':'')+change.toFixed(2)+'%.');
+  const cap=Number(c.market_cap);
+  if(cap>0)parts.push('Reported market capitalization is approximately US$'+cap.toLocaleString('en-US',{maximumFractionDigits:0})+'.');
+  const rank=Number(c.market_cap_rank);
+  if(rank>0)parts.push('CoinGecko market-cap rank: #'+rank+'.');
+  const fdv=Number(c.fully_diluted_valuation);
+  if(fdv>0&&cap>0)parts.push('Fully diluted valuation is approximately US$'+fdv.toLocaleString('en-US',{maximumFractionDigits:0})+', compared with the reported market capitalization.');
+  if(cap>0&&volume>0)parts.push('The 24-hour volume is '+(volume/cap*100).toFixed(1)+'% of reported market capitalization, a measure of turnover rather than net buying.');
+  if(['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol))parts.push('This is a stablecoin, so its high turnover primarily reflects trading and settlement activity; it should not be interpreted like the price movement of a typical volatile crypto asset.');
+  parts.push('The list highlights reported market activity, not project quality or future performance. Check liquidity, token supply information and project-specific disclosures independently.');
+  return name+' is highlighted because of its current trading activity. '+parts.join(' ');
 }
 
 /* CRYPTO CARD */
@@ -7588,7 +7560,7 @@ function renderCrypto(c,index) {
 
       <section class="stock-insight" aria-label="Why this cryptocurrency is worth watching">
         <h4>Why it’s worth watching</h4>
-        <p>${esc(getCryptoInsight(c))}</p>
+        <p>${esc(getCryptoInsight(c,index))}</p>
       </section>
 
       <a class="stock-link"
