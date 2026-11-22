@@ -4083,7 +4083,7 @@ function setMarketPreview(id, items, kind) {
       positive = Number.isFinite(ch) && ch >= 0;
       href = symbol ? '#sp-stock-main-' + symbol.replace(/[^A-Z0-9_-]/g, '-') : '#main-picks';
     }
-    return `<a class="sp-market-row" data-exchange="${previewEscape(kind === 'crypto' ? 'BINANCE' : (item.exchange || ''))}" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
+    return `<a class="sp-market-row" data-scroll-target="${href.startsWith('#sp-stock-') ? href.slice(1) : ''}" data-exchange="${previewEscape(kind === 'crypto' ? 'BINANCE' : (item.exchange || ''))}" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
       <span class="sp-market-logo-wrap">${logoSrc ? '<img class="sp-market-logo" src="' + previewEscape(logoSrc) + '" alt="' + previewEscape(name) + ' logo" loading="lazy" decoding="async" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'">' : ''}<span class="sp-market-logo-fallback" aria-hidden="true" style="${logoSrc ? 'display:none' : 'display:grid'}">${previewEscape((name || symbol || '?').trim().charAt(0).toUpperCase())}</span></span>
       <span class="sp-market-name"><strong>${previewEscape(name)}</strong><small>${previewEscape(symbol)}</small></span>
       <span class="sp-market-values"><strong>${previewEscape(price)}</strong><small class="${positive ? 'sp-market-up' : 'sp-market-down'}">${previewEscape(change)}</small></span>
@@ -6800,7 +6800,7 @@ function setMarketPreview(id, items, kind) {
       positive = Number.isFinite(ch) && ch >= 0;
       href = symbol ? '#sp-stock-' + (/penny/i.test(id) ? 'penny-' : 'main-') + symbol.replace(/[^A-Z0-9_-]/g, '-') : (/penny/i.test(id) ? '#penny-picks' : '#main-picks');
     }
-    return `<a class="sp-market-row" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
+    return `<a class="sp-market-row" data-scroll-target="${href.startsWith('#sp-stock-') ? href.slice(1) : ''}" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
       <span class="sp-market-logo-wrap">${logoSrc ? '<img class="sp-market-logo" src="' + previewEscape(logoSrc) + '" alt="' + previewEscape(name) + ' logo" loading="lazy" decoding="async" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'">' : ''}<span class="sp-market-logo-fallback" aria-hidden="true" style="${logoSrc ? 'display:none' : 'display:grid'}">${previewEscape((name || symbol || '?').trim().charAt(0).toUpperCase())}</span></span>
       <span class="sp-market-name"><strong>${previewEscape(name)}</strong><small>${previewEscape(symbol)}</small></span>
       <span class="sp-market-values"><strong>${previewEscape(price)}</strong><small class="${positive ? 'sp-market-up' : 'sp-market-down'}">${previewEscape(change)}</small></span>
@@ -8268,6 +8268,36 @@ body{font-size:16px}
 .live-trading-desk .sp-market-logo-fallback{display:grid;place-items:center;width:100%;height:100%;color:#17324F;font-size:17px;font-weight:800}
 @media(max-width:760px){.live-trading-desk .trading-market-list .sp-market-row{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:5px!important}.live-trading-desk .sp-market-logo-wrap{width:40px!important;height:40px!important;flex:0 0 40px!important}}
 </style>
+
+<!-- STOCKPILOT MARKET ROW NAVIGATION -->
+<script>
+(function(){
+  if (window.__stockPilotMarketRowNavigation) return;
+  window.__stockPilotMarketRowNavigation = true;
+  document.addEventListener('click', function(event){
+    const row = event.target && event.target.closest
+      ? event.target.closest('a.sp-market-row[data-scroll-target]')
+      : null;
+    if (!row) return;
+    const targetId = row.getAttribute('data-scroll-target') || '';
+    if (!targetId) return;
+    let target = document.getElementById(targetId);
+    if (!target) {
+      const isPenny = targetId.indexOf('sp-stock-penny-') === 0;
+      const ticker = targetId.replace(/^sp-stock-(?:penny|main)-/, '').toUpperCase();
+      const selector = isPenny ? '.stock-card.penny' : '.stock-card:not(.penny)';
+      target = Array.from(document.querySelectorAll(selector)).find(function(card){
+        const symbol = card.querySelector('.ticker-symbol-link');
+        return symbol && symbol.textContent.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '-') === ticker;
+      }) || null;
+    }
+    if (!target) return;
+    event.preventDefault();
+    target.style.scrollMarginTop = '120px';
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+  }, true);
+})();
+</script>
 </body>
 </html>
 <style id="sp-terminal-promo-style">
