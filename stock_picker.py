@@ -39,7 +39,80 @@ PENNY_MIN_PRICE = 0.05
 MAIN_MIN_AVG_DOLLAR_VOLUME = 1_000_000
 PENNY_MIN_AVG_DOLLAR_VOLUME = 100_000
 MIN_HISTORY = 55
-SCREENER_IDS = ("penny_stocks", "most_actives", "day_gainers", "small_cap_gainers")
+# Yahoo's old "penny_stocks" predefined screen returns HTTP 404. Use supported
+# activity screens, and supplement Canada with a maintained seed universe so a
+# temporary/empty Canada-region screener cannot erase Canadian coverage.
+SCREENER_IDS = ("most_actives", "day_gainers", "small_cap_gainers")
+CANADIAN_SEED_TICKERS = {
+    # Established TSX listings spanning finance, energy, infrastructure,
+    # materials, technology, healthcare and consumer sectors.
+    "RY.TO": ("Royal Bank of Canada", "Financial Services"),
+    "TD.TO": ("Toronto-Dominion Bank", "Financial Services"),
+    "BNS.TO": ("Bank of Nova Scotia", "Financial Services"),
+    "BMO.TO": ("Bank of Montreal", "Financial Services"),
+    "CM.TO": ("Canadian Imperial Bank of Commerce", "Financial Services"),
+    "NA.TO": ("National Bank of Canada", "Financial Services"),
+    "ENB.TO": ("Enbridge", "Energy"),
+    "CNQ.TO": ("Canadian Natural Resources", "Energy"),
+    "SU.TO": ("Suncor Energy", "Energy"),
+    "IMO.TO": ("Imperial Oil", "Energy"),
+    "CP.TO": ("Canadian Pacific Kansas City", "Industrials"),
+    "CNR.TO": ("Canadian National Railway", "Industrials"),
+    "BCE.TO": ("BCE", "Telecommunications"),
+    "T.TO": ("TELUS", "Telecommunications"),
+    "FTS.TO": ("Fortis", "Utilities"),
+    "TRP.TO": ("TC Energy", "Energy"),
+    "MFC.TO": ("Manulife Financial", "Financial Services"),
+    "SLF.TO": ("Sun Life Financial", "Financial Services"),
+    "SHOP.TO": ("Shopify", "Technology"),
+    "CSU.TO": ("Constellation Software", "Technology"),
+    "WCN.TO": ("Waste Connections", "Industrials"),
+    "ATD.TO": ("Alimentation Couche-Tard", "Consumer Defensive"),
+    "QSR.TO": ("Restaurant Brands International", "Consumer Cyclical"),
+    "DOL.TO": ("Dollarama", "Consumer Defensive"),
+    "GWO.TO": ("Great-West Lifeco", "Financial Services"),
+    "IFC.TO": ("Intact Financial", "Financial Services"),
+    "POW.TO": ("Power Corporation of Canada", "Financial Services"),
+    "AEM.TO": ("Agnico Eagle Mines", "Basic Materials"),
+    "ABX.TO": ("Barrick Mining", "Basic Materials"),
+    "K.TO": ("Kinross Gold", "Basic Materials"),
+    "NTR.TO": ("Nutrien", "Basic Materials"),
+    "WPM.TO": ("Wheaton Precious Metals", "Basic Materials"),
+    "CCO.TO": ("Cameco", "Energy"),
+    "LUN.TO": ("Lundin Mining", "Basic Materials"),
+    "TECK-B.TO": ("Teck Resources", "Basic Materials"),
+    "AC.TO": ("Air Canada", "Industrials"),
+    "WELL.TO": ("WELL Health Technologies", "Healthcare"),
+    "HUT.TO": ("Hut 8", "Technology"),
+    "BITF.TO": ("Bitfarms", "Technology"),
+    "GLXY.TO": ("Galaxy Digital", "Financial Services"),
+    "LSPD.TO": ("Lightspeed Commerce", "Technology"),
+    "CTS.TO": ("Converge Technology Solutions", "Technology"),
+    "DND.TO": ("Dye & Durham", "Technology"),
+    "GIB-A.TO": ("CGI", "Technology"),
+    "OTEX.TO": ("OpenText", "Technology"),
+    "FNV.TO": ("Franco-Nevada", "Basic Materials"),
+    "CTC-A.TO": ("Canadian Tire", "Consumer Cyclical"),
+    "MG.TO": ("Magna International", "Consumer Cyclical"),
+    "TFII.TO": ("TFI International", "Industrials"),
+    "EQB.TO": ("EQB", "Financial Services"),
+    "BIR.TO": ("Birchcliff Energy", "Energy"),
+    "MEG.TO": ("MEG Energy", "Energy"),
+    "PPL.TO": ("Pembina Pipeline", "Energy"),
+    "IAG.TO": ("iA Financial", "Financial Services"),
+    "MDA.TO": ("MDA Space", "Industrials"),
+    "KXS.TO": ("Kinaxis", "Technology"),
+    "DSG.TO": ("Descartes Systems Group", "Technology"),
+    # Venture-listed names broaden the small-company/penny-stock candidate pool.
+    "HIVE.V": ("HIVE Digital Technologies", "Technology"),
+    "VNP.V": ("5N Plus", "Basic Materials"),
+    "PNG.V": ("Kraken Robotics", "Technology"),
+    "REAL.V": ("The Real Brokerage", "Technology"),
+    "AYA.V": ("Aya Gold & Silver", "Basic Materials"),
+    "NFG.V": ("New Found Gold", "Basic Materials"),
+    "CSTR.V": ("Crestview Exploration", "Basic Materials"),
+    "FOBI.V": ("Fobi AI", "Technology"),
+}
 USER_AGENT = "Mozilla/5.0 (compatible; StockPilot/3.0; +https://technofront.org)"
 
 
@@ -150,6 +223,24 @@ def build_universe():
             records.setdefault(item["market"], [])
             if len(records[item["market"]]) < MAX_CANDIDATES_PER_MARKET:
                 records[item["market"]].append(item)
+
+    # Independent Canadian fallback universe. Yahoo's CA predefined screeners
+    # can return no Canadian listings even when the request succeeds; seed
+    # symbols are still checked against real daily Yahoo history and the same
+    # liquidity/price filters before they can qualify.
+    canada_records = {x["ticker"]: x for x in records.get("Canada", [])}
+    for symbol, (company, sector) in CANADIAN_SEED_TICKERS.items():
+        canada_records.setdefault(symbol, {
+            "ticker": symbol,
+            "company": company,
+            "market": "Canada",
+            "exchange": "TSX Venture" if symbol.endswith(".V") else "TSX",
+            "sector": sector,
+            "currency": "CAD",
+            "screener_price": 0.0,
+            "candidate_source": "Canadian listing seed universe",
+        })
+    records["Canada"] = list(canada_records.values())[:MAX_CANDIDATES_PER_MARKET]
     return records, errors, scanned_screeners
 
 
@@ -529,6 +620,20 @@ def main():
     penny_ranked = [x for x in penny_ranked if x["ticker"] not in selected]
     penny_picks = choose_diversified(penny_ranked, 3)
 
+    # One independent Stock of the Day per market. Prefer a main-list eligible
+    # company; if that market has none, use its highest-ranked qualifying penny
+    # stock and label the fallback so the page never silently shows the other
+    # market's pick.
+    stock_of_day = {}
+    for market in ("US", "Canada"):
+        market_main = [x for x in main_ranked if x["market"] == market]
+        market_penny = [x for x in penny_ranked if x["market"] == market]
+        chosen_day = (market_main or market_penny)
+        if chosen_day:
+            featured = dict(chosen_day[0])
+            featured["selection_type"] = "main stock" if market_main else "penny stock fallback"
+            stock_of_day[market] = featured
+
     if len(main_picks) < 3:
         sys.exit("ERROR: Fewer than 3 main stocks passed the filters; existing picks.json left unchanged.")
     for stock in penny_picks:
@@ -541,11 +646,12 @@ def main():
         "snapshot_time": now.date().isoformat(),
         "data_source": "Yahoo Finance public screeners and daily prices (via yfinance); SEC EDGAR Company Facts through StockPilot SEC Worker where an exact US filing match exists",
         "data_note": (
-            "Candidate scan uses public US and Canadian Yahoo Finance activity/gainer screeners; "
-            "it is not an exhaustive scan. Daily price history may be delayed and Yahoo endpoints "
-            "are unofficial. SEC annual fundamentals are included only when an exact SEC ticker match "
-            "is available; other issuers are explicitly marked market-data-only. SEC figures are "
-            "annual reported values, not real-time data. Prices are in local trading currencies."
+            "Candidate scan uses Yahoo Finance activity/gainer screeners plus a maintained "
+            "Canadian TSX/TSXV symbol seed list. This is not an exhaustive scan of every listing. "
+            "Every seed candidate must still return real daily price history and pass the same "
+            "liquidity and price filters. Yahoo endpoints are unofficial and data may be delayed. "
+            "SEC annual fundamentals are included only when an exact SEC ticker match is available; "
+            "other issuers are explicitly marked market-data-only. Prices use local trading currencies."
         ),
         "strategy": (
             "Multi-factor score 0–100. Technical score: 25% trend alignment, 20% 50-day return, "
@@ -555,13 +661,16 @@ def main():
             "conditions; penny stocks blend 30% fundamentals with 70% technical conditions. "
             "Without SEC fundamentals, the score is technical-only and is explicitly labelled. "
             "Main stocks require 20-day average dollar volume of at least $1 million; penny stocks "
-            "must be $0.05–$10 with at least $100,000 average daily dollar volume."
+            "must be $0.05–$10 with at least $100,000 average daily dollar volume. Stock of the Day "
+            "is selected independently for each market from that market's highest-ranked eligible "
+            "main stock, with a clearly labelled penny-stock fallback only if necessary."
         ),
         "universe": {
             "markets": ["US", "Canada"],
-            "candidate_sources": list(SCREENER_IDS),
+            "candidate_sources": list(SCREENER_IDS) + ["Canadian TSX/TSXV seed universe"],
             "us_candidates_queued": len(universe.get("US", [])),
             "canada_candidates_queued": len(universe.get("Canada", [])),
+            "canadian_seed_symbols": len(CANADIAN_SEED_TICKERS),
             "unique_candidates_queued": len(all_meta),
             "history_symbols_returned": len(histories),
             "sec_fundamentals_returned": len(fundamentals_by_symbol),
@@ -571,6 +680,7 @@ def main():
         },
         "main": main_picks,
         "penny": penny_picks,
+        "stock_of_day": stock_of_day,
         "picks": main_picks,
         "watchlist": main_ranked,
         "penny_watchlist": penny_ranked,
