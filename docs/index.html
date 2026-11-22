@@ -2705,6 +2705,12 @@ main p, main li, .section-head p, .updated, .card-meta {
 #live-trading-desk .trading-market-list .sp-market-logo{width:24px!important;height:24px!important;object-fit:contain!important}
 @media(max-width:760px){#live-trading-desk .trading-desk-grid{grid-template-columns:minmax(0,1fr)!important}}
 </style>
+
+<style id="tf-visibility-heading-adjustments">
+#trading-desk-title .tf-title-subline{display:block;margin-top:5px;font-size:.78em;letter-spacing:-.035em;}
+.tf-sec-feature-lines{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin:0 0 12px;padding:0;color:#172b45;font-size:13px;font-weight:750;line-height:1.35;}
+.tf-sec-feature-lines>div{margin:0;padding:0;}
+</style>
 </head>
 <body>
 <a class="sp-skip-link" href="#main-content">Skip to main content</a>
@@ -2932,7 +2938,7 @@ main p, main li, .section-head p, .updated, .card-meta {
 
 
 
-<h1 id="trading-desk-title">Technofront: Stocks, Penny Stocks &amp; Crypto Market Insights</h1>
+<h1 id="trading-desk-title">Technofront: Crypto Market Insights<br><span class="tf-title-subline">Stocks &amp; Penny Stocks</span></h1>
 <div class="tf-welcome-actions">
 <a class="tf-free-tools-cta" href="#market-terminal">Explore Our Free Tools for Traders <span aria-hidden="true">↗</span></a>
 <form class="tf-company-quick-form" id="tf-company-quick-form">
@@ -2971,6 +2977,11 @@ main p, main li, .section-head p, .updated, .card-meta {
 </div>
  </div>
 <section class="sp-market-terminal" id="market-terminal" aria-label="Market Data and Analysis Tools">
+ <div class="tf-sec-feature-lines" aria-label="SEC company report features">
+  <div>SEC Filing Explorer</div>
+  <div>Company Financial Snapshot</div>
+  <div>SEC Filing Timeline</div>
+ </div>
  <div class="sp-terminal-top">
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><div class="sp-terminal-title-line"><h2>Market Data &amp; Analysis Tools</h2><div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
     <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-0" data-sp-tool="0"><span class="sp-terminal-tool-icon" aria-hidden="true">▤</span><span>WATCHLIST</span></button>
