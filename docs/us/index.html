@@ -2623,8 +2623,8 @@ input, select, textarea, button {
 <div class="nav-bottom-row">
 <span id="tf-visitor-counter" aria-live="polite">YOU ARE VISITOR NUMBER …</span>
 <div aria-label="Choose language" class="language-switch">
-<a class="edition-link" href="/" lang="en-CA" aria-label="Canadian edition">CANADA</a>
-<a class="edition-link" href="/us/" lang="en-US" aria-label="United States edition">UNITED STATES</a>
+<a class="edition-link" href="/" lang="en-CA" aria-label="Canadian edition">CANADA<span class="edition-flag" aria-hidden="true">🇨🇦</span></a>
+<a class="edition-link" href="/us/" lang="en-US" aria-label="United States edition">UNITED STATES<span class="edition-flag" aria-hidden="true">🇺🇸</span></a>
 <span aria-hidden="true">|</span><a href="/de/" lang="de" aria-label="Deutsch">DE</a>
 <a href="/fr/" lang="fr">FR</a>
 <span aria-hidden="true">|</span>
@@ -8800,13 +8800,12 @@ body{font-size:16px}
   text-decoration:none !important;
   white-space:nowrap !important;
 }
-.topbar .language-switch .edition-link::after {
-  display:block;
-  font-size:12px;
-  line-height:1;
+.topbar .language-switch .edition-link .edition-flag {
+  display:block !important;
+  font-size:13px !important;
+  line-height:1.1 !important;
+  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif !important;
 }
-.topbar .language-switch .edition-link[lang="en-CA"]::after { content:"🇨🇦"; }
-.topbar .language-switch .edition-link[lang="en-US"]::after { content:"🇺🇸"; }
 .topbar .language-switch .edition-link[aria-current="page"] {
   color:#E7D2A0 !important;
 }
