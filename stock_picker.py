@@ -322,8 +322,10 @@ def score_fundamentals(fundamentals):
             add("cash_vs_debt", clamp(float(cash) / debt * 50), 5)
             if float(cash) < debt * 0.2:
                 risks.append("cash is less than 20% of reported debt")
-    if not components:
-        return None, [], ["SEC filing returned no usable scoring metrics"]
+    # Avoid giving a company a filing-based score from only one or two
+    # isolated facts; sparse disclosures remain market-data-only.
+    if len(components) < 3:
+        return None, details, ["insufficient SEC metric coverage for a balanced fundamental score"]
     total_weight = sum(weight for _, weight in components)
     score = sum(value * weight for value, weight in components) / total_weight
     return round(clamp(score), 1), details, risks
@@ -405,11 +407,13 @@ def analyze(meta, frame, fundamentals=None, penny=False):
         m["score_basis"] = "SEC fundamentals + market data"
         m["score_fundamental"] = fundamental_score
         m["fundamental_coverage"] = fundamental_coverage
+        m["fundamental_confidence"] = "higher" if len(fundamental_coverage) >= 6 else "moderate"
     else:
         m["score"] = m["score_technical"]
-        m["score_basis"] = "market data only — SEC fundamentals unavailable"
+        m["score_basis"] = "market data only — SEC fundamentals unavailable or insufficient"
         m["score_fundamental"] = None
-        m["fundamental_coverage"] = []
+        m["fundamental_coverage"] = fundamental_coverage
+        m["fundamental_confidence"] = "not rated"
     # Keep the latest 63 daily adjusted closes (approximately three trading months)
     # for compact, data-backed sparklines on the homepage stock cards.
     chart_frame = frame.dropna(subset=["Close"]).tail(63)
