@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "updated_at": "2026-11-22T01:52:25.519301+00:00",
+  "updated_at": "2026-11-22T02:27:58.553765+00:00",
   "snapshot_time": "2026-11-22",
   "data_source": "Yahoo Finance public screeners and daily prices (via yfinance); SEC EDGAR Company Facts through StockPilot SEC Worker where an exact US filing match exists",
   "data_note": "Candidate scan uses Yahoo Finance activity/gainer screeners plus a maintained Canadian TSX/TSXV symbol seed list. This is not an exhaustive scan of every listing. Every seed candidate must still return real daily price history and pass the same liquidity and price filters. Yahoo endpoints are unofficial and data may be delayed. SEC annual fundamentals are included only when an exact SEC ticker match is available; other issuers are explicitly marked market-data-only. Prices use local trading currencies.",
@@ -19,6 +19,20 @@
     "us_candidates_queued": 100,
     "canada_candidates_queued": 85,
     "canadian_seed_symbols": 85,
+    "market_pick_counts": {
+      "US": {
+        "main": 3,
+        "penny": 3,
+        "main_eligible": 44,
+        "penny_eligible": 19
+      },
+      "Canada": {
+        "main": 3,
+        "penny": 3,
+        "main_eligible": 52,
+        "penny_eligible": 9
+      }
+    },
     "unique_candidates_queued": 157,
     "history_symbols_returned": 147,
     "sec_fundamentals_returned": 57,
@@ -27,294 +41,6 @@
     "exhaustive_market_scan": false
   },
   "main": [
-    {
-      "ticker": "T.TO",
-      "company": "TELUS",
-      "exchange": "TSX",
-      "market": "Canada",
-      "sector": "Telecommunications",
-      "currency": "CAD",
-      "quote_time": "2026-11-20 (daily close)",
-      "reason": "daily price move +2.32%; relative volume 2.0x its 20-day average; 5-day move +30.6%; 20-day average dollar volume $150,029,995.",
-      "risk": "RSI elevated; short-term pullback risk.",
-      "price_history_3mo": [
-        {
-          "date": "2026-08-24",
-          "close": 13.384664
-        },
-        {
-          "date": "2026-08-25",
-          "close": 13.364952
-        },
-        {
-          "date": "2026-08-26",
-          "close": 13.236822
-        },
-        {
-          "date": "2026-08-27",
-          "close": 13.34524
-        },
-        {
-          "date": "2026-08-28",
-          "close": 13.26639
-        },
-        {
-          "date": "2026-08-31",
-          "close": 13.217109
-        },
-        {
-          "date": "2026-09-01",
-          "close": 13.246677
-        },
-        {
-          "date": "2026-09-02",
-          "close": 13.039698
-        },
-        {
-          "date": "2026-09-03",
-          "close": 13.207253
-        },
-        {
-          "date": "2026-09-04",
-          "close": 13.197397
-        },
-        {
-          "date": "2026-09-08",
-          "close": 13.128404
-        },
-        {
-          "date": "2026-09-09",
-          "close": 12.882
-        },
-        {
-          "date": "2026-09-10",
-          "close": 12.56
-        },
-        {
-          "date": "2026-09-11",
-          "close": 12.6
-        },
-        {
-          "date": "2026-09-14",
-          "close": 12.73
-        },
-        {
-          "date": "2026-09-15",
-          "close": 12.66
-        },
-        {
-          "date": "2026-09-16",
-          "close": 12.45
-        },
-        {
-          "date": "2026-09-17",
-          "close": 12.47
-        },
-        {
-          "date": "2026-09-18",
-          "close": 12.31
-        },
-        {
-          "date": "2026-09-21",
-          "close": 12.2
-        },
-        {
-          "date": "2026-09-22",
-          "close": 12.09
-        },
-        {
-          "date": "2026-09-23",
-          "close": 12.02
-        },
-        {
-          "date": "2026-09-24",
-          "close": 12.03
-        },
-        {
-          "date": "2026-09-25",
-          "close": 12.0
-        },
-        {
-          "date": "2026-09-28",
-          "close": 11.86
-        },
-        {
-          "date": "2026-09-29",
-          "close": 11.57
-        },
-        {
-          "date": "2026-09-30",
-          "close": 11.95
-        },
-        {
-          "date": "2026-10-01",
-          "close": 11.63
-        },
-        {
-          "date": "2026-10-02",
-          "close": 11.47
-        },
-        {
-          "date": "2026-10-05",
-          "close": 11.25
-        },
-        {
-          "date": "2026-10-06",
-          "close": 11.19
-        },
-        {
-          "date": "2026-10-07",
-          "close": 11.34
-        },
-        {
-          "date": "2026-10-08",
-          "close": 11.43
-        },
-        {
-          "date": "2026-10-09",
-          "close": 11.03
-        },
-        {
-          "date": "2026-10-13",
-          "close": 11.35
-        },
-        {
-          "date": "2026-10-14",
-          "close": 11.53
-        },
-        {
-          "date": "2026-10-15",
-          "close": 11.85
-        },
-        {
-          "date": "2026-10-16",
-          "close": 11.91
-        },
-        {
-          "date": "2026-10-19",
-          "close": 11.69
-        },
-        {
-          "date": "2026-10-20",
-          "close": 11.86
-        },
-        {
-          "date": "2026-10-21",
-          "close": 11.78
-        },
-        {
-          "date": "2026-10-22",
-          "close": 12.37
-        },
-        {
-          "date": "2026-10-23",
-          "close": 12.34
-        },
-        {
-          "date": "2026-10-26",
-          "close": 12.19
-        },
-        {
-          "date": "2026-10-27",
-          "close": 12.07
-        },
-        {
-          "date": "2026-10-28",
-          "close": 11.99
-        },
-        {
-          "date": "2026-10-29",
-          "close": 12.08
-        },
-        {
-          "date": "2026-10-30",
-          "close": 12.37
-        },
-        {
-          "date": "2026-11-02",
-          "close": 12.63
-        },
-        {
-          "date": "2026-11-03",
-          "close": 12.46
-        },
-        {
-          "date": "2026-11-04",
-          "close": 12.89
-        },
-        {
-          "date": "2026-11-05",
-          "close": 13.19
-        },
-        {
-          "date": "2026-11-06",
-          "close": 12.81
-        },
-        {
-          "date": "2026-11-09",
-          "close": 12.59
-        },
-        {
-          "date": "2026-11-10",
-          "close": 12.42
-        },
-        {
-          "date": "2026-11-11",
-          "close": 12.33
-        },
-        {
-          "date": "2026-11-12",
-          "close": 12.14
-        },
-        {
-          "date": "2026-11-13",
-          "close": 12.14
-        },
-        {
-          "date": "2026-11-16",
-          "close": 13.7
-        },
-        {
-          "date": "2026-11-17",
-          "close": 13.25
-        },
-        {
-          "date": "2026-11-18",
-          "close": 13.63
-        },
-        {
-          "date": "2026-11-19",
-          "close": 15.5
-        },
-        {
-          "date": "2026-11-20",
-          "close": 15.86
-        }
-      ],
-      "fundamentals": null,
-      "score_technical": 87.5,
-      "score": 87.5,
-      "return_5d": 30.64,
-      "return_20d": 28.53,
-      "return_50d": 26.27,
-      "change_percent": 2.32,
-      "rsi": 74.6,
-      "volume_ratio": 2.01,
-      "average_volume_20d": 11118985,
-      "average_dollar_volume_20d": 150029995.22,
-      "volatility_20d": 4.41,
-      "above_20day_average": true,
-      "above_50day_average": true,
-      "ma20": 12.912,
-      "ma50": 12.304,
-      "price_date": "2026-11-20",
-      "price": 15.86,
-      "volume": 22404700,
-      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
-      "score_fundamental": null,
-      "fundamental_coverage": [],
-      "fundamental_confidence": "not rated"
-    },
     {
       "ticker": "BIPC",
       "company": "Brookfield Infrastructure Corporation",
@@ -598,6 +324,1091 @@
       "price_date": "2026-11-20",
       "price": 42.82,
       "volume": 9888700,
+      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
+      "score_fundamental": null,
+      "fundamental_coverage": [],
+      "fundamental_confidence": "not rated"
+    },
+    {
+      "ticker": "BIP",
+      "company": "Brookfield Infrastructure Partners L.P.",
+      "exchange": "NYSE",
+      "market": "US",
+      "sector": "Unclassified",
+      "currency": "USD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +4.24%; relative volume 2.7x its 20-day average; 5-day move +8.4%; 20-day average dollar volume $70,954,306.",
+      "risk": "RSI elevated; short-term pullback risk.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-25",
+          "close": 38.474968
+        },
+        {
+          "date": "2026-08-26",
+          "close": 38.38604
+        },
+        {
+          "date": "2026-08-27",
+          "close": 38.415688
+        },
+        {
+          "date": "2026-08-28",
+          "close": 37.644997
+        },
+        {
+          "date": "2026-08-31",
+          "close": 37.799999
+        },
+        {
+          "date": "2026-09-01",
+          "close": 37.110001
+        },
+        {
+          "date": "2026-09-02",
+          "close": 36.290001
+        },
+        {
+          "date": "2026-09-03",
+          "close": 36.84
+        },
+        {
+          "date": "2026-09-04",
+          "close": 37.130001
+        },
+        {
+          "date": "2026-09-08",
+          "close": 37.259998
+        },
+        {
+          "date": "2026-09-09",
+          "close": 36.639999
+        },
+        {
+          "date": "2026-09-10",
+          "close": 36.419998
+        },
+        {
+          "date": "2026-09-11",
+          "close": 36.880001
+        },
+        {
+          "date": "2026-09-14",
+          "close": 35.650002
+        },
+        {
+          "date": "2026-09-15",
+          "close": 35.040001
+        },
+        {
+          "date": "2026-09-16",
+          "close": 35.540001
+        },
+        {
+          "date": "2026-09-17",
+          "close": 35.970001
+        },
+        {
+          "date": "2026-09-18",
+          "close": 36.07
+        },
+        {
+          "date": "2026-09-21",
+          "close": 35.830002
+        },
+        {
+          "date": "2026-09-22",
+          "close": 35.779999
+        },
+        {
+          "date": "2026-09-23",
+          "close": 35.220001
+        },
+        {
+          "date": "2026-09-24",
+          "close": 34.439999
+        },
+        {
+          "date": "2026-09-25",
+          "close": 34.759998
+        },
+        {
+          "date": "2026-09-28",
+          "close": 34.84
+        },
+        {
+          "date": "2026-09-29",
+          "close": 35.490002
+        },
+        {
+          "date": "2026-09-30",
+          "close": 35.549999
+        },
+        {
+          "date": "2026-10-01",
+          "close": 35.790001
+        },
+        {
+          "date": "2026-10-02",
+          "close": 36.52
+        },
+        {
+          "date": "2026-10-05",
+          "close": 36.169998
+        },
+        {
+          "date": "2026-10-06",
+          "close": 37.43
+        },
+        {
+          "date": "2026-10-07",
+          "close": 37.450001
+        },
+        {
+          "date": "2026-10-08",
+          "close": 36.889999
+        },
+        {
+          "date": "2026-10-09",
+          "close": 37.099998
+        },
+        {
+          "date": "2026-10-12",
+          "close": 36.720001
+        },
+        {
+          "date": "2026-10-13",
+          "close": 36.330002
+        },
+        {
+          "date": "2026-10-14",
+          "close": 36.349998
+        },
+        {
+          "date": "2026-10-15",
+          "close": 37.27
+        },
+        {
+          "date": "2026-10-16",
+          "close": 37.450001
+        },
+        {
+          "date": "2026-10-19",
+          "close": 37.110001
+        },
+        {
+          "date": "2026-10-20",
+          "close": 36.75
+        },
+        {
+          "date": "2026-10-21",
+          "close": 36.369999
+        },
+        {
+          "date": "2026-10-22",
+          "close": 37.290001
+        },
+        {
+          "date": "2026-10-23",
+          "close": 37.040001
+        },
+        {
+          "date": "2026-10-26",
+          "close": 36.75
+        },
+        {
+          "date": "2026-10-27",
+          "close": 36.610001
+        },
+        {
+          "date": "2026-10-28",
+          "close": 36.810001
+        },
+        {
+          "date": "2026-10-29",
+          "close": 37.34
+        },
+        {
+          "date": "2026-10-30",
+          "close": 37.32
+        },
+        {
+          "date": "2026-11-02",
+          "close": 38.119999
+        },
+        {
+          "date": "2026-11-03",
+          "close": 37.459999
+        },
+        {
+          "date": "2026-11-04",
+          "close": 38.169998
+        },
+        {
+          "date": "2026-11-05",
+          "close": 37.810001
+        },
+        {
+          "date": "2026-11-06",
+          "close": 39.450001
+        },
+        {
+          "date": "2026-11-09",
+          "close": 39.669998
+        },
+        {
+          "date": "2026-11-10",
+          "close": 39.490002
+        },
+        {
+          "date": "2026-11-11",
+          "close": 39.75
+        },
+        {
+          "date": "2026-11-12",
+          "close": 39.150002
+        },
+        {
+          "date": "2026-11-13",
+          "close": 39.490002
+        },
+        {
+          "date": "2026-11-16",
+          "close": 39.560001
+        },
+        {
+          "date": "2026-11-17",
+          "close": 40.209999
+        },
+        {
+          "date": "2026-11-18",
+          "close": 41.709999
+        },
+        {
+          "date": "2026-11-19",
+          "close": 41.07
+        },
+        {
+          "date": "2026-11-20",
+          "close": 42.810001
+        }
+      ],
+      "fundamentals": null,
+      "score_technical": 78.3,
+      "score": 78.3,
+      "return_5d": 8.41,
+      "return_20d": 15.58,
+      "return_50d": 16.08,
+      "change_percent": 4.24,
+      "rsi": 74.5,
+      "volume_ratio": 2.72,
+      "average_volume_20d": 1775450,
+      "average_dollar_volume_20d": 70954306.45,
+      "volatility_20d": 1.79,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 38.9375,
+      "ma50": 37.2992,
+      "price_date": "2026-11-20",
+      "price": 42.81,
+      "volume": 4830400,
+      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
+      "score_fundamental": null,
+      "fundamental_coverage": [],
+      "fundamental_confidence": "not rated"
+    },
+    {
+      "ticker": "LFST",
+      "company": "LifeStance Health Group, Inc.",
+      "exchange": "NasdaqGS",
+      "market": "US",
+      "sector": "Unclassified",
+      "currency": "USD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +3.60%; relative volume 0.8x its 20-day average; 5-day move -1.9%; 20-day average dollar volume $101,236,714.",
+      "risk": "normal market and company-specific risks remain.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-25",
+          "close": 12.28
+        },
+        {
+          "date": "2026-08-26",
+          "close": 12.15
+        },
+        {
+          "date": "2026-08-27",
+          "close": 12.3
+        },
+        {
+          "date": "2026-08-28",
+          "close": 12.31
+        },
+        {
+          "date": "2026-08-31",
+          "close": 12.36
+        },
+        {
+          "date": "2026-09-01",
+          "close": 12.6
+        },
+        {
+          "date": "2026-09-02",
+          "close": 12.89
+        },
+        {
+          "date": "2026-09-03",
+          "close": 12.83
+        },
+        {
+          "date": "2026-09-04",
+          "close": 12.73
+        },
+        {
+          "date": "2026-09-08",
+          "close": 12.8
+        },
+        {
+          "date": "2026-09-09",
+          "close": 12.62
+        },
+        {
+          "date": "2026-09-10",
+          "close": 13.0
+        },
+        {
+          "date": "2026-09-11",
+          "close": 12.97
+        },
+        {
+          "date": "2026-09-14",
+          "close": 13.38
+        },
+        {
+          "date": "2026-09-15",
+          "close": 13.06
+        },
+        {
+          "date": "2026-09-16",
+          "close": 12.79
+        },
+        {
+          "date": "2026-09-17",
+          "close": 12.61
+        },
+        {
+          "date": "2026-09-18",
+          "close": 12.57
+        },
+        {
+          "date": "2026-09-21",
+          "close": 12.67
+        },
+        {
+          "date": "2026-09-22",
+          "close": 12.55
+        },
+        {
+          "date": "2026-09-23",
+          "close": 12.08
+        },
+        {
+          "date": "2026-09-24",
+          "close": 11.8
+        },
+        {
+          "date": "2026-09-25",
+          "close": 11.84
+        },
+        {
+          "date": "2026-09-28",
+          "close": 11.84
+        },
+        {
+          "date": "2026-09-29",
+          "close": 11.89
+        },
+        {
+          "date": "2026-09-30",
+          "close": 12.03
+        },
+        {
+          "date": "2026-10-01",
+          "close": 11.91
+        },
+        {
+          "date": "2026-10-02",
+          "close": 11.83
+        },
+        {
+          "date": "2026-10-05",
+          "close": 12.22
+        },
+        {
+          "date": "2026-10-06",
+          "close": 12.12
+        },
+        {
+          "date": "2026-10-07",
+          "close": 12.11
+        },
+        {
+          "date": "2026-10-08",
+          "close": 12.06
+        },
+        {
+          "date": "2026-10-09",
+          "close": 12.42
+        },
+        {
+          "date": "2026-10-12",
+          "close": 12.48
+        },
+        {
+          "date": "2026-10-13",
+          "close": 12.32
+        },
+        {
+          "date": "2026-10-14",
+          "close": 12.52
+        },
+        {
+          "date": "2026-10-15",
+          "close": 12.37
+        },
+        {
+          "date": "2026-10-16",
+          "close": 11.74
+        },
+        {
+          "date": "2026-10-19",
+          "close": 11.77
+        },
+        {
+          "date": "2026-10-20",
+          "close": 12.22
+        },
+        {
+          "date": "2026-10-21",
+          "close": 12.33
+        },
+        {
+          "date": "2026-10-22",
+          "close": 12.56
+        },
+        {
+          "date": "2026-10-23",
+          "close": 12.93
+        },
+        {
+          "date": "2026-10-26",
+          "close": 13.06
+        },
+        {
+          "date": "2026-10-27",
+          "close": 13.1
+        },
+        {
+          "date": "2026-10-28",
+          "close": 13.39
+        },
+        {
+          "date": "2026-10-29",
+          "close": 13.635
+        },
+        {
+          "date": "2026-10-30",
+          "close": 13.4
+        },
+        {
+          "date": "2026-11-02",
+          "close": 13.26
+        },
+        {
+          "date": "2026-11-03",
+          "close": 13.37
+        },
+        {
+          "date": "2026-11-04",
+          "close": 14.21
+        },
+        {
+          "date": "2026-11-05",
+          "close": 13.43
+        },
+        {
+          "date": "2026-11-06",
+          "close": 13.77
+        },
+        {
+          "date": "2026-11-09",
+          "close": 14.6
+        },
+        {
+          "date": "2026-11-10",
+          "close": 14.56
+        },
+        {
+          "date": "2026-11-11",
+          "close": 14.37
+        },
+        {
+          "date": "2026-11-12",
+          "close": 14.15
+        },
+        {
+          "date": "2026-11-13",
+          "close": 14.08
+        },
+        {
+          "date": "2026-11-16",
+          "close": 14.48
+        },
+        {
+          "date": "2026-11-17",
+          "close": 14.17
+        },
+        {
+          "date": "2026-11-18",
+          "close": 13.77
+        },
+        {
+          "date": "2026-11-19",
+          "close": 13.34
+        },
+        {
+          "date": "2026-11-20",
+          "close": 13.82
+        }
+      ],
+      "fundamentals": {
+        "source": "SEC EDGAR Company Facts",
+        "company": "LifeStance Health Group, Inc.",
+        "cik": "0001845257",
+        "retrieved_at": "2026-11-22T02:27:52.652Z",
+        "fiscal_year": 2021,
+        "revenue_growth_percent": null,
+        "metrics": {
+          "revenue": 1445000,
+          "grossProfit": null,
+          "operatingIncome": 24148000,
+          "netIncome": 9663000,
+          "assets": 2203933000,
+          "liabilities": 682918000,
+          "equity": 1521015000,
+          "cash": 248642000,
+          "operatingCashFlow": 146151000,
+          "currentDebt": 14500000,
+          "longTermDebt": 265927000
+        },
+        "periods": {
+          "revenue": [
+            {
+              "periodEnd": "2021-12-31",
+              "fiscalYear": 2021,
+              "value": 1445000,
+              "unit": "USD",
+              "filed": "2022-03-17",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000095017022004096/lfst-20211231.htm"
+            }
+          ],
+          "grossProfit": [],
+          "operatingIncome": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 24148000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": -31613000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "netIncome": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 9663000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": -57443000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "assets": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 2203933000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 2118298000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "liabilities": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 682918000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 672013000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "equity": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1521015000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 1446285000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "cash": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 248642000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 154571000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "operatingCashFlow": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 146151000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 107260000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "currentDebt": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 14500000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 7250000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "longTermDebt": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 265927000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 279790000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ]
+        }
+      },
+      "score_technical": 68.3,
+      "score": 77.5,
+      "return_5d": -1.85,
+      "return_20d": 6.88,
+      "return_50d": 6.55,
+      "change_percent": 3.6,
+      "rsi": 55.1,
+      "volume_ratio": 0.78,
+      "average_volume_20d": 7189030,
+      "average_dollar_volume_20d": 101236713.66,
+      "volatility_20d": 2.93,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 13.7983,
+      "ma50": 12.8997,
+      "price_date": "2026-11-20",
+      "price": 13.82,
+      "volume": 5622400,
+      "score_basis": "SEC fundamentals + market data",
+      "score_fundamental": 83.6,
+      "fundamental_coverage": [
+        "operating_margin",
+        "net_margin",
+        "liabilities_to_assets",
+        "equity_ratio",
+        "operating_cash_flow",
+        "cash_vs_debt"
+      ],
+      "fundamental_confidence": "higher"
+    },
+    {
+      "ticker": "T.TO",
+      "company": "TELUS",
+      "exchange": "TSX",
+      "market": "Canada",
+      "sector": "Telecommunications",
+      "currency": "CAD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +2.32%; relative volume 2.0x its 20-day average; 5-day move +30.6%; 20-day average dollar volume $150,029,995.",
+      "risk": "RSI elevated; short-term pullback risk.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-24",
+          "close": 13.384664
+        },
+        {
+          "date": "2026-08-25",
+          "close": 13.364952
+        },
+        {
+          "date": "2026-08-26",
+          "close": 13.236822
+        },
+        {
+          "date": "2026-08-27",
+          "close": 13.34524
+        },
+        {
+          "date": "2026-08-28",
+          "close": 13.26639
+        },
+        {
+          "date": "2026-08-31",
+          "close": 13.217109
+        },
+        {
+          "date": "2026-09-01",
+          "close": 13.246677
+        },
+        {
+          "date": "2026-09-02",
+          "close": 13.039698
+        },
+        {
+          "date": "2026-09-03",
+          "close": 13.207253
+        },
+        {
+          "date": "2026-09-04",
+          "close": 13.197397
+        },
+        {
+          "date": "2026-09-08",
+          "close": 13.128404
+        },
+        {
+          "date": "2026-09-09",
+          "close": 12.882
+        },
+        {
+          "date": "2026-09-10",
+          "close": 12.56
+        },
+        {
+          "date": "2026-09-11",
+          "close": 12.6
+        },
+        {
+          "date": "2026-09-14",
+          "close": 12.73
+        },
+        {
+          "date": "2026-09-15",
+          "close": 12.66
+        },
+        {
+          "date": "2026-09-16",
+          "close": 12.45
+        },
+        {
+          "date": "2026-09-17",
+          "close": 12.47
+        },
+        {
+          "date": "2026-09-18",
+          "close": 12.31
+        },
+        {
+          "date": "2026-09-21",
+          "close": 12.2
+        },
+        {
+          "date": "2026-09-22",
+          "close": 12.09
+        },
+        {
+          "date": "2026-09-23",
+          "close": 12.02
+        },
+        {
+          "date": "2026-09-24",
+          "close": 12.03
+        },
+        {
+          "date": "2026-09-25",
+          "close": 12.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 11.86
+        },
+        {
+          "date": "2026-09-29",
+          "close": 11.57
+        },
+        {
+          "date": "2026-09-30",
+          "close": 11.95
+        },
+        {
+          "date": "2026-10-01",
+          "close": 11.63
+        },
+        {
+          "date": "2026-10-02",
+          "close": 11.47
+        },
+        {
+          "date": "2026-10-05",
+          "close": 11.25
+        },
+        {
+          "date": "2026-10-06",
+          "close": 11.19
+        },
+        {
+          "date": "2026-10-07",
+          "close": 11.34
+        },
+        {
+          "date": "2026-10-08",
+          "close": 11.43
+        },
+        {
+          "date": "2026-10-09",
+          "close": 11.03
+        },
+        {
+          "date": "2026-10-13",
+          "close": 11.35
+        },
+        {
+          "date": "2026-10-14",
+          "close": 11.53
+        },
+        {
+          "date": "2026-10-15",
+          "close": 11.85
+        },
+        {
+          "date": "2026-10-16",
+          "close": 11.91
+        },
+        {
+          "date": "2026-10-19",
+          "close": 11.69
+        },
+        {
+          "date": "2026-10-20",
+          "close": 11.86
+        },
+        {
+          "date": "2026-10-21",
+          "close": 11.78
+        },
+        {
+          "date": "2026-10-22",
+          "close": 12.37
+        },
+        {
+          "date": "2026-10-23",
+          "close": 12.34
+        },
+        {
+          "date": "2026-10-26",
+          "close": 12.19
+        },
+        {
+          "date": "2026-10-27",
+          "close": 12.07
+        },
+        {
+          "date": "2026-10-28",
+          "close": 11.99
+        },
+        {
+          "date": "2026-10-29",
+          "close": 12.08
+        },
+        {
+          "date": "2026-10-30",
+          "close": 12.37
+        },
+        {
+          "date": "2026-11-02",
+          "close": 12.63
+        },
+        {
+          "date": "2026-11-03",
+          "close": 12.46
+        },
+        {
+          "date": "2026-11-04",
+          "close": 12.89
+        },
+        {
+          "date": "2026-11-05",
+          "close": 13.19
+        },
+        {
+          "date": "2026-11-06",
+          "close": 12.81
+        },
+        {
+          "date": "2026-11-09",
+          "close": 12.59
+        },
+        {
+          "date": "2026-11-10",
+          "close": 12.42
+        },
+        {
+          "date": "2026-11-11",
+          "close": 12.33
+        },
+        {
+          "date": "2026-11-12",
+          "close": 12.14
+        },
+        {
+          "date": "2026-11-13",
+          "close": 12.14
+        },
+        {
+          "date": "2026-11-16",
+          "close": 13.7
+        },
+        {
+          "date": "2026-11-17",
+          "close": 13.25
+        },
+        {
+          "date": "2026-11-18",
+          "close": 13.63
+        },
+        {
+          "date": "2026-11-19",
+          "close": 15.5
+        },
+        {
+          "date": "2026-11-20",
+          "close": 15.86
+        }
+      ],
+      "fundamentals": null,
+      "score_technical": 87.5,
+      "score": 87.5,
+      "return_5d": 30.64,
+      "return_20d": 28.53,
+      "return_50d": 26.27,
+      "change_percent": 2.32,
+      "rsi": 74.6,
+      "volume_ratio": 2.01,
+      "average_volume_20d": 11118985,
+      "average_dollar_volume_20d": 150029995.22,
+      "volatility_20d": 4.41,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 12.912,
+      "ma50": 12.304,
+      "price_date": "2026-11-20",
+      "price": 15.86,
+      "volume": 22404700,
       "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
       "score_fundamental": null,
       "fundamental_coverage": [],
@@ -890,9 +1701,1905 @@
       "score_fundamental": null,
       "fundamental_coverage": [],
       "fundamental_confidence": "not rated"
+    },
+    {
+      "ticker": "DOL.TO",
+      "company": "Dollarama",
+      "exchange": "TSX",
+      "market": "Canada",
+      "sector": "Consumer Defensive",
+      "currency": "CAD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +0.29%; relative volume 1.0x its 20-day average; 5-day move -1.6%; 20-day average dollar volume $116,584,500.",
+      "risk": "normal market and company-specific risks remain.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-24",
+          "close": 187.15094
+        },
+        {
+          "date": "2026-08-25",
+          "close": 183.333359
+        },
+        {
+          "date": "2026-08-26",
+          "close": 176.647614
+        },
+        {
+          "date": "2026-08-27",
+          "close": 174.84877
+        },
+        {
+          "date": "2026-08-28",
+          "close": 175.808151
+        },
+        {
+          "date": "2026-08-31",
+          "close": 174.958694
+        },
+        {
+          "date": "2026-09-01",
+          "close": 175.368423
+        },
+        {
+          "date": "2026-09-02",
+          "close": 176.32782
+        },
+        {
+          "date": "2026-09-03",
+          "close": 176.777527
+        },
+        {
+          "date": "2026-09-04",
+          "close": 177.097336
+        },
+        {
+          "date": "2026-09-08",
+          "close": 173.109863
+        },
+        {
+          "date": "2026-09-09",
+          "close": 172.520248
+        },
+        {
+          "date": "2026-09-10",
+          "close": 167.923172
+        },
+        {
+          "date": "2026-09-11",
+          "close": 167.003754
+        },
+        {
+          "date": "2026-09-14",
+          "close": 168.242966
+        },
+        {
+          "date": "2026-09-15",
+          "close": 165.394775
+        },
+        {
+          "date": "2026-09-16",
+          "close": 174.449005
+        },
+        {
+          "date": "2026-09-17",
+          "close": 172.640167
+        },
+        {
+          "date": "2026-09-18",
+          "close": 174.069244
+        },
+        {
+          "date": "2026-09-21",
+          "close": 178.58638
+        },
+        {
+          "date": "2026-09-22",
+          "close": 180.565109
+        },
+        {
+          "date": "2026-09-23",
+          "close": 178.28656
+        },
+        {
+          "date": "2026-09-24",
+          "close": 179.935532
+        },
+        {
+          "date": "2026-09-25",
+          "close": 183.453293
+        },
+        {
+          "date": "2026-09-28",
+          "close": 184.792435
+        },
+        {
+          "date": "2026-09-29",
+          "close": 184.522598
+        },
+        {
+          "date": "2026-09-30",
+          "close": 183.883011
+        },
+        {
+          "date": "2026-10-01",
+          "close": 183.31337
+        },
+        {
+          "date": "2026-10-02",
+          "close": 183.833038
+        },
+        {
+          "date": "2026-10-05",
+          "close": 183.013565
+        },
+        {
+          "date": "2026-10-06",
+          "close": 185.911728
+        },
+        {
+          "date": "2026-10-07",
+          "close": 185.252136
+        },
+        {
+          "date": "2026-10-08",
+          "close": 188.62001
+        },
+        {
+          "date": "2026-10-09",
+          "close": 191.929993
+        },
+        {
+          "date": "2026-10-13",
+          "close": 192.960007
+        },
+        {
+          "date": "2026-10-14",
+          "close": 197.830002
+        },
+        {
+          "date": "2026-10-15",
+          "close": 203.139999
+        },
+        {
+          "date": "2026-10-16",
+          "close": 206.559998
+        },
+        {
+          "date": "2026-10-19",
+          "close": 205.449997
+        },
+        {
+          "date": "2026-10-20",
+          "close": 205.860001
+        },
+        {
+          "date": "2026-10-21",
+          "close": 204.589996
+        },
+        {
+          "date": "2026-10-22",
+          "close": 209.130005
+        },
+        {
+          "date": "2026-10-23",
+          "close": 207.449997
+        },
+        {
+          "date": "2026-10-26",
+          "close": 207.270004
+        },
+        {
+          "date": "2026-10-27",
+          "close": 204.080002
+        },
+        {
+          "date": "2026-10-28",
+          "close": 201.990005
+        },
+        {
+          "date": "2026-10-29",
+          "close": 205.889999
+        },
+        {
+          "date": "2026-10-30",
+          "close": 207.5
+        },
+        {
+          "date": "2026-11-02",
+          "close": 212.0
+        },
+        {
+          "date": "2026-11-03",
+          "close": 209.970001
+        },
+        {
+          "date": "2026-11-04",
+          "close": 220.0
+        },
+        {
+          "date": "2026-11-05",
+          "close": 218.699997
+        },
+        {
+          "date": "2026-11-06",
+          "close": 215.490005
+        },
+        {
+          "date": "2026-11-09",
+          "close": 218.080002
+        },
+        {
+          "date": "2026-11-10",
+          "close": 216.0
+        },
+        {
+          "date": "2026-11-11",
+          "close": 218.470001
+        },
+        {
+          "date": "2026-11-12",
+          "close": 220.419998
+        },
+        {
+          "date": "2026-11-13",
+          "close": 220.210007
+        },
+        {
+          "date": "2026-11-16",
+          "close": 221.160004
+        },
+        {
+          "date": "2026-11-17",
+          "close": 218.619995
+        },
+        {
+          "date": "2026-11-18",
+          "close": 220.880005
+        },
+        {
+          "date": "2026-11-19",
+          "close": 215.990005
+        },
+        {
+          "date": "2026-11-20",
+          "close": 216.610001
+        }
+      ],
+      "fundamentals": null,
+      "score_technical": 73.6,
+      "score": 73.6,
+      "return_5d": -1.63,
+      "return_20d": 4.42,
+      "return_50d": 28.99,
+      "change_percent": 0.29,
+      "rsi": 56.2,
+      "volume_ratio": 0.97,
+      "average_volume_20d": 542885,
+      "average_dollar_volume_20d": 116584500.15,
+      "volatility_20d": 1.58,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 214.4665,
+      "ma50": 198.0,
+      "price_date": "2026-11-20",
+      "price": 216.61,
+      "volume": 526800,
+      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
+      "score_fundamental": null,
+      "fundamental_coverage": [],
+      "fundamental_confidence": "not rated"
     }
   ],
   "penny": [
+    {
+      "ticker": "BGS",
+      "company": "B&G Foods, Inc.",
+      "exchange": "NYSE",
+      "market": "US",
+      "sector": "Unclassified",
+      "currency": "USD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +8.04%; relative volume 0.9x its 20-day average; 5-day move +3.7%; 20-day average dollar volume $9,350,556.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. net loss in latest annual filing; liabilities exceed 80% of reported assets; cash is less than 20% of reported debt; RSI elevated; short-term pullback risk; high recent volatility.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-25",
+          "close": 3.411075
+        },
+        {
+          "date": "2026-08-26",
+          "close": 3.420765
+        },
+        {
+          "date": "2026-08-27",
+          "close": 3.362622
+        },
+        {
+          "date": "2026-08-28",
+          "close": 3.411075
+        },
+        {
+          "date": "2026-08-31",
+          "close": 3.362622
+        },
+        {
+          "date": "2026-09-01",
+          "close": 3.382003
+        },
+        {
+          "date": "2026-09-02",
+          "close": 3.343241
+        },
+        {
+          "date": "2026-09-03",
+          "close": 3.256026
+        },
+        {
+          "date": "2026-09-04",
+          "close": 3.188192
+        },
+        {
+          "date": "2026-09-08",
+          "close": 3.197883
+        },
+        {
+          "date": "2026-09-09",
+          "close": 3.14943
+        },
+        {
+          "date": "2026-09-10",
+          "close": 3.120358
+        },
+        {
+          "date": "2026-09-11",
+          "close": 3.052525
+        },
+        {
+          "date": "2026-09-14",
+          "close": 3.062215
+        },
+        {
+          "date": "2026-09-15",
+          "close": 3.062215
+        },
+        {
+          "date": "2026-09-16",
+          "close": 3.042834
+        },
+        {
+          "date": "2026-09-17",
+          "close": 2.945928
+        },
+        {
+          "date": "2026-09-18",
+          "close": 2.790879
+        },
+        {
+          "date": "2026-09-21",
+          "close": 2.839332
+        },
+        {
+          "date": "2026-09-22",
+          "close": 2.945928
+        },
+        {
+          "date": "2026-09-23",
+          "close": 2.887785
+        },
+        {
+          "date": "2026-09-24",
+          "close": 2.926547
+        },
+        {
+          "date": "2026-09-25",
+          "close": 3.004071
+        },
+        {
+          "date": "2026-09-28",
+          "close": 2.965309
+        },
+        {
+          "date": "2026-09-29",
+          "close": 2.975
+        },
+        {
+          "date": "2026-09-30",
+          "close": 2.87
+        },
+        {
+          "date": "2026-10-01",
+          "close": 2.93
+        },
+        {
+          "date": "2026-10-02",
+          "close": 2.69
+        },
+        {
+          "date": "2026-10-05",
+          "close": 2.54
+        },
+        {
+          "date": "2026-10-06",
+          "close": 2.44
+        },
+        {
+          "date": "2026-10-07",
+          "close": 2.53
+        },
+        {
+          "date": "2026-10-08",
+          "close": 2.62
+        },
+        {
+          "date": "2026-10-09",
+          "close": 2.4
+        },
+        {
+          "date": "2026-10-12",
+          "close": 2.44
+        },
+        {
+          "date": "2026-10-13",
+          "close": 2.43
+        },
+        {
+          "date": "2026-10-14",
+          "close": 2.42
+        },
+        {
+          "date": "2026-10-15",
+          "close": 2.42
+        },
+        {
+          "date": "2026-10-16",
+          "close": 2.29
+        },
+        {
+          "date": "2026-10-19",
+          "close": 2.2
+        },
+        {
+          "date": "2026-10-20",
+          "close": 2.19
+        },
+        {
+          "date": "2026-10-21",
+          "close": 2.12
+        },
+        {
+          "date": "2026-10-22",
+          "close": 2.15
+        },
+        {
+          "date": "2026-10-23",
+          "close": 2.1
+        },
+        {
+          "date": "2026-10-26",
+          "close": 2.04
+        },
+        {
+          "date": "2026-10-27",
+          "close": 2.08
+        },
+        {
+          "date": "2026-10-28",
+          "close": 2.06
+        },
+        {
+          "date": "2026-10-29",
+          "close": 2.26
+        },
+        {
+          "date": "2026-10-30",
+          "close": 2.32
+        },
+        {
+          "date": "2026-11-02",
+          "close": 2.41
+        },
+        {
+          "date": "2026-11-03",
+          "close": 2.39
+        },
+        {
+          "date": "2026-11-04",
+          "close": 2.57
+        },
+        {
+          "date": "2026-11-05",
+          "close": 2.47
+        },
+        {
+          "date": "2026-11-06",
+          "close": 2.5
+        },
+        {
+          "date": "2026-11-09",
+          "close": 2.66
+        },
+        {
+          "date": "2026-11-10",
+          "close": 2.66
+        },
+        {
+          "date": "2026-11-11",
+          "close": 3.67
+        },
+        {
+          "date": "2026-11-12",
+          "close": 3.35
+        },
+        {
+          "date": "2026-11-13",
+          "close": 3.5
+        },
+        {
+          "date": "2026-11-16",
+          "close": 3.61
+        },
+        {
+          "date": "2026-11-17",
+          "close": 3.67
+        },
+        {
+          "date": "2026-11-18",
+          "close": 3.59
+        },
+        {
+          "date": "2026-11-19",
+          "close": 3.36
+        },
+        {
+          "date": "2026-11-20",
+          "close": 3.63
+        }
+      ],
+      "fundamentals": {
+        "source": "SEC EDGAR Company Facts",
+        "company": "B&G Foods, Inc.",
+        "cik": "0001278027",
+        "retrieved_at": "2026-11-22T02:27:56.055Z",
+        "fiscal_year": 2026,
+        "revenue_growth_percent": -5.37,
+        "metrics": {
+          "revenue": 1828687000,
+          "grossProfit": 398817000,
+          "operatingIncome": 97147000,
+          "netIncome": -43257000,
+          "assets": 2834795000,
+          "liabilities": 2381870000,
+          "equity": 452925000,
+          "cash": 56293000,
+          "operatingCashFlow": 101396000,
+          "currentDebt": 4500000,
+          "longTermDebt": 1945576000
+        },
+        "periods": {
+          "revenue": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 1828687000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 1932454000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "grossProfit": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 398817000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 421950000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "operatingIncome": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 97147000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": -177277000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "netIncome": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": -43257000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": -251251000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "assets": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 2834795000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 2994052000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "liabilities": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 2381870000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 2469245000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "equity": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 452925000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 524807000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "cash": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 56293000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 50583000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "operatingCashFlow": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 101396000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 130914000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "currentDebt": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 4500000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 5625000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ],
+          "longTermDebt": [
+            {
+              "periodEnd": "2026-01-03",
+              "fiscalYear": 2026,
+              "value": 1945576000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            },
+            {
+              "periodEnd": "2024-12-28",
+              "fiscalYear": 2024,
+              "value": 2014823000,
+              "unit": "USD",
+              "filed": "2026-03-03",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
+            }
+          ]
+        }
+      },
+      "score_technical": 74.5,
+      "score": 66.1,
+      "return_5d": 3.71,
+      "return_20d": 72.86,
+      "return_50d": 18.92,
+      "change_percent": 8.04,
+      "rsi": 72.4,
+      "volume_ratio": 0.89,
+      "average_volume_20d": 3019390,
+      "average_dollar_volume_20d": 9350556.32,
+      "volatility_20d": 9.24,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 2.84,
+      "ma50": 2.7206,
+      "price_date": "2026-11-20",
+      "price": 3.63,
+      "volume": 2695300,
+      "score_basis": "SEC fundamentals + market data",
+      "score_fundamental": 46.4,
+      "fundamental_coverage": [
+        "revenue_growth",
+        "gross_margin",
+        "operating_margin",
+        "net_margin",
+        "liabilities_to_assets",
+        "equity_ratio",
+        "operating_cash_flow",
+        "cash_vs_debt"
+      ],
+      "fundamental_confidence": "higher"
+    },
+    {
+      "ticker": "PLBL",
+      "company": "Polibeli Group Ltd",
+      "exchange": "NasdaqGM",
+      "market": "US",
+      "sector": "Unclassified",
+      "currency": "USD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +3.62%; relative volume 0.7x its 20-day average; 5-day move +34.5%; 20-day average dollar volume $1,375,241.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. negative operating margin in latest annual filing; net loss in latest annual filing; liabilities exceed 80% of reported assets; negative shareholders' equity; negative operating cash flow; RSI elevated; short-term pullback risk; high recent volatility.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-25",
+          "close": 6.09
+        },
+        {
+          "date": "2026-08-26",
+          "close": 5.955
+        },
+        {
+          "date": "2026-08-27",
+          "close": 5.93
+        },
+        {
+          "date": "2026-08-28",
+          "close": 5.62
+        },
+        {
+          "date": "2026-08-31",
+          "close": 5.66
+        },
+        {
+          "date": "2026-09-01",
+          "close": 5.605
+        },
+        {
+          "date": "2026-09-02",
+          "close": 5.59
+        },
+        {
+          "date": "2026-09-03",
+          "close": 5.37
+        },
+        {
+          "date": "2026-09-04",
+          "close": 5.4
+        },
+        {
+          "date": "2026-09-08",
+          "close": 5.47
+        },
+        {
+          "date": "2026-09-09",
+          "close": 5.58
+        },
+        {
+          "date": "2026-09-10",
+          "close": 5.66
+        },
+        {
+          "date": "2026-09-11",
+          "close": 5.67
+        },
+        {
+          "date": "2026-09-14",
+          "close": 5.53
+        },
+        {
+          "date": "2026-09-15",
+          "close": 5.59
+        },
+        {
+          "date": "2026-09-16",
+          "close": 5.43
+        },
+        {
+          "date": "2026-09-17",
+          "close": 5.51
+        },
+        {
+          "date": "2026-09-18",
+          "close": 5.52
+        },
+        {
+          "date": "2026-09-21",
+          "close": 6.37
+        },
+        {
+          "date": "2026-09-22",
+          "close": 5.8
+        },
+        {
+          "date": "2026-09-23",
+          "close": 5.99
+        },
+        {
+          "date": "2026-09-24",
+          "close": 5.71
+        },
+        {
+          "date": "2026-09-25",
+          "close": 5.26
+        },
+        {
+          "date": "2026-09-28",
+          "close": 5.61
+        },
+        {
+          "date": "2026-09-29",
+          "close": 5.83
+        },
+        {
+          "date": "2026-09-30",
+          "close": 5.57
+        },
+        {
+          "date": "2026-10-01",
+          "close": 5.49
+        },
+        {
+          "date": "2026-10-02",
+          "close": 5.65
+        },
+        {
+          "date": "2026-10-05",
+          "close": 5.67
+        },
+        {
+          "date": "2026-10-06",
+          "close": 5.84
+        },
+        {
+          "date": "2026-10-07",
+          "close": 5.64
+        },
+        {
+          "date": "2026-10-08",
+          "close": 5.64
+        },
+        {
+          "date": "2026-10-09",
+          "close": 5.64
+        },
+        {
+          "date": "2026-10-12",
+          "close": 5.51
+        },
+        {
+          "date": "2026-10-13",
+          "close": 5.42
+        },
+        {
+          "date": "2026-10-14",
+          "close": 5.51
+        },
+        {
+          "date": "2026-10-15",
+          "close": 5.42
+        },
+        {
+          "date": "2026-10-16",
+          "close": 5.52
+        },
+        {
+          "date": "2026-10-19",
+          "close": 5.35
+        },
+        {
+          "date": "2026-10-20",
+          "close": 5.36
+        },
+        {
+          "date": "2026-10-21",
+          "close": 5.37
+        },
+        {
+          "date": "2026-10-22",
+          "close": 5.35
+        },
+        {
+          "date": "2026-10-23",
+          "close": 5.465
+        },
+        {
+          "date": "2026-10-26",
+          "close": 5.5
+        },
+        {
+          "date": "2026-10-27",
+          "close": 5.5
+        },
+        {
+          "date": "2026-10-28",
+          "close": 5.45
+        },
+        {
+          "date": "2026-10-29",
+          "close": 5.38
+        },
+        {
+          "date": "2026-10-30",
+          "close": 5.37
+        },
+        {
+          "date": "2026-11-02",
+          "close": 5.52
+        },
+        {
+          "date": "2026-11-03",
+          "close": 5.66
+        },
+        {
+          "date": "2026-11-04",
+          "close": 5.45
+        },
+        {
+          "date": "2026-11-05",
+          "close": 5.18
+        },
+        {
+          "date": "2026-11-06",
+          "close": 5.35
+        },
+        {
+          "date": "2026-11-09",
+          "close": 5.44
+        },
+        {
+          "date": "2026-11-10",
+          "close": 5.36
+        },
+        {
+          "date": "2026-11-11",
+          "close": 5.645
+        },
+        {
+          "date": "2026-11-12",
+          "close": 7.27
+        },
+        {
+          "date": "2026-11-13",
+          "close": 7.24
+        },
+        {
+          "date": "2026-11-16",
+          "close": 7.39
+        },
+        {
+          "date": "2026-11-17",
+          "close": 7.6
+        },
+        {
+          "date": "2026-11-18",
+          "close": 8.88
+        },
+        {
+          "date": "2026-11-19",
+          "close": 9.4
+        },
+        {
+          "date": "2026-11-20",
+          "close": 9.74
+        }
+      ],
+      "fundamentals": {
+        "source": "SEC EDGAR Company Facts",
+        "company": "Polibeli Group Ltd",
+        "cik": "0002035697",
+        "retrieved_at": "2026-11-22T02:27:52.296Z",
+        "fiscal_year": 2025,
+        "revenue_growth_percent": -16.85,
+        "metrics": {
+          "revenue": 24146468,
+          "grossProfit": 1940573,
+          "operatingIncome": -7559912,
+          "netIncome": -5970105,
+          "assets": 17534542,
+          "liabilities": 62953327,
+          "equity": -45418785,
+          "cash": 1798141,
+          "operatingCashFlow": -6354919,
+          "currentDebt": 17748,
+          "longTermDebt": 17792
+        },
+        "periods": {
+          "revenue": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 24146468,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 29037915,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "grossProfit": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1940573,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 1148645,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "operatingIncome": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": -7559912,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": -9575769,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "netIncome": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": -5970105,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": -10978791,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "assets": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 17534542,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 21043518,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "liabilities": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 62953327,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 45682515,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "equity": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": -45418785,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": -24638997,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "cash": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1798141,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 2646635,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "operatingCashFlow": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": -6354919,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": -5547277,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "currentDebt": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 17748,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 504702,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ],
+          "longTermDebt": [
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 17792,
+              "unit": "USD",
+              "filed": "2026-04-24",
+              "form": "20-F",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/2035697/000121390026047262/ea0287164-01.htm"
+            }
+          ]
+        }
+      },
+      "score_technical": 83.8,
+      "score": 64.9,
+      "return_5d": 34.53,
+      "return_20d": 78.23,
+      "return_50d": 71.78,
+      "change_percent": 3.62,
+      "rsi": 89.1,
+      "volume_ratio": 0.66,
+      "average_volume_20d": 202795,
+      "average_dollar_volume_20d": 1375240.64,
+      "volatility_20d": 7.32,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 6.4162,
+      "ma50": 5.9178,
+      "price_date": "2026-11-20",
+      "price": 9.74,
+      "volume": 133300,
+      "score_basis": "SEC fundamentals + market data",
+      "score_fundamental": 20.7,
+      "fundamental_coverage": [
+        "revenue_growth",
+        "gross_margin",
+        "operating_margin",
+        "net_margin",
+        "liabilities_to_assets",
+        "equity_ratio",
+        "operating_cash_flow",
+        "cash_vs_debt"
+      ],
+      "fundamental_confidence": "higher"
+    },
+    {
+      "ticker": "CCC",
+      "company": "CCC Intelligent Solutions Holdings Inc.",
+      "exchange": "NasdaqGS",
+      "market": "US",
+      "sector": "Unclassified",
+      "currency": "USD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move -0.39%; relative volume 3.0x its 20-day average; 5-day move -0.3%; 20-day average dollar volume $159,290,416.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. cash is less than 20% of reported debt; negative 20-day momentum.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-25",
+          "close": 7.46
+        },
+        {
+          "date": "2026-08-26",
+          "close": 7.3
+        },
+        {
+          "date": "2026-08-27",
+          "close": 7.6
+        },
+        {
+          "date": "2026-08-28",
+          "close": 7.49
+        },
+        {
+          "date": "2026-08-31",
+          "close": 7.46
+        },
+        {
+          "date": "2026-09-01",
+          "close": 7.24
+        },
+        {
+          "date": "2026-09-02",
+          "close": 7.18
+        },
+        {
+          "date": "2026-09-03",
+          "close": 7.22
+        },
+        {
+          "date": "2026-09-04",
+          "close": 7.51
+        },
+        {
+          "date": "2026-09-08",
+          "close": 7.08
+        },
+        {
+          "date": "2026-09-09",
+          "close": 6.79
+        },
+        {
+          "date": "2026-09-10",
+          "close": 6.85
+        },
+        {
+          "date": "2026-09-11",
+          "close": 6.89
+        },
+        {
+          "date": "2026-09-14",
+          "close": 6.76
+        },
+        {
+          "date": "2026-09-15",
+          "close": 6.6
+        },
+        {
+          "date": "2026-09-16",
+          "close": 6.33
+        },
+        {
+          "date": "2026-09-17",
+          "close": 6.6
+        },
+        {
+          "date": "2026-09-18",
+          "close": 6.55
+        },
+        {
+          "date": "2026-09-21",
+          "close": 6.5
+        },
+        {
+          "date": "2026-09-22",
+          "close": 6.57
+        },
+        {
+          "date": "2026-09-23",
+          "close": 6.66
+        },
+        {
+          "date": "2026-09-24",
+          "close": 6.87
+        },
+        {
+          "date": "2026-09-25",
+          "close": 6.9
+        },
+        {
+          "date": "2026-09-28",
+          "close": 6.62
+        },
+        {
+          "date": "2026-09-29",
+          "close": 6.58
+        },
+        {
+          "date": "2026-09-30",
+          "close": 6.66
+        },
+        {
+          "date": "2026-10-01",
+          "close": 6.62
+        },
+        {
+          "date": "2026-10-02",
+          "close": 6.56
+        },
+        {
+          "date": "2026-10-05",
+          "close": 6.58
+        },
+        {
+          "date": "2026-10-06",
+          "close": 6.65
+        },
+        {
+          "date": "2026-10-07",
+          "close": 6.55
+        },
+        {
+          "date": "2026-10-08",
+          "close": 6.57
+        },
+        {
+          "date": "2026-10-09",
+          "close": 7.02
+        },
+        {
+          "date": "2026-10-12",
+          "close": 7.59
+        },
+        {
+          "date": "2026-10-13",
+          "close": 7.82
+        },
+        {
+          "date": "2026-10-14",
+          "close": 7.64
+        },
+        {
+          "date": "2026-10-15",
+          "close": 7.63
+        },
+        {
+          "date": "2026-10-16",
+          "close": 7.61
+        },
+        {
+          "date": "2026-10-19",
+          "close": 7.63
+        },
+        {
+          "date": "2026-10-20",
+          "close": 7.63
+        },
+        {
+          "date": "2026-10-21",
+          "close": 7.64
+        },
+        {
+          "date": "2026-10-22",
+          "close": 7.64
+        },
+        {
+          "date": "2026-10-23",
+          "close": 7.67
+        },
+        {
+          "date": "2026-10-26",
+          "close": 7.7
+        },
+        {
+          "date": "2026-10-27",
+          "close": 7.7
+        },
+        {
+          "date": "2026-10-28",
+          "close": 7.67
+        },
+        {
+          "date": "2026-10-29",
+          "close": 7.68
+        },
+        {
+          "date": "2026-10-30",
+          "close": 7.65
+        },
+        {
+          "date": "2026-11-02",
+          "close": 7.68
+        },
+        {
+          "date": "2026-11-03",
+          "close": 7.68
+        },
+        {
+          "date": "2026-11-04",
+          "close": 7.69
+        },
+        {
+          "date": "2026-11-05",
+          "close": 7.67
+        },
+        {
+          "date": "2026-11-06",
+          "close": 7.68
+        },
+        {
+          "date": "2026-11-09",
+          "close": 7.69
+        },
+        {
+          "date": "2026-11-10",
+          "close": 7.71
+        },
+        {
+          "date": "2026-11-11",
+          "close": 7.71
+        },
+        {
+          "date": "2026-11-12",
+          "close": 7.69
+        },
+        {
+          "date": "2026-11-13",
+          "close": 7.68
+        },
+        {
+          "date": "2026-11-16",
+          "close": 7.68
+        },
+        {
+          "date": "2026-11-17",
+          "close": 7.69
+        },
+        {
+          "date": "2026-11-18",
+          "close": 7.69
+        },
+        {
+          "date": "2026-11-19",
+          "close": 7.69
+        },
+        {
+          "date": "2026-11-20",
+          "close": 7.66
+        }
+      ],
+      "fundamentals": {
+        "source": "SEC EDGAR Company Facts",
+        "company": "CCC Intelligent Solutions Holdings Inc.",
+        "cik": "0001818201",
+        "retrieved_at": "2026-11-22T02:27:49.151Z",
+        "fiscal_year": 2025,
+        "revenue_growth_percent": 11.88,
+        "metrics": {
+          "revenue": 1057001000,
+          "grossProfit": 776808000,
+          "operatingIncome": 93842000,
+          "netIncome": 1688000,
+          "assets": 3573432000,
+          "liabilities": 1786422000,
+          "equity": 1787010000,
+          "cash": 111192000,
+          "operatingCashFlow": 315479000,
+          "currentDebt": 13033000,
+          "longTermDebt": 1264941000
+        },
+        "periods": {
+          "revenue": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1057001000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 944800000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "grossProfit": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 776808000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 713803000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "operatingIncome": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 93842000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 80105000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "netIncome": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1688000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 31240000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "assets": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 3573432000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 3183218000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "liabilities": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1786422000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 1163716000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "equity": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1787010000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 1997823000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "cash": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 111192000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 398983000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "operatingCashFlow": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 315479000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 283886000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "currentDebt": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 13033000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 8000000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ],
+          "longTermDebt": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1264941000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 761053000,
+              "unit": "USD",
+              "filed": "2026-02-24",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+            }
+          ]
+        }
+      },
+      "score_technical": 59.1,
+      "score": 60.4,
+      "return_5d": -0.26,
+      "return_20d": -0.13,
+      "return_50d": 11.18,
+      "change_percent": -0.39,
+      "rsi": 42.9,
+      "volume_ratio": 3.01,
+      "average_volume_20d": 20739880,
+      "average_dollar_volume_20d": 159290415.81,
+      "volatility_20d": 0.23,
+      "above_20day_average": false,
+      "above_50day_average": true,
+      "ma20": 7.6845,
+      "ma50": 7.2588,
+      "price_date": "2026-11-20",
+      "price": 7.66,
+      "volume": 62475300,
+      "score_basis": "SEC fundamentals + market data",
+      "score_fundamental": 63.6,
+      "fundamental_coverage": [
+        "revenue_growth",
+        "gross_margin",
+        "operating_margin",
+        "net_margin",
+        "liabilities_to_assets",
+        "equity_ratio",
+        "operating_cash_flow",
+        "cash_vs_debt"
+      ],
+      "fundamental_confidence": "higher"
+    },
     {
       "ticker": "NOW.V",
       "company": "NowVertical Group",
@@ -1182,545 +3889,6 @@
       "fundamental_confidence": "not rated"
     },
     {
-      "ticker": "BGS",
-      "company": "B&G Foods, Inc.",
-      "exchange": "NYSE",
-      "market": "US",
-      "sector": "Unclassified",
-      "currency": "USD",
-      "quote_time": "2026-11-20 (daily close)",
-      "reason": "daily price move +8.04%; relative volume 0.9x its 20-day average; 5-day move +3.7%; 20-day average dollar volume $9,350,556.",
-      "risk": "HIGH RISK \u2014 penny-stock volatility. net loss in latest annual filing; liabilities exceed 80% of reported assets; cash is less than 20% of reported debt; RSI elevated; short-term pullback risk; high recent volatility.",
-      "price_history_3mo": [
-        {
-          "date": "2026-08-25",
-          "close": 3.411075
-        },
-        {
-          "date": "2026-08-26",
-          "close": 3.420765
-        },
-        {
-          "date": "2026-08-27",
-          "close": 3.362622
-        },
-        {
-          "date": "2026-08-28",
-          "close": 3.411075
-        },
-        {
-          "date": "2026-08-31",
-          "close": 3.362622
-        },
-        {
-          "date": "2026-09-01",
-          "close": 3.382003
-        },
-        {
-          "date": "2026-09-02",
-          "close": 3.343241
-        },
-        {
-          "date": "2026-09-03",
-          "close": 3.256026
-        },
-        {
-          "date": "2026-09-04",
-          "close": 3.188192
-        },
-        {
-          "date": "2026-09-08",
-          "close": 3.197883
-        },
-        {
-          "date": "2026-09-09",
-          "close": 3.14943
-        },
-        {
-          "date": "2026-09-10",
-          "close": 3.120358
-        },
-        {
-          "date": "2026-09-11",
-          "close": 3.052525
-        },
-        {
-          "date": "2026-09-14",
-          "close": 3.062215
-        },
-        {
-          "date": "2026-09-15",
-          "close": 3.062215
-        },
-        {
-          "date": "2026-09-16",
-          "close": 3.042834
-        },
-        {
-          "date": "2026-09-17",
-          "close": 2.945928
-        },
-        {
-          "date": "2026-09-18",
-          "close": 2.790879
-        },
-        {
-          "date": "2026-09-21",
-          "close": 2.839332
-        },
-        {
-          "date": "2026-09-22",
-          "close": 2.945928
-        },
-        {
-          "date": "2026-09-23",
-          "close": 2.887785
-        },
-        {
-          "date": "2026-09-24",
-          "close": 2.926547
-        },
-        {
-          "date": "2026-09-25",
-          "close": 3.004071
-        },
-        {
-          "date": "2026-09-28",
-          "close": 2.965309
-        },
-        {
-          "date": "2026-09-29",
-          "close": 2.975
-        },
-        {
-          "date": "2026-09-30",
-          "close": 2.87
-        },
-        {
-          "date": "2026-10-01",
-          "close": 2.93
-        },
-        {
-          "date": "2026-10-02",
-          "close": 2.69
-        },
-        {
-          "date": "2026-10-05",
-          "close": 2.54
-        },
-        {
-          "date": "2026-10-06",
-          "close": 2.44
-        },
-        {
-          "date": "2026-10-07",
-          "close": 2.53
-        },
-        {
-          "date": "2026-10-08",
-          "close": 2.62
-        },
-        {
-          "date": "2026-10-09",
-          "close": 2.4
-        },
-        {
-          "date": "2026-10-12",
-          "close": 2.44
-        },
-        {
-          "date": "2026-10-13",
-          "close": 2.43
-        },
-        {
-          "date": "2026-10-14",
-          "close": 2.42
-        },
-        {
-          "date": "2026-10-15",
-          "close": 2.42
-        },
-        {
-          "date": "2026-10-16",
-          "close": 2.29
-        },
-        {
-          "date": "2026-10-19",
-          "close": 2.2
-        },
-        {
-          "date": "2026-10-20",
-          "close": 2.19
-        },
-        {
-          "date": "2026-10-21",
-          "close": 2.12
-        },
-        {
-          "date": "2026-10-22",
-          "close": 2.15
-        },
-        {
-          "date": "2026-10-23",
-          "close": 2.1
-        },
-        {
-          "date": "2026-10-26",
-          "close": 2.04
-        },
-        {
-          "date": "2026-10-27",
-          "close": 2.08
-        },
-        {
-          "date": "2026-10-28",
-          "close": 2.06
-        },
-        {
-          "date": "2026-10-29",
-          "close": 2.26
-        },
-        {
-          "date": "2026-10-30",
-          "close": 2.32
-        },
-        {
-          "date": "2026-11-02",
-          "close": 2.41
-        },
-        {
-          "date": "2026-11-03",
-          "close": 2.39
-        },
-        {
-          "date": "2026-11-04",
-          "close": 2.57
-        },
-        {
-          "date": "2026-11-05",
-          "close": 2.47
-        },
-        {
-          "date": "2026-11-06",
-          "close": 2.5
-        },
-        {
-          "date": "2026-11-09",
-          "close": 2.66
-        },
-        {
-          "date": "2026-11-10",
-          "close": 2.66
-        },
-        {
-          "date": "2026-11-11",
-          "close": 3.67
-        },
-        {
-          "date": "2026-11-12",
-          "close": 3.35
-        },
-        {
-          "date": "2026-11-13",
-          "close": 3.5
-        },
-        {
-          "date": "2026-11-16",
-          "close": 3.61
-        },
-        {
-          "date": "2026-11-17",
-          "close": 3.67
-        },
-        {
-          "date": "2026-11-18",
-          "close": 3.59
-        },
-        {
-          "date": "2026-11-19",
-          "close": 3.36
-        },
-        {
-          "date": "2026-11-20",
-          "close": 3.63
-        }
-      ],
-      "fundamentals": {
-        "source": "SEC EDGAR Company Facts",
-        "company": "B&G Foods, Inc.",
-        "cik": "0001278027",
-        "retrieved_at": "2026-11-22T01:52:22.455Z",
-        "fiscal_year": 2026,
-        "revenue_growth_percent": -5.37,
-        "metrics": {
-          "revenue": 1828687000,
-          "grossProfit": 398817000,
-          "operatingIncome": 97147000,
-          "netIncome": -43257000,
-          "assets": 2834795000,
-          "liabilities": 2381870000,
-          "equity": 452925000,
-          "cash": 56293000,
-          "operatingCashFlow": 101396000,
-          "currentDebt": 4500000,
-          "longTermDebt": 1945576000
-        },
-        "periods": {
-          "revenue": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 1828687000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 1932454000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "grossProfit": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 398817000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 421950000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "operatingIncome": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 97147000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": -177277000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "netIncome": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": -43257000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": -251251000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "assets": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 2834795000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 2994052000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "liabilities": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 2381870000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 2469245000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "equity": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 452925000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 524807000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "cash": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 56293000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 50583000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "operatingCashFlow": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 101396000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 130914000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "currentDebt": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 4500000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 5625000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ],
-          "longTermDebt": [
-            {
-              "periodEnd": "2026-01-03",
-              "fiscalYear": 2026,
-              "value": 1945576000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            },
-            {
-              "periodEnd": "2024-12-28",
-              "fiscalYear": 2024,
-              "value": 2014823000,
-              "unit": "USD",
-              "filed": "2026-03-03",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926022961/bgs-20260103x10k.htm"
-            }
-          ]
-        }
-      },
-      "score_technical": 74.5,
-      "score": 66.1,
-      "return_5d": 3.71,
-      "return_20d": 72.86,
-      "return_50d": 18.92,
-      "change_percent": 8.04,
-      "rsi": 72.4,
-      "volume_ratio": 0.89,
-      "average_volume_20d": 3019390,
-      "average_dollar_volume_20d": 9350556.32,
-      "volatility_20d": 9.24,
-      "above_20day_average": true,
-      "above_50day_average": true,
-      "ma20": 2.84,
-      "ma50": 2.7206,
-      "price_date": "2026-11-20",
-      "price": 3.63,
-      "volume": 2695300,
-      "score_basis": "SEC fundamentals + market data",
-      "score_fundamental": 46.4,
-      "fundamental_coverage": [
-        "revenue_growth",
-        "gross_margin",
-        "operating_margin",
-        "net_margin",
-        "liabilities_to_assets",
-        "equity_ratio",
-        "operating_cash_flow",
-        "cash_vs_debt"
-      ],
-      "fundamental_confidence": "higher"
-    },
-    {
       "ticker": "BIR.TO",
       "company": "Birchcliff Energy",
       "exchange": "TSX",
@@ -2003,6 +4171,294 @@
       "price_date": "2026-11-20",
       "price": 6.8,
       "volume": 1209600,
+      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
+      "score_fundamental": null,
+      "fundamental_coverage": [],
+      "fundamental_confidence": "not rated"
+    },
+    {
+      "ticker": "DND.TO",
+      "company": "Dye & Durham",
+      "exchange": "TSX",
+      "market": "Canada",
+      "sector": "Technology",
+      "currency": "CAD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +12.24%; relative volume 0.6x its 20-day average; 5-day move +23.6%; 20-day average dollar volume $1,104,310.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. high recent volatility; price below 50-day average; negative 20-day momentum.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-24",
+          "close": 0.74
+        },
+        {
+          "date": "2026-08-25",
+          "close": 0.77
+        },
+        {
+          "date": "2026-08-26",
+          "close": 0.74
+        },
+        {
+          "date": "2026-08-27",
+          "close": 0.72
+        },
+        {
+          "date": "2026-08-28",
+          "close": 0.68
+        },
+        {
+          "date": "2026-08-31",
+          "close": 0.8
+        },
+        {
+          "date": "2026-09-01",
+          "close": 0.78
+        },
+        {
+          "date": "2026-09-02",
+          "close": 0.76
+        },
+        {
+          "date": "2026-09-03",
+          "close": 0.77
+        },
+        {
+          "date": "2026-09-04",
+          "close": 0.74
+        },
+        {
+          "date": "2026-09-08",
+          "close": 0.78
+        },
+        {
+          "date": "2026-09-09",
+          "close": 0.76
+        },
+        {
+          "date": "2026-09-10",
+          "close": 0.73
+        },
+        {
+          "date": "2026-09-11",
+          "close": 0.73
+        },
+        {
+          "date": "2026-09-14",
+          "close": 0.69
+        },
+        {
+          "date": "2026-09-15",
+          "close": 0.69
+        },
+        {
+          "date": "2026-09-16",
+          "close": 0.67
+        },
+        {
+          "date": "2026-09-17",
+          "close": 0.67
+        },
+        {
+          "date": "2026-09-18",
+          "close": 0.59
+        },
+        {
+          "date": "2026-09-21",
+          "close": 0.55
+        },
+        {
+          "date": "2026-09-22",
+          "close": 0.54
+        },
+        {
+          "date": "2026-09-23",
+          "close": 0.5
+        },
+        {
+          "date": "2026-09-24",
+          "close": 0.49
+        },
+        {
+          "date": "2026-09-25",
+          "close": 0.48
+        },
+        {
+          "date": "2026-09-28",
+          "close": 0.475
+        },
+        {
+          "date": "2026-09-29",
+          "close": 1.16
+        },
+        {
+          "date": "2026-09-30",
+          "close": 1.0
+        },
+        {
+          "date": "2026-10-01",
+          "close": 0.99
+        },
+        {
+          "date": "2026-10-02",
+          "close": 1.31
+        },
+        {
+          "date": "2026-10-05",
+          "close": 1.34
+        },
+        {
+          "date": "2026-10-06",
+          "close": 1.19
+        },
+        {
+          "date": "2026-10-07",
+          "close": 1.32
+        },
+        {
+          "date": "2026-10-08",
+          "close": 1.26
+        },
+        {
+          "date": "2026-10-09",
+          "close": 1.52
+        },
+        {
+          "date": "2026-10-13",
+          "close": 1.73
+        },
+        {
+          "date": "2026-10-14",
+          "close": 1.83
+        },
+        {
+          "date": "2026-10-15",
+          "close": 2.13
+        },
+        {
+          "date": "2026-10-16",
+          "close": 1.92
+        },
+        {
+          "date": "2026-10-19",
+          "close": 1.53
+        },
+        {
+          "date": "2026-10-20",
+          "close": 1.64
+        },
+        {
+          "date": "2026-10-21",
+          "close": 1.59
+        },
+        {
+          "date": "2026-10-22",
+          "close": 1.7
+        },
+        {
+          "date": "2026-10-23",
+          "close": 1.58
+        },
+        {
+          "date": "2026-10-26",
+          "close": 1.53
+        },
+        {
+          "date": "2026-10-27",
+          "close": 1.62
+        },
+        {
+          "date": "2026-10-28",
+          "close": 1.64
+        },
+        {
+          "date": "2026-10-29",
+          "close": 1.57
+        },
+        {
+          "date": "2026-10-30",
+          "close": 1.47
+        },
+        {
+          "date": "2026-11-02",
+          "close": 1.63
+        },
+        {
+          "date": "2026-11-03",
+          "close": 1.56
+        },
+        {
+          "date": "2026-11-04",
+          "close": 1.55
+        },
+        {
+          "date": "2026-11-05",
+          "close": 1.65
+        },
+        {
+          "date": "2026-11-06",
+          "close": 1.62
+        },
+        {
+          "date": "2026-11-09",
+          "close": 1.96
+        },
+        {
+          "date": "2026-11-10",
+          "close": 1.87
+        },
+        {
+          "date": "2026-11-11",
+          "close": 1.89
+        },
+        {
+          "date": "2026-11-12",
+          "close": 1.07
+        },
+        {
+          "date": "2026-11-13",
+          "close": 0.89
+        },
+        {
+          "date": "2026-11-16",
+          "close": 0.95
+        },
+        {
+          "date": "2026-11-17",
+          "close": 0.9
+        },
+        {
+          "date": "2026-11-18",
+          "close": 0.86
+        },
+        {
+          "date": "2026-11-19",
+          "close": 0.98
+        },
+        {
+          "date": "2026-11-20",
+          "close": 1.1
+        }
+      ],
+      "fundamentals": null,
+      "score_technical": 45.2,
+      "score": 45.2,
+      "return_5d": 23.6,
+      "return_20d": -30.38,
+      "return_50d": 50.68,
+      "change_percent": 12.24,
+      "rsi": 37.1,
+      "volume_ratio": 0.58,
+      "average_volume_20d": 810395,
+      "average_dollar_volume_20d": 1104309.96,
+      "volatility_20d": 12.92,
+      "above_20day_average": false,
+      "above_50day_average": false,
+      "ma20": 1.4155,
+      "ma50": 1.2425,
+      "price_date": "2026-11-20",
+      "price": 1.1,
+      "volume": 467800,
       "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
       "score_fundamental": null,
       "fundamental_coverage": [],
@@ -2591,294 +5047,6 @@
   },
   "picks": [
     {
-      "ticker": "T.TO",
-      "company": "TELUS",
-      "exchange": "TSX",
-      "market": "Canada",
-      "sector": "Telecommunications",
-      "currency": "CAD",
-      "quote_time": "2026-11-20 (daily close)",
-      "reason": "daily price move +2.32%; relative volume 2.0x its 20-day average; 5-day move +30.6%; 20-day average dollar volume $150,029,995.",
-      "risk": "RSI elevated; short-term pullback risk.",
-      "price_history_3mo": [
-        {
-          "date": "2026-08-24",
-          "close": 13.384664
-        },
-        {
-          "date": "2026-08-25",
-          "close": 13.364952
-        },
-        {
-          "date": "2026-08-26",
-          "close": 13.236822
-        },
-        {
-          "date": "2026-08-27",
-          "close": 13.34524
-        },
-        {
-          "date": "2026-08-28",
-          "close": 13.26639
-        },
-        {
-          "date": "2026-08-31",
-          "close": 13.217109
-        },
-        {
-          "date": "2026-09-01",
-          "close": 13.246677
-        },
-        {
-          "date": "2026-09-02",
-          "close": 13.039698
-        },
-        {
-          "date": "2026-09-03",
-          "close": 13.207253
-        },
-        {
-          "date": "2026-09-04",
-          "close": 13.197397
-        },
-        {
-          "date": "2026-09-08",
-          "close": 13.128404
-        },
-        {
-          "date": "2026-09-09",
-          "close": 12.882
-        },
-        {
-          "date": "2026-09-10",
-          "close": 12.56
-        },
-        {
-          "date": "2026-09-11",
-          "close": 12.6
-        },
-        {
-          "date": "2026-09-14",
-          "close": 12.73
-        },
-        {
-          "date": "2026-09-15",
-          "close": 12.66
-        },
-        {
-          "date": "2026-09-16",
-          "close": 12.45
-        },
-        {
-          "date": "2026-09-17",
-          "close": 12.47
-        },
-        {
-          "date": "2026-09-18",
-          "close": 12.31
-        },
-        {
-          "date": "2026-09-21",
-          "close": 12.2
-        },
-        {
-          "date": "2026-09-22",
-          "close": 12.09
-        },
-        {
-          "date": "2026-09-23",
-          "close": 12.02
-        },
-        {
-          "date": "2026-09-24",
-          "close": 12.03
-        },
-        {
-          "date": "2026-09-25",
-          "close": 12.0
-        },
-        {
-          "date": "2026-09-28",
-          "close": 11.86
-        },
-        {
-          "date": "2026-09-29",
-          "close": 11.57
-        },
-        {
-          "date": "2026-09-30",
-          "close": 11.95
-        },
-        {
-          "date": "2026-10-01",
-          "close": 11.63
-        },
-        {
-          "date": "2026-10-02",
-          "close": 11.47
-        },
-        {
-          "date": "2026-10-05",
-          "close": 11.25
-        },
-        {
-          "date": "2026-10-06",
-          "close": 11.19
-        },
-        {
-          "date": "2026-10-07",
-          "close": 11.34
-        },
-        {
-          "date": "2026-10-08",
-          "close": 11.43
-        },
-        {
-          "date": "2026-10-09",
-          "close": 11.03
-        },
-        {
-          "date": "2026-10-13",
-          "close": 11.35
-        },
-        {
-          "date": "2026-10-14",
-          "close": 11.53
-        },
-        {
-          "date": "2026-10-15",
-          "close": 11.85
-        },
-        {
-          "date": "2026-10-16",
-          "close": 11.91
-        },
-        {
-          "date": "2026-10-19",
-          "close": 11.69
-        },
-        {
-          "date": "2026-10-20",
-          "close": 11.86
-        },
-        {
-          "date": "2026-10-21",
-          "close": 11.78
-        },
-        {
-          "date": "2026-10-22",
-          "close": 12.37
-        },
-        {
-          "date": "2026-10-23",
-          "close": 12.34
-        },
-        {
-          "date": "2026-10-26",
-          "close": 12.19
-        },
-        {
-          "date": "2026-10-27",
-          "close": 12.07
-        },
-        {
-          "date": "2026-10-28",
-          "close": 11.99
-        },
-        {
-          "date": "2026-10-29",
-          "close": 12.08
-        },
-        {
-          "date": "2026-10-30",
-          "close": 12.37
-        },
-        {
-          "date": "2026-11-02",
-          "close": 12.63
-        },
-        {
-          "date": "2026-11-03",
-          "close": 12.46
-        },
-        {
-          "date": "2026-11-04",
-          "close": 12.89
-        },
-        {
-          "date": "2026-11-05",
-          "close": 13.19
-        },
-        {
-          "date": "2026-11-06",
-          "close": 12.81
-        },
-        {
-          "date": "2026-11-09",
-          "close": 12.59
-        },
-        {
-          "date": "2026-11-10",
-          "close": 12.42
-        },
-        {
-          "date": "2026-11-11",
-          "close": 12.33
-        },
-        {
-          "date": "2026-11-12",
-          "close": 12.14
-        },
-        {
-          "date": "2026-11-13",
-          "close": 12.14
-        },
-        {
-          "date": "2026-11-16",
-          "close": 13.7
-        },
-        {
-          "date": "2026-11-17",
-          "close": 13.25
-        },
-        {
-          "date": "2026-11-18",
-          "close": 13.63
-        },
-        {
-          "date": "2026-11-19",
-          "close": 15.5
-        },
-        {
-          "date": "2026-11-20",
-          "close": 15.86
-        }
-      ],
-      "fundamentals": null,
-      "score_technical": 87.5,
-      "score": 87.5,
-      "return_5d": 30.64,
-      "return_20d": 28.53,
-      "return_50d": 26.27,
-      "change_percent": 2.32,
-      "rsi": 74.6,
-      "volume_ratio": 2.01,
-      "average_volume_20d": 11118985,
-      "average_dollar_volume_20d": 150029995.22,
-      "volatility_20d": 4.41,
-      "above_20day_average": true,
-      "above_50day_average": true,
-      "ma20": 12.912,
-      "ma50": 12.304,
-      "price_date": "2026-11-20",
-      "price": 15.86,
-      "volume": 22404700,
-      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
-      "score_fundamental": null,
-      "fundamental_coverage": [],
-      "fundamental_confidence": "not rated"
-    },
-    {
       "ticker": "BIPC",
       "company": "Brookfield Infrastructure Corporation",
       "exchange": "NYSE",
@@ -3167,6 +5335,1091 @@
       "fundamental_confidence": "not rated"
     },
     {
+      "ticker": "BIP",
+      "company": "Brookfield Infrastructure Partners L.P.",
+      "exchange": "NYSE",
+      "market": "US",
+      "sector": "Unclassified",
+      "currency": "USD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +4.24%; relative volume 2.7x its 20-day average; 5-day move +8.4%; 20-day average dollar volume $70,954,306.",
+      "risk": "RSI elevated; short-term pullback risk.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-25",
+          "close": 38.474968
+        },
+        {
+          "date": "2026-08-26",
+          "close": 38.38604
+        },
+        {
+          "date": "2026-08-27",
+          "close": 38.415688
+        },
+        {
+          "date": "2026-08-28",
+          "close": 37.644997
+        },
+        {
+          "date": "2026-08-31",
+          "close": 37.799999
+        },
+        {
+          "date": "2026-09-01",
+          "close": 37.110001
+        },
+        {
+          "date": "2026-09-02",
+          "close": 36.290001
+        },
+        {
+          "date": "2026-09-03",
+          "close": 36.84
+        },
+        {
+          "date": "2026-09-04",
+          "close": 37.130001
+        },
+        {
+          "date": "2026-09-08",
+          "close": 37.259998
+        },
+        {
+          "date": "2026-09-09",
+          "close": 36.639999
+        },
+        {
+          "date": "2026-09-10",
+          "close": 36.419998
+        },
+        {
+          "date": "2026-09-11",
+          "close": 36.880001
+        },
+        {
+          "date": "2026-09-14",
+          "close": 35.650002
+        },
+        {
+          "date": "2026-09-15",
+          "close": 35.040001
+        },
+        {
+          "date": "2026-09-16",
+          "close": 35.540001
+        },
+        {
+          "date": "2026-09-17",
+          "close": 35.970001
+        },
+        {
+          "date": "2026-09-18",
+          "close": 36.07
+        },
+        {
+          "date": "2026-09-21",
+          "close": 35.830002
+        },
+        {
+          "date": "2026-09-22",
+          "close": 35.779999
+        },
+        {
+          "date": "2026-09-23",
+          "close": 35.220001
+        },
+        {
+          "date": "2026-09-24",
+          "close": 34.439999
+        },
+        {
+          "date": "2026-09-25",
+          "close": 34.759998
+        },
+        {
+          "date": "2026-09-28",
+          "close": 34.84
+        },
+        {
+          "date": "2026-09-29",
+          "close": 35.490002
+        },
+        {
+          "date": "2026-09-30",
+          "close": 35.549999
+        },
+        {
+          "date": "2026-10-01",
+          "close": 35.790001
+        },
+        {
+          "date": "2026-10-02",
+          "close": 36.52
+        },
+        {
+          "date": "2026-10-05",
+          "close": 36.169998
+        },
+        {
+          "date": "2026-10-06",
+          "close": 37.43
+        },
+        {
+          "date": "2026-10-07",
+          "close": 37.450001
+        },
+        {
+          "date": "2026-10-08",
+          "close": 36.889999
+        },
+        {
+          "date": "2026-10-09",
+          "close": 37.099998
+        },
+        {
+          "date": "2026-10-12",
+          "close": 36.720001
+        },
+        {
+          "date": "2026-10-13",
+          "close": 36.330002
+        },
+        {
+          "date": "2026-10-14",
+          "close": 36.349998
+        },
+        {
+          "date": "2026-10-15",
+          "close": 37.27
+        },
+        {
+          "date": "2026-10-16",
+          "close": 37.450001
+        },
+        {
+          "date": "2026-10-19",
+          "close": 37.110001
+        },
+        {
+          "date": "2026-10-20",
+          "close": 36.75
+        },
+        {
+          "date": "2026-10-21",
+          "close": 36.369999
+        },
+        {
+          "date": "2026-10-22",
+          "close": 37.290001
+        },
+        {
+          "date": "2026-10-23",
+          "close": 37.040001
+        },
+        {
+          "date": "2026-10-26",
+          "close": 36.75
+        },
+        {
+          "date": "2026-10-27",
+          "close": 36.610001
+        },
+        {
+          "date": "2026-10-28",
+          "close": 36.810001
+        },
+        {
+          "date": "2026-10-29",
+          "close": 37.34
+        },
+        {
+          "date": "2026-10-30",
+          "close": 37.32
+        },
+        {
+          "date": "2026-11-02",
+          "close": 38.119999
+        },
+        {
+          "date": "2026-11-03",
+          "close": 37.459999
+        },
+        {
+          "date": "2026-11-04",
+          "close": 38.169998
+        },
+        {
+          "date": "2026-11-05",
+          "close": 37.810001
+        },
+        {
+          "date": "2026-11-06",
+          "close": 39.450001
+        },
+        {
+          "date": "2026-11-09",
+          "close": 39.669998
+        },
+        {
+          "date": "2026-11-10",
+          "close": 39.490002
+        },
+        {
+          "date": "2026-11-11",
+          "close": 39.75
+        },
+        {
+          "date": "2026-11-12",
+          "close": 39.150002
+        },
+        {
+          "date": "2026-11-13",
+          "close": 39.490002
+        },
+        {
+          "date": "2026-11-16",
+          "close": 39.560001
+        },
+        {
+          "date": "2026-11-17",
+          "close": 40.209999
+        },
+        {
+          "date": "2026-11-18",
+          "close": 41.709999
+        },
+        {
+          "date": "2026-11-19",
+          "close": 41.07
+        },
+        {
+          "date": "2026-11-20",
+          "close": 42.810001
+        }
+      ],
+      "fundamentals": null,
+      "score_technical": 78.3,
+      "score": 78.3,
+      "return_5d": 8.41,
+      "return_20d": 15.58,
+      "return_50d": 16.08,
+      "change_percent": 4.24,
+      "rsi": 74.5,
+      "volume_ratio": 2.72,
+      "average_volume_20d": 1775450,
+      "average_dollar_volume_20d": 70954306.45,
+      "volatility_20d": 1.79,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 38.9375,
+      "ma50": 37.2992,
+      "price_date": "2026-11-20",
+      "price": 42.81,
+      "volume": 4830400,
+      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
+      "score_fundamental": null,
+      "fundamental_coverage": [],
+      "fundamental_confidence": "not rated"
+    },
+    {
+      "ticker": "LFST",
+      "company": "LifeStance Health Group, Inc.",
+      "exchange": "NasdaqGS",
+      "market": "US",
+      "sector": "Unclassified",
+      "currency": "USD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +3.60%; relative volume 0.8x its 20-day average; 5-day move -1.9%; 20-day average dollar volume $101,236,714.",
+      "risk": "normal market and company-specific risks remain.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-25",
+          "close": 12.28
+        },
+        {
+          "date": "2026-08-26",
+          "close": 12.15
+        },
+        {
+          "date": "2026-08-27",
+          "close": 12.3
+        },
+        {
+          "date": "2026-08-28",
+          "close": 12.31
+        },
+        {
+          "date": "2026-08-31",
+          "close": 12.36
+        },
+        {
+          "date": "2026-09-01",
+          "close": 12.6
+        },
+        {
+          "date": "2026-09-02",
+          "close": 12.89
+        },
+        {
+          "date": "2026-09-03",
+          "close": 12.83
+        },
+        {
+          "date": "2026-09-04",
+          "close": 12.73
+        },
+        {
+          "date": "2026-09-08",
+          "close": 12.8
+        },
+        {
+          "date": "2026-09-09",
+          "close": 12.62
+        },
+        {
+          "date": "2026-09-10",
+          "close": 13.0
+        },
+        {
+          "date": "2026-09-11",
+          "close": 12.97
+        },
+        {
+          "date": "2026-09-14",
+          "close": 13.38
+        },
+        {
+          "date": "2026-09-15",
+          "close": 13.06
+        },
+        {
+          "date": "2026-09-16",
+          "close": 12.79
+        },
+        {
+          "date": "2026-09-17",
+          "close": 12.61
+        },
+        {
+          "date": "2026-09-18",
+          "close": 12.57
+        },
+        {
+          "date": "2026-09-21",
+          "close": 12.67
+        },
+        {
+          "date": "2026-09-22",
+          "close": 12.55
+        },
+        {
+          "date": "2026-09-23",
+          "close": 12.08
+        },
+        {
+          "date": "2026-09-24",
+          "close": 11.8
+        },
+        {
+          "date": "2026-09-25",
+          "close": 11.84
+        },
+        {
+          "date": "2026-09-28",
+          "close": 11.84
+        },
+        {
+          "date": "2026-09-29",
+          "close": 11.89
+        },
+        {
+          "date": "2026-09-30",
+          "close": 12.03
+        },
+        {
+          "date": "2026-10-01",
+          "close": 11.91
+        },
+        {
+          "date": "2026-10-02",
+          "close": 11.83
+        },
+        {
+          "date": "2026-10-05",
+          "close": 12.22
+        },
+        {
+          "date": "2026-10-06",
+          "close": 12.12
+        },
+        {
+          "date": "2026-10-07",
+          "close": 12.11
+        },
+        {
+          "date": "2026-10-08",
+          "close": 12.06
+        },
+        {
+          "date": "2026-10-09",
+          "close": 12.42
+        },
+        {
+          "date": "2026-10-12",
+          "close": 12.48
+        },
+        {
+          "date": "2026-10-13",
+          "close": 12.32
+        },
+        {
+          "date": "2026-10-14",
+          "close": 12.52
+        },
+        {
+          "date": "2026-10-15",
+          "close": 12.37
+        },
+        {
+          "date": "2026-10-16",
+          "close": 11.74
+        },
+        {
+          "date": "2026-10-19",
+          "close": 11.77
+        },
+        {
+          "date": "2026-10-20",
+          "close": 12.22
+        },
+        {
+          "date": "2026-10-21",
+          "close": 12.33
+        },
+        {
+          "date": "2026-10-22",
+          "close": 12.56
+        },
+        {
+          "date": "2026-10-23",
+          "close": 12.93
+        },
+        {
+          "date": "2026-10-26",
+          "close": 13.06
+        },
+        {
+          "date": "2026-10-27",
+          "close": 13.1
+        },
+        {
+          "date": "2026-10-28",
+          "close": 13.39
+        },
+        {
+          "date": "2026-10-29",
+          "close": 13.635
+        },
+        {
+          "date": "2026-10-30",
+          "close": 13.4
+        },
+        {
+          "date": "2026-11-02",
+          "close": 13.26
+        },
+        {
+          "date": "2026-11-03",
+          "close": 13.37
+        },
+        {
+          "date": "2026-11-04",
+          "close": 14.21
+        },
+        {
+          "date": "2026-11-05",
+          "close": 13.43
+        },
+        {
+          "date": "2026-11-06",
+          "close": 13.77
+        },
+        {
+          "date": "2026-11-09",
+          "close": 14.6
+        },
+        {
+          "date": "2026-11-10",
+          "close": 14.56
+        },
+        {
+          "date": "2026-11-11",
+          "close": 14.37
+        },
+        {
+          "date": "2026-11-12",
+          "close": 14.15
+        },
+        {
+          "date": "2026-11-13",
+          "close": 14.08
+        },
+        {
+          "date": "2026-11-16",
+          "close": 14.48
+        },
+        {
+          "date": "2026-11-17",
+          "close": 14.17
+        },
+        {
+          "date": "2026-11-18",
+          "close": 13.77
+        },
+        {
+          "date": "2026-11-19",
+          "close": 13.34
+        },
+        {
+          "date": "2026-11-20",
+          "close": 13.82
+        }
+      ],
+      "fundamentals": {
+        "source": "SEC EDGAR Company Facts",
+        "company": "LifeStance Health Group, Inc.",
+        "cik": "0001845257",
+        "retrieved_at": "2026-11-22T02:27:52.652Z",
+        "fiscal_year": 2021,
+        "revenue_growth_percent": null,
+        "metrics": {
+          "revenue": 1445000,
+          "grossProfit": null,
+          "operatingIncome": 24148000,
+          "netIncome": 9663000,
+          "assets": 2203933000,
+          "liabilities": 682918000,
+          "equity": 1521015000,
+          "cash": 248642000,
+          "operatingCashFlow": 146151000,
+          "currentDebt": 14500000,
+          "longTermDebt": 265927000
+        },
+        "periods": {
+          "revenue": [
+            {
+              "periodEnd": "2021-12-31",
+              "fiscalYear": 2021,
+              "value": 1445000,
+              "unit": "USD",
+              "filed": "2022-03-17",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000095017022004096/lfst-20211231.htm"
+            }
+          ],
+          "grossProfit": [],
+          "operatingIncome": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 24148000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": -31613000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "netIncome": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 9663000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": -57443000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "assets": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 2203933000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 2118298000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "liabilities": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 682918000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 672013000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "equity": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 1521015000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 1446285000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "cash": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 248642000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 154571000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "operatingCashFlow": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 146151000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 107260000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "currentDebt": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 14500000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 7250000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ],
+          "longTermDebt": [
+            {
+              "periodEnd": "2025-12-31",
+              "fiscalYear": 2025,
+              "value": 265927000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            },
+            {
+              "periodEnd": "2024-12-31",
+              "fiscalYear": 2024,
+              "value": 279790000,
+              "unit": "USD",
+              "filed": "2026-02-25",
+              "form": "10-K",
+              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+            }
+          ]
+        }
+      },
+      "score_technical": 68.3,
+      "score": 77.5,
+      "return_5d": -1.85,
+      "return_20d": 6.88,
+      "return_50d": 6.55,
+      "change_percent": 3.6,
+      "rsi": 55.1,
+      "volume_ratio": 0.78,
+      "average_volume_20d": 7189030,
+      "average_dollar_volume_20d": 101236713.66,
+      "volatility_20d": 2.93,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 13.7983,
+      "ma50": 12.8997,
+      "price_date": "2026-11-20",
+      "price": 13.82,
+      "volume": 5622400,
+      "score_basis": "SEC fundamentals + market data",
+      "score_fundamental": 83.6,
+      "fundamental_coverage": [
+        "operating_margin",
+        "net_margin",
+        "liabilities_to_assets",
+        "equity_ratio",
+        "operating_cash_flow",
+        "cash_vs_debt"
+      ],
+      "fundamental_confidence": "higher"
+    },
+    {
+      "ticker": "T.TO",
+      "company": "TELUS",
+      "exchange": "TSX",
+      "market": "Canada",
+      "sector": "Telecommunications",
+      "currency": "CAD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +2.32%; relative volume 2.0x its 20-day average; 5-day move +30.6%; 20-day average dollar volume $150,029,995.",
+      "risk": "RSI elevated; short-term pullback risk.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-24",
+          "close": 13.384664
+        },
+        {
+          "date": "2026-08-25",
+          "close": 13.364952
+        },
+        {
+          "date": "2026-08-26",
+          "close": 13.236822
+        },
+        {
+          "date": "2026-08-27",
+          "close": 13.34524
+        },
+        {
+          "date": "2026-08-28",
+          "close": 13.26639
+        },
+        {
+          "date": "2026-08-31",
+          "close": 13.217109
+        },
+        {
+          "date": "2026-09-01",
+          "close": 13.246677
+        },
+        {
+          "date": "2026-09-02",
+          "close": 13.039698
+        },
+        {
+          "date": "2026-09-03",
+          "close": 13.207253
+        },
+        {
+          "date": "2026-09-04",
+          "close": 13.197397
+        },
+        {
+          "date": "2026-09-08",
+          "close": 13.128404
+        },
+        {
+          "date": "2026-09-09",
+          "close": 12.882
+        },
+        {
+          "date": "2026-09-10",
+          "close": 12.56
+        },
+        {
+          "date": "2026-09-11",
+          "close": 12.6
+        },
+        {
+          "date": "2026-09-14",
+          "close": 12.73
+        },
+        {
+          "date": "2026-09-15",
+          "close": 12.66
+        },
+        {
+          "date": "2026-09-16",
+          "close": 12.45
+        },
+        {
+          "date": "2026-09-17",
+          "close": 12.47
+        },
+        {
+          "date": "2026-09-18",
+          "close": 12.31
+        },
+        {
+          "date": "2026-09-21",
+          "close": 12.2
+        },
+        {
+          "date": "2026-09-22",
+          "close": 12.09
+        },
+        {
+          "date": "2026-09-23",
+          "close": 12.02
+        },
+        {
+          "date": "2026-09-24",
+          "close": 12.03
+        },
+        {
+          "date": "2026-09-25",
+          "close": 12.0
+        },
+        {
+          "date": "2026-09-28",
+          "close": 11.86
+        },
+        {
+          "date": "2026-09-29",
+          "close": 11.57
+        },
+        {
+          "date": "2026-09-30",
+          "close": 11.95
+        },
+        {
+          "date": "2026-10-01",
+          "close": 11.63
+        },
+        {
+          "date": "2026-10-02",
+          "close": 11.47
+        },
+        {
+          "date": "2026-10-05",
+          "close": 11.25
+        },
+        {
+          "date": "2026-10-06",
+          "close": 11.19
+        },
+        {
+          "date": "2026-10-07",
+          "close": 11.34
+        },
+        {
+          "date": "2026-10-08",
+          "close": 11.43
+        },
+        {
+          "date": "2026-10-09",
+          "close": 11.03
+        },
+        {
+          "date": "2026-10-13",
+          "close": 11.35
+        },
+        {
+          "date": "2026-10-14",
+          "close": 11.53
+        },
+        {
+          "date": "2026-10-15",
+          "close": 11.85
+        },
+        {
+          "date": "2026-10-16",
+          "close": 11.91
+        },
+        {
+          "date": "2026-10-19",
+          "close": 11.69
+        },
+        {
+          "date": "2026-10-20",
+          "close": 11.86
+        },
+        {
+          "date": "2026-10-21",
+          "close": 11.78
+        },
+        {
+          "date": "2026-10-22",
+          "close": 12.37
+        },
+        {
+          "date": "2026-10-23",
+          "close": 12.34
+        },
+        {
+          "date": "2026-10-26",
+          "close": 12.19
+        },
+        {
+          "date": "2026-10-27",
+          "close": 12.07
+        },
+        {
+          "date": "2026-10-28",
+          "close": 11.99
+        },
+        {
+          "date": "2026-10-29",
+          "close": 12.08
+        },
+        {
+          "date": "2026-10-30",
+          "close": 12.37
+        },
+        {
+          "date": "2026-11-02",
+          "close": 12.63
+        },
+        {
+          "date": "2026-11-03",
+          "close": 12.46
+        },
+        {
+          "date": "2026-11-04",
+          "close": 12.89
+        },
+        {
+          "date": "2026-11-05",
+          "close": 13.19
+        },
+        {
+          "date": "2026-11-06",
+          "close": 12.81
+        },
+        {
+          "date": "2026-11-09",
+          "close": 12.59
+        },
+        {
+          "date": "2026-11-10",
+          "close": 12.42
+        },
+        {
+          "date": "2026-11-11",
+          "close": 12.33
+        },
+        {
+          "date": "2026-11-12",
+          "close": 12.14
+        },
+        {
+          "date": "2026-11-13",
+          "close": 12.14
+        },
+        {
+          "date": "2026-11-16",
+          "close": 13.7
+        },
+        {
+          "date": "2026-11-17",
+          "close": 13.25
+        },
+        {
+          "date": "2026-11-18",
+          "close": 13.63
+        },
+        {
+          "date": "2026-11-19",
+          "close": 15.5
+        },
+        {
+          "date": "2026-11-20",
+          "close": 15.86
+        }
+      ],
+      "fundamentals": null,
+      "score_technical": 87.5,
+      "score": 87.5,
+      "return_5d": 30.64,
+      "return_20d": 28.53,
+      "return_50d": 26.27,
+      "change_percent": 2.32,
+      "rsi": 74.6,
+      "volume_ratio": 2.01,
+      "average_volume_20d": 11118985,
+      "average_dollar_volume_20d": 150029995.22,
+      "volatility_20d": 4.41,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 12.912,
+      "ma50": 12.304,
+      "price_date": "2026-11-20",
+      "price": 15.86,
+      "volume": 22404700,
+      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
+      "score_fundamental": null,
+      "fundamental_coverage": [],
+      "fundamental_confidence": "not rated"
+    },
+    {
       "ticker": "KXS.TO",
       "company": "Kinaxis",
       "exchange": "TSX",
@@ -3449,6 +6702,294 @@
       "price_date": "2026-11-20",
       "price": 221.49,
       "volume": 144300,
+      "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
+      "score_fundamental": null,
+      "fundamental_coverage": [],
+      "fundamental_confidence": "not rated"
+    },
+    {
+      "ticker": "DOL.TO",
+      "company": "Dollarama",
+      "exchange": "TSX",
+      "market": "Canada",
+      "sector": "Consumer Defensive",
+      "currency": "CAD",
+      "quote_time": "2026-11-20 (daily close)",
+      "reason": "daily price move +0.29%; relative volume 1.0x its 20-day average; 5-day move -1.6%; 20-day average dollar volume $116,584,500.",
+      "risk": "normal market and company-specific risks remain.",
+      "price_history_3mo": [
+        {
+          "date": "2026-08-24",
+          "close": 187.15094
+        },
+        {
+          "date": "2026-08-25",
+          "close": 183.333359
+        },
+        {
+          "date": "2026-08-26",
+          "close": 176.647614
+        },
+        {
+          "date": "2026-08-27",
+          "close": 174.84877
+        },
+        {
+          "date": "2026-08-28",
+          "close": 175.808151
+        },
+        {
+          "date": "2026-08-31",
+          "close": 174.958694
+        },
+        {
+          "date": "2026-09-01",
+          "close": 175.368423
+        },
+        {
+          "date": "2026-09-02",
+          "close": 176.32782
+        },
+        {
+          "date": "2026-09-03",
+          "close": 176.777527
+        },
+        {
+          "date": "2026-09-04",
+          "close": 177.097336
+        },
+        {
+          "date": "2026-09-08",
+          "close": 173.109863
+        },
+        {
+          "date": "2026-09-09",
+          "close": 172.520248
+        },
+        {
+          "date": "2026-09-10",
+          "close": 167.923172
+        },
+        {
+          "date": "2026-09-11",
+          "close": 167.003754
+        },
+        {
+          "date": "2026-09-14",
+          "close": 168.242966
+        },
+        {
+          "date": "2026-09-15",
+          "close": 165.394775
+        },
+        {
+          "date": "2026-09-16",
+          "close": 174.449005
+        },
+        {
+          "date": "2026-09-17",
+          "close": 172.640167
+        },
+        {
+          "date": "2026-09-18",
+          "close": 174.069244
+        },
+        {
+          "date": "2026-09-21",
+          "close": 178.58638
+        },
+        {
+          "date": "2026-09-22",
+          "close": 180.565109
+        },
+        {
+          "date": "2026-09-23",
+          "close": 178.28656
+        },
+        {
+          "date": "2026-09-24",
+          "close": 179.935532
+        },
+        {
+          "date": "2026-09-25",
+          "close": 183.453293
+        },
+        {
+          "date": "2026-09-28",
+          "close": 184.792435
+        },
+        {
+          "date": "2026-09-29",
+          "close": 184.522598
+        },
+        {
+          "date": "2026-09-30",
+          "close": 183.883011
+        },
+        {
+          "date": "2026-10-01",
+          "close": 183.31337
+        },
+        {
+          "date": "2026-10-02",
+          "close": 183.833038
+        },
+        {
+          "date": "2026-10-05",
+          "close": 183.013565
+        },
+        {
+          "date": "2026-10-06",
+          "close": 185.911728
+        },
+        {
+          "date": "2026-10-07",
+          "close": 185.252136
+        },
+        {
+          "date": "2026-10-08",
+          "close": 188.62001
+        },
+        {
+          "date": "2026-10-09",
+          "close": 191.929993
+        },
+        {
+          "date": "2026-10-13",
+          "close": 192.960007
+        },
+        {
+          "date": "2026-10-14",
+          "close": 197.830002
+        },
+        {
+          "date": "2026-10-15",
+          "close": 203.139999
+        },
+        {
+          "date": "2026-10-16",
+          "close": 206.559998
+        },
+        {
+          "date": "2026-10-19",
+          "close": 205.449997
+        },
+        {
+          "date": "2026-10-20",
+          "close": 205.860001
+        },
+        {
+          "date": "2026-10-21",
+          "close": 204.589996
+        },
+        {
+          "date": "2026-10-22",
+          "close": 209.130005
+        },
+        {
+          "date": "2026-10-23",
+          "close": 207.449997
+        },
+        {
+          "date": "2026-10-26",
+          "close": 207.270004
+        },
+        {
+          "date": "2026-10-27",
+          "close": 204.080002
+        },
+        {
+          "date": "2026-10-28",
+          "close": 201.990005
+        },
+        {
+          "date": "2026-10-29",
+          "close": 205.889999
+        },
+        {
+          "date": "2026-10-30",
+          "close": 207.5
+        },
+        {
+          "date": "2026-11-02",
+          "close": 212.0
+        },
+        {
+          "date": "2026-11-03",
+          "close": 209.970001
+        },
+        {
+          "date": "2026-11-04",
+          "close": 220.0
+        },
+        {
+          "date": "2026-11-05",
+          "close": 218.699997
+        },
+        {
+          "date": "2026-11-06",
+          "close": 215.490005
+        },
+        {
+          "date": "2026-11-09",
+          "close": 218.080002
+        },
+        {
+          "date": "2026-11-10",
+          "close": 216.0
+        },
+        {
+          "date": "2026-11-11",
+          "close": 218.470001
+        },
+        {
+          "date": "2026-11-12",
+          "close": 220.419998
+        },
+        {
+          "date": "2026-11-13",
+          "close": 220.210007
+        },
+        {
+          "date": "2026-11-16",
+          "close": 221.160004
+        },
+        {
+          "date": "2026-11-17",
+          "close": 218.619995
+        },
+        {
+          "date": "2026-11-18",
+          "close": 220.880005
+        },
+        {
+          "date": "2026-11-19",
+          "close": 215.990005
+        },
+        {
+          "date": "2026-11-20",
+          "close": 216.610001
+        }
+      ],
+      "fundamentals": null,
+      "score_technical": 73.6,
+      "score": 73.6,
+      "return_5d": -1.63,
+      "return_20d": 4.42,
+      "return_50d": 28.99,
+      "change_percent": 0.29,
+      "rsi": 56.2,
+      "volume_ratio": 0.97,
+      "average_volume_20d": 542885,
+      "average_dollar_volume_20d": 116584500.15,
+      "volatility_20d": 1.58,
+      "above_20day_average": true,
+      "above_50day_average": true,
+      "ma20": 214.4665,
+      "ma50": 198.0,
+      "price_date": "2026-11-20",
+      "price": 216.61,
+      "volume": 526800,
       "score_basis": "market data only \u2014 SEC fundamentals unavailable or insufficient",
       "score_fundamental": null,
       "fundamental_coverage": [],
@@ -4588,7 +8129,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "LifeStance Health Group, Inc.",
         "cik": "0001845257",
-        "retrieved_at": "2026-11-22T01:52:19.903Z",
+        "retrieved_at": "2026-11-22T02:27:52.652Z",
         "fiscal_year": 2021,
         "revenue_growth_percent": null,
         "metrics": {
@@ -5097,7 +8638,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Tecnoglass Holdings Inc.",
         "cik": "0001534675",
-        "retrieved_at": "2026-11-22T01:52:19.447Z",
+        "retrieved_at": "2026-11-22T02:27:53.140Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 10.5,
         "metrics": {
@@ -5924,7 +9465,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "INTERPARFUMS INC",
         "cik": "0000822663",
-        "retrieved_at": "2026-11-22T01:52:20.936Z",
+        "retrieved_at": "2026-11-22T02:27:54.239Z",
         "fiscal_year": 2020,
         "revenue_growth_percent": -36.16,
         "metrics": {
@@ -6443,7 +9984,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Rocket Companies, Inc.",
         "cik": "0001805284",
-        "retrieved_at": "2026-11-22T01:52:19.154Z",
+        "retrieved_at": "2026-11-22T02:27:51.189Z",
         "fiscal_year": null,
         "revenue_growth_percent": null,
         "metrics": {
@@ -6881,7 +10422,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Palomar Holdings, Inc.",
         "cik": "0001761312",
-        "retrieved_at": "2026-11-22T01:52:18.466Z",
+        "retrieved_at": "2026-11-22T02:27:51.165Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 58.16,
         "metrics": {
@@ -7629,7 +11170,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Klaviyo, Inc.",
         "cik": "0001835830",
-        "retrieved_at": "2026-11-22T01:52:18.666Z",
+        "retrieved_at": "2026-11-22T02:27:50.733Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 31.63,
         "metrics": {
@@ -9569,7 +13110,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "HDFC BANK LTD",
         "cik": "0001144967",
-        "retrieved_at": "2026-11-22T01:52:18.438Z",
+        "retrieved_at": "2026-11-22T02:27:50.823Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 15.25,
         "metrics": {
@@ -10029,7 +13570,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "GLOBAL PAYMENTS INC",
         "cik": "0001123360",
-        "retrieved_at": "2026-11-22T01:52:18.213Z",
+        "retrieved_at": "2026-11-22T02:27:50.383Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -0.39,
         "metrics": {
@@ -10548,7 +14089,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Apple Inc.",
         "cik": "0000320193",
-        "retrieved_at": "2026-11-22T01:52:15.450Z",
+        "retrieved_at": "2026-11-22T02:27:47.788Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 15.06,
         "metrics": {
@@ -11087,7 +14628,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "BUCKLE INC",
         "cik": "0000885245",
-        "retrieved_at": "2026-11-22T01:52:18.181Z",
+        "retrieved_at": "2026-11-22T02:27:50.287Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 6.58,
         "metrics": {
@@ -11587,7 +15128,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "MCCORMICK & CO INC",
         "cik": "0000063754",
-        "retrieved_at": "2026-11-22T01:52:20.563Z",
+        "retrieved_at": "2026-11-22T02:27:53.878Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 1.73,
         "metrics": {
@@ -12126,7 +15667,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "NVIDIA CORP",
         "cik": "0001045810",
-        "retrieved_at": "2026-11-22T01:52:14.696Z",
+        "retrieved_at": "2026-11-22T02:27:46.811Z",
         "fiscal_year": 2022,
         "revenue_growth_percent": 61.4,
         "metrics": {
@@ -12665,7 +16206,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "MICRON TECHNOLOGY INC",
         "cik": "0000723125",
-        "retrieved_at": "2026-11-22T01:52:17.552Z",
+        "retrieved_at": "2026-11-22T02:27:49.870Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 256.33,
         "metrics": {
@@ -13204,7 +16745,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Sandisk Corp",
         "cik": "0002023554",
-        "retrieved_at": "2026-11-22T01:52:14.819Z",
+        "retrieved_at": "2026-11-22T02:27:47.462Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 175.3,
         "metrics": {
@@ -13742,7 +17283,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "CAL-MAINE FOODS INC",
         "cik": "0000016160",
-        "retrieved_at": "2026-11-22T01:52:20.132Z",
+        "retrieved_at": "2026-11-22T02:27:52.942Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": -31.68,
         "metrics": {
@@ -14281,7 +17822,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "ADVANCED MICRO DEVICES INC",
         "cik": "0000002488",
-        "retrieved_at": "2026-11-22T01:52:16.156Z",
+        "retrieved_at": "2026-11-22T02:27:48.242Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 34.34,
         "metrics": {
@@ -14800,7 +18341,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Alphabet Inc.",
         "cik": "0001652044",
-        "retrieved_at": "2026-11-22T01:52:17.238Z",
+        "retrieved_at": "2026-11-22T02:27:49.756Z",
         "fiscal_year": 2024,
         "revenue_growth_percent": 13.87,
         "metrics": {
@@ -15319,7 +18860,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Ardent Health, Inc.",
         "cik": "0001756655",
-        "retrieved_at": "2026-11-22T01:52:19.543Z",
+        "retrieved_at": "2026-11-22T02:27:51.985Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 6.01,
         "metrics": {
@@ -15818,7 +19359,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "AMAZON COM INC",
         "cik": "0001018724",
-        "retrieved_at": "2026-11-22T01:52:15.895Z",
+        "retrieved_at": "2026-11-22T02:27:48.235Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 12.38,
         "metrics": {
@@ -16337,7 +19878,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Ceribell, Inc.",
         "cik": "0001861107",
-        "retrieved_at": "2026-11-22T01:52:23.462Z",
+        "retrieved_at": "2026-11-22T02:27:57.082Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 36.09,
         "metrics": {
@@ -16837,7 +20378,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Broadcom Inc.",
         "cik": "0001730168",
-        "retrieved_at": "2026-11-22T01:52:16.975Z",
+        "retrieved_at": "2026-11-22T02:27:49.397Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 23.87,
         "metrics": {
@@ -17664,7 +21205,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Spectrum Brands Holdings, Inc.",
         "cik": "0000109177",
-        "retrieved_at": "2026-11-22T01:52:23.236Z",
+        "retrieved_at": "2026-11-22T02:27:57.446Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 1.55,
         "metrics": {
@@ -18203,7 +21744,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "GAP INC",
         "cik": "0000039911",
-        "retrieved_at": "2026-11-22T01:52:17.535Z",
+        "retrieved_at": "2026-11-22T02:27:50.296Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 1.86,
         "metrics": {
@@ -18722,7 +22263,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Huron Consulting Group Inc.",
         "cik": "0001289848",
-        "retrieved_at": "2026-11-22T01:52:20.844Z",
+        "retrieved_at": "2026-11-22T02:27:54.024Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 11.65,
         "metrics": {
@@ -20661,7 +24202,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "GENERAL MILLS INC",
         "cik": "0000040704",
-        "retrieved_at": "2026-11-22T01:52:20.290Z",
+        "retrieved_at": "2026-11-22T02:27:52.817Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": -5.45,
         "metrics": {
@@ -23196,7 +26737,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "NETFLIX INC",
         "cik": "0001065280",
-        "retrieved_at": "2026-11-22T01:52:16.502Z",
+        "retrieved_at": "2026-11-22T02:27:48.543Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 15.85,
         "metrics": {
@@ -24292,7 +27833,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "PILGRIMS PRIDE CORP",
         "cik": "0000802481",
-        "retrieved_at": "2026-11-22T01:52:20.351Z",
+        "retrieved_at": "2026-11-22T02:27:53.733Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 3.46,
         "metrics": {
@@ -24831,7 +28372,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "monday.com Ltd.",
         "cik": "0001845338",
-        "retrieved_at": "2026-11-22T01:52:21.338Z",
+        "retrieved_at": "2026-11-22T02:27:54.632Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 26.75,
         "metrics": {
@@ -25619,7 +29160,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "HCA Healthcare, Inc.",
         "cik": "0000860730",
-        "retrieved_at": "2026-11-22T01:52:20.862Z",
+        "retrieved_at": "2026-11-22T02:27:54.510Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 7.08,
         "metrics": {
@@ -26982,7 +30523,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Heartflow, Inc.",
         "cik": "0001464521",
-        "retrieved_at": "2026-11-22T01:52:17.965Z",
+        "retrieved_at": "2026-11-22T02:27:50.626Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 39.92,
         "metrics": {
@@ -27770,7 +31311,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "American Airlines Group Inc.",
         "cik": "0000006201",
-        "retrieved_at": "2026-11-22T01:52:16.605Z",
+        "retrieved_at": "2026-11-22T02:27:49.542Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 0.78,
         "metrics": {
@@ -30285,7 +33826,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "SoFi Technologies, Inc.",
         "cik": "0001818874",
-        "retrieved_at": "2026-11-22T01:52:15.897Z",
+        "retrieved_at": "2026-11-22T02:27:48.066Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 23.1,
         "metrics": {
@@ -30745,7 +34286,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Everforth Inc",
         "cik": "0000890564",
-        "retrieved_at": "2026-11-22T01:52:23.341Z",
+        "retrieved_at": "2026-11-22T02:27:56.703Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -2.91,
         "metrics": {
@@ -31572,7 +35113,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "INTEL CORP",
         "cik": "0000050863",
-        "retrieved_at": "2026-11-22T01:52:14.481Z",
+        "retrieved_at": "2026-11-22T02:27:47.013Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -0.47,
         "metrics": {
@@ -33819,7 +37360,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "CoreWeave, Inc.",
         "cik": "0001769628",
-        "retrieved_at": "2026-11-22T01:52:15.713Z",
+        "retrieved_at": "2026-11-22T02:27:48.037Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 167.94,
         "metrics": {
@@ -36354,7 +39895,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "IREN Ltd",
         "cik": "0001878848",
-        "retrieved_at": "2026-11-22T01:52:14.714Z",
+        "retrieved_at": "2026-11-22T02:27:47.230Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 41.11,
         "metrics": {
@@ -39755,7 +43296,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "B&G Foods, Inc.",
         "cik": "0001278027",
-        "retrieved_at": "2026-11-22T01:52:22.455Z",
+        "retrieved_at": "2026-11-22T02:27:56.055Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": -5.37,
         "metrics": {
@@ -40035,7 +43576,7 @@
       "currency": "USD",
       "quote_time": "2026-11-20 (daily close)",
       "reason": "daily price move +3.62%; relative volume 0.7x its 20-day average; 5-day move +34.5%; 20-day average dollar volume $1,375,241.",
-      "risk": "negative operating margin in latest annual filing; net loss in latest annual filing; liabilities exceed 80% of reported assets; negative shareholders' equity; negative operating cash flow; RSI elevated; short-term pullback risk; high recent volatility.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. negative operating margin in latest annual filing; net loss in latest annual filing; liabilities exceed 80% of reported assets; negative shareholders' equity; negative operating cash flow; RSI elevated; short-term pullback risk; high recent volatility.",
       "price_history_3mo": [
         {
           "date": "2026-08-25",
@@ -40294,7 +43835,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Polibeli Group Ltd",
         "cik": "0002035697",
-        "retrieved_at": "2026-11-22T01:52:19.898Z",
+        "retrieved_at": "2026-11-22T02:27:52.296Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -16.85,
         "metrics": {
@@ -40565,7 +44106,7 @@
       "currency": "USD",
       "quote_time": "2026-11-20 (daily close)",
       "reason": "daily price move -0.39%; relative volume 3.0x its 20-day average; 5-day move -0.3%; 20-day average dollar volume $159,290,416.",
-      "risk": "cash is less than 20% of reported debt; negative 20-day momentum.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. cash is less than 20% of reported debt; negative 20-day momentum.",
       "price_history_3mo": [
         {
           "date": "2026-08-25",
@@ -40824,7 +44365,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "CCC Intelligent Solutions Holdings Inc.",
         "cik": "0001818201",
-        "retrieved_at": "2026-11-22T01:52:16.810Z",
+        "retrieved_at": "2026-11-22T02:27:49.151Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 11.88,
         "metrics": {
@@ -41363,7 +44904,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "MAXCYTE, INC.",
         "cik": "0001287098",
-        "retrieved_at": "2026-11-22T01:52:22.460Z",
+        "retrieved_at": "2026-11-22T02:27:56.501Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -5.66,
         "metrics": {
@@ -42180,7 +45721,7 @@
       "currency": "CAD",
       "quote_time": "2026-11-20 (daily close)",
       "reason": "daily price move +12.24%; relative volume 0.6x its 20-day average; 5-day move +23.6%; 20-day average dollar volume $1,104,310.",
-      "risk": "high recent volatility; price below 50-day average; negative 20-day momentum.",
+      "risk": "HIGH RISK \u2014 penny-stock volatility. high recent volatility; price below 50-day average; negative 20-day momentum.",
       "price_history_3mo": [
         {
           "date": "2026-08-24",
@@ -42727,7 +46268,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Cango Inc.",
         "cik": "0001725123",
-        "retrieved_at": "2026-11-22T01:52:22.911Z",
+        "retrieved_at": "2026-11-22T02:27:55.912Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 665.31,
         "metrics": {
@@ -43246,7 +46787,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Pyxis Oncology, Inc.",
         "cik": "0001782223",
-        "retrieved_at": "2026-11-22T01:52:22.114Z",
+        "retrieved_at": "2026-11-22T02:27:55.491Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -14.17,
         "metrics": {
@@ -43726,7 +47267,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "EverCommerce Inc.",
         "cik": "0001853145",
-        "retrieved_at": "2026-11-22T01:52:24.698Z",
+        "retrieved_at": "2026-11-22T02:27:57.567Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 4.75,
         "metrics": {
@@ -44245,7 +47786,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Evolent Health, Inc.",
         "cik": "0001628908",
-        "retrieved_at": "2026-11-22T01:52:21.983Z",
+        "retrieved_at": "2026-11-22T02:27:57.178Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -26.56,
         "metrics": {
@@ -44764,7 +48305,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "LESAKA TECHNOLOGIES INC",
         "cik": "0001041514",
-        "retrieved_at": "2026-11-22T01:52:22.972Z",
+        "retrieved_at": "2026-11-22T02:27:57.165Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 9.38,
         "metrics": {
@@ -45283,7 +48824,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "LiveWire Group, Inc.",
         "cik": "0001898795",
-        "retrieved_at": "2026-11-22T01:52:21.304Z",
+        "retrieved_at": "2026-11-22T02:27:54.825Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -3.61,
         "metrics": {
@@ -45802,7 +49343,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "NIO Inc.",
         "cik": "0001736541",
-        "retrieved_at": "2026-11-22T01:52:15.631Z",
+        "retrieved_at": "2026-11-22T02:27:47.966Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 38.93,
         "metrics": {
@@ -46321,7 +49862,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "MEDICAL PROPERTIES TRUST INC",
         "cik": "0001287865",
-        "retrieved_at": "2026-11-22T01:52:21.679Z",
+        "retrieved_at": "2026-11-22T02:27:54.757Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -2.36,
         "metrics": {
@@ -46801,7 +50342,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Snap Inc",
         "cik": "0001564408",
-        "retrieved_at": "2026-11-22T01:52:16.998Z",
+        "retrieved_at": "2026-11-22T02:27:49.235Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 10.63,
         "metrics": {
@@ -48165,7 +51706,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "NEIGHBORHOOD INTELLIGENCE, INC.",
         "cik": "0001130713",
-        "retrieved_at": "2026-11-22T01:52:21.800Z",
+        "retrieved_at": "2026-11-22T02:27:55.221Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -25.12,
         "metrics": {
@@ -48665,7 +52206,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "TERAWULF INC.",
         "cik": "0001083301",
-        "retrieved_at": "2026-11-22T01:52:16.678Z",
+        "retrieved_at": "2026-11-22T02:27:48.946Z",
         "fiscal_year": 2020,
         "revenue_growth_percent": -23.76,
         "metrics": {
@@ -49492,7 +53033,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Oxford Square Capital Corp.",
         "cik": "0001259429",
-        "retrieved_at": "2026-11-22T01:52:22.402Z",
+        "retrieved_at": "2026-11-22T02:27:56.396Z",
         "fiscal_year": null,
         "revenue_growth_percent": null,
         "metrics": {
@@ -50219,7 +53760,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Cipher Digital Inc.",
         "cik": "0001819989",
-        "retrieved_at": "2026-11-22T01:52:17.457Z",
+        "retrieved_at": "2026-11-22T02:27:50.085Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 48.04,
         "metrics": {
