@@ -8145,7 +8145,7 @@ header{margin-bottom:0!important}
  const signed=n=>(n>0?'+':'')+n.toLocaleString(locale,{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
  const color=(el,n)=>{el.classList.toggle('up',n>0);el.classList.toggle('down',n<0);};
  fetch('/data/picks.json').then(r=>{if(!r.ok)throw Error('Market data unavailable');return r.json();}).then(d=>{
-  const p=Array.isArray(d.main)?d.main[0]:null;if(!p||!p.ticker)throw Error('No featured stock');
+  const p=(d.stock_of_day&&d.stock_of_day.US)||((Array.isArray(d.main)?d.main:[]).find(x=>x.market==='US'))||((Array.isArray(d.penny)?d.penny:[]).find(x=>x.market==='US'))||null;if(!p||!p.ticker)throw Error('No featured stock');
   const symbol=String(p.ticker).toUpperCase(),currency=p.currency|| (p.market==='Canada'?'CAD':'USD');
   name.textContent=p.company||symbol;
   ticker.textContent=symbol+' · '+String(p.exchange||'').toUpperCase()+' · '+(p.market==='Canada'?"CANADIAN MARKET":"U.S. MARKET");
