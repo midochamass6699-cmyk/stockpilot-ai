@@ -2643,6 +2643,12 @@ main p, main li, .section-head p, .updated, .card-meta {
 }
 </style>
 
+<style id="tf-sec-feature-lines-style">
+.tf-sec-feature-lines{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0 auto 12px;padding:12px 14px;width:min(1240px,calc(100% - 36px));box-sizing:border-box;border-left:4px solid #2563EB;border-radius:8px;background:#EAF1FC;color:#12335F;font-size:16px;font-weight:850;line-height:1.4;}
+.tf-sec-feature-lines>div{display:flex;align-items:flex-start;gap:9px;margin:0;padding:0;}
+.tf-sec-feature-lines>div:before{content:"•";flex:0 0 auto;color:#1D4ED8;font-size:21px;line-height:1.05;}
+@media(max-width:600px){.tf-sec-feature-lines{gap:7px;margin-bottom:10px;padding:10px 11px;font-size:14px;}}
+</style>
 </head>
 <body>
 
@@ -2895,6 +2901,11 @@ main p, main li, .section-head p, .updated, .card-meta {
   <div id="tf-kitco-fr-ad" class="tf-kitco-fr-ad" aria-live="polite"></div>
 </section>
 <nav class="sp-terminal-shortcuts" aria-label="Market categories"><a href="#main-picks">ACTIONS</a><a href="#penny-picks">PENNY STOCKS</a><a href="#crypto-picks">CRYPTO</a></nav>
+<div class="tf-sec-feature-lines" aria-label="Fonctionnalités des rapports SEC">
+ <div>Explorateur de dépôts SEC</div>
+ <div>Aperçu financier de l’entreprise</div>
+ <div>Chronologie des dépôts SEC</div>
+</div>
 <section class="sp-market-terminal" id="market-terminal" aria-label="Terminal des marchés">
  <div class="sp-terminal-top">
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · ESPACE BOURSIER INTERACTIF</div><div class="sp-terminal-title-line"><h2>Terminal des marchés</h2><div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
