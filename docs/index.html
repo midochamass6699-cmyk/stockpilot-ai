@@ -2759,6 +2759,48 @@ main p, main li, .section-head p, .updated, .card-meta {
  }
 }
 </style>
+
+<style id="technofront-english-sec-above-right-square">
+/* Place SEC feature lines ABOVE (outside) the right-hand Market Terminal panel. */
+@media(min-width:901px){
+ #live-trading-desk .tf-two-panel-grid{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  grid-template-rows:auto 1fr!important;
+  align-items:stretch!important;
+ }
+ #live-trading-desk .tf-market-collection{
+  grid-column:1!important;
+  grid-row:1 / span 2!important;
+ }
+ #live-trading-desk .tf-two-panel-grid>.tf-sec-feature-lines{
+  grid-column:2!important;
+  grid-row:1!important;
+  align-self:start!important;
+  margin:0 0 12px!important;
+ }
+ #live-trading-desk .tf-two-panel-grid>.tf-terminal-column{
+  grid-column:2!important;
+  grid-row:2!important;
+  align-self:stretch!important;
+  height:auto!important;
+  min-height:0!important;
+ }
+}
+@media(max-width:900px){
+ #live-trading-desk .tf-two-panel-grid{
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:auto!important;
+ }
+ #live-trading-desk .tf-market-collection,
+ #live-trading-desk .tf-two-panel-grid>.tf-sec-feature-lines,
+ #live-trading-desk .tf-two-panel-grid>.tf-terminal-column{
+  grid-column:1!important;
+  grid-row:auto!important;
+ }
+ #live-trading-desk .tf-two-panel-grid>.tf-sec-feature-lines{margin:0 0 12px!important}
+ #live-trading-desk .tf-two-panel-grid>.tf-terminal-column{height:auto!important}
+}
+</style>
 </head>
 <body>
 <a class="sp-skip-link" href="#main-content">Skip to main content</a>
@@ -3023,12 +3065,12 @@ main p, main li, .section-head p, .updated, .card-meta {
 </article>
 </div>
  </div>
-<div class="tf-terminal-column">
  <div class="tf-sec-feature-lines" aria-label="SEC company report features">
   <div>SEC Filing Explorer</div>
   <div>Company Financial Snapshot</div>
   <div>SEC Filing Timeline</div>
  </div>
+<div class="tf-terminal-column">
  <section class="sp-market-terminal" id="market-terminal" aria-label="Market Data and Analysis Tools">
  <div class="sp-terminal-top">
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><div class="sp-terminal-title-line"><h2>Market Data &amp; Analysis Tools</h2><div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
