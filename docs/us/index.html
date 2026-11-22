@@ -2334,6 +2334,51 @@ input, select, textarea, button {
 #live-trading-desk .trading-market-list .sp-market-logo{width:24px!important;height:24px!important;object-fit:contain!important}
 @media(max-width:760px){#live-trading-desk .trading-desk-grid{grid-template-columns:minmax(0,1fr)!important}}
 </style>
+
+<style id="technofront-us-two-square-layout-final">
+/* U.S. homepage: all three market lists stay stacked in the left square; right square remains unchanged. */
+#live-trading-desk .tf-two-panel-grid{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ gap:14px!important;
+ align-items:stretch!important;
+ width:100%!important;
+ min-width:0!important;
+}
+#live-trading-desk .tf-market-collection{
+ min-width:0!important;
+ height:100%!important;
+}
+#live-trading-desk .tf-market-collection .trading-desk-grid{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ grid-auto-flow:row!important;
+ gap:10px!important;
+ width:100%!important;
+}
+#live-trading-desk .tf-market-collection .trading-panel{
+ display:flex!important;
+ flex-direction:column!important;
+ width:100%!important;
+ min-width:0!important;
+}
+#live-trading-desk .tf-terminal-column{
+ display:flex!important;
+ flex-direction:column!important;
+ min-width:0!important;
+ height:100%!important;
+}
+#live-trading-desk .tf-sec-feature-lines{
+ display:flex!important;
+ flex-direction:column!important;
+ margin:0 0 12px!important;
+}
+@media(max-width:900px){
+ #live-trading-desk .tf-two-panel-grid{
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
