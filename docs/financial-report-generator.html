@@ -18,7 +18,7 @@
 .report-language-label{display:grid;gap:7px;font-weight:800;font-size:13px}
 .report-language-label select{height:38px;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:#fff}
 @media(max-width:650px){.report-topic-grid{grid-template-columns:1fr}.report-question-row{grid-template-columns:1fr}}
-</style>
+.report-snapshot{margin:24px 0}.snapshot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 20px}.snapshot-card{min-width:0;padding:13px;border:1px solid var(--line);border-radius:10px;background:#f8fafc}.snapshot-card span{display:block;color:var(--muted);font-size:12px}.snapshot-card strong{display:block;margin-top:5px;font-size:18px;overflow-wrap:anywhere}@media(max-width:650px){.snapshot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Free Company Financial Report Generator","url":"https://technofront.org/financial-report-generator.html","inLanguage":"en-CA","description":"Educational company financial report using historical SEC EDGAR filings."}</script>
 </head><body>
@@ -112,13 +112,19 @@
   const headings=ends.map(dateLabel);
   const rows=data.metrics.map(m=>'<tr><td>'+esc(m.label)+'</td>'+ends.map(end=>{const f=m.values.find(v=>v.periodEnd===end);return f?'<td>'+money(f.value)+'</td>':'<td class="missing">Not reported</td>'}).join("")+'</tr>').join("");
   const filings=data.filings.map(f=>'<li><a href="'+esc(f.url)+'" target="_blank" rel="noopener">'+esc(f.form)+' · filed '+esc(f.filed)+(f.reportDate?' · period '+esc(f.reportDate):'')+'</a></li>').join("");
+
+  const timeline=[...data.filings].sort((a,b)=>String(b.filed).localeCompare(String(a.filed))).map(f=>'<li><strong>'+esc(f.filed)+'</strong> · '+esc(f.form)+(f.reportDate?' · reporting period '+esc(f.reportDate):'')+'</li>').join("");
+  const snapshotKeys=[["revenue","Revenue"],["grossProfit","Gross profit"],["netIncome","Net income"],["assets","Total assets"],["liabilities","Total liabilities"],["operatingCashFlow","Operating cash flow"]];
+  const snapshotEnd=headings[0]||null;
+  const snapshot=snapshotEnd?'<section class="report-snapshot"><h2>Company Financial Snapshot</h2><p class="report-meta">Latest available reported annual figures · USD · period ending '+esc(snapshotEnd)+'. Values are taken directly from SEC company facts.</p><div class="snapshot-grid">'+snapshotKeys.map(([key,label])=>{const metric=data.metrics.find(m=>m.key===key);const fact=metric&&metric.values.find(v=>v.periodEnd===ends[0]);return '<div class="snapshot-card"><span>'+label+'</span><strong>'+(fact?money(fact.value):'Not reported')+'</strong></div>'}).join("")+'</div></section>':'';
   const hasData=data.metrics.some(m=>m.values.length);
   output.innerHTML='<div class="report-head"><div class="eyebrow" style="color:#087b60">STOCKPILOT AI · COMPANY FINANCIAL REPORT</div><h1>'+esc(data.company)+'</h1><p class="report-meta">SEC CIK '+esc(data.cik)+' · '+esc((data.tickers||[]).join(", "))+' · '+esc((data.exchanges||[]).join(", "))+'</p><p class="report-meta">'+(data.industry?'Industry classification: '+esc(data.industry)+' · ':'')+'Retrieved: '+esc(new Date(data.retrievedAt).toLocaleString("en-CA"))+'</p></div>'+focusSummary+
   '<h2>Reported financial figures</h2><p class="report-meta">Historical annual values · USD · periods are shown by fiscal period end. Balance-sheet figures are point-in-time values; income and cash-flow figures cover the fiscal year.</p>'+
   (hasData?'<div class="table-wrap"><table><thead><tr><th>Financial measure</th>'+headings.map(h=>'<th>'+esc(h)+'</th>').join("")+'</tr></thead><tbody>'+rows+'</tbody></table></div>':'<div class="notice">No supported annual US-GAAP facts were returned for this company. We will not substitute or estimate missing values.</div>')+
   '<h2 style="margin-top:26px">Calculated financial analysis</h2><p class="report-meta">Ratios and changes below are calculated from the reported figures above. They are not additional SEC-reported line items.</p>'+
   (hasData?'<div class="table-wrap analysis-table"><table><thead><tr><th>Calculated measure</th>'+headings.map(h=>'<th>'+esc(h)+'</th>').join("")+'</tr></thead><tbody>'+calculatedRows(data,ends)+'</tbody></table></div>'+analysisNotes(data,ends):'')+
-  '<h2 style="margin-top:26px">Original SEC filings</h2>'+(filings?'<ul class="source-list">'+filings+'</ul>':'<p>No recent supported filing links were returned.</p>')+
+  '<h2 style="margin-top:26px">SEC Filing Explorer</h2><p class="report-meta">Available SEC filing documents returned for this company. Open the original filing to review its complete contents.</p>'+(filings?'<ul class="source-list">'+filings+'</ul>':'<p>No recent supported filing links were returned.</p>')+
+  '<h2 style="margin-top:26px">SEC Filing Timeline</h2><p class="report-meta">Chronological view of filing dates and reporting periods returned by SEC EDGAR.</p>'+(timeline?'<ol class="source-list">'+timeline+'</ol>':'<p>No filing timeline is available for this company.</p>')+
   '<div class="notice"><strong>Source and limitations:</strong> '+esc(data.source)+'. Figures are historical disclosures, not live market quotes. Coverage depends on the company’s filings and SEC taxonomy. “Not reported” means this report did not find a supported value for that period; it does not mean zero. Verify each item in the original filing before relying on it.</div>'+
   '<p class="report-meta">Generated by StockPilot AI · Educational information only · Not investment advice.</p>';
   output.hidden=false;controls.hidden=false;
