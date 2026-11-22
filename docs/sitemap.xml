@@ -217,4 +217,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/financial-report-generator.html"/>
     <lastmod>2026-11-21</lastmod>
   </url>
+  <url>
+    <loc>https://technofront.org/experts-exchange.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
