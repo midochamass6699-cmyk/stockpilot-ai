@@ -6988,7 +6988,7 @@ function renderStock(s,penny,rate) {
     + '&kind=' + (penny ? 'penny' : 'main');
 
   return `
-    <article class="stock-card ${penny ? 'penny' : ''}">
+    <article id="sp-stock-${penny ? 'penny' : 'main'}-${String(s.ticker || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '-')}" class="stock-card ${penny ? 'penny' : ''}">
       <h3>${esc(s.company || s.ticker || 'Unknown company')}</h3>
       <div class="ticker">
         <a class="ticker-symbol-link"
