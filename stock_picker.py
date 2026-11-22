@@ -20,6 +20,7 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from statistics import pstdev
 from urllib.parse import urlencode
@@ -73,17 +74,24 @@ def yahoo_screener(region, screener_id):
 def normalize_symbol(raw_symbol, market, exchange):
     symbol = str(raw_symbol or "").strip().upper()
     if not symbol:
-        return ""
-    # Yahoo's Canadian quote pages conventionally use .TO for TSX and .V for TSXV.
+        return "", market
+    ex = str(exchange or "").upper()
+    # Trust the listing venue over the screener's regional label. The old
+    # region-only suffixing could turn a US ticker such as T into T.TO.
+    us_listing = any(x in ex for x in ("NASDAQ", "NYSE", "NEW YORK", "NYSEARCA", "NYSE ARCA"))
+    ca_listing = any(x in ex for x in ("TORONTO", "TSX", "VENTURE", "TSXV", "CSE", "CANADIAN SECURITIES"))
+    if us_listing:
+        market = "US"
+    elif ca_listing:
+        market = "Canada"
     if market == "Canada" and "." not in symbol:
-        ex = str(exchange or "").upper()
         if "VENTURE" in ex or "TSXV" in ex:
             symbol += ".V"
-        elif "CSE" in ex:
+        elif "CSE" in ex or "CANADIAN SECURITIES" in ex:
             symbol += ".CN"
         else:
             symbol += ".TO"
-    return symbol
+    return symbol, market
 
 
 def build_universe():
@@ -101,7 +109,8 @@ def build_universe():
                     if quote_type and quote_type not in ("EQUITY", "ETF"):
                         continue
                     raw = q.get("symbol")
-                    symbol = normalize_symbol(raw, market, q.get("fullExchangeName") or q.get("exchange"))
+                    exchange_name = q.get("fullExchangeName") or q.get("exchange") or ""
+                    symbol, actual_market = normalize_symbol(raw, market, exchange_name)
                     if not symbol:
                         continue
                     # Prefer ordinary shares; ETFs are not stock picks.
@@ -117,10 +126,10 @@ def build_universe():
                     meta = {
                         "ticker": symbol,
                         "company": q.get("longName") or q.get("shortName") or symbol,
-                        "market": market,
-                        "exchange": q.get("fullExchangeName") or q.get("exchange") or ("US exchange" if market == "US" else "Canadian exchange"),
+                        "market": actual_market,
+                        "exchange": exchange_name or ("US exchange" if actual_market == "US" else "Canadian exchange"),
                         "sector": q.get("sector") or q.get("industry") or "Unclassified",
-                        "currency": q.get("currency") or ("USD" if market == "US" else "CAD"),
+                        "currency": q.get("currency") or ("USD" if actual_market == "US" else "CAD"),
                         "screener_price": price,
                     }
                     # Keep the richer metadata if a symbol appears in several screens.
@@ -135,7 +144,12 @@ def build_universe():
         # Preserve screen priority: penny candidates are deliberately included first,
         # followed by active names and gainers. This avoids a price sort crowding them out.
         candidates = list(market_records.values())
-        records[market] = candidates[:MAX_CANDIDATES_PER_MARKET]
+        # A screener can return cross-listed securities. Route by the actual
+        # exchange instead of assuming every CA-region result is Canadian.
+        for item in candidates:
+            records.setdefault(item["market"], [])
+            if len(records[item["market"]]) < MAX_CANDIDATES_PER_MARKET:
+                records[item["market"]].append(item)
     return records, errors, scanned_screeners
 
 
@@ -193,6 +207,128 @@ def fetch_histories(symbols):
     return histories, errors
 
 
+SEC_WORKER_BASE = os.environ.get("STOCKPILOT_SEC_API", "https://api.technofront.org")
+
+
+def _metric_values(company, key):
+    for metric in company.get("metrics", []):
+        if metric.get("key") == key:
+            return metric.get("values") or []
+    return []
+
+
+def fetch_sec_fundamentals(meta):
+    """Fetch filed annual fundamentals through StockPilot's existing SEC Worker.
+    Returns None when the ticker has no exact SEC match or the source is unavailable.
+    """
+    ticker = str(meta.get("ticker", "")).upper()
+    # SEC company-ticker mapping is for US registrants and cross-filers. Avoid
+    # fuzzy matches: a wrong CIK is worse than honestly reporting missing data.
+    try:
+        search_url = SEC_WORKER_BASE + "/api/search?" + urlencode({"q": ticker})
+        req = Request(search_url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+        with urlopen(req, timeout=20) as response:
+            matches = json.loads(response.read().decode("utf-8")).get("results", [])
+        exact = [x for x in matches if str(x.get("ticker", "")).upper() == ticker]
+        if not exact:
+            return None
+        cik = exact[0].get("cik")
+        if not cik:
+            return None
+        company_url = SEC_WORKER_BASE + "/api/company?" + urlencode({"cik": cik})
+        req = Request(company_url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+        with urlopen(req, timeout=30) as response:
+            company = json.loads(response.read().decode("utf-8"))
+        metrics = {key: _metric_values(company, key) for key in (
+            "revenue", "grossProfit", "operatingIncome", "netIncome",
+            "assets", "liabilities", "equity", "cash", "operatingCashFlow",
+            "currentDebt", "longTermDebt"
+        )}
+        if not any(metrics.values()):
+            return None
+        latest = {key: (vals[0].get("value") if vals else None) for key, vals in metrics.items()}
+        revenue_values = metrics["revenue"]
+        revenue_growth = None
+        if len(revenue_values) >= 2:
+            prior = revenue_values[1].get("value")
+            current = revenue_values[0].get("value")
+            if prior not in (None, 0) and current is not None:
+                revenue_growth = (float(current) / float(prior) - 1) * 100
+        return {
+            "source": "SEC EDGAR Company Facts",
+            "company": company.get("company"),
+            "cik": cik,
+            "retrieved_at": company.get("retrievedAt"),
+            "fiscal_year": revenue_values[0].get("fiscalYear") if revenue_values else None,
+            "revenue_growth_percent": round(revenue_growth, 2) if revenue_growth is not None else None,
+            "metrics": latest,
+            "periods": {key: vals[:2] for key, vals in metrics.items()},
+        }
+    except Exception as exc:
+        return {"_error": str(exc)}
+
+
+def score_fundamentals(fundamentals):
+    if not fundamentals or fundamentals.get("_error"):
+        return None, [], []
+    m = fundamentals.get("metrics", {})
+    components = []
+    details = []
+    risks = []
+
+    def add(name, value, weight):
+        if value is not None and math.isfinite(float(value)):
+            components.append((clamp(value), weight))
+            details.append(name)
+
+    growth = fundamentals.get("revenue_growth_percent")
+    if growth is not None:
+        add("revenue_growth", 50 + float(growth) * 1.25, 20)
+
+    assets, liabilities = m.get("assets"), m.get("liabilities")
+    equity, cash = m.get("equity"), m.get("cash")
+    op_income, net_income = m.get("operatingIncome"), m.get("netIncome")
+    revenue, op_cash = m.get("revenue"), m.get("operatingCashFlow")
+    debt_current, debt_long = m.get("currentDebt"), m.get("longTermDebt")
+
+    if revenue not in (None, 0) and m.get("grossProfit") is not None:
+        add("gross_margin", float(m["grossProfit"]) / float(revenue) * 100 * 1.5 + 35, 15)
+    if revenue not in (None, 0) and op_income is not None:
+        margin = float(op_income) / float(revenue) * 100
+        add("operating_margin", 50 + margin * 2.0, 20)
+        if margin < 0:
+            risks.append("negative operating margin in latest annual filing")
+    if revenue not in (None, 0) and net_income is not None:
+        margin = float(net_income) / float(revenue) * 100
+        add("net_margin", 50 + margin * 1.5, 15)
+        if margin < 0:
+            risks.append("net loss in latest annual filing")
+    if assets not in (None, 0) and liabilities is not None:
+        liability_ratio = float(liabilities) / float(assets)
+        add("liabilities_to_assets", 100 - liability_ratio * 100, 15)
+        if liability_ratio > 0.8:
+            risks.append("liabilities exceed 80% of reported assets")
+    if assets not in (None, 0) and equity is not None:
+        add("equity_ratio", float(equity) / float(assets) * 100, 5)
+        if float(equity) < 0:
+            risks.append("negative shareholders' equity")
+    if op_cash is not None:
+        add("operating_cash_flow", 75 if float(op_cash) > 0 else 20, 10)
+        if float(op_cash) < 0:
+            risks.append("negative operating cash flow")
+    if cash is not None and (debt_current is not None or debt_long is not None):
+        debt = float(debt_current or 0) + float(debt_long or 0)
+        if debt > 0:
+            add("cash_vs_debt", clamp(float(cash) / debt * 50), 5)
+            if float(cash) < debt * 0.2:
+                risks.append("cash is less than 20% of reported debt")
+    if not components:
+        return None, [], ["SEC filing returned no usable scoring metrics"]
+    total_weight = sum(weight for _, weight in components)
+    score = sum(value * weight for value, weight in components) / total_weight
+    return round(clamp(score), 1), details, risks
+
+
 def calculate_rsi(closes, period=14):
     changes = [closes[i] - closes[i - 1] for i in range(1, len(closes))]
     recent = changes[-period:]
@@ -221,23 +357,24 @@ def score_momentum(frame):
     avg_dollar_volume20 = sum(closes[i] * volumes[i] for i in range(len(closes) - 20, len(closes))) / 20
     daily_returns = [pct_change(closes[i], closes[i - 1]) for i in range(len(closes) - 20, len(closes))]
     volatility20 = pstdev(daily_returns) if daily_returns else 0.0
-    # Activity-first score: prioritize unusual participation and meaningful
-    # current price movement, not long-term trend or company fundamentals.
-    score_relative_volume = clamp(50 + 25 * math.log2(max(volume_ratio, 0.01)))
-    score_daily_move = clamp(abs(daily_change) * 8.0)
-    score_5d_activity = clamp(abs(ret5) * 4.0)
-    score_20d_activity = clamp(abs(ret20) * 1.5)
+    # Trend-quality and trading-conditions score. Absolute price spikes no
+    # longer dominate: trend alignment and sustained returns matter more.
+    trend_alignment = (50 if last > ma20 else 0) + (50 if ma20 > ma50 else 0)
+    score_trend = clamp(trend_alignment)
+    score_50d = clamp(50 + ret50 * 1.2)
+    score_20d = clamp(50 + ret20 * 1.6)
+    score_5d = clamp(50 + ret5 * 1.5)
+    score_relative_volume = clamp(50 + 20 * math.log2(max(volume_ratio, 0.01)))
     score_liquidity = clamp(50 + 10 * math.log10(max(avg_dollar_volume20, 1.0) / 1_000_000))
-    volatility_penalty = min(8.0, max(0.0, volatility20 - 5.0) * 0.6)
-    raw = (
-        score_relative_volume * .35
-        + score_daily_move * .30
-        + score_5d_activity * .20
-        + score_20d_activity * .10
-        + score_liquidity * .05
+    volatility_penalty = min(12.0, max(0.0, volatility20 - 4.0) * 0.8)
+    technical = clamp(
+        score_trend * .25 + score_50d * .20 + score_20d * .20
+        + score_5d * .10 + score_relative_volume * .10
+        + score_liquidity * .15 - volatility_penalty
     )
     return {
-        "score": round(clamp(raw - volatility_penalty), 1),
+        "score_technical": round(technical, 1),
+        "score": round(technical, 1),
         "return_5d": round(ret5, 2),
         "return_20d": round(ret20, 2),
         "return_50d": round(ret50, 2),
@@ -257,8 +394,22 @@ def score_momentum(frame):
     }
 
 
-def analyze(meta, frame):
+def analyze(meta, frame, fundamentals=None, penny=False):
     m = score_momentum(frame)
+    fundamental_score, fundamental_coverage, fundamental_risks = score_fundamentals(fundamentals)
+    # Use filings when an exact SEC registrant match exists. Canadian issuers
+    # without SEC filings remain technical-only; never infer or fabricate facts.
+    if fundamental_score is not None:
+        fundamental_weight = 0.30 if penny else 0.60
+        m["score"] = round(m["score_technical"] * (1 - fundamental_weight) + fundamental_score * fundamental_weight, 1)
+        m["score_basis"] = "SEC fundamentals + market data"
+        m["score_fundamental"] = fundamental_score
+        m["fundamental_coverage"] = fundamental_coverage
+    else:
+        m["score"] = m["score_technical"]
+        m["score_basis"] = "market data only — SEC fundamentals unavailable"
+        m["score_fundamental"] = None
+        m["fundamental_coverage"] = []
     # Keep the latest 63 daily adjusted closes (approximately three trading months)
     # for compact, data-backed sparklines on the homepage stock cards.
     chart_frame = frame.dropna(subset=["Close"]).tail(63)
@@ -272,7 +423,7 @@ def analyze(meta, frame):
     reasons.append(f"5-day move {m['return_5d']:+.1f}%")
     if m["average_dollar_volume_20d"] > 0:
         reasons.append(f"20-day average dollar volume ${m['average_dollar_volume_20d']:,.0f}")
-    risks = []
+    risks = list(fundamental_risks)
     if m["rsi"] >= 70:
         risks.append("RSI elevated; short-term pullback risk")
     if m["volatility_20d"] >= 5:
@@ -294,6 +445,7 @@ def analyze(meta, frame):
         "reason": "; ".join(reasons or ["highest momentum score in the screened candidate pool"]) + ".",
         "risk": "; ".join(risks) + ".",
         "price_history_3mo": chart_history,
+        "fundamentals": fundamentals if fundamentals and not fundamentals.get("_error") else None,
         **m,
     }
 
@@ -327,7 +479,7 @@ def choose_diversified(ranked, count=3):
 
 
 def main():
-    print("StockPilot Market Activity v4 — public US + Canada candidate screeners")
+    print("StockPilot Multi-Factor Research v5 — US + Canada candidate screeners")
     universe, universe_errors, screeners_ok = build_universe()
     all_meta = universe.get("US", []) + universe.get("Canada", [])
     # Remove duplicate symbols while preserving first occurrence.
@@ -341,9 +493,28 @@ def main():
     histories, history_errors = fetch_histories([x["ticker"] for x in all_meta])
     results = []
     meta_by_symbol = {x["ticker"]: x for x in all_meta}
+
+    # SEC fundamentals are retrieved only through the existing StockPilot SEC
+    # Worker. Limit concurrency to respect upstream SEC fair-access limits.
+    fundamentals_by_symbol = {}
+    sec_candidates = [x for x in all_meta if x["market"] == "US"]
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        futures = {pool.submit(fetch_sec_fundamentals, meta): meta["ticker"] for meta in sec_candidates}
+        for future in as_completed(futures):
+            ticker = futures[future]
+            try:
+                result = future.result()
+                if result and not result.get("_error"):
+                    fundamentals_by_symbol[ticker] = result
+                elif result and result.get("_error"):
+                    history_errors.append(f"{ticker}: SEC fundamentals unavailable: {result['_error']}")
+            except Exception as exc:
+                history_errors.append(f"{ticker}: SEC fundamentals unavailable: {exc}")
+
     for symbol, frame in histories.items():
         try:
-            results.append(analyze(meta_by_symbol[symbol], frame))
+            meta = meta_by_symbol[symbol]
+            results.append(analyze(meta, frame, fundamentals_by_symbol.get(symbol), penny=eligible({"price": float(frame["Close"].iloc[-1]), "average_dollar_volume_20d": float((frame["Close"].tail(20) * frame["Volume"].tail(20)).mean()), "average_volume_20d": float(frame["Volume"].tail(20).mean())}, True)))
         except Exception as exc:
             history_errors.append(f"{symbol}: analysis failed: {exc}")
 
@@ -364,19 +535,23 @@ def main():
         "status": "ok",
         "updated_at": now.isoformat(),
         "snapshot_time": now.date().isoformat(),
-        "data_source": "Yahoo Finance public screeners + Yahoo Finance daily historical prices (via yfinance)",
+        "data_source": "Yahoo Finance public screeners and daily prices (via yfinance); SEC EDGAR Company Facts through StockPilot SEC Worker where an exact US filing match exists",
         "data_note": (
-            "Free, broad candidate scan from public US and Canadian activity/gainer screeners; "
-            "not an exhaustive scan of every listed security. End-of-day history may be delayed. "
-            "Yahoo endpoints are unofficial and can be throttled or changed. Prices are in local "
-            "trading currencies (USD for US, CAD for Canada)."
+            "Candidate scan uses public US and Canadian Yahoo Finance activity/gainer screeners; "
+            "it is not an exhaustive scan. Daily price history may be delayed and Yahoo endpoints "
+            "are unofficial. SEC annual fundamentals are included only when an exact SEC ticker match "
+            "is available; other issuers are explicitly marked market-data-only. SEC figures are "
+            "annual reported values, not real-time data. Prices are in local trading currencies."
         ),
         "strategy": (
-            "Market activity score 0–100: 35% relative volume, 30% absolute daily price movement, "
-            "20% absolute 5-day movement, 10% absolute 20-day movement, and 5% average dollar liquidity; "
-            "a modest penalty applies to unusually high 20-day volatility. Both gainers and decliners "
-            "can qualify. Main stocks must have 20-day average dollar volume of at least $1 million; "
-            "penny stocks must be priced $0.05–$10 and have at least $100,000 average daily dollar volume."
+            "Multi-factor score 0–100. Technical score: 25% trend alignment, 20% 50-day return, "
+            "20% 20-day return, 10% 5-day return, 10% relative volume, and 15% liquidity, less a "
+            "volatility penalty. Where exact SEC annual fundamentals are available, the main-stock "
+            "score blends 60% filing-based financial health/growth/profitability with 40% technical "
+            "conditions; penny stocks blend 30% fundamentals with 70% technical conditions. "
+            "Without SEC fundamentals, the score is technical-only and is explicitly labelled. "
+            "Main stocks require 20-day average dollar volume of at least $1 million; penny stocks "
+            "must be $0.05–$10 with at least $100,000 average daily dollar volume."
         ),
         "universe": {
             "markets": ["US", "Canada"],
@@ -385,6 +560,8 @@ def main():
             "canada_candidates_queued": len(universe.get("Canada", [])),
             "unique_candidates_queued": len(all_meta),
             "history_symbols_returned": len(histories),
+            "sec_fundamentals_returned": len(fundamentals_by_symbol),
+            "sec_fundamentals_coverage": round(len(fundamentals_by_symbol) / max(1, len([x for x in results if x["market"] == "US"])) * 100, 1),
             "penny_price_cap_local_currency": PENNY_MAX_PRICE,
             "exhaustive_market_scan": False,
         },
