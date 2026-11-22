@@ -2714,6 +2714,51 @@ main p, main li, .section-head p, .updated, .card-meta {
 .tf-sec-feature-lines>div:before{content:"•";flex:0 0 auto;color:#1D4ED8;font-size:21px;line-height:1.05;}
 @media(max-width:600px){.tf-sec-feature-lines{gap:7px;margin-bottom:12px;padding:10px 11px;font-size:14px;}}
 </style>
+
+<style id="technofront-english-two-square-layout-final">
+/* English homepage: three stacked market lists on the left, SEC features and Market Data & Analysis on the right. */
+#live-trading-desk .tf-two-panel-grid{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ gap:14px!important;
+ align-items:stretch!important;
+ width:100%!important;
+ min-width:0!important;
+}
+#live-trading-desk .tf-market-collection{
+ min-width:0!important;
+ height:100%!important;
+}
+#live-trading-desk .tf-market-collection .trading-desk-grid{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ grid-auto-flow:row!important;
+ gap:10px!important;
+ width:100%!important;
+}
+#live-trading-desk .tf-market-collection .trading-panel{
+ display:flex!important;
+ flex-direction:column!important;
+ width:100%!important;
+ min-width:0!important;
+}
+#live-trading-desk .tf-terminal-column{
+ display:flex!important;
+ flex-direction:column!important;
+ min-width:0!important;
+ height:100%!important;
+}
+#live-trading-desk .tf-sec-feature-lines{
+ display:flex!important;
+ flex-direction:column!important;
+ margin:0 0 12px!important;
+}
+@media(max-width:900px){
+ #live-trading-desk .tf-two-panel-grid{
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+}
+</style>
 </head>
 <body>
 <a class="sp-skip-link" href="#main-content">Skip to main content</a>
