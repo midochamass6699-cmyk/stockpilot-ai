@@ -2708,8 +2708,10 @@ main p, main li, .section-head p, .updated, .card-meta {
 
 <style id="tf-visibility-heading-adjustments">
 #trading-desk-title .tf-title-subline{display:block;margin-top:5px;font-size:.78em;letter-spacing:-.035em;}
-.tf-sec-feature-lines{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin:2px 12px 12px;padding:0;color:#172b45;font-size:13px;font-weight:750;line-height:1.35;}
-.tf-sec-feature-lines>div{margin:0;padding:0;}
+.tf-sec-feature-lines{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0 0 16px;padding:12px 14px;border-left:4px solid #2563EB;border-radius:8px;background:#EAF1FC;color:#12335F;font-size:16px;font-weight:850;line-height:1.4;}
+.tf-sec-feature-lines>div{display:flex;align-items:flex-start;gap:9px;margin:0;padding:0;}
+.tf-sec-feature-lines>div:before{content:"•";flex:0 0 auto;color:#1D4ED8;font-size:21px;line-height:1.05;}
+@media(max-width:600px){.tf-sec-feature-lines{gap:7px;margin-bottom:12px;padding:10px 11px;font-size:14px;}}
 </style>
 </head>
 <body>
@@ -2955,12 +2957,6 @@ main p, main li, .section-head p, .updated, .card-meta {
 <div class="trading-desk-tagline"><strong>YOUR MARKET PIT STOP</strong>Your Market Pit Stop — Where Real Data Fuels Better Insights.</div>
   </div>
 
-<div class="tf-sec-feature-lines" aria-label="SEC company report features">
- <div>SEC Filing Explorer</div>
- <div>Company Financial Snapshot</div>
- <div>SEC Filing Timeline</div>
-</div>
-
 <div class="tf-two-panel-grid">
  <div class="tf-market-collection" aria-label="Market lists">
 <div class="trading-desk-grid">
@@ -2982,6 +2978,11 @@ main p, main li, .section-head p, .updated, .card-meta {
 </div>
  </div>
 <section class="sp-market-terminal" id="market-terminal" aria-label="Market Data and Analysis Tools">
+ <div class="tf-sec-feature-lines" aria-label="SEC company report features">
+  <div>SEC Filing Explorer</div>
+  <div>Company Financial Snapshot</div>
+  <div>SEC Filing Timeline</div>
+ </div>
  <div class="sp-terminal-top">
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><div class="sp-terminal-title-line"><h2>Market Data &amp; Analysis Tools</h2><div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
     <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-0" data-sp-tool="0"><span class="sp-terminal-tool-icon" aria-hidden="true">▤</span><span>WATCHLIST</span></button>
