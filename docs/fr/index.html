@@ -2657,6 +2657,58 @@ main p, main li, .section-head p, .updated, .card-meta {
 .stock-insight .stock-insight-toggle{display:inline-flex;align-items:center;border:0;background:transparent;padding:2px 0;color:var(--accent,#2563eb);font:inherit;font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .stock-insight .stock-insight-toggle:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:3px}
 </style>
+<style id="technofront-edge-banners-v2">
+/* Technofront edge banners: fixed, matched in height, and independently animated. */
+#free-left-banner.tf-edge-banner,
+#free-right-banner.tf-edge-banner{
+  position:fixed!important;
+  top:132px!important;
+  bottom:24px!important;
+  height:auto!important;
+  width:clamp(160px,calc((100vw - 1200px)/2 - 24px),230px)!important;
+  min-width:160px!important;
+  max-width:230px!important;
+  box-sizing:border-box!important;
+  z-index:18!important;
+  display:block!important;
+  overflow:hidden!important;
+  border:1px solid #29466B!important;
+  border-radius:14px!important;
+  background:linear-gradient(180deg,#102746 0%,#07182D 100%)!important;
+  color:#fff!important;
+  box-shadow:0 8px 24px rgba(7,17,31,.18)!important;
+}
+#free-left-banner.tf-edge-banner{left:12px!important;right:auto!important}
+#free-right-banner.tf-edge-banner{right:12px!important;left:auto!important}
+.tf-edge-inner{height:100%;min-height:0;display:flex;flex-direction:column;box-sizing:border-box;padding:16px 13px 12px}
+.tf-edge-heading{flex:0 0 auto;text-align:center;padding:0 2px 13px;border-bottom:1px solid rgba(160,190,225,.22)}
+.tf-edge-market{display:inline-flex;align-items:center;justify-content:center;padding:4px 9px;border:1px solid rgba(117,174,242,.45);border-radius:999px;color:#9CCBFF;font-size:11px;font-weight:900;letter-spacing:.12em}
+.tf-edge-heading h2{margin:10px 0 5px;color:#fff;font-size:clamp(17px,1.25vw,21px);line-height:1.12;font-weight:900;letter-spacing:.025em;overflow-wrap:anywhere}
+#free-right-banner .tf-edge-heading h2{color:#B9D9FF}
+.tf-edge-heading p{margin:0;color:#C6D8EF;font-size:12px;line-height:1.45;font-weight:600}
+.tf-edge-viewport{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;margin:12px 0 8px;mask-image:linear-gradient(to bottom,transparent 0,#000 5%,#000 95%,transparent 100%)}
+.tf-edge-track{display:flex;flex-direction:column;gap:0;animation:tf-edge-scroll 54s linear infinite;will-change:transform}
+.tf-edge-sequence{display:flex;flex-direction:column;gap:10px;padding:2px 0 10px}
+.tf-edge-card{position:relative;display:flex;flex-direction:column;gap:6px;min-height:76px;padding:12px 12px 12px 13px;border:1px solid rgba(133,174,222,.25);border-radius:9px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));color:#fff;text-decoration:none;box-sizing:border-box;transition:background .2s,border-color .2s}
+.tf-edge-card:hover,.tf-edge-card:focus-visible{background:rgba(72,135,207,.22);border-color:#75B3F4;outline:none}
+.tf-edge-card strong{display:block;padding-right:14px;color:#fff;font-size:13px;line-height:1.25;font-weight:850;letter-spacing:.025em}
+.tf-edge-card span{display:block;color:#C3D4E8;font-size:12px;line-height:1.45;font-weight:550}
+.tf-edge-card i{position:absolute;right:10px;top:10px;color:#7EB7F4;font-size:14px;font-style:normal}
+.tf-edge-foot{flex:0 0 auto;padding-top:8px;border-top:1px solid rgba(160,190,225,.18);color:#8FA9C6;text-align:center;font-size:9px;font-weight:800;letter-spacing:.13em}
+.tf-edge-foot span{padding:0 3px;color:#5E91C6}
+@keyframes tf-edge-scroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+#free-left-banner.tf-edge-banner:hover .tf-edge-track,
+#free-right-banner.tf-edge-banner:hover .tf-edge-track,
+#free-left-banner.tf-edge-banner:focus-within .tf-edge-track,
+#free-right-banner.tf-edge-banner:focus-within .tf-edge-track{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.tf-edge-track{animation:none!important}}
+@media(max-width:1599px),(max-height:620px){
+ #free-left-banner.tf-edge-banner,#free-right-banner.tf-edge-banner{display:none!important}
+}
+@media(min-width:1600px) and (max-width:1699px){
+ #free-left-banner.tf-edge-banner,#free-right-banner.tf-edge-banner{width:clamp(160px,calc((100vw - 1200px)/2 - 24px),190px)!important}
+}
+</style>
 </head>
 <body>
 
@@ -4878,33 +4930,31 @@ setInterval(loadStocks,15 * 60 * 1000);
 })();
 </script>
 <!-- STOCKPILOT AI : LISTE VERTICALE DES ACTIONS À SUIVRE -->
-<aside aria-label="Actions canadiennes et américaines à suivre" class="free-side-banner" id="free-left-banner">
- <div class="sp-watch-track" aria-hidden="true">
-  <div class="sp-watch-list">
-   <div class="sp-watch-heading"><strong>ACTIONS À SUIVRE</strong><small>MARCHÉS CANADIEN & AMÉRICAIN</small></div>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/SHOP.TO/" target="_blank" rel="noopener"><b>SHOP</b><span>Shopify</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/RY.TO/" target="_blank" rel="noopener"><b>RY</b><span>Banque Royale</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/TD.TO/" target="_blank" rel="noopener"><b>TD</b><span>Banque TD</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/ENB.TO/" target="_blank" rel="noopener"><b>ENB</b><span>Enbridge</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/CNQ.TO/" target="_blank" rel="noopener"><b>CNQ</b><span>Canadian Natural</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/BNS.TO/" target="_blank" rel="noopener"><b>BNS</b><span>Banque Scotia</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/NVDA/" target="_blank" rel="noopener"><b>NVDA</b><span>Nvidia</span><small>NASDAQ</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/AAPL/" target="_blank" rel="noopener"><b>AAPL</b><span>Apple</span><small>NASDAQ</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/MSFT/" target="_blank" rel="noopener"><b>MSFT</b><span>Microsoft</span><small>NASDAQ</small></a>
+<aside aria-label="TENDANCES DU MARCHÉ CAN market activity" class="free-side-banner tf-edge-banner" id="free-left-banner">
+  <div class="tf-edge-inner">
+    <header class="tf-edge-heading">
+      <span class="tf-edge-market">CAN</span>
+      <h2>TENDANCES DU MARCHÉ</h2>
+      <p>L'activité des marchés canadiens</p>
+    </header>
+    <div class="tf-edge-viewport">
+      <div class="tf-edge-track">
+        <div class="tf-edge-sequence">
+          <a class="tf-edge-card" href="#main-picks"><strong>ACTIONS EN TENDANCE</strong><span>Actions TSX et TSXV à surveiller</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="#penny-picks"><strong>PETITES CAPITALISATIONS</strong><span>Volume et mouvements de prix</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="#crypto-picks"><strong>CRYPTO</strong><span>Activité des marchés d'actifs numériques</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="#market-terminal"><strong>DYNAMIQUE DU MARCHÉ</strong><span>Consulter l'aperçu des marchés</span><i aria-hidden="true">↗</i></a>
+        </div>
+        <div class="tf-edge-sequence" aria-hidden="true">
+          <a class="tf-edge-card" href="#main-picks" tabindex="-1"><strong>ACTIONS EN TENDANCE</strong><span>Actions TSX et TSXV à surveiller</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="#penny-picks" tabindex="-1"><strong>PETITES CAPITALISATIONS</strong><span>Volume et mouvements de prix</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="#crypto-picks" tabindex="-1"><strong>CRYPTO</strong><span>Activité des marchés d'actifs numériques</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="#market-terminal" tabindex="-1"><strong>DYNAMIQUE DU MARCHÉ</strong><span>Consulter l'aperçu des marchés</span><i aria-hidden="true">↗</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="tf-edge-foot">TECHNOFRONT <span>·</span> MARCHÉS CANADIENS</div>
   </div>
-  <div class="sp-watch-list" aria-hidden="true">
-   <div class="sp-watch-heading"><strong>ACTIONS À SUIVRE</strong><small>MARCHÉS CANADIEN & AMÉRICAIN</small></div>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/SHOP.TO/" tabindex="-1"><b>SHOP</b><span>Shopify</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/RY.TO/" tabindex="-1"><b>RY</b><span>Banque Royale</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/TD.TO/" tabindex="-1"><b>TD</b><span>Banque TD</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/ENB.TO/" tabindex="-1"><b>ENB</b><span>Enbridge</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/CNQ.TO/" tabindex="-1"><b>CNQ</b><span>Canadian Natural</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/BNS.TO/" tabindex="-1"><b>BNS</b><span>Banque Scotia</span><small>TSX</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/NVDA/" tabindex="-1"><b>NVDA</b><span>Nvidia</span><small>NASDAQ</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/AAPL/" tabindex="-1"><b>AAPL</b><span>Apple</span><small>NASDAQ</small></a>
-   <a class="sp-watch-item" href="https://finance.yahoo.com/quote/MSFT/" tabindex="-1"><b>MSFT</b><span>Microsoft</span><small>NASDAQ</small></a>
-  </div>
- </div>
 </aside>
 <style id="sp-fr-watchlist-style">
 #free-left-banner{height:570px;background:linear-gradient(180deg,#102746,#07182D);border-color:#29466B}
@@ -4921,48 +4971,35 @@ setInterval(loadStocks,15 * 60 * 1000);
 @keyframes spWatchDown{from{transform:translateY(-570px)}to{transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){#free-left-banner .sp-watch-track{animation:none}}
 </style>
-<aside aria-label="StockPilot AI brokerage platforms" class="free-side-banner" id="free-right-banner">
-<div class="free-side-track">
-<div class="free-side-message">
-<strong class="broker-scroll-heading">ONLINE COURTIERS</strong>
-<a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
-<strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
-<strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
-</div>
-<!-- Duplicate for continuous scrolling -->
-<div aria-hidden="true" class="free-side-message">
-<strong class="broker-scroll-heading">ONLINE COURTIERS</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
-<strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
-<strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
-</div>
-</div>
+<aside aria-label="Next Frontier market research and education" class="free-side-banner tf-edge-banner" id="free-right-banner">
+  <div class="tf-edge-inner">
+    <header class="tf-edge-heading">
+      <span class="tf-edge-market">CAN</span>
+      <h2>NEXT FRONTIER</h2>
+      <p>AU-DELÀ DES ACTIONS. AU-DELÀ DES DONNÉES DE MARCHÉ.</p>
+    </header>
+    <div class="tf-edge-viewport">
+      <div class="tf-edge-track">
+        <div class="tf-edge-sequence">
+          <a class="tf-edge-card" href="./research.html"><strong>INTELLIGENCE DE MARCHÉ</strong><span>Explorer des concepts de marché avancés</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="./research.html"><strong>MODÈLES QUANTITATIFS</strong><span>GEX · VPIN · Vanna · Charm</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="./research.html"><strong>MICROSTRUCTURE DES MARCHÉS</strong><span>Flux d'ordres · Liquidité · Volatilité</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="/fr/echange-experts.html"><strong>ÉCHANGE D'EXPERTS</strong><span>Explorer les analyses et discussions</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="./research.html"><strong>RECHERCHE ET RAPPORTS</strong><span>Approfondir l'analyse d'une entreprise</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="./education-financiere.html"><strong>ÉDUCATION FINANCIÈRE</strong><span>Découvrir les notions et les guides</span><i aria-hidden="true">↗</i></a>
+        </div>
+        <div class="tf-edge-sequence" aria-hidden="true">
+          <a class="tf-edge-card" href="./research.html" tabindex="-1"><strong>INTELLIGENCE DE MARCHÉ</strong><span>Explorer des concepts de marché avancés</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="./research.html" tabindex="-1"><strong>MODÈLES QUANTITATIFS</strong><span>GEX · VPIN · Vanna · Charm</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="./research.html" tabindex="-1"><strong>MICROSTRUCTURE DES MARCHÉS</strong><span>Flux d'ordres · Liquidité · Volatilité</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="/fr/echange-experts.html" tabindex="-1"><strong>ÉCHANGE D'EXPERTS</strong><span>Explorer les analyses et discussions</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="./research.html" tabindex="-1"><strong>RECHERCHE ET RAPPORTS</strong><span>Approfondir l'analyse d'une entreprise</span><i aria-hidden="true">↗</i></a>
+<a class="tf-edge-card" href="./education-financiere.html" tabindex="-1"><strong>ÉDUCATION FINANCIÈRE</strong><span>Découvrir les notions et les guides</span><i aria-hidden="true">↗</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="tf-edge-foot">TECHNOFRONT <span>·</span> MARCHÉS CANADIENS</div>
+  </div>
 </aside>
 <!-- ARTICLE COMPLET : COMPTE SUR MARGE -->
 <section aria-labelledby="margin-article-title" id="margin-account-article">
@@ -7300,49 +7337,7 @@ setInterval(loadStocks,15 * 60 * 1000);
 @keyframes spWatchDown{from{transform:translateY(-570px)}to{transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){#free-left-banner .sp-watch-track{animation:none}}
 </style>
-<aside aria-label="StockPilot AI brokerage platforms" class="free-side-banner" id="free-right-banner">
-<div class="free-side-track">
-<div class="free-side-message">
-<strong class="broker-scroll-heading">ONLINE COURTIERS</strong>
-<a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
-<strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
-<strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
-</div>
-<!-- Duplicate for continuous scrolling -->
-<div aria-hidden="true" class="free-side-message">
-<strong class="broker-scroll-heading">ONLINE COURTIERS</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
-<strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
-<strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
-</div>
-</div>
-</aside>
+
 <!-- ARTICLE COMPLET : COMPTE SUR MARGE -->
 <section aria-labelledby="margin-article-title" id="margin-account-article">
 <div class="margin-article-wrap">
