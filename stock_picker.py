@@ -635,10 +635,34 @@ def main():
 
     main_ranked = sorted([x for x in results if eligible(x, False)], key=lambda x: x["score"], reverse=True)
     penny_ranked = sorted([x for x in results if eligible(x, True)], key=lambda x: x["score"], reverse=True)
-    main_picks = choose_diversified(main_ranked, 3)
-    selected = {x["ticker"] for x in main_picks}
-    penny_ranked = [x for x in penny_ranked if x["ticker"] not in selected]
-    penny_picks = choose_diversified(penny_ranked, 3)
+
+    # Select each market independently. The website editions filter by market,
+    # so a combined global top-three would leave one edition with too few picks.
+    main_picks = []
+    penny_picks = []
+    selected_main_tickers = set()
+    market_pick_counts = {}
+    for market in ("US", "Canada"):
+        market_main_ranked = [x for x in main_ranked if x["market"] == market]
+        market_main_picks = choose_diversified(market_main_ranked, 3)
+        main_picks.extend(market_main_picks)
+        selected_main_tickers.update(x["ticker"] for x in market_main_picks)
+
+        market_penny_ranked = [
+            x for x in penny_ranked
+            if x["market"] == market and x["ticker"] not in selected_main_tickers
+        ]
+        market_penny_picks = choose_diversified(market_penny_ranked, 3)
+        penny_picks.extend(market_penny_picks)
+        market_pick_counts[market] = {
+            "main": len(market_main_picks),
+            "penny": len(market_penny_picks),
+            "main_eligible": len(market_main_ranked),
+            "penny_eligible": len(market_penny_ranked),
+        }
+
+    # Exclude every selected main ticker from the detailed penny watchlist too.
+    penny_ranked = [x for x in penny_ranked if x["ticker"] not in selected_main_tickers]
 
     # One independent Stock of the Day per market. Prefer a main-list eligible
     # company; if that market has none, use its highest-ranked qualifying penny
@@ -654,8 +678,20 @@ def main():
             featured["selection_type"] = "main stock" if market_main else "penny stock fallback"
             stock_of_day[market] = featured
 
+    for market in ("US", "Canada"):
+        counts = market_pick_counts[market]
+        if counts["main"] < 3:
+            print(
+                f"WARNING: {market} has only {counts['main']}/3 qualifying main stocks "
+                f"({counts['main_eligible']} passed the main-stock filters)."
+            )
+        if counts["penny"] < 3:
+            print(
+                f"WARNING: {market} has only {counts['penny']}/3 qualifying penny stocks "
+                f"({counts['penny_eligible']} passed the penny-stock filters)."
+            )
     if len(main_picks) < 3:
-        sys.exit("ERROR: Fewer than 3 main stocks passed the filters; existing picks.json left unchanged.")
+        sys.exit("ERROR: Fewer than 3 main stocks across both markets passed the filters; existing picks.json left unchanged.")
     for stock in penny_picks:
         stock["risk"] = "HIGH RISK — penny-stock volatility. " + stock["risk"]
 
@@ -691,6 +727,7 @@ def main():
             "us_candidates_queued": len(universe.get("US", [])),
             "canada_candidates_queued": len(universe.get("Canada", [])),
             "canadian_seed_symbols": len(CANADIAN_SEED_TICKERS),
+            "market_pick_counts": market_pick_counts,
             "unique_candidates_queued": len(all_meta),
             "history_symbols_returned": len(histories),
             "sec_fundamentals_returned": len(fundamentals_by_symbol),
@@ -715,7 +752,14 @@ def main():
     temp = OUTPUT.with_suffix(OUTPUT.suffix + ".tmp")
     temp.write_text(json.dumps(output, indent=2), encoding="utf-8")
     temp.replace(OUTPUT)
-    print(f"SUCCESS: {len(main_picks)}/3 main picks; {len(penny_picks)}/3 penny picks")
+    print(
+        "SUCCESS: " +
+        "; ".join(
+            f"{market}: {market_pick_counts[market]['main']}/3 main, "
+            f"{market_pick_counts[market]['penny']}/3 penny"
+            for market in ("US", "Canada")
+        )
+    )
     print(f"History downloaded for {len(histories)}/{len(all_meta)} candidates")
     print(f"Output: {OUTPUT}")
     if len(penny_picks) < 3:
