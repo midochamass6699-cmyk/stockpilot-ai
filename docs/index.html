@@ -4428,54 +4428,56 @@ function insightText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
 
-function insightNumber(value, digits=1) {
-  if(value===null||value===undefined||value==='')return null;
-  const n=Number(value);
-  return Number.isFinite(n)?n.toLocaleString('en-US',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
+function insightNumber(value,digits=1){
+ if(value===null||value===undefined||value==='')return null;
+ const n=Number(value);return Number.isFinite(n)?n.toLocaleString('en-US',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
 }
-function getStockInsight(s, penny) {
-  const company=insightText(s.company||s.ticker||'This company'),parts=[];
-  const pct=(v)=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+'%';};
-  const addReturn=(label,value)=>{const v=pct(value);if(v!==null)parts.push(label+' '+v);};
-  if(s.above_20day_average===true&&s.above_50day_average===true)parts.push('The latest price is above both its 20- and 50-day moving averages, showing aligned short- and medium-term trend conditions.');
-  else if(s.above_20day_average===true&&s.above_50day_average===false)parts.push('The latest price is above its 20-day average but below its 50-day average, indicating a short-term improvement that has not yet aligned with the medium-term trend.');
-  else if(s.above_20day_average===false&&s.above_50day_average===true)parts.push('The latest price is below its 20-day average while remaining above its 50-day average, a mixed trend picture worth monitoring.');
-  else if(s.above_20day_average===false&&s.above_50day_average===false)parts.push('The latest price is below both its 20- and 50-day moving averages, indicating weaker trend conditions despite its appearance in the activity screen.');
-  addReturn('Recent return — 5 days:',s.return_5d);addReturn('20 days:',s.return_20d);addReturn('50 days:',s.return_50d);
-  const vr=Number(s.volume_ratio);
-  if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))parts.push(vr>=1.5?'Trading volume is '+vr.toFixed(1)+'× its 20-day average, indicating unusually active participation.':vr<=0.75?'Trading volume is '+vr.toFixed(1)+'× its 20-day average, so the recent move is occurring on lighter-than-usual activity.':'Trading volume is '+vr.toFixed(1)+'× its 20-day average, close to its recent norm.');
-  const liq=Number(s.average_dollar_volume_20d);
-  if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)parts.push('Average daily dollar volume over 20 sessions is '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('en-US',{maximumFractionDigits:0})+', providing context on trading liquidity.');
-  const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
-  if(f&&s.score_basis==='SEC fundamentals + market data'){
-    parts.push('SEC company-filing data is also available'+(f.fiscal_year?' for fiscal year '+f.fiscal_year:'')+'.');
-    if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))parts.push('Reported revenue changed '+pct(f.revenue_growth_percent)+' year over year.');
-    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.operatingIncome)))parts.push('The latest reported operating margin is '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+'%.');
-    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.netIncome)))parts.push('The latest reported net margin is '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+'%.');
-    if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined&&Number.isFinite(Number(m.operatingCashFlow)))parts.push('Reported operating cash flow is '+(Number(m.operatingCashFlow)>=0?'positive':'negative')+' in the latest available annual data.');
-    if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined&&Number.isFinite(Number(m.liabilities)))parts.push('Reported liabilities represent '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+'% of assets.');
-  }else parts.push('SEC fundamentals were unavailable or did not meet the minimum coverage needed for a balanced filing-based assessment; this selection therefore reflects market data only.');
-  if(Number(s.rsi)>=70)parts.push('RSI is elevated at '+insightNumber(s.rsi,1)+', so the recent move may be extended.');
-  if(Number(s.volatility_20d)>=5)parts.push('Recent 20-session volatility is elevated at '+insightNumber(s.volatility_20d,2)+'%.');
-  if(penny)parts.push('As a lower-priced security, it may carry greater volatility, thinner liquidity and wider trading spreads; review the company disclosures and risk information carefully.');
-  else parts.push('These observations explain the data behind the screen, not the company’s overall quality or future performance.');
-  return company+' is included because its available market and, where sufficiently covered, filing data stood out in the current research screen. '+parts.join(' ');
+function getStockInsight(s,penny){
+ const company=insightText(s.company||s.ticker||'This company'),signals=[];
+ const pct=v=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+'%';};
+ let trend='';
+ if(s.above_20day_average===true&&s.above_50day_average===true)trend='The latest price is above both its 20- and 50-day averages, showing aligned short- and medium-term trend conditions.';
+ else if(s.above_20day_average===true&&s.above_50day_average===false)trend='The price is above its 20-day average but below its 50-day average, so short-term improvement is not yet aligned with the medium-term trend.';
+ else if(s.above_20day_average===false&&s.above_50day_average===true)trend='The price is below its 20-day average but above its 50-day average, giving a mixed trend picture.';
+ else if(s.above_20day_average===false&&s.above_50day_average===false)trend='The price is below both its 20- and 50-day averages, indicating weaker trend conditions despite its appearance in the activity screen.';
+ if(trend)signals.push(trend);
+ const returns=[['5-day',s.return_5d],['20-day',s.return_20d],['50-day',s.return_50d]].filter(x=>x[1]!==null&&x[1]!==undefined&&Number.isFinite(Number(x[1]))).map(x=>x[0]+' '+pct(x[1]));
+ if(returns.length)signals.push('Measured price returns: '+returns.join(', ')+'.');
+ const activity=[];
+ const vr=Number(s.volume_ratio);
+ if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))activity.push('volume is '+vr.toFixed(1)+'× its 20-day average');
+ const liq=Number(s.average_dollar_volume_20d);
+ if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)activity.push('20-day average dollar volume is '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('en-US',{maximumFractionDigits:0}));
+ if(activity.length)signals.push('Trading activity and liquidity: '+activity.join('; ')+'.');
+ const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
+ if(f&&s.score_basis==='SEC fundamentals + market data'){
+  const facts=[];
+  if(f.fiscal_year)facts.push('fiscal year '+f.fiscal_year);
+  if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))facts.push('revenue growth '+pct(f.revenue_growth_percent));
+  if(m.revenue&&Number(m.revenue)!==0&&m.operatingIncome!==null&&m.operatingIncome!==undefined)facts.push('operating margin '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+'%');
+  if(m.revenue&&Number(m.revenue)!==0&&m.netIncome!==null&&m.netIncome!==undefined)facts.push('net margin '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+'%');
+  if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined)facts.push('operating cash flow '+(Number(m.operatingCashFlow)>=0?'positive':'negative'));
+  if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined)facts.push('liabilities equal '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+'% of assets');
+  signals.push('Available SEC filing indicators ('+facts.join('; ')+').');
+ }else signals.push('SEC fundamentals were unavailable or insufficient for balanced filing-based scoring, so this selection is based on market data only.');
+ const cautions=[];
+ if(Number(s.rsi)>=70)cautions.push('RSI is elevated at '+insightNumber(s.rsi,1));
+ if(Number(s.volatility_20d)>=5)cautions.push('20-session volatility is elevated at '+insightNumber(s.volatility_20d,2)+'%');
+ if(penny)cautions.push('lower-priced shares can have greater volatility, thinner liquidity and wider spreads');
+ if(cautions.length)signals.push('Risk context: '+cautions.join('; ')+'.');
+ return company+' appears in the current research screen because its available market signals'+(f&&s.score_basis==='SEC fundamentals + market data'?' and SEC filing indicators':'')+' stood out. '+signals.join(' ')+' These observations describe the available data, not company quality or future performance.';
 }
-function getCryptoInsight(c,index) {
-  const name=insightText(c.name||c.symbol||'This cryptocurrency'),symbol=String(c.symbol||'').toUpperCase(),parts=[];
-  const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h);
-  if(volume>0)parts.push('It ranks #'+(index+1)+' in this displayed group by reported 24-hour trading volume, approximately US$'+volume.toLocaleString('en-US',{maximumFractionDigits:0})+'.');
-  if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))parts.push('Its 24-hour price change is '+(change>0?'+':'')+change.toFixed(2)+'%.');
-  const cap=Number(c.market_cap);
-  if(cap>0)parts.push('Reported market capitalization is approximately US$'+cap.toLocaleString('en-US',{maximumFractionDigits:0})+'.');
-  const rank=Number(c.market_cap_rank);
-  if(rank>0)parts.push('CoinGecko market-cap rank: #'+rank+'.');
-  const fdv=Number(c.fully_diluted_valuation);
-  if(fdv>0&&cap>0)parts.push('Fully diluted valuation is approximately US$'+fdv.toLocaleString('en-US',{maximumFractionDigits:0})+', compared with the reported market capitalization.');
-  if(cap>0&&volume>0)parts.push('The 24-hour volume is '+(volume/cap*100).toFixed(1)+'% of reported market capitalization, a measure of turnover rather than net buying.');
-  if(['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol))parts.push('This is a stablecoin, so its high turnover primarily reflects trading and settlement activity; it should not be interpreted like the price movement of a typical volatile crypto asset.');
-  parts.push('The list highlights reported market activity, not project quality or future performance. Check liquidity, token supply information and project-specific disclosures independently.');
-  return name+' is highlighted because of its current trading activity. '+parts.join(' ');
+function getCryptoInsight(c,index){
+ const name=insightText(c.name||c.symbol||'This cryptocurrency'),symbol=String(c.symbol||'').toUpperCase(),facts=[];
+ const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h),cap=Number(c.market_cap),rank=Number(c.market_cap_rank),fdv=Number(c.fully_diluted_valuation);
+ if(volume>0)facts.push('24-hour volume US$'+volume.toLocaleString('en-US',{maximumFractionDigits:0})+' (rank #'+(index+1)+' in this displayed group)');
+ if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))facts.push('24-hour price change '+(change>0?'+':'')+change.toFixed(2)+'%');
+ if(cap>0)facts.push('market capitalization US$'+cap.toLocaleString('en-US',{maximumFractionDigits:0}));
+ if(rank>0)facts.push('CoinGecko market-cap rank #'+rank);
+ if(fdv>0&&cap>0)facts.push('fully diluted valuation US$'+fdv.toLocaleString('en-US',{maximumFractionDigits:0}));
+ if(cap>0&&volume>0)facts.push('24-hour turnover equals '+(volume/cap*100).toFixed(1)+'% of market capitalization');
+ const stable=['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol);
+ return name+' is highlighted for its reported trading activity. '+(facts.length?'Available CoinGecko data: '+facts.join('; ')+'. ':'')+(stable?'As a stablecoin, its turnover mainly reflects trading and settlement activity, not the same price behavior as a typical volatile crypto asset. ':'')+'Volume measures turnover, not net buying or project quality; verify liquidity, token supply and project disclosures independently.';
 }
 
 /* CRYPTO CARD */
@@ -7435,54 +7437,56 @@ function insightText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
 
-function insightNumber(value, digits=1) {
-  if(value===null||value===undefined||value==='')return null;
-  const n=Number(value);
-  return Number.isFinite(n)?n.toLocaleString('en-US',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
+function insightNumber(value,digits=1){
+ if(value===null||value===undefined||value==='')return null;
+ const n=Number(value);return Number.isFinite(n)?n.toLocaleString('en-US',{minimumFractionDigits:digits,maximumFractionDigits:digits}):null;
 }
-function getStockInsight(s, penny) {
-  const company=insightText(s.company||s.ticker||'This company'),parts=[];
-  const pct=(v)=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+'%';};
-  const addReturn=(label,value)=>{const v=pct(value);if(v!==null)parts.push(label+' '+v);};
-  if(s.above_20day_average===true&&s.above_50day_average===true)parts.push('The latest price is above both its 20- and 50-day moving averages, showing aligned short- and medium-term trend conditions.');
-  else if(s.above_20day_average===true&&s.above_50day_average===false)parts.push('The latest price is above its 20-day average but below its 50-day average, indicating a short-term improvement that has not yet aligned with the medium-term trend.');
-  else if(s.above_20day_average===false&&s.above_50day_average===true)parts.push('The latest price is below its 20-day average while remaining above its 50-day average, a mixed trend picture worth monitoring.');
-  else if(s.above_20day_average===false&&s.above_50day_average===false)parts.push('The latest price is below both its 20- and 50-day moving averages, indicating weaker trend conditions despite its appearance in the activity screen.');
-  addReturn('Recent return — 5 days:',s.return_5d);addReturn('20 days:',s.return_20d);addReturn('50 days:',s.return_50d);
-  const vr=Number(s.volume_ratio);
-  if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))parts.push(vr>=1.5?'Trading volume is '+vr.toFixed(1)+'× its 20-day average, indicating unusually active participation.':vr<=0.75?'Trading volume is '+vr.toFixed(1)+'× its 20-day average, so the recent move is occurring on lighter-than-usual activity.':'Trading volume is '+vr.toFixed(1)+'× its 20-day average, close to its recent norm.');
-  const liq=Number(s.average_dollar_volume_20d);
-  if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)parts.push('Average daily dollar volume over 20 sessions is '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('en-US',{maximumFractionDigits:0})+', providing context on trading liquidity.');
-  const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
-  if(f&&s.score_basis==='SEC fundamentals + market data'){
-    parts.push('SEC company-filing data is also available'+(f.fiscal_year?' for fiscal year '+f.fiscal_year:'')+'.');
-    if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))parts.push('Reported revenue changed '+pct(f.revenue_growth_percent)+' year over year.');
-    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.operatingIncome)))parts.push('The latest reported operating margin is '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+'%.');
-    if(m.revenue&&Number.isFinite(Number(m.revenue))&&Number.isFinite(Number(m.netIncome)))parts.push('The latest reported net margin is '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+'%.');
-    if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined&&Number.isFinite(Number(m.operatingCashFlow)))parts.push('Reported operating cash flow is '+(Number(m.operatingCashFlow)>=0?'positive':'negative')+' in the latest available annual data.');
-    if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined&&Number.isFinite(Number(m.liabilities)))parts.push('Reported liabilities represent '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+'% of assets.');
-  }else parts.push('SEC fundamentals were unavailable or did not meet the minimum coverage needed for a balanced filing-based assessment; this selection therefore reflects market data only.');
-  if(Number(s.rsi)>=70)parts.push('RSI is elevated at '+insightNumber(s.rsi,1)+', so the recent move may be extended.');
-  if(Number(s.volatility_20d)>=5)parts.push('Recent 20-session volatility is elevated at '+insightNumber(s.volatility_20d,2)+'%.');
-  if(penny)parts.push('As a lower-priced security, it may carry greater volatility, thinner liquidity and wider trading spreads; review the company disclosures and risk information carefully.');
-  else parts.push('These observations explain the data behind the screen, not the company’s overall quality or future performance.');
-  return company+' is included because its available market and, where sufficiently covered, filing data stood out in the current research screen. '+parts.join(' ');
+function getStockInsight(s,penny){
+ const company=insightText(s.company||s.ticker||'This company'),signals=[];
+ const pct=v=>{const n=insightNumber(v,1);return n===null?null:(Number(v)>0?'+':'')+n+'%';};
+ let trend='';
+ if(s.above_20day_average===true&&s.above_50day_average===true)trend='The latest price is above both its 20- and 50-day averages, showing aligned short- and medium-term trend conditions.';
+ else if(s.above_20day_average===true&&s.above_50day_average===false)trend='The price is above its 20-day average but below its 50-day average, so short-term improvement is not yet aligned with the medium-term trend.';
+ else if(s.above_20day_average===false&&s.above_50day_average===true)trend='The price is below its 20-day average but above its 50-day average, giving a mixed trend picture.';
+ else if(s.above_20day_average===false&&s.above_50day_average===false)trend='The price is below both its 20- and 50-day averages, indicating weaker trend conditions despite its appearance in the activity screen.';
+ if(trend)signals.push(trend);
+ const returns=[['5-day',s.return_5d],['20-day',s.return_20d],['50-day',s.return_50d]].filter(x=>x[1]!==null&&x[1]!==undefined&&Number.isFinite(Number(x[1]))).map(x=>x[0]+' '+pct(x[1]));
+ if(returns.length)signals.push('Measured price returns: '+returns.join(', ')+'.');
+ const activity=[];
+ const vr=Number(s.volume_ratio);
+ if(s.volume_ratio!==null&&s.volume_ratio!==undefined&&Number.isFinite(vr))activity.push('volume is '+vr.toFixed(1)+'× its 20-day average');
+ const liq=Number(s.average_dollar_volume_20d);
+ if(s.average_dollar_volume_20d!==null&&s.average_dollar_volume_20d!==undefined&&Number.isFinite(liq)&&liq>0)activity.push('20-day average dollar volume is '+(s.currency==='CAD'?'CA$':'US$')+liq.toLocaleString('en-US',{maximumFractionDigits:0}));
+ if(activity.length)signals.push('Trading activity and liquidity: '+activity.join('; ')+'.');
+ const f=s.fundamentals&&s.fundamentals.metrics?s.fundamentals:null,m=f&&f.metrics?f.metrics:{};
+ if(f&&s.score_basis==='SEC fundamentals + market data'){
+  const facts=[];
+  if(f.fiscal_year)facts.push('fiscal year '+f.fiscal_year);
+  if(f.revenue_growth_percent!==null&&f.revenue_growth_percent!==undefined&&Number.isFinite(Number(f.revenue_growth_percent)))facts.push('revenue growth '+pct(f.revenue_growth_percent));
+  if(m.revenue&&Number(m.revenue)!==0&&m.operatingIncome!==null&&m.operatingIncome!==undefined)facts.push('operating margin '+(Number(m.operatingIncome)/Number(m.revenue)*100).toFixed(1)+'%');
+  if(m.revenue&&Number(m.revenue)!==0&&m.netIncome!==null&&m.netIncome!==undefined)facts.push('net margin '+(Number(m.netIncome)/Number(m.revenue)*100).toFixed(1)+'%');
+  if(m.operatingCashFlow!==null&&m.operatingCashFlow!==undefined)facts.push('operating cash flow '+(Number(m.operatingCashFlow)>=0?'positive':'negative'));
+  if(m.assets&&Number(m.assets)>0&&m.liabilities!==null&&m.liabilities!==undefined)facts.push('liabilities equal '+(Number(m.liabilities)/Number(m.assets)*100).toFixed(1)+'% of assets');
+  signals.push('Available SEC filing indicators ('+facts.join('; ')+').');
+ }else signals.push('SEC fundamentals were unavailable or insufficient for balanced filing-based scoring, so this selection is based on market data only.');
+ const cautions=[];
+ if(Number(s.rsi)>=70)cautions.push('RSI is elevated at '+insightNumber(s.rsi,1));
+ if(Number(s.volatility_20d)>=5)cautions.push('20-session volatility is elevated at '+insightNumber(s.volatility_20d,2)+'%');
+ if(penny)cautions.push('lower-priced shares can have greater volatility, thinner liquidity and wider spreads');
+ if(cautions.length)signals.push('Risk context: '+cautions.join('; ')+'.');
+ return company+' appears in the current research screen because its available market signals'+(f&&s.score_basis==='SEC fundamentals + market data'?' and SEC filing indicators':'')+' stood out. '+signals.join(' ')+' These observations describe the available data, not company quality or future performance.';
 }
-function getCryptoInsight(c,index) {
-  const name=insightText(c.name||c.symbol||'This cryptocurrency'),symbol=String(c.symbol||'').toUpperCase(),parts=[];
-  const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h);
-  if(volume>0)parts.push('It ranks #'+(index+1)+' in this displayed group by reported 24-hour trading volume, approximately US$'+volume.toLocaleString('en-US',{maximumFractionDigits:0})+'.');
-  if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))parts.push('Its 24-hour price change is '+(change>0?'+':'')+change.toFixed(2)+'%.');
-  const cap=Number(c.market_cap);
-  if(cap>0)parts.push('Reported market capitalization is approximately US$'+cap.toLocaleString('en-US',{maximumFractionDigits:0})+'.');
-  const rank=Number(c.market_cap_rank);
-  if(rank>0)parts.push('CoinGecko market-cap rank: #'+rank+'.');
-  const fdv=Number(c.fully_diluted_valuation);
-  if(fdv>0&&cap>0)parts.push('Fully diluted valuation is approximately US$'+fdv.toLocaleString('en-US',{maximumFractionDigits:0})+', compared with the reported market capitalization.');
-  if(cap>0&&volume>0)parts.push('The 24-hour volume is '+(volume/cap*100).toFixed(1)+'% of reported market capitalization, a measure of turnover rather than net buying.');
-  if(['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol))parts.push('This is a stablecoin, so its high turnover primarily reflects trading and settlement activity; it should not be interpreted like the price movement of a typical volatile crypto asset.');
-  parts.push('The list highlights reported market activity, not project quality or future performance. Check liquidity, token supply information and project-specific disclosures independently.');
-  return name+' is highlighted because of its current trading activity. '+parts.join(' ');
+function getCryptoInsight(c,index){
+ const name=insightText(c.name||c.symbol||'This cryptocurrency'),symbol=String(c.symbol||'').toUpperCase(),facts=[];
+ const volume=Number(c.total_volume),change=Number(c.price_change_percentage_24h),cap=Number(c.market_cap),rank=Number(c.market_cap_rank),fdv=Number(c.fully_diluted_valuation);
+ if(volume>0)facts.push('24-hour volume US$'+volume.toLocaleString('en-US',{maximumFractionDigits:0})+' (rank #'+(index+1)+' in this displayed group)');
+ if(c.price_change_percentage_24h!==null&&c.price_change_percentage_24h!==undefined&&Number.isFinite(change))facts.push('24-hour price change '+(change>0?'+':'')+change.toFixed(2)+'%');
+ if(cap>0)facts.push('market capitalization US$'+cap.toLocaleString('en-US',{maximumFractionDigits:0}));
+ if(rank>0)facts.push('CoinGecko market-cap rank #'+rank);
+ if(fdv>0&&cap>0)facts.push('fully diluted valuation US$'+fdv.toLocaleString('en-US',{maximumFractionDigits:0}));
+ if(cap>0&&volume>0)facts.push('24-hour turnover equals '+(volume/cap*100).toFixed(1)+'% of market capitalization');
+ const stable=['USDT','USDC','DAI','FDUSD','USDE','USDS'].includes(symbol);
+ return name+' is highlighted for its reported trading activity. '+(facts.length?'Available CoinGecko data: '+facts.join('; ')+'. ':'')+(stable?'As a stablecoin, its turnover mainly reflects trading and settlement activity, not the same price behavior as a typical volatile crypto asset. ':'')+'Volume measures turnover, not net buying or project quality; verify liquidity, token supply and project disclosures independently.';
 }
 
 /* CRYPTO CARD */
