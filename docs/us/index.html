@@ -2300,6 +2300,15 @@ input, select, textarea, button {
  .nav-bottom-row #tf-visitor-counter{font-size:11px!important;padding:6px 9px!important}
 }
 </style>
+<style id="tf-us-two-panel-restoration">
+.live-trading-desk .tf-market-collection .trading-panel-penny,
+.live-trading-desk .tf-market-collection .trading-panel-crypto{display:none!important}
+.tf-terminal-column{display:flex;flex-direction:column;gap:0;min-width:0;min-height:510px;height:100%}
+.tf-sec-feature-lines{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0 0 12px;padding:12px 14px;border-left:4px solid #2563EB;border-radius:8px;background:#EAF1FC;color:#12335F;font-size:16px;font-weight:850;line-height:1.4}
+.tf-sec-feature-lines>div{display:flex;align-items:flex-start;gap:9px;margin:0;padding:0}
+.tf-sec-feature-lines>div:before{content:"•";flex:0 0 auto;color:#1D4ED8;font-size:21px;line-height:1.05}
+@media(max-width:600px){.tf-sec-feature-lines{gap:7px;margin-bottom:12px;padding:10px 11px;font-size:14px}}
+</style>
 <style id="technofront-stacked-market-categories-v4">
 /* Correctly placed in head: stack the three category panels inside the left market square. */
 .live-trading-desk .tf-market-collection .trading-desk-grid,
@@ -2564,7 +2573,13 @@ input, select, textarea, button {
 </article>
 </div>
  </div>
-<section class="sp-market-terminal" id="market-terminal" aria-label="Market Terminal">
+<div class="tf-terminal-column">
+ <div class="tf-sec-feature-lines" aria-label="SEC company report features">
+  <div>SEC Filing Explorer</div>
+  <div>Company Financial Snapshot</div>
+  <div>SEC Filing Timeline</div>
+ </div>
+ <section class="sp-market-terminal" id="market-terminal" aria-label="Market Terminal">
  <div class="sp-terminal-top">
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><div class="sp-terminal-title-line"><h2>Market Terminal</h2><div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
     <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-0" data-sp-tool="0"><span class="sp-terminal-tool-icon" aria-hidden="true">▤</span><span>WATCHLIST</span></button>
@@ -2608,6 +2623,7 @@ input, select, textarea, button {
  </div>
  <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="true" aria-controls="sp-terminal-workspace" data-open-label="EXPAND CHART" data-close-label="COLLAPSE TERMINAL">COLLAPSE TERMINAL <span aria-hidden="true">×</span></button></div>
 </section>
+</div>
 </div>
 
 
