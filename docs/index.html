@@ -9430,6 +9430,7 @@ var sc_security="58d29d99";
   const terminal=document.getElementById('market-terminal');
   const grid=desk&&desk.querySelector('.tf-two-panel-grid');
   const marketLists=grid&&grid.querySelector('.tf-market-collection');
+  const terminalColumn=grid&&grid.querySelector('.tf-terminal-column');
   let target=desk&&desk.querySelector('.trading-desk-tagline');
   if(!target&&header){
    target=document.createElement('div');
@@ -9438,10 +9439,11 @@ var sc_security="58d29d99";
    header.appendChild(target);
   }
   if(stock&&target&&!target.contains(stock)){stock.classList.add('in-market-tagline');target.appendChild(stock);}
-  /* Restore the two cards to one shared row: stock lists left, analysis terminal right. */
-  if(grid&&marketLists&&terminal){
-   if(marketLists.parentNode!==grid)grid.appendChild(marketLists);
-   if(terminal.parentNode!==grid||terminal.previousElementSibling!==marketLists)grid.appendChild(terminal);
+  /* Keep two equal side-by-side squares: stacked stock lists on the left, terminal inside the right column. */
+  if(grid&&marketLists&&terminal&&terminalColumn){
+   if(marketLists.parentNode!==grid)grid.insertBefore(marketLists,grid.firstChild);
+   if(terminalColumn.parentNode!==grid)grid.appendChild(terminalColumn);
+   if(terminal.parentNode!==terminalColumn)terminalColumn.appendChild(terminal);
   }
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arrangeMarketSquares,{once:true});else arrangeMarketSquares();
