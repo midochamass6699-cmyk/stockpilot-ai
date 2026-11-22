@@ -72,44 +72,84 @@
 <script>
 (function(){
 const form=document.getElementById('research-form'),query=document.getElementById('asset-query'),market=document.getElementById('asset-market'),button=document.getElementById('analyze-btn'),status=document.getElementById('search-status'),matches=document.getElementById('company-matches'),results=document.getElementById('research-results'),title=document.getElementById('result-title'),subtitle=document.getElementById('result-subtitle'),chart=document.getElementById('tv-chart'),facts=document.getElementById('financial-facts'),factsNote=document.getElementById('facts-note'),source=document.getElementById('result-source');
+const LOOKUP_API='https://stockpilot-lookup.midochamass6699.workers.dev';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=v=>{if(v===null||v===undefined||!Number.isFinite(Number(v)))return 'Not reported';return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',notation:'compact',maximumFractionDigits:2}).format(Number(v))};
 function renderChart(symbol){chart.innerHTML='';const mount=document.createElement('div');mount.style.height='100%';chart.appendChild(mount);const script=document.createElement('script');script.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';script.async=true;script.innerHTML=JSON.stringify({autosize:true,symbol,interval:'D',timezone:'Etc/UTC',theme:'dark',style:'1',locale:'en',allow_symbol_change:true,calendar:false,support_host:'https://www.tradingview.com'});mount.appendChild(script)}
 function showFacts(data){
-const map={revenue:'Revenue',grossProfit:'Gross profit',operatingIncome:'Operating income',netIncome:'Net income',assets:'Total assets',liabilities:'Total liabilities',equity:'Shareholders’ equity',cash:'Cash and equivalents',operatingCashFlow:'Operating cash flow',currentDebt:'Current debt',longTermDebt:'Long-term debt'};
-const found=(data.metrics||[]).filter(m=>m.values&&m.values.length);
-if(!found.length){facts.innerHTML='<div class="fact"><span>SEC financial facts</span><strong>No matching reported metrics were returned.</strong></div>';factsNote.textContent='The issuer may not report to the SEC, or the selected company facts may not include these standardized metrics. This is not evidence that the company has zero revenue or assets.';return}
-facts.innerHTML=found.map(m=>{const v=m.values[0];return '<div class="fact"><span>'+esc(map[m.key]||m.label)+' · FY '+esc(v.fiscalYear)+'</span><strong>'+money(v.value)+'</strong></div>'}).join('');
-factsNote.textContent='Source: '+(data.source||'SEC EDGAR Company Facts')+'. Latest available annual reported values shown; USD where specified. Retrieved '+new Date(data.retrievedAt).toLocaleString()+'. Values are not necessarily current market values.';
+ const map={revenue:'Revenue',grossProfit:'Gross profit',operatingIncome:'Operating income',netIncome:'Net income',assets:'Total assets',liabilities:'Total liabilities',equity:'Shareholders’ equity',cash:'Cash and equivalents',operatingCashFlow:'Operating cash flow',currentDebt:'Current debt',longTermDebt:'Long-term debt'};
+ const found=(data.metrics||[]).filter(m=>m.values&&m.values.length);
+ if(!found.length){facts.innerHTML='<div class="fact"><span>SEC financial facts</span><strong>No matching reported metrics were returned.</strong></div>';factsNote.textContent='The issuer may not report to the SEC, or the selected company facts may not include these standardized metrics. This is not evidence that the company has zero revenue or assets.';return}
+ facts.innerHTML=found.map(m=>{const v=m.values[0];return '<div class="fact"><span>'+esc(map[m.key]||m.label)+' · FY '+esc(v.fiscalYear)+'</span><strong>'+money(v.value)+'</strong></div>'}).join('');
+ factsNote.textContent='Source: '+(data.source||'SEC EDGAR Company Facts')+'. Latest available annual reported values shown; USD where specified. Retrieved '+new Date(data.retrievedAt).toLocaleString()+'. Values are not necessarily current market values.';
 }
-async function loadCompany(q, chosen){
-status.textContent='Looking up company records…';
-const response=await fetch('https://api.technofront.org/api/search?q='+encodeURIComponent(q),{headers:{Accept:'application/json'}});
-const data=await response.json();if(!response.ok)throw new Error(data.error||'Company lookup unavailable.');
-const list=data.results||[];
-if(!chosen&&list.length>1){matches.hidden=false;matches.innerHTML=list.map((x,i)=>'<button type="button" class="match" data-index="'+i+'"><strong>'+esc(x.name)+'</strong> · '+esc(x.ticker)+' <span class="muted">· SEC CIK '+esc(x.cik)+'</span></button>').join('');matches.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>runResearch(q,list[Number(b.dataset.index)])));status.textContent='Several companies matched. Select the correct company.';return}
-const company=chosen||list[0]||null;
-if(!company){status.textContent='No SEC company match. Showing the selected market chart; SEC financials are unavailable for this search.';return null}
-status.textContent='Loading reported financial information…';
-const r=await fetch('https://api.technofront.org/api/company?cik='+encodeURIComponent(company.cik),{headers:{Accept:'application/json'}});
-const financial=await r.json();if(!r.ok)throw new Error(financial.error||'SEC financial data unavailable.');
-return {company,financial};
+async function searchListings(q,kind){
+ const url=new URL(LOOKUP_API);url.searchParams.set('action','search');url.searchParams.set('q',q);
+ const response=await fetch(url);if(!response.ok)throw new Error('Market symbol lookup unavailable.');
+ const data=await response.json();let list=Array.isArray(data.data)?data.data:[];
+ const canada=x=>{const c=String(x.country||'').toUpperCase(),e=String(x.exchange||'').toUpperCase(),m=String(x.mic_code||'').toUpperCase();return c==='CA'||c.includes('CANADA')||e.includes('TORONTO')||e.includes('TSX')||m==='XTSE'||m==='XTSX'};
+ const usa=x=>{const c=String(x.country||'').toUpperCase(),e=String(x.exchange||'').toUpperCase(),m=String(x.mic_code||'').toUpperCase();return c==='US'||c.includes('UNITED STATES')||e.includes('NASDAQ')||e.includes('NEW YORK')||e.includes('NYSE')||m==='XNAS'||m==='XNYS'};
+ list=list.filter(x=>kind==='CA'?canada(x):kind==='US'?usa(x):true);
+ const qn=q.trim().toLowerCase(),qs=q.trim().toUpperCase();
+ list.sort((a,b)=>{const rank=x=>String(x.symbol||'').toUpperCase()===qs?0:String(x.name||'').trim().toLowerCase()===qn?1:2;return rank(a)-rank(b)});
+ return list.slice(0,8);
 }
-async function runResearch(q,chosen){
-button.disabled=true;matches.hidden=true;matches.innerHTML='';status.textContent='Preparing your research workspace…';
-const kind=market.value;let symbol=q.trim().toUpperCase().replace(/\s+/g,'');let chartSymbol=symbol;let display=q.trim();let companyData=null;
-if(kind==='CRYPTO'){
-const aliases={BITCOIN:'BINANCE:BTCUSDT',BTC:'BINANCE:BTCUSDT',ETHEREUM:'BINANCE:ETHUSDT',ETH:'BINANCE:ETHUSDT',SOLANA:'BINANCE:SOLUSDT',SOL:'BINANCE:SOLUSDT',XRP:'BINANCE:XRPUSDT',DOGE:'BINANCE:DOGEUSDT'};
-chartSymbol=aliases[symbol]||('BINANCE:'+symbol.replace(/USDT$/,'')+'USDT');
-}else{
-if(kind==='CA')chartSymbol='TSX:'+symbol.replace(/\.TO$/,'');
-try{companyData=await loadCompany(q,chosen)}catch(e){status.textContent=e.message||'Company lookup failed.'}
+function listingChartSymbol(item,kind){
+ const symbol=String(item.symbol||'').trim().toUpperCase();if(!symbol)return '';
+ if(symbol.includes(':'))return symbol;
+ const ex=String(item.exchange||'').toUpperCase(),mic=String(item.mic_code||'').toUpperCase();
+ if(kind==='CA'||ex.includes('TORONTO')||ex.includes('TSX')||mic==='XTSE'||mic==='XTSX')return 'TSX:'+symbol.replace(/\.TO$/,'');
+ if(ex.includes('NYSE')||ex.includes('NEW YORK')||mic==='XNYS')return 'NYSE:'+symbol;
+ if(ex.includes('NASDAQ')||mic==='XNAS')return 'NASDAQ:'+symbol;
+ return kind==='US'?'NASDAQ:'+symbol:symbol;
 }
-if(!companyData&& !matches.hidden){return;}\nif(companyData&&companyData.company){display=companyData.company.name+' ('+companyData.company.ticker+')';showFacts(companyData.financial);source.textContent='TRADINGVIEW CHART + SEC EDGAR';subtitle.textContent=(companyData.company.exchanges||[]).join(', ')+' · SEC CIK '+companyData.company.cik}
-else{facts.innerHTML='<div class="fact"><span>SEC company facts</span><strong>Not available for this search</strong></div>';factsNote.textContent='SEC coverage is not universal. Canadian-listed issuers and non-U.S. filers may not appear in SEC company facts. The chart is provided separately by TradingView.';source.textContent='TRADINGVIEW CHART';subtitle.textContent=kind==='CRYPTO'?'Cryptocurrency chart symbol: '+chartSymbol:'Market chart for '+q+' · Company identity not confirmed by SEC'}
-title.textContent=display;renderChart(chartSymbol);results.classList.add('show');results.scrollIntoView({behavior:'smooth',block:'start'});if(!status.textContent.startsWith('Several'))status.textContent='Research workspace loaded. Verify the chart symbol and source coverage before interpreting results.';
+async function loadCompany(q,chosen,listing){
+ status.textContent='Looking up SEC company records…';
+ const response=await fetch('https://api.technofront.org/api/search?q='+encodeURIComponent(q),{headers:{Accept:'application/json'}});
+ const data=await response.json();if(!response.ok)throw new Error(data.error||'Company lookup unavailable.');
+ const list=data.results||[];
+ if(!chosen&&list.length>1){
+  const exact=list.find(x=>String(x.name).trim().toLowerCase()===q.trim().toLowerCase()||String(x.ticker).trim().toLowerCase()===q.trim().toLowerCase());
+  if(!exact){matches.hidden=false;matches.innerHTML=list.map((x,i)=>'<button type="button" class="match" data-sec-index="'+i+'"><strong>'+esc(x.name)+'</strong> · '+esc(x.ticker)+' <span class="muted">· SEC CIK '+esc(x.cik)+'</span></button>').join('');matches.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>runResearch(q,list[Number(b.dataset.secIndex)],listing)));status.textContent='Several company records matched. Select the correct company.';return null}
+  chosen=exact;
+ }
+ const company=chosen||list[0]||null;if(!company)return null;
+ status.textContent='Loading reported financial information…';
+ const r=await fetch('https://api.technofront.org/api/company?cik='+encodeURIComponent(company.cik),{headers:{Accept:'application/json'}});
+ const financial=await r.json();if(!r.ok)throw new Error(financial.error||'SEC financial data unavailable.');
+ return {company,financial};
 }
-form.addEventListener('submit',e=>{e.preventDefault();const q=query.value.trim();if(!q)return;runResearch(q).finally(()=>button.disabled=false)});
+async function runResearch(q,chosen,chosenListing){
+ button.disabled=true;matches.hidden=true;matches.innerHTML='';status.textContent='Preparing your research workspace…';
+ const kind=market.value;let chartSymbol='',display=q.trim(),companyData=null,listing=chosenListing||null;
+ try{
+  if(kind==='CRYPTO'){
+   const symbol=q.trim().toUpperCase().replace(/\s+/g,'');
+   const aliases={BITCOIN:'BINANCE:BTCUSDT',BTC:'BINANCE:BTCUSDT',ETHEREUM:'BINANCE:ETHUSDT',ETH:'BINANCE:ETHUSDT',SOLANA:'BINANCE:SOLUSDT',SOL:'BINANCE:SOLUSDT',XRP:'BINANCE:XRPUSDT',DOGE:'BINANCE:DOGEUSDT'};
+   chartSymbol=aliases[symbol]||('BINANCE:'+symbol.replace(/USDT$/,'')+'USDT');
+  }else{
+   if(!listing){
+    const listings=await searchListings(q,kind);
+    if(listings.length>1){
+     matches.hidden=false;matches.innerHTML=listings.map((x,i)=>'<button type="button" class="match" data-listing-index="'+i+'"><strong>'+esc(x.name||x.symbol)+'</strong> · '+esc(x.symbol)+' <span class="muted">· '+esc(x.exchange||x.country||'Exchange')+'</span></button>').join('');
+     matches.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>runResearch(q,chosen,listings[Number(b.dataset.listingIndex)])));
+     status.textContent='Several listings matched. Select the correct company and exchange.';return;
+    }
+    listing=listings[0]||null;
+   }
+   if(listing)chartSymbol=listingChartSymbol(listing,kind);
+   try{companyData=await loadCompany(q,chosen,listing)}catch(e){status.textContent=e.message||'Company lookup failed.'}
+   if(!chartSymbol&&companyData?.company?.ticker)chartSymbol=(kind==='CA'?'TSX:':'NASDAQ:')+companyData.company.ticker;
+   if(!chartSymbol){const raw=q.trim().toUpperCase().replace(/\s+/g,'');chartSymbol=raw.includes(':')?raw:(kind==='CA'?'TSX:':'NASDAQ:')+raw}
+  }
+  if(!companyData&&!matches.hidden)return;
+  if(companyData&&companyData.company){display=companyData.company.name+' ('+(listing?.symbol||companyData.company.ticker)+')';showFacts(companyData.financial);source.textContent='TRADINGVIEW CHART + SEC EDGAR';subtitle.textContent=(listing?.exchange||companyData.company.exchanges?.join(', ')||'Exchange unavailable')+' · SEC CIK '+companyData.company.cik}
+  else{facts.innerHTML='<div class="fact"><span>SEC company facts</span><strong>Not available for this search</strong></div>';factsNote.textContent='SEC coverage is not universal. Canadian-listed issuers and non-U.S. filers may not appear in SEC company facts. The chart is provided separately by TradingView.';source.textContent='TRADINGVIEW CHART';subtitle.textContent=listing?(listing.exchange||listing.country||'Market listing')+' · '+listing.symbol:'Market chart for '+q+' · Company identity not confirmed by SEC';display=listing?.name||q}
+  title.textContent=display;renderChart(chartSymbol);results.classList.add('show');results.scrollIntoView({behavior:'smooth',block:'start'});if(!status.textContent.startsWith('Several'))status.textContent='Research workspace loaded. Verify the listing and source coverage before interpreting results.';
+ }catch(e){status.textContent=e.message||'Research lookup failed.'}
+ finally{button.disabled=false}
+}
+form.addEventListener('submit',e=>{e.preventDefault();const q=query.value.trim();if(q.length<2)return;runResearch(q)});
 })();
 </script>
 </body></html>
