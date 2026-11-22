@@ -2458,6 +2458,13 @@ input, select, textarea, button {
  #live-trading-desk .tf-market-collection .trading-desk-grid{gap:10px!important}
 }
 </style>
+
+<style id="stockpilot-insight-collapse">
+.stock-insight .stock-insight-copy:not(.is-expanded){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.stock-insight .stock-insight-copy{margin-bottom:7px}
+.stock-insight .stock-insight-toggle{display:inline-flex;align-items:center;border:0;background:transparent;padding:2px 0;color:var(--accent,#2563eb);font:inherit;font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.stock-insight .stock-insight-toggle:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:3px}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -4027,7 +4034,8 @@ function renderCrypto(c,index) {
 
       <section class="stock-insight" aria-label="Why this cryptocurrency is worth watching">
         <h4>Why it’s worth watching</h4>
-        <p>${esc(getCryptoInsight(c,index))}</p>
+        <p class="stock-insight-copy">${esc(getCryptoInsight(c,index))}</p>
+        <button type="button" class="stock-insight-toggle" aria-expanded="false" onclick="const p=this.previousElementSibling;const open=this.getAttribute('aria-expanded')!=='true';p.classList.toggle('is-expanded',open);this.setAttribute('aria-expanded',String(open));this.textContent=open?'Read less':'Read more';">Read more</button>
       </section>
 
       <a class="stock-link"
@@ -4365,7 +4373,8 @@ function renderStock(s,penny) {
 
       <section class="stock-insight" aria-label="Why this stock is worth watching">
         <h4>Why it’s worth watching</h4>
-        <p>${esc(getStockInsight(s,penny))}</p>
+        <p class="stock-insight-copy">${esc(getStockInsight(s,penny))}</p>
+        <button type="button" class="stock-insight-toggle" aria-expanded="false" onclick="const p=this.previousElementSibling;const open=this.getAttribute('aria-expanded')!=='true';p.classList.toggle('is-expanded',open);this.setAttribute('aria-expanded',String(open));this.textContent=open?'Read less':'Read more';">Read more</button>
       </section>
 
       <a class="stock-link"
@@ -6744,7 +6753,8 @@ function renderCrypto(c,index) {
 
       <section class="stock-insight" aria-label="Why this cryptocurrency is worth watching">
         <h4>Why it’s worth watching</h4>
-        <p>${esc(getCryptoInsight(c,index))}</p>
+        <p class="stock-insight-copy">${esc(getCryptoInsight(c,index))}</p>
+        <button type="button" class="stock-insight-toggle" aria-expanded="false" onclick="const p=this.previousElementSibling;const open=this.getAttribute('aria-expanded')!=='true';p.classList.toggle('is-expanded',open);this.setAttribute('aria-expanded',String(open));this.textContent=open?'Read less':'Read more';">Read more</button>
       </section>
 
       <a class="stock-link"
@@ -7022,7 +7032,8 @@ function renderStock(s,penny) {
 
       <section class="stock-insight" aria-label="Why this stock is worth watching">
         <h4>Why it’s worth watching</h4>
-        <p>${esc(getStockInsight(s,penny))}</p>
+        <p class="stock-insight-copy">${esc(getStockInsight(s,penny))}</p>
+        <button type="button" class="stock-insight-toggle" aria-expanded="false" onclick="const p=this.previousElementSibling;const open=this.getAttribute('aria-expanded')!=='true';p.classList.toggle('is-expanded',open);this.setAttribute('aria-expanded',String(open));this.textContent=open?'Read less':'Read more';">Read more</button>
       </section>
 
       <a class="stock-link"
