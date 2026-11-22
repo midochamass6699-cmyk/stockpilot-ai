@@ -2379,6 +2379,84 @@ input, select, textarea, button {
  }
 }
 </style>
+<style id="tf-us-company-report-form-styles">
+.tf-welcome-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:12px 0 8px}
+.tf-welcome-actions .tf-free-tools-cta{margin:0;flex:0 0 auto}
+.tf-company-quick-form{display:grid;grid-template-columns:minmax(190px,1fr);gap:6px;width:min(280px,100%);padding:10px 12px;border:1px solid #cbd8e8;border-radius:10px;background:#fff;box-shadow:0 4px 14px #07111f0b}
+.tf-company-quick-form label{font-size:11px;font-weight:850;color:#243247;line-height:1.25}
+.tf-company-quick-form input{width:100%;min-width:0;height:34px;padding:7px 10px;border:1px solid #b9c8dc;border-radius:6px;background:#fff;color:#101827;font-size:13px}
+.tf-company-quick-form button{height:34px;border:0;border-radius:6px;background:#16a779;color:#06251c;font-size:12px;font-weight:900;cursor:pointer}
+.tf-company-quick-form button:disabled{opacity:.65;cursor:wait}
+.tf-company-quick-form p{margin:0;color:#526176;font-size:10px;line-height:1.35}
+@media(max-width:760px){.tf-welcome-actions{align-items:stretch;gap:10px}.tf-company-quick-form{width:min(100%,360px)}}
+</style>
+<style id="tf-us-market-panels-clean-alignment">
+/* Keep the three U.S. market categories neatly aligned in one vertical left-hand column. */
+#live-trading-desk .tf-market-collection .trading-desk-grid{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ gap:12px!important;
+ align-items:stretch!important;
+}
+#live-trading-desk .tf-market-collection .trading-panel{
+ box-sizing:border-box!important;
+ width:100%!important;
+ min-width:0!important;
+ padding:14px!important;
+ border-radius:12px!important;
+}
+#live-trading-desk .tf-market-collection .trading-panel-heading{
+ display:grid!important;
+ grid-template-columns:34px minmax(0,1fr)!important;
+ align-items:center!important;
+ gap:10px!important;
+ margin:0 0 10px!important;
+ text-align:left!important;
+}
+#live-trading-desk .tf-market-collection .trading-panel-icon{
+ display:grid!important;
+ place-items:center!important;
+ width:34px!important;
+ height:34px!important;
+ margin:0!important;
+ flex:0 0 34px!important;
+}
+#live-trading-desk .tf-market-collection .trading-panel-heading>div{min-width:0!important}
+#live-trading-desk .tf-market-collection .trading-panel-heading h2{
+ margin:0!important;
+ line-height:1.2!important;
+ overflow-wrap:anywhere!important;
+}
+#live-trading-desk .tf-market-collection .trading-panel-heading p{
+ margin:3px 0 0!important;
+ line-height:1.35!important;
+}
+#live-trading-desk .tf-market-collection .trading-market-list{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ gap:6px!important;
+ width:100%!important;
+ min-width:0!important;
+}
+#live-trading-desk .tf-market-collection .trading-market-list .sp-market-row{
+ box-sizing:border-box!important;
+ grid-template-columns:30px minmax(0,1fr) auto!important;
+ align-items:center!important;
+ gap:8px!important;
+ width:100%!important;
+ min-width:0!important;
+ padding:7px 9px!important;
+}
+#live-trading-desk .tf-market-collection .trading-market-list .sp-market-name{min-width:0!important}
+#live-trading-desk .tf-market-collection .trading-market-list .sp-market-values{white-space:nowrap!important}
+#live-trading-desk .tf-market-collection .trading-panel-link{
+ align-self:flex-start!important;
+ margin-top:9px!important;
+}
+@media(max-width:900px){
+ #live-trading-desk .tf-market-collection .trading-desk-grid{gap:10px!important}
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2396,6 +2474,7 @@ input, select, textarea, button {
 <a href="#crypto-picks">CRYPTO</a>
 <a href="#market-coverage">U.S. MARKETS</a>
 <a href="/us/financial-education.html">EDUCATION</a>
+<a href="/financial-report-generator.html">FINANCIAL REPORT</a>
 <a href="/us/options-explained.html">OPTIONS</a>
 <a href="/us/ai-assisted-trading.html">AI TRADING</a>
 <a href="/us/margin-account-guide.html">MARGIN GUIDE</a>
@@ -2592,7 +2671,15 @@ input, select, textarea, button {
 
 
 <h1 id="trading-desk-title">Welcome to Technofront</h1>
+<div class="tf-welcome-actions">
 <a class="tf-free-tools-cta" href="#market-terminal">Explore Our Free Tools for Traders <span aria-hidden="true">↗</span></a>
+<form class="tf-company-quick-form" id="tf-company-quick-form">
+<label for="tf-company-name">Create your personalized company report</label>
+<input id="tf-company-name" name="company" type="search" placeholder="Enter company name or ticker" autocomplete="off" minlength="2" required>
+<button id="tf-company-submit" type="submit">Continue to Report <span aria-hidden="true">→</span></button>
+<p id="tf-company-status" role="status" aria-live="polite"></p>
+</form>
+</div>
 <p class="trading-desk-intro">U.S.-Listed Stock Research · NYSE &amp; Nasdaq Market Coverage · USD Market Data · Independent Investor Education</p>
 </div>
 <div class="trading-desk-tagline"><strong>YOUR MARKET PIT STOP</strong>Your Market Pit Stop — Where Real Data Fuels Better Insights.</div>
@@ -6058,6 +6145,37 @@ section:empty, article:empty, aside:empty { display:none!important; }
 }
 </style>
 
+<script id="tf-company-quick-form-script">
+(function(){
+ const form=document.getElementById("tf-company-quick-form");
+ if(!form)return;
+ const input=document.getElementById("tf-company-name");
+ const button=document.getElementById("tf-company-submit");
+ const status=document.getElementById("tf-company-status");
+ form.addEventListener("submit",async function(event){
+  event.preventDefault();
+  const q=input.value.trim();
+  if(q.length<2){status.textContent="Enter at least two characters.";return}
+  button.disabled=true;status.textContent="Searching SEC company records…";
+  try{
+   const response=await fetch("https://api.technofront.org/api/search?q="+encodeURIComponent(q),{headers:{Accept:"application/json"}});
+   const data=await response.json();
+   if(!response.ok)throw new Error(data.error||"Company search is temporarily unavailable.");
+   if(!data.results||!data.results.length){status.textContent="No matching SEC company found. Try its legal name or ticker.";return}
+   if(data.results.length>1){
+    const exact=data.results.find(x=>String(x.name).toLowerCase()===q.toLowerCase()||String(x.ticker).toLowerCase()===q.toLowerCase());
+    if(exact){window.location.href="/financial-report-generator.html?cik="+encodeURIComponent(exact.cik)+"&name="+encodeURIComponent(exact.name)+"&ticker="+encodeURIComponent(exact.ticker)+"#report-builder";return}
+    status.textContent="Several matches found. Opening company lookup so you can select the exact company.";
+    window.location.href="/financial-report-generator.html?query="+encodeURIComponent(q)+"#report-builder";
+    return;
+   }
+   const company=data.results[0];
+   window.location.href="/financial-report-generator.html?cik="+encodeURIComponent(company.cik)+"&name="+encodeURIComponent(company.name)+"&ticker="+encodeURIComponent(company.ticker)+"#report-builder";
+  }catch(error){status.textContent=error.message||"Unable to search company records."}
+  finally{button.disabled=false}
+ });
+})();
+</script>
 </body>
 </html>)?'TSX':'NASDAQ');
   symbol.value=isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker;
