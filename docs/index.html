@@ -4520,7 +4520,7 @@ function renderCrypto(c,index) {
     + encodeURIComponent(c.id || ''));
 
   return `
-    <article class="stock-card crypto-card">
+    <article id="sp-crypto-${String(c.id || c.symbol || index).toLowerCase().replace(/[^a-z0-9_-]/g, '-')}" class="stock-card crypto-card">
 
       <span class="crypto-rank">
         #${index+1} BY 24H VOLUME
@@ -4610,8 +4610,7 @@ function setMarketPreview(id, items, kind, stockKind) {
       change = Number.isFinite(ch) ? (ch > 0 ? '+' : '') + ch.toFixed(2) + '%' : '—';
       positive = Number.isFinite(ch) && ch >= 0;
       href = symbol
-        ? './stock-report.html?ticker=' + encodeURIComponent(symbol)
-          + '&kind=' + encodeURIComponent(stockKind || 'main')
+        ? '#sp-stock-' + (stockKind === 'penny' ? 'penny-' : 'main-') + symbol.replace(/[^A-Z0-9_-]/g, '-')
         : (stockKind === 'penny' ? '#penny-picks' : '#main-picks');
     }
     return `<a class="sp-market-row" data-exchange="${previewEscape(kind === 'crypto' ? 'BINANCE' : (item.exchange || ''))}" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
@@ -4855,7 +4854,7 @@ function renderStock(s,penny) {
     + '&kind=' + (penny ? 'penny' : 'main');
 
   return `
-    <article class="stock-card ${penny ? 'penny' : ''}">
+    <article id="sp-stock-${penny ? 'penny' : 'main'}-${String(s.ticker || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '-')}" class="stock-card ${penny ? 'penny' : ''}">
       <h3><a class="stock-name-link" href="${reportLink}">${esc(s.company || s.ticker || 'Unknown company')}</a></h3>
       <div class="ticker">
         <a class="ticker-symbol-link"
@@ -6330,8 +6329,7 @@ body { overflow-x: hidden; }
         const name=String(item.company||item.name||ticker||'Market listing');
         const a=document.createElement('a');
         a.className='sp-side-pick';
-        a.href=kind==='crypto'?(item.source_url||(item.id?'https://www.coingecko.com/en/coins/'+encodeURIComponent(item.id):'#crypto-picks')):'./stock-report.html?ticker='+encodeURIComponent(ticker)+'&kind='+kind;
-        if(kind==='crypto'&&item.id){a.target='_blank';a.rel='noopener noreferrer';}
+        a.href=kind==='crypto'?(item.id?'#sp-crypto-'+String(item.id).toLowerCase().replace(/[^a-z0-9_-]/g,'-'):'#crypto-picks'):'#sp-stock-'+kind+'-'+ticker.replace(/[^A-Z0-9_-]/g,'-');
         const rank=document.createElement('span');rank.className='sp-side-rank';rank.textContent=String(index+1);
         const details=document.createElement('span');details.className='sp-side-details';
         const symbol=document.createElement('strong');symbol.textContent=ticker||'—';
@@ -7605,7 +7603,7 @@ function setMarketPreview(id, items, kind, stockKind) {
       const ch = Number(item.price_change_percentage_24h);
       change = Number.isFinite(ch) ? (ch > 0 ? '+' : '') + ch.toFixed(2) + '%' : '—';
       positive = Number.isFinite(ch) && ch >= 0;
-      href = item.id ? 'https://www.coingecko.com/en/coins/' + encodeURIComponent(item.id) : '#crypto-picks';
+      href = item.id ? '#sp-crypto-' + String(item.id).toLowerCase().replace(/[^a-z0-9_-]/g, '-') : '#crypto-picks';
     } else {
       name = item.company || item.ticker || 'Stock';
       symbol = String(item.ticker || '').toUpperCase();
