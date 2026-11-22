@@ -1942,6 +1942,7 @@ input, select, textarea, button {
 .report-generator-banner-action-icon{font-size:15px;line-height:1}
 @media(max-width:520px){.report-generator-banner{gap:7px;width:calc(100% - 20px);padding:5px 7px}.report-generator-banner-icon{flex-basis:25px;width:25px;height:25px;font-size:15px}.report-generator-banner-title{font-size:11px}.report-generator-banner-action{gap:4px;padding:7px 8px;font-size:10px}}
 @media(max-width:360px){.report-generator-banner-title{white-space:normal;font-size:10px}.report-generator-banner-action{font-size:9px;padding:6px}}
+<style id="sp-onpage-research-anchor-style">.stock-card[id^="sp-stock-"],.stock-card[id^="sp-crypto-"]{scroll-margin-top:110px}</style>
 </style>
 </style>
 <script defer="" src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
@@ -4610,7 +4611,7 @@ function setMarketPreview(id, items, kind, stockKind) {
       change = Number.isFinite(ch) ? (ch > 0 ? '+' : '') + ch.toFixed(2) + '%' : '—';
       positive = Number.isFinite(ch) && ch >= 0;
       href = symbol
-        ? '#sp-stock-' + (stockKind === 'penny' ? 'penny-' : 'main-') + symbol.replace(/[^A-Z0-9_-]/g, '-')
+        ? '#sp-stock-' + (/penny/i.test(id) ? 'penny-' : 'main-') + symbol.replace(/[^A-Z0-9_-]/g, '-')
         : (stockKind === 'penny' ? '#penny-picks' : '#main-picks');
     }
     return `<a class="sp-market-row" data-exchange="${previewEscape(kind === 'crypto' ? 'BINANCE' : (item.exchange || ''))}" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
