@@ -1,6 +1,13 @@
 name: Update daily StockPilot picks
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - stock_picker.py
+      - requirements.txt
+      - .github/workflows/daily-picks.yml
   schedule:
     # 06:00 Montreal time in winter / 07:00 in summer (UTC fixed).
     # Runs Monday-Friday using the previous completed trading session.
