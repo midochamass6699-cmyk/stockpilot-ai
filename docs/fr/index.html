@@ -2703,21 +2703,40 @@ main p, main li, .section-head p, .updated, .card-meta {
 </header>
 
 <style id="tf-fr-company-start-style">
-.tf-fr-company-start{max-width:1120px;margin:12px auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border:1px solid #d7e1ed;border-radius:12px;background:#fff;box-shadow:0 4px 16px #07111f0b}
-.tf-fr-company-start-copy{font-size:14px;font-weight:800;color:#17243a}
-.tf-fr-company-start-form{display:grid;grid-template-columns:minmax(190px,260px) auto;gap:7px;align-items:center}
-.tf-fr-company-start-form input{height:38px;min-width:0;padding:8px 11px;border:1px solid #b9c8dc;border-radius:7px;font-size:13px}
-.tf-fr-company-start-form button{height:38px;padding:0 14px;border:0;border-radius:7px;background:#16a779;color:#06251c;font-weight:900;cursor:pointer}
-.tf-fr-company-start-status{flex-basis:100%;margin:0;font-size:12px;color:#526176}
-@media(max-width:650px){.tf-fr-company-start{margin:10px;padding:12px}.tf-fr-company-start-form{grid-template-columns:1fr;width:100%}}
+.tf-fr-company-start{max-width:1120px;margin:12px auto;padding:17px 20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:22px;border:1px solid #d7e1ed;border-radius:12px;background:#fff;box-shadow:0 4px 16px #07111f0b}
+.tf-fr-company-start-left{min-width:0;padding-right:20px;border-right:1px solid #e2e9f1}
+.tf-fr-company-start-copy{font-size:15px;font-weight:850;color:#17243a;margin:0 0 10px}
+.tf-fr-company-start-form{display:grid;grid-template-columns:minmax(150px,1fr) auto;gap:7px;align-items:center}
+.tf-fr-company-start-form input{height:40px;min-width:0;padding:8px 11px;border:1px solid #b9c8dc;border-radius:7px;font-size:13px}
+.tf-fr-company-start-form button{height:40px;padding:0 14px;border:0;border-radius:7px;background:#16a779;color:#06251c;font-weight:900;cursor:pointer;white-space:nowrap}
+.tf-fr-company-start-status{grid-column:1/-1;margin:0;font-size:12px;color:#526176}
+.tf-fr-company-start-right{min-width:0}
+.tf-fr-company-start-right h2{margin:0 0 6px;color:#17243a;font-size:17px;line-height:1.3}
+.tf-fr-company-start-right p{margin:0 0 9px;color:#46566d;font-size:13px;line-height:1.55}
+.tf-fr-company-start-links{display:flex;flex-wrap:wrap;gap:7px 15px;margin:0 0 8px}
+.tf-fr-company-start-links a{color:#1266a5;font-size:13px;font-weight:850;text-decoration:none}
+.tf-fr-company-start-links a:hover{text-decoration:underline}
+.tf-fr-company-start-topics{color:#64748b;font-size:11px;line-height:1.5}
+@media(max-width:760px){.tf-fr-company-start{grid-template-columns:1fr;gap:14px;margin:10px;padding:14px}.tf-fr-company-start-left{padding:0 0 13px;border-right:0;border-bottom:1px solid #e2e9f1}.tf-fr-company-start-form{grid-template-columns:1fr}.tf-fr-company-start-form button{width:100%}}
 </style>
-<section class="tf-fr-company-start" aria-label="Créer un rapport financier">
- <div class="tf-fr-company-start-copy">Commencez votre rapport financier — quelle entreprise souhaitez-vous étudier?</div>
- <form class="tf-fr-company-start-form" id="tf-fr-company-form">
-  <input id="tf-fr-company-name" type="search" minlength="2" required autocomplete="off" placeholder="Nom de l’entreprise ou symbole boursier">
-  <button type="submit" id="tf-fr-company-submit">Continuer vers le rapport →</button>
-  <p class="tf-fr-company-start-status" id="tf-fr-company-status" role="status" aria-live="polite"></p>
- </form>
+<section class="tf-fr-company-start" aria-label="Rapport financier, guide avancé et échange d’experts">
+ <div class="tf-fr-company-start-left">
+  <div class="tf-fr-company-start-copy">Commencez votre rapport financier — quelle entreprise souhaitez-vous étudier?</div>
+  <form class="tf-fr-company-start-form" id="tf-fr-company-form">
+   <input id="tf-fr-company-name" type="search" minlength="2" required autocomplete="off" placeholder="Nom de l’entreprise ou symbole boursier">
+   <button type="submit" id="tf-fr-company-submit">Continuer vers le rapport →</button>
+   <p class="tf-fr-company-start-status" id="tf-fr-company-status" role="status" aria-live="polite"></p>
+  </form>
+ </div>
+ <div class="tf-fr-company-start-right">
+  <h2>Allez plus loin que les indicateurs habituels</h2>
+  <p>Découvrez notre guide avancé et échangez avec des analyses de marché plus approfondies : microstructure, volatilité, dérivés et modèles quantitatifs.</p>
+  <div class="tf-fr-company-start-links">
+   <a href="/fr/intelligence-avancee.html">Explorer le guide avancé →</a>
+   <a href="/fr/echange-experts.html">Découvrir l’échange experts →</a>
+  </div>
+  <div class="tf-fr-company-start-topics">GEX · VPIN · Kyle’s Lambda · Vanna &amp; Charm · cointegration · Hurst · prime de terme · carry-to-risk</div>
+ </div>
 </section>
 <script id="tf-fr-company-start-script">
 (function(){
