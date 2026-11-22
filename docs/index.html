@@ -2708,7 +2708,8 @@ main p, main li, .section-head p, .updated, .card-meta {
 
 <style id="tf-visibility-heading-adjustments">
 #trading-desk-title .tf-title-subline{display:block;margin-top:5px;font-size:.78em;letter-spacing:-.035em;}
-.tf-sec-feature-lines{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0 0 16px;padding:12px 14px;border-left:4px solid #2563EB;border-radius:8px;background:#EAF1FC;color:#12335F;font-size:16px;font-weight:850;line-height:1.4;}
+.tf-terminal-column{display:flex;flex-direction:column;gap:0;min-width:0;min-height:510px;height:100%;}
+.tf-sec-feature-lines{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0 0 12px;padding:12px 14px;border-left:4px solid #2563EB;border-radius:8px;background:#EAF1FC;color:#12335F;font-size:16px;font-weight:850;line-height:1.4;}
 .tf-sec-feature-lines>div{display:flex;align-items:flex-start;gap:9px;margin:0;padding:0;}
 .tf-sec-feature-lines>div:before{content:"•";flex:0 0 auto;color:#1D4ED8;font-size:21px;line-height:1.05;}
 @media(max-width:600px){.tf-sec-feature-lines{gap:7px;margin-bottom:12px;padding:10px 11px;font-size:14px;}}
@@ -2977,12 +2978,13 @@ main p, main li, .section-head p, .updated, .card-meta {
 </article>
 </div>
  </div>
-<section class="sp-market-terminal" id="market-terminal" aria-label="Market Data and Analysis Tools">
+<div class="tf-terminal-column">
  <div class="tf-sec-feature-lines" aria-label="SEC company report features">
   <div>SEC Filing Explorer</div>
   <div>Company Financial Snapshot</div>
   <div>SEC Filing Timeline</div>
  </div>
+ <section class="sp-market-terminal" id="market-terminal" aria-label="Market Data and Analysis Tools">
  <div class="sp-terminal-top">
   <div><div class="sp-terminal-eyebrow"><span></span>TECHNOFRONT · INTERACTIVE MARKET WORKSPACE</div><div class="sp-terminal-title-line"><h2>Market Data &amp; Analysis Tools</h2><div class="sp-terminal-tool-tabs" role="tablist" aria-label="Terminal tools">
     <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-0" data-sp-tool="0"><span class="sp-terminal-tool-icon" aria-hidden="true">▤</span><span>WATCHLIST</span></button>
@@ -3026,6 +3028,7 @@ main p, main li, .section-head p, .updated, .card-meta {
  </div>
  <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="true" aria-controls="sp-terminal-workspace" data-open-label="EXPAND CHART" data-close-label="COLLAPSE TERMINAL">COLLAPSE TERMINAL <span aria-hidden="true">×</span></button></div>
 </section>
+</div>
 </div>
 
 
@@ -9268,7 +9271,7 @@ var sc_security="58d29d99";
 .live-trading-desk .tf-market-collection .trading-market-list .sp-market-row{grid-template-columns:32px minmax(0,1fr) auto!important;gap:7px!important;padding:5px 7px!important;min-height:34px!important;border:1px solid #E1E8F2!important;border-radius:7px!important;background:#fff!important}
 .live-trading-desk .tf-market-collection .sp-market-row:hover{background:#EFF5FF!important}
 .live-trading-desk .tf-market-collection .trading-panel-link{margin-top:2px!important;padding-top:4px!important;border-top:0!important;font-size:10px!important;justify-content:flex-end!important}
-.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{width:100%!important;max-width:none!important;min-width:0!important;min-height:510px!important;height:100%!important;margin:0!important;padding:14px!important;overflow:hidden!important;border:1px solid #C9D8F0!important;border-top:4px solid #E4B83F!important;border-radius:14px!important;background:linear-gradient(145deg,#F7FAFF 0%,#EAF1FC 100%)!important;color:#10213D!important;box-shadow:0 8px 22px rgba(7,17,31,.07)!important}
+.live-trading-desk .tf-two-panel-grid>.tf-terminal-column>.sp-market-terminal{width:100%!important;max-width:none!important;min-width:0!important;min-height:510px!important;height:100%!important;margin:0!important;padding:14px!important;overflow:hidden!important;border:1px solid #C9D8F0!important;border-top:4px solid #E4B83F!important;border-radius:14px!important;background:linear-gradient(145deg,#F7FAFF 0%,#EAF1FC 100%)!important;color:#10213D!important;box-shadow:0 8px 22px rgba(7,17,31,.07)!important}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-eyebrow{color:#1D4ED8!important}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-top h2{color:#10213D!important}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-top p,.live-trading-desk .tf-two-panel-grid .sp-terminal-tip,.live-trading-desk .tf-two-panel-grid .sp-terminal-disclaimer{color:#52647A!important}
@@ -9288,8 +9291,8 @@ var sc_security="58d29d99";
 .live-trading-desk .tf-two-panel-grid .sp-terminal-tool-panel table{color:#243B59!important}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-tool-panel th{color:#52647A!important}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-actions .sp-terminal-toggle{background:#F2C94C!important;color:#10213D!important}
-@media(max-width:900px){.live-trading-desk .tf-two-panel-grid{grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection,.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{min-height:0!important}.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:420px!important;min-height:360px!important}}
-@media(max-width:760px){.live-trading-desk .tf-two-panel-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important}.live-trading-desk .tf-market-collection{padding:9px!important}.live-trading-desk .tf-market-collection .trading-panel{padding:8px 4px!important}.live-trading-desk .tf-market-collection .trading-panel-heading{display:flex!important;text-align:left!important}.live-trading-desk .tf-market-collection .trading-panel-heading p{display:block!important}.live-trading-desk .tf-market-collection .trading-market-list{display:grid!important;grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection .trading-market-list .sp-market-row{display:grid!important;grid-template-columns:32px minmax(0,1fr) auto!important}.live-trading-desk .tf-market-collection .trading-panel-link{display:flex!important;font-size:10px!important}.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{order:initial!important}.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:390px!important;min-height:320px!important}}
+@media(max-width:900px){.live-trading-desk .tf-two-panel-grid{grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection,.live-trading-desk .tf-two-panel-grid>.tf-terminal-column>.sp-market-terminal{min-height:0!important}.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:420px!important;min-height:360px!important}}
+@media(max-width:760px){.live-trading-desk .tf-two-panel-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important}.live-trading-desk .tf-market-collection{padding:9px!important}.live-trading-desk .tf-market-collection .trading-panel{padding:8px 4px!important}.live-trading-desk .tf-market-collection .trading-panel-heading{display:flex!important;text-align:left!important}.live-trading-desk .tf-market-collection .trading-panel-heading p{display:block!important}.live-trading-desk .tf-market-collection .trading-market-list{display:grid!important;grid-template-columns:minmax(0,1fr)!important}.live-trading-desk .tf-market-collection .trading-market-list .sp-market-row{display:grid!important;grid-template-columns:32px minmax(0,1fr) auto!important}.live-trading-desk .tf-market-collection .trading-panel-link{display:flex!important;font-size:10px!important}.live-trading-desk .tf-two-panel-grid>.tf-terminal-column>.sp-market-terminal{order:initial!important}.live-trading-desk .tf-two-panel-grid .sp-terminal-chart{height:390px!important;min-height:320px!important}}
 </style>
 
 <style id="technofront-market-layout-v2">
@@ -9310,7 +9313,7 @@ var sc_security="58d29d99";
 .trading-desk-grid .trading-market-list .sp-market-values strong{font-size:10px!important}
 .trading-desk-grid .trading-market-list .sp-market-values small{font-size:9px!important}
 .trading-desk-grid .trading-panel-link{margin-top:auto!important;padding-top:7px!important;font-size:10px!important}
-.tf-two-panel-grid>.sp-market-terminal,.sp-market-terminal{
+.tf-two-panel-grid>.tf-terminal-column>.sp-market-terminal,.sp-market-terminal{
  background:linear-gradient(145deg,#07182B 0%,#0B2038 55%,#102B49 100%)!important;
  border:1px solid #294664!important;border-top:4px solid #E4B83F!important;
  color:#F1F5FB!important;box-shadow:0 10px 28px rgba(0,0,0,.20)!important;
@@ -9419,7 +9422,7 @@ var sc_security="58d29d99";
 .live-trading-desk .tf-market-collection .trading-market-list .sp-market-name small{font-size:9px!important}
 .live-trading-desk .tf-market-collection .trading-market-list .sp-market-values strong{font-size:10px!important}
 .live-trading-desk .tf-market-collection .trading-market-list .sp-market-values small{font-size:9px!important}
-.live-trading-desk .tf-two-panel-grid>.sp-market-terminal{background:linear-gradient(145deg,#07182B 0%,#0B2038 55%,#102B49 100%)!important;border:1px solid #294664!important;border-top:4px solid #E4B83F!important;color:#F1F5FB!important}
+.live-trading-desk .tf-two-panel-grid>.tf-terminal-column>.sp-market-terminal{background:linear-gradient(145deg,#07182B 0%,#0B2038 55%,#102B49 100%)!important;border:1px solid #294664!important;border-top:4px solid #E4B83F!important;color:#F1F5FB!important}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-top h2{color:#F8FAFC!important}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-eyebrow{color:#F2C94C!important}
 .live-trading-desk .tf-two-panel-grid .sp-terminal-top p,.live-trading-desk .tf-two-panel-grid .sp-terminal-tip,.live-trading-desk .tf-two-panel-grid .sp-terminal-disclaimer{color:#B7C7DA!important}
@@ -9627,7 +9630,7 @@ var sc_security="58d29d99";
   margin:10px auto 14px!important;
  }
  #live-trading-desk .tf-market-collection,
- #live-trading-desk .tf-two-panel-grid>#market-terminal{
+ #live-trading-desk .tf-two-panel-grid>.tf-terminal-column{
   width:100%!important;
   max-width:none!important;
   min-width:0!important;
@@ -9644,7 +9647,7 @@ var sc_security="58d29d99";
   gap:12px!important;
  }
  #live-trading-desk .tf-market-collection,
- #live-trading-desk .tf-two-panel-grid>#market-terminal{
+ #live-trading-desk .tf-two-panel-grid>.tf-terminal-column{
   width:100%!important;
   min-height:0!important;
   margin:0!important;
