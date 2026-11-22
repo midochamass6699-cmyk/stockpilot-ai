@@ -66,7 +66,8 @@
  }
  searchBtn.addEventListener("click",search);query.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();search()}});
  query.addEventListener("input",()=>{selectedCik=null;generateBtn.disabled=true;selected.hidden=true});
- results.addEventListener("click",e=>{const b=e.target.closest("button[data-cik]");if(!b)return;selectedCik=b.dataset.cik;selectedName=b.dataset.name;selected.hidden=false;selected.textContent="Selected: "+selectedName+" ("+b.dataset.ticker+") · SEC CIK "+selectedCik;generateBtn.disabled=false;results.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));status.textContent="Company selected. Generate its report when ready."});
+ if(incomingQuery){query.value=incomingQuery;search();}
+  results.addEventListener("click",e=>{const b=e.target.closest("button[data-cik]");if(!b)return;selectedCik=b.dataset.cik;selectedName=b.dataset.name;selected.hidden=false;selected.textContent="Selected: "+selectedName+" ("+b.dataset.ticker+") · SEC CIK "+selectedCik;generateBtn.disabled=false;results.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));status.textContent="Company selected. Generate its report when ready."});
  function money(v){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(v)}
   function dateLabel(iso){const p=String(iso).split("-").map(Number);return new Date(p[0],p[1]-1,p[2]).toLocaleDateString("en-CA",{year:"numeric",month:"short",day:"numeric"})}
   function pct(v){return v==null||!Number.isFinite(v)?"Not available":(v>=0?"+":"")+v.toFixed(1)+"%"}
