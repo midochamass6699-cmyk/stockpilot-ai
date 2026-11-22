@@ -105,7 +105,8 @@ chartSymbol=aliases[symbol]||('BINANCE:'+symbol.replace(/USDT$/,'')+'USDT');
 if(kind==='CA')chartSymbol='TSX:'+symbol.replace(/\.TO$/,'');
 try{companyData=await loadCompany(q,chosen)}catch(e){status.textContent=e.message||'Company lookup failed.'}
 }
-if(!companyData&& !matches.hidden){return;}\nif(companyData&&companyData.company){display=companyData.company.name+' ('+companyData.company.ticker+')';showFacts(companyData.financial);source.textContent='TRADINGVIEW CHART + SEC EDGAR';subtitle.textContent=(companyData.company.exchanges||[]).join(', ')+' · SEC CIK '+companyData.company.cik}
+if(!companyData&& !matches.hidden){return;}
+if(companyData&&companyData.company){display=companyData.company.name+' ('+companyData.company.ticker+')';showFacts(companyData.financial);source.textContent='TRADINGVIEW CHART + SEC EDGAR';subtitle.textContent=(companyData.company.exchanges||[]).join(', ')+' · SEC CIK '+companyData.company.cik}
 else{facts.innerHTML='<div class="fact"><span>Données financières de la SEC</span><strong>Non disponibles pour cette recherche</strong></div>';factsNote.textContent='SEC coverage is not universal. Canadian-listed issuers and non-U.S. filers may not appear in Données financières de la SEC. The chart is provided separately by TradingView.';source.textContent='TRADINGVIEW CHART';subtitle.textContent=kind==='CRYPTO'?'Cryptomonnaies chart symbol: '+chartSymbol:'Graphique du marché for '+q+' · Identité de l’entreprise non confirmée par la SEC'}
 title.textContent=display;renderChart(chartSymbol);results.classList.add('show');results.scrollIntoView({behavior:'smooth',block:'start'});if(!status.textContent.startsWith('Plusieurs'))status.textContent='Espace d’analyse chargé. Vérifiez le symbole du graphique et la couverture des sources avant d’interpréter les résultats.';
 }
