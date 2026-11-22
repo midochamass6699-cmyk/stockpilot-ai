@@ -2173,6 +2173,51 @@ input, select, textarea, button {
   .topbar .nav-menu { transition:none; }
 }
 </style>
+<style id="stockpilot-navigation-polish">
+/* Clearer desktop navigation without removing links or shrinking the header. */
+@media (min-width:761px) {
+  .topbar .nav { row-gap:6px !important; }
+  .topbar .nav-menu { display:flex !important; flex-direction:column; align-items:stretch; justify-content:center; gap:5px; }
+  .topbar .navlinks {
+    width:100%; box-sizing:border-box; display:flex !important;
+    align-items:center !important; justify-content:space-between !important;
+    flex-wrap:wrap !important; gap:4px 6px !important;
+    padding:3px 0 5px; border-bottom:1px solid rgba(255,255,255,.13);
+  }
+  .topbar .navlinks a {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-height:29px; box-sizing:border-box; padding:6px 9px !important;
+    border:1px solid rgba(255,255,255,.10); border-radius:7px;
+    background:rgba(255,255,255,.045); color:#EAF1FF !important;
+    font-size:clamp(10px,.82vw,12px) !important; font-weight:800;
+    line-height:1.15; letter-spacing:.025em; text-decoration:none;
+    transition:background .16s ease,border-color .16s ease,color .16s ease;
+  }
+  .topbar .navlinks a:hover, .topbar .navlinks a:focus-visible {
+    background:rgba(72,133,255,.20); border-color:#6EA0FF; color:#FFFFFF !important;
+  }
+  .topbar .navlinks a:nth-child(6), .topbar .navlinks a:nth-child(9) {
+    margin-left:5px; border-left-color:rgba(255,255,255,.28);
+  }
+  .topbar .navlinks .nav-cta {
+    min-height:31px; padding:6px 12px !important;
+    border:1px solid #78A7FF; border-radius:8px;
+    background:linear-gradient(135deg,#2563EB,#1747B5) !important;
+    color:#FFFFFF !important; box-shadow:0 3px 10px rgba(0,0,0,.18);
+  }
+  .topbar .navlinks .nav-cta:hover { background:linear-gradient(135deg,#3B82F6,#1D4ED8) !important; }
+  .topbar .nav-bottom-row {
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; min-width:0; padding:0 2px;
+  }
+  .topbar #tf-visitor-counter { color:#AFC4E4; font-size:9px; letter-spacing:.07em; }
+  .topbar .language-switch { gap:9px !important; }
+  .topbar .language-switch a { color:#DCE8FA !important; font-size:10px; font-weight:800; text-decoration:none; }
+  .topbar .language-switch a:hover { color:#FFFFFF !important; text-decoration:underline; }
+}
+@media (prefers-reduced-motion:reduce) { .topbar .navlinks a { transition:none; } }
+</style>
+
 
 <style id="stockpilot-three-month-mini-chart">
 .stock-mini-chart{margin:11px 0 8px;padding:9px 10px 7px;border:1px solid #dce5ef;border-radius:8px;background:#f7faff;min-width:0}
@@ -2861,13 +2906,13 @@ main p, main li, .section-head p, .updated, .card-meta {
 <!-- NAVIGATION -->
 <header class="topbar">
 <nav class="nav" aria-label="Main navigation">
-<a class="brand" href="#top" aria-label="StockPilot AI home">
+<a class="brand" href="/" aria-label="StockPilot AI home">
 <span class="brandmark" aria-hidden="true">↗</span>
       STOCKPILOT AI
 </a>
 <div class="nav-menu" id="primary-navigation">
 <div class="navlinks">
-<a href="#top">HOME</a>
+<a href="/">HOME</a>
 <a href="#main-picks">STOCKS</a>
 <a href="/stocks/">STOCK PROFILES</a>
 <a href="#penny-picks">PENNY</a>
