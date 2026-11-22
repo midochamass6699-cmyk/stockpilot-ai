@@ -4307,83 +4307,143 @@ function setMarketPreview(id, items, kind, rate) {
 
 /* LOAD CRYPTO */
 async function loadCrypto() {
-
   const ratePromise = getUsdCadRate();
   const cards = document.getElementById('cryptoCards');
   const updated = document.getElementById('cryptoUpdated');
 
-  try {
+  const qualityFilter = coin => {
+    const price = Number(coin.current_price);
+    const volume = Number(coin.total_volume);
+    const marketCap = Number(coin.market_cap);
+    const rank = Number(coin.market_cap_rank);
+    const change = Number(coin.price_change_percentage_24h);
+    return Number.isFinite(price) && price > 0 && price < 10000000
+      && Number.isFinite(volume) && volume > 0 && volume < 100000000000
+      && Number.isFinite(marketCap) && marketCap > 0
+      && Number.isInteger(rank) && rank > 0
+      && (!Number.isFinite(change) || Math.abs(change) <= 1000)
+      && String(coin.id || '').toLowerCase() !== 'polygold'
+      && String(coin.symbol || '').toUpperCase() !== 'POLYGOLD';
+  };
 
-    const url =
-      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=3&page=1&sparkline=false';
+  const rankCoins = coins => coins
+    .filter(qualityFilter)
+    .sort((a,b) => Number(b.total_volume) - Number(a.total_volume))
+    .slice(0,3);
 
-    const [rate, response] = await Promise.all([
-      ratePromise,
-      fetch(url, { cache:'no-store' })
-    ]);
-
-    if (!response.ok) {
-      throw new Error('Crypto provider returned HTTP ' + response.status);
-    }
-
+  async function fromCoinGecko() {
+    const response = await fetch(
+      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=50&page=1&sparkline=false',
+      {cache:'no-store'}
+    );
+    if (!response.ok) throw new Error('CoinGecko HTTP ' + response.status);
     const data = await response.json();
+    if (!Array.isArray(data)) throw new Error('CoinGecko returned an invalid response');
+    return rankCoins(data.map(coin => ({
+      ...coin,
+      source_name:'CoinGecko',
+      source_url:'https://www.coingecko.com/en/coins/' + encodeURIComponent(coin.id || '')
+    })));
+  }
 
-    if (!Array.isArray(data) || data.length === 0) {
-      throw new Error('No cryptocurrency results returned.');
+  async function fromCryptoCompare() {
+    const response = await fetch(
+      'https://min-api.cryptocompare.com/data/top/totalvolfull?limit=30&tsym=USD',
+      {cache:'no-store'}
+    );
+    if (!response.ok) throw new Error('CryptoCompare HTTP ' + response.status);
+    const payload = await response.json();
+    if (payload.Response !== 'Success' || !Array.isArray(payload.Data)) {
+      throw new Error('CryptoCompare returned an invalid response');
     }
+    const coins = payload.Data.map((row,index) => {
+      const info = row.CoinInfo || {};
+      const quote = row.RAW && row.RAW.USD ? row.RAW.USD : {};
+      const symbol = String(info.Name || '').toUpperCase();
+      const slug = String(info.Name || '').toLowerCase();
+      return {
+        id:slug,
+        name:info.FullName || info.Name || 'Cryptocurrency',
+        symbol,
+        image:info.ImageUrl ? 'https://www.cryptocompare.com' + info.ImageUrl : '',
+        current_price:Number(quote.PRICE),
+        total_volume:Number(quote.TOTALVOLUME24H),
+        market_cap:Number(quote.MKTCAP),
+        market_cap_rank:index+1,
+        price_change_percentage_24h:Number(quote.CHANGEPCT24HOUR),
+        source_name:'CryptoCompare',
+        source_url:'https://www.cryptocompare.com/coins/' + encodeURIComponent(slug) + '/overview/USD'
+      };
+    });
+    return rankCoins(coins);
+  }
 
-    // Filter unreliable provider quotes before ranking. This also explicitly
-    // excludes PolyGold (POLYGOLD), whose feed has returned impossible values.
-    const ranked = data
-      .filter(coin => {
-        const price = Number(coin.current_price);
-        const volume = Number(coin.total_volume);
-        const marketCap = Number(coin.market_cap);
-        const change24h = Number(coin.price_change_percentage_24h);
-        const hasValidMarketCap = Number.isFinite(marketCap) && marketCap > 0;
-        const hasValidRank = Number.isInteger(Number(coin.market_cap_rank)) && Number(coin.market_cap_rank) > 0;
-        const hasSaneQuote = Number.isFinite(price) && price > 0 && price < 10000000;
-        const hasSaneVolume = Number.isFinite(volume) && volume > 0 && volume < 100000000000;
-        const hasSaneChange = !Number.isFinite(change24h) || Math.abs(change24h) <= 1000;
-        const isKnownBadQuote = String(coin.id || '').toLowerCase() === 'polygold'
-          || String(coin.symbol || '').toUpperCase() === 'POLYGOLD';
-        return !isKnownBadQuote && hasValidMarketCap && hasValidRank
-          && hasSaneQuote && hasSaneVolume && hasSaneChange;
-      })
-      .sort((a,b) =>
-        (Number(b.total_volume) || 0) -
-        (Number(a.total_volume) || 0)
-      )
-      .slice(0,3);
+  async function fromCoinPaprika() {
+    const response = await fetch(
+      'https://api.coinpaprika.com/v1/tickers?quotes=USD',
+      {cache:'no-store'}
+    );
+    if (!response.ok) throw new Error('CoinPaprika HTTP ' + response.status);
+    const payload = await response.json();
+    if (!Array.isArray(payload)) throw new Error('CoinPaprika returned an invalid response');
+    const coins = payload.map(coin => {
+      const quote = coin.quotes && coin.quotes.USD ? coin.quotes.USD : {};
+      return {
+        id:coin.id,
+        name:coin.name,
+        symbol:coin.symbol,
+        image:coin.id ? 'https://static.coinpaprika.com/coin/' + encodeURIComponent(coin.id) + '/logo.png' : '',
+        current_price:Number(quote.price),
+        total_volume:Number(quote.volume_24h),
+        market_cap:Number(quote.market_cap),
+        market_cap_rank:Number(coin.rank),
+        price_change_percentage_24h:Number(quote.percent_change_24h),
+        source_name:'CoinPaprika',
+        source_url:'https://coinpaprika.com/coin/' + encodeURIComponent(coin.id || '') + '/'
+      };
+    });
+    return rankCoins(coins);
+  }
 
-    if (!ranked.length) {
-      throw new Error('No cryptocurrency results passed the market-data quality checks.');
+  try {
+    const rate = await ratePromise;
+    let ranked = [];
+    let source = '';
+    const failures = [];
+    const providers = [
+      ['CoinGecko',fromCoinGecko],
+      ['CryptoCompare',fromCryptoCompare],
+      ['CoinPaprika',fromCoinPaprika]
+    ];
+    for (const [provider,load] of providers) {
+      try {
+        ranked = await load();
+        if (ranked.length) {
+          source = provider;
+          break;
+        }
+        failures.push(provider + ': no verified results');
+      } catch(error) {
+        failures.push(provider + ': ' + (error && error.message ? error.message : 'request failed'));
+      }
     }
+    if (!ranked.length) throw new Error(failures.join(' | ') || 'No crypto providers returned data');
 
-    cards.innerHTML = ranked
-      .map((coin,i) => renderCrypto(coin,i,rate))
-      .join('');
-
+    cards.innerHTML = ranked.map((coin,i) => renderCrypto(coin,i,rate)).join('');
     setMarketPreview('previewCrypto', ranked, 'crypto', rate);
-
+    window.dispatchEvent(new CustomEvent('stockpilot:crypto-updated',{detail:ranked}));
     updated.textContent =
       'Last updated: ' + new Date().toLocaleString() +
-      ' · Ranked by 24-hour USD trading volume · Source: CoinGecko';
-
+      ' · Ranked by 24-hour USD trading volume · Source: ' + source;
   } catch(error) {
-
     cards.innerHTML =
       '<div class="empty">Live cryptocurrency data is temporarily unavailable. Please refresh later.</div>';
-
     setMarketPreview('previewCrypto', [], 'crypto');
-
-    updated.textContent =
-      'Cryptocurrency data temporarily unavailable.';
-
+    window.dispatchEvent(new CustomEvent('stockpilot:crypto-updated',{detail:[]}));
+    updated.textContent = 'Cryptocurrency data temporarily unavailable.';
     console.error('StockPilot crypto data:',error);
   }
 }
-
 
 /* MINI THREE-MONTH PRICE HISTORY — uses real daily closes from picks.json */
 function renderThreeMonthChart(stock, language) {
@@ -6822,7 +6882,7 @@ function setMarketPreview(id, items, kind, rate) {
 }
 
 /* LOAD CRYPTO */
-async function loadCrypto() {
+async function loadCryptoLegacy() {
 
   const ratePromise = getUsdCadRate();
   const cards = document.getElementById('cryptoCards');
