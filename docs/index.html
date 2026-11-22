@@ -9364,45 +9364,70 @@ var sc_security="58d29d99";
  .trading-desk-grid .trading-market-list .sp-market-values small{font-size:10px!important}
 }
 </style>
-<script id="technofront-stock-day-placement-v3">
+<script id="technofront-stock-day-placement-v4">
 (function(){
- const moveStockDay=()=>{
-  const stock=document.getElementById('sp-stock-of-day');
+ const arrangeMarketSquares=()=>{
   const desk=document.getElementById('live-trading-desk');
   const header=desk&&desk.querySelector('.trading-desk-header');
+  const stock=document.getElementById('sp-stock-of-day');
   const terminal=document.getElementById('market-terminal');
-  let target=document.querySelector('.trading-desk-tagline');
-  if(!target && header){
-   target=document.createElement('div');target.className='trading-desk-tagline';
+  const grid=desk&&desk.querySelector('.tf-two-panel-grid');
+  const marketLists=grid&&grid.querySelector('.tf-market-collection');
+  let target=desk&&desk.querySelector('.trading-desk-tagline');
+  if(!target&&header){
+   target=document.createElement('div');
+   target.className='trading-desk-tagline';
    target.innerHTML='<strong>YOUR MARKET PIT STOP</strong><span>Your Market Pit Stop — Where Real Data Fuels Better Insights.</span>';
    header.appendChild(target);
   }
-  if(stock && target && !target.contains(stock)){stock.classList.add('in-market-tagline');target.appendChild(stock);}
-  /* Place the full interactive terminal directly after the header containing Stock of the Day. */
-  if(terminal && header && terminal.parentNode!==desk)header.insertAdjacentElement('afterend',terminal);
-  else if(terminal && header && terminal.previousElementSibling!==header)header.insertAdjacentElement('afterend',terminal);
+  if(stock&&target&&!target.contains(stock)){stock.classList.add('in-market-tagline');target.appendChild(stock);}
+  /* Restore the two cards to one shared row: stock lists left, analysis terminal right. */
+  if(grid&&marketLists&&terminal){
+   if(marketLists.parentNode!==grid)grid.appendChild(marketLists);
+   if(terminal.parentNode!==grid||terminal.previousElementSibling!==marketLists)grid.appendChild(terminal);
+  }
  };
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',moveStockDay,{once:true});else moveStockDay();
- setTimeout(moveStockDay,300);
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arrangeMarketSquares,{once:true});else arrangeMarketSquares();
+ setTimeout(arrangeMarketSquares,300);
 })();
 </script>
-<style id="tf-english-report-and-terminal-order">
-/* Keep the personalized report form just inside the right edge of its row. */
-@media(min-width:761px){#tf-company-quick-form{position:relative;left:-2px}}
-/* The market terminal now spans the page directly below Stock of the Day. */
-#live-trading-desk>#market-terminal{
- display:block!important;
- width:100%!important;
- max-width:1200px!important;
- min-width:0!important;
- min-height:0!important;
- height:auto!important;
- margin:10px auto 14px!important;
- padding:14px!important;
- box-sizing:border-box!important;
+<style id="tf-english-report-and-terminal-order-v2">
+/* Keep the report form slightly inset on the left-hand side. */
+@media(min-width:901px){#tf-company-quick-form{position:relative;left:-2px}}
+/* Two aligned squares: stock lists below the report, analysis tools below Stock of the Day. */
+@media(min-width:901px){
+ #live-trading-desk .tf-two-panel-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:start!important;
+  gap:14px!important;
+  width:100%!important;
+  margin:10px auto 14px!important;
+ }
+ #live-trading-desk .tf-market-collection,
+ #live-trading-desk .tf-two-panel-grid>#market-terminal{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:510px!important;
+  height:auto!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+ }
 }
-@media(max-width:760px){
- #live-trading-desk>#market-terminal{width:100%!important;margin:8px auto 12px!important;padding:10px!important}
+@media(max-width:900px){
+ #live-trading-desk .tf-two-panel-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:12px!important;
+ }
+ #live-trading-desk .tf-market-collection,
+ #live-trading-desk .tf-two-panel-grid>#market-terminal{
+  width:100%!important;
+  min-height:0!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+ }
 }
 </style>
 
@@ -9614,5 +9639,44 @@ var sc_security="58d29d99";
 }
 </style>
 
+<style id="tf-english-report-and-terminal-order-v2">
+/* Keep the report form slightly inset on the left-hand side. */
+@media(min-width:901px){#tf-company-quick-form{position:relative;left:-2px}}
+/* Two aligned squares: stock lists below the report, analysis tools below Stock of the Day. */
+@media(min-width:901px){
+ #live-trading-desk .tf-two-panel-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:start!important;
+  gap:14px!important;
+  width:100%!important;
+  margin:10px auto 14px!important;
+ }
+ #live-trading-desk .tf-market-collection,
+ #live-trading-desk .tf-two-panel-grid>#market-terminal{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:510px!important;
+  height:auto!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+ }
+}
+@media(max-width:900px){
+ #live-trading-desk .tf-two-panel-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:12px!important;
+ }
+ #live-trading-desk .tf-market-collection,
+ #live-trading-desk .tf-two-panel-grid>#market-terminal{
+  width:100%!important;
+  min-height:0!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+ }
+}
+</style>
 </body>
 </html>
