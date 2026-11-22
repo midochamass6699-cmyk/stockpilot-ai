@@ -219,6 +219,18 @@
   </url>
   <url>
     <loc>https://technofront.org/experts-exchange.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/experts-exchange.html"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/echange-experts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/experts-exchange.html"/>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://technofront.org/fr/echange-experts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/experts-exchange.html"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://technofront.org/fr/echange-experts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/experts-exchange.html"/>
     <lastmod>2026-11-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
