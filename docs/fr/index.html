@@ -1950,6 +1950,7 @@ input, select, textarea, button {
     }
 }
 
+<style id="sp-onpage-research-anchor-style">.stock-card[id^="sp-stock-"],.stock-card[id^="sp-crypto-"]{scroll-margin-top:110px}</style>
 </style>
 <script defer="" src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
 <link crossorigin="anonymous" href="https://www.google.com" rel="preconnect"/>
@@ -4302,7 +4303,7 @@ function setMarketPreview(id, items, kind, rate) {
       const ch = Number(item.change_percent);
       change = Number.isFinite(ch) ? (ch > 0 ? '+' : '') + ch.toFixed(2) + '%' : '—';
       positive = Number.isFinite(ch) && ch >= 0;
-      href = symbol ? '#sp-stock-' + (stockKind === 'penny' ? 'penny-' : 'main-') + symbol.replace(/[^A-Z0-9_-]/g, '-') : '#main-picks';
+      href = symbol ? '#sp-stock-' + (/penny/i.test(id) ? 'penny-' : 'main-') + symbol.replace(/[^A-Z0-9_-]/g, '-') : '#main-picks';
     }
     return `<a class="sp-market-row" data-exchange="${previewEscape(kind === 'crypto' ? 'BINANCE' : (item.exchange || ''))}" href="${href}" target="${href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
       <span class="sp-market-logo-wrap">${logoSrc ? '<img class="sp-market-logo" src="' + previewEscape(logoSrc) + '" alt="' + previewEscape(name) + ' logo" loading="lazy" decoding="async" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'">' : ''}<span class="sp-market-logo-fallback" aria-hidden="true" style="${logoSrc ? 'display:none' : 'display:grid'}">${previewEscape((name || symbol || '?').trim().charAt(0).toUpperCase())}</span></span>
