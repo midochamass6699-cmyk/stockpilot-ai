@@ -2708,6 +2708,23 @@ main p, main li, .section-head p, .updated, .card-meta {
 @media(min-width:1600px) and (max-width:1699px){
  #free-left-banner.tf-edge-banner,#free-right-banner.tf-edge-banner{width:clamp(160px,calc((100vw - 1200px)/2 - 24px),190px)!important}
 }
+
+/* Actual StockPilot picks in the What's Trending edge banner. */
+#free-left-banner .tf-edge-viewport{margin-top:10px}
+#free-left-banner .tf-live-group{display:flex;flex-direction:column;gap:8px;padding:2px 0 12px}
+#free-left-banner .tf-live-section{margin:0 0 2px;color:#9CCBFF;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+#free-left-banner .tf-live-card{display:block;padding:10px;border:1px solid rgba(133,174,222,.28);border-radius:9px;background:linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.025));color:#fff;text-decoration:none}
+#free-left-banner .tf-live-card:hover,#free-left-banner .tf-live-card:focus-visible{background:rgba(72,135,207,.22);border-color:#75B3F4;outline:none}
+#free-left-banner .tf-live-top{display:flex;align-items:baseline;justify-content:space-between;gap:6px}
+#free-left-banner .tf-live-symbol{font-size:15px;font-weight:900;color:#fff}
+#free-left-banner .tf-live-change{font-size:12px;font-weight:900;white-space:nowrap}
+#free-left-banner .tf-live-change.up{color:#65D6A1}
+#free-left-banner .tf-live-change.down{color:#FF8B93}
+#free-left-banner .tf-live-price{margin-top:3px;color:#DCE9F8;font-size:13px;font-weight:800}
+#free-left-banner .tf-live-company{margin-top:2px;color:#B7CBE1;font-size:10px;line-height:1.35}
+#free-left-banner .tf-live-meta{margin-top:6px;color:#91A9C5;font-size:9px;line-height:1.35}
+#free-left-banner .tf-live-state{padding:7px 8px;border:1px solid rgba(133,174,222,.2);border-radius:7px;color:#C3D4E8;font-size:10px;line-height:1.4;text-align:center}
+#free-left-banner .tf-live-updated{margin-top:5px;color:#91A9C5;font-size:9px;text-align:center}
 </style>
 </head>
 <body>
@@ -4930,30 +4947,15 @@ setInterval(loadStocks,15 * 60 * 1000);
 })();
 </script>
 <!-- STOCKPILOT AI : LISTE VERTICALE DES ACTIONS À SUIVRE -->
-<aside aria-label="TENDANCES DU MARCHÉ CAN market activity" class="free-side-banner tf-edge-banner" id="free-left-banner">
+<aside aria-label="CAN TENDANCES DU MARCHÉ" class="free-side-banner tf-edge-banner" id="free-left-banner">
   <div class="tf-edge-inner">
     <header class="tf-edge-heading">
       <span class="tf-edge-market">CAN</span>
       <h2>TENDANCES DU MARCHÉ</h2>
-      <p>L'activité des marchés canadiens</p>
+      <p>DONNÉES RÉELLES · DERNIÈRE CLÔTURE</p>
     </header>
-    <div class="tf-edge-viewport">
-      <div class="tf-edge-track">
-        <div class="tf-edge-sequence">
-          <a class="tf-edge-card" href="#main-picks"><strong>ACTIONS EN TENDANCE</strong><span>Actions TSX et TSXV à surveiller</span><i aria-hidden="true">↗</i></a>
-<a class="tf-edge-card" href="#penny-picks"><strong>PETITES CAPITALISATIONS</strong><span>Volume et mouvements de prix</span><i aria-hidden="true">↗</i></a>
-<a class="tf-edge-card" href="#crypto-picks"><strong>CRYPTO</strong><span>Activité des marchés d'actifs numériques</span><i aria-hidden="true">↗</i></a>
-<a class="tf-edge-card" href="#market-terminal"><strong>DYNAMIQUE DU MARCHÉ</strong><span>Consulter l'aperçu des marchés</span><i aria-hidden="true">↗</i></a>
-        </div>
-        <div class="tf-edge-sequence" aria-hidden="true">
-          <a class="tf-edge-card" href="#main-picks" tabindex="-1"><strong>ACTIONS EN TENDANCE</strong><span>Actions TSX et TSXV à surveiller</span><i aria-hidden="true">↗</i></a>
-<a class="tf-edge-card" href="#penny-picks" tabindex="-1"><strong>PETITES CAPITALISATIONS</strong><span>Volume et mouvements de prix</span><i aria-hidden="true">↗</i></a>
-<a class="tf-edge-card" href="#crypto-picks" tabindex="-1"><strong>CRYPTO</strong><span>Activité des marchés d'actifs numériques</span><i aria-hidden="true">↗</i></a>
-<a class="tf-edge-card" href="#market-terminal" tabindex="-1"><strong>DYNAMIQUE DU MARCHÉ</strong><span>Consulter l'aperçu des marchés</span><i aria-hidden="true">↗</i></a>
-        </div>
-      </div>
-    </div>
-    <div class="tf-edge-foot">TECHNOFRONT <span>·</span> MARCHÉS CANADIENS</div>
+    <div class="tf-edge-viewport" id="tf-live-trending"><div class="tf-live-state">Chargement des données du marché…</div></div>
+    <div class="tf-edge-foot">TECHNOFRONT <span>·</span> MARCHÉ CANADIEN</div>
   </div>
 </aside>
 <style id="sp-fr-watchlist-style">
@@ -8202,6 +8204,54 @@ body{font-size:16px}
     target.style.scrollMarginTop = '120px';
     target.scrollIntoView({behavior:'smooth', block:'start'});
   }, true);
+})();
+</script>
+<script id="technofront-live-trending-data">
+(function(){
+ const root=document.querySelector('#free-left-banner #tf-live-trending');
+ if(!root||root.dataset.loaded==='1')return;
+ root.dataset.loaded='1';
+ const market="Canada";
+ const labels={"main":"ACTIONS EN TENDANCE","penny":"PETITES CAPITALISATIONS","loading":"Chargement des données du marché…","unavailable":"Données temporairement indisponibles","volume":"Volume relatif","updated":"Fichier de données mis à jour"};
+ const locale="fr-CA";
+ const money=(n,currency)=>new Intl.NumberFormat(locale,{style:'currency',currency:currency||(market==='US'?'USD':'CAD'),maximumFractionDigits:Number(n)<1?3:2}).format(Number(n));
+ const pct=n=>(Number(n)>0?'+':'')+Number(n).toFixed(2)+'%';
+ function card(x,kind){
+  const a=document.createElement('a');a.className='tf-live-card';
+  const ticker=String(x.ticker||'').toUpperCase();
+  a.href='#sp-stock-'+kind+'-'+ticker.replace(/[^A-Z0-9_-]/g,'-');
+  const top=document.createElement('div');top.className='tf-live-top';
+  const sym=document.createElement('strong');sym.className='tf-live-symbol';sym.textContent=ticker;
+  const change=document.createElement('span');change.className='tf-live-change '+(Number(x.change_percent)>=0?'up':'down');change.textContent=pct(x.change_percent);
+  top.append(sym,change);
+  const price=document.createElement('div');price.className='tf-live-price';price.textContent=money(x.price,x.currency);
+  const company=document.createElement('div');company.className='tf-live-company';company.textContent=String(x.company||'');
+  const meta=document.createElement('div');meta.className='tf-live-meta';
+  const ratio=Number(x.volume_ratio);
+  meta.textContent=(Number.isFinite(ratio)?labels.volume+': '+ratio.toFixed(1)+'×':'')+(x.quote_time?' · '+x.quote_time:'');
+  a.append(top,price,company,meta);return a;
+ }
+ function render(data){
+  const inMarket=x=>market==='US'?x.market==='US':x.market==='Canada';
+  const main=(Array.isArray(data.main)?data.main:[]).filter(inMarket);
+  const used=new Set(main.map(x=>String(x.ticker||'').toUpperCase()));
+  const penny=(Array.isArray(data.penny)?data.penny:[]).filter(inMarket).filter(x=>!used.has(String(x.ticker||'').toUpperCase()));
+  const group=document.createElement('div');group.className='tf-live-group';
+  const addSection=(label,items,kind)=>{const h=document.createElement('h3');h.className='tf-live-section';h.textContent=label;group.append(h);items.slice(0,3).forEach(x=>group.append(card(x,kind)));};
+  addSection(labels.main,main,'main');addSection(labels.penny,penny,'penny');
+  const updated=document.createElement('div');updated.className='tf-live-updated';
+  const stamp=data.updated_at?new Date(data.updated_at):null;
+  updated.textContent=stamp&&!isNaN(stamp)?labels.updated+': '+stamp.toLocaleString(locale,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/Toronto'}):'';
+  group.append(updated);
+  const clone=group.cloneNode(true);clone.setAttribute('aria-hidden','true');clone.querySelectorAll('a').forEach(a=>a.tabIndex=-1);
+  const track=document.createElement('div');track.className='tf-edge-track';track.append(group,clone);
+  root.replaceChildren(track);
+ }
+ root.innerHTML='<div class="tf-live-state">'+labels.loading+'</div>';
+ fetch('/data/picks.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('picks feed');return r.json();}).then(data=>{
+  if(!data||data.status!=='ok')throw Error('invalid picks');
+  render(data);
+ }).catch(()=>{root.innerHTML='<div class="tf-live-state">'+labels.unavailable+'</div>';});
 })();
 </script>
 </body>
