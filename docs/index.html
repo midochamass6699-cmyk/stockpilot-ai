@@ -2929,8 +2929,8 @@ main p, main li, .section-head p, .updated, .card-meta {
 <div class="nav-bottom-row">
 <span id="tf-visitor-counter" aria-live="polite">YOU ARE VISITOR NUMBER …</span>
 <div aria-label="Choose language" class="language-switch">
-<a class="edition-link" href="/" lang="en-CA" aria-label="Canadian edition">🇨🇦 CANADA</a>
-<a class="edition-link" href="/us/" lang="en-US" aria-label="United States edition">🇺🇸 UNITED STATES</a>
+<a class="edition-link" href="/" lang="en-CA" aria-label="Canadian edition">CANADA</a>
+<a class="edition-link" href="/us/" lang="en-US" aria-label="United States edition">UNITED STATES</a>
 <span aria-hidden="true">|</span><a href="/de/" lang="de" aria-label="Deutsch">DE</a>
 <a href="/fr/" lang="fr">FR</a>
 <span aria-hidden="true">|</span>
@@ -9779,5 +9779,48 @@ var sc_security="58d29d99";
  #sp-stock-of-day.in-market-tagline .sp-day-eyebrow{font-size:10px!important}
  #sp-stock-of-day.in-market-tagline .sp-day-name{font-size:15px!important}
  #sp-stock-of-day.in-market-tagline .sp-day-ticker,#sp-stock-of-day.in-market-tagline .sp-day-meta{font-size:10px!important}
+}
+</style>
+
+
+<style id="country-edition-compact-flags">
+/* Keep country editions visually consistent with the compact language links. */
+.topbar .language-switch .edition-link {
+  display:inline-flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:2px !important;
+  padding:2px 5px !important;
+  min-width:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  color:#DCE8FA !important;
+  font-size:10px !important;
+  line-height:1.1 !important;
+  font-weight:800 !important;
+  letter-spacing:.045em !important;
+  text-decoration:none !important;
+  white-space:nowrap !important;
+}
+.topbar .language-switch .edition-link::after {
+  display:block;
+  font-size:12px;
+  line-height:1;
+}
+.topbar .language-switch .edition-link[lang="en-CA"]::after { content:"🇨🇦"; }
+.topbar .language-switch .edition-link[lang="en-US"]::after { content:"🇺🇸"; }
+.topbar .language-switch .edition-link[aria-current="page"] {
+  color:#E7D2A0 !important;
+}
+.topbar .language-switch .edition-link:hover {
+  color:#FFFFFF !important;
+  text-decoration:underline !important;
+}
+.topbar .language-switch .edition-link:focus-visible {
+  outline:2px solid #E7D2A0 !important;
+  outline-offset:3px;
 }
 </style>
