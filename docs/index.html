@@ -3799,11 +3799,11 @@ main p, main li, .section-head p, .updated, .card-meta {
   const matches=Array.isArray(payload.data)?payload.data:[];
   if(!matches.length)throw new Error('No stock listing was found for "'+raw+'". Check the company name or enter its ticker.');
   const key=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
-  const exactSymbol=matches.find(item=>key(item.symbol)===cleanName);
-  const exactName=matches.find(item=>key(item.name)===cleanName);
+  const exactSymbols=matches.filter(item=>key(item.symbol)===cleanName);
+  const exactNames=matches.filter(item=>key(item.name)===cleanName);
   const selectedMarket=tvExchange(exchange,'');
-  const marketMatch=matches.find(item=>{const ex=String(item.exchange||item.mic_code||'').toUpperCase();return selectedMarket==='NASDAQ'?(ex.includes('NASDAQ')||ex==='XNAS'):selectedMarket==='NYSE'?(ex.includes('NYSE')||ex==='XNYS'):selectedMarket==='TSX'?(ex.includes('TORONTO')||ex==='XTSE'||ex==='TSX'):selectedMarket==='TSXV'?(ex.includes('VENTURE')||ex==='XTSX'||ex==='TSXV'):false;});
-  const stock=exactSymbol||exactName||marketMatch||matches[0];
+  const isSelectedMarket=item=>{const ex=String(item.exchange||item.mic_code||'').toUpperCase();return selectedMarket==='NASDAQ'?(ex.includes('NASDAQ')||ex==='XNAS'):selectedMarket==='NYSE'?(ex.includes('NYSE')||ex==='XNYS'):selectedMarket==='TSX'?(ex.includes('TORONTO')||ex==='XTSE'||ex==='TSX'):selectedMarket==='TSXV'?(ex.includes('VENTURE')||ex==='XTSX'||ex==='TSXV'):false;};
+  const stock=exactSymbols.find(isSelectedMarket)||exactNames.find(isSelectedMarket)||exactSymbols[0]||exactNames[0]||matches.find(isSelectedMarket)||matches[0];
   const resolvedSymbol=String(stock.symbol||'').trim().toUpperCase();
   if(!resolvedSymbol)throw new Error('The company search returned a listing without a ticker symbol.');
   const resolvedExchange=tvExchange(stock.exchange||stock.mic_code,exchange||'NASDAQ');
