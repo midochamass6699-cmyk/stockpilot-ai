@@ -1,0 +1,11 @@
+{
+  "provider": "GDELT Project",
+  "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
+  "fetched_at": null,
+  "updated_sections": [],
+  "sections": {
+    "markets": [],
+    "penny": [],
+    "crypto": []
+  }
+}
