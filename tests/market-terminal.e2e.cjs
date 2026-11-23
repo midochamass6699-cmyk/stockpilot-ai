@@ -26,10 +26,8 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         const symbol = page.locator('#sp-terminal-symbol');
         await symbol.fill('Apple');
         await page.locator('#sp-terminal-load').click();
-        await page.waitForFunction(() => {
-          const chart = document.querySelector('#sp-terminal-chart');
-          return !!chart && !!chart.querySelector('script[src*="embed-widget-advanced-chart.js"]');
-        }, { timeout: 15000 });
+        await page.locator('#sp-terminal-chart script[src*="embed-widget-advanced-chart.js"]').waitFor({ state: 'attached', timeout: 15000 });
+        await page.locator('#sp-terminal-chart iframe').first().waitFor({ state: 'attached', timeout: 25000 });
 
         const tabs = page.locator('#market-terminal [data-sp-tool]');
         if (await tabs.count() !== 5) throw new Error('Expected five terminal tabs; found ' + await tabs.count());
@@ -48,10 +46,11 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         await page.locator('#sp-terminal-watch-list').getByText('AAPL', { exact: true }).waitFor({ timeout: 10000 });
 
         await page.locator('#market-terminal [data-sp-tool="1"]').click();
-        await page.locator('#sp-terminal-screen-search').fill('Apple');
-        await page.locator('#sp-terminal-screen-search').waitFor();
+        await page.locator('#sp-terminal-screen-search').fill('');
+        await page.locator('#sp-terminal-screen-results .sp-terminal-tool-card').first().waitFor({ state: 'visible', timeout: 15000 });
         await page.locator('#market-terminal [data-sp-tool="2"]').click();
-        await page.waitForFunction(() => !!document.querySelector('#sp-terminal-ta-widget script[src*="embed-widget-technical-analysis.js"]'), { timeout: 15000 });
+        await page.locator('#sp-terminal-ta-widget script[src*="embed-widget-technical-analysis.js"]').waitFor({ state: 'attached', timeout: 15000 });
+        await page.locator('#sp-terminal-ta-widget iframe').first().waitFor({ state: 'attached', timeout: 25000 });
 
         await page.locator('#market-terminal [data-sp-tool="3"]').click();
         await page.waitForFunction(() => {
