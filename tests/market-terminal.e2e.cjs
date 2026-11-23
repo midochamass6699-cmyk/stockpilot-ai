@@ -53,8 +53,8 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         await page.locator('#market-terminal [data-sp-tool="3"]').click();
         await page.waitForFunction(() => {
           const text = document.querySelector('#sp-terminal-company-facts')?.textContent || '';
-          return text.includes('LATEST PRICE') || text.includes('Latest quote unavailable');
-        }, { timeout: 20000 });
+          return text.includes('LATEST PRICE');
+        }, { timeout: 25000 });
 
         await page.locator('#market-terminal [data-sp-tool="4"]').click();
         await page.locator('#sp-terminal-paper-symbol').fill('Apple');
@@ -62,6 +62,10 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         await page.locator('#sp-terminal-paper-entry').fill('100');
         await page.locator('#sp-terminal-paper-add').click();
         await page.locator('#sp-terminal-paper-list').getByText('AAPL', { exact: false }).waitFor({ timeout: 10000 });
+        await page.waitForFunction(() => {
+          const text = document.querySelector('#sp-terminal-paper-list')?.textContent || '';
+          return text.includes('AAPL') && !text.includes('Loading…') && !text.includes('Unavailable');
+        }, { timeout: 25000 });
 
         console.log('PASS ' + route + ' terminal tabs, Apple resolver, chart embed injection, watchlist and practice entry');
       } catch (error) {
