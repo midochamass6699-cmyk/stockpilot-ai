@@ -1,0 +1,32 @@
+name: Market terminal end-to-end checks
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'tests/market-terminal.e2e.cjs'
+      - '.github/workflows/market-terminal-e2e.yml'
+
+jobs:
+  market-terminal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install browser test runtime
+        run: |
+          mkdir -p /tmp/stockpilot-e2e
+          cd /tmp/stockpilot-e2e
+          npm init -y
+          npm install playwright
+          npx playwright install --with-deps chromium
+      - name: Test deployed market terminal
+        env:
+          NODE_PATH: /tmp/stockpilot-e2e/node_modules
+          BASE_URL: https://technofront.org
+        run: node tests/market-terminal.e2e.cjs
