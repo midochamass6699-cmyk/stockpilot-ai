@@ -2719,8 +2719,15 @@ main li + li { margin-top: 0.35em; }
  
  <div class="sp-terminal-workspace" id="sp-terminal-workspace">
   
-  <p class="sp-terminal-tip">Tipp: Geben Sie für genaue Ergebnisse die Börse an, z. B. TSX:SHOP oder NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Interaktiver Chart wird geladen…</div></div><p class="sp-terminal-disclaimer">Marktdaten von TradingView. Einige Börsenkurse können verzögert sein; Charts und historische Kursdaten bleiben verfügbar.</p>
-  <div class="sp-terminal-tools" id="sp-terminal-tools">
+  <p class="sp-terminal-tip">Tipp: Geben Sie für genaue Ergebnisse die Börse an, z. B. TSX:SHOP oder NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Interaktiver Chart wird geladen…</div></div><p class="sp-terminal-disclaimer">TradingView stellt die eingebetteten Charts und technischen Indikatoren bereit. Die Verzögerung hängt von Börse und Datenberechtigung ab; einige Kurse sind verzögert. Prüfen Sie die Statusanzeige im Widget.</p>
+ <div class="sp-terminal-data-status" aria-label="Datenquellen und Aktualisierungsfrequenz">
+    <div class="sp-terminal-data-status-head"><strong>DATENQUELLEN UND AKTUALISIERUNG</strong><span>Mit den aktuellen Website-Verbindungen abgeglichen</span></div>
+    <div class="sp-terminal-data-card"><strong>Charts und technische Indikatoren</strong><p>Eingebettete TradingView-Widgets. Die Kursverzögerung hängt von Börse und Datenberechtigung ab; einige Märkte liefern verzögerte Kurse. Echtzeitdaten sind nicht garantiert. Prüfen Sie die Statusanzeige im Widget.</p></div>
+    <div class="sp-terminal-data-card"><strong>Aktienfilter und Unternehmensübersicht</strong><p>Öffentliche Yahoo-Finance-Screener und tägliche Kursdaten über yfinance. Tageskerzen auf Basis der letzten abgeschlossenen Handelssitzung. Der Scanner ist werktags geplant; der tatsächliche Dateizeitstempel steht unten.</p><small id="sp-terminal-snapshot-time">Snapshot-Zeitstempel wird geladen…</small></div>
+    <div class="sp-terminal-data-card"><strong>Unternehmensfundamentaldaten</strong><p>SEC EDGAR Company Facts über den StockPilot SEC Worker, nur bei exakter Übereinstimmung mit einem US-Emittenten. Daten aus Unternehmensmeldungen; nicht in Echtzeit.</p></div>
+    <div class="sp-terminal-data-card"><strong>Krypto-Listen und Charts</strong><p>CoinGecko liefert die Krypto-Rangliste. Die Kursdiagramme verwenden separate TradingView-Widgets. Die API-Daten werden beim Laden der Seite abgerufen; die Aktualisierungsfrequenz hängt vom Anbieter ab.</p></div>
+  </div>
+ <div class="sp-terminal-tools" id="sp-terminal-tools">
    
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-0" role="tabpanel">
     <h3>Gespeicherte Symbole</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-watch-input" type="text" placeholder="Symbol (z. B. AAPL)" aria-label="Symbol (z. B. AAPL)"><button class="primary" id="sp-terminal-watch-add" type="button">HINZUFÜGEN</button></div><div id="sp-terminal-watch-list" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">Noch keine Symbole gespeichert. Fügen Sie oben eines hinzu.</p></div>
@@ -3241,6 +3248,17 @@ main li + li { margin-top: 0.35em; }
 #market-terminal:fullscreen .sp-terminal-workspace,#market-terminal.is-terminal-fullscreen .sp-terminal-workspace{max-height:none!important;overflow:visible!important}
 #market-terminal.is-terminal-fullscreen{position:fixed!important;inset:0!important}
 @media(max-width:700px){#market-terminal:fullscreen .sp-terminal-chart,#market-terminal.is-terminal-fullscreen .sp-terminal-chart{height:58vh!important;min-height:320px!important}}
+
+.sp-terminal-data-status{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0;padding:12px;border:1px solid #334155;border-radius:10px;background:#101b2c}
+.sp-terminal-data-status-head{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.sp-terminal-data-status-head strong{font-size:11px;letter-spacing:.07em;color:#f2c94c}
+.sp-terminal-data-status-head span{font-size:10px;color:#94a3b8}
+.sp-terminal-data-card{min-width:0;padding:10px;border:1px solid #334155;border-radius:8px;background:#0b1220}
+.sp-terminal-data-card strong{display:block;margin-bottom:5px;color:#e7eef8;font-size:11px}
+.sp-terminal-data-card p{margin:0;color:#b7c4d5;font-size:10px;line-height:1.5}
+.sp-terminal-data-card small{display:block;margin-top:7px;color:#f2c94c;font-size:10px;line-height:1.4}
+@media(max-width:700px){.sp-terminal-data-status{grid-template-columns:1fr}.sp-terminal-data-status-head{align-items:flex-start;flex-direction:column}}
+
 </style>
 <script id="sp-market-terminal-script">
 (function(){
@@ -3345,12 +3363,13 @@ main li + li { margin-top: 0.35em; }
 <script id="sp-terminal-tools-script">
 (function(){
  const root=document.getElementById('sp-terminal-tools');if(!root||root.dataset.ready)return;root.dataset.ready='1';
- const lang="de";const labels={"emptyWatch":"Noch keine Symbole gespeichert. Fügen Sie oben eines hinzu.","emptyPractice":"Keine Übungspositionen gespeichert.","remove":"ENTFERNEN","cost":"Simulierter Einsatz","companyHint":"Wählen Sie einen Wert aus dem Filter oder laden Sie oben ein Symbol.","units":"Stückzahl","entry":"Einstiegspreis","techHint":"Technische Analyse des ausgewählten Symbols. TradingView-Daten können verzögert sein."};
+ const lang="de";const labels={snapshotGenerated:"Snapshot erstellt",latestSession:"Letzte tägliche Kurssitzung",snapshotUnavailable:"Zeitstempel des Snapshots nicht verfügbar","emptyWatch":"Noch keine Symbole gespeichert. Fügen Sie oben eines hinzu.","emptyPractice":"Keine Übungspositionen gespeichert.","remove":"ENTFERNEN","cost":"Simulierter Einsatz","companyHint":"Wählen Sie einen Wert aus dem Filter oder laden Sie oben ein Symbol.","units":"Stückzahl","entry":"Einstiegspreis","techHint":"Technische Analyse des ausgewählten Symbols. TradingView-Daten können verzögert sein."};
  const $=id=>document.getElementById(id);const market=$('sp-terminal-market'),symbol=$('sp-terminal-symbol'),compare=$('sp-terminal-compare'),load=$('sp-terminal-load');
  const safe=(v)=>String(v==null?'':v);const esc=(v)=>safe(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const currency=v=>safe(v||'USD');const fmt=(v,d=2)=>Number.isFinite(Number(v))?Number(v).toFixed(d):'—';
  let picks={main:[],penny:[]};let activeTicker='AAPL';let activeExchange='NASDAQ';
- const fetchPicks=fetch('/data/picks.json').then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.'; });
+ function updateSnapshotStatus(data){const host=$('sp-terminal-snapshot-time');if(!host)return;const dates=[...(Array.isArray(data.main)?data.main:[]),...(Array.isArray(data.penny)?data.penny:[])].map(x=>x.price_date).filter(Boolean).sort();const generated=data.updated_at?new Date(data.updated_at).toLocaleString():'—';host.textContent=labels.snapshotGenerated+': '+generated+' · '+labels.latestSession+': '+(dates.length?dates[dates.length-1]:'—');}
+ const fetchPicks=fetch('/data/picks.json').then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};updateSnapshotStatus(d);renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.';const status=$('sp-terminal-snapshot-time');if(status)status.textContent=labels.snapshotUnavailable; });
  function currentSymbol(){const raw=(symbol?.value||activeTicker).trim().toUpperCase();if(raw.includes(':'))return raw;const ex=market?.value||activeExchange;return (ex==='BINANCE'?'BINANCE':ex)+':'+raw;}
  function loadTicker(ticker,exchange){if(!ticker)return;const m=$('sp-terminal-market'),s=$('sp-terminal-symbol');const ex=String(exchange||'NASDAQ').toUpperCase();if(m)m.value=ex.includes('NYSE')?'NYSE':ex.includes('TSX')?'TSX':ex.includes('BINANCE')?'BINANCE':'NASDAQ';if(s)s.value=ticker;activeTicker=ticker;activeExchange=m?.value||'NASDAQ';const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}if(load)load.click();renderCompany();}
  const toolButtons=document.querySelectorAll('#market-terminal [data-sp-tool]');const toolPanels=root.querySelectorAll('.sp-terminal-tool-panel');function activateTool(n){toolButtons.forEach(b=>{const active=b.dataset.spTool===String(n);b.setAttribute('aria-selected',String(active));b.setAttribute('tabindex',active?'0':'-1');});toolPanels.forEach(p=>p.classList.toggle('is-active',p.id==='sp-terminal-tool-panel-'+n));if(String(n)==='2')renderTechnical();if(String(n)==='3')renderCompany();}toolButtons.forEach(btn=>btn.addEventListener('click',()=>activateTool(btn.dataset.spTool)));activateTool(0);
@@ -3737,7 +3756,7 @@ main li + li { margin-top: 0.35em; }
 <p>
       The cryptocurrency list ranks the available coins by reported
       24-hour trading volume in US dollars. Stock information is
-      supplied by Alpha Vantage and cryptocurrency market information
+      supplied by Yahoo Finance (öffentliche Screeners und tägliche Kursdaten über yfinance) and cryptocurrency market information
       is supplied by CoinGecko.
     </p>
 <p>
@@ -6640,7 +6659,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
 <p>
       The cryptocurrency list ranks the available coins by reported
       24-hour trading volume in US dollars. Stock information is
-      supplied by Alpha Vantage and cryptocurrency market information
+      supplied by Yahoo Finance (öffentliche Screeners und tägliche Kursdaten über yfinance) and cryptocurrency market information
       is supplied by CoinGecko.
     </p>
 <p>
