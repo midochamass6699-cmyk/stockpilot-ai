@@ -2595,6 +2595,32 @@ input, select, textarea, button {
 #free-left-banner .tf-live-state{padding:7px 8px;border:1px solid rgba(133,174,222,.2);border-radius:7px;color:#C3D4E8;font-size:10px;line-height:1.4;text-align:center}
 #free-left-banner .tf-live-updated{margin-top:5px;color:#91A9C5;font-size:9px;text-align:center}
 </style>
+
+<style id="tf-left-market-column-full-height">
+/* Keep the complete left stock-watch panel equal in height to the market terminal. */
+@media (min-width: 761px) {
+  .live-trading-desk .tf-two-panel-grid > .tf-market-collection {
+    align-self: stretch !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+  .live-trading-desk .tf-two-panel-grid > .tf-market-collection > .trading-desk-grid {
+    flex: 1 1 auto !important;
+    min-height: 100% !important;
+    height: auto !important;
+    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+    align-content: stretch !important;
+  }
+  .live-trading-desk .tf-two-panel-grid > .tf-market-collection > .trading-desk-grid > .trading-panel {
+    min-height: 0 !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
