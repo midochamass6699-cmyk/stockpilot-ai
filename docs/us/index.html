@@ -2839,8 +2839,15 @@ input, select, textarea, button {
   
   <p class="sp-terminal-tip">Tip: enter an exchange prefix for precise results, e.g. TSX:SHOP or NYSE:IBM.</p>
   <div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Loading interactive chart…</div></div>
-  <p class="sp-terminal-disclaimer">Market data is supplied by TradingView. Some exchange quotes may be delayed; chart access and historical price views remain available.</p>
-  <div class="sp-terminal-tools" id="sp-terminal-tools">
+  <p class="sp-terminal-disclaimer">TradingView supplies the embedded charts and technical widgets. Quote timing varies by exchange and data entitlement; some quotes are delayed. Check the widget's status line.</p>
+ <div class="sp-terminal-data-status" aria-label="Data sources and update frequency">
+    <div class="sp-terminal-data-status-head"><strong>DATA SOURCES &amp; UPDATE FREQUENCY</strong><span>Verified against current site connections</span></div>
+    <div class="sp-terminal-data-card"><strong>Charts &amp; technical indicators</strong><p>TradingView embedded widgets. Quote timing varies by exchange and market-data entitlement; some markets are delayed. Real-time data is not guaranteed. Check the widget's own market-status label.</p></div>
+    <div class="sp-terminal-data-card"><strong>Stock screener &amp; company snapshot</strong><p>Yahoo Finance public screeners and daily price history via yfinance. Daily candles based on the previous completed trading session. The scanner is scheduled on weekdays; the actual file timestamp is shown below.</p><small id="sp-terminal-snapshot-time">Loading snapshot timestamp…</small></div>
+    <div class="sp-terminal-data-card"><strong>Company fundamentals</strong><p>SEC EDGAR Company Facts through StockPilot's SEC Worker, only when an exact U.S. filing match exists. Filing-based figures; not real-time.</p></div>
+    <div class="sp-terminal-data-card"><strong>Crypto lists &amp; charts</strong><p>CoinGecko is the primary source for crypto rankings. Supporting research modules can fall back to CryptoCompare or CoinPaprika. API data is fetched when the page loads; provider update frequency varies. Crypto charts use separate TradingView widgets.</p></div>
+  </div>
+ <div class="sp-terminal-tools" id="sp-terminal-tools">
    
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-0" role="tabpanel">
     <h3>Your saved symbols</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-watch-input" type="text" placeholder="Ticker (e.g. AAPL)" aria-label="Ticker (e.g. AAPL)"><button class="primary" id="sp-terminal-watch-add" type="button">ADD</button></div><div id="sp-terminal-watch-list" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">No saved symbols yet. Add a ticker above.</p></div>
@@ -3380,6 +3387,17 @@ input, select, textarea, button {
 #market-terminal:fullscreen .sp-terminal-workspace,#market-terminal.is-terminal-fullscreen .sp-terminal-workspace{max-height:none!important;overflow:visible!important}
 #market-terminal.is-terminal-fullscreen{position:fixed!important;inset:0!important}
 @media(max-width:700px){#market-terminal:fullscreen .sp-terminal-chart,#market-terminal.is-terminal-fullscreen .sp-terminal-chart{height:58vh!important;min-height:320px!important}}
+
+.sp-terminal-data-status{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0;padding:12px;border:1px solid #334155;border-radius:10px;background:#101b2c}
+.sp-terminal-data-status-head{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.sp-terminal-data-status-head strong{font-size:11px;letter-spacing:.07em;color:#f2c94c}
+.sp-terminal-data-status-head span{font-size:10px;color:#94a3b8}
+.sp-terminal-data-card{min-width:0;padding:10px;border:1px solid #334155;border-radius:8px;background:#0b1220}
+.sp-terminal-data-card strong{display:block;margin-bottom:5px;color:#e7eef8;font-size:11px}
+.sp-terminal-data-card p{margin:0;color:#b7c4d5;font-size:10px;line-height:1.5}
+.sp-terminal-data-card small{display:block;margin-top:7px;color:#f2c94c;font-size:10px;line-height:1.4}
+@media(max-width:700px){.sp-terminal-data-status{grid-template-columns:1fr}.sp-terminal-data-status-head{align-items:flex-start;flex-direction:column}}
+
 </style>
 <script id="sp-market-terminal-script">
 (function(){
@@ -3476,12 +3494,13 @@ input, select, textarea, button {
 <script id="sp-terminal-tools-script">
 (function(){
  const root=document.getElementById('sp-terminal-tools');if(!root||root.dataset.ready)return;root.dataset.ready='1';
- const lang="en";const labels={"emptyWatch":"No saved symbols yet. Add a ticker above.","emptyPractice":"No practice positions saved.","remove":"REMOVE","cost":"Practice cost basis","companyHint":"Choose a stock from the screener or load a symbol above.","units":"Units","entry":"Entry price","techHint":"Technical analysis for the selected symbol. TradingView data may be delayed."};
+ const lang="en";const labels={snapshotGenerated:"Snapshot generated",latestSession:"Latest daily price session",snapshotUnavailable:"Snapshot timestamp unavailable","emptyWatch":"No saved symbols yet. Add a ticker above.","emptyPractice":"No practice positions saved.","remove":"REMOVE","cost":"Practice cost basis","companyHint":"Choose a stock from the screener or load a symbol above.","units":"Units","entry":"Entry price","techHint":"Technical analysis for the selected symbol. TradingView data may be delayed."};
  const $=id=>document.getElementById(id);const market=$('sp-terminal-market'),symbol=$('sp-terminal-symbol'),compare=$('sp-terminal-compare'),load=$('sp-terminal-load');
  const safe=(v)=>String(v==null?'':v);const esc=(v)=>safe(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const currency=v=>safe(v||'USD');const fmt=(v,d=2)=>Number.isFinite(Number(v))?Number(v).toFixed(d):'—';
  let picks={main:[],penny:[]};let activeTicker='AAPL';let activeExchange='NASDAQ';
- const fetchPicks=fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.'; });
+ function updateSnapshotStatus(data){const host=$('sp-terminal-snapshot-time');if(!host)return;const dates=[...(Array.isArray(data.main)?data.main:[]),...(Array.isArray(data.penny)?data.penny:[])].map(x=>x.price_date).filter(Boolean).sort();const generated=data.updated_at?new Date(data.updated_at).toLocaleString():'—';host.textContent=labels.snapshotGenerated+': '+generated+' · '+labels.latestSession+': '+(dates.length?dates[dates.length-1]:'—');}
+ const fetchPicks=fetch('/data/picks.json?t=' + Date.now(), {cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};updateSnapshotStatus(d);renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.';const status=$('sp-terminal-snapshot-time');if(status)status.textContent=labels.snapshotUnavailable; });
  function currentSymbol(){const raw=(symbol?.value||activeTicker).trim().toUpperCase();if(raw.includes(':'))return raw;const ex=market?.value||activeExchange;return (ex==='BINANCE'?'BINANCE':ex)+':'+raw;}
  function loadTicker(ticker,exchange){if(!ticker)return;const m=$('sp-terminal-market'),s=$('sp-terminal-symbol');const ex=String(exchange||'NASDAQ').toUpperCase();if(m)m.value=ex.includes('NYSE')?'NYSE':ex.includes('TSX')?'TSX':ex.includes('BINANCE')?'BINANCE':'NASDAQ';if(s)s.value=ticker;activeTicker=ticker;activeExchange=m?.value||'NASDAQ';const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}if(load)load.click();renderCompany();}
  const toolButtons=document.querySelectorAll('#market-terminal [data-sp-tool]');const toolPanels=root.querySelectorAll('.sp-terminal-tool-panel');function activateTool(n){toolButtons.forEach(b=>{const active=b.dataset.spTool===String(n);b.setAttribute('aria-selected',String(active));b.setAttribute('tabindex',active?'0':'-1');});toolPanels.forEach(p=>p.classList.toggle('is-active',p.id==='sp-terminal-tool-panel-'+n));if(String(n)==='2')renderTechnical();if(String(n)==='3')renderCompany();}toolButtons.forEach(btn=>btn.addEventListener('click',()=>activateTool(btn.dataset.spTool)));activateTool(0);
