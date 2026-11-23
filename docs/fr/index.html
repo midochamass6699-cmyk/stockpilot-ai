@@ -2876,7 +2876,14 @@ main p, main li, .section-head p, .updated, .card-meta {
   font-weight:850;
   letter-spacing:-.02em;
 }
-.fr-welcome-banner p{
+.fr-welcome-banner .fr-welcome-tagline{
+  margin:3px 0 5px;
+  color:#f4d58a;
+  font-size:clamp(13px,1.35vw,16px);
+  line-height:1.3;
+  font-weight:750;
+}
+.fr-welcome-banner p:not(.fr-welcome-tagline){
   margin:4px 0 0;
   color:#f3f6f8;
   font-size:clamp(12px,1.2vw,14px);
@@ -2889,8 +2896,9 @@ main p, main li, .section-head p, .updated, .card-meta {
 }
 </style>
 <section class="fr-welcome-banner" aria-labelledby="fr-welcome-title">
-  <h1 id="fr-welcome-title">Bienvenue chez StockPilot AI</h1>
-<a class="tf-free-tools-cta" href="#market-terminal">Découvrir nos outils gratuits pour les traders <span aria-hidden="true">↗</span></a>
+  <h1 id="fr-welcome-title">Bienvenue chez Technofront</h1>
+  <p class="fr-welcome-tagline">Parce que l’avenir est clair.</p>
+  <a class="tf-free-tools-cta" href="#market-terminal">Découvrir nos outils gratuits pour les traders <span aria-hidden="true">↗</span></a>
   <p>Actions, penny stocks et cryptomonnaies à surveiller.</p>
 </section>
 
