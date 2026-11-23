@@ -8504,7 +8504,7 @@ body{font-size:16px}
  function add(html,who){const el=document.createElement('div');el.className='tf-stocky-msg'+(who?' '+who:'');el.innerHTML=html;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;}
  function showStocks(kind){
   const arr=picks&&Array.isArray(picks[kind])?picks[kind]:[];
-  if(!arr.length)return '<p>I can't access the picks right now. Please try again later.</p>';
+  if(!arr.length)return '<p>I cannot access the picks right now. Please try again later.</p>';
   const title=kind==='penny'?'Current penny stock picks':'Current top stock picks';
   let out='<p><strong>'+title+'</strong></p>';
   arr.slice(0,3).forEach((s,i)=>{
@@ -8518,7 +8518,7 @@ body{font-size:16px}
  }
  function answer(q){
   const t=q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-  if(/bonjour|salut|allo|bonsoir|hello/.test(t))return '<p>Hello! I can help with today's picks, penny stocks, and Technofront tools.</p>';
+  if(/bonjour|salut|allo|bonsoir|hello/.test(t))return '<p>Hello! I can help with the current picks, penny stocks, and Technofront tools.</p>';
   if(/penny|petite capitalisation|small cap/.test(t))return showStocks('penny');
   if(/top|princip|selection|actions a surveiller|meilleures actions|stocks/.test(t))return showStocks('main');
   const tokens=q.toUpperCase().split(/[^A-Z0-9.]+/);
