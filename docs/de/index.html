@@ -3296,23 +3296,52 @@ main li + li { margin-top: 0.35em; }
   return fallback||'NASDAQ';
  }
  async function normalize(value,exchange){
-  const raw=(value||'').trim().toUpperCase().replace(/\\s+/g,'');
+  const raw=(value||'').trim();
   if(!raw)return '';
-  if(raw.includes(':'))return raw;
-  const name=raw.replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
+  if(raw.includes(':'))return raw.toUpperCase().replace(/\\s+/g,'');
+  const cleanName=raw.toUpperCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[.,]/g,' ').replace(/\\s+/g,' ').trim();
   const aliases={'APPLE':'AAPL','APPLE INC':'AAPL','APPLE INCORPORATED':'AAPL','BOMBARDIER':'BBD.B','BOMBARDIER INC':'BBD.B','BOMBARDIER INCORPORATED':'BBD.B','BBD':'BBD.B'};
   await picksExchangeReady;
-  const resolved=aliases[name]||picksCompanyMap[name]||raw;
-  const resolvedExchange=resolved==='BBD.B'?'TSX':(picksExchangeMap[resolved]||tvExchange(exchange,'NASDAQ'));
-  return resolvedExchange+':'+resolved;
+  const known=aliases[cleanName]||picksCompanyMap[cleanName];
+  if(known){
+    const knownExchange=known==='BBD.B'?'TSX':(picksExchangeMap[known]||tvExchange(exchange,'NASDAQ'));
+    return knownExchange+':'+known;
+  }
+  if(String(exchange||'').toUpperCase()==='BINANCE'||/USDT$/i.test(raw)){
+    return 'BINANCE:'+raw.toUpperCase().replace(/\\s+/g,'');
+  }
+  const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev');
+  url.searchParams.set('action','search');
+  url.searchParams.set('q',raw);
+  const response=await fetch(url.toString());
+  if(!response.ok)throw new Error('Company search is temporarily unavailable. Try the ticker symbol instead.');
+  const payload=await response.json();
+  const matches=Array.isArray(payload.data)?payload.data:[];
+  if(!matches.length)throw new Error('No stock listing was found for "'+raw+'". Check the company name or enter its ticker.');
+  const key=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[.,]/g,' ').replace(/\\s+/g,' ').trim();
+  const exactSymbol=matches.find(item=>key(item.symbol)===cleanName);
+  const exactName=matches.find(item=>key(item.name)===cleanName);
+  const selectedMarket=tvExchange(exchange,'');
+  const marketMatch=matches.find(item=>tvExchange(item.exchange||item.mic_code,'')===selectedMarket);
+  const stock=exactSymbol||exactName||marketMatch||matches[0];
+  const resolvedSymbol=String(stock.symbol||'').trim().toUpperCase();
+  if(!resolvedSymbol)throw new Error('The company search returned a listing without a ticker symbol.');
+  const resolvedExchange=tvExchange(stock.exchange||stock.mic_code,exchange||'NASDAQ');
+  return resolvedExchange+':'+resolvedSymbol;
  }
  async function draw(){
   const rawSymbol=symbol.value.trim();
   if(!rawSymbol){symbol.focus();return;}
-  const ticker=await normalize(rawSymbol,market.value);
-  if(!ticker)return;
-  const compareTicker=compare.value.trim()?await normalize(compare.value,market.value):'';
-  chart.innerHTML='<div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div><div style="height:32px;display:flex;align-items:center;justify-content:center"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" style="font:11px Arial;color:#94a3b8;text-decoration:none">Charting powered by TradingView</a></div></div>';
+  let ticker;
+  try{ticker=await normalize(rawSymbol,market.value);}
+  catch(error){chart.replaceChildren();const message=document.createElement('div');message.style.cssText='padding:24px;color:#b91c1c;font:14px/1.5 Arial,sans-serif';message.textContent=error.message||'Unable to resolve this company name.';chart.appendChild(message);return;}
+   if(!ticker)return;
+  let compareTicker='';
+  if(compare.value.trim()){
+   try{compareTicker=await normalize(compare.value,market.value);}
+   catch(error){chart.replaceChildren();const message=document.createElement('div');message.style.cssText='padding:24px;color:#b91c1c;font:14px/1.5 Arial,sans-serif';message.textContent='Compare symbol: '+(error.message||'Unable to resolve company name.');chart.appendChild(message);return;}
+  }
+   chart.innerHTML='<div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div><div style="height:32px;display:flex;align-items:center;justify-content:center"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank" style="font:11px Arial;color:#94a3b8;text-decoration:none">Charting powered by TradingView</a></div></div>';
   const host=chart.querySelector('.tradingview-widget-container__widget');
   const script=document.createElement('script');
   script.type='text/javascript';script.async=true;
