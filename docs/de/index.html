@@ -3439,10 +3439,13 @@ main li + li { margin-top: 0.35em; }
  function renderScreener(){const host=$('sp-terminal-screen-results');if(!host)return;const term=$('sp-terminal-screen-search').value.trim().toLowerCase(),kind=$('sp-terminal-screen-kind').value;const list=allPicks().filter(x=>(kind==='all'||x._kind===kind)&&(!term||safe(x.ticker).toLowerCase().includes(term)||safe(x.company).toLowerCase().includes(term))).slice(0,12);host.replaceChildren();if(!list.length){host.textContent='No matching symbols in the current snapshot.';return;}list.forEach(x=>{const card=document.createElement('div');card.className='sp-terminal-tool-card';const info=document.createElement('div'),name=document.createElement('strong'),meta=document.createElement('small');name.textContent=x.ticker+' · '+safe(x.company);meta.textContent=currency(x.currency)+' '+fmt(x.price)+' · '+(Number.isFinite(Number(x.change_percent))?fmt(x.change_percent)+'%':'—')+' · '+safe(x.exchange);info.append(name,meta);const open=document.createElement('button');open.textContent='CHART';open.addEventListener('click',()=>loadTicker(x.ticker,x.exchange));card.append(info,open);host.append(card);});}
  $('sp-terminal-screen-search').addEventListener('input',renderScreener);$('sp-terminal-screen-kind').addEventListener('change',renderScreener);
  function selectedPick(){const raw=(symbol?.value||activeTicker).trim().toUpperCase().split(':').pop();return allPicks().find(x=>safe(x.ticker).toUpperCase()===raw);}
- const terminalQuoteCache=new Map();
+ const terminalQuoteCache=new Map(),terminalQuotePending=new Map(),terminalQuoteFailures=new Set();
  async function fetchTerminalQuote(ticker,exchange){
   const key=String(exchange||'NASDAQ').toUpperCase()+':'+String(ticker||'').toUpperCase();
   if(terminalQuoteCache.has(key))return terminalQuoteCache.get(key);
+  if(terminalQuotePending.has(key))return terminalQuotePending.get(key);
+  if(terminalQuoteFailures.has(key))throw new Error('Quote unavailable for '+key+'. Reload the page to retry.');
+  const request=(async()=>{
   const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev/');
   url.searchParams.set('action','quote');url.searchParams.set('symbol',String(ticker||'').toUpperCase());
   const ex=String(exchange||'NASDAQ').toUpperCase();url.searchParams.set('exchange',ex);
@@ -3450,6 +3453,7 @@ main li + li { margin-top: 0.35em; }
   const response=await fetch(url.toString());if(!response.ok)throw new Error('Quote service unavailable.');
   const quote=await response.json();if(quote.status==='error'||quote.code||!Number.isFinite(Number(quote.close)))throw new Error(quote.message||'No latest quote is available for this listing.');
   terminalQuoteCache.set(key,quote);return quote;
+  })();terminalQuotePending.set(key,request);try{return await request;}catch(error){terminalQuoteFailures.add(key);throw error;}finally{terminalQuotePending.delete(key);}
  }
  let companyRenderSequence=0;
  async function renderCompany(){
@@ -3474,9 +3478,31 @@ main li + li { margin-top: 0.35em; }
   }
  }
  function renderTechnical(){const host=$('sp-terminal-ta-widget');if(!host||host.dataset.loaded)return;host.dataset.loaded='1';const sym=currentSymbol();host.replaceChildren();const box=document.createElement('div');box.className='tradingview-widget-container';box.style.width='100%';box.style.height='100%';const widget=document.createElement('div');widget.className='tradingview-widget-container__widget';box.append(widget);const script=document.createElement('script');script.async=true;script.src='https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js';script.textContent=JSON.stringify({interval:'1D',width:'100%',isTransparent:true,height:'100%',symbol:sym,showIntervalTabs:true,displayMode:'single',locale:lang,colorTheme:'dark'});box.append(script);host.append(box);}
- function renderPaper(){const host=$('sp-terminal-paper-list'),items=getSaved(paperKey,[]);host.replaceChildren();if(!items.length){host.textContent=labels.emptyPractice;return;}let total=0;const table=document.createElement('div');table.className='sp-terminal-tool-table-wrap';const t=document.createElement('table');const head=document.createElement('thead');head.innerHTML='<tr><th>SYMBOL</th><th>'+esc(labels.units)+'</th><th>'+esc(labels.entry)+'</th><th>'+esc(labels.cost)+'</th><th></th></tr>';t.append(head);const body=document.createElement('tbody');items.forEach((x,i)=>{const cost=Number(x.units)*Number(x.entry);total+=cost;const tr=document.createElement('tr');[x.ticker,fmt(x.units,4),fmt(x.entry,4),currency(x.currency)+' '+fmt(cost)].forEach(v=>{const td=document.createElement('td');td.textContent=safe(v);tr.append(td);});const td=document.createElement('td'),del=document.createElement('button');del.textContent='×';del.setAttribute('aria-label',labels.remove);del.addEventListener('click',()=>{items.splice(i,1);save(paperKey,items);renderPaper();});td.append(del);tr.append(td);body.append(tr);});t.append(body);table.append(t);const summary=document.createElement('p');summary.textContent=labels.cost+': '+total.toFixed(2)+' (practice only)';host.append(table,summary);}
+ function renderPaper(){
+  const host=$('sp-terminal-paper-list'),items=getSaved(paperKey,[]);host.replaceChildren();
+  if(!items.length){host.textContent=labels.emptyPractice;return;}
+  let totalCost=0,totalValue=0,priced=0;
+  const table=document.createElement('div');table.className='sp-terminal-tool-table-wrap';
+  const t=document.createElement('table'),head=document.createElement('thead');
+  head.innerHTML='<tr><th>SYMBOL</th><th>'+esc(labels.units)+'</th><th>'+esc(labels.entry)+'</th><th>LATEST PRICE</th><th>MARKET VALUE</th><th>P/L</th><th></th></tr>';
+  t.append(head);const body=document.createElement('tbody');
+  items.forEach((x,i)=>{
+   const cost=Number(x.units)*Number(x.entry);totalCost+=cost;
+   const key=String(x.exchange||'NASDAQ').toUpperCase()+':'+String(x.ticker||'').toUpperCase();
+   const q=terminalQuoteCache.get(key),price=q?Number(q.close):NaN,value=Number.isFinite(price)?price*Number(x.units):NaN,pnl=Number.isFinite(value)?value-cost:NaN;
+   if(Number.isFinite(value)){totalValue+=value;priced++;}
+   const values=[x.ticker,fmt(x.units,4),currency(x.currency)+' '+fmt(x.entry),Number.isFinite(price)?currency(q.currency||x.currency)+' '+fmt(price):(terminalQuoteFailures.has(key)?'Unavailable':'Loading…'),Number.isFinite(value)?currency(q.currency||x.currency)+' '+fmt(value):'—',Number.isFinite(pnl)?(pnl>=0?'+':'')+currency(q.currency||x.currency)+' '+fmt(pnl):'—'];
+   const tr=document.createElement('tr');values.forEach(v=>{const td=document.createElement('td');td.textContent=safe(v);tr.append(td);});
+   const td=document.createElement('td'),del=document.createElement('button');del.textContent='×';del.setAttribute('aria-label',labels.remove);del.addEventListener('click',()=>{items.splice(i,1);save(paperKey,items);renderPaper();});td.append(del);tr.append(td);body.append(tr);
+  });
+  t.append(body);table.append(t);
+  const summary=document.createElement('p');summary.textContent=labels.cost+': '+totalCost.toFixed(2)+' · Latest value: '+(priced===items.length?totalValue.toFixed(2):'partial quote data')+' · Unrealized P/L: '+(priced===items.length?(totalValue-totalCost>=0?'+':'')+(totalValue-totalCost).toFixed(2):'—')+' (practice only)';
+  host.append(table,summary);
+  const missing=items.filter(x=>{const key=String(x.exchange||'NASDAQ').toUpperCase()+':'+String(x.ticker||'').toUpperCase();return !terminalQuoteCache.has(key)&&!terminalQuoteFailures.has(key);});
+  if(missing.length)Promise.all(missing.map(x=>fetchTerminalQuote(x.ticker,x.exchange).catch(()=>null))).then(()=>renderPaper());
+ }
  $('sp-terminal-paper-add').addEventListener('click',async()=>{const raw=$('sp-terminal-paper-symbol').value.trim(),units=Number($('sp-terminal-paper-units').value),entry=Number($('sp-terminal-paper-entry').value);if(!raw||!(units>0)||!(entry>0))return;const button=$('sp-terminal-paper-add');button.disabled=true;try{const resolved=await window.StockPilotResolveSymbol(raw,market?.value||'NASDAQ'),parts=resolved.split(':'),ticker=parts.slice(1).join(':'),exchange=parts[0];const items=getSaved(paperKey,[]);const known=allPicks().find(x=>safe(x.ticker).toUpperCase()===ticker);items.push({ticker,exchange,units,entry,currency:known?.currency||((exchange==='TSX'||exchange==='TSXV')?'CAD':'USD')});save(paperKey,items);$('sp-terminal-paper-symbol').value='';$('sp-terminal-paper-units').value='';$('sp-terminal-paper-entry').value='';renderPaper();}catch(error){$('sp-terminal-paper-symbol').setCustomValidity(error.message);$('sp-terminal-paper-symbol').reportValidity();$('sp-terminal-paper-symbol').setCustomValidity('');}finally{button.disabled=false;}});renderPaper();
- function syncPracticeDefaults(){const parts=currentSymbol().split(':'),exchange=parts[0]||'NASDAQ',ticker=parts.slice(1).join(':');const paperSymbol=$('sp-terminal-paper-symbol'),entry=$('sp-terminal-paper-entry');if(paperSymbol&&!paperSymbol.value)paperSymbol.value=ticker;if(entry&&!entry.value&&ticker)fetchTerminalQuote(ticker,exchange).then(q=>{if(!entry.value)entry.value=String(q.close);}).catch(()=>{});}
+ function syncPracticeDefaults(){const parts=currentSymbol().split(':'),exchange=parts[0]||'NASDAQ',ticker=parts.slice(1).join(':');const paperSymbol=$('sp-terminal-paper-symbol'),entry=$('sp-terminal-paper-entry');if(paperSymbol)paperSymbol.value=ticker;if(entry&&!entry.value&&ticker)fetchTerminalQuote(ticker,exchange).then(q=>{if(!entry.value)entry.value=String(q.close);}).catch(()=>{});}
  symbol?.addEventListener('change',()=>{activeTicker=symbol.value.trim().toUpperCase();activeExchange=market?.value||activeExchange;renderCompany();syncPracticeDefaults();const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}});market?.addEventListener('change',()=>{activeExchange=market.value;syncPracticeDefaults();const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}});
  fetchPicks;
 })();
