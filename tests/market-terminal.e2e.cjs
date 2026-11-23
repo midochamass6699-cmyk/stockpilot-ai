@@ -91,6 +91,27 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
     } finally {
       await page.close();
     }
+
+    // Verify the standalone market dashboard can read the same published feed.
+    const appPage = await browser.newPage();
+    try {
+      await appPage.goto(BASE + '/app/index.html', { waitUntil: 'domcontentloaded', timeout: 45000 });
+      const feed = await appPage.evaluate(async () => {
+        const response = await fetch('../data/picks.json?e2e=' + Date.now(), { cache: 'no-store' });
+        if (!response.ok) return { status: response.status };
+        const data = await response.json();
+        return { status: response.status, main: Array.isArray(data.main) ? data.main : [], penny: Array.isArray(data.penny) ? data.penny : [] };
+      });
+      if (feed.status !== 200) throw new Error('Standalone dashboard stock feed returned HTTP ' + feed.status);
+      if (!feed.main.length && !feed.penny.length) throw new Error('Standalone dashboard feed returned no stock rows');
+      await appPage.waitForFunction(() => document.querySelectorAll('#mainPicks .stock').length > 0, null, { timeout: 15000 });
+      console.log('PASS standalone /app/ dashboard stock feed and rendered picks');
+    } catch (error) {
+      failures.push('standalone /app/ dashboard: ' + (error && error.stack || error));
+      console.error('FAIL standalone /app/ dashboard: ' + (error && error.message || error));
+    } finally {
+      await appPage.close();
+    }
   } finally {
     await browser.close();
   }
