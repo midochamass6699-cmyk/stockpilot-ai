@@ -1,6 +1,6 @@
 {
   "provider": "GDELT Project",
-  "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
+  "attribution": "Headlines link to their original publishers. GDELT Project supplies the automated news-index data; each article remains credited to its publisher.",
   "fetched_at": "2026-11-23T22:27:24.473306+00:00",
   "updated_sections": [
     "markets",
@@ -100,36 +100,47 @@
         "source": "livemint.com",
         "published": "20261123T033000Z",
         "language": "English"
-      },
-      {
-        "title": "众赢财富通 ： 机构大盘股出清节奏或快于以往 _ 产业资讯 _ 行业 _ 中金在线",
-        "url": "http://hy.stock.cnfol.com/hangyejingcui/20261123/32429530.shtml",
-        "source": "hy.stock.cnfol.com",
-        "published": "20261123T033000Z",
-        "language": "Chinese"
-      },
-      {
-        "title": "A股开盘 ： 三大指数集体低开 ， 影视院线 、 光刻机 、 半导体板块跌幅居前",
-        "url": "https://stock.jrj.com.cn/2026/11/23092959227604.shtml",
-        "source": "stock.jrj.com.cn",
-        "published": "20261123T023000Z",
-        "language": "Chinese"
-      },
-      {
-        "title": "创业板指 、 深证成指翻红 ， CPO 、 元件板块涨幅居前 ， 新易盛涨超7 %",
-        "url": "https://stock.jrj.com.cn/2026/11/23094759227733.shtml",
-        "source": "stock.jrj.com.cn",
-        "published": "20261123T023000Z",
-        "language": "Chinese"
-      },
-      {
-        "title": "_ 贵州茅台 ( 600519 ) 股吧 _ 东方财富网股吧",
-        "url": "https://guba.eastmoney.com/o/news,600519,1799606113.html",
-        "source": "guba.eastmoney.com",
-        "published": "20261122T223000Z",
-        "language": "Chinese"
       }
     ],
-    "crypto": []
-  }
+    "crypto": [
+      {
+        "title": "U.S. files action to recover over $1 billion in cryptocurrency stolen in Binance hack",
+        "url": "https://www.reuters.com/legal/government/us-files-action-recover-over-1-billion-cryptocurrency-stolen-binance-hack-2026-11-23/",
+        "source": "reuters.com",
+        "published": "2026-11-23",
+        "language": "English"
+      },
+      {
+        "title": "Bitcoin's losing streak is second-longest ever, and some observers see more downside",
+        "url": "https://www.coindesk.com/latest-crypto-news?page=1368",
+        "source": "coindesk.com",
+        "published": "2026-11-23",
+        "language": "English"
+      },
+      {
+        "title": "Ethereum wallets holding $72 billion ETH are under threat of a future quantum attack",
+        "url": "https://www.coindesk.com/latest-crypto-news?page=1368",
+        "source": "coindesk.com",
+        "published": "2026-11-23",
+        "language": "English"
+      },
+      {
+        "title": "Strategy and Crypto Stocks Rally as Bitcoin Rebounds Past $63,000. Is the Jump Temporary?",
+        "url": "https://www.barrons.com/articles/bitcoin-prices-crypto-stock-strategy-robinhood-e5388148",
+        "source": "barrons.com",
+        "published": "2026-11-23",
+        "language": "English"
+      },
+      {
+        "title": "Crypto rebounds: Bitcoin reclaims $61,000, Ethereum eyes $1,750; analysts see potential for further recovery",
+        "url": "https://economictimes.indiatimes.com/markets/cryptocurrency/crypto-news/crypto-rebounds-bitcoin-reclaims-61000-ethereum-eyes-1750-analysts-see-potential-for-further-recovery/articleshow/136104511.cms",
+        "source": "economictimes.indiatimes.com",
+        "published": "2026-11-23",
+        "language": "English"
+      }
+    ]
+  },
+  "manual_seeded_sections": [
+    "crypto"
+  ]
 }
