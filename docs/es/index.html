@@ -2394,18 +2394,18 @@ main li + li { margin-top: 0.35em; }
   .catch(error => console.warn('StockPilot exchange lookup:',error));
  function tvExchange(exchange,fallback){
   const value=String(exchange||'').trim().toUpperCase();
-  if(value.includes('NASDAQ')||value.includes('NASDAQGS')||value.includes('NASDAQGM')||value.includes('NASDAQCM'))return 'NASDAQ';
-  if(value.includes('NYSE')||value.includes('NEW YORK'))return 'NYSE';
-  if(value==='TSX'||value.includes('TORONTO'))return 'TSX';
-  if(value.includes('TSXV')||value.includes('VENTURE'))return 'TSXV';
+  if(value.includes('NASDAQ')||value.includes('NASDAQGS')||value.includes('NASDAQGM')||value.includes('NASDAQCM')||value==='XNAS')return 'NASDAQ';
+  if(value.includes('NYSE')||value.includes('NEW YORK')||value==='XNYS')return 'NYSE';
+  if(value==='TSX'||value.includes('TORONTO')||value==='XTSE'||value==='XTSX')return 'TSX';
+  if(value.includes('TSXV')||value.includes('VENTURE')||value==='XTSX')return 'TSXV';
   if(value.includes('BINANCE'))return 'BINANCE';
   return fallback||'NASDAQ';
  }
  async function normalize(value,exchange){
   const raw=(value||'').trim();
   if(!raw)return '';
-  if(raw.includes(':'))return raw.toUpperCase().replace(/\\s+/g,'');
-  const cleanName=raw.toUpperCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[.,]/g,' ').replace(/\\s+/g,' ').trim();
+  if(raw.includes(':'))return raw.toUpperCase().replace(/\s+/g,'');
+  const cleanName=raw.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
   const aliases={'APPLE':'AAPL','APPLE INC':'AAPL','APPLE INCORPORATED':'AAPL','BOMBARDIER':'BBD.B','BOMBARDIER INC':'BBD.B','BOMBARDIER INCORPORATED':'BBD.B','BBD':'BBD.B'};
   await picksExchangeReady;
   const known=aliases[cleanName]||picksCompanyMap[cleanName];
@@ -2414,7 +2414,7 @@ main li + li { margin-top: 0.35em; }
     return knownExchange+':'+known;
   }
   if(String(exchange||'').toUpperCase()==='BINANCE'||/USDT$/i.test(raw)){
-    return 'BINANCE:'+raw.toUpperCase().replace(/\\s+/g,'');
+    return 'BINANCE:'+raw.toUpperCase().replace(/\s+/g,'');
   }
   const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev');
   url.searchParams.set('action','search');
@@ -2424,7 +2424,7 @@ main li + li { margin-top: 0.35em; }
   const payload=await response.json();
   const matches=Array.isArray(payload.data)?payload.data:[];
   if(!matches.length)throw new Error('No stock listing was found for "'+raw+'". Check the company name or enter its ticker.');
-  const key=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[.,]/g,' ').replace(/\\s+/g,' ').trim();
+  const key=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
   const exactSymbol=matches.find(item=>key(item.symbol)===cleanName);
   const exactName=matches.find(item=>key(item.name)===cleanName);
   const selectedMarket=tvExchange(exchange,'');
@@ -2512,7 +2512,7 @@ main li + li { margin-top: 0.35em; }
  function save(key,v){try{localStorage.setItem(key,JSON.stringify(v));}catch(e){}}
  const watchKey='stockpilot-terminal-watchlist-v1',paperKey='stockpilot-terminal-practice-v1';
  function renderWatch(){const host=$('sp-terminal-watch-list'),items=getSaved(watchKey,[]);host.replaceChildren();if(!items.length){host.textContent=labels.emptyWatch;return;}items.forEach(item=>{const card=document.createElement('div');card.className='sp-terminal-tool-card';const info=document.createElement('div');const strong=document.createElement('strong');strong.textContent=item.ticker;const small=document.createElement('small');small.textContent=item.exchange||'NASDAQ';info.append(strong,small);const actions=document.createElement('div');actions.className='sp-terminal-tool-actions';const open=document.createElement('button');open.textContent='CHART';open.addEventListener('click',()=>loadTicker(item.ticker,item.exchange));const del=document.createElement('button');del.textContent='×';del.setAttribute('aria-label',labels.remove);del.addEventListener('click',()=>{save(watchKey,items.filter(x=>x.ticker!==item.ticker));renderWatch();});actions.append(open,del);card.append(info,actions);host.append(card);});}
- $('sp-terminal-watch-add').addEventListener('click',()=>{const input=$('sp-terminal-watch-input'),ticker=input.value.trim().toUpperCase().replace(/\\s+/g,'');if(!ticker)return;const items=getSaved(watchKey,[]);if(!items.some(x=>x.ticker===ticker)){items.push({ticker,exchange:market?.value||'NASDAQ'});save(watchKey,items);}input.value='';renderWatch();});
+ $('sp-terminal-watch-add').addEventListener('click',()=>{const input=$('sp-terminal-watch-input'),ticker=input.value.trim().toUpperCase().replace(/\s+/g,'');if(!ticker)return;const items=getSaved(watchKey,[]);if(!items.some(x=>x.ticker===ticker)){items.push({ticker,exchange:market?.value||'NASDAQ'});save(watchKey,items);}input.value='';renderWatch();});
  $('sp-terminal-watch-input').addEventListener('keydown',e=>{if(e.key==='Enter')$('sp-terminal-watch-add').click();});renderWatch();
  function allPicks(){return [...picks.main.map(x=>({...x,_kind:'main'})),...picks.penny.map(x=>({...x,_kind:'penny'}))];}
  function renderScreener(){const host=$('sp-terminal-screen-results');if(!host)return;const term=$('sp-terminal-screen-search').value.trim().toLowerCase(),kind=$('sp-terminal-screen-kind').value;const list=allPicks().filter(x=>(kind==='all'||x._kind===kind)&&(!term||safe(x.ticker).toLowerCase().includes(term)||safe(x.company).toLowerCase().includes(term))).slice(0,12);host.replaceChildren();if(!list.length){host.textContent='No matching symbols in the current snapshot.';return;}list.forEach(x=>{const card=document.createElement('div');card.className='sp-terminal-tool-card';const info=document.createElement('div'),name=document.createElement('strong'),meta=document.createElement('small');name.textContent=x.ticker+' · '+safe(x.company);meta.textContent=currency(x.currency)+' '+fmt(x.price)+' · '+(Number.isFinite(Number(x.change_percent))?fmt(x.change_percent)+'%':'—')+' · '+safe(x.exchange);info.append(name,meta);const open=document.createElement('button');open.textContent='CHART';open.addEventListener('click',()=>loadTicker(x.ticker,x.exchange));card.append(info,open);host.append(card);});}
