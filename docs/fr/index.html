@@ -2933,8 +2933,15 @@ main p, main li, .section-head p, .updated, .card-meta {
  <div class="sp-terminal-actions"><button class="sp-terminal-toggle" id="sp-terminal-toggle" type="button" aria-expanded="true" aria-controls="sp-terminal-workspace" data-open-label="AGRANDIR LE GRAPHIQUE" data-close-label="FERMER LE TERMINAL">FERMER LE TERMINAL <span aria-hidden="true">×</span></button><button class="sp-terminal-toggle" id="sp-terminal-fullscreen" type="button" aria-pressed="false">PLEIN ÉCRAN <span aria-hidden="true">⛶</span></button></div>
  <div class="sp-terminal-workspace" id="sp-terminal-workspace">
   
-  <p class="sp-terminal-tip">Conseil : précisez la bourse, par exemple TSX:SHOP ou NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Chargement du graphique interactif…</div></div><p class="sp-terminal-disclaimer">Données de marché fournies par TradingView. Certains cours peuvent être différés; les graphiques et l’historique restent accessibles.</p>
-  <div class="sp-terminal-tools" id="sp-terminal-tools">
+  <p class="sp-terminal-tip">Conseil : précisez la bourse, par exemple TSX:SHOP ou NYSE:IBM.</p><div class="sp-terminal-chart" id="sp-terminal-chart"><div class="sp-terminal-chart-placeholder">Chargement du graphique interactif…</div></div><p class="sp-terminal-disclaimer">TradingView fournit les graphiques et indicateurs intégrés. Le délai dépend de la bourse et des droits d’accès aux données; certains cours sont différés. Vérifiez le statut du widget.</p>
+ <div class="sp-terminal-data-status" aria-label="Sources des données et fréquence de mise à jour">
+    <div class="sp-terminal-data-status-head"><strong>SOURCES DES DONNÉES ET FRÉQUENCE DE MISE À JOUR</strong><span>Vérifiées selon les connexions actuelles du site</span></div>
+    <div class="sp-terminal-data-card"><strong>Graphiques et indicateurs techniques</strong><p>Widgets intégrés TradingView. Le délai des cours varie selon la bourse et les droits d’accès aux données; certains marchés sont différés. Les données en temps réel ne sont pas garanties. Vérifiez l’indicateur de statut du widget.</p></div>
+    <div class="sp-terminal-data-card"><strong>Filtre boursier et aperçu de l’entreprise</strong><p>Screeners publics de Yahoo Finance et historique quotidien via yfinance. Bougies quotidiennes basées sur la dernière séance terminée. Le scanner est programmé les jours ouvrables; l’horodatage réel du fichier est indiqué ci-dessous.</p><small id="sp-terminal-snapshot-time">Chargement de l’horodatage…</small></div>
+    <div class="sp-terminal-data-card"><strong>Données fondamentales</strong><p>SEC EDGAR Company Facts via le SEC Worker de StockPilot, uniquement lorsqu’une correspondance exacte avec un émetteur américain existe. Données issues des déclarations; pas des données en temps réel.</p></div>
+    <div class="sp-terminal-data-card"><strong>Listes et graphiques crypto</strong><p>CoinGecko est la source principale des classements crypto. Certains modules de recherche peuvent utiliser CryptoCompare ou CoinPaprika en secours. Les API sont interrogées au chargement de la page; la fréquence de mise à jour dépend du fournisseur. Les graphiques crypto utilisent des widgets TradingView distincts.</p></div>
+  </div>
+ <div class="sp-terminal-tools" id="sp-terminal-tools">
    
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-0" role="tabpanel">
     <h3>Vos symboles enregistrés</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-watch-input" type="text" placeholder="Symbole (ex. AAPL)" aria-label="Symbole (ex. AAPL)"><button class="primary" id="sp-terminal-watch-add" type="button">AJOUTER</button></div><div id="sp-terminal-watch-list" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">Aucun symbole enregistré. Ajoutez-en un ci-dessus.</p></div>
@@ -3010,6 +3017,17 @@ main p, main li, .section-head p, .updated, .card-meta {
 #market-terminal:fullscreen .sp-terminal-workspace,#market-terminal.is-terminal-fullscreen .sp-terminal-workspace{max-height:none!important;overflow:visible!important}
 #market-terminal.is-terminal-fullscreen{position:fixed!important;inset:0!important}
 @media(max-width:700px){#market-terminal:fullscreen .sp-terminal-chart,#market-terminal.is-terminal-fullscreen .sp-terminal-chart{height:58vh!important;min-height:320px!important}}
+
+.sp-terminal-data-status{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0;padding:12px;border:1px solid #334155;border-radius:10px;background:#101b2c}
+.sp-terminal-data-status-head{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.sp-terminal-data-status-head strong{font-size:11px;letter-spacing:.07em;color:#f2c94c}
+.sp-terminal-data-status-head span{font-size:10px;color:#94a3b8}
+.sp-terminal-data-card{min-width:0;padding:10px;border:1px solid #334155;border-radius:8px;background:#0b1220}
+.sp-terminal-data-card strong{display:block;margin-bottom:5px;color:#e7eef8;font-size:11px}
+.sp-terminal-data-card p{margin:0;color:#b7c4d5;font-size:10px;line-height:1.5}
+.sp-terminal-data-card small{display:block;margin-top:7px;color:#f2c94c;font-size:10px;line-height:1.4}
+@media(max-width:700px){.sp-terminal-data-status{grid-template-columns:1fr}.sp-terminal-data-status-head{align-items:flex-start;flex-direction:column}}
+
 </style>
 <script id="sp-market-terminal-script">
 (function(){
@@ -3106,12 +3124,13 @@ main p, main li, .section-head p, .updated, .card-meta {
 <script id="sp-terminal-tools-script">
 (function(){
  const root=document.getElementById('sp-terminal-tools');if(!root||root.dataset.ready)return;root.dataset.ready='1';
- const lang="fr";const labels={"emptyWatch":"Aucun symbole enregistré. Ajoutez-en un ci-dessus.","emptyPractice":"Aucune position simulée enregistrée.","remove":"RETIRER","cost":"Coût simulé","companyHint":"Choisissez un titre dans le filtre ou chargez un symbole ci-dessus.","units":"Quantité","entry":"Prix d’entrée","techHint":"Analyse technique du symbole sélectionné. Les données TradingView peuvent être différées."};
+ const lang="fr";const labels={snapshotGenerated:"Instantané généré",latestSession:"Dernière séance quotidienne",snapshotUnavailable:"Horodatage de l’instantané indisponible","emptyWatch":"Aucun symbole enregistré. Ajoutez-en un ci-dessus.","emptyPractice":"Aucune position simulée enregistrée.","remove":"RETIRER","cost":"Coût simulé","companyHint":"Choisissez un titre dans le filtre ou chargez un symbole ci-dessus.","units":"Quantité","entry":"Prix d’entrée","techHint":"Analyse technique du symbole sélectionné. Les données TradingView peuvent être différées."};
  const $=id=>document.getElementById(id);const market=$('sp-terminal-market'),symbol=$('sp-terminal-symbol'),compare=$('sp-terminal-compare'),load=$('sp-terminal-load');
  const safe=(v)=>String(v==null?'':v);const esc=(v)=>safe(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const currency=v=>safe(v||'USD');const fmt=(v,d=2)=>Number.isFinite(Number(v))?Number(v).toFixed(d):'—';
  let picks={main:[],penny:[]};let activeTicker='AAPL';let activeExchange='NASDAQ';
- const fetchPicks=fetch('/data/picks.json').then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.'; });
+ function updateSnapshotStatus(data){const host=$('sp-terminal-snapshot-time');if(!host)return;const dates=[...(Array.isArray(data.main)?data.main:[]),...(Array.isArray(data.penny)?data.penny:[])].map(x=>x.price_date).filter(Boolean).sort();const generated=data.updated_at?new Date(data.updated_at).toLocaleString():'—';host.textContent=labels.snapshotGenerated+': '+generated+' · '+labels.latestSession+': '+(dates.length?dates[dates.length-1]:'—');}
+ const fetchPicks=fetch('/data/picks.json').then(r=>r.ok?r.json():Promise.reject()).then(d=>{picks={main:Array.isArray(d.main)?d.main:[],penny:Array.isArray(d.penny)?d.penny:[]};updateSnapshotStatus(d);renderScreener();renderCompany();}).catch(()=>{ $('sp-terminal-screen-results').textContent='Market snapshot is temporarily unavailable.';const status=$('sp-terminal-snapshot-time');if(status)status.textContent=labels.snapshotUnavailable; });
  function currentSymbol(){const raw=(symbol?.value||activeTicker).trim().toUpperCase();if(raw.includes(':'))return raw;const ex=market?.value||activeExchange;return (ex==='BINANCE'?'BINANCE':ex)+':'+raw;}
  function loadTicker(ticker,exchange){if(!ticker)return;const m=$('sp-terminal-market'),s=$('sp-terminal-symbol');const ex=String(exchange||'NASDAQ').toUpperCase();if(m)m.value=ex.includes('NYSE')?'NYSE':ex.includes('TSX')?'TSX':ex.includes('BINANCE')?'BINANCE':'NASDAQ';if(s)s.value=ticker;activeTicker=ticker;activeExchange=m?.value||'NASDAQ';const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}if(load)load.click();renderCompany();}
  const toolButtons=document.querySelectorAll('#market-terminal [data-sp-tool]');const toolPanels=root.querySelectorAll('.sp-terminal-tool-panel');function activateTool(n){toolButtons.forEach(b=>{const active=b.dataset.spTool===String(n);b.setAttribute('aria-selected',String(active));b.setAttribute('tabindex',active?'0':'-1');});toolPanels.forEach(p=>p.classList.toggle('is-active',p.id==='sp-terminal-tool-panel-'+n));if(String(n)==='2')renderTechnical();if(String(n)==='3')renderCompany();}toolButtons.forEach(btn=>btn.addEventListener('click',()=>activateTool(btn.dataset.spTool)));activateTool(0);
