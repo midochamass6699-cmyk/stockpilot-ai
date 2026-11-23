@@ -17,9 +17,6 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "docs", "data", "news.json")
 API = "https://api.gdeltproject.org/api/v2/doc/doc"
 QUERIES = {
-    "markets": [
-        '("stock market" OR stocks OR "Federal Reserve" OR Nasdaq OR NYSE OR TSX OR "interest rates") sourcelang:english',
-    ],
     "penny": [
         '("small cap stocks" OR "penny stocks" OR microcap OR "small-cap stocks") sourcelang:english',
         '("small cap" OR microcap OR "penny stock") sourcelang:english',
