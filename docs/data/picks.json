@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "updated_at": "2026-11-22T02:27:58.553765+00:00",
-  "snapshot_time": "2026-11-22",
+  "updated_at": "2026-11-23T11:40:30.566645+00:00",
+  "snapshot_time": "2026-11-23",
   "data_source": "Yahoo Finance public screeners and daily prices (via yfinance); SEC EDGAR Company Facts through StockPilot SEC Worker where an exact US filing match exists",
   "data_note": "Candidate scan uses Yahoo Finance activity/gainer screeners plus a maintained Canadian TSX/TSXV symbol seed list. This is not an exhaustive scan of every listing. Every seed candidate must still return real daily price history and pass the same liquidity and price filters. Yahoo endpoints are unofficial and data may be delayed. SEC annual fundamentals are included only when an exact SEC ticker match is available; other issuers are explicitly marked market-data-only. Prices use local trading currencies.",
   "strategy": "Multi-factor score 0\u2013100. Technical score: 25% trend alignment, 20% 50-day return, 20% 20-day return, 10% 5-day return, 10% relative volume, and 15% liquidity, less a volatility penalty. Where exact SEC annual fundamentals are available, the main-stock score blends 60% filing-based financial health/growth/profitability with 40% technical conditions; penny stocks blend 30% fundamentals with 70% technical conditions. Without SEC fundamentals, the score is technical-only and is explicitly labelled. Main stocks require 20-day average dollar volume of at least $1 million; penny stocks must be $0.05\u2013$10 with at least $100,000 average daily dollar volume. Stock of the Day is selected independently for each market from that market's highest-ranked eligible main stock, with a clearly labelled penny-stock fallback only if necessary.",
@@ -23,7 +23,7 @@
       "US": {
         "main": 3,
         "penny": 3,
-        "main_eligible": 44,
+        "main_eligible": 43,
         "penny_eligible": 19
       },
       "Canada": {
@@ -34,9 +34,9 @@
       }
     },
     "unique_candidates_queued": 157,
-    "history_symbols_returned": 147,
+    "history_symbols_returned": 146,
     "sec_fundamentals_returned": 57,
-    "sec_fundamentals_coverage": 83.8,
+    "sec_fundamentals_coverage": 85.1,
     "penny_price_cap_local_currency": 10.0,
     "exhaustive_market_scan": false
   },
@@ -885,7 +885,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "LifeStance Health Group, Inc.",
         "cik": "0001845257",
-        "retrieved_at": "2026-11-22T02:27:52.652Z",
+        "retrieved_at": "2026-11-23T11:40:26.777Z",
         "fiscal_year": 2021,
         "revenue_growth_percent": null,
         "metrics": {
@@ -2260,7 +2260,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "B&G Foods, Inc.",
         "cik": "0001278027",
-        "retrieved_at": "2026-11-22T02:27:56.055Z",
+        "retrieved_at": "2026-11-23T11:40:28.677Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": -5.37,
         "metrics": {
@@ -2799,7 +2799,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Polibeli Group Ltd",
         "cik": "0002035697",
-        "retrieved_at": "2026-11-22T02:27:52.296Z",
+        "retrieved_at": "2026-11-23T11:40:26.785Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -16.85,
         "metrics": {
@@ -3329,7 +3329,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "CCC Intelligent Solutions Holdings Inc.",
         "cik": "0001818201",
-        "retrieved_at": "2026-11-22T02:27:49.151Z",
+        "retrieved_at": "2026-11-23T11:40:24.964Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 11.88,
         "metrics": {
@@ -5890,7 +5890,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "LifeStance Health Group, Inc.",
         "cik": "0001845257",
-        "retrieved_at": "2026-11-22T02:27:52.652Z",
+        "retrieved_at": "2026-11-23T11:40:26.777Z",
         "fiscal_year": 2021,
         "revenue_growth_percent": null,
         "metrics": {
@@ -8129,7 +8129,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "LifeStance Health Group, Inc.",
         "cik": "0001845257",
-        "retrieved_at": "2026-11-22T02:27:52.652Z",
+        "retrieved_at": "2026-11-23T11:40:26.777Z",
         "fiscal_year": 2021,
         "revenue_growth_percent": null,
         "metrics": {
@@ -8638,7 +8638,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Tecnoglass Holdings Inc.",
         "cik": "0001534675",
-        "retrieved_at": "2026-11-22T02:27:53.140Z",
+        "retrieved_at": "2026-11-23T11:40:26.656Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 10.5,
         "metrics": {
@@ -9465,7 +9465,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "INTERPARFUMS INC",
         "cik": "0000822663",
-        "retrieved_at": "2026-11-22T02:27:54.239Z",
+        "retrieved_at": "2026-11-23T11:40:27.290Z",
         "fiscal_year": 2020,
         "revenue_growth_percent": -36.16,
         "metrics": {
@@ -9984,7 +9984,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Rocket Companies, Inc.",
         "cik": "0001805284",
-        "retrieved_at": "2026-11-22T02:27:51.189Z",
+        "retrieved_at": "2026-11-23T11:40:26.202Z",
         "fiscal_year": null,
         "revenue_growth_percent": null,
         "metrics": {
@@ -10422,7 +10422,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Palomar Holdings, Inc.",
         "cik": "0001761312",
-        "retrieved_at": "2026-11-22T02:27:51.165Z",
+        "retrieved_at": "2026-11-23T11:40:25.955Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 58.16,
         "metrics": {
@@ -11170,7 +11170,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Klaviyo, Inc.",
         "cik": "0001835830",
-        "retrieved_at": "2026-11-22T02:27:50.733Z",
+        "retrieved_at": "2026-11-23T11:40:25.944Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 31.63,
         "metrics": {
@@ -13110,7 +13110,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "HDFC BANK LTD",
         "cik": "0001144967",
-        "retrieved_at": "2026-11-22T02:27:50.823Z",
+        "retrieved_at": "2026-11-23T11:40:25.742Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 15.25,
         "metrics": {
@@ -13570,7 +13570,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "GLOBAL PAYMENTS INC",
         "cik": "0001123360",
-        "retrieved_at": "2026-11-22T02:27:50.383Z",
+        "retrieved_at": "2026-11-23T11:40:25.433Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -0.39,
         "metrics": {
@@ -14089,7 +14089,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Apple Inc.",
         "cik": "0000320193",
-        "retrieved_at": "2026-11-22T02:27:47.788Z",
+        "retrieved_at": "2026-11-23T11:40:23.584Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 15.06,
         "metrics": {
@@ -14628,7 +14628,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "BUCKLE INC",
         "cik": "0000885245",
-        "retrieved_at": "2026-11-22T02:27:50.287Z",
+        "retrieved_at": "2026-11-23T11:40:25.671Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 6.58,
         "metrics": {
@@ -15128,7 +15128,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "MCCORMICK & CO INC",
         "cik": "0000063754",
-        "retrieved_at": "2026-11-22T02:27:53.878Z",
+        "retrieved_at": "2026-11-23T11:40:27.534Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 1.73,
         "metrics": {
@@ -15667,7 +15667,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "NVIDIA CORP",
         "cik": "0001045810",
-        "retrieved_at": "2026-11-22T02:27:46.811Z",
+        "retrieved_at": "2026-11-23T11:40:23.048Z",
         "fiscal_year": 2022,
         "revenue_growth_percent": 61.4,
         "metrics": {
@@ -15926,545 +15926,6 @@
       "volume": 626373200,
       "score_basis": "SEC fundamentals + market data",
       "score_fundamental": 91.3,
-      "fundamental_coverage": [
-        "revenue_growth",
-        "gross_margin",
-        "operating_margin",
-        "net_margin",
-        "liabilities_to_assets",
-        "equity_ratio",
-        "operating_cash_flow",
-        "cash_vs_debt"
-      ],
-      "fundamental_confidence": "higher"
-    },
-    {
-      "ticker": "MU",
-      "company": "Micron Technology, Inc.",
-      "exchange": "NasdaqGS",
-      "market": "US",
-      "sector": "Unclassified",
-      "currency": "USD",
-      "quote_time": "2026-11-20 (daily close)",
-      "reason": "daily price move -13.89%; relative volume 1.8x its 20-day average; 5-day move -23.6%; 20-day average dollar volume $25,726,056,301.",
-      "risk": "high recent volatility; price below 50-day average; negative 20-day momentum.",
-      "price_history_3mo": [
-        {
-          "date": "2026-08-25",
-          "close": 932.823181
-        },
-        {
-          "date": "2026-08-26",
-          "close": 938.25238
-        },
-        {
-          "date": "2026-08-27",
-          "close": 935.242798
-        },
-        {
-          "date": "2026-08-28",
-          "close": 932.713196
-        },
-        {
-          "date": "2026-08-31",
-          "close": 958.579102
-        },
-        {
-          "date": "2026-09-01",
-          "close": 933.293091
-        },
-        {
-          "date": "2026-09-02",
-          "close": 955.929565
-        },
-        {
-          "date": "2026-09-03",
-          "close": 958.009216
-        },
-        {
-          "date": "2026-09-04",
-          "close": 1016.430054
-        },
-        {
-          "date": "2026-09-08",
-          "close": 1000.1026
-        },
-        {
-          "date": "2026-09-09",
-          "close": 1027.608276
-        },
-        {
-          "date": "2026-09-10",
-          "close": 977.256165
-        },
-        {
-          "date": "2026-09-11",
-          "close": 975.106567
-        },
-        {
-          "date": "2026-09-14",
-          "close": 923.884644
-        },
-        {
-          "date": "2026-09-15",
-          "close": 927.454041
-        },
-        {
-          "date": "2026-09-16",
-          "close": 926.404175
-        },
-        {
-          "date": "2026-09-17",
-          "close": 977.346191
-        },
-        {
-          "date": "2026-09-18",
-          "close": 1015.640137
-        },
-        {
-          "date": "2026-09-21",
-          "close": 1043.795654
-        },
-        {
-          "date": "2026-09-22",
-          "close": 1095.987549
-        },
-        {
-          "date": "2026-09-23",
-          "close": 1071.711304
-        },
-        {
-          "date": "2026-09-24",
-          "close": 1080.359985
-        },
-        {
-          "date": "2026-09-25",
-          "close": 1082.109741
-        },
-        {
-          "date": "2026-09-28",
-          "close": 1053.814087
-        },
-        {
-          "date": "2026-09-29",
-          "close": 1064.912354
-        },
-        {
-          "date": "2026-09-30",
-          "close": 1064.942383
-        },
-        {
-          "date": "2026-10-01",
-          "close": 1097.217285
-        },
-        {
-          "date": "2026-10-02",
-          "close": 1074.720825
-        },
-        {
-          "date": "2026-10-05",
-          "close": 1063.79248
-        },
-        {
-          "date": "2026-10-06",
-          "close": 1045.395508
-        },
-        {
-          "date": "2026-10-07",
-          "close": 1087.828857
-        },
-        {
-          "date": "2026-10-08",
-          "close": 1035.677002
-        },
-        {
-          "date": "2026-10-09",
-          "close": 1028.838135
-        },
-        {
-          "date": "2026-10-12",
-          "close": 988.884338
-        },
-        {
-          "date": "2026-10-13",
-          "close": 953.040039
-        },
-        {
-          "date": "2026-10-14",
-          "close": 914.130005
-        },
-        {
-          "date": "2026-10-15",
-          "close": 931.23999
-        },
-        {
-          "date": "2026-10-16",
-          "close": 878.840027
-        },
-        {
-          "date": "2026-10-19",
-          "close": 904.900024
-        },
-        {
-          "date": "2026-10-20",
-          "close": 896.070007
-        },
-        {
-          "date": "2026-10-21",
-          "close": 913.669983
-        },
-        {
-          "date": "2026-10-22",
-          "close": 856.48999
-        },
-        {
-          "date": "2026-10-23",
-          "close": 877.549988
-        },
-        {
-          "date": "2026-10-26",
-          "close": 903.700012
-        },
-        {
-          "date": "2026-10-27",
-          "close": 928.76001
-        },
-        {
-          "date": "2026-10-28",
-          "close": 983.22998
-        },
-        {
-          "date": "2026-10-29",
-          "close": 934.27002
-        },
-        {
-          "date": "2026-10-30",
-          "close": 884.73999
-        },
-        {
-          "date": "2026-11-02",
-          "close": 833.590027
-        },
-        {
-          "date": "2026-11-03",
-          "close": 855.099976
-        },
-        {
-          "date": "2026-11-04",
-          "close": 795.22998
-        },
-        {
-          "date": "2026-11-05",
-          "close": 656.390015
-        },
-        {
-          "date": "2026-11-06",
-          "close": 690.0
-        },
-        {
-          "date": "2026-11-09",
-          "close": 733.150024
-        },
-        {
-          "date": "2026-11-10",
-          "close": 725.109985
-        },
-        {
-          "date": "2026-11-11",
-          "close": 811.299988
-        },
-        {
-          "date": "2026-11-12",
-          "close": 798.440002
-        },
-        {
-          "date": "2026-11-13",
-          "close": 778.309998
-        },
-        {
-          "date": "2026-11-16",
-          "close": 719.02002
-        },
-        {
-          "date": "2026-11-17",
-          "close": 712.419983
-        },
-        {
-          "date": "2026-11-18",
-          "close": 705.27002
-        },
-        {
-          "date": "2026-11-19",
-          "close": 690.440002
-        },
-        {
-          "date": "2026-11-20",
-          "close": 594.51001
-        }
-      ],
-      "fundamentals": {
-        "source": "SEC EDGAR Company Facts",
-        "company": "MICRON TECHNOLOGY INC",
-        "cik": "0000723125",
-        "retrieved_at": "2026-11-22T02:27:49.870Z",
-        "fiscal_year": 2026,
-        "revenue_growth_percent": 256.33,
-        "metrics": {
-          "revenue": 133188000000,
-          "grossProfit": 107504000000,
-          "operatingIncome": 99340000000,
-          "netIncome": 84969000000,
-          "assets": 195888000000,
-          "liabilities": 57510000000,
-          "equity": 138378000000,
-          "cash": 38364000000,
-          "operatingCashFlow": 89675000000,
-          "currentDebt": 224000000,
-          "longTermDebt": 3038000000
-        },
-        "periods": {
-          "revenue": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 133188000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 37378000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "grossProfit": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 107504000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 14873000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "operatingIncome": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 99340000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 9770000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "netIncome": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 84969000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 8539000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "assets": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 195888000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 82798000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "liabilities": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 57510000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 28633000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "equity": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 138378000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 54165000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "cash": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 38364000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 9642000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "operatingCashFlow": [
-            {
-              "periodEnd": "2026-09-03",
-              "fiscalYear": 2026,
-              "value": 89675000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            },
-            {
-              "periodEnd": "2025-08-28",
-              "fiscalYear": 2025,
-              "value": 17525000000,
-              "unit": "USD",
-              "filed": "2026-10-09",
-              "form": "10-K",
-              "sourceUrl": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/mu-20260903.htm"
-            }
-          ],
-          "currentDebt": [
-            {
-              "periodEnd": "2012-08-30",
-              "fiscalYear": 2012,
-              "value": 224000000,
-              "unit": "USD",
-              "filed": "2012-10-29",
-              "form": "10-K",
-              "sourceUrl": null
-            },
-            {
-              "periodEnd": "2011-09-01",
-              "fiscalYear": 2011,
-              "value": 140000000,
-              "unit": "USD",
-              "filed": "2012-10-29",
-              "form": "10-K",
-              "sourceUrl": null
-            }
-          ],
-          "longTermDebt": [
-            {
-              "periodEnd": "2012-08-30",
-              "fiscalYear": 2012,
-              "value": 3038000000,
-              "unit": "USD",
-              "filed": "2012-10-29",
-              "form": "10-K",
-              "sourceUrl": null
-            },
-            {
-              "periodEnd": "2011-09-01",
-              "fiscalYear": 2011,
-              "value": 1861000000,
-              "unit": "USD",
-              "filed": "2012-10-29",
-              "form": "10-K",
-              "sourceUrl": null
-            }
-          ]
-        }
-      },
-      "score_technical": 20.6,
-      "score": 63.4,
-      "return_5d": -23.62,
-      "return_20d": -32.25,
-      "return_50d": -39.03,
-      "change_percent": -13.89,
-      "rsi": 30.3,
-      "volume_ratio": 1.75,
-      "average_volume_20d": 33768915,
-      "average_dollar_volume_20d": 25726056300.63,
-      "volatility_20d": 6.76,
-      "above_20day_average": false,
-      "above_50day_average": false,
-      "ma20": 786.649,
-      "ma50": 912.1925,
-      "price_date": "2026-11-20",
-      "price": 594.51,
-      "volume": 59094000,
-      "score_basis": "SEC fundamentals + market data",
-      "score_fundamental": 92.0,
       "fundamental_coverage": [
         "revenue_growth",
         "gross_margin",
@@ -16745,7 +16206,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Sandisk Corp",
         "cik": "0002023554",
-        "retrieved_at": "2026-11-22T02:27:47.462Z",
+        "retrieved_at": "2026-11-23T11:40:23.423Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 175.3,
         "metrics": {
@@ -17283,7 +16744,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "CAL-MAINE FOODS INC",
         "cik": "0000016160",
-        "retrieved_at": "2026-11-22T02:27:52.942Z",
+        "retrieved_at": "2026-11-23T11:40:26.909Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": -31.68,
         "metrics": {
@@ -17822,7 +17283,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "ADVANCED MICRO DEVICES INC",
         "cik": "0000002488",
-        "retrieved_at": "2026-11-22T02:27:48.242Z",
+        "retrieved_at": "2026-11-23T11:40:24.406Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 34.34,
         "metrics": {
@@ -18341,7 +17802,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Alphabet Inc.",
         "cik": "0001652044",
-        "retrieved_at": "2026-11-22T02:27:49.756Z",
+        "retrieved_at": "2026-11-23T11:40:25.207Z",
         "fiscal_year": 2024,
         "revenue_growth_percent": 13.87,
         "metrics": {
@@ -18860,7 +18321,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Ardent Health, Inc.",
         "cik": "0001756655",
-        "retrieved_at": "2026-11-22T02:27:51.985Z",
+        "retrieved_at": "2026-11-23T11:40:26.532Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 6.01,
         "metrics": {
@@ -19359,7 +18820,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "AMAZON COM INC",
         "cik": "0001018724",
-        "retrieved_at": "2026-11-22T02:27:48.235Z",
+        "retrieved_at": "2026-11-23T11:40:24.157Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 12.38,
         "metrics": {
@@ -19878,7 +19339,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Ceribell, Inc.",
         "cik": "0001861107",
-        "retrieved_at": "2026-11-22T02:27:57.082Z",
+        "retrieved_at": "2026-11-23T11:40:29.271Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 36.09,
         "metrics": {
@@ -20378,7 +19839,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Broadcom Inc.",
         "cik": "0001730168",
-        "retrieved_at": "2026-11-22T02:27:49.397Z",
+        "retrieved_at": "2026-11-23T11:40:25.043Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 23.87,
         "metrics": {
@@ -21205,7 +20666,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Spectrum Brands Holdings, Inc.",
         "cik": "0000109177",
-        "retrieved_at": "2026-11-22T02:27:57.446Z",
+        "retrieved_at": "2026-11-23T11:40:29.535Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 1.55,
         "metrics": {
@@ -21744,7 +21205,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "GAP INC",
         "cik": "0000039911",
-        "retrieved_at": "2026-11-22T02:27:50.296Z",
+        "retrieved_at": "2026-11-23T11:40:25.400Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 1.86,
         "metrics": {
@@ -22263,7 +21724,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Huron Consulting Group Inc.",
         "cik": "0001289848",
-        "retrieved_at": "2026-11-22T02:27:54.024Z",
+        "retrieved_at": "2026-11-23T11:40:27.617Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 11.65,
         "metrics": {
@@ -24202,7 +23663,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "GENERAL MILLS INC",
         "cik": "0000040704",
-        "retrieved_at": "2026-11-22T02:27:52.817Z",
+        "retrieved_at": "2026-11-23T11:40:26.476Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": -5.45,
         "metrics": {
@@ -26737,7 +26198,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "NETFLIX INC",
         "cik": "0001065280",
-        "retrieved_at": "2026-11-22T02:27:48.543Z",
+        "retrieved_at": "2026-11-23T11:40:24.572Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 15.85,
         "metrics": {
@@ -27833,7 +27294,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "PILGRIMS PRIDE CORP",
         "cik": "0000802481",
-        "retrieved_at": "2026-11-22T02:27:53.733Z",
+        "retrieved_at": "2026-11-23T11:40:26.995Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 3.46,
         "metrics": {
@@ -28372,7 +27833,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "monday.com Ltd.",
         "cik": "0001845338",
-        "retrieved_at": "2026-11-22T02:27:54.632Z",
+        "retrieved_at": "2026-11-23T11:40:28.046Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 26.75,
         "metrics": {
@@ -29160,7 +28621,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "HCA Healthcare, Inc.",
         "cik": "0000860730",
-        "retrieved_at": "2026-11-22T02:27:54.510Z",
+        "retrieved_at": "2026-11-23T11:40:27.693Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 7.08,
         "metrics": {
@@ -30523,7 +29984,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Heartflow, Inc.",
         "cik": "0001464521",
-        "retrieved_at": "2026-11-22T02:27:50.626Z",
+        "retrieved_at": "2026-11-23T11:40:25.650Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 39.92,
         "metrics": {
@@ -31311,7 +30772,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "American Airlines Group Inc.",
         "cik": "0000006201",
-        "retrieved_at": "2026-11-22T02:27:49.542Z",
+        "retrieved_at": "2026-11-23T11:40:24.256Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 0.78,
         "metrics": {
@@ -33826,7 +33287,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "SoFi Technologies, Inc.",
         "cik": "0001818874",
-        "retrieved_at": "2026-11-22T02:27:48.066Z",
+        "retrieved_at": "2026-11-23T11:40:24.124Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 23.1,
         "metrics": {
@@ -34286,7 +33747,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Everforth Inc",
         "cik": "0000890564",
-        "retrieved_at": "2026-11-22T02:27:56.703Z",
+        "retrieved_at": "2026-11-23T11:40:29.070Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -2.91,
         "metrics": {
@@ -35113,7 +34574,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "INTEL CORP",
         "cik": "0000050863",
-        "retrieved_at": "2026-11-22T02:27:47.013Z",
+        "retrieved_at": "2026-11-23T11:40:23.041Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -0.47,
         "metrics": {
@@ -37360,7 +36821,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "CoreWeave, Inc.",
         "cik": "0001769628",
-        "retrieved_at": "2026-11-22T02:27:48.037Z",
+        "retrieved_at": "2026-11-23T11:40:23.903Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 167.94,
         "metrics": {
@@ -39895,7 +39356,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "IREN Ltd",
         "cik": "0001878848",
-        "retrieved_at": "2026-11-22T02:27:47.230Z",
+        "retrieved_at": "2026-11-23T11:40:23.430Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 41.11,
         "metrics": {
@@ -43296,7 +42757,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "B&G Foods, Inc.",
         "cik": "0001278027",
-        "retrieved_at": "2026-11-22T02:27:56.055Z",
+        "retrieved_at": "2026-11-23T11:40:28.677Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": -5.37,
         "metrics": {
@@ -43835,7 +43296,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Polibeli Group Ltd",
         "cik": "0002035697",
-        "retrieved_at": "2026-11-22T02:27:52.296Z",
+        "retrieved_at": "2026-11-23T11:40:26.785Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -16.85,
         "metrics": {
@@ -44365,7 +43826,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "CCC Intelligent Solutions Holdings Inc.",
         "cik": "0001818201",
-        "retrieved_at": "2026-11-22T02:27:49.151Z",
+        "retrieved_at": "2026-11-23T11:40:24.964Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 11.88,
         "metrics": {
@@ -44904,7 +44365,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "MAXCYTE, INC.",
         "cik": "0001287098",
-        "retrieved_at": "2026-11-22T02:27:56.501Z",
+        "retrieved_at": "2026-11-23T11:40:28.916Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -5.66,
         "metrics": {
@@ -46268,7 +45729,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Cango Inc.",
         "cik": "0001725123",
-        "retrieved_at": "2026-11-22T02:27:55.912Z",
+        "retrieved_at": "2026-11-23T11:40:29.024Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 665.31,
         "metrics": {
@@ -46787,7 +46248,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Pyxis Oncology, Inc.",
         "cik": "0001782223",
-        "retrieved_at": "2026-11-22T02:27:55.491Z",
+        "retrieved_at": "2026-11-23T11:40:28.645Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -14.17,
         "metrics": {
@@ -47267,7 +46728,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "EverCommerce Inc.",
         "cik": "0001853145",
-        "retrieved_at": "2026-11-22T02:27:57.567Z",
+        "retrieved_at": "2026-11-23T11:40:29.645Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 4.75,
         "metrics": {
@@ -47786,7 +47247,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Evolent Health, Inc.",
         "cik": "0001628908",
-        "retrieved_at": "2026-11-22T02:27:57.178Z",
+        "retrieved_at": "2026-11-23T11:40:28.364Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -26.56,
         "metrics": {
@@ -48305,7 +47766,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "LESAKA TECHNOLOGIES INC",
         "cik": "0001041514",
-        "retrieved_at": "2026-11-22T02:27:57.165Z",
+        "retrieved_at": "2026-11-23T11:40:29.588Z",
         "fiscal_year": 2026,
         "revenue_growth_percent": 9.38,
         "metrics": {
@@ -48824,7 +48285,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "LiveWire Group, Inc.",
         "cik": "0001898795",
-        "retrieved_at": "2026-11-22T02:27:54.825Z",
+        "retrieved_at": "2026-11-23T11:40:27.876Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -3.61,
         "metrics": {
@@ -49343,7 +48804,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "NIO Inc.",
         "cik": "0001736541",
-        "retrieved_at": "2026-11-22T02:27:47.966Z",
+        "retrieved_at": "2026-11-23T11:40:23.939Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 38.93,
         "metrics": {
@@ -49862,7 +49323,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "MEDICAL PROPERTIES TRUST INC",
         "cik": "0001287865",
-        "retrieved_at": "2026-11-22T02:27:54.757Z",
+        "retrieved_at": "2026-11-23T11:40:28.060Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -2.36,
         "metrics": {
@@ -50342,7 +49803,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Snap Inc",
         "cik": "0001564408",
-        "retrieved_at": "2026-11-22T02:27:49.235Z",
+        "retrieved_at": "2026-11-23T11:40:25.024Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 10.63,
         "metrics": {
@@ -51706,7 +51167,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "NEIGHBORHOOD INTELLIGENCE, INC.",
         "cik": "0001130713",
-        "retrieved_at": "2026-11-22T02:27:55.221Z",
+        "retrieved_at": "2026-11-23T11:40:28.501Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": -25.12,
         "metrics": {
@@ -52206,7 +51667,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "TERAWULF INC.",
         "cik": "0001083301",
-        "retrieved_at": "2026-11-22T02:27:48.946Z",
+        "retrieved_at": "2026-11-23T11:40:24.800Z",
         "fiscal_year": 2020,
         "revenue_growth_percent": -23.76,
         "metrics": {
@@ -53033,7 +52494,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Oxford Square Capital Corp.",
         "cik": "0001259429",
-        "retrieved_at": "2026-11-22T02:27:56.396Z",
+        "retrieved_at": "2026-11-23T11:40:28.780Z",
         "fiscal_year": null,
         "revenue_growth_percent": null,
         "metrics": {
@@ -53760,7 +53221,7 @@
         "source": "SEC EDGAR Company Facts",
         "company": "Cipher Digital Inc.",
         "cik": "0001819989",
-        "retrieved_at": "2026-11-22T02:27:50.085Z",
+        "retrieved_at": "2026-11-23T11:40:25.311Z",
         "fiscal_year": 2025,
         "revenue_growth_percent": 48.04,
         "metrics": {
@@ -54579,12 +54040,13 @@
       "fundamental_confidence": "not rated"
     }
   ],
-  "main_candidates_scanned": 147,
-  "main_candidates_eligible": 96,
-  "penny_candidates_scanned": 147,
+  "main_candidates_scanned": 146,
+  "main_candidates_eligible": 95,
+  "penny_candidates_scanned": 146,
   "penny_candidates_eligible": 28,
   "errors": [
     "ANT: only 2 daily rows; need 55",
+    "MU: only 0 daily rows; need 55",
     "ENVXW: only 2 daily rows; need 55",
     "ISSC: only 1 daily rows; need 55",
     "TRXB: only 31 daily rows; need 55",
