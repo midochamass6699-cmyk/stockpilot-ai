@@ -1,0 +1,56 @@
+name: Validate terminal JavaScript
+on:
+  push:
+    paths:
+      - 'docs/**/*.html'
+      - '.github/workflows/validate-inline-js.yml'
+  pull_request:
+    paths:
+      - 'docs/**/*.html'
+      - '.github/workflows/validate-inline-js.yml'
+  workflow_dispatch:
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Parse inline JavaScript in every language edition
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const vm = require('node:vm');
+          const files = [
+            'docs/index.html',
+            'docs/fr/index.html',
+            'docs/us/index.html',
+            'docs/de/index.html',
+            'docs/es/index.html'
+          ];
+          let errors = 0;
+          for (const file of files) {
+            const html = fs.readFileSync(file, 'utf8');
+            let count = 0;
+            for (const match of html.matchAll(/<script\\b([^>]*)>([\\s\\S]*?)<\\/script>/gi)) {
+              const attrs = match[1] || '';
+              if (/\\bsrc\\s*=/i.test(attrs)) continue;
+              const typeMatch = attrs.match(/\\btype\\s*=\\s*["']([^"']+)["']/i);
+              const type = typeMatch ? typeMatch[1].toLowerCase() : '';
+              if (type && !['text/javascript', 'application/javascript', 'module'].includes(type)) continue;
+              const code = match[2].trim();
+              if (!code) continue;
+              count++;
+              try {
+                new vm.Script(code, { filename: file + ':inline-script-' + count });
+              } catch (error) {
+                errors++;
+                console.error('SYNTAX ERROR:', file, 'inline script', count, error.message);
+              }
+            }
+            console.log(file + ': parsed ' + count + ' inline JavaScript blocks');
+          }
+          if (errors) process.exit(1);
+          console.log('All inline JavaScript blocks parsed successfully.');
+          NODE
