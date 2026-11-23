@@ -80,7 +80,10 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
     try {
       await page.goto(BASE + '/us/', { waitUntil: 'domcontentloaded', timeout: 45000 });
       await page.waitForFunction(() => typeof window.StockPilotResolveSymbol === 'function', { timeout: 20000 });
-      const result = await page.evaluate(() => window.StockPilotResolveSymbol('Microsoft Corporation', 'NASDAQ'));
+      const result = await page.evaluate(() => Promise.race([
+        window.StockPilotResolveSymbol('Microsoft Corporation', 'NASDAQ'),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Company-name lookup timed out after 20 seconds')), 20000))
+      ]));
       if (result !== 'NASDAQ:MSFT') throw new Error('Microsoft resolved to ' + result);
       console.log('PASS live company-name lookup: Microsoft Corporation → NASDAQ:MSFT');
     } catch (error) {
