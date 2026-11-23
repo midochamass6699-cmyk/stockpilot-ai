@@ -146,6 +146,13 @@
   </url>
 
   <url>
+    <loc>https://technofront.org/margin-account-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/margin-account-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/margin-account-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://technofront.org/margin-account-guide.html"/>
+  </url>
+
+  <url>
     <loc>https://technofront.org/us/options-explained.html</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://technofront.org/us/options-explained.html"/>
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://technofront.org/options-explained.html"/>
