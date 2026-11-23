@@ -2510,9 +2510,9 @@ main li + li { margin-top: 0.35em; }
   if(!raw)throw new Error('Enter a company name or ticker.');
   if(raw.includes(':'))return raw.toUpperCase().replace(/\s+/g,'');
   const clean=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,' AND ').replace(/[.,'’]/g,' ').replace(/\b(THE|INCORPORATED|INC|CORPORATION|CORP|LIMITED|LTD|PLC|HOLDINGS|HOLDING|COMPANY|CO)\b/g,' ').replace(/\s+/g,' ').trim();
-  const key=clean(raw),aliases={'APPLE':'AAPL','BOMBARDIER':'BBD.B'};
+  const key=clean(raw),aliases={'APPLE':{symbol:'AAPL',exchange:'NASDAQ'},'BOMBARDIER':{symbol:'BBD.B',exchange:'TSX'}};
   const exchangeKey=v=>{const x=String(v||'').toUpperCase();if(x.includes('NASDAQ')||x==='XNAS')return 'NASDAQ';if(x.includes('NYSE')||x.includes('NEW YORK')||x==='XNYS')return 'NYSE';if(x.includes('TORONTO')||x==='XTSE'||x==='TSX')return 'TSX';if(x.includes('VENTURE')||x==='XTSX'||x==='TSXV')return 'TSXV';if(x.includes('BINANCE'))return 'BINANCE';return '';};
-  if(aliases[key])return (aliases[key]==='BBD.B'?'TSX':(exchangeKey(preferredExchange)||'NASDAQ'))+':'+aliases[key];
+  if(aliases[key])return aliases[key].exchange+':'+aliases[key].symbol;
   if(String(preferredExchange||'').toUpperCase()==='BINANCE'||/USDT$/i.test(raw))return 'BINANCE:'+raw.toUpperCase().replace(/\s+/g,'');
   const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev/');url.searchParams.set('action','search');url.searchParams.set('q',raw);
   const response=await fetch(url.toString());if(!response.ok)throw new Error('Company search is temporarily unavailable. Try the ticker symbol instead.');
