@@ -3543,10 +3543,10 @@ input, select, textarea, button {
   const response=await fetch(url.toString());if(!response.ok)throw new Error('Company search is temporarily unavailable. Try the ticker symbol instead.');
   const payload=await response.json(),matches=Array.isArray(payload.data)?payload.data:Array.isArray(payload.results)?payload.results:Array.isArray(payload.result)?payload.result:[];
   if(!matches.length)throw new Error('No stock listing was found for "'+raw+'". Check the company name or enter its ticker.');
-  const exactSymbols=matches.filter(x=>clean(x.symbol)===key),exactNames=matches.filter(x=>clean(x.name)===key),exact=[...exactSymbols,...exactNames.filter(x=>!exactSymbols.includes(x))],preferred=exchangeKey(preferredExchange);
+  const companyName=x=>x.name||x.instrument_name||x.company_name||x.description||x.title||'';\n  const exactSymbols=matches.filter(x=>clean(x.symbol)===key),exactNames=matches.filter(x=>clean(companyName(x))===key),exact=[...exactSymbols,...exactNames.filter(x=>!exactSymbols.includes(x))],preferred=exchangeKey(preferredExchange);
   const onPreferred=list=>preferred?list.filter(x=>exchangeKey(x.exchange||x.mic_code)===preferred):[];
   let candidates=onPreferred(exact);if(!candidates.length)candidates=exact;
-  if(!candidates.length){const partial=matches.filter(x=>{const n=clean(x.name);return n===key||n.startsWith(key+' ')||key.startsWith(n+' ');});candidates=onPreferred(partial);if(!candidates.length)candidates=partial;}
+  if(!candidates.length){const partial=matches.filter(x=>{const n=clean(companyName(x));return n===key||n.startsWith(key+' ')||key.startsWith(n+' ');});candidates=onPreferred(partial);if(!candidates.length)candidates=partial;}
   if(candidates.length===1){const item=candidates[0],ticker=String(item.symbol||'').trim().toUpperCase();if(!ticker)throw new Error('The company search returned a listing without a ticker symbol.');return (exchangeKey(item.exchange||item.mic_code)||preferred||'NASDAQ')+':'+ticker;}
   if(candidates.length>1)throw new Error('Several listings match "'+raw+'". Enter its ticker symbol or select the correct exchange.');
   if(matches.length===1){const item=matches[0],ticker=String(item.symbol||'').trim().toUpperCase();if(ticker)return (exchangeKey(item.exchange||item.mic_code)||preferred||'NASDAQ')+':'+ticker;}
