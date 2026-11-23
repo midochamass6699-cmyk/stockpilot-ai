@@ -4838,6 +4838,74 @@ body{font-size:16px}
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.getAttribute('aria-hidden')==='false'){panel.setAttribute('aria-hidden','true');launch.setAttribute('aria-expanded','false');}});
 })();
 </script>
+
+<style id="stockpilot-gdelt-news-reels">
+.sp-news-reel{position:relative;margin:12px 0 2px;padding:12px 13px;border:1px solid rgba(125,155,190,.24);border-radius:12px;background:linear-gradient(145deg,rgba(12,27,46,.96),rgba(17,37,60,.94));color:#eaf1fa;min-width:0;overflow:hidden}
+.sp-news-reel-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+.sp-news-reel-title{font-size:11px;font-weight:850;letter-spacing:.09em;text-transform:uppercase;color:#9fc2e8}
+.sp-news-reel-live{font-size:9px;font-weight:800;letter-spacing:.08em;color:#79d9b5;white-space:nowrap}
+.sp-news-reel-stage{position:relative;min-height:64px;overflow:hidden}
+.sp-news-reel-story{display:block;color:#f4f7fb!important;text-decoration:none!important;font-size:13px;font-weight:750;line-height:1.42;min-height:36px;transition:transform .42s ease,opacity .42s ease}
+.sp-news-reel-story:hover{text-decoration:underline!important;color:#fff!important}
+.sp-news-reel-story.is-leaving{transform:translateY(-14px);opacity:0}
+.sp-news-reel-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:6px;color:#a9b9cc;font-size:10px;line-height:1.3}
+.sp-news-reel-meta span{overflow-wrap:anywhere}
+.sp-news-reel-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;padding-top:7px;border-top:1px solid rgba(160,180,205,.15)}
+.sp-news-reel-pause{border:1px solid rgba(150,180,210,.3);border-radius:7px;padding:4px 8px;background:rgba(255,255,255,.06);color:#eaf1fa;font-size:10px;font-weight:700;cursor:pointer}
+.sp-news-reel-count{color:#91a7bf;font-size:10px}
+.sp-news-reel-credit{margin-top:7px;color:#8196ad;font-size:9px;line-height:1.35}
+.sp-news-reel-empty{color:#b8c6d6;font-size:12px;line-height:1.45}
+@media(prefers-reduced-motion:reduce){.sp-news-reel-story{transition:none!important}}
+</style>
+<script id="stockpilot-gdelt-news-reels-script">
+(function(){
+  if(window.__stockpilotNewsReelsInit)return;window.__stockpilotNewsReelsInit=true;
+  const lang=(document.documentElement.lang||'en').toLowerCase().slice(0,2);
+  const words={
+    en:{titles:['Market News','Penny Stock News','Crypto News'],pause:'Pause',resume:'Resume',empty:'The news feed is preparing its first update. Please check back shortly.',credit:'Headlines and links via GDELT Project · Original publishers'},
+    fr:{titles:['Actualités des marchés','Actualités petites capitalisations','Actualités crypto'],pause:'Pause',resume:'Reprendre',empty:'Le fil d’actualité prépare sa première mise à jour. Revenez bientôt.',credit:'Titres et liens via GDELT Project · Éditeurs originaux'},
+    de:{titles:['Marktnachrichten','Penny-Stock-Nachrichten','Krypto-Nachrichten'],pause:'Pause',resume:'Fortsetzen',empty:'Der Nachrichten-Feed bereitet sein erstes Update vor. Bitte später erneut vorbeischauen.',credit:'Schlagzeilen und Links über GDELT Project · Originalverlage'},
+    es:{titles:['Noticias del mercado','Noticias de pequeñas acciones','Noticias cripto'],pause:'Pausar',resume:'Reanudar',empty:'El feed de noticias está preparando su primera actualización. Vuelve pronto.',credit:'Titulares y enlaces vía GDELT Project · Medios originales'}
+  }[lang]||{titles:['Market News','Penny Stock News','Crypto News'],pause:'Pause',resume:'Resume',empty:'The news feed is preparing its first update. Please check back shortly.',credit:'Headlines and links via GDELT Project · Original publishers'};
+  const placements=[
+    {key:'markets',ids:['deskMainStocks','mainStocks'],index:0},
+    {key:'penny',ids:['deskPennyStocks','pennyStocks'],index:1},
+    {key:'crypto',ids:['deskCrypto','cryptoCards'],index:2}
+  ];
+  const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const safeUrl=s=>{try{const u=new URL(s);return /^https?:$/.test(u.protocol)?u.href:''}catch(e){return ''}};
+  const reels=[];
+  placements.forEach(p=>{
+    let anchor=null;
+    for(const id of p.ids){anchor=document.getElementById(id);if(anchor)break}
+    if(!anchor)return;
+    const host=anchor.closest('.trading-panel')||anchor.closest('section')||anchor.parentElement;
+    if(!host||host.querySelector(':scope > .sp-news-reel'))return;
+    const card=document.createElement('section');card.className='sp-news-reel';card.setAttribute('aria-label',words.titles[p.index]);
+    card.innerHTML='<div class="sp-news-reel-head"><span class="sp-news-reel-title">'+esc(words.titles[p.index])+'</span><span class="sp-news-reel-live">● NEWS</span></div><div class="sp-news-reel-stage"><div class="sp-news-reel-empty">'+esc(words.empty)+'</div></div><div class="sp-news-reel-controls"><button class="sp-news-reel-pause" type="button">'+esc(words.pause)+'</button><span class="sp-news-reel-count"></span></div><div class="sp-news-reel-credit">'+esc(words.credit)+'</div>';
+    host.appendChild(card);
+    reels.push({card,key:p.key,items:[],index:0,paused:false,timer:null});
+  });
+  function show(reel,advance){
+    const stage=reel.card.querySelector('.sp-news-reel-stage'),count=reel.card.querySelector('.sp-news-reel-count');
+    if(!reel.items.length){stage.innerHTML='<div class="sp-news-reel-empty">'+esc(words.empty)+'</div>';count.textContent='';return}
+    if(advance)reel.index=(reel.index+1)%reel.items.length;
+    const item=reel.items[reel.index],url=safeUrl(item.url);
+    stage.innerHTML=(url?'<a class="sp-news-reel-story" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(item.title)+'</a>':'<div class="sp-news-reel-story">'+esc(item.title)+'</div>')+'<div class="sp-news-reel-meta"><span>'+esc(item.source||'News source')+'</span>'+(item.published?'<span>· '+esc(item.published)+'</span>':'')+'</div>';
+    count.textContent=(reel.index+1)+' / '+reel.items.length;
+    const story=stage.querySelector('.sp-news-reel-story');
+    if(advance){story.style.opacity='0';story.style.transform='translateY(12px)';requestAnimationFrame(()=>{story.style.opacity='1';story.style.transform='translateY(0)'})}
+  }
+  function schedule(reel){clearTimeout(reel.timer);if(!reel.paused&&reel.items.length>1)reel.timer=setTimeout(()=>{show(reel,true);schedule(reel)},6500)}
+  reels.forEach(reel=>{
+    const btn=reel.card.querySelector('.sp-news-reel-pause');
+    btn.addEventListener('click',()=>{reel.paused=!reel.paused;btn.textContent=reel.paused?words.resume:words.pause;if(reel.paused)clearTimeout(reel.timer);else schedule(reel)});
+  });
+  fetch('/data/news.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('News cache unavailable');return r.json()}).then(data=>{
+    reels.forEach(reel=>{const rows=data&&data.sections&&data.sections[reel.key];if(Array.isArray(rows)){reel.items=rows.filter(x=>x&&x.title&&safeUrl(x.url)).slice(0,12)}show(reel,false);schedule(reel)});
+  }).catch(()=>{reels.forEach(reel=>show(reel,false))});
+})();
+</script>
 </body>
 </html>
 
