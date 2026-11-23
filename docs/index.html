@@ -3884,7 +3884,8 @@ main p, main li, .section-head p, .updated, .card-meta {
   const response=await fetch(url.toString());if(!response.ok)throw new Error('Company search is temporarily unavailable. Try the ticker symbol instead.');
   const payload=await response.json(),matches=Array.isArray(payload.data)?payload.data:Array.isArray(payload.results)?payload.results:Array.isArray(payload.result)?payload.result:[];
   if(!matches.length)throw new Error('No stock listing was found for "'+raw+'". Check the company name or enter its ticker.');
-  const companyName=x=>x.name||x.instrument_name||x.company_name||x.description||x.title||'';\n  const exactSymbols=matches.filter(x=>clean(x.symbol)===key),exactNames=matches.filter(x=>clean(companyName(x))===key),exact=[...exactSymbols,...exactNames.filter(x=>!exactSymbols.includes(x))],preferred=exchangeKey(preferredExchange);
+  const companyName=x=>x.name||x.instrument_name||x.company_name||x.description||x.title||'';
+  const exactSymbols=matches.filter(x=>clean(x.symbol)===key),exactNames=matches.filter(x=>clean(companyName(x))===key),exact=[...exactSymbols,...exactNames.filter(x=>!exactSymbols.includes(x))],preferred=exchangeKey(preferredExchange);
   const onPreferred=list=>preferred?list.filter(x=>exchangeKey(x.exchange||x.mic_code)===preferred):[];
   let candidates=onPreferred(exact);if(!candidates.length)candidates=exact;
   if(!candidates.length){const partial=matches.filter(x=>{const n=clean(companyName(x));return n===key||n.startsWith(key+' ')||key.startsWith(n+' ');});candidates=onPreferred(partial);if(!candidates.length)candidates=partial;}
