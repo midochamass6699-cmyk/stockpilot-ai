@@ -117,7 +117,7 @@ footer a{color:#fff}
   const formatted=new Intl.NumberFormat(undefined,{style:"currency",currency:quote.currency}).format(price);
   const updated=quote.last_quote_at?new Date(Number(quote.last_quote_at)*1000).toLocaleString():(quote.datetime||"Time unavailable");
   output.replaceChildren();
-  const name=document.createElement("div");name.className="quote-name";name.textContent=quote.name||quote.symbol;
+  const name=document.createElement("div");name.className="quote-name";name.textContent=quote.name||quote.instrument_name||quote.symbol;
   const priceEl=document.createElement("div");priceEl.className="quote-price";priceEl.textContent=formatted;
   const meta=document.createElement("div");meta.className="quote-meta";meta.textContent=[quote.symbol,quote.exchange||"Exchange unavailable",quote.currency].join(" · ");
   const time=document.createElement("div");time.className="quote-time";time.textContent="Latest available data: "+updated;
@@ -145,7 +145,7 @@ footer a{color:#fff}
    const choices=document.createElement("div");choices.className="choices";
    matches.forEach(stock=>{
     const choice=document.createElement("button");choice.type="button";choice.className="choice";
-    choice.textContent=(stock.name||stock.symbol)+" · "+stock.symbol+" · "+(stock.exchange||stock.country||"Exchange unavailable");
+    choice.textContent=(stock.name||stock.instrument_name||stock.company_name||stock.symbol)+" · "+stock.symbol+" · "+(stock.exchange||stock.country||"Exchange unavailable");
     choice.addEventListener("click",()=>getQuote(stock));choices.appendChild(choice);
    });
    output.append(heading,choices);
