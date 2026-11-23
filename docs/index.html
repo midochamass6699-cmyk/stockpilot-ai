@@ -3770,7 +3770,7 @@ main p, main li, .section-head p, .updated, .card-meta {
   const value=String(exchange||'').trim().toUpperCase();
   if(value.includes('NASDAQ')||value.includes('NASDAQGS')||value.includes('NASDAQGM')||value.includes('NASDAQCM')||value==='XNAS')return 'NASDAQ';
   if(value.includes('NYSE')||value.includes('NEW YORK')||value==='XNYS')return 'NYSE';
-  if(value==='TSX'||value.includes('TORONTO')||value==='XTSE'||value==='XTSX')return 'TSX';
+  if(value==='TSX'||value.includes('TORONTO')||value==='XTSE')return 'TSX';
   if(value.includes('TSXV')||value.includes('VENTURE')||value==='XTSX')return 'TSXV';
   if(value.includes('BINANCE'))return 'BINANCE';
   return fallback||'NASDAQ';
@@ -3802,7 +3802,7 @@ main p, main li, .section-head p, .updated, .card-meta {
   const exactSymbol=matches.find(item=>key(item.symbol)===cleanName);
   const exactName=matches.find(item=>key(item.name)===cleanName);
   const selectedMarket=tvExchange(exchange,'');
-  const marketMatch=matches.find(item=>tvExchange(item.exchange||item.mic_code,'')===selectedMarket);
+  const marketMatch=matches.find(item=>{const ex=String(item.exchange||item.mic_code||'').toUpperCase();return selectedMarket==='NASDAQ'?(ex.includes('NASDAQ')||ex==='XNAS'):selectedMarket==='NYSE'?(ex.includes('NYSE')||ex==='XNYS'):selectedMarket==='TSX'?(ex.includes('TORONTO')||ex==='XTSE'||ex==='TSX'):selectedMarket==='TSXV'?(ex.includes('VENTURE')||ex==='XTSX'||ex==='TSXV'):false;});
   const stock=exactSymbol||exactName||marketMatch||matches[0];
   const resolvedSymbol=String(stock.symbol||'').trim().toUpperCase();
   if(!resolvedSymbol)throw new Error('The company search returned a listing without a ticker symbol.');
