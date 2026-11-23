@@ -42,15 +42,24 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
           }
         }
 
+        await page.locator('#market-terminal [data-sp-tool="0"]').click();
         await page.locator('#sp-terminal-watch-input').fill('Apple');
         await page.locator('#sp-terminal-watch-add').click();
         await page.locator('#sp-terminal-watch-list').getByText('AAPL', { exact: true }).waitFor({ timeout: 10000 });
 
+        await page.locator('#market-terminal [data-sp-tool="1"]').click();
         await page.locator('#sp-terminal-screen-search').fill('Apple');
         await page.locator('#sp-terminal-screen-search').waitFor();
-        await page.locator('#sp-terminal-ta-widget').waitFor();
-        await page.locator('#sp-terminal-tool-panel-2').waitFor();
+        await page.locator('#market-terminal [data-sp-tool="2"]').click();
+        await page.waitForFunction(() => !!document.querySelector('#sp-terminal-ta-widget script[src*="embed-widget-technical-analysis.js"]'), { timeout: 15000 });
 
+        await page.locator('#market-terminal [data-sp-tool="3"]').click();
+        await page.waitForFunction(() => {
+          const text = document.querySelector('#sp-terminal-company-facts')?.textContent || '';
+          return text.includes('LATEST PRICE') || text.includes('Latest quote unavailable');
+        }, { timeout: 20000 });
+
+        await page.locator('#market-terminal [data-sp-tool="4"]').click();
         await page.locator('#sp-terminal-paper-symbol').fill('Apple');
         await page.locator('#sp-terminal-paper-units').fill('1');
         await page.locator('#sp-terminal-paper-entry').fill('100');
