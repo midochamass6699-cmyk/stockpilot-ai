@@ -13,6 +13,16 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         localStorage.removeItem('stockpilot-terminal-watchlist-v1');
         localStorage.removeItem('stockpilot-terminal-practice-v1');
       });
+      // Exercise the real quote provider once in the primary English terminal.
+      // Other locale passes verify the UI's graceful unavailable state without
+      // sending repeated identical quote requests that can trigger provider throttling.
+      if (route !== '/us/') {
+        await page.route('https://stockpilot-lookup.midochamass6699.workers.dev/**', async requestRoute => {
+          const url = new URL(requestRoute.request().url());
+          if (url.searchParams.get('action') === 'quote') await requestRoute.abort();
+          else await requestRoute.continue();
+        });
+      }
       try {
         const response = await page.goto(BASE + route, { waitUntil: 'domcontentloaded', timeout: 45000 });
         if (!response || !response.ok()) throw new Error('Page HTTP status: ' + (response && response.status()));
@@ -51,10 +61,10 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         await page.locator('#sp-terminal-ta-widget iframe').first().waitFor({ state: 'attached', timeout: 30000 });
 
         await page.locator('#market-terminal [data-sp-tool="3"]').click();
-        await page.waitForFunction(() => {
+        await page.waitForFunction((requireLiveQuote) => {
           const text = document.querySelector('#sp-terminal-company-facts')?.textContent || '';
-          return text.includes('LATEST PRICE');
-        }, { timeout: 25000 });
+          return requireLiveQuote ? text.includes('LATEST PRICE') : (text.includes('LATEST PRICE') || text.includes('Latest quote unavailable'));
+        }, route === '/us/', { timeout: 30000 });
 
         await page.locator('#market-terminal [data-sp-tool="4"]').click();
         await page.locator('#sp-terminal-paper-symbol').fill('Apple');
@@ -62,10 +72,10 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         await page.locator('#sp-terminal-paper-entry').fill('100');
         await page.locator('#sp-terminal-paper-add').click();
         await page.locator('#sp-terminal-paper-list').getByText('AAPL', { exact: false }).waitFor({ timeout: 10000 });
-        await page.waitForFunction(() => {
+        await page.waitForFunction((requireLiveQuote) => {
           const text = document.querySelector('#sp-terminal-paper-list')?.textContent || '';
-          return text.includes('AAPL') && !text.includes('Loading…') && !text.includes('Unavailable');
-        }, { timeout: 25000 });
+          return text.includes('AAPL') && !text.includes('Loading…') && (requireLiveQuote ? !text.includes('Unavailable') : true);
+        }, route === '/us/', { timeout: 30000 });
 
         console.log('PASS ' + route + ' terminal tabs, Apple resolver, chart embed injection, watchlist and practice entry');
       } catch (error) {
