@@ -1,6 +1,12 @@
 name: Refresh cached financial news
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/update_news.py
+      - .github/workflows/news-reels.yml
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
