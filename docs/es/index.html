@@ -2037,6 +2037,77 @@ main li + li { margin-top: 0.35em; }
 #live-trading-desk .trading-panel button { background:#fff !important;border-color:#c5d2df !important; }
 </style>
 
+<style id="tf-terminal-modern-midnight-v2">
+/* Technofront Market Terminal: modern midnight palette with high-contrast text. */
+#market-terminal,.sp-market-terminal,#live-trading-desk{
+  --tf-term-bg:#101a2b;
+  --tf-term-panel:#17263a;
+  --tf-term-panel-2:#1d3048;
+  --tf-term-inset:#0c1524;
+  --tf-term-text:#edf4fc;
+  --tf-term-muted:#a9bbcf;
+  --tf-term-accent:#38bdf8;
+  --tf-term-border:#30445e;
+  background:linear-gradient(145deg,#101a2b 0%,#142238 100%) !important;
+  color:var(--tf-term-text) !important;
+  border-color:var(--tf-term-border) !important;
+}
+#market-terminal *, .sp-market-terminal *, #live-trading-desk *{
+  color:var(--tf-term-text) !important;
+  border-color:var(--tf-term-border) !important;
+}
+#market-terminal p,#market-terminal small,#market-terminal .muted,#market-terminal .subtle,
+.sp-market-terminal p,.sp-market-terminal small,.sp-market-terminal .muted,.sp-market-terminal .subtle,
+#live-trading-desk .muted,#live-trading-desk .subtle,#live-trading-desk .description,
+#market-terminal .sp-terminal-tip,#market-terminal .sp-terminal-disclaimer,
+.sp-market-terminal .sp-terminal-tip,.sp-market-terminal .sp-terminal-disclaimer{
+  color:var(--tf-term-muted) !important;
+}
+#market-terminal .sp-terminal-top,.sp-market-terminal .sp-terminal-top,
+#market-terminal .sp-terminal-tool-tabs,.sp-market-terminal .sp-terminal-tool-tabs,
+#market-terminal .trading-panel,.sp-market-terminal .trading-panel,
+#live-trading-desk .trading-panel,#live-trading-desk .trading-market-list,
+#live-trading-desk .sp-market-row,#live-trading-desk [class*="panel"],
+#live-trading-desk [class*="card"],#market-terminal [class*="panel"],
+.sp-market-terminal [class*="panel"]{
+  background-color:var(--tf-term-panel) !important;
+}
+#market-terminal input,#market-terminal select,#market-terminal textarea,
+#market-terminal button,.sp-market-terminal input,.sp-market-terminal select,
+.sp-market-terminal textarea,.sp-market-terminal button,
+#live-trading-desk input,#live-trading-desk select,#live-trading-desk textarea,
+#live-trading-desk button{
+  background-color:var(--tf-term-panel-2) !important;
+  color:var(--tf-term-text) !important;
+  border:1px solid var(--tf-term-border) !important;
+}
+#market-terminal input::placeholder,#market-terminal textarea::placeholder,
+.sp-market-terminal input::placeholder,.sp-market-terminal textarea::placeholder,
+#live-trading-desk input::placeholder,#live-trading-desk textarea::placeholder{
+  color:var(--tf-term-muted) !important;opacity:1 !important;
+}
+#market-terminal .sp-terminal-tool-tabs button,
+#market-terminal [role="tab"],.sp-market-terminal .sp-terminal-tool-tabs button,
+.sp-market-terminal [role="tab"],#live-trading-desk [role="tab"]{
+  background:var(--tf-term-panel) !important;color:var(--tf-term-text) !important;
+}
+#market-terminal button[aria-selected="true"],
+.sp-market-terminal button[aria-selected="true"],
+#market-terminal [role="tab"][aria-selected="true"],
+.sp-market-terminal [role="tab"][aria-selected="true"]{
+  background:#075985 !important;color:#ffffff !important;border-color:#38bdf8 !important;
+}
+#market-terminal a,.sp-market-terminal a,#live-trading-desk a{
+  color:#7dd3fc !important;
+}
+#market-terminal .sp-terminal-chart,.sp-market-terminal .sp-terminal-chart,
+#market-terminal .sp-terminal-chart-placeholder,.sp-market-terminal .sp-terminal-chart-placeholder{
+  background:var(--tf-term-inset) !important;border-color:var(--tf-term-border) !important;
+  color:var(--tf-term-muted) !important;
+}
+#market-terminal svg,.sp-market-terminal svg,#live-trading-desk svg{color:inherit}
+</style>
+
 </head>
 <body>
 <!-- NAVIGATION -->
