@@ -2461,6 +2461,32 @@ main li + li { margin-top: 0.35em; }
 #live-trading-desk .trading-market-list .sp-market-logo{width:24px!important;height:24px!important;object-fit:contain!important}
 @media(max-width:760px){#live-trading-desk .trading-desk-grid{grid-template-columns:minmax(0,1fr)!important}}
 </style>
+
+<style id="tf-left-market-column-full-height">
+/* Keep the complete left stock-watch panel equal in height to the market terminal. */
+@media (min-width: 761px) {
+  .live-trading-desk .tf-two-panel-grid > .tf-market-collection {
+    align-self: stretch !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+  .live-trading-desk .tf-two-panel-grid > .tf-market-collection > .trading-desk-grid {
+    flex: 1 1 auto !important;
+    min-height: 100% !important;
+    height: auto !important;
+    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+    align-content: stretch !important;
+  }
+  .live-trading-desk .tf-two-panel-grid > .tf-market-collection > .trading-desk-grid > .trading-panel {
+    min-height: 0 !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
