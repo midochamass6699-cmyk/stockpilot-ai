@@ -1,11 +1,135 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": null,
-  "updated_sections": [],
+  "fetched_at": "2026-11-23T22:27:24.473306+00:00",
+  "updated_sections": [
+    "markets",
+    "penny"
+  ],
   "sections": {
-    "markets": [],
-    "penny": [],
+    "markets": [
+      {
+        "title": "Dow Crash Investment Strategy : On the day the Dow Jones crashed 22 %, this trader bet paid off big ; his fund made 200 % that year . With stocks in a correction , he has a 90 % rule every investor should know",
+        "url": "https://economictimes.indiatimes.com/world/us/on-the-day-the-dow-jones-crashed-22-this-traders-bet-paid-off-big-his-fund-made-200-that-year-with-stocks-in-a-correction-he-has-a-90-rule-every-investor-should-know/articleshow/136101669.cms",
+        "source": "economictimes.indiatimes.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Property investor lending posts record 32 . 3 per cent fall",
+        "url": "https://www.sconeadvocate.com.au/story/9396508/property-investor-lending-posts-record-323-per-cent-fall/",
+        "source": "sconeadvocate.com.au",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Jensen Huang Shocking Reinstatement Sparks Memes",
+        "url": "https://hiphopwired.com/3069633/jensen-huang-nvidia-reinstated-donald-trump-reaction-memes/",
+        "source": "hiphopwired.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Epsilon Announces Third Quarter 2026 Results and Fourth Quarter 2026 Update",
+        "url": "https://www.stratfordbeaconherald.com/press-releases/globe-newswire/epsilon-announces-third-quarter-2026-results-and-fourth-quarter-2026-update/",
+        "source": "stratfordbeaconherald.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Number Of Centimillionaires Working At Anthropic Is Larger Than The Number Living In Los Angeles",
+        "url": "https://big1073.iheart.com/content/2026-11-23-number-of-centimillionaires-working-at-anthropic-is-larger-than-the-number-living-in-los-angeles/",
+        "source": "big1073.iheart.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Number Of Centimillionaires Working At Anthropic Is Larger Than The Number Living In Los Angeles",
+        "url": "https://kssn.iheart.com/content/2026-11-23-number-of-centimillionaires-working-at-anthropic-is-larger-than-the-number-living-in-los-angeles/",
+        "source": "kssn.iheart.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "JA全農ちばの秋の味覚が揃う 「 愛情いちばん館 」 で千葉県産農産物を楽しもう｜Jタウンネット",
+        "url": "https://j-town.net/provider/atpress_town/652044/",
+        "source": "j-town.net",
+        "published": "20261123T213000Z",
+        "language": "Japanese"
+      },
+      {
+        "title": "Trump says he  convinced  Nvidia to reinstate Jensen Huang :  I made the deal",
+        "url": "https://wtov9.com/news/nation-world/trump-says-he-convinced-nvidia-to-reinstate-jensen-huang-i-made-the-deal-chinese-spy-megaspeed-rrt",
+        "source": "wtov9.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Rafael founder Amos Horev dies at 102 | The Jerusalem Post",
+        "url": "http://www.jpost.com/israel-news/article-915869",
+        "source": "jpost.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Property investor lending posts record 32 . 3 per cent fall",
+        "url": "https://www.theleader.com.au/story/9396508/property-investor-lending-posts-record-323-per-cent-fall/",
+        "source": "theleader.com.au",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Number Of Centimillionaires Working At Anthropic Is Larger Than The Number Living In Los Angeles",
+        "url": "https://newsradio1049.iheart.com/content/2026-11-23-number-of-centimillionaires-working-at-anthropic-is-larger-than-the-number-living-in-los-angeles/",
+        "source": "newsradio1049.iheart.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      },
+      {
+        "title": "Number Of Centimillionaires Working At Anthropic Is Larger Than The Number Living In Los Angeles",
+        "url": "https://beat1053.iheart.com/content/2026-11-23-number-of-centimillionaires-working-at-anthropic-is-larger-than-the-number-living-in-los-angeles/",
+        "source": "beat1053.iheart.com",
+        "published": "20261123T213000Z",
+        "language": "English"
+      }
+    ],
+    "penny": [
+      {
+        "title": "Stock market outlook today , 23 Nov : Sensex , Nifty prediction - DJIA , S & P , NASDAQ , GIFT Nifty , Kospi , Nikkei , Taiwan cues",
+        "url": "https://www.livemint.com/market/stock-market-news/stock-market-outlook-today-23-nov-sensex-nifty-prediction-djia-s-p-nasdaq-gift-nifty-kospi-nikkei-taiwan-cues-11795394068928.html",
+        "source": "livemint.com",
+        "published": "20261123T033000Z",
+        "language": "English"
+      },
+      {
+        "title": "众赢财富通 ： 机构大盘股出清节奏或快于以往 _ 产业资讯 _ 行业 _ 中金在线",
+        "url": "http://hy.stock.cnfol.com/hangyejingcui/20261123/32429530.shtml",
+        "source": "hy.stock.cnfol.com",
+        "published": "20261123T033000Z",
+        "language": "Chinese"
+      },
+      {
+        "title": "A股开盘 ： 三大指数集体低开 ， 影视院线 、 光刻机 、 半导体板块跌幅居前",
+        "url": "https://stock.jrj.com.cn/2026/11/23092959227604.shtml",
+        "source": "stock.jrj.com.cn",
+        "published": "20261123T023000Z",
+        "language": "Chinese"
+      },
+      {
+        "title": "创业板指 、 深证成指翻红 ， CPO 、 元件板块涨幅居前 ， 新易盛涨超7 %",
+        "url": "https://stock.jrj.com.cn/2026/11/23094759227733.shtml",
+        "source": "stock.jrj.com.cn",
+        "published": "20261123T023000Z",
+        "language": "Chinese"
+      },
+      {
+        "title": "_ 贵州茅台 ( 600519 ) 股吧 _ 东方财富网股吧",
+        "url": "https://guba.eastmoney.com/o/news,600519,1799606113.html",
+        "source": "guba.eastmoney.com",
+        "published": "20261122T223000Z",
+        "language": "Chinese"
+      }
+    ],
     "crypto": []
   }
 }
