@@ -52,12 +52,15 @@ h1{font-size:clamp(27px,3vw,36px);letter-spacing:-.04em;margin:8px 0 3px;color:#
 .advanced-copy a{color:#9bd0f7;font-weight:850;text-decoration:none}
 .report-later{margin:16px 0 60px;padding:17px 19px;border:1px dashed #38516b;border-radius:10px;color:#b5c7d9;background:#101d2c;font-size:12px}
 .report-later strong{color:#fff}
-.below-fold-preview{margin:28px 0 0;padding:18px;border:1px solid var(--line);border-radius:12px;background:#111f2f}
+.below-fold-preview{margin:28px 0 0}
+.lower-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.lower-square{min-width:0;min-height:190px;padding:18px;border:1px solid var(--line);border-radius:12px;background:#111f2f}
+
 .mock-section-heading{font-size:10px;font-weight:950;letter-spacing:.13em;color:#a9c7e2;margin:0 0 9px}
 .mock-terminal{min-height:82px;display:flex;align-items:center;padding:16px;border:1px solid #314a63;border-radius:8px;background:linear-gradient(120deg,#101b29,#1a2e43);color:#b7c9dc;font-size:12px;margin-bottom:20px}
-.mock-stocks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:2px}
+.mock-stocks{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:2px}
 .mock-stock{padding:17px 12px;border:1px solid #314a63;border-radius:8px;background:#17283b;color:#e6f0fa;font-size:11px;font-weight:800;text-align:center}
-@media(max-width:800px){.topbar{align-items:flex-start;flex-direction:column}.topnav{gap:15px;flex-wrap:wrap}.action-grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr;gap:7px}.choice{padding:10px 12px}.choice-desc{min-height:0;margin:4px 0 6px}.submenu{position:static;margin-top:8px}.choice:hover .submenu,.choice:focus-within .submenu{display:block}.stock-panel{min-height:0}.mock-stocks{grid-template-columns:1fr}.advanced{align-items:flex-start;flex-direction:column;gap:6px}}
+@media(max-width:800px){.topbar{align-items:flex-start;flex-direction:column}.topnav{gap:15px;flex-wrap:wrap}.action-grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr;gap:7px}.choice{padding:10px 12px}.choice-desc{min-height:0;margin:4px 0 6px}.submenu{position:static;margin-top:8px}.choice:hover .submenu,.choice:focus-within .submenu{display:block}.stock-panel{min-height:0}.lower-grid{grid-template-columns:1fr}.advanced{align-items:flex-start;flex-direction:column;gap:6px}}
 @media(min-width:801px){.choice{min-height:132px}}
 </style>
 </head>
@@ -137,13 +140,19 @@ h1{font-size:clamp(27px,3vw,36px);letter-spacing:-.04em;margin:8px 0 3px;color:#
 </section>
 
 <section class="below-fold-preview" aria-label="Lower homepage content preview">
+<div class="lower-grid">
+<article class="lower-square">
 <div class="mock-section-heading">MARKET TERMINAL</div>
 <div class="mock-terminal">Market Terminal preview · charts, market data and analysis tools</div>
+</article>
+<article class="lower-square">
 <div class="mock-section-heading">THREE STOCKS</div>
 <div class="mock-stocks">
 <div class="mock-stock">Featured Stock 1</div>
 <div class="mock-stock">Featured Stock 2</div>
 <div class="mock-stock">Featured Stock 3</div>
+</div>
+</article>
 </div>
 </section>
 
