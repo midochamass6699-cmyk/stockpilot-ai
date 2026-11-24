@@ -8532,6 +8532,8 @@ body{font-size:16px}
     welcome.className='tf-mobile-priority-welcome';
     welcome.setAttribute('aria-label','Welcome to Technofront');
     stack.appendChild(welcome);
+    /* Keep the scrolling market ticker first on mobile. */
+    move(document.querySelector('.tf-market-pulse'),stack);
     move(document.querySelector('#trading-desk-title, #fr-welcome-title, #home-seo-title'),welcome);
     move(document.querySelector('.tf-welcome-tagline'),welcome);
     var updates=document.querySelector('.subscribe-bell-cta');
@@ -8630,7 +8632,9 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 (function(){
  const welcome=document.querySelector('.fr-welcome-banner');
  const ticker=document.querySelector('.sp-top-picks-ticker');
- if(welcome&&ticker&&welcome.parentNode===ticker.parentNode)welcome.parentNode.insertBefore(ticker,welcome.nextSibling);
+ const mobileStack=document.getElementById('tf-mobile-priority-stack');
+ if(welcome&&ticker&&mobileStack&&window.matchMedia('(max-width:760px)').matches)mobileStack.insertBefore(ticker,mobileStack.firstChild);
+ else if(welcome&&ticker&&welcome.parentNode===ticker.parentNode)welcome.parentNode.insertBefore(ticker,welcome.nextSibling);
 })();
 </script>
 
@@ -8850,3 +8854,53 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
   .topbar .language-switch a { transition:none; }
 }
 </style>
+
+
+<!-- French homepage order and navigation typography correction. -->
+<style id="tf-fr-nav-readable-hover-labels">
+@media (min-width:761px){
+  #primary-navigation .tf-desktop-menus{gap:clamp(18px,2vw,30px)!important;flex:0 1 auto!important}
+  #primary-navigation .tf-desktop-menu{flex:0 0 auto!important;min-width:max-content!important}
+  #primary-navigation .tf-desktop-trigger{
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    min-height:42px!important;padding:10px 5px!important;
+    font-size:12px!important;font-weight:800!important;line-height:1.4!important;
+    letter-spacing:normal!important;word-spacing:normal!important;
+    white-space:nowrap!important;overflow:visible!important;
+    text-transform:none!important;writing-mode:horizontal-tb!important;
+    transform:none!important;transition:color .18s ease!important;
+  }
+  #primary-navigation .tf-desktop-trigger:after{flex:0 0 auto!important;line-height:1!important}
+  #primary-navigation .tf-desktop-dropdown{min-width:290px!important}
+  #primary-navigation .tf-desktop-dropdown>a{
+    display:block!important;white-space:normal!important;
+    line-height:1.45!important;letter-spacing:normal!important;
+    word-spacing:normal!important;overflow-wrap:anywhere!important;
+  }
+  #primary-navigation .tf-desktop-dropdown>a small{line-height:1.45!important;letter-spacing:normal!important}
+}
+</style>
+<script id="tf-fr-homepage-content-order">
+(function(){
+  function placeReport(){
+    var report=document.querySelector('.tf-fr-company-start');
+    var crypto=document.querySelector('#crypto-picks');
+    if(report&&crypto&&crypto.parentNode)crypto.insertAdjacentElement('afterend',report);
+  }
+  function placeStockDay(){
+    var stock=document.getElementById('sp-stock-of-day');
+    var welcome=document.querySelector('.fr-welcome-banner');
+    if(stock&&welcome&&welcome.parentNode&&!welcome.contains(stock))welcome.insertAdjacentElement('afterend',stock);
+  }
+  function apply(){
+    placeReport();
+    if(!window.matchMedia('(max-width:760px)').matches)placeStockDay();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});
+  else apply();
+  window.addEventListener('load',apply,{once:true});
+  window.addEventListener('resize',function(){
+    if(!window.matchMedia('(max-width:760px)').matches)placeStockDay();
+  },{passive:true});
+})();
+</script>
