@@ -8465,6 +8465,29 @@ body{font-size:16px}
 @media(max-width:360px){.tf-mobile-start{padding:11px}.tf-mobile-start-grid{gap:7px}.tf-mobile-start-card{padding:10px 8px;min-height:120px}.tf-mobile-start-card strong{font-size:11px}.tf-mobile-start-card small{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.tf-mobile-start-card{transition:none}}
 </style>
+
+<script id="technofront-mobile-stockday-order">
+(function(){
+  var stock=document.getElementById('sp-stock-of-day');
+  var hub=document.querySelector('.tf-mobile-start');
+  if(!stock||!hub)return;
+  var welcome;
+  if(document.querySelector('.fr-welcome-banner')) welcome=document.querySelector('.fr-welcome-banner');
+  else if(document.querySelector('.seo-intro')) welcome=document.querySelector('.seo-intro');
+  else welcome=document.querySelector('.trading-desk-header');
+  if(!welcome||!welcome.parentNode)return;
+  var marker=document.createComment('Original Stock of the Day position');
+  stock.parentNode.insertBefore(marker,stock);
+  var mobile=window.matchMedia('(max-width: 760px)');
+  function place(){
+    if(mobile.matches){hub.parentNode.insertBefore(stock,hub);}
+    else if(marker.parentNode){marker.parentNode.insertBefore(stock,marker.nextSibling);}
+  }
+  place();
+  if(mobile.addEventListener)mobile.addEventListener('change',place);
+  else if(mobile.addListener)mobile.addListener(place);
+})();
+</script>
 </body>
 </html>
 
