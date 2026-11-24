@@ -1,8 +1,11 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-24T21:47:49.650028+00:00",
-  "updated_sections": [],
+  "fetched_at": "2026-11-24T22:45:27.581667+00:00",
+  "updated_sections": [
+    "penny",
+    "crypto"
+  ],
   "sections": {
     "markets": [
       {
@@ -122,87 +125,87 @@
     ],
     "crypto": [
       {
-        "title": "Delhi Police bust cryptocurrency fraud syndicate , 4 arrested for cheating trader of Rs 5 lakh",
-        "url": "https://news.webindia123.com/news/Articles/India/20261124/4523767.html",
-        "source": "news.webindia123.com",
-        "published": "20261124T063000Z",
+        "title": "Microsoft Declares  Code Red  After Major Global Service Outage",
+        "url": "https://khow.iheart.com/content/2026-11-24-microsoft-declares-code-red-after-major-global-service-outage/",
+        "source": "khow.iheart.com",
+        "published": "20261124T221500Z",
         "language": "English"
       },
       {
-        "title": "European Commission proposes 22nd round of sanctions against Russia _ Guangming Online",
-        "url": "https://en.gmw.cn/2026-11/24/content_39117321.htm",
-        "source": "en.gmw.cn",
-        "published": "20261124T063000Z",
+        "title": "EU 22nd Russia Sanctions Package Takes Aim at Banks , Oil and Sports - Novinite . com",
+        "url": "https://www.novinite.com/view_news.php?id=241758",
+        "source": "novinite.com",
+        "published": "20261124T221500Z",
         "language": "English"
       },
       {
-        "title": "Dow Jones Top Financial Services Headlines at 12 AM ET : Strategy and Crypto Stocks Rally as Bitcoin Rebounds Past $63 , 000 . Is the Jump Temporary ? | Julius ...",
-        "url": "https://www.morningstar.com/news/dow-jones/2026112439/dow-jones-top-financial-services-headlines-at-12-am-et-strategy-and-crypto-stocks-rally-as-bitcoin-rebounds-past-63000-is-the-jump-temporary-julius",
-        "source": "morningstar.com",
-        "published": "20261124T063000Z",
+        "title": "Microsoft Declares  Code Red  After Major Global Service Outage | Talk Radio 105 . 9",
+        "url": "https://knrs.iheart.com/content/2026-11-24-microsoft-declares-code-red-after-major-global-service-outage/",
+        "source": "knrs.iheart.com",
+        "published": "20261124T221500Z",
         "language": "English"
       },
       {
-        "title": "Nigeria : Shettima Declares Drug Control National Emergency , Tasks Stakeholders On Master Plan",
-        "url": "https://allafrica.com/stories/202611240153.html",
-        "source": "allafrica.com",
-        "published": "20261124T063000Z",
+        "title": "Where Does Texa Data Center Boom Go From Here ?",
+        "url": "https://oilprice.com/Energy/Energy-General/Where-Does-Texas-Data-Center-Boom-Go-From-Here.html",
+        "source": "oilprice.com",
+        "published": "20261124T214500Z",
         "language": "English"
       },
       {
-        "title": "Nvidia reinstates Jensen Huang as CEO : Trump , Musk , Altman react while the internet has jokes",
-        "url": "https://mashable.com/tech/nvidia-ceo-huang-reinstated-back-reactions-trump-musk-altman",
-        "source": "mashable.com",
-        "published": "20261124T051500Z",
+        "title": "Is Anthropic IPO Still Draining Money From Crypto a Week Later ?",
+        "url": "https://247wallst.com/investing/cryptocurrency/2026/11/24/is-anthropics-ipo-still-draining-money-from-crypto-a-week-later/",
+        "source": "247wallst.com",
+        "published": "20261124T214500Z",
         "language": "English"
       },
       {
-        "title": "Kraken Accused Of Firing Worker Who Flagged AML Lapses",
-        "url": "https://www.law360.com:443/articles/2558894",
-        "source": "law360.com",
-        "published": "20261124T044500Z",
+        "title": "Microsoft Declares  Code Red  After Major Global Service Outage | Newsradio WOOD 1300 and 106 . 9 FM",
+        "url": "https://woodradio.iheart.com/content/2026-11-24-microsoft-declares-code-red-after-major-global-service-outage/",
+        "source": "woodradio.iheart.com",
+        "published": "20261124T214500Z",
         "language": "English"
       },
       {
-        "title": "The World Is Going Passwordless : Who Gets The Account Back ? - Analysis",
-        "url": "https://www.eurasiareview.com/24112026-the-world-is-going-passwordless-who-gets-the-account-back-analysis/",
-        "source": "eurasiareview.com",
-        "published": "20261124T044500Z",
+        "title": "National outages , emergency alerts become fodder for doomsday conspiracy theories",
+        "url": "http://www.idahostatejournal.com/news/local/national-outages-emergency-alerts-become-fodder-for-doomsday-conspiracy-theories/article_fbf14eec-aa33-4fad-8d06-eb689a797de0.html",
+        "source": "idahostatejournal.com",
+        "published": "20261124T214500Z",
         "language": "English"
       },
       {
-        "title": "They attended Trump controversial meme coin dinner . It didnt go well",
-        "url": "https://www.wkyufm.org/news/2026-11-23/they-attended-trumps-controversial-meme-coin-dinner-it-didnt-go-well",
-        "source": "wkyufm.org",
-        "published": "20261124T033000Z",
+        "title": "Microsoft Declares  Code Red  After Major Global Service Outage | Newstalk 1400 , 104 . 5 , and 105 . 9 WJMX",
+        "url": "https://newstalk1400online.iheart.com/content/2026-11-24-microsoft-declares-code-red-after-major-global-service-outage/",
+        "source": "newstalk1400online.iheart.com",
+        "published": "20261124T214500Z",
         "language": "English"
       },
       {
-        "title": "From inside Georgia prisons , 6 inmates ran scam targeting victims in southern Illinois , feds allege",
-        "url": "https://www.kwqc.com:443/2026/11/24/inside-georgia-prisons-6-inmates-ran-scam-targeting-victims-southern-illinois-feds-allege/",
-        "source": "kwqc.com",
-        "published": "20261124T033000Z",
+        "title": "Lakers officially set games to wear new Specter Edition uniform",
+        "url": "https://lakersnation.com/which-games-lakers-wearing-specter-edition-jersey-new/",
+        "source": "lakersnation.com",
+        "published": "20261124T214500Z",
         "language": "English"
       },
       {
-        "title": "US Stocks Surge as Nvidia Reinstates Huang",
-        "url": "https://www.markets.com/news/us-stocks-surge-nvidia-jensen-huang-reinstated",
-        "source": "markets.com",
-        "published": "20261124T033000Z",
+        "title": "Senate Races To Confirm Two New SEC Commissioners",
+        "url": "https://www.wealthmanagement.com/regulation-compliance/senate-fast-tracks-two-nominees-to-fill-sec-seats",
+        "source": "wealthmanagement.com",
+        "published": "20261124T214500Z",
         "language": "English"
       },
       {
-        "title": "The Altruists : Where Is Caroline Ellison Now After Sam Bankman - Fried Scandal",
-        "url": "https://www.oxygen.com/crime-news/the-altruists-where-is-caroline-ellison-now-after-sam-bankman-fried-scandal",
-        "source": "oxygen.com",
-        "published": "20261124T033000Z",
+        "title": "Weekly ETFs : Seven of 11 sectors record outflows ; Communication services sector leads inflows",
+        "url": "https://seekingalpha.com/news/4676345-weekly-etfs-seven-of-11-sectors-record-outflows-communication-services-sector-leads-inflows",
+        "source": "seekingalpha.com",
+        "published": "20261124T213000Z",
         "language": "English"
       },
       {
-        "title": "Seeing these signs ? A relative may be caught in a scam",
-        "url": "https://www.thestar.com.my/tech/tech-news/2026/11/24/seeing-these-signs-a-relative-may-be-caught-in-a-scam",
-        "source": "thestar.com.my",
-        "published": "20261124T023000Z",
+        "title": "Crypto King  was actually at gas station when he testified alleged kidnappers waterboarded him elsewhere",
+        "url": "https://www.cbc.ca/news/canada/toronto/crypto-king-court-gas-station-waterboarding-alleged-kidnapping-9.7434459",
+        "source": "cbc.ca",
+        "published": "20261124T213000Z",
         "language": "English"
       }
     ]
