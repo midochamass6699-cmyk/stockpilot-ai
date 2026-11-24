@@ -30,6 +30,36 @@ h1{max-width:850px;margin:18px 0 14px;font-size:clamp(42px,7vw,78px);line-height
 footer{border-top:1px solid #20394d;padding:25px 0 38px;color:#92a8ba;font-size:11px}footer a{color:var(--cyan);text-decoration:none}
 @media(max-width:900px){.sector-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.topic-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.nav{height:auto;min-height:60px;align-items:flex-start;padding:13px 0;flex-direction:column;gap:9px}.navlinks{width:100%;gap:14px;overflow-x:auto;padding-bottom:3px}.navlinks a{white-space:nowrap;font-size:10px}.hero{padding:45px 0 28px}.feature{grid-template-columns:1fr}.feature-art{min-height:190px}.topic-layout{grid-template-columns:1fr;gap:8px}.topic-cards{grid-template-columns:1fr}.sector-card{min-height:195px;padding:15px}.section-head{display:block}.section-head p{margin-top:8px}}
+
+/* Growth Sectors research expansion */
+.pulse-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:8px 0 24px}
+.pulse-card{padding:16px;border:1px solid #31546a;border-radius:14px;background:linear-gradient(145deg,#10283b,#0a1928)}
+.pulse-card .metric{font-size:clamp(23px,3vw,34px);font-weight:950;letter-spacing:-.04em;color:var(--cyan);line-height:1.1}
+.pulse-card p{font-size:11px;color:var(--muted);margin:8px 0 0}
+.research-intro{max-width:850px;color:#b6c7d5;margin:0 0 18px}
+.analysis-block{margin:18px 0 0;padding:18px;border:1px solid #25465c;border-radius:14px;background:#0a1a29}
+.analysis-block h3{margin:0 0 9px;font-size:16px;color:#eaf5fb}
+.analysis-block p{color:#b6c7d5;font-size:13px;margin:7px 0}
+.analysis-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:13px}
+.analysis-grid .mini{background:#102437}
+.company-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:13px}
+.company{padding:14px;border:1px solid #2a4a60;border-radius:12px;background:linear-gradient(145deg,#10263a,#0a1928)}
+.company .ticker{display:inline-block;color:var(--cyan);font-size:10px;font-weight:950;letter-spacing:.12em;margin-bottom:6px}
+.company strong{display:block;font-size:13px;color:#f1f7fb}
+.company p{margin:5px 0 0;color:#aabecd;font-size:11px;line-height:1.55}
+.watchlist{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.watchlist span{border:1px solid #315168;background:#10283b;color:#c4d5e2;padding:5px 8px;border-radius:999px;font-size:10px}
+.sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sources a{display:block;text-decoration:none;padding:13px;border:1px solid #28465a;border-radius:10px;background:#0c1d2d}
+.sources a:hover{border-color:var(--cyan)}
+.sources strong{display:block;color:#eaf5fb;font-size:12px}
+.sources span{display:block;color:#a8bacb;font-size:10px;margin-top:4px}
+.chain{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:13px 0}
+.chain span{padding:8px 10px;border:1px solid #31546a;border-radius:8px;background:#10283b;font-size:11px;font-weight:800}
+.chain b{color:var(--cyan)}
+@media(max-width:900px){.pulse-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.company-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.analysis-grid,.company-grid,.sources{grid-template-columns:1fr}.pulse-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.analysis-block{padding:14px}}
+
 </style>
 </head>
 <body>
@@ -56,6 +86,110 @@ footer{border-top:1px solid #20394d;padding:25px 0 38px;color:#92a8ba;font-size:
 <section class="topic" id="robotics"><div class="topic-layout"><div class="topic-index">06 / AUTOMATION</div><div><h2>Robotics & Automation</h2><p class="summary">Robotics combines mechanical systems, sensors, control software and AI. Adoption depends on reliability, safety, integration costs and whether automation solves a real operational problem.</p><div class="topic-cards"><div class="mini"><strong>Industrial robots</strong><span>Robotic arms and systems used in manufacturing and logistics.</span></div><div class="mini"><strong>Motion & sensing</strong><span>Motors, drives, actuators, machine vision and precision sensors.</span></div><div class="mini"><strong>Automation software</strong><span>Control systems, simulation, fleet coordination and integration.</span></div></div></div></div></section>
 <section class="topic" id="biotechnology"><div class="topic-layout"><div class="topic-index">07 / LIFE SCIENCES</div><div><h2>Biotechnology & Research Tools</h2><p class="summary">Scientific progress relies on instruments and platforms for measuring, imaging, sequencing and analysing biological systems. Suppliers may serve many research areas rather than one individual treatment or product.</p><div class="topic-cards"><div class="mini"><strong>Research instruments</strong><span>Laboratory equipment, analytical instruments and measurement systems.</span></div><div class="mini"><strong>Sequencing & diagnostics tools</strong><span>Platforms that help researchers examine genetic and biological data.</span></div><div class="mini"><strong>Lab supplies & services</strong><span>Consumables, reagents, software and outsourced research services.</span></div></div></div></div></section>
 <section class="topic" id="ai-platforms"><div class="topic-layout"><div class="topic-index">08 / APPLICATIONS</div><div><h2>AI Platforms & Applications</h2><p class="summary">AI developers create foundation models and tools; software companies integrate them into workflows, products and services. Competition, computing costs, customer adoption and the ability to earn sustainable revenue all matter.</p><div class="topic-cards"><div class="mini"><strong>Model developers</strong><span>Organizations building general-purpose and specialized AI models.</span></div><div class="mini"><strong>Cloud platforms</strong><span>Services that provide computing, model access and deployment infrastructure.</span></div><div class="mini"><strong>Industry applications</strong><span>Software applying AI to healthcare research, manufacturing, finance and other fields.</span></div></div></div></div></section>
+
+<section class="section" id="market-pulse">
+ <div class="section-head"><div><div class="eyebrow">Why these themes are getting attention</div><h2>The infrastructure signals</h2></div><p>Selected 2026 indicators that help explain the scale of investment and the pressure building across the supply chain. Forecasts are estimates, not guarantees.</p></div>
+ <div class="pulse-grid">
+  <div class="pulse-card"><div class="eyebrow">Global data-centre power</div><div class="metric">565 TWh</div><p>Gartner forecast for 2026 electricity use, up 26% from 2025. Its 2027 forecast is 702 TWh.</p></div>
+  <div class="pulse-card"><div class="eyebrow">Data-centre spending</div><div class="metric">$582B</div><p>Deloitte's anticipated 2026 data-centre spending estimate: roughly two-thirds chips and one-third hardware and equipment.</p></div>
+  <div class="pulse-card"><div class="eyebrow">Industrial robots</div><div class="metric">5 million</div><p>Estimated operational stock of industrial robots worldwide in 2025, up 9%; annual installations exceeded 600,000.</p></div>
+  <div class="pulse-card"><div class="eyebrow">AI network demand</div><div class="metric">+58.5%</div><p>Arista reported Q3 2026 revenue growth year over year, illustrating strong demand in one specialist networking supplier—not the whole sector.</p></div>
+ </div>
+ <p class="research-intro">The central idea: AI and automation are not just software stories. They require physical assets, specialist components, electricity, buildings, cooling, networks, laboratory tools and people. Those dependencies create several connected industries to study.</p>
+ <div class="analysis-block"><h3>Follow the chain, not just the headline company</h3><p>A new AI service can trigger demand several layers away from the company selling the service. Think of the ecosystem as a connected production chain:</p>
+ <div class="chain"><span>AI workloads</span><b>→</b><span>Chips & memory</span><b>→</b><span>Servers & networks</span><b>→</b><span>Power & cooling</span><b>→</b><span>Data-centre capacity</span></div>
+ <p>Each layer has different economics. A chip designer, an electrical-equipment maker and a data-centre landlord do not earn money in the same way, even when all benefit from the same broad trend.</p></div>
+</section>
+
+<section class="section" id="company-landscape">
+ <div class="section-head"><div><div class="eyebrow">Public-company examples</div><h2>Who operates in the ecosystem?</h2></div><p>Examples of listed companies and their roles. These are research starting points—not a ranking, watchlist recommendation or instruction to buy or sell.</p></div>
+ <div class="analysis-block"><h3>01 · AI chips & semiconductors</h3><p>AI accelerators perform parallel calculations; CPUs coordinate general computing; high-bandwidth memory feeds data to processors; foundries manufacture chips; packaging and chip-making equipment complete the chain.</p><div class="company-grid">
+  <div class="company"><span class="ticker">NASDAQ: NVDA</span><strong>NVIDIA</strong><p>AI accelerators, networking and complete data-centre computing platforms. Research its software ecosystem, customer concentration, supply commitments and product-cycle execution.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: AMD</span><strong>Advanced Micro Devices</strong><p>EPYC server CPUs and Instinct accelerators. AMD reported Q3 2026 data-centre revenue growth of 97% year over year; examine how much reflects sustainable share gains and margins.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: AVGO</span><strong>Broadcom</strong><p>Custom silicon and networking components used in large-scale computing systems. Consider customer concentration and the economics of custom-chip programmes.</p></div>
+  <div class="company"><span class="ticker">NYSE: TSM</span><strong>TSMC</strong><p>Contract semiconductor manufacturing for many chip designers. Its role highlights the importance of advanced process technology, fabrication capacity and geographic concentration.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: MU</span><strong>Micron Technology</strong><p>DRAM, NAND and high-bandwidth memory. Memory demand can benefit from AI servers, but the memory business is cyclical and pricing can change sharply.</p></div>
+ </div><div class="watchlist"><span>Track: accelerator shipments</span><span>HBM supply</span><span>Foundry capacity</span><span>Gross margins</span><span>Export controls</span></div></div>
+
+ <div class="analysis-block"><h3>02 · Data centres & digital infrastructure</h3><p>Operators lease powered space, provide interconnection or rent computing capacity. Hyperscalers build and operate their own facilities; colocation companies provide shared facilities; specialist cloud providers rent accelerated computing.</p><div class="company-grid">
+  <div class="company"><span class="ticker">NASDAQ: EQIX</span><strong>Equinix</strong><p>Global colocation and interconnection provider. Its Q3 2026 update reported record annualized gross bookings and raised full-year guidance; monitor capital spending, debt and new-site power access.</p></div>
+  <div class="company"><span class="ticker">NYSE: DLR</span><strong>Digital Realty</strong><p>Data-centre real estate and colocation infrastructure. Study occupancy, lease pricing, development pipeline, funding costs and the availability of electricity.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: CRWV</span><strong>CoreWeave</strong><p>Specialist cloud infrastructure focused on accelerated computing. Examine customer concentration, capital intensity, financing obligations and the durability of contracted demand.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: MSFT</span><strong>Microsoft</strong><p>Cloud and AI platform operator with large-scale infrastructure requirements. Its cloud business illustrates the demand side as well as the cost of building capacity.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: AMZN</span><strong>Amazon</strong><p>AWS is a major cloud infrastructure provider. Track cloud growth, infrastructure investment, utilization and the returns earned on new capacity.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: GOOGL</span><strong>Alphabet</strong><p>Google Cloud and internal AI infrastructure. Its custom accelerators and data-centre investment show how large platforms can develop parts of their own supply chain.</p></div>
+ </div><div class="watchlist"><span>Track: occupancy</span><span>Pre-leasing</span><span>Power availability</span><span>Capex</span><span>Debt & interest expense</span></div></div>
+
+ <div class="analysis-block"><h3>03 · Energy, electrical equipment & grid modernization</h3><p>A data centre cannot operate without a reliable power connection. Utilities and generators supply electricity; grid operators move it; equipment suppliers provide transformers, switchgear, breakers, UPS systems and power-management technology. New generation alone does not solve local transmission or connection bottlenecks.</p><div class="company-grid">
+  <div class="company"><span class="ticker">NYSE: ETN</span><strong>Eaton</strong><p>Electrical distribution and power-management equipment. Its 2026 updates highlighted strong Electrical-sector orders and backlog; check whether demand converts into profitable deliveries.</p></div>
+  <div class="company"><span class="ticker">NYSE: GEV</span><strong>GE Vernova</strong><p>Power generation and grid equipment businesses. Examine turbine and grid-equipment order books, manufacturing capacity, project timing and service revenue.</p></div>
+  <div class="company"><span class="ticker">PARIS: SU</span><strong>Schneider Electric</strong><p>Energy management, electrical distribution, automation and data-centre infrastructure. Its broad portfolio connects facility power with monitoring and control.</p></div>
+  <div class="company"><span class="ticker">XETRA: ENR</span><strong>Siemens Energy</strong><p>Grid technologies and power-generation equipment. Study project execution, service mix, factory capacity and exposure to large infrastructure cycles.</p></div>
+ </div><div class="watchlist"><span>Track: transformer lead times</span><span>Grid connections</span><span>Backlog quality</span><span>Utility capex</span><span>Project delays</span></div></div>
+
+ <div class="analysis-block"><h3>04 · Cooling & thermal management</h3><p>As computing density rises, more electricity becomes heat that must be removed. Air cooling remains relevant, but some high-density AI racks require liquid cooling. The opportunity includes chillers, pumps, heat exchangers, cold plates, coolant distribution units, sensors and facility controls.</p><div class="company-grid">
+  <div class="company"><span class="ticker">NYSE: VRT</span><strong>Vertiv</strong><p>Critical power and thermal-management systems for data centres. Examine order growth, backlog conversion, service mix and how much demand is tied to a small number of large customers.</p></div>
+  <div class="company"><span class="ticker">NYSE: MOD</span><strong>Modine</strong><p>Thermal-management technologies, including data-centre cooling solutions. Consider manufacturing scale, product reliability, margins and competition.</p></div>
+  <div class="company"><span class="ticker">NYSE: JCI</span><strong>Johnson Controls</strong><p>Building systems, HVAC and controls. Its role spans facility efficiency and thermal infrastructure beyond data centres alone.</p></div>
+  <div class="company"><span class="ticker">PARIS: SU</span><strong>Schneider Electric</strong><p>Power and cooling-related data-centre infrastructure and integrated management systems. Compare the economics of complete systems with individual components.</p></div>
+ </div><div class="watchlist"><span>Track: liquid-cooling adoption</span><span>Rack density</span><span>Cooling efficiency</span><span>Service revenue</span><span>Warranty risk</span></div></div>
+
+ <div class="analysis-block"><h3>05 · Networking & optical connectivity</h3><p>AI clusters require fast, reliable communication between processors, racks and facilities. Switches, routers, Ethernet fabrics, optical transceivers and fibre are essential. Network bottlenecks can limit the performance of expensive computing hardware.</p><div class="company-grid">
+  <div class="company"><span class="ticker">NYSE: ANET</span><strong>Arista Networks</strong><p>High-performance data-centre networking. Arista reported Q3 2026 revenue growth of 58.5% year over year and introduced AI-focused rack-scale networking architectures; evaluate customer concentration and competitive pressure.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: CSCO</span><strong>Cisco</strong><p>Networking, optics and security. Its FY2026 annual report described rising AI infrastructure orders from hyperscale customers; assess how much is incremental and how margins develop.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: AVGO</span><strong>Broadcom</strong><p>Switching silicon and connectivity components used in large data-centre networks, alongside its custom accelerator business.</p></div>
+ </div><div class="watchlist"><span>Track: port speeds</span><span>Optical bandwidth</span><span>AI cluster build-outs</span><span>Customer concentration</span><span>Standards shifts</span></div></div>
+
+ <div class="analysis-block"><h3>06 · Robotics & industrial automation</h3><p>Factories and warehouses use robots to move materials, weld, assemble, inspect and package products. Growth drivers include labour availability, quality consistency, reshoring, safety and the ability to automate more flexible production. Adoption is not automatic: integration costs, downtime, maintenance and return on investment matter.</p><div class="company-grid">
+  <div class="company"><span class="ticker">NYSE: ABB</span><strong>ABB</strong><p>Industrial automation, electrification and robotics. ABB has also connected robotics simulation with NVIDIA's industrial digital-twin ecosystem, illustrating the overlap between AI and physical automation.</p></div>
+  <div class="company"><span class="ticker">TOKYO: 6954</span><strong>FANUC</strong><p>Industrial robots, CNC systems and factory automation. Track factory investment cycles, order intake, geographic exposure and service demand.</p></div>
+  <div class="company"><span class="ticker">TOKYO: 6506</span><strong>Yaskawa Electric</strong><p>Industrial robots, servo motors and motion-control equipment. Its business is linked to factory automation and capital spending across end markets.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: TER</span><strong>Teradyne</strong><p>Test equipment and collaborative/mobile robotics businesses. It offers an example of how automation extends beyond traditional industrial robot arms.</p></div>
+ </div><div class="watchlist"><span>Track: robot installations</span><span>Order intake</span><span>Factory capex</span><span>Utilization</span><span>Integration cost</span></div></div>
+
+ <div class="analysis-block"><h3>07 · Biotechnology & scientific research tools</h3><p>Scientific discovery depends on instruments, reagents, diagnostics platforms, sequencing systems, lab automation and analytical software. These suppliers can serve pharmaceutical companies, universities, hospitals and public research institutions. Their demand drivers differ from AI infrastructure and often depend on research budgets, drug-development cycles and laboratory spending.</p><div class="company-grid">
+  <div class="company"><span class="ticker">NYSE: TMO</span><strong>Thermo Fisher Scientific</strong><p>Laboratory instruments, consumables, diagnostics and research services. Look at recurring consumables, biopharma demand, instrument placements and acquisition integration.</p></div>
+  <div class="company"><span class="ticker">NYSE: DHR</span><strong>Danaher</strong><p>Life-science and diagnostics tools, technologies and services. Examine recurring revenue, customer research budgets, portfolio mix and operating margins.</p></div>
+  <div class="company"><span class="ticker">NYSE: A</span><strong>Agilent Technologies</strong><p>Analytical instruments and laboratory solutions used in pharmaceutical, chemical and life-science research.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: ILMN</span><strong>Illumina</strong><p>Genetic sequencing platforms and related tools. Consider adoption, instrument utilization, consumables demand, competition and regulatory developments.</p></div>
+ </div><div class="watchlist"><span>Track: research funding</span><span>Consumables revenue</span><span>Instrument utilization</span><span>R&D budgets</span><span>Regulation</span></div></div>
+
+ <div class="analysis-block"><h3>08 · AI platforms, models & applications</h3><p>Model developers build foundation models; cloud platforms provide computing and distribution; software companies integrate AI into products and workflows. The key business question is whether customers will pay enough for these services to cover model development, compute, energy, talent and ongoing safety costs.</p><div class="company-grid">
+  <div class="company"><span class="ticker">NASDAQ: ANT</span><strong>Anthropic</strong><p>AI model developer behind Claude. Anthropic announced its IPO pricing in November 2026 under ticker ANT. As a newly public company, it has a short public-market history; examine compute commitments, operating economics, customer mix and governance.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: MSFT</span><strong>Microsoft</strong><p>Cloud infrastructure, AI services and productivity software. It illustrates the combination of infrastructure spending, enterprise distribution and AI product monetization.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: GOOGL</span><strong>Alphabet</strong><p>AI research, models, cloud services and custom silicon. Consider how AI changes search economics, cloud competition and infrastructure spending.</p></div>
+  <div class="company"><span class="ticker">NASDAQ: AMZN</span><strong>Amazon</strong><p>AWS cloud infrastructure and AI services, alongside custom chips and enterprise tools. Track cloud growth, capital intensity and returns on infrastructure investment.</p></div>
+ </div><div class="watchlist"><span>Track: paid usage</span><span>Inference costs</span><span>Cloud gross margins</span><span>Customer retention</span><span>Capital commitments</span></div></div>
+</section>
+
+<section class="section" id="how-to-research">
+ <div class="section-head"><div><div class="eyebrow">A practical research framework</div><h2>How to tell a real business trend from a headline</h2></div><p>Use the same questions across every industry. A compelling theme is only the beginning of company research.</p></div>
+ <div class="analysis-grid">
+  <div class="mini"><strong>1 · Is demand real?</strong><span>Look for customer orders, utilization, recurring revenue, contracted projects and actual installations—not only forecasts or press releases.</span></div>
+  <div class="mini"><strong>2 · Where is the company in the chain?</strong><span>Does it own a critical component, compete with many suppliers, or depend on a few customers and partners?</span></div>
+  <div class="mini"><strong>3 · Can it deliver?</strong><span>Check manufacturing capacity, skilled labour, component availability, project execution and service quality.</span></div>
+  <div class="mini"><strong>4 · Does growth create profit?</strong><span>Compare revenue growth with gross margin, operating margin, free cash flow and the capital needed to expand.</span></div>
+  <div class="mini"><strong>5 · Is the balance sheet resilient?</strong><span>Review debt, interest costs, leases, cash, refinancing needs and customer payment terms.</span></div>
+  <div class="mini"><strong>6 · What could break the thesis?</strong><span>Consider competition, oversupply, regulation, technology shifts, energy limits, delays and customer concentration.</span></div>
+ </div>
+ <div class="analysis-block"><h3>Why a booming sector can still contain weak investments</h3><p>Demand can grow while suppliers lose money. New factories and data centres require upfront capital; customers may negotiate lower prices; technologies can become obsolete; and competitors can add capacity faster than demand. A company's share price also reflects expectations about its future—not simply whether its industry is expanding.</p><p>For this reason, StockPilot AI presents company examples as a way to understand the ecosystem. It does not label them as guaranteed winners or suggest that a sector trend alone determines a stock's value.</p></div>
+</section>
+
+<section class="section" id="research-sources">
+ <div class="section-head"><div><div class="eyebrow">Further reading</div><h2>Research behind the themes</h2></div><p>Selected industry research and company disclosures used to frame this page. Open the original sources for context and methodology.</p></div>
+ <div class="sources">
+  <a href="https://www.gartner.com/en/newsroom/press-releases/2026-06-10-gartner-says-data-center-electricity-demand-to-grow-26-percent-in-2026" target="_blank" rel="noopener"><strong>Gartner · Data-centre electricity demand</strong><span>2026 power-use forecast and AI server share</span></a>
+  <a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/hardware-consumer-tech-outlook.html" target="_blank" rel="noopener"><strong>Deloitte · 2026 hardware outlook</strong><span>Data-centre spending, chips, power and cooling hardware</span></a>
+  <a href="https://www.cbre.com/insights/reports/global-data-center-trends-2026" target="_blank" rel="noopener"><strong>CBRE · Global data-centre trends</strong><span>Capacity, vacancy, power constraints and regional markets</span></a>
+  <a href="https://ifr.org/ifr-press-releases/P20" target="_blank" rel="noopener"><strong>International Federation of Robotics · 2026 data</strong><span>Global industrial and service robotics statistics</span></a>
+  <a href="https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results" target="_blank" rel="noopener"><strong>AMD · Q3 2026 results</strong><span>Data-centre segment results and company commentary</span></a>
+  <a href="https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-second-quarter-2026-results.html" target="_blank" rel="noopener"><strong>Eaton · Q2 2026 results</strong><span>Electrical orders, backlog and power-management business</span></a>
+  <a href="https://www.arista.com/company/news/press-release/25025-pr-20261103" target="_blank" rel="noopener"><strong>Arista Networks · Q3 2026 results</strong><span>AI networking and company financial results</span></a>
+  <a href="https://investor.equinix.com/news-events/press-releases/detail/1128/equinix-reports-third-quarter-results-and-raises-2026" target="_blank" rel="noopener"><strong>Equinix · Q3 2026 results</strong><span>Bookings, interconnection and data-centre capacity</span></a>
+  <a href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering" target="_blank" rel="noopener"><strong>Anthropic · IPO announcement</strong><span>November 2026 public-listing announcement and ticker</span></a>
+ </div>
+</section>
+
 <div class="note"><strong>Research reminder:</strong> A growing industry does not guarantee that every company in it will succeed or that its shares will rise. Examine revenue quality, profitability, cash flow, debt, competition, customer concentration, execution risks and valuation. This page is educational industry research, not a recommendation to buy, sell or trade any security.</div>
 </main>
 <footer><div class="wrap">© StockPilot AI · <a href="/">Return to the main market dashboard</a> · Educational research only.</div></footer>
