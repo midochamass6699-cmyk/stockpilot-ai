@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-24T06:52:55.239758+00:00",
+  "fetched_at": "2026-11-24T08:19:19.155997+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -125,23 +125,37 @@
     ],
     "crypto": [
       {
+        "title": "Black Friday meets AI : Big changes for America holiday shopping season | News",
+        "url": "http://www.thedailytimes.com/news/black-friday-meets-ai-big-changes-for-america-s-holiday-shopping-season/article_e5ec970f-2422-50ff-84c9-5edec047c6d2.html",
+        "source": "thedailytimes.com",
+        "published": "20261124T074500Z",
+        "language": "English"
+      },
+      {
+        "title": "The EU increasingly impossible budget arithmetic",
+        "url": "https://www.euronews.com/2026/11/24/the-eus-increasingly-impossible-budget-arithmetic",
+        "source": "euronews.com",
+        "published": "20261124T074500Z",
+        "language": "English"
+      },
+      {
+        "title": "CrowdStrike to acquire Zscaler in a $56b deal that would create a cybersecurity giant",
+        "url": "https://www.asiaone.com/money/crowdstrike-acquire-zscaler-56b-deal-would-create-cybersecurity-giant",
+        "source": "asiaone.com",
+        "published": "20261124T071500Z",
+        "language": "English"
+      },
+      {
+        "title": "Binance Engages Mandiant , SlowMist and Verichains for Independent Third - Party Security Review",
+        "url": "http://www.bangladeshsun.com/news/279451490/binance-engages-mandiant-slowmist-and-verichains-for-independent-third-party-security-review",
+        "source": "bangladeshsun.com",
+        "published": "20261124T071500Z",
+        "language": "English"
+      },
+      {
         "title": "Delhi Police bust cryptocurrency fraud syndicate , 4 arrested for cheating trader of Rs 5 lakh",
         "url": "https://news.webindia123.com/news/Articles/India/20261124/4523767.html",
         "source": "news.webindia123.com",
-        "published": "20261124T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Nigeria : Shettima Declares Drug Control National Emergency , Tasks Stakeholders On Master Plan",
-        "url": "https://allafrica.com/stories/202611240153.html",
-        "source": "allafrica.com",
-        "published": "20261124T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "HYLQ Strategy Announces Proposed Name Change and Appointment of Director",
-        "url": "https://www.cantechletter.com/newswires/hylq-strategy-announces-proposed-name-change-and-appointment-of-director/",
-        "source": "cantechletter.com",
         "published": "20261124T063000Z",
         "language": "English"
       },
@@ -160,9 +174,16 @@
         "language": "English"
       },
       {
-        "title": "Binance Engages Mandiant , SlowMist and Verichains for Independent Third - Party Security Review",
-        "url": "http://www.milwaukeesun.com/news/279451513/binance-engages-mandiant-slowmist-and-verichains-for-independent-third-party-security-review",
-        "source": "milwaukeesun.com",
+        "title": "Nigeria : Shettima Declares Drug Control National Emergency , Tasks Stakeholders On Master Plan",
+        "url": "https://allafrica.com/stories/202611240153.html",
+        "source": "allafrica.com",
+        "published": "20261124T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "HYLQ Strategy Announces Proposed Name Change and Appointment of Director",
+        "url": "https://www.cantechletter.com/newswires/hylq-strategy-announces-proposed-name-change-and-appointment-of-director/",
+        "source": "cantechletter.com",
         "published": "20261124T063000Z",
         "language": "English"
       },
@@ -185,27 +206,6 @@
         "url": "https://www.eurasiareview.com/24112026-the-world-is-going-passwordless-who-gets-the-account-back-analysis/",
         "source": "eurasiareview.com",
         "published": "20261124T044500Z",
-        "language": "English"
-      },
-      {
-        "title": "CNN Data Guru Reveals Brutal New Sign Trump Is Losing His Grip",
-        "url": "https://www.thedailybeast.com/cnn-data-guru-reveals-brutal-new-sign-trump-is-losing-his-grip",
-        "source": "thedailybeast.com",
-        "published": "20261124T044500Z",
-        "language": "English"
-      },
-      {
-        "title": "They attended Trump controversial meme coin dinner . It didnt go well",
-        "url": "https://www.wkyufm.org/news/2026-11-23/they-attended-trumps-controversial-meme-coin-dinner-it-didnt-go-well",
-        "source": "wkyufm.org",
-        "published": "20261124T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Ninepoint Partners Announces November 2026 Monthly and Semi - Monthly Cash Distributions for its ETFs and ETF Series Securities",
-        "url": "https://www.chathamdailynews.ca/press-releases/globe-newswire/ninepoint-partners-announces-november-2026-monthly-and-semi-monthly-cash-distributions-for-its-etfs-and-etf-series-securities/",
-        "source": "chathamdailynews.ca",
-        "published": "20261124T033000Z",
         "language": "English"
       }
     ]
