@@ -5006,6 +5006,7 @@ body{font-size:16px}
 #primary-navigation .tf-desktop-menu:hover>.tf-desktop-trigger,#primary-navigation .tf-desktop-menu:focus-within>.tf-desktop-trigger{color:#f2c66d}
 #primary-navigation .tf-desktop-dropdown{display:none;position:absolute;z-index:9999;top:100%;left:0;width:310px;padding:9px;background:#101e31;border:1px solid #36516f;border-radius:11px;box-shadow:0 16px 38px #0006}
 #primary-navigation .tf-desktop-menu:hover>.tf-desktop-dropdown,#primary-navigation .tf-desktop-menu:focus-within>.tf-desktop-dropdown{display:grid;gap:4px}
+#primary-navigation .tf-desktop-dropdown-note{padding:8px 10px 9px;color:#9fb5cd;font-size:10px;line-height:1.4;border-bottom:1px solid #29415d;margin-bottom:3px}
 #primary-navigation .tf-desktop-dropdown>a{display:grid;gap:4px;padding:10px 11px;border-radius:7px;color:#f5f8fc;text-decoration:none;font-size:12px;font-weight:850;line-height:1.25}
 #primary-navigation .tf-desktop-dropdown>a:hover,#primary-navigation .tf-desktop-dropdown>a:focus{background:#1c3552;color:#f5d17d;outline:none}
 #primary-navigation .tf-desktop-dropdown>a small{display:block;color:#b8c9dc;font-size:10px;font-weight:500;line-height:1.4;white-space:normal}
@@ -5028,10 +5029,11 @@ var groups=[
 var assigned=new Set();
 groups.forEach(function(group){
 var matches=links.filter(function(a){return !assigned.has(a)&&group.test(a);});
-if(!matches.length)return;
+
 var item=document.createElement('div');item.className='tf-desktop-menu';
 var trigger=document.createElement('button');trigger.type='button';trigger.className='tf-desktop-trigger';trigger.textContent=group.name;trigger.setAttribute('aria-haspopup','true');trigger.setAttribute('aria-expanded','false');
-var panel=document.createElement('div');panel.className='tf-desktop-dropdown';panel.setAttribute('role','group');panel.setAttribute('aria-label',group.name+' — '+group.description);
+var panel=document.createElement('div');panel.className='tf-desktop-dropdown';
+var note=document.createElement('div');note.className='tf-desktop-dropdown-note';note.textContent=group.description;panel.appendChild(note);panel.setAttribute('role','group');panel.setAttribute('aria-label',group.name+' — '+group.description);
 matches.forEach(function(original){
 assigned.add(original);
 var link=original.cloneNode(true);link.removeAttribute('id');
