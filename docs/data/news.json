@@ -1,8 +1,11 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-24T05:52:47.681533+00:00",
-  "updated_sections": [],
+  "fetched_at": "2026-11-24T06:52:55.239758+00:00",
+  "updated_sections": [
+    "penny",
+    "crypto"
+  ],
   "sections": {
     "markets": [
       {
@@ -92,6 +95,13 @@
     ],
     "penny": [
       {
+        "title": "Only a handful of stocks near 52 - week highs despite November rebound",
+        "url": "https://www.livemint.com/market/stock-market-news/indian-stock-market-rally-november-sensex-bse-500-11795489292786.html",
+        "source": "livemint.com",
+        "published": "20261124T051500Z",
+        "language": "English"
+      },
+      {
         "title": "Best Odds Guaranteed Sites united kingdom 2026 : BOG Times , Limits , Rules",
         "url": "https://www.caughtoffside.com/betting/betting-sites/best-odds-guaranteed/",
         "source": "caughtoffside.com",
@@ -115,87 +125,87 @@
     ],
     "crypto": [
       {
-        "title": "Hamilton ETFs Announces November 2026 Monthly & Upcoming Semi - Monthly Cash Distributions",
-        "url": "https://www.theobserver.ca/press-releases/business-wire/hamilton-etfs-announces-november-2026-monthly-upcoming-semi-monthly-cash-distributions/",
-        "source": "theobserver.ca",
-        "published": "20261124T021500Z",
+        "title": "Delhi Police bust cryptocurrency fraud syndicate , 4 arrested for cheating trader of Rs 5 lakh",
+        "url": "https://news.webindia123.com/news/Articles/India/20261124/4523767.html",
+        "source": "news.webindia123.com",
+        "published": "20261124T063000Z",
         "language": "English"
       },
       {
-        "title": "Ninepoint Partners Announces November 2026 Monthly and Semi - Monthly Cash Distributions for its ETFs and ETF Series Securities",
-        "url": "https://www.theobserver.ca/press-releases/globe-newswire/ninepoint-partners-announces-november-2026-monthly-and-semi-monthly-cash-distributions-for-its-etfs-and-etf-series-securities/",
-        "source": "theobserver.ca",
-        "published": "20261124T021500Z",
+        "title": "Nigeria : Shettima Declares Drug Control National Emergency , Tasks Stakeholders On Master Plan",
+        "url": "https://allafrica.com/stories/202611240153.html",
+        "source": "allafrica.com",
+        "published": "20261124T063000Z",
         "language": "English"
       },
       {
-        "title": "Donald Trump wanted Nvidia chief reinstated . Here how he succeeded",
-        "url": "https://www.nzherald.co.nz/business/donald-trump-wanted-nvidias-chief-reinstated-heres-how-he-succeeded/premium/OLFNB7CNTZBZDBGCQ4L6VEJGZU/",
-        "source": "nzherald.co.nz",
-        "published": "20261124T021500Z",
+        "title": "HYLQ Strategy Announces Proposed Name Change and Appointment of Director",
+        "url": "https://www.cantechletter.com/newswires/hylq-strategy-announces-proposed-name-change-and-appointment-of-director/",
+        "source": "cantechletter.com",
+        "published": "20261124T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "European Commission proposes 22nd round of sanctions against Russia _ Guangming Online",
+        "url": "https://en.gmw.cn/2026-11/24/content_39117321.htm",
+        "source": "en.gmw.cn",
+        "published": "20261124T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Dow Jones Top Financial Services Headlines at 12 AM ET : Strategy and Crypto Stocks Rally as Bitcoin Rebounds Past $63 , 000 . Is the Jump Temporary ? | Julius ...",
+        "url": "https://www.morningstar.com/news/dow-jones/2026112439/dow-jones-top-financial-services-headlines-at-12-am-et-strategy-and-crypto-stocks-rally-as-bitcoin-rebounds-past-63000-is-the-jump-temporary-julius",
+        "source": "morningstar.com",
+        "published": "20261124T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Binance Engages Mandiant , SlowMist and Verichains for Independent Third - Party Security Review",
+        "url": "http://www.milwaukeesun.com/news/279451513/binance-engages-mandiant-slowmist-and-verichains-for-independent-third-party-security-review",
+        "source": "milwaukeesun.com",
+        "published": "20261124T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Nvidia reinstates Jensen Huang as CEO : Trump , Musk , Altman react while the internet has jokes",
+        "url": "https://mashable.com/tech/nvidia-ceo-huang-reinstated-back-reactions-trump-musk-altman",
+        "source": "mashable.com",
+        "published": "20261124T051500Z",
+        "language": "English"
+      },
+      {
+        "title": "Kraken Accused Of Firing Worker Who Flagged AML Lapses",
+        "url": "https://www.law360.com:443/articles/2558894",
+        "source": "law360.com",
+        "published": "20261124T044500Z",
+        "language": "English"
+      },
+      {
+        "title": "The World Is Going Passwordless : Who Gets The Account Back ? - Analysis",
+        "url": "https://www.eurasiareview.com/24112026-the-world-is-going-passwordless-who-gets-the-account-back-analysis/",
+        "source": "eurasiareview.com",
+        "published": "20261124T044500Z",
+        "language": "English"
+      },
+      {
+        "title": "CNN Data Guru Reveals Brutal New Sign Trump Is Losing His Grip",
+        "url": "https://www.thedailybeast.com/cnn-data-guru-reveals-brutal-new-sign-trump-is-losing-his-grip",
+        "source": "thedailybeast.com",
+        "published": "20261124T044500Z",
         "language": "English"
       },
       {
         "title": "They attended Trump controversial meme coin dinner . It didnt go well",
-        "url": "https://www.kunc.org/npr-news/2026-11-23/they-attended-trumps-controversial-meme-coin-dinner-it-didnt-go-well",
-        "source": "kunc.org",
-        "published": "20261124T021500Z",
+        "url": "https://www.wkyufm.org/news/2026-11-23/they-attended-trumps-controversial-meme-coin-dinner-it-didnt-go-well",
+        "source": "wkyufm.org",
+        "published": "20261124T033000Z",
         "language": "English"
       },
       {
-        "title": "Zelenskyy hails Ukraine attack on a Russian warship",
-        "url": "https://www.ironmountaindailynews.com/news/2026/11/zelenskyy-hails-ukraines-attack-on-a-russian-warship/",
-        "source": "ironmountaindailynews.com",
-        "published": "20261124T021500Z",
-        "language": "English"
-      },
-      {
-        "title": "Best Betting Sites Not on GamStop united kingdom ( 2026 )",
-        "url": "https://www.caughtoffside.com/betting/betting-sites/non-gamstop/",
-        "source": "caughtoffside.com",
-        "published": "20261124T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Deadline",
-        "url": "https://deadline.com/print-article/1237232061/",
-        "source": "deadline.com",
-        "published": "20261124T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Secret Lives of Mormon Wives : Orange County Renewed for Season 2",
-        "url": "https://www.eonline.com/ca/news/1438343/secret-lives-of-mormon-wives-orange-county-renewed-for-season-2",
-        "source": "eonline.com",
-        "published": "20261124T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Mediahub Wins Polestar Media Account",
-        "url": "https://www.bandt.com.au/mediahub-wins-polestar-media-account/",
-        "source": "bandt.com.au",
-        "published": "20261124T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "GLOBAL X ANNOUNCES NOVEMBER 2026 MONTHLY & UPCOMING SEMI - MONTHLY DISTRIBUTIONS FOR ITS SUITE OF ETFs",
-        "url": "https://www.cantechletter.com/newswires/global-x-announces-november-2026-monthly-upcoming-semi-monthly-distributions-for-its-suite-of-etfs/",
-        "source": "cantechletter.com",
-        "published": "20261124T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Anthropic IPO and Bitcoin : the SpaceX liquidity parallel",
-        "url": "https://insidebitcoins.com/news/is-the-anthropic-ipo-draining-crypto-the-spacex-parallel-examined",
-        "source": "insidebitcoins.com",
-        "published": "20261124T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Ariana Grande Teases  Eternal Sunshine Tour  Project At Peacock",
-        "url": "https://deadline.com/2026/11/ariana-grande-eternal-sunshine-tour-project-peacock-1237232061/",
-        "source": "deadline.com",
-        "published": "20261124T014500Z",
+        "title": "Ninepoint Partners Announces November 2026 Monthly and Semi - Monthly Cash Distributions for its ETFs and ETF Series Securities",
+        "url": "https://www.chathamdailynews.ca/press-releases/globe-newswire/ninepoint-partners-announces-november-2026-monthly-and-semi-monthly-cash-distributions-for-its-etfs-and-etf-series-securities/",
+        "source": "chathamdailynews.ca",
+        "published": "20261124T033000Z",
         "language": "English"
       }
     ]
