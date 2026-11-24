@@ -10025,6 +10025,75 @@ var sc_security="58d29d99";
   else if(mobile.addListener)mobile.addListener(place);
 })();
 </script>
+
+<style id="tf-mobile-priority-order-style">
+#tf-mobile-priority-stack{display:none}
+@media(max-width:760px){
+  #tf-mobile-priority-stack{display:flex;flex-direction:column;gap:12px;width:calc(100% - 20px);max-width:1200px;margin:12px auto 16px}
+  #tf-mobile-priority-stack .tf-mobile-priority-welcome{display:flex;flex-direction:column;gap:4px;padding:16px 14px;border:1px solid #d8e1ee;border-top:4px solid #2563eb;border-radius:12px;background:linear-gradient(135deg,#fff 0%,#f5f8ff 100%);color:#101827}
+  #tf-mobile-priority-stack .tf-mobile-priority-welcome h1{margin:0!important;color:#07111f!important;font-size:clamp(24px,7vw,34px)!important;line-height:1.08!important}
+  #tf-mobile-priority-stack .tf-mobile-priority-welcome .tf-welcome-tagline{margin:2px 0 0!important;font-size:15px!important;font-weight:800!important;color:#2563eb!important}
+  #tf-mobile-priority-stack .subscribe-bell-cta{width:100%;min-height:48px;justify-content:center;margin:0!important}
+  #tf-mobile-priority-stack #sp-stock-of-day{width:100%;max-width:100%;margin:0!important}
+  #tf-mobile-priority-stack .tf-mobile-start{width:100%;margin:0!important}
+}
+</style>
+<script id="tf-mobile-priority-order">
+(function(){
+  var stack=null, records=[], generatedUpdate=null;
+  function move(node,parent){
+    if(!node||!node.parentNode)return;
+    var marker=document.createComment('tf-mobile-order-placeholder');
+    node.parentNode.insertBefore(marker,node);
+    records.push({node:node,marker:marker});
+    parent.appendChild(node);
+  }
+  function restore(){
+    records.forEach(function(item){
+      if(item.marker.parentNode)item.marker.parentNode.insertBefore(item.node,item.marker);
+      item.marker.remove();
+    });
+    records=[];
+    if(stack){stack.remove();stack=null;}
+    if(generatedUpdate){generatedUpdate.remove();generatedUpdate=null;}
+  }
+  function apply(){
+    var topbar=document.querySelector('header.topbar');
+    if(!topbar)return;
+    if(!window.matchMedia('(max-width:760px)').matches){restore();return;}
+    if(stack)return;
+    stack=document.createElement('div');
+    stack.id='tf-mobile-priority-stack';
+    topbar.insertAdjacentElement('afterend',stack);
+    var welcome=document.createElement('section');
+    welcome.className='tf-mobile-priority-welcome';
+    welcome.setAttribute('aria-label','Welcome to Technofront');
+    stack.appendChild(welcome);
+    move(document.querySelector('#trading-desk-title, #fr-welcome-title, #home-seo-title'),welcome);
+    move(document.querySelector('.tf-welcome-tagline'),welcome);
+    var updates=document.querySelector('.subscribe-bell-cta');
+    if(updates){move(updates,stack);}
+    else{
+      var subscribeTarget=document.getElementById('stockpilot-subscribe-btn');
+      if(subscribeTarget){
+        generatedUpdate=document.createElement('button');
+        generatedUpdate.type='button';
+        generatedUpdate.className='subscribe-bell-cta';
+        generatedUpdate.textContent='GET FREE UPDATES';
+        generatedUpdate.setAttribute('aria-label','Get free StockPilot AI updates');
+        generatedUpdate.addEventListener('click',function(){subscribeTarget.click();});
+        stack.appendChild(generatedUpdate);
+      }
+    }
+    move(document.getElementById('sp-stock-of-day'),stack);
+    move(document.querySelector('.tf-mobile-start'),stack);
+  }
+  function refresh(){if(window.matchMedia('(max-width:760px)').matches)apply();else restore();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh,{once:true});
+  else refresh();
+  window.addEventListener('resize',refresh,{passive:true});
+})();
+</script>
 </body>
 </html>
 
