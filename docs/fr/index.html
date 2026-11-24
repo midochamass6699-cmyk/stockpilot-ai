@@ -8764,17 +8764,16 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 </style>
 <script id="technofront-stock-day-placement-v2">
 (function(){
- const moveStockDay=()=>{
+ const placeStockDay=()=>{
   const stock=document.getElementById('sp-stock-of-day');
-  let target=document.querySelector('.trading-desk-tagline');
-  if(!target && document.getElementById('live-trading-desk')){
-   const header=document.querySelector('#live-trading-desk .trading-desk-header');
-   if(header){target=document.createElement('div');target.className='trading-desk-tagline';target.innerHTML='<strong>YOUR MARKET PIT STOP</strong><span>Your Market Pit Stop — Where Real Data Fuels Better Insights.</span>';header.appendChild(target);}
+  const welcome=document.querySelector('.fr-welcome-banner');
+  if(stock&&welcome&&welcome.parentNode&&!welcome.contains(stock)&&!window.matchMedia('(max-width:760px)').matches){
+   welcome.insertAdjacentElement('afterend',stock);
+   stock.classList.remove('in-market-tagline');
   }
-  if(stock && target && !target.contains(stock)){stock.classList.add('in-market-tagline');target.appendChild(stock);}
  };
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',moveStockDay,{once:true});else moveStockDay();
- setTimeout(moveStockDay,300);
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',placeStockDay,{once:true});else placeStockDay();
+ window.addEventListener('load',placeStockDay,{once:true});
 })();
 </script>
 
