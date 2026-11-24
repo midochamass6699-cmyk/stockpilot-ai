@@ -8536,6 +8536,7 @@ body{font-size:16px}
     move(document.querySelector('.tf-market-pulse'),stack);
     move(document.querySelector('#trading-desk-title, #fr-welcome-title, #home-seo-title'),welcome);
     move(document.querySelector('.tf-welcome-tagline'),welcome);
+    move(document.getElementById('sp-stock-of-day'),stack);
     var updates=document.querySelector('.subscribe-bell-cta');
     if(updates){move(updates,stack);}
     else{
@@ -8552,7 +8553,6 @@ body{font-size:16px}
         stack.appendChild(generatedUpdate);
       }
     }
-    move(document.getElementById('sp-stock-of-day'),stack);
     move(document.querySelector('.tf-mobile-start'),stack);
     /* Move the remainder of the original welcome/trading intro below the two priority sections.
        Its heading and tagline have already been moved into the top welcome block. */
