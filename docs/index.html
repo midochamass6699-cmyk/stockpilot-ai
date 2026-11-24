@@ -3167,6 +3167,17 @@ main p, main li, .section-head p, .updated, .card-meta {
 
 <div class="tf-two-panel-grid">
  <div class="tf-market-collection" aria-label="Market lists">
+
+<section class="tf-mobile-start" aria-labelledby="tf-mobile-start-title">
+<h2 id="tf-mobile-start-title">What would you like to do today?</h2>
+<p class="tf-mobile-start-intro">Choose a starting point and discover the tools and resources available on this site.</p>
+<div class="tf-mobile-start-grid">
+<a class="tf-mobile-start-card" href="#main-picks"><span class="tf-mobile-start-icon" aria-hidden="true">🔎</span><strong>Discover Markets</strong><small>Stocks, penny stocks, crypto and company profiles.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="#market-terminal"><span class="tf-mobile-start-icon" aria-hidden="true">📊</span><strong>Analyze Market Data</strong><small>Interactive terminal, charts, screeners and technical tools.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="/financial-education.html"><span class="tf-mobile-start-icon" aria-hidden="true">📚</span><strong>Learn Finance</strong><small>Investing guides, options, margin accounts and financial education.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="/options-simulator.html"><span class="tf-mobile-start-icon" aria-hidden="true">🧪</span><strong>Practice & Research</strong><small>Try the options simulator and explore advanced research.</small><span class="tf-mobile-start-link">Explore →</span></a>
+</div>
+</section>
 <div class="trading-desk-grid">
 <article class="trading-panel trading-panel-main">
 <div class="trading-panel-heading"><span class="trading-panel-icon">↗</span><div><h2>Top 3 Stocks to Watch</h2><p>Selected daily stock picks</p></div></div>
@@ -9959,6 +9970,24 @@ var sc_security="58d29d99";
   }).catch(()=>{reels.forEach(reel=>show(reel,false))});
 })();
 </script>
+
+<style id="technofront-mobile-start-hub">
+.tf-mobile-start{display:none}
+@media(max-width:760px){
+ .tf-mobile-start{display:block!important;box-sizing:border-box;width:calc(100% - 24px);max-width:760px;margin:12px auto 18px;padding:15px;border:1px solid #d6dee8;border-radius:15px;background:linear-gradient(145deg,#fff 0%,#f4f7fb 100%);box-shadow:0 7px 22px rgba(20,40,65,.07)}
+ .tf-mobile-start h2{margin:0 0 4px;color:#142b43;font-size:19px;line-height:1.2;font-weight:900;letter-spacing:-.02em}
+ .tf-mobile-start .tf-mobile-start-intro{margin:0 0 12px;color:#58697c;font-size:11px;line-height:1.45}
+ .tf-mobile-start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .tf-mobile-start-card{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;min-height:112px;padding:12px 10px;border:1px solid #dbe4ed;border-radius:11px;background:#fff;color:#17314c;text-decoration:none;box-shadow:0 2px 7px rgba(15,35,60,.035);transition:border-color .15s,transform .15s}
+ .tf-mobile-start-card:focus-visible{outline:3px solid #70a4e8;outline-offset:2px}
+ .tf-mobile-start-icon{font-size:21px;line-height:1}
+ .tf-mobile-start-card strong{font-size:12px;line-height:1.25;font-weight:900}
+ .tf-mobile-start-card small{color:#64758a;font-size:10px;line-height:1.4}
+ .tf-mobile-start-card .tf-mobile-start-link{margin-top:auto;color:#167b69;font-size:10px;font-weight:900}
+}
+@media(max-width:360px){.tf-mobile-start{padding:11px}.tf-mobile-start-grid{gap:7px}.tf-mobile-start-card{padding:10px 8px;min-height:120px}.tf-mobile-start-card strong{font-size:11px}.tf-mobile-start-card small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.tf-mobile-start-card{transition:none}}
+</style>
 </body>
 </html>
 
