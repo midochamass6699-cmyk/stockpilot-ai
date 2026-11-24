@@ -1,8 +1,10 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-24T01:49:14.536431+00:00",
-  "updated_sections": [],
+  "fetched_at": "2026-11-24T02:48:12.593279+00:00",
+  "updated_sections": [
+    "crypto"
+  ],
   "sections": {
     "markets": [
       {
@@ -101,87 +103,87 @@
     ],
     "crypto": [
       {
-        "title": "PYMNTS | DOJ Aims To Recover $1 . 1 Billion From Binance Theft",
-        "url": "https://www.pymnts.com/news/2026/doj-aims-to-recover-1-1-billion-from-binance-theft/",
-        "source": "pymnts.com",
-        "published": "20261123T223000Z",
+        "title": "Hamilton ETFs Announces November 2026 Monthly & Upcoming Semi - Monthly Cash Distributions",
+        "url": "https://www.theobserver.ca/press-releases/business-wire/hamilton-etfs-announces-november-2026-monthly-upcoming-semi-monthly-cash-distributions/",
+        "source": "theobserver.ca",
+        "published": "20261124T021500Z",
         "language": "English"
       },
       {
-        "title": "Breakfast briefing : NZD hits fresh lows",
-        "url": "https://www.interest.co.nz/economy/141200/us-pmis-cool-nvidia-causes-brief-wall-street-excitement-eyes-us-retail-singapore",
-        "source": "interest.co.nz",
-        "published": "20261123T223000Z",
+        "title": "Ninepoint Partners Announces November 2026 Monthly and Semi - Monthly Cash Distributions for its ETFs and ETF Series Securities",
+        "url": "https://www.theobserver.ca/press-releases/globe-newswire/ninepoint-partners-announces-november-2026-monthly-and-semi-monthly-cash-distributions-for-its-etfs-and-etf-series-securities/",
+        "source": "theobserver.ca",
+        "published": "20261124T021500Z",
         "language": "English"
       },
       {
-        "title": "COP 31 Plants A Big Wet Kiss On Failed Carbon Capture Technology",
-        "url": "https://cleantechnica.com/2026/11/23/cop-31-plants-a-big-wet-kiss-on-failed-carbon-capture-technology/",
-        "source": "cleantechnica.com",
-        "published": "20261123T223000Z",
+        "title": "Donald Trump wanted Nvidia chief reinstated . Here how he succeeded",
+        "url": "https://www.nzherald.co.nz/business/donald-trump-wanted-nvidias-chief-reinstated-heres-how-he-succeeded/premium/OLFNB7CNTZBZDBGCQ4L6VEJGZU/",
+        "source": "nzherald.co.nz",
+        "published": "20261124T021500Z",
         "language": "English"
       },
       {
-        "title": "Democrats eye stock trading ban in early test of anti - corruption promises",
-        "url": "https://wtov9.com/news/connect-to-congress/democrats-eye-stock-trading-ban-in-early-test-of-anti-corruption-promises",
-        "source": "wtov9.com",
-        "published": "20261123T213000Z",
+        "title": "They attended Trump controversial meme coin dinner . It didnt go well",
+        "url": "https://www.kunc.org/npr-news/2026-11-23/they-attended-trumps-controversial-meme-coin-dinner-it-didnt-go-well",
+        "source": "kunc.org",
+        "published": "20261124T021500Z",
         "language": "English"
       },
       {
-        "title": "National outages , emergency alerts become fodder for doomsday conspiracies",
-        "url": "https://www.times-standard.com/2026/11/23/national-outages-emergency-alerts-become-fodder-for-doomsday-conspiracies/",
-        "source": "times-standard.com",
-        "published": "20261123T213000Z",
+        "title": "Zelenskyy hails Ukraine attack on a Russian warship",
+        "url": "https://www.ironmountaindailynews.com/news/2026/11/zelenskyy-hails-ukraines-attack-on-a-russian-warship/",
+        "source": "ironmountaindailynews.com",
+        "published": "20261124T021500Z",
         "language": "English"
       },
       {
-        "title": "Vancouver Island resident loses $70K in Bitcoin scam",
-        "url": "https://sookenewsmirror.com/2026/11/23/vancouver-island-resident-loses-70k-in-bitcoin-scam/",
-        "source": "sookenewsmirror.com",
-        "published": "20261123T213000Z",
+        "title": "Best Betting Sites Not on GamStop united kingdom ( 2026 )",
+        "url": "https://www.caughtoffside.com/betting/betting-sites/non-gamstop/",
+        "source": "caughtoffside.com",
+        "published": "20261124T014500Z",
         "language": "English"
       },
       {
-        "title": "Donald Trump , JD Vance pressured Nvidia to reinstate Huang , sources say",
-        "url": "http://www.jpost.com/business-and-innovation/article-915882",
-        "source": "jpost.com",
-        "published": "20261123T213000Z",
+        "title": "Deadline",
+        "url": "https://deadline.com/print-article/1237232061/",
+        "source": "deadline.com",
+        "published": "20261124T014500Z",
         "language": "English"
       },
       {
-        "title": "Dogecoin Five - Year Price Prediction : Can It Reclaim Its All - Time High ?",
-        "url": "https://247wallst.com/investing/cryptocurrency/2026/11/23/dogecoin-five-year-price-prediction-can-it-reclaim-its-all-time-high/",
-        "source": "247wallst.com",
-        "published": "20261123T213000Z",
+        "title": "Secret Lives of Mormon Wives : Orange County Renewed for Season 2",
+        "url": "https://www.eonline.com/ca/news/1438343/secret-lives-of-mormon-wives-orange-county-renewed-for-season-2",
+        "source": "eonline.com",
+        "published": "20261124T014500Z",
         "language": "English"
       },
       {
-        "title": "Vancouver Island resident loses $70K in Bitcoin scam | Campbell River Mirror",
-        "url": "https://campbellrivermirror.com/2026/11/23/vancouver-island-resident-loses-70k-in-bitcoin-scam/",
-        "source": "campbellrivermirror.com",
-        "published": "20261123T213000Z",
+        "title": "Mediahub Wins Polestar Media Account",
+        "url": "https://www.bandt.com.au/mediahub-wins-polestar-media-account/",
+        "source": "bandt.com.au",
+        "published": "20261124T014500Z",
         "language": "English"
       },
       {
-        "title": "How Kim Jong Un gets away with building nukes and ghosting Trump",
-        "url": "https://www.livemint.com/global/how-kim-jong-un-gets-away-with-building-nukes-and-ghosting-trump-11795397191350.html",
-        "source": "livemint.com",
-        "published": "20261123T033000Z",
+        "title": "GLOBAL X ANNOUNCES NOVEMBER 2026 MONTHLY & UPCOMING SEMI - MONTHLY DISTRIBUTIONS FOR ITS SUITE OF ETFs",
+        "url": "https://www.cantechletter.com/newswires/global-x-announces-november-2026-monthly-upcoming-semi-monthly-distributions-for-its-suite-of-etfs/",
+        "source": "cantechletter.com",
+        "published": "20261124T014500Z",
         "language": "English"
       },
       {
-        "title": "Criminals backing crypto , encrypted apps to move money",
-        "url": "https://www.bluemountainsgazette.com.au/story/9396246/criminals-backing-crypto-encrypted-apps-to-move-money/",
-        "source": "bluemountainsgazette.com.au",
-        "published": "20261123T033000Z",
+        "title": "Anthropic IPO and Bitcoin : the SpaceX liquidity parallel",
+        "url": "https://insidebitcoins.com/news/is-the-anthropic-ipo-draining-crypto-the-spacex-parallel-examined",
+        "source": "insidebitcoins.com",
+        "published": "20261124T014500Z",
         "language": "English"
       },
       {
-        "title": "Stock market outlook today , 23 Nov : Sensex , Nifty prediction - DJIA , S & P , NASDAQ , GIFT Nifty , Kospi , Nikkei , Taiwan cues",
-        "url": "https://www.livemint.com/market/stock-market-news/stock-market-outlook-today-23-nov-sensex-nifty-prediction-djia-s-p-nasdaq-gift-nifty-kospi-nikkei-taiwan-cues-11795394068928.html",
-        "source": "livemint.com",
-        "published": "20261123T033000Z",
+        "title": "Ariana Grande Teases  Eternal Sunshine Tour  Project At Peacock",
+        "url": "https://deadline.com/2026/11/ariana-grande-eternal-sunshine-tour-project-peacock-1237232061/",
+        "source": "deadline.com",
+        "published": "20261124T014500Z",
         "language": "English"
       }
     ]
