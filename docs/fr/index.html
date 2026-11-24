@@ -8542,8 +8542,10 @@ body{font-size:16px}
         generatedUpdate=document.createElement('button');
         generatedUpdate.type='button';
         generatedUpdate.className='subscribe-bell-cta';
-        generatedUpdate.textContent='GET FREE UPDATES';
-        generatedUpdate.setAttribute('aria-label','Get free StockPilot AI updates');
+        var pageLang=(document.documentElement.lang||'').toLowerCase();
+        var updateLabel=pageLang.indexOf('fr')===0?'RECEVOIR LES MISES À JOUR GRATUITES':pageLang.indexOf('es')===0?'RECIBIR ACTUALIZACIONES GRATIS':pageLang.indexOf('de')===0?'KOSTENLOSE UPDATES ERHALTEN':'GET FREE UPDATES';
+        generatedUpdate.textContent=updateLabel;
+        generatedUpdate.setAttribute('aria-label',updateLabel);
         generatedUpdate.addEventListener('click',function(){subscribeTarget.click();});
         stack.appendChild(generatedUpdate);
       }
