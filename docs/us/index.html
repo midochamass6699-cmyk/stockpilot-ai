@@ -8908,6 +8908,61 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 })();
 </script>
 
+<style id="tf-growth-welcome-placement">
+.tf-growth-welcome-row{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-width:0}
+.tf-growth-welcome-row>h1{min-width:0;flex:1 1 auto}
+.tf-growth-welcome-menu{position:relative;display:inline-flex;flex:0 0 auto;align-items:center;z-index:80}
+.tf-growth-welcome-trigger{appearance:none;border:1px solid #d6ad39;border-radius:8px;background:linear-gradient(135deg,#ffe58a,#f4c84e);color:#171717;padding:10px 14px;font:900 12px/1.2 inherit;letter-spacing:.025em;white-space:nowrap;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.13);transition:transform .16s,box-shadow .16s}
+.tf-growth-welcome-trigger:after{content:"⌄";margin-left:8px;font-size:13px}
+.tf-growth-welcome-menu:hover>.tf-growth-welcome-trigger,.tf-growth-welcome-menu:focus-within>.tf-growth-welcome-trigger{transform:translateY(-1px);box-shadow:0 7px 16px rgba(0,0,0,.18)}
+.tf-growth-welcome-dropdown{display:none;position:absolute;right:0;top:calc(100% + 7px);width:min(310px,calc(100vw - 32px));max-height:min(70vh,440px);overflow:auto;padding:8px;background:#101e31;border:1px solid #36516f;border-radius:11px;box-shadow:0 16px 38px #0006}
+.tf-growth-welcome-menu:hover>.tf-growth-welcome-dropdown,.tf-growth-welcome-menu:focus-within>.tf-growth-welcome-dropdown,.tf-growth-welcome-menu.is-open>.tf-growth-welcome-dropdown{display:grid;gap:4px}
+.tf-growth-welcome-dropdown a{display:block;padding:10px 11px;border-radius:7px;color:#f5f8fc;text-decoration:none;font-size:12px;font-weight:850;line-height:1.35}
+.tf-growth-welcome-dropdown a:hover,.tf-growth-welcome-dropdown a:focus{background:#1c3552;color:#f5d17d;outline:none}
+.tf-growth-welcome-trigger:focus-visible{outline:3px solid #5b9be8;outline-offset:3px}
+@media(max-width:760px){
+ .tf-growth-welcome-row{gap:8px}
+ .tf-growth-welcome-trigger{padding:9px 10px;font-size:10px}
+ .tf-growth-welcome-trigger:after{margin-left:5px}
+ .tf-growth-welcome-dropdown{right:0}
+}
+@media(max-width:390px){
+ .tf-growth-welcome-row{align-items:flex-start}
+ .tf-growth-welcome-trigger{font-size:9px;padding:8px 7px;white-space:normal;max-width:132px}
+}
+@media(prefers-reduced-motion:reduce){.tf-growth-welcome-trigger{transition:none}}
+</style>
+<script id="tf-growth-welcome-placement-script">
+(function(){
+ function install(){
+  var old=document.querySelector('.tf-growth-menu');
+  var heading=document.querySelector('#trading-desk-title,#fr-welcome-title,#home-seo-title');
+  if(!old||!heading||document.querySelector('.tf-growth-welcome-menu'))return;
+  var summary=old.querySelector('summary');
+  var links=old.querySelectorAll('.tf-growth-dropdown a');
+  if(!summary||!links.length)return;
+  var menu=document.createElement('div');menu.className='tf-growth-welcome-menu';
+  var trigger=document.createElement('button');trigger.type='button';trigger.className='tf-growth-welcome-trigger';trigger.textContent=summary.textContent.trim();trigger.setAttribute('aria-haspopup','true');trigger.setAttribute('aria-expanded','false');
+  var panel=document.createElement('div');panel.className='tf-growth-welcome-dropdown';panel.setAttribute('role','menu');panel.setAttribute('aria-label',summary.textContent.trim());
+  Array.prototype.forEach.call(links,function(source){var a=source.cloneNode(true);a.setAttribute('role','menuitem');panel.appendChild(a)});
+  menu.appendChild(trigger);menu.appendChild(panel);
+  var row=document.createElement('div');row.className='tf-growth-welcome-row';
+  heading.parentNode.insertBefore(row,heading);row.appendChild(heading);row.appendChild(menu);
+  old.remove();
+  function setOpen(open){menu.classList.toggle('is-open',open);trigger.setAttribute('aria-expanded',open?'true':'false')}
+  menu.addEventListener('mouseenter',function(){if(window.matchMedia('(min-width:761px)').matches)setOpen(true)});
+  menu.addEventListener('mouseleave',function(){if(window.matchMedia('(min-width:761px)').matches)setOpen(false)});
+  trigger.addEventListener('focus',function(){if(window.matchMedia('(min-width:761px)').matches)setOpen(true)});
+  menu.addEventListener('focusout',function(e){if(window.matchMedia('(min-width:761px)').matches&&!menu.contains(e.relatedTarget))setOpen(false)});
+  trigger.addEventListener('click',function(e){
+   if(window.matchMedia('(max-width:760px)').matches){e.preventDefault();setOpen(!menu.classList.contains('is-open'))}
+   else{e.preventDefault()}
+  });
+  document.addEventListener('click',function(e){if(!menu.contains(e.target)&&window.matchMedia('(max-width:760px)').matches)setOpen(false)});
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
+})();
+</script>
 </body>
 </html>
 <style id="sp-terminal-promo-style">
