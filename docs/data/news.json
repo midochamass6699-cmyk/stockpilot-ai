@@ -1,10 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-24T22:45:27.581667+00:00",
+  "fetched_at": "2026-11-24T23:41:44.032331+00:00",
   "updated_sections": [
-    "penny",
-    "crypto"
+    "penny"
   ],
   "sections": {
     "markets": [
@@ -94,6 +93,13 @@
       }
     ],
     "penny": [
+      {
+        "title": "Zip Shares Given Bullish Price Target : Reverse Split Reshapes Structure",
+        "url": "https://thebull.com.au/news/zip-shares-given-bullish-price-target-reverse-split-reshapes-structure/",
+        "source": "thebull.com.au",
+        "published": "20261124T223000Z",
+        "language": "English"
+      },
       {
         "title": "Only a handful of stocks near 52 - week highs despite November rebound",
         "url": "https://www.livemint.com/market/stock-market-news/indian-stock-market-rally-november-sensex-bse-500-11795489292786.html",
