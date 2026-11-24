@@ -8775,6 +8775,29 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 </script>
 
 
+<style id="tf-fr-download-app-nav-fix">
+@media (min-width:761px){
+  #primary-navigation .navlinks{
+    width:100%;
+    justify-content:flex-end!important;
+    gap:clamp(8px,1vw,14px)!important;
+  }
+  #primary-navigation .tf-desktop-menus{
+    margin-right:auto!important;
+    flex:0 1 auto;
+  }
+  #primary-navigation .navlinks>.nav-cta{
+    position:relative!important;
+    inset:auto!important;
+    flex:0 0 auto!important;
+    margin-left:clamp(8px,1vw,14px)!important;
+    white-space:nowrap!important;
+    z-index:2;
+  }
+}
+</style>
+
+
 <style id="stockpilot-fr-language-luxe">
 /* Refined language selector — preserve its existing position, dimensions and labels. */
 .topbar .language-switch {
