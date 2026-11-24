@@ -1,8 +1,10 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-24T03:51:09.076677+00:00",
-  "updated_sections": [],
+  "fetched_at": "2026-11-24T04:57:19.705250+00:00",
+  "updated_sections": [
+    "penny"
+  ],
   "sections": {
     "markets": [
       {
@@ -92,10 +94,24 @@
     ],
     "penny": [
       {
-        "title": "Stock market outlook today , 23 Nov : Sensex , Nifty prediction - DJIA , S & P , NASDAQ , GIFT Nifty , Kospi , Nikkei , Taiwan cues",
-        "url": "https://www.livemint.com/market/stock-market-news/stock-market-outlook-today-23-nov-sensex-nifty-prediction-djia-s-p-nasdaq-gift-nifty-kospi-nikkei-taiwan-cues-11795394068928.html",
-        "source": "livemint.com",
-        "published": "20261123T033000Z",
+        "title": "Best Odds Guaranteed Sites united kingdom 2026 : BOG Times , Limits , Rules",
+        "url": "https://www.caughtoffside.com/betting/betting-sites/best-odds-guaranteed/",
+        "source": "caughtoffside.com",
+        "published": "20261124T014500Z",
+        "language": "English"
+      },
+      {
+        "title": "High Limit Betting Sites united kingdom 2026 : Stakes , Payouts , and Checks",
+        "url": "https://www.caughtoffside.com/betting/betting-sites/high-limit/",
+        "source": "caughtoffside.com",
+        "published": "20261124T014500Z",
+        "language": "English"
+      },
+      {
+        "title": "Daily Voice : Samit Vartak of SageOne identifies 5 sectors offering the best mix of growth and valuation",
+        "url": "https://www.moneycontrol.com/news/business/markets/daily-voice-samit-vartak-of-sageone-identifies-5-sectors-offering-the-best-mix-of-growth-and-valuation-14087516.html",
+        "source": "moneycontrol.com",
+        "published": "20261124T014500Z",
         "language": "English"
       }
     ],
