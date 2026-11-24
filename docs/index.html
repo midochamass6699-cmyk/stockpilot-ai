@@ -10087,6 +10087,10 @@ var sc_security="58d29d99";
     }
     move(document.getElementById('sp-stock-of-day'),stack);
     move(document.querySelector('.tf-mobile-start'),stack);
+    /* Move the remainder of the original welcome/trading intro below the two priority sections.
+       Its heading and tagline have already been moved into the top welcome block. */
+    var introRemainder=document.querySelector('#live-trading-desk, .fr-welcome-banner, .seo-intro');
+    if(introRemainder)move(introRemainder,stack);
   }
   function refresh(){if(window.matchMedia('(max-width:760px)').matches)apply();else restore();}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh,{once:true});
