@@ -1,134 +1,137 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>StockPilot AI — Homepage Design Preview</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Technofront — Desktop Homepage Preview</title>
 <style>
-:root{--ink:#111;--yellow:#ffd629;--cream:#f8f5e9;--muted:#6b6b6b;--line:#e8e1ce;--green:#16a36a}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:#171717;font-family:Inter,Arial,sans-serif}
-.previewbar{background:#fff5c7;border-bottom:1px solid #e8d98d;padding:9px 18px;text-align:center;font-size:12px;font-weight:800;color:#594700;letter-spacing:.2px}
-header{background:#101010;border-bottom:4px solid var(--yellow);color:#fff}
-nav{max-width:1180px;margin:auto;padding:13px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px}
-.brand{font-weight:950;color:var(--yellow);font-size:19px;letter-spacing:.5px}.links{display:flex;gap:19px;flex-wrap:wrap;font-size:11px;font-weight:800}.links span{color:#fff}
-.wrap{width:min(1160px,calc(100% - 34px));margin:auto}
-.stockday{padding:25px 0 18px}
-.eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:900;color:#8a6b00}
-h1{font-size:29px;letter-spacing:-.8px;margin:4px 0 4px}
-.sub{color:var(--muted);font-size:12px;margin:0}
-.stockstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:15px}
-.stock{background:#fff;border:1px solid var(--line);border-top:4px solid #111;border-radius:9px;padding:12px 14px;box-shadow:0 4px 13px #00000008}
-.stock strong{font-size:15px}.ticker{font-size:10px;color:#777;font-weight:800}.price{font-size:22px;font-weight:950;margin-top:6px}.gain{font-size:11px;color:var(--green);font-weight:900}
-.section-title{display:flex;justify-content:space-between;align-items:end;margin:17px 0 11px;gap:12px}.section-title h2{font-size:19px;margin:0}.section-title p{font-size:11px;color:#777;margin:3px 0 0}
-.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:210px 210px;gap:13px;margin-bottom:30px}
-.terminal{background:#0d131b;border:1px solid #293544;border-radius:13px;overflow:hidden;color:#dbe7f5;box-shadow:0 9px 24px #10182022;display:flex;flex-direction:column}
-.termbar{display:flex;align-items:center;gap:6px;padding:11px 13px;background:#17212d;border-bottom:1px solid #2b3948;font-size:10px;color:#aebdce;font-weight:800;letter-spacing:.8px}
-.dot{width:7px;height:7px;border-radius:50%;background:#f0bd35}.dot:nth-child(2){background:#4bbd83}.dot:nth-child(3){background:#e16c6c}
-.termname{margin-left:7px}.termbody{padding:14px 15px;display:flex;flex-direction:column;gap:12px;flex:1}
-.termheadline{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#a9bacd}.live{color:#5be0a0;font-size:9px;font-weight:900}
-.quote{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #293746;padding-bottom:10px}.quote strong{font-size:26px;color:#fff;letter-spacing:-.7px}.quote small{display:block;color:#91a2b6;font-size:9px;margin-top:2px}.quote .up{color:#59d99b;font-size:11px;font-weight:900}
-.chart{height:62px;width:100%}.chart svg{width:100%;height:100%}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.metric{background:#17222e;border:1px solid #263544;border-radius:6px;padding:7px}.metric span{display:block;font-size:8px;color:#8ea0b4}.metric b{font-size:11px;color:#eaf2fb}
-.termfoot{margin-top:auto;padding-top:8px;border-top:1px solid #293746;color:#8799ac;font-size:9px;display:flex;justify-content:space-between}
-.tile{position:relative;overflow:hidden;border-radius:13px;min-width:0;background:#18212a;box-shadow:0 7px 20px #0000001b;isolation:isolate}
-.tile:before{content:"";position:absolute;inset:0;background-image:var(--photo);background-size:cover;background-position:center;z-index:-2;transition:transform .4s}
-.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#070b12e8 0%,#07101a5c 58%,#07101a12 100%);z-index:-1}
-.tile:hover:before{transform:scale(1.04)}
-.tilecopy{position:absolute;left:16px;right:14px;bottom:14px;color:#fff}.tag{display:inline-block;background:var(--yellow);color:#111;border-radius:4px;padding:4px 7px;font-size:8px;font-weight:950;letter-spacing:.8px;margin-bottom:6px}
-.tile h3{font-size:17px;line-height:1.12;margin:0 0 4px}.tile p{font-size:10px;color:#e1e7ed;margin:0;max-width:95%}.tile .arrow{position:absolute;right:14px;top:13px;width:29px;height:29px;border-radius:50%;background:#ffffffdf;color:#111;display:grid;place-items:center;font-size:15px;font-weight:900}
-.note{margin:3px 0 25px;color:#777;font-size:10px;text-align:center}
-@media(max-width:720px){nav{align-items:flex-start;flex-direction:column}.links{gap:12px}.feature-grid{grid-template-columns:1fr 1fr;grid-template-rows:230px 165px}.terminal{grid-column:1/-1}.tile h3{font-size:15px}}
-@media(max-width:480px){.wrap{width:calc(100% - 24px)}.stockstrip{grid-template-columns:1fr 1fr}.stockstrip .stock:last-child{display:none}.feature-grid{grid-template-columns:1fr;grid-template-rows:260px 155px 155px 155px;gap:9px}.terminal{grid-column:1/-1}.termbody{padding:11px}.quote strong{font-size:23px}.tilecopy{left:11px;bottom:11px}.tile h3{font-size:14px}.tile p{font-size:9px}.tile .arrow{width:25px;height:25px;right:9px;top:9px}h1{font-size:25px}}
-
-/* Two-panel market dashboard preview */
-.dashboard-grid{width:min(1000px,100%);margin:0 auto 22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
-.dashboard-panel{aspect-ratio:1/1;min-width:0;min-height:0;border-radius:13px;overflow:hidden;border:1px solid var(--line);box-shadow:0 7px 22px #00000010}
-.picks-panel{background:#fff;padding:15px 16px;display:flex;flex-direction:column}
-.panel-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:9px;border-bottom:1px solid #eee9dc}
-.panel-heading h2{font-size:16px;margin:0;line-height:1.15}.panel-heading span{font-size:8px;font-weight:900;letter-spacing:.7px;color:#786000;background:#fff3bf;border-radius:4px;padding:4px 6px;white-space:nowrap}
-.pick-groups{display:grid;grid-template-rows:auto auto auto;gap:8px;padding-top:9px;min-height:0;flex:1}
-.pick-group{min-width:0}.group-title{display:flex;align-items:center;justify-content:space-between;margin:0 0 4px;font-size:9px;font-weight:950;letter-spacing:.7px;color:#806300;text-transform:uppercase}
-.group-title small{font-size:8px;font-weight:700;color:#858585;letter-spacing:0}
-.pick-rows{display:grid;gap:3px}
-.pick-row{display:grid;grid-template-columns:23px minmax(0,1fr) auto;align-items:center;gap:7px;min-width:0;padding:3px 6px;border:1px solid #f0ede5;border-radius:6px;background:#fffefa}
-.pick-logo{width:21px;height:21px;border-radius:50%;display:grid;place-items:center;background:#171717;color:#ffd629;font-size:8px;font-weight:950;letter-spacing:-.3px;flex-shrink:0}
-.pick-logo.crypto{background:#fff0ad;color:#5a4600}.pick-logo.penny{background:#e9f3ed;color:#176b43}
-.pick-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px;font-weight:850;line-height:1.15}
-.pick-ticker{display:block;font-size:7px;color:#888;font-weight:750;letter-spacing:.35px;margin-top:1px}
-.pick-value{text-align:right;white-space:nowrap;font-size:9px;font-weight:900}.pick-value small{display:block;font-size:7px;color:#168451;font-weight:800}
-.terminal-panel{background:#0d131b;border-color:#293544;color:#dbe7f5;display:flex;flex-direction:column}
-.terminal-panel .termbar{flex:0 0 auto}
-.terminal-panel .termbody{min-height:0;padding:13px 15px;gap:9px}
-.terminal-panel .quote strong{font-size:25px}
-.terminal-panel .chart{height:80px;flex:0 0 80px}
-.terminal-expand{margin-top:auto;border:1px solid #3a5268;border-radius:7px;padding:9px 10px;background:#172635;color:#fff;font:800 9px Arial,sans-serif;letter-spacing:.6px;cursor:pointer;text-align:center}
-.terminal-expand:hover{background:#21374a}
-.terminal-panel details{margin-top:auto}
-.terminal-panel summary{list-style:none;cursor:pointer;border:1px solid #3a5268;border-radius:7px;padding:9px 10px;background:#172635;color:#fff;font-size:9px;font-weight:900;letter-spacing:.6px;text-align:center}
-.terminal-panel summary::-webkit-details-marker{display:none}
-.terminal-extra{padding:10px;margin-top:8px;border:1px solid #293746;border-radius:7px;background:#111c28;font-size:9px;color:#aebdce;line-height:1.6}
-.note{margin:0 0 25px}
-@media(max-width:720px){.dashboard-grid{gap:9px}.picks-panel{padding:10px}.pick-groups{gap:6px;padding-top:7px}.pick-row{gap:4px;padding:2px 4px;grid-template-columns:19px minmax(0,1fr) auto}.pick-logo{width:18px;height:18px;font-size:7px}.pick-name{font-size:8px}.pick-ticker{font-size:6px}.pick-value{font-size:8px}.pick-value small{font-size:6px}.group-title{font-size:8px}.group-title small{font-size:7px}.terminal-panel .termbody{padding:9px;gap:7px}.terminal-panel .quote strong{font-size:19px}.terminal-panel .chart{height:57px;flex-basis:57px}.terminal-panel .metrics{gap:4px}.terminal-panel .metric{padding:5px}.terminal-panel .metric b{font-size:9px}}
-@media(max-width:480px){.dashboard-grid{grid-template-columns:1fr;max-width:420px}.dashboard-panel{aspect-ratio:1/1}.picks-panel{padding:16px}.pick-groups{gap:10px;padding-top:10px}.pick-row{grid-template-columns:25px minmax(0,1fr) auto;padding:4px 7px;gap:8px}.pick-logo{width:23px;height:23px;font-size:8px}.pick-name{font-size:10px}.pick-ticker{font-size:8px}.pick-value{font-size:10px}.pick-value small{font-size:8px}.group-title{font-size:9px}.group-title small{font-size:8px}.terminal-panel .termbody{padding:14px;gap:10px}.terminal-panel .quote strong{font-size:25px}.terminal-panel .chart{height:78px;flex-basis:78px}}
-
+:root{color-scheme:dark;--bg:#0b1420;--panel:#142337;--panel2:#192d44;--line:#2a4058;--text:#edf4fb;--muted:#a8bbcf;--accent:#76b9ee;--teal:#61d7b0;--gold:#e8c879}
+*{box-sizing:border-box}
+body{margin:0;background:#0a111b;color:var(--text);font-family:Inter,Arial,sans-serif}
+.preview-note{padding:9px 16px;text-align:center;background:#f4e6b5;color:#493b10;font-size:11px;font-weight:850;letter-spacing:.04em}
+header{background:#0e1927;border-bottom:1px solid #26394e}
+.topbar{max-width:1180px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-size:19px;font-weight:950;letter-spacing:.07em;color:#fff;white-space:nowrap}.brand span{color:var(--accent)}
+.topnav{display:flex;gap:23px;align-items:center;font-size:12px;font-weight:800}
+.topnav a{color:#d7e4f2;text-decoration:none}.topnav a:hover{color:var(--accent)}
+.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+.welcome{padding:28px 0 20px}
+.kicker{font-size:9px;letter-spacing:.17em;font-weight:900;color:#8eabc8}
+h1{font-size:clamp(27px,3vw,36px);letter-spacing:-.04em;margin:8px 0 3px;color:#fff}
+.tagline{font-size:15px;font-weight:750;color:#a9c9e7;margin:0}
+.action-grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(300px,1fr);gap:16px;align-items:stretch}
+.action-panel,.stock-panel{border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#172a40,#122033);box-shadow:0 12px 30px #0003}
+.action-panel{padding:18px 20px}
+.panel-title{margin:0 0 14px;font-size:17px;font-weight:850;color:#fff}
+.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.choice{position:relative;min-width:0;padding:11px 10px 10px;border-left:2px solid #4c7599;background:#ffffff06;border-radius:0 8px 8px 0}
+.choice-head{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:850;color:#f1f6fc;line-height:1.25;min-height:34px}
+.choice-icon{font-size:17px;color:var(--accent)}
+.choice-desc{font-size:10px;line-height:1.5;color:#b2c4d7;margin:7px 0 9px;min-height:30px}
+.choice-trigger{display:inline-flex;align-items:center;gap:5px;color:#8dc7f5;font-size:10px;font-weight:850;text-decoration:none;border-bottom:1px dotted #8dc7f5;padding-bottom:2px}
+.choice-trigger:hover{color:#fff}
+.submenu{display:none;position:absolute;z-index:5;top:calc(100% + 7px);left:0;min-width:205px;padding:7px;background:#0c1826;border:1px solid #38516b;border-radius:9px;box-shadow:0 14px 28px #0008}
+.choice:hover .submenu,.choice:focus-within .submenu{display:block}
+.submenu a{display:block;padding:8px 9px;border-radius:5px;color:#dce9f7;text-decoration:none;font-size:11px;font-weight:700}
+.submenu a:hover,.submenu a:focus{background:#203a55;color:#fff}
+.stock-panel{padding:17px 18px;display:flex;flex-direction:column;justify-content:space-between;min-height:208px}
+.stock-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.stock-label{font-size:9px;letter-spacing:.13em;font-weight:950;color:#a9c7e2}
+.live-pill{font-size:8px;font-weight:900;letter-spacing:.08em;color:#8ce4bf;border:1px solid #39765f;border-radius:20px;padding:4px 7px}
+.stock-main{padding:14px 0 10px}
+.stock-company{font-size:19px;font-weight:900;color:#fff}
+.stock-ticker{font-size:10px;color:#a6bad0;margin-top:3px}
+.stock-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:13px}
+.metric{border-top:1px solid #30465e;padding-top:8px}
+.metric span{display:block;color:#91a8bf;font-size:8px;font-weight:800;letter-spacing:.08em}
+.metric strong{display:block;margin-top:4px;color:#e8f2fc;font-size:13px}
+.stock-foot{font-size:9px;color:#8da5bd;border-top:1px solid #30465e;padding-top:9px}
+.advanced{margin-top:15px;border:1px solid #31516d;border-radius:10px;background:linear-gradient(100deg,#152a40,#1b3852);padding:13px 17px;display:flex;align-items:center;gap:18px;overflow:hidden}
+.advanced-label{flex:0 0 auto;color:#a8d4f6;font-size:10px;font-weight:950;letter-spacing:.14em}
+.advanced-copy{font-size:11px;color:#d7e6f4;line-height:1.5}
+.advanced-copy a{color:#9bd0f7;font-weight:850;text-decoration:none}
+.report-later{margin:36px 0 60px;padding:17px 19px;border:1px dashed #38516b;border-radius:10px;color:#b5c7d9;background:#101d2c;font-size:12px}
+.report-later strong{color:#fff}
+@media(max-width:800px){.topbar{align-items:flex-start;flex-direction:column}.topnav{gap:15px;flex-wrap:wrap}.action-grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr;gap:7px}.choice{padding:10px 12px}.choice-desc{min-height:0;margin:4px 0 6px}.submenu{position:static;margin-top:8px}.choice:hover .submenu,.choice:focus-within .submenu{display:block}.stock-panel{min-height:0}.advanced{align-items:flex-start;flex-direction:column;gap:6px}}
+@media(min-width:801px){.choice{min-height:132px}}
 </style>
 </head>
 <body>
-<div class="previewbar">DESIGN PREVIEW · NOT LIVE ON THE MAIN HOMEPAGE · Changes here will not affect visitors</div>
-<header><nav><div class="brand">↗ STOCKPILOT AI</div><div class="links"><span>HOME</span><span>TOP CRYPTO</span><span>DAILY PICKS</span><span>MARKET INSIGHTS</span><span>RESOURCES</span></div></nav></header>
+<div class="preview-note">DESKTOP LAYOUT PREVIEW · SEPARATE PAGE ONLY · PRODUCTION HOMEPAGE IS UNCHANGED</div>
+<header><nav class="topbar" aria-label="Preview navigation">
+<div class="brand">TECHNO<span>FRONT</span></div>
+<div class="topnav"><a href="#">Markets⌄</a><a href="#">Research⌄</a><a href="#">Learn &amp; Tools⌄</a></div>
+</nav></header>
 <main class="wrap">
-<section class="stockday">
-<div class="eyebrow">REAL MARKET DATA · DAILY RESEARCH</div>
-<h1>Stock of the Day</h1>
-<p class="sub">A quick look at today's featured market opportunity.</p>
-<div class="stockstrip">
-<div class="stock"><strong>Featured Company</strong><div class="ticker">NASDAQ · SAMPLE</div><div class="price">$24.86</div><div class="gain">▲ 3.42% today</div></div>
-<div class="stock"><strong>Market Snapshot</strong><div class="ticker">MARKET ACTIVITY</div><div class="price">18.6M</div><div class="gain">Volume overview</div></div>
-<div class="stock"><strong>Daily Range</strong><div class="ticker">SESSION RANGE</div><div class="price">$23.90–$25.10</div><div class="gain">Illustrative preview</div></div>
+<section class="welcome">
+<div class="kicker">STOCKPILOT AI · MARKET MONITOR</div>
+<h1>Welcome to Technofront</h1>
+<p class="tagline">Because the future is clear.</p>
+</section>
+
+<section class="action-grid" aria-label="Homepage action choices and Stock of the Day">
+<article class="action-panel">
+<h2 class="panel-title">What would you like to do today?</h2>
+<div class="choices">
+<div class="choice">
+<div class="choice-head"><span class="choice-icon" aria-hidden="true">↗</span>Explore Markets</div>
+<p class="choice-desc">Discover market activity, stocks and digital assets.</p>
+<a class="choice-trigger" href="#markets-menu">Explore sections <span aria-hidden="true">⌄</span></a>
+<div class="submenu" id="markets-menu">
+<a href="/#main-picks">Stock of the Day &amp; Stock Picks</a>
+<a href="/#penny-picks">Penny Stocks</a>
+<a href="/#crypto-picks">Cryptocurrency</a>
+<a href="/#market-coverage">Market Coverage</a>
+<a href="/stock-profiles.html">Company Profiles</a>
 </div>
+</div>
+<div class="choice">
+<div class="choice-head"><span class="choice-icon" aria-hidden="true">⌕</span>Research Companies</div>
+<p class="choice-desc">Explore company intelligence, reports and analysis.</p>
+<a class="choice-trigger" href="#research-menu">Explore sections <span aria-hidden="true">⌄</span></a>
+<div class="submenu" id="research-menu">
+<a href="/advanced-market-intelligence.html">Advanced Market Intelligence</a>
+<a href="/experts-exchange.html">Experts Exchange</a>
+<a href="/financial-report-generator.html">Financial Reports</a>
+<a href="/stock-profiles.html">Company Research</a>
+</div>
+</div>
+<div class="choice">
+<div class="choice-head"><span class="choice-icon" aria-hidden="true">▣</span>Use Our Market Terminal</div>
+<p class="choice-desc">Open market tools, charts and trading analysis.</p>
+<a class="choice-trigger" href="#terminal-menu">Explore tools <span aria-hidden="true">⌄</span></a>
+<div class="submenu" id="terminal-menu">
+<a href="/#market-terminal">Market Terminal</a>
+<a href="/#market-terminal">Watchlists</a>
+<a href="/#market-terminal">Stock Screener</a>
+<a href="/#market-terminal">Technical Analysis</a>
+<a href="/options-simulator.html">Options Simulator</a>
+</div>
+</div>
+</div>
+</article>
+
+<aside class="stock-panel" aria-label="Stock of the Day preview">
+<div class="stock-head"><span class="stock-label">★ STOCK OF THE DAY</span><span class="live-pill">DAILY FEATURE</span></div>
+<div class="stock-main">
+<div class="stock-company">Today's Featured Company</div>
+<div class="stock-ticker">Ticker and company details remain supplied by the existing Stock of the Day feed</div>
+<div class="stock-metrics">
+<div class="metric"><span>LAST PRICE</span><strong>—</strong></div>
+<div class="metric"><span>DAY MOVE</span><strong>—</strong></div>
+<div class="metric"><span>VOLUME</span><strong>—</strong></div>
+</div>
+</div>
+<div class="stock-foot">Existing Stock of the Day content stays in this right-hand position.</div>
+</aside>
 </section>
-<div class="section-title"><div><div class="eyebrow">MARKET DASHBOARD</div><h2>Stocks, Crypto &amp; Trading Terminal</h2><p>Two equal panels, sized to stay within the banner width.</p></div></div>
-<section class="dashboard-grid" aria-label="Stock picks and trading terminal preview">
-  <article class="dashboard-panel picks-panel">
-    <div class="panel-heading"><h2>Market Picks</h2><span>DAILY WATCHLIST</span></div>
-    <div class="pick-groups">
-      <section class="pick-group">
-        <h3 class="group-title">Top Crypto <small>24H VOLUME</small></h3>
-        <div class="pick-rows">
-          <div class="pick-row"><span class="pick-logo crypto">₿</span><span class="pick-name">Bitcoin<span class="pick-ticker">BTC · CRYPTO</span></span><span class="pick-value">$96,420<small>+2.1%</small></span></div>
-          <div class="pick-row"><span class="pick-logo crypto">Ξ</span><span class="pick-name">Ethereum<span class="pick-ticker">ETH · CRYPTO</span></span><span class="pick-value">$3,180<small>+1.4%</small></span></div>
-          <div class="pick-row"><span class="pick-logo crypto">◎</span><span class="pick-name">Solana<span class="pick-ticker">SOL · CRYPTO</span></span><span class="pick-value">$184.20<small>+3.0%</small></span></div>
-        </div>
-      </section>
-      <section class="pick-group">
-        <h3 class="group-title">Main Stock Picks <small>ACTIVE VOLUME</small></h3>
-        <div class="pick-rows">
-          <div class="pick-row"><span class="pick-logo">N</span><span class="pick-name">NVIDIA<span class="pick-ticker">NVDA · NASDAQ</span></span><span class="pick-value">$142.50<small>+1.8%</small></span></div>
-          <div class="pick-row"><span class="pick-logo">F</span><span class="pick-name">Ford Motor<span class="pick-ticker">F · NYSE</span></span><span class="pick-value">$11.24<small>+0.6%</small></span></div>
-          <div class="pick-row"><span class="pick-logo">P</span><span class="pick-name">Palantir<span class="pick-ticker">PLTR · NASDAQ</span></span><span class="pick-value">$25.70<small>+2.4%</small></span></div>
-        </div>
-      </section>
-      <section class="pick-group">
-        <h3 class="group-title">Penny Stocks <small>LOGOS KEPT VISIBLE</small></h3>
-        <div class="pick-rows">
-          <div class="pick-row"><span class="pick-logo penny">A</span><span class="pick-name">Aurora Cannabis<span class="pick-ticker">ACB · NASDAQ</span></span><span class="pick-value">$4.18<small>+1.2%</small></span></div>
-          <div class="pick-row"><span class="pick-logo penny">S</span><span class="pick-name">SNDL Inc.<span class="pick-ticker">SNDL · NASDAQ</span></span><span class="pick-value">$1.62<small>+0.9%</small></span></div>
-          <div class="pick-row"><span class="pick-logo penny">B</span><span class="pick-name">Bitfarms<span class="pick-ticker">BITF · NASDAQ</span></span><span class="pick-value">$2.31<small>+2.7%</small></span></div>
-        </div>
-      </section>
-    </div>
-  </article>
-  <article class="dashboard-panel terminal-panel">
-    <div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="termname">STOCKPILOT TERMINAL</span><span style="margin-left:auto">● PREVIEW</span></div>
-    <div class="termbody">
-      <div class="termheadline"><span>MARKET OVERVIEW</span><span class="live">● MARKET VIEW</span></div>
-      <div class="quote"><div><strong>SPY <span style="font-size:10px;color:#a7b8ca">S&amp;P 500 ETF</span></strong><small>US EQUITIES · SAMPLE DATA</small></div><div style="text-align:right"><strong>$586.42</strong><div class="up">+1.28% ▲</div></div></div>
-      <div class="chart"><svg viewBox="0 0 420 70" preserveAspectRatio="none" aria-label="Illustrative market line chart"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#37d89a" stop-opacity=".28"/><stop offset="1" stop-color="#37d89a" stop-opacity="0"/></linearGradient></defs><path d="M0 58 L28 52 L54 55 L80 37 L105 43 L132 29 L160 35 L188 23 L215 30 L240 16 L265 27 L291 18 L316 23 L343 8 L370 14 L397 3 L420 7 L420 70 L0 70Z" fill="url(#fill)"/><path d="M0 58 L28 52 L54 55 L80 37 L105 43 L132 29 L160 35 L188 23 L215 30 L240 16 L265 27 L291 18 L316 23 L343 8 L370 14 L397 3 L420 7" fill="none" stroke="#54dfa6" stroke-width="2.4"/></svg></div>
-      <div class="metrics"><div class="metric"><span>VOLUME</span><b>42.8M</b></div><div class="metric"><span>DAY HIGH</span><b>$588.10</b></div><div class="metric"><span>DAY LOW</span><b>$579.36</b></div></div>
-      <div class="termfoot"><span>ILLUSTRATIVE DATA</span><span>EXPAND BELOW ↘</span></div>
-      <details><summary>CLICK TO EXPAND TERMINAL ＋</summary><div class="terminal-extra">Expanded terminal area preview. In the final version, this space can open the full market terminal with its existing charts, market indicators and tools. The compact square stays visible until the visitor chooses to expand it.</div></details>
-    </div>
-  </article>
+
+<section class="advanced" aria-label="Advanced Research banner">
+<div class="advanced-label">ADVANCED RESEARCH</div>
+<div class="advanced-copy">Go beyond basic market snapshots · <a href="/advanced-market-intelligence.html">Advanced Market Intelligence Guide</a> · <a href="/experts-exchange.html">Experts Exchange</a> · VPIN · Gamma Exposure · Vanna &amp; Charm</div>
 </section>
-<p class="note">All names, prices and chart values in this preview are illustrative design content only, not live market data.</p>
+
+<section class="report-later"><strong>Further down the homepage:</strong> Create your personalized company report — moved lower on the page, closer to the company research and report tools. The “Explore Our Free Tools for Traders” welcome link is not included in this preview.</section>
 </main>
-</body></html>
+</body>
+</html>
