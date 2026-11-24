@@ -8778,19 +8778,34 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 <style id="tf-fr-download-app-nav-fix">
 @media (min-width:761px){
   #primary-navigation .navlinks{
-    width:100%;
-    justify-content:flex-end!important;
-    gap:clamp(8px,1vw,14px)!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    align-items:center!important;
+    justify-content:stretch!important;
+    width:100%!important;
+    min-width:0!important;
+    gap:0 clamp(10px,1.2vw,18px)!important;
   }
   #primary-navigation .tf-desktop-menus{
-    margin-right:auto!important;
-    flex:0 1 auto;
+    grid-column:1;
+    grid-row:1;
+    justify-self:start;
+    min-width:0!important;
+    margin:0!important;
   }
   #primary-navigation .navlinks>.nav-cta{
-    position:relative!important;
+    grid-column:2;
+    grid-row:1;
+    justify-self:end;
+    align-self:center;
+    position:static!important;
     inset:auto!important;
-    flex:0 0 auto!important;
-    margin-left:clamp(8px,1vw,14px)!important;
+    transform:none!important;
+    float:none!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    flex:initial!important;
+    margin:0!important;
     white-space:nowrap!important;
     z-index:2;
   }
