@@ -2622,6 +2622,24 @@ input, select, textarea, button {
   }
 }
 </style>
+<style id="tf-growth-sectors-nav">
+.navlinks .tf-growth-menu{position:relative;display:inline-flex;align-items:center}
+.navlinks .tf-growth-menu>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid #56e0dc88;border-radius:6px;background:linear-gradient(110deg,#12384a,#10283b);color:#74e7e1;font-size:11px;font-weight:950;letter-spacing:.045em;white-space:nowrap}
+.navlinks .tf-growth-menu>summary::-webkit-details-marker{display:none}
+.navlinks .tf-growth-menu>summary:after{content:"▾";font-size:10px}
+.navlinks .tf-growth-menu[open]>summary,.navlinks .tf-growth-menu>summary:hover{background:#17465a;color:#fff;border-color:#56e0dc}
+.tf-growth-dropdown{display:none;position:absolute;top:calc(100% + 10px);left:0;z-index:100;min-width:225px;padding:8px;border:1px solid #31566b;border-radius:11px;background:#081827;box-shadow:0 15px 35px #0008}
+.tf-growth-menu[open] .tf-growth-dropdown,.tf-growth-menu:hover .tf-growth-dropdown,.tf-growth-menu:focus-within .tf-growth-dropdown{display:grid;gap:2px}
+.tf-growth-dropdown a{display:block;padding:9px 10px;border-radius:6px;color:#d9e8f1!important;font-size:11px!important;font-weight:750;text-decoration:none}
+.tf-growth-dropdown a:hover,.tf-growth-dropdown a:focus{background:#12384a;color:#67e3de!important}
+@media(max-width:760px){
+ .navlinks .tf-growth-menu{display:block;width:100%}
+ .navlinks .tf-growth-menu>summary{display:flex;width:100%;justify-content:space-between;padding:10px 8px;border-radius:4px;font-size:13px}
+ .tf-growth-dropdown{position:static;min-width:0;margin:4px 0 7px 10px;padding:5px;border-radius:7px;box-shadow:none;background:#0b1c2b}
+ .tf-growth-menu[open] .tf-growth-dropdown,.tf-growth-menu:hover .tf-growth-dropdown,.tf-growth-menu:focus-within .tf-growth-dropdown{display:grid}
+ .tf-growth-dropdown a{padding:9px 10px;font-size:12px!important}
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2645,6 +2663,7 @@ input, select, textarea, button {
 <a href="/us/options-explained.html">OPTIONS</a>
 <a href="/us/ai-assisted-trading.html">AI TRADING</a>
 <a href="/us/margin-account-guide.html">MARGIN GUIDE</a>
+<details class="tf-growth-menu"><summary>GROWTH SECTORS</summary><div class="tf-growth-dropdown" aria-label="GROWTH SECTORS sections"><a href="/growth-sectors/#ai-chips">AI & SEMICONDUCTORS</a><a href="/growth-sectors/#data-centres">DATA CENTERS</a><a href="/growth-sectors/#energy">ENERGY & POWER GRIDS</a><a href="/growth-sectors/#cooling">COOLING SYSTEMS</a><a href="/growth-sectors/#networking">NETWORKING</a><a href="/growth-sectors/#robotics">ROBOTICS & AUTOMATION</a><a href="/growth-sectors/#biotechnology">BIOTECHNOLOGY</a><a href="/growth-sectors/#ai-platforms">AI PLATFORMS</a></div></details>
 <a class="nav-cta" href="/app/" aria-label="GET THE APP — Technofront.org"><img src="/app/icon.svg" alt="" width="20" height="20" style="width:20px;height:20px;vertical-align:middle;margin-right:6px;border-radius:5px"> GET THE APP</a>
 </div>
 <div class="nav-bottom-row">
