@@ -10230,3 +10230,92 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
   outline-offset:3px;
 }
 </style>
+
+
+<style id="tf-desktop-today-layout">
+@media(min-width:761px){
+ #tf-desktop-today-hub{display:block!important;width:100%;margin:0 0 12px;box-sizing:border-box;color:#142337}
+ #tf-desktop-today-hub .tf-today-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(330px,1fr);gap:14px;align-items:stretch}
+ #tf-desktop-today-hub .tf-today-actions,#tf-desktop-today-hub .tf-today-stock{min-width:0;border:1px solid #d6e1ed;border-radius:12px;background:linear-gradient(145deg,#fff 0%,#f4f8fd 100%);box-shadow:0 5px 18px #07111f0b}
+ #tf-desktop-today-hub .tf-today-actions{padding:16px 17px}
+ #tf-desktop-today-hub .tf-today-heading{margin:0 0 13px;color:#10243a;font-size:clamp(17px,1.7vw,21px);font-weight:900;letter-spacing:-.025em}
+ #tf-desktop-today-hub .tf-today-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ #tf-desktop-today-hub .tf-today-option{position:relative;min-width:0;padding:9px 10px 8px;border-left:3px solid #347db5;border-radius:0 8px 8px 0;background:#edf4fa;transition:background .15s ease}
+ #tf-desktop-today-hub .tf-today-option:hover,#tf-desktop-today-hub .tf-today-option:focus-within{background:#e2eef8}
+ #tf-desktop-today-hub .tf-today-option-title{display:block;color:#15324d;font-size:13px;line-height:1.3;font-weight:900}
+ #tf-desktop-today-hub .tf-today-option-desc{margin:6px 0 8px;color:#52677d;font-size:10px;line-height:1.45;min-height:29px}
+ #tf-desktop-today-hub .tf-today-expand{display:inline-block;color:#176ca8;font-size:10px;font-weight:850;text-decoration:none;border-bottom:1px dotted #4d8fbd;padding-bottom:2px}
+ #tf-desktop-today-hub .tf-today-menu{display:none;position:absolute;z-index:50;top:calc(100% + 5px);left:0;min-width:205px;max-width:260px;padding:6px;border:1px solid #c5d6e6;border-radius:9px;background:#fff;box-shadow:0 12px 28px #10243a2b}
+ #tf-desktop-today-hub .tf-today-option:hover .tf-today-menu,#tf-desktop-today-hub .tf-today-option:focus-within .tf-today-menu{display:block}
+ #tf-desktop-today-hub .tf-today-menu a{display:block;padding:8px 9px;border-radius:5px;color:#203a54;font-size:11px;font-weight:750;line-height:1.25;text-decoration:none}
+ #tf-desktop-today-hub .tf-today-menu a:hover,#tf-desktop-today-hub .tf-today-menu a:focus{background:#eaf3fb;color:#075b98}
+ #tf-desktop-today-hub .tf-today-stock{padding:11px 13px;display:flex;align-items:center;min-height:175px}
+ #tf-desktop-today-hub .tf-today-stock #sp-stock-of-day{width:100%!important;max-width:100%!important;margin:0!important;box-sizing:border-box}
+ #tf-desktop-today-hub .tf-today-stock #sp-stock-of-day .sp-day-stats{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+ #tf-desktop-today-hub .tf-today-stock #sp-stock-of-day .sp-day-stat{padding:5px 4px}
+ #tf-desktop-today-hub .tf-today-stock #sp-stock-of-day .sp-day-stat-label{font-size:7px;letter-spacing:.025em;white-space:normal}
+ #tf-desktop-today-hub .tf-today-stock #sp-stock-of-day .sp-day-stat-value{font-size:12px}
+ #tf-desktop-today-hub .tf-today-advanced{width:100%;margin:13px 0 0!important;box-sizing:border-box}
+ #tf-desktop-today-hub .tf-today-report{margin-top:13px;padding:12px 14px;border:1px solid #d5e0eb;border-radius:10px;background:#f8fbfe}
+ #tf-desktop-today-hub .tf-today-report .tf-company-quick-form{width:min(100%,390px);max-width:100%;background:#fff}
+ #tf-desktop-today-hub .tf-today-report .tf-company-quick-form label{font-size:12px}
+ #live-trading-desk .tf-free-tools-cta{display:none!important}
+ #live-trading-desk .tf-mobile-start{display:none!important}
+}
+@media(max-width:760px){#tf-desktop-today-hub{display:none!important}}
+@media(min-width:761px) and (max-width:980px){
+ #tf-desktop-today-hub .tf-today-grid{grid-template-columns:minmax(0,1.45fr) minmax(285px,1fr);gap:10px}
+ #tf-desktop-today-hub .tf-today-actions{padding:13px 12px}
+ #tf-desktop-today-hub .tf-today-options{gap:7px}
+ #tf-desktop-today-hub .tf-today-option{padding:8px 7px}
+ #tf-desktop-today-hub .tf-today-option-title{font-size:11px}
+ #tf-desktop-today-hub .tf-today-option-desc{font-size:9px}
+}
+</style>
+<script id="tf-desktop-today-layout-script">
+(function(){
+ function init(){
+  var desk=document.getElementById('live-trading-desk');
+  if(!desk||document.getElementById('tf-desktop-today-hub'))return;
+  var header=desk.querySelector('.trading-desk-header');
+  var stock=document.getElementById('sp-stock-of-day');
+  var ribbon=document.querySelector('.sp-advanced-ribbon');
+  var form=desk.querySelector('#tf-company-quick-form');
+  var mobileStart=desk.querySelector('.tf-mobile-start');
+  if(!header||!stock||!ribbon||!form)return;
+  var hub=document.createElement('section');
+  hub.id='tf-desktop-today-hub';
+  hub.setAttribute('aria-label','Homepage shortcuts and featured stock');
+  hub.innerHTML='<div class="tf-today-grid"><div class="tf-today-actions"><h2 class="tf-today-heading">What would you like to do today?</h2><div class="tf-today-options">'+
+   '<div class="tf-today-option"><span class="tf-today-option-title">Explore Markets</span><p class="tf-today-option-desc">Discover stocks, market activity and digital assets.</p><a class="tf-today-expand" href="#main-picks">Explore sections ↓</a><div class="tf-today-menu"><a href="#main-picks">Stock Market &amp; Stock Picks</a><a href="/stocks/">Company Profiles</a><a href="#penny-picks">Penny Stocks</a><a href="#crypto-picks">Cryptocurrency</a></div></div>'+
+   '<div class="tf-today-option"><span class="tf-today-option-title">Research Companies</span><p class="tf-today-option-desc">Explore company information, reports and analysis.</p><a class="tf-today-expand" href="/advanced-market-intelligence.html">Explore sections ↓</a><div class="tf-today-menu"><a href="/research.html">Company Research</a><a href="/experts-exchange.html">Experts Exchange</a><a href="/advanced-market-intelligence.html">Advanced Market Intelligence</a><a href="/stocks/">Company Profiles</a></div></div>'+
+   '<div class="tf-today-option"><span class="tf-today-option-title">Use Our Market Terminal</span><p class="tf-today-option-desc">Open market tools, charts and trading analysis.</p><a class="tf-today-expand" href="#market-terminal">Explore tools ↓</a><div class="tf-today-menu"><a href="#market-terminal">Market Terminal</a><a href="#market-terminal">Market Charts &amp; Data</a><a href="/options-explained.html">Options Tools</a><a href="/ai-assisted-trading.html">AI Trading Tools</a></div></div>'+
+   '</div></div><aside class="tf-today-stock" aria-label="Stock of the Day"></aside></div><div class="tf-today-advanced"></div><div class="tf-today-report"></div>';
+  header.insertAdjacentElement('afterend',hub);
+  var stockMarker=document.createComment('TF desktop layout original Stock of the Day position');
+  var ribbonMarker=document.createComment('TF desktop layout original Advanced Research position');
+  var formMarker=document.createComment('TF desktop layout original company report position');
+  stock.parentNode.insertBefore(stockMarker,stock);
+  ribbon.parentNode.insertBefore(ribbonMarker,ribbon);
+  form.parentNode.insertBefore(formMarker,form);
+  hub.querySelector('.tf-today-stock').appendChild(stock);
+  hub.querySelector('.tf-today-advanced').appendChild(ribbon);
+  hub.querySelector('.tf-today-report').appendChild(form);
+  var media=window.matchMedia('(min-width: 761px)');
+  function place(){
+   if(media.matches){
+    if(stock.parentNode!==hub.querySelector('.tf-today-stock'))hub.querySelector('.tf-today-stock').appendChild(stock);
+    if(ribbon.parentNode!==hub.querySelector('.tf-today-advanced'))hub.querySelector('.tf-today-advanced').appendChild(ribbon);
+    if(form.parentNode!==hub.querySelector('.tf-today-report'))hub.querySelector('.tf-today-report').appendChild(form);
+   }else{
+    if(ribbonMarker.parentNode)ribbonMarker.parentNode.insertBefore(ribbon,ribbonMarker.nextSibling);
+    if(formMarker.parentNode)formMarker.parentNode.insertBefore(form,formMarker.nextSibling);
+    /* The site's existing responsive placement script controls Stock of the Day on mobile. */
+   }
+  }
+  place();
+  if(media.addEventListener)media.addEventListener('change',place);else if(media.addListener)media.addListener(place);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
