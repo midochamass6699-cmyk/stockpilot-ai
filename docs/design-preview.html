@@ -46,13 +46,18 @@ h1{font-size:clamp(27px,3vw,36px);letter-spacing:-.04em;margin:8px 0 3px;color:#
 .metric span{display:block;color:#91a8bf;font-size:8px;font-weight:800;letter-spacing:.08em}
 .metric strong{display:block;margin-top:4px;color:#e8f2fc;font-size:13px}
 .stock-foot{font-size:9px;color:#8da5bd;border-top:1px solid #30465e;padding-top:9px}
-.advanced{margin-top:15px;border:1px solid #31516d;border-radius:10px;background:linear-gradient(100deg,#152a40,#1b3852);padding:13px 17px;display:flex;align-items:center;gap:18px;overflow:hidden}
+.advanced{margin-top:0;border:1px solid #31516d;border-radius:10px;background:linear-gradient(100deg,#152a40,#1b3852);padding:13px 17px;display:flex;align-items:center;gap:18px;overflow:hidden}
 .advanced-label{flex:0 0 auto;color:#a8d4f6;font-size:10px;font-weight:950;letter-spacing:.14em}
 .advanced-copy{font-size:11px;color:#d7e6f4;line-height:1.5}
 .advanced-copy a{color:#9bd0f7;font-weight:850;text-decoration:none}
-.report-later{margin:36px 0 60px;padding:17px 19px;border:1px dashed #38516b;border-radius:10px;color:#b5c7d9;background:#101d2c;font-size:12px}
+.report-later{margin:16px 0 60px;padding:17px 19px;border:1px dashed #38516b;border-radius:10px;color:#b5c7d9;background:#101d2c;font-size:12px}
 .report-later strong{color:#fff}
-@media(max-width:800px){.topbar{align-items:flex-start;flex-direction:column}.topnav{gap:15px;flex-wrap:wrap}.action-grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr;gap:7px}.choice{padding:10px 12px}.choice-desc{min-height:0;margin:4px 0 6px}.submenu{position:static;margin-top:8px}.choice:hover .submenu,.choice:focus-within .submenu{display:block}.stock-panel{min-height:0}.advanced{align-items:flex-start;flex-direction:column;gap:6px}}
+.below-fold-preview{margin:28px 0 0;padding:18px;border:1px solid var(--line);border-radius:12px;background:#111f2f}
+.mock-section-heading{font-size:10px;font-weight:950;letter-spacing:.13em;color:#a9c7e2;margin:0 0 9px}
+.mock-terminal{min-height:82px;display:flex;align-items:center;padding:16px;border:1px solid #314a63;border-radius:8px;background:linear-gradient(120deg,#101b29,#1a2e43);color:#b7c9dc;font-size:12px;margin-bottom:20px}
+.mock-stocks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:2px}
+.mock-stock{padding:17px 12px;border:1px solid #314a63;border-radius:8px;background:#17283b;color:#e6f0fa;font-size:11px;font-weight:800;text-align:center}
+@media(max-width:800px){.topbar{align-items:flex-start;flex-direction:column}.topnav{gap:15px;flex-wrap:wrap}.action-grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr;gap:7px}.choice{padding:10px 12px}.choice-desc{min-height:0;margin:4px 0 6px}.submenu{position:static;margin-top:8px}.choice:hover .submenu,.choice:focus-within .submenu{display:block}.stock-panel{min-height:0}.mock-stocks{grid-template-columns:1fr}.advanced{align-items:flex-start;flex-direction:column;gap:6px}}
 @media(min-width:801px){.choice{min-height:132px}}
 </style>
 </head>
@@ -67,6 +72,11 @@ h1{font-size:clamp(27px,3vw,36px);letter-spacing:-.04em;margin:8px 0 3px;color:#
 <div class="kicker">STOCKPILOT AI · MARKET MONITOR</div>
 <h1>Welcome to Technofront</h1>
 <p class="tagline">Because the future is clear.</p>
+</section>
+
+<section class="advanced" aria-label="Advanced Research banner">
+<div class="advanced-label">ADVANCED RESEARCH</div>
+<div class="advanced-copy">Go beyond basic market snapshots · <a href="/advanced-market-intelligence.html">Advanced Market Intelligence Guide</a> · <a href="/experts-exchange.html">Experts Exchange</a> · VPIN · Gamma Exposure · Vanna &amp; Charm</div>
 </section>
 
 <section class="action-grid" aria-label="Homepage action choices and Stock of the Day">
@@ -126,12 +136,18 @@ h1{font-size:clamp(27px,3vw,36px);letter-spacing:-.04em;margin:8px 0 3px;color:#
 </aside>
 </section>
 
-<section class="advanced" aria-label="Advanced Research banner">
-<div class="advanced-label">ADVANCED RESEARCH</div>
-<div class="advanced-copy">Go beyond basic market snapshots · <a href="/advanced-market-intelligence.html">Advanced Market Intelligence Guide</a> · <a href="/experts-exchange.html">Experts Exchange</a> · VPIN · Gamma Exposure · Vanna &amp; Charm</div>
+<section class="below-fold-preview" aria-label="Lower homepage content preview">
+<div class="mock-section-heading">MARKET TERMINAL</div>
+<div class="mock-terminal">Market Terminal preview · charts, market data and analysis tools</div>
+<div class="mock-section-heading">THREE STOCKS</div>
+<div class="mock-stocks">
+<div class="mock-stock">Featured Stock 1</div>
+<div class="mock-stock">Featured Stock 2</div>
+<div class="mock-stock">Featured Stock 3</div>
+</div>
 </section>
 
-<section class="report-later"><strong>Further down the homepage:</strong> Create your personalized company report — moved lower on the page, closer to the company research and report tools. The “Explore Our Free Tools for Traders” welcome link is not included in this preview.</section>
+<section class="report-later"><strong>Create your personalized company report</strong><br>Positioned farther down the homepage, after the Market Terminal and the three-stock section.</section>
 </main>
 </body>
 </html>
