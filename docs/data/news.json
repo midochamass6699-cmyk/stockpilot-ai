@@ -1,8 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-24T10:46:52.457187+00:00",
+  "fetched_at": "2026-11-24T11:49:20.424346+00:00",
   "updated_sections": [
+    "penny",
     "crypto"
   ],
   "sections": {
@@ -124,34 +125,6 @@
     ],
     "crypto": [
       {
-        "title": "Black Friday meets AI : Big changes for America holiday shopping season | News",
-        "url": "http://www.thedailytimes.com/news/black-friday-meets-ai-big-changes-for-america-s-holiday-shopping-season/article_e5ec970f-2422-50ff-84c9-5edec047c6d2.html",
-        "source": "thedailytimes.com",
-        "published": "20261124T074500Z",
-        "language": "English"
-      },
-      {
-        "title": "The EU increasingly impossible budget arithmetic",
-        "url": "https://www.euronews.com/2026/11/24/the-eus-increasingly-impossible-budget-arithmetic",
-        "source": "euronews.com",
-        "published": "20261124T074500Z",
-        "language": "English"
-      },
-      {
-        "title": "CrowdStrike to acquire Zscaler in a $56b deal that would create a cybersecurity giant",
-        "url": "https://www.asiaone.com/money/crowdstrike-acquire-zscaler-56b-deal-would-create-cybersecurity-giant",
-        "source": "asiaone.com",
-        "published": "20261124T071500Z",
-        "language": "English"
-      },
-      {
-        "title": "Binance Engages Mandiant , SlowMist and Verichains for Independent Third - Party Security Review",
-        "url": "http://www.bangladeshsun.com/news/279451490/binance-engages-mandiant-slowmist-and-verichains-for-independent-third-party-security-review",
-        "source": "bangladeshsun.com",
-        "published": "20261124T071500Z",
-        "language": "English"
-      },
-      {
         "title": "Delhi Police bust cryptocurrency fraud syndicate , 4 arrested for cheating trader of Rs 5 lakh",
         "url": "https://news.webindia123.com/news/Articles/India/20261124/4523767.html",
         "source": "news.webindia123.com",
@@ -180,13 +153,6 @@
         "language": "English"
       },
       {
-        "title": "HYLQ Strategy Announces Proposed Name Change and Appointment of Director",
-        "url": "https://www.cantechletter.com/newswires/hylq-strategy-announces-proposed-name-change-and-appointment-of-director/",
-        "source": "cantechletter.com",
-        "published": "20261124T063000Z",
-        "language": "English"
-      },
-      {
         "title": "Nvidia reinstates Jensen Huang as CEO : Trump , Musk , Altman react while the internet has jokes",
         "url": "https://mashable.com/tech/nvidia-ceo-huang-reinstated-back-reactions-trump-musk-altman",
         "source": "mashable.com",
@@ -205,6 +171,41 @@
         "url": "https://www.eurasiareview.com/24112026-the-world-is-going-passwordless-who-gets-the-account-back-analysis/",
         "source": "eurasiareview.com",
         "published": "20261124T044500Z",
+        "language": "English"
+      },
+      {
+        "title": "They attended Trump controversial meme coin dinner . It didnt go well",
+        "url": "https://www.wkyufm.org/news/2026-11-23/they-attended-trumps-controversial-meme-coin-dinner-it-didnt-go-well",
+        "source": "wkyufm.org",
+        "published": "20261124T033000Z",
+        "language": "English"
+      },
+      {
+        "title": "From inside Georgia prisons , 6 inmates ran scam targeting victims in southern Illinois , feds allege",
+        "url": "https://www.kwqc.com:443/2026/11/24/inside-georgia-prisons-6-inmates-ran-scam-targeting-victims-southern-illinois-feds-allege/",
+        "source": "kwqc.com",
+        "published": "20261124T033000Z",
+        "language": "English"
+      },
+      {
+        "title": "US Stocks Surge as Nvidia Reinstates Huang",
+        "url": "https://www.markets.com/news/us-stocks-surge-nvidia-jensen-huang-reinstated",
+        "source": "markets.com",
+        "published": "20261124T033000Z",
+        "language": "English"
+      },
+      {
+        "title": "The Altruists : Where Is Caroline Ellison Now After Sam Bankman - Fried Scandal",
+        "url": "https://www.oxygen.com/crime-news/the-altruists-where-is-caroline-ellison-now-after-sam-bankman-fried-scandal",
+        "source": "oxygen.com",
+        "published": "20261124T033000Z",
+        "language": "English"
+      },
+      {
+        "title": "Seeing these signs ? A relative may be caught in a scam",
+        "url": "https://www.thestar.com.my/tech/tech-news/2026/11/24/seeing-these-signs-a-relative-may-be-caught-in-a-scam",
+        "source": "thestar.com.my",
+        "published": "20261124T023000Z",
         "language": "English"
       }
     ]
