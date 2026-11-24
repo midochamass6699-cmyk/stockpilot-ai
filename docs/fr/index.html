@@ -8591,7 +8591,7 @@ var links=Array.from(nav.querySelectorAll(':scope>a:not(.nav-cta)'));
 if(!links.length)return;
 var wrap=document.createElement('div');wrap.className='tf-desktop-menus';
 var groups=[
-{name:config.market,description:config.desc[0],test:function(a){var s=(a.getAttribute('href')||'')+' '+a.textContent.toLowerCase();return /main-picks|penny-picks|crypto-picks|stocks\/|actions\/|market-coverage|broker-directory|#top|^\/|\b(home|startseite|accueil|inicio|stocks|actions|penny|crypto|cripto|aktien|marchés)\b/i.test(s);}},
+{name:config.market,description:config.desc[0],test:function(a){var s=(a.getAttribute('href')||'')+' '+a.textContent.toLowerCase();return /main-picks|penny-picks|crypto-picks|stocks\/|actions\/|market-coverage|broker-directory|#top|\b(home|startseite|accueil|inicio|stocks|actions|penny|crypto|cripto|aktien|marchés)\b/i.test(s);}},
 {name:config.research,description:config.desc[1],test:function(a){var s=(a.getAttribute('href')||'')+' '+a.textContent.toLowerCase();return /research|recherche|investigación|experts|expert|advanced|intelligence|report|rapport/i.test(s);}},
 {name:config.learn,description:config.desc[2],test:function(a){var s=(a.getAttribute('href')||'')+' '+a.textContent.toLowerCase();return /education|éducation|bildung|opti|ai-assisted|trading-assiste|ki-analyse|margin|marge/i.test(s);}}
 ];
