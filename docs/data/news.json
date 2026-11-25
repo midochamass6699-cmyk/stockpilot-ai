@@ -1,11 +1,8 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-25T04:40:25.960401+00:00",
-  "updated_sections": [
-    "penny",
-    "crypto"
-  ],
+  "fetched_at": "2026-11-25T05:51:27.140132+00:00",
+  "updated_sections": [],
   "sections": {
     "markets": [
       {
