@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-25T03:27:02.890178+00:00",
+  "fetched_at": "2026-11-25T04:40:25.960401+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -95,6 +95,13 @@
     ],
     "penny": [
       {
+        "title": "Asian stocks retreat as AI rebound stumbles",
+        "url": "https://www.freemalaysiatoday.com/category/business/2026/11/25/asian-stocks-retreat-as-ai-rebound-stumbles",
+        "source": "freemalaysiatoday.com",
+        "published": "20261125T031500Z",
+        "language": "English"
+      },
+      {
         "title": "Fidelity Investments Canada ULC Announces Estimated 2026 Annual Reinvested Capital Gains Distributions for Fidelity ETFs and ETF Series of Fidelity Mutual Funds",
         "url": "https://www.stratfordbeaconherald.com/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
         "source": "stratfordbeaconherald.com",
@@ -125,87 +132,87 @@
     ],
     "crypto": [
       {
-        "title": "Fidelity Investments Canada ULC Announces Estimated 2026 Annual Reinvested Capital Gains Distributions for Fidelity ETFs and ETF Series of Fidelity Mutual Funds",
-        "url": "https://www.stratfordbeaconherald.com/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
-        "source": "stratfordbeaconherald.com",
-        "published": "20261125T024500Z",
+        "title": "Bitmine Immersion Technologies ( NASDAQ : BMNR ) Faces Investor Scrutiny As Share Count Surges 164 % Amid Ethereum Treasury Pivot",
+        "url": "https://www.foreignpolicyjournal.com/2026/11/24/bitmine-immersion-technologies-nasdaq-bmnr-faces-investor-scrutiny-as-share-count-surges-164-amid-ethereum-treasury-pivot/",
+        "source": "foreignpolicyjournal.com",
+        "published": "20261125T041500Z",
         "language": "English"
       },
       {
-        "title": "All the things you cant miss before finishing GTA 6 Chapter 4",
-        "url": "https://thetab.com/2026/11/24/an-easy-25k-and-all-the-other-things-you-cant-miss-before-finishing-gta-6-chapter-4",
-        "source": "thetab.com",
-        "published": "20261125T024500Z",
-        "language": "English"
-      },
-      {
-        "title": "Ethereum treasury firm sells $43 million in Ether to repay debt",
-        "url": "https://www.aol.com/articles/ethereum-treasury-firm-sells-43-230000000.html",
+        "title": "CleanSpark ( CLSK ) Q4 2026 Earnings Call Transcript",
+        "url": "https://www.aol.com/articles/cleanspark-clsk-q4-2026-earnings-022754000.html",
         "source": "aol.com",
-        "published": "20261125T023000Z",
+        "published": "20261125T034500Z",
         "language": "English"
       },
       {
-        "title": "Reno police share holiday shopping safety tips , plan extra Black Friday patrols",
-        "url": "https://www.kolotv.com/2026/11/24/reno-police-share-holiday-shopping-safety-tips-plan-extra-black-friday-patrols/",
-        "source": "kolotv.com",
-        "published": "20261125T023000Z",
+        "title": "Huawei convicted of stealing trade secrets : What the case , and what does it mean for US - China ties ? Explained",
+        "url": "https://www.livemint.com/news/us-news/huawei-convicted-of-stealing-us-trade-secrets-what-s-the-case-and-what-does-it-mean-for-us-china-ties-explained-11795572905540.html",
+        "source": "livemint.com",
+        "published": "20261125T034500Z",
         "language": "English"
       },
       {
-        "title": "PYMNTS | FIs Can Count Stablecoins as Financial Resources , Not Cash",
-        "url": "https://www.pymnts.com/cryptocurrency/2026/cftc-says-financial-institutions-can-count-stablecoins-financial-resources-not-cash/",
-        "source": "pymnts.com",
-        "published": "20261125T023000Z",
+        "title": "A . I . is helping criminals steal hearts and money - Indo - Canadian Voice",
+        "url": "https://voiceonline.com/a-i-is-helping-criminals-steal-hearts-and-money/",
+        "source": "voiceonline.com",
+        "published": "20261125T034500Z",
         "language": "English"
       },
       {
-        "title": "Greenberg Traurig Shortlisted for 3 British Legal Awards",
-        "url": "https://www.prnewswire.com/news-releases/greenberg-traurig-shortlisted-for-3-british-legal-awards-302949952.html",
-        "source": "prnewswire.com",
-        "published": "20261125T023000Z",
+        "title": "How can we still be making these 10 cybersecurity mistakes ?",
+        "url": "https://www.livemint.com/global/how-can-we-still-be-making-these-10-cybersecurity-mistakes-11795570784982.html",
+        "source": "livemint.com",
+        "published": "20261125T034500Z",
         "language": "English"
       },
       {
-        "title": "Dollar takes breather ahead of US data on Fed path ; Aussie jumps on CPI",
-        "url": "https://www.aol.com/articles/dollar-takes-breather-ahead-us-011916000.html",
-        "source": "aol.com",
-        "published": "20261125T023000Z",
+        "title": "Anthropic Stock Falls 6 . 5 % Below $83 IPO Price",
+        "url": "https://www.markets.com/news/anthropic-stock-falls-below-83-ipo-price",
+        "source": "markets.com",
+        "published": "20261125T033000Z",
         "language": "English"
       },
       {
-        "title": "Crypto Firms Used SEC Filings In $130 Million Scheme , Agency Alleges",
-        "url": "https://dailycaller.com/2026/11/24/crypto-firms-used-sec-filings-in-130-million-scheme-sec-says/",
-        "source": "dailycaller.com",
-        "published": "20261125T023000Z",
+        "title": "AG Bonta Warns Consumers of Holiday Shopping Scams",
+        "url": "https://mynewsla.com/government/2026/11/24/consumers-warned-of-holiday-shopping-scams/",
+        "source": "mynewsla.com",
+        "published": "20261125T033000Z",
         "language": "English"
       },
       {
-        "title": "Stocks retreat as AI rebound stumbles , tariff threats loom",
-        "url": "https://www.aol.com/articles/stocks-retreat-ai-rebound-stumbles-015033000.html",
-        "source": "aol.com",
-        "published": "20261125T023000Z",
+        "title": "Gold Price Today Near $3 , 555 Ahead of US PCE",
+        "url": "https://www.markets.com/news/gold-price-today-november-25-2026",
+        "source": "markets.com",
+        "published": "20261125T033000Z",
         "language": "English"
       },
       {
-        "title": "Trump Bought $265 , 000 in Nvidia Stock in September , Disclosure Shows – NaturalNews . com",
-        "url": "https://www.naturalnews.com/2026-11-24-trump-bought-nvidia-stocks-in-september-disclosure.html",
-        "source": "naturalnews.com",
-        "published": "20261125T023000Z",
+        "title": "EUR / USD Rebounds From 19 - Month Low Ahead of PCE",
+        "url": "https://www.markets.com/news/eur-usd-rebounds-19-month-low-us-core-pce",
+        "source": "markets.com",
+        "published": "20261125T033000Z",
         "language": "English"
       },
       {
-        "title": "BetItDrives adds a dedicated media layer to its award - winning podcast – Thailand Business News",
-        "url": "https://www.thailand-business-news.com/thailand-prnews/betitdrives-adds-a-dedicated-media-layer-to-its-award-winning-podcast",
-        "source": "thailand-business-news.com",
-        "published": "20261125T021500Z",
+        "title": "Dowagiac data center plans upgrades , leadership change",
+        "url": "https://www.wndu.com/2026/11/25/dowagiac-data-center-plans-upgrades-leadership-change/",
+        "source": "wndu.com",
+        "published": "20261125T033000Z",
         "language": "English"
       },
       {
-        "title": "Six Albums Earn Best Rap Album Nominations for 2027 GRAMMYs , Including Rapsody , Wale , and Cardi B",
-        "url": "https://1077thebounce.com/2026/11/24/six-albums-earn-best-rap-album-nominations-for-2027-grammys-including-rapsody-wale-and-cardi-b/",
-        "source": "1077thebounce.com",
-        "published": "20261125T021500Z",
+        "title": "Inmates allegedly ran a $1 million scam after phones were delivered into their prisons by drone",
+        "url": "https://www.kake.com/news/national/inmates-allegedly-ran-a-1-million-scam-after-phones-were-delivered-into-their-prisons-by/article_0a5a9818-d859-51b2-be9c-ef8ba3c2f7de.html",
+        "source": "kake.com",
+        "published": "20261125T033000Z",
+        "language": "English"
+      },
+      {
+        "title": "Promised profits , man loses ₹24L in crypto fraud",
+        "url": "https://timesofindia.indiatimes.com/city/noida/promised-profits-man-loses-24l-in-crypto-fraud/articleshow/136141336.cms",
+        "source": "timesofindia.indiatimes.com",
+        "published": "20261125T033000Z",
         "language": "English"
       }
     ]
