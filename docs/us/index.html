@@ -9033,6 +9033,37 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 })();
 </script>
 
+
+<style id="tf-mobile-stockday-order-v3">
+@media(max-width:760px){
+  #tf-mobile-priority-stack .trading-desk-tagline{display:none!important}
+  #tf-mobile-priority-stack .tf-mobile-start{order:3!important;margin:0!important;width:100%}
+  #tf-mobile-priority-stack #sp-stock-of-day{order:4!important;width:100%!important;max-width:100%!important;margin:0!important}
+  #tf-mobile-priority-stack .subscribe-bell-cta{order:2!important;width:100%;min-height:46px;justify-content:center;margin:0!important}
+}
+</style>
+<script id="tf-mobile-stockday-order-v3-script">
+(function(){
+  function arrange(){
+    if(!window.matchMedia('(max-width:760px)').matches)return;
+    var stack=document.getElementById('tf-mobile-priority-stack');
+    if(!stack)return;
+    var welcome=stack.querySelector('.tf-mobile-priority-welcome');
+    var subscribe=stack.querySelector('.subscribe-bell-cta');
+    var start=document.querySelector('.tf-mobile-start');
+    var stock=document.getElementById('sp-stock-of-day');
+    if(welcome)stack.appendChild(welcome);
+    if(subscribe)stack.appendChild(subscribe);
+    if(start)stack.appendChild(start);
+    if(stock)stack.appendChild(stock);
+  }
+  function run(){arrange();setTimeout(arrange,250);setTimeout(arrange,900);}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});
+  else run();
+  window.addEventListener('resize',arrange,{passive:true});
+})();
+</script>
+
 </body>
 </html>
 <style id="sp-terminal-promo-style">
