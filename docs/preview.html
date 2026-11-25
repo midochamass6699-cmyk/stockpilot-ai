@@ -10140,6 +10140,25 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 
 
 <style id="tf-mobile-preview-layout">
+/* Desktop browsers display this page as a narrow, phone-width preview. */
+html,body{width:100%!important;min-width:0!important;margin:0!important;padding:0!important;background:#eef2f7!important;}
+body{max-width:420px!important;min-height:100vh!important;margin:0 auto!important;overflow-x:hidden!important;box-shadow:0 0 28px rgba(15,23,42,.12)!important;}
+body>*{max-width:100%!important;box-sizing:border-box!important;}
+header.topbar{width:100%!important;max-width:100%!important;}
+#tf-mobile-preview-layout{display:flex!important;flex-direction:column!important;gap:10px!important;width:calc(100% - 20px)!important;max-width:390px!important;margin:12px auto 16px!important;}
+#tf-mobile-preview-layout .tf-preview-welcome-row{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:8px!important;padding:12px!important;border:1px solid #d8e1ee;border-top:4px solid #2563eb;border-radius:12px!important;background:linear-gradient(135deg,#fff,#f5f8ff)!important;color:#101827!important;}
+#tf-mobile-preview-layout .tf-preview-title{min-width:0!important;}
+#tf-mobile-preview-layout h1{display:block!important;margin:0!important;color:#07111f!important;font-size:clamp(19px,5.2vw,27px)!important;line-height:1.08!important;}
+#tf-mobile-preview-layout .tf-preview-actions{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;gap:6px!important;width:48%!important;min-width:0!important;}
+#tf-mobile-preview-layout .tf-growth-menu{display:block!important;flex:1 1 0!important;min-width:0!important;margin:0!important;}
+#tf-mobile-preview-layout .tf-growth-menu>summary{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:38px!important;box-sizing:border-box!important;padding:6px 4px!important;font-size:10px!important;line-height:1.1!important;text-align:center!important;white-space:normal!important;}
+#tf-mobile-preview-layout .subscribe-bell-cta{display:flex!important;flex:1 1 0!important;align-items:center!important;justify-content:center!important;width:auto!important;min-width:0!important;min-height:38px!important;box-sizing:border-box!important;margin:0!important;padding:6px 4px!important;font-size:10px!important;line-height:1.1!important;text-align:center!important;}
+#tf-mobile-preview-layout .tf-growth-dropdown{position:absolute!important;z-index:9999!important;right:8px!important;left:auto!important;min-width:190px!important;}
+#tf-mobile-preview-layout .tf-mobile-start{display:block!important;width:100%!important;margin:0!important;}
+#tf-mobile-preview-layout #sp-stock-of-day{display:flex!important;width:100%!important;max-width:100%!important;margin:0!important;}
+#tf-preview-report-lower{display:block!important;width:calc(100% - 24px)!important;max-width:390px!important;margin:40px auto 30px!important;padding:14px!important;border:1px solid #d8e1ee!important;border-radius:12px!important;background:#fff!important;}
+#tf-preview-report-lower .tf-company-quick-form{width:100%!important;max-width:100%!important;}
+
 #tf-mobile-preview-layout{display:none}
 @media(max-width:760px){
  #tf-mobile-preview-layout{display:flex!important;flex-direction:column!important;gap:10px!important;width:calc(100% - 20px);max-width:1200px;margin:12px auto 16px}
@@ -10176,7 +10195,7 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    var lower=document.getElementById('tf-preview-report-lower');if(lower)lower.remove();
   }
   function apply(){
-   if(!mq.matches){restore();return;}
+   /* Always render the phone layout on this dedicated preview page. */
    var topbar=document.querySelector('header.topbar');if(!topbar)return;
    if(!wrap){wrap=document.createElement('div');wrap.id='tf-mobile-preview-layout';topbar.insertAdjacentElement('afterend',wrap);}
    var start=document.querySelector('.tf-mobile-start');
@@ -10201,7 +10220,7 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
     move(report,lower);
    }
   }
-  apply();if(mq.addEventListener)mq.addEventListener('change',apply);else mq.addListener(apply);
+  apply();
   window.addEventListener('resize',apply,{passive:true});
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
