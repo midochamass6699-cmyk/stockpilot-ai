@@ -1,8 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-25T02:14:18.848229+00:00",
+  "fetched_at": "2026-11-25T03:27:02.890178+00:00",
   "updated_sections": [
+    "penny",
     "crypto"
   ],
   "sections": {
@@ -94,6 +95,20 @@
     ],
     "penny": [
       {
+        "title": "Fidelity Investments Canada ULC Announces Estimated 2026 Annual Reinvested Capital Gains Distributions for Fidelity ETFs and ETF Series of Fidelity Mutual Funds",
+        "url": "https://www.stratfordbeaconherald.com/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
+        "source": "stratfordbeaconherald.com",
+        "published": "20261125T024500Z",
+        "language": "English"
+      },
+      {
+        "title": "Stocks retreat as AI rebound stumbles , tariff threats loom",
+        "url": "https://www.aol.com/articles/stocks-retreat-ai-rebound-stumbles-015033000.html",
+        "source": "aol.com",
+        "published": "20261125T023000Z",
+        "language": "English"
+      },
+      {
         "title": "Zip Shares Given Bullish Price Target : Reverse Split Reshapes Structure",
         "url": "https://thebull.com.au/news/zip-shares-given-bullish-price-target-reverse-split-reshapes-structure/",
         "source": "thebull.com.au",
@@ -106,112 +121,91 @@
         "source": "livemint.com",
         "published": "20261124T051500Z",
         "language": "English"
-      },
-      {
-        "title": "Best Odds Guaranteed Sites united kingdom 2026 : BOG Times , Limits , Rules",
-        "url": "https://www.caughtoffside.com/betting/betting-sites/best-odds-guaranteed/",
-        "source": "caughtoffside.com",
-        "published": "20261124T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "High Limit Betting Sites united kingdom 2026 : Stakes , Payouts , and Checks",
-        "url": "https://www.caughtoffside.com/betting/betting-sites/high-limit/",
-        "source": "caughtoffside.com",
-        "published": "20261124T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Daily Voice : Samit Vartak of SageOne identifies 5 sectors offering the best mix of growth and valuation",
-        "url": "https://www.moneycontrol.com/news/business/markets/daily-voice-samit-vartak-of-sageone-identifies-5-sectors-offering-the-best-mix-of-growth-and-valuation-14087516.html",
-        "source": "moneycontrol.com",
-        "published": "20261124T014500Z",
-        "language": "English"
       }
     ],
     "crypto": [
       {
-        "title": "Iconic Reporter Bob Woodward Claims Trump Is  Worse Than Nixon",
-        "url": "https://radaronline.com/p/bob-woodward-claims-trump-worse-than-nixon-white-house-responds/",
-        "source": "radaronline.com",
-        "published": "20261125T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Bitcoin Turns Lower from $62 , 500 – Eyes $58 , 000",
-        "url": "https://www.actionforex.com/contributors/technical-analysis/661968-bitcoin-turns-lower-from-62500-eyes-58000/",
-        "source": "actionforex.com",
-        "published": "20261125T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Aiken Regional to be sold to Piedmont for around $500M",
-        "url": "https://www.wrdw.com/2026/11/24/uhs-confirms-deal-sell-aiken-regional-medical-centers-piedmont/",
-        "source": "wrdw.com",
-        "published": "20261125T013000Z",
-        "language": "English"
-      },
-      {
         "title": "Fidelity Investments Canada ULC Announces Estimated 2026 Annual Reinvested Capital Gains Distributions for Fidelity ETFs and ETF Series of Fidelity Mutual Funds",
-        "url": "https://www.chathamdailynews.ca/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
-        "source": "chathamdailynews.ca",
-        "published": "20261125T013000Z",
+        "url": "https://www.stratfordbeaconherald.com/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
+        "source": "stratfordbeaconherald.com",
+        "published": "20261125T024500Z",
         "language": "English"
       },
       {
-        "title": "What Would It Take for XRP to Reach $100 ?",
-        "url": "https://247wallst.com/investing/cryptocurrency/2026/11/24/what-would-it-take-for-xrp-to-reach-100/",
-        "source": "247wallst.com",
-        "published": "20261125T004500Z",
+        "title": "All the things you cant miss before finishing GTA 6 Chapter 4",
+        "url": "https://thetab.com/2026/11/24/an-easy-25k-and-all-the-other-things-you-cant-miss-before-finishing-gta-6-chapter-4",
+        "source": "thetab.com",
+        "published": "20261125T024500Z",
         "language": "English"
       },
       {
-        "title": "After national outages , Waco police and fraud expert warn of scam risks",
-        "url": "https://www.kwtx.com/2026/11/25/after-national-outages-waco-police-fraud-expert-warn-scam-risks/",
-        "source": "kwtx.com",
-        "published": "20261125T004500Z",
+        "title": "Ethereum treasury firm sells $43 million in Ether to repay debt",
+        "url": "https://www.aol.com/articles/ethereum-treasury-firm-sells-43-230000000.html",
+        "source": "aol.com",
+        "published": "20261125T023000Z",
         "language": "English"
       },
       {
-        "title": "Not all crypto platforms safe , says SC",
-        "url": "https://www.thestar.com.my/news/nation/2026/11/25/not-all-crypto-platforms-safe-says-sc",
-        "source": "thestar.com.my",
-        "published": "20261125T004500Z",
+        "title": "Reno police share holiday shopping safety tips , plan extra Black Friday patrols",
+        "url": "https://www.kolotv.com/2026/11/24/reno-police-share-holiday-shopping-safety-tips-plan-extra-black-friday-patrols/",
+        "source": "kolotv.com",
+        "published": "20261125T023000Z",
         "language": "English"
       },
       {
-        "title": "Three Face Charges In $1 Million Jury Duty Scam Targeting North Texans",
-        "url": "https://www.wbap.com/2026/11/24/three-face-charges-in-1-million-jury-duty-scam-targeting-north-texans/",
-        "source": "wbap.com",
-        "published": "20261125T004500Z",
+        "title": "PYMNTS | FIs Can Count Stablecoins as Financial Resources , Not Cash",
+        "url": "https://www.pymnts.com/cryptocurrency/2026/cftc-says-financial-institutions-can-count-stablecoins-financial-resources-not-cash/",
+        "source": "pymnts.com",
+        "published": "20261125T023000Z",
         "language": "English"
       },
       {
-        "title": "DOJ Announces Largest Fraud Crackdown in US History",
-        "url": "https://ivn.us/doj-announces-largest-fraud-crackdown-in-us-history/",
-        "source": "ivn.us",
-        "published": "20261125T004500Z",
+        "title": "Greenberg Traurig Shortlisted for 3 British Legal Awards",
+        "url": "https://www.prnewswire.com/news-releases/greenberg-traurig-shortlisted-for-3-british-legal-awards-302949952.html",
+        "source": "prnewswire.com",
+        "published": "20261125T023000Z",
         "language": "English"
       },
       {
-        "title": "Pressure to invest , promise of profits likely crypto fraud , say experts",
-        "url": "https://www.thestar.com.my/news/nation/2026/11/25/pressure-to-invest-promise-of-profits-likely-crypto-fraud-say-experts",
-        "source": "thestar.com.my",
-        "published": "20261125T004500Z",
+        "title": "Dollar takes breather ahead of US data on Fed path ; Aussie jumps on CPI",
+        "url": "https://www.aol.com/articles/dollar-takes-breather-ahead-us-011916000.html",
+        "source": "aol.com",
+        "published": "20261125T023000Z",
         "language": "English"
       },
       {
-        "title": "Ventura County officials prevent $22K scam targeting woman – NBC Los Angeles",
-        "url": "https://www.nbclosangeles.com/news/local/ventura-county-scam-thousand-oaks/3974853/",
-        "source": "nbclosangeles.com",
-        "published": "20261125T003000Z",
+        "title": "Crypto Firms Used SEC Filings In $130 Million Scheme , Agency Alleges",
+        "url": "https://dailycaller.com/2026/11/24/crypto-firms-used-sec-filings-in-130-million-scheme-sec-says/",
+        "source": "dailycaller.com",
+        "published": "20261125T023000Z",
         "language": "English"
       },
       {
-        "title": "Drugs in Kiwi onion dip sachets among dark web haul",
-        "url": "https://www.rnz.co.nz/news/crime-and-justice/2771231/drugs-in-kiwi-onion-dip-sachets-among-dark-web-haul",
-        "source": "rnz.co.nz",
-        "published": "20261125T003000Z",
+        "title": "Stocks retreat as AI rebound stumbles , tariff threats loom",
+        "url": "https://www.aol.com/articles/stocks-retreat-ai-rebound-stumbles-015033000.html",
+        "source": "aol.com",
+        "published": "20261125T023000Z",
+        "language": "English"
+      },
+      {
+        "title": "Trump Bought $265 , 000 in Nvidia Stock in September , Disclosure Shows – NaturalNews . com",
+        "url": "https://www.naturalnews.com/2026-11-24-trump-bought-nvidia-stocks-in-september-disclosure.html",
+        "source": "naturalnews.com",
+        "published": "20261125T023000Z",
+        "language": "English"
+      },
+      {
+        "title": "BetItDrives adds a dedicated media layer to its award - winning podcast – Thailand Business News",
+        "url": "https://www.thailand-business-news.com/thailand-prnews/betitdrives-adds-a-dedicated-media-layer-to-its-award-winning-podcast",
+        "source": "thailand-business-news.com",
+        "published": "20261125T021500Z",
+        "language": "English"
+      },
+      {
+        "title": "Six Albums Earn Best Rap Album Nominations for 2027 GRAMMYs , Including Rapsody , Wale , and Cardi B",
+        "url": "https://1077thebounce.com/2026/11/24/six-albums-earn-best-rap-album-nominations-for-2027-grammys-including-rapsody-wale-and-cardi-b/",
+        "source": "1077thebounce.com",
+        "published": "20261125T021500Z",
         "language": "English"
       }
     ]
