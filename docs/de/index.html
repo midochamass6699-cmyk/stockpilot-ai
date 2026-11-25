@@ -9170,6 +9170,66 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 })();
 </script>
 
+
+<style id="tf-mobile-final-order-fix">
+@media(max-width:760px){
+ #tf-mobile-priority-stack{display:flex!important;flex-direction:column!important;gap:12px!important}
+ #tf-mobile-priority-stack .tf-mobile-priority-welcome{display:flex!important;flex-direction:column!important;gap:6px!important;visibility:visible!important}
+ #tf-mobile-priority-stack .tf-mobile-priority-welcome h1{display:block!important;visibility:visible!important;opacity:1!important;color:#07111f!important}
+ #tf-mobile-priority-stack .tf-mobile-priority-welcome .tf-welcome-tagline{display:block!important;visibility:visible!important;opacity:1!important;color:#2563eb!important}
+ #tf-mobile-priority-stack .tf-mobile-priority-welcome .subscribe-bell-cta{display:flex!important;width:100%!important;min-height:46px!important;justify-content:center!important;margin:4px 0 0!important}
+ #tf-mobile-priority-stack .tf-mobile-start{display:block!important;order:2!important;width:100%!important;margin:0!important}
+ #tf-mobile-priority-stack #sp-stock-of-day{display:flex!important;order:3!important;width:100%!important;max-width:100%!important;margin:0!important}
+ #tf-mobile-priority-stack .trading-desk-tagline{display:none!important}
+}
+</style>
+<script id="tf-mobile-final-order-fix-script">
+(function(){
+ var lang=(document.documentElement.lang||'en').toLowerCase();
+ var fallback={
+  fr:{title:'Bienvenue chez Technofront',tag:'Parce que l’avenir est clair.'},
+  es:{title:'Bienvenido a Technofront',tag:'Porque el futuro está claro.'},
+  de:{title:'Willkommen bei Technofront',tag:'Denn die Zukunft ist klar.'},
+  en:{title:'Welcome to Technofront',tag:'Because the future is clear.'}
+ };
+ var locale=lang.slice(0,2); if(!fallback[locale])locale='en';
+ function run(){
+  if(!window.matchMedia('(max-width:760px)').matches)return;
+  var stack=document.getElementById('tf-mobile-priority-stack');
+  if(!stack)return;
+  var welcome=stack.querySelector('.tf-mobile-priority-welcome');
+  if(!welcome){welcome=document.createElement('section');welcome.className='tf-mobile-priority-welcome';stack.insertBefore(welcome,stack.firstChild);}
+  var title=document.getElementById('trading-desk-title')||
+    document.getElementById('fr-welcome-title')||
+    document.getElementById('home-seo-title')||
+    welcome.querySelector('h1')||
+    document.querySelector('#live-trading-desk .trading-desk-header h1,.fr-welcome-banner h1,.seo-intro h1');
+  if(!title){title=document.createElement('h1');title.textContent=fallback[locale].title;}
+  var tagline=welcome.querySelector('.tf-welcome-tagline')||
+    document.querySelector('.tf-welcome-tagline');
+  if(!tagline){tagline=document.createElement('p');tagline.className='tf-welcome-tagline';tagline.textContent=fallback[locale].tag;}
+  var subscribe=welcome.querySelector('.subscribe-bell-cta')||
+    document.querySelector('.subscribe-bell-cta');
+  if(!subscribe){
+    var subscribeTarget=document.getElementById('stockpilot-subscribe-btn');
+    if(subscribeTarget){
+      subscribe=document.createElement('button');subscribe.type='button';subscribe.className='subscribe-bell-cta';
+      subscribe.textContent=locale==='fr'?'Recevoir les mises à jour':locale==='es'?'Recibir actualizaciones':locale==='de'?'Updates erhalten':'GET FREE UPDATES';
+      subscribe.addEventListener('click',function(){subscribeTarget.click();});
+    }
+  }
+  [title,tagline,subscribe].forEach(function(node){if(node)welcome.appendChild(node);});
+  var start=document.querySelector('.tf-mobile-start')||stack.querySelector('.tf-mobile-start');
+  var stock=document.getElementById('sp-stock-of-day');
+  if(start)stack.appendChild(start);
+  if(stock)stack.appendChild(stock);
+ }
+ function init(){run();setTimeout(run,150);setTimeout(run,700);}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+ window.addEventListener('resize',run,{passive:true});
+})();
+</script>
+
 </body>
 </html>
 
