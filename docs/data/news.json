@@ -1,8 +1,10 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-25T00:47:36.703462+00:00",
-  "updated_sections": [],
+  "fetched_at": "2026-11-25T02:14:18.848229+00:00",
+  "updated_sections": [
+    "crypto"
+  ],
   "sections": {
     "markets": [
       {
@@ -129,87 +131,87 @@
     ],
     "crypto": [
       {
-        "title": "Microsoft Declares  Code Red  After Major Global Service Outage",
-        "url": "https://khow.iheart.com/content/2026-11-24-microsoft-declares-code-red-after-major-global-service-outage/",
-        "source": "khow.iheart.com",
-        "published": "20261124T221500Z",
+        "title": "Iconic Reporter Bob Woodward Claims Trump Is  Worse Than Nixon",
+        "url": "https://radaronline.com/p/bob-woodward-claims-trump-worse-than-nixon-white-house-responds/",
+        "source": "radaronline.com",
+        "published": "20261125T014500Z",
         "language": "English"
       },
       {
-        "title": "EU 22nd Russia Sanctions Package Takes Aim at Banks , Oil and Sports - Novinite . com",
-        "url": "https://www.novinite.com/view_news.php?id=241758",
-        "source": "novinite.com",
-        "published": "20261124T221500Z",
+        "title": "Bitcoin Turns Lower from $62 , 500 – Eyes $58 , 000",
+        "url": "https://www.actionforex.com/contributors/technical-analysis/661968-bitcoin-turns-lower-from-62500-eyes-58000/",
+        "source": "actionforex.com",
+        "published": "20261125T014500Z",
         "language": "English"
       },
       {
-        "title": "Microsoft Declares  Code Red  After Major Global Service Outage | Talk Radio 105 . 9",
-        "url": "https://knrs.iheart.com/content/2026-11-24-microsoft-declares-code-red-after-major-global-service-outage/",
-        "source": "knrs.iheart.com",
-        "published": "20261124T221500Z",
+        "title": "Aiken Regional to be sold to Piedmont for around $500M",
+        "url": "https://www.wrdw.com/2026/11/24/uhs-confirms-deal-sell-aiken-regional-medical-centers-piedmont/",
+        "source": "wrdw.com",
+        "published": "20261125T013000Z",
         "language": "English"
       },
       {
-        "title": "Where Does Texa Data Center Boom Go From Here ?",
-        "url": "https://oilprice.com/Energy/Energy-General/Where-Does-Texas-Data-Center-Boom-Go-From-Here.html",
-        "source": "oilprice.com",
-        "published": "20261124T214500Z",
+        "title": "Fidelity Investments Canada ULC Announces Estimated 2026 Annual Reinvested Capital Gains Distributions for Fidelity ETFs and ETF Series of Fidelity Mutual Funds",
+        "url": "https://www.chathamdailynews.ca/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
+        "source": "chathamdailynews.ca",
+        "published": "20261125T013000Z",
         "language": "English"
       },
       {
-        "title": "Is Anthropic IPO Still Draining Money From Crypto a Week Later ?",
-        "url": "https://247wallst.com/investing/cryptocurrency/2026/11/24/is-anthropics-ipo-still-draining-money-from-crypto-a-week-later/",
+        "title": "What Would It Take for XRP to Reach $100 ?",
+        "url": "https://247wallst.com/investing/cryptocurrency/2026/11/24/what-would-it-take-for-xrp-to-reach-100/",
         "source": "247wallst.com",
-        "published": "20261124T214500Z",
+        "published": "20261125T004500Z",
         "language": "English"
       },
       {
-        "title": "Microsoft Declares  Code Red  After Major Global Service Outage | Newsradio WOOD 1300 and 106 . 9 FM",
-        "url": "https://woodradio.iheart.com/content/2026-11-24-microsoft-declares-code-red-after-major-global-service-outage/",
-        "source": "woodradio.iheart.com",
-        "published": "20261124T214500Z",
+        "title": "After national outages , Waco police and fraud expert warn of scam risks",
+        "url": "https://www.kwtx.com/2026/11/25/after-national-outages-waco-police-fraud-expert-warn-scam-risks/",
+        "source": "kwtx.com",
+        "published": "20261125T004500Z",
         "language": "English"
       },
       {
-        "title": "National outages , emergency alerts become fodder for doomsday conspiracy theories",
-        "url": "http://www.idahostatejournal.com/news/local/national-outages-emergency-alerts-become-fodder-for-doomsday-conspiracy-theories/article_fbf14eec-aa33-4fad-8d06-eb689a797de0.html",
-        "source": "idahostatejournal.com",
-        "published": "20261124T214500Z",
+        "title": "Not all crypto platforms safe , says SC",
+        "url": "https://www.thestar.com.my/news/nation/2026/11/25/not-all-crypto-platforms-safe-says-sc",
+        "source": "thestar.com.my",
+        "published": "20261125T004500Z",
         "language": "English"
       },
       {
-        "title": "Microsoft Declares  Code Red  After Major Global Service Outage | Newstalk 1400 , 104 . 5 , and 105 . 9 WJMX",
-        "url": "https://newstalk1400online.iheart.com/content/2026-11-24-microsoft-declares-code-red-after-major-global-service-outage/",
-        "source": "newstalk1400online.iheart.com",
-        "published": "20261124T214500Z",
+        "title": "Three Face Charges In $1 Million Jury Duty Scam Targeting North Texans",
+        "url": "https://www.wbap.com/2026/11/24/three-face-charges-in-1-million-jury-duty-scam-targeting-north-texans/",
+        "source": "wbap.com",
+        "published": "20261125T004500Z",
         "language": "English"
       },
       {
-        "title": "Lakers officially set games to wear new Specter Edition uniform",
-        "url": "https://lakersnation.com/which-games-lakers-wearing-specter-edition-jersey-new/",
-        "source": "lakersnation.com",
-        "published": "20261124T214500Z",
+        "title": "DOJ Announces Largest Fraud Crackdown in US History",
+        "url": "https://ivn.us/doj-announces-largest-fraud-crackdown-in-us-history/",
+        "source": "ivn.us",
+        "published": "20261125T004500Z",
         "language": "English"
       },
       {
-        "title": "Senate Races To Confirm Two New SEC Commissioners",
-        "url": "https://www.wealthmanagement.com/regulation-compliance/senate-fast-tracks-two-nominees-to-fill-sec-seats",
-        "source": "wealthmanagement.com",
-        "published": "20261124T214500Z",
+        "title": "Pressure to invest , promise of profits likely crypto fraud , say experts",
+        "url": "https://www.thestar.com.my/news/nation/2026/11/25/pressure-to-invest-promise-of-profits-likely-crypto-fraud-say-experts",
+        "source": "thestar.com.my",
+        "published": "20261125T004500Z",
         "language": "English"
       },
       {
-        "title": "Weekly ETFs : Seven of 11 sectors record outflows ; Communication services sector leads inflows",
-        "url": "https://seekingalpha.com/news/4676345-weekly-etfs-seven-of-11-sectors-record-outflows-communication-services-sector-leads-inflows",
-        "source": "seekingalpha.com",
-        "published": "20261124T213000Z",
+        "title": "Ventura County officials prevent $22K scam targeting woman – NBC Los Angeles",
+        "url": "https://www.nbclosangeles.com/news/local/ventura-county-scam-thousand-oaks/3974853/",
+        "source": "nbclosangeles.com",
+        "published": "20261125T003000Z",
         "language": "English"
       },
       {
-        "title": "Crypto King  was actually at gas station when he testified alleged kidnappers waterboarded him elsewhere",
-        "url": "https://www.cbc.ca/news/canada/toronto/crypto-king-court-gas-station-waterboarding-alleged-kidnapping-9.7434459",
-        "source": "cbc.ca",
-        "published": "20261124T213000Z",
+        "title": "Drugs in Kiwi onion dip sachets among dark web haul",
+        "url": "https://www.rnz.co.nz/news/crime-and-justice/2771231/drugs-in-kiwi-onion-dip-sachets-among-dark-web-haul",
+        "source": "rnz.co.nz",
+        "published": "20261125T003000Z",
         "language": "English"
       }
     ]
