@@ -10362,3 +10362,26 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
   .tf-promo-layout:has(.kitco-banner-stack){display:none!important;}
 }
 </style>
+
+
+<style id="tf-mobile-collapse-removed-promo-containers">
+/* Mobile: collapse every former Kitco/promo wrapper, not just the ad image. */
+@media(max-width:760px){
+  .market-partner-panel,
+  .tf-promo-layout,
+  .sp-layout-reservation,
+  #sp-compact-kitco,
+  .kitco-banner-stack{
+    display:none!important;
+    box-sizing:border-box!important;
+    width:0!important;
+    height:0!important;
+    min-height:0!important;
+    max-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    overflow:hidden!important;
+  }
+}
+</style>
