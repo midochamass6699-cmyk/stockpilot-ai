@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-25T15:29:29.273722+00:00",
+  "fetched_at": "2026-11-25T16:39:05.333047+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -95,6 +95,27 @@
     ],
     "penny": [
       {
+        "title": "What happens when a good active ETF strategy gets too big ?",
+        "url": "https://portfolio-adviser.com/what-happens-when-a-good-active-etf-strategy-gets-too-big/",
+        "source": "portfolio-adviser.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "Apollo Micro Systems joins MSCI India Small Cap Index on 30 November : index - fund buying expected at Monday close",
+        "url": "http://www.sanantoniopost.com/news/279453834/apollo-micro-systems-joins-msci-india-small-cap-index-on-30-november-index-fund-buying-expected-at-monday-close",
+        "source": "sanantoniopost.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "How understanding different mutual fund categories can help build a balanced portfolio",
+        "url": "http://www.sanantoniopost.com/news/279453760/how-understanding-different-mutual-fund-categories-can-help-build-a-balanced-portfolio",
+        "source": "sanantoniopost.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
         "title": "Sensex surges over 1 , 500 points , Nifty settles above 25 , 800 amid foreign inflows , falling oil prices",
         "url": "http://www.sanantoniopost.com/news/279453773/sensex-surges-over-1500-points-nifty-settles-above-25800-amid-foreign-inflows-falling-oil-prices",
         "source": "sanantoniopost.com",
@@ -102,10 +123,52 @@
         "language": "English"
       },
       {
+        "title": "Multibagger Alert ! Up 102 % in 1 year , more rally seen in this small - cap power stock - here why | Check target , upside",
+        "url": "https://www.livemint.com/market/stock-market-news/multibagger-alert-up-102-in-1-year-more-rally-seen-in-this-small-cap-power-stock-heres-why-check-target-upside-11795594809008.html",
+        "source": "livemint.com",
+        "published": "20261125T103000Z",
+        "language": "English"
+      },
+      {
+        "title": "Asian stocks tumble as AI rebound stumbles , US tariff threats loom",
+        "url": "https://www.business-standard.com/markets/news/asian-stocks-tumble-as-ai-rebound-stumbles-us-tariff-threats-loom-126112500066_1.html",
+        "source": "business-standard.com",
+        "published": "20261125T054500Z",
+        "language": "English"
+      },
+      {
         "title": "High MTF revenue exposure brokerages face earnings impact : Prakash Kacholia",
         "url": "https://www.business-standard.com/markets/news/high-mtf-revenue-exposure-brokerages-face-earnings-impact-prakash-kacholia-126112500149_1.html",
         "source": "business-standard.com",
         "published": "20261125T054500Z",
+        "language": "English"
+      },
+      {
+        "title": "Asian stocks retreat as AI rebound stumbles",
+        "url": "https://www.freemalaysiatoday.com/category/business/2026/11/25/asian-stocks-retreat-as-ai-rebound-stumbles",
+        "source": "freemalaysiatoday.com",
+        "published": "20261125T031500Z",
+        "language": "English"
+      },
+      {
+        "title": "Fidelity Investments Canada ULC Announces Estimated 2026 Annual Reinvested Capital Gains Distributions for Fidelity ETFs and ETF Series of Fidelity Mutual Funds",
+        "url": "https://www.stratfordbeaconherald.com/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
+        "source": "stratfordbeaconherald.com",
+        "published": "20261125T024500Z",
+        "language": "English"
+      },
+      {
+        "title": "Stocks retreat as AI rebound stumbles , tariff threats loom",
+        "url": "https://www.aol.com/articles/stocks-retreat-ai-rebound-stumbles-015033000.html",
+        "source": "aol.com",
+        "published": "20261125T023000Z",
+        "language": "English"
+      },
+      {
+        "title": "Zip Shares Given Bullish Price Target : Reverse Split Reshapes Structure",
+        "url": "https://thebull.com.au/news/zip-shares-given-bullish-price-target-reverse-split-reshapes-structure/",
+        "source": "thebull.com.au",
+        "published": "20261124T223000Z",
         "language": "English"
       }
     ],
