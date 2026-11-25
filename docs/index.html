@@ -10352,3 +10352,13 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
   outline-offset:3px;
 }
 </style>
+
+
+<style id="tf-mobile-remove-kitco-ad-and-reserved-space">
+/* Remove the Kitco partner ad and its reserved blank slot on phones only. */
+@media(max-width:760px){
+  .kitco-banner-stack{display:none!important;width:0!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;}
+  .sp-layout-reservation{display:none!important;width:0!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;}
+  .tf-promo-layout:has(.kitco-banner-stack){display:none!important;}
+}
+</style>
