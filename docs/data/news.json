@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-25T10:50:31.489483+00:00",
+  "fetched_at": "2026-11-25T11:49:04.636530+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -95,45 +95,10 @@
     ],
     "penny": [
       {
-        "title": "Asian stocks tumble as AI rebound stumbles , US tariff threats loom",
-        "url": "https://www.business-standard.com/markets/news/asian-stocks-tumble-as-ai-rebound-stumbles-us-tariff-threats-loom-126112500066_1.html",
-        "source": "business-standard.com",
-        "published": "20261125T054500Z",
-        "language": "English"
-      },
-      {
         "title": "High MTF revenue exposure brokerages face earnings impact : Prakash Kacholia",
         "url": "https://www.business-standard.com/markets/news/high-mtf-revenue-exposure-brokerages-face-earnings-impact-prakash-kacholia-126112500149_1.html",
         "source": "business-standard.com",
         "published": "20261125T054500Z",
-        "language": "English"
-      },
-      {
-        "title": "Asian stocks retreat as AI rebound stumbles",
-        "url": "https://www.freemalaysiatoday.com/category/business/2026/11/25/asian-stocks-retreat-as-ai-rebound-stumbles",
-        "source": "freemalaysiatoday.com",
-        "published": "20261125T031500Z",
-        "language": "English"
-      },
-      {
-        "title": "Fidelity Investments Canada ULC Announces Estimated 2026 Annual Reinvested Capital Gains Distributions for Fidelity ETFs and ETF Series of Fidelity Mutual Funds",
-        "url": "https://www.stratfordbeaconherald.com/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
-        "source": "stratfordbeaconherald.com",
-        "published": "20261125T024500Z",
-        "language": "English"
-      },
-      {
-        "title": "Stocks retreat as AI rebound stumbles , tariff threats loom",
-        "url": "https://www.aol.com/articles/stocks-retreat-ai-rebound-stumbles-015033000.html",
-        "source": "aol.com",
-        "published": "20261125T023000Z",
-        "language": "English"
-      },
-      {
-        "title": "Zip Shares Given Bullish Price Target : Reverse Split Reshapes Structure",
-        "url": "https://thebull.com.au/news/zip-shares-given-bullish-price-target-reverse-split-reshapes-structure/",
-        "source": "thebull.com.au",
-        "published": "20261124T223000Z",
         "language": "English"
       }
     ],
@@ -160,30 +125,9 @@
         "language": "English"
       },
       {
-        "title": "ECB to accept DLT - issued collateral from June 2027",
-        "url": "https://www.forexcrunch.com/blog/2026/11/25/ecb-dlt-collateral-june-2027/",
-        "source": "forexcrunch.com",
-        "published": "20261125T051500Z",
-        "language": "English"
-      },
-      {
-        "title": "CONFRONTING NIGERIA CRIMINAL ECONOMY OF METAL THEFT – THISDAYLIVE",
-        "url": "https://www.thisdaylive.com/2026/11/25/confronting-nigerias-criminal-economy-of-metal-theft/",
-        "source": "thisdaylive.com",
-        "published": "20261125T044500Z",
-        "language": "English"
-      },
-      {
         "title": "Samsung C & T taps Citi blockchain for global cash management",
         "url": "https://www.koreaherald.com/article/10948937",
         "source": "koreaherald.com",
-        "published": "20261125T044500Z",
-        "language": "English"
-      },
-      {
-        "title": "Eric Trump Melts Down in Heated Feud With California Rep . Robert Garcia",
-        "url": "https://www.thedailybeast.com/eric-trump-melts-down-in-heated-feud-with-california-rep-robert-garcia",
-        "source": "thedailybeast.com",
         "published": "20261125T044500Z",
         "language": "English"
       },
@@ -216,10 +160,31 @@
         "language": "English"
       },
       {
-        "title": "Microsoft Code Red : Microsoft  Code Red  Declared After Major Outage Exposes System Flaws , ETTelecom",
-        "url": "https://telecom.economictimes.indiatimes.com/news/internet/microsoft-declares-code-red-after-historic-outage-internal-memos-show/136146113",
-        "source": "telecom.economictimes.indiatimes.com",
+        "title": "A . I . is helping criminals steal hearts and money - Indo - Canadian Voice",
+        "url": "https://voiceonline.com/a-i-is-helping-criminals-steal-hearts-and-money/",
+        "source": "voiceonline.com",
         "published": "20261125T034500Z",
+        "language": "English"
+      },
+      {
+        "title": "How can we still be making these 10 cybersecurity mistakes ?",
+        "url": "https://www.livemint.com/global/how-can-we-still-be-making-these-10-cybersecurity-mistakes-11795570784982.html",
+        "source": "livemint.com",
+        "published": "20261125T034500Z",
+        "language": "English"
+      },
+      {
+        "title": "Anthropic Stock Falls 6 . 5 % Below $83 IPO Price",
+        "url": "https://www.markets.com/news/anthropic-stock-falls-below-83-ipo-price",
+        "source": "markets.com",
+        "published": "20261125T033000Z",
+        "language": "English"
+      },
+      {
+        "title": "AG Bonta Warns Consumers of Holiday Shopping Scams",
+        "url": "https://mynewsla.com/government/2026/11/24/consumers-warned-of-holiday-shopping-scams/",
+        "source": "mynewsla.com",
+        "published": "20261125T033000Z",
         "language": "English"
       }
     ]
