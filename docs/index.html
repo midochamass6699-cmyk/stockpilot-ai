@@ -10160,6 +10160,8 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
  #tf-mobile-priority-stack .tf-mobile-start{display:block!important;width:100%!important;margin:8px 0 0!important}
  #tf-mobile-priority-stack .trading-desk-grid{display:grid!important;grid-template-columns:1fr!important;gap:9px!important;width:100%!important;margin:0!important}
  #tf-mobile-priority-stack .trading-desk-grid .trading-panel{width:100%!important;min-width:0!important}
+ #tf-mobile-priority-stack .trading-desk-grid .trading-market-list{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:7px!important}
+ #tf-mobile-priority-stack .trading-desk-grid .trading-panel-heading p{display:block!important}
  #tf-mobile-priority-stack .trading-desk-tagline{display:block!important;width:100%!important;margin:0!important}
  #tf-mobile-company-report{display:block!important;width:calc(100% - 24px)!important;max-width:760px!important;margin:32px auto 24px!important;padding:16px!important;border:1px solid #d7e2ef!important;border-radius:13px!important;background:#fff!important;box-shadow:0 6px 18px rgba(16,42,67,.06)!important}
  #tf-mobile-company-report .tf-company-quick-form{display:grid!important;width:100%!important;max-width:460px!important;margin:12px 0 0!important}
@@ -10219,8 +10221,7 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    var title=document.querySelector('#trading-desk-title');
    var subtitle=desk.querySelector('.tf-welcome-tagline');
    var growth=document.querySelector('.tf-growth-welcome-menu,header.topbar .tf-growth-menu,.tf-growth-menu');
-   var subscribeWelcome=Array.from(document.querySelectorAll('.subscribe-bell-cta')).find(function(el){return !el.closest('#tf-mobile-after-broker-tools')&&!el.closest('#tf-mobile-priority-stack')&&el.closest('#live-trading-desk');});
-   if(!subscribeWelcome)subscribeWelcome=Array.from(document.querySelectorAll('.subscribe-bell-cta')).find(function(el){return !el.closest('#tf-mobile-after-broker-tools')&&!el.closest('#tf-mobile-priority-stack')&&el.getAttribute('aria-label')&&el.getAttribute('aria-label').indexOf('browser updates')>=0;});
+   var subscribeWelcome=Array.from(document.querySelectorAll('.subscribe-bell-cta')).find(function(el){return !el.closest('#tf-mobile-after-broker-tools')&&!el.closest('#tf-mobile-priority-stack');});
    var stock=document.getElementById('sp-stock-of-day');
    var start=desk.querySelector('.tf-mobile-start');
    var pitstop=desk.querySelector('.trading-desk-tagline');
@@ -10230,7 +10231,6 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    var twoPanels=desk.querySelector('.tf-two-panel-grid');
    var advanced=desk.querySelector('.sp-advanced-ribbon');
    var topTools=document.querySelector('.stockpilot-top-tools');
-   var subscribeAfter=Array.from(document.querySelectorAll('.subscribe-bell-cta')).find(function(el){return el!==subscribeWelcome&&!el.closest('#tf-mobile-priority-stack')&&!el.closest('#tf-mobile-after-broker-tools');});
    var kitco=document.querySelector('.kitco-banner-stack');
    var freeToolsBanner=document.getElementById('stockpilot-free-tools');
 
@@ -10265,7 +10265,6 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    }
    if(afterBrokerBox&&topTools){
     topTools.insertAdjacentElement('afterend',afterBrokerBox);
-    move(subscribeAfter,afterBrokerBox);
     move(kitco,afterBrokerBox);
     move(freeToolsBanner,afterBrokerBox);
    }
