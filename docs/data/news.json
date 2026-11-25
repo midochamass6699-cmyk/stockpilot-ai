@@ -1,8 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-25T14:13:18.581477+00:00",
+  "fetched_at": "2026-11-25T15:29:29.273722+00:00",
   "updated_sections": [
+    "penny",
     "crypto"
   ],
   "sections": {
@@ -94,17 +95,10 @@
     ],
     "penny": [
       {
-        "title": "Multibagger Alert ! Up 102 % in 1 year , more rally seen in this small - cap power stock - here why | Check target , upside",
-        "url": "https://www.livemint.com/market/stock-market-news/multibagger-alert-up-102-in-1-year-more-rally-seen-in-this-small-cap-power-stock-heres-why-check-target-upside-11795594809008.html",
-        "source": "livemint.com",
-        "published": "20261125T103000Z",
-        "language": "English"
-      },
-      {
-        "title": "Asian stocks tumble as AI rebound stumbles , US tariff threats loom",
-        "url": "https://www.business-standard.com/markets/news/asian-stocks-tumble-as-ai-rebound-stumbles-us-tariff-threats-loom-126112500066_1.html",
-        "source": "business-standard.com",
-        "published": "20261125T054500Z",
+        "title": "Sensex surges over 1 , 500 points , Nifty settles above 25 , 800 amid foreign inflows , falling oil prices",
+        "url": "http://www.sanantoniopost.com/news/279453773/sensex-surges-over-1500-points-nifty-settles-above-25800-amid-foreign-inflows-falling-oil-prices",
+        "source": "sanantoniopost.com",
+        "published": "20261125T141500Z",
         "language": "English"
       },
       {
@@ -113,37 +107,44 @@
         "source": "business-standard.com",
         "published": "20261125T054500Z",
         "language": "English"
-      },
-      {
-        "title": "Asian stocks retreat as AI rebound stumbles",
-        "url": "https://www.freemalaysiatoday.com/category/business/2026/11/25/asian-stocks-retreat-as-ai-rebound-stumbles",
-        "source": "freemalaysiatoday.com",
-        "published": "20261125T031500Z",
-        "language": "English"
-      },
-      {
-        "title": "Fidelity Investments Canada ULC Announces Estimated 2026 Annual Reinvested Capital Gains Distributions for Fidelity ETFs and ETF Series of Fidelity Mutual Funds",
-        "url": "https://www.stratfordbeaconherald.com/press-releases/pr-newswire/fidelity-investments-canada-ulc-announces-estimated-2026-annual-reinvested-capital-gains-distributions-for-fidelity-etfs-and-etf-series-of-fidelity-mutual-funds/",
-        "source": "stratfordbeaconherald.com",
-        "published": "20261125T024500Z",
-        "language": "English"
-      },
-      {
-        "title": "Stocks retreat as AI rebound stumbles , tariff threats loom",
-        "url": "https://www.aol.com/articles/stocks-retreat-ai-rebound-stumbles-015033000.html",
-        "source": "aol.com",
-        "published": "20261125T023000Z",
-        "language": "English"
-      },
-      {
-        "title": "Zip Shares Given Bullish Price Target : Reverse Split Reshapes Structure",
-        "url": "https://thebull.com.au/news/zip-shares-given-bullish-price-target-reverse-split-reshapes-structure/",
-        "source": "thebull.com.au",
-        "published": "20261124T223000Z",
-        "language": "English"
       }
     ],
     "crypto": [
+      {
+        "title": "5 Things Investors Need to Know About Wednesday Markets",
+        "url": "https://www.aol.com/articles/5-things-investors-know-wednesday-133820000.html",
+        "source": "aol.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "Trump owned millions in Nvidia stock as he pressed for Jensen Huang reinstatement",
+        "url": "https://www.aol.com/articles/trump-owned-millions-nvidia-stock-110012000.html",
+        "source": "aol.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "KuCoin Opens Its Australian Programme with Adam Scott , Highlighting Global Infrastructure and Local Accountability",
+        "url": "http://www.australiannews.net/news/279453724/kucoin-opens-its-australian-programme-with-adam-scott-highlighting-global-infrastructure-and-local-accountability",
+        "source": "australiannews.net",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "Grierson adds Trustees from Minnow , BBC",
+        "url": "https://www.televisual.com/news/grierson-adds-trustees-from-minnow-bbc/",
+        "source": "televisual.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "Europe is embracing digital health , but do patients actually benefit ?",
+        "url": "https://www.euronews.com/2026/11/25/europe-is-embracing-digital-health-but-do-patients-actually-benefit",
+        "source": "euronews.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
       {
         "title": "US DOJ charges over 800 defendants in 400 cases in global anti - scam crackdown",
         "url": "http://www.zimbabwestar.com/news/279453166/us-doj-charges-over-800-defendants-in-400-cases-in-global-anti-scam-crackdown",
@@ -191,41 +192,6 @@
         "url": "https://www.thedailybeast.com/eric-trump-melts-down-in-heated-feud-with-california-rep-robert-garcia",
         "source": "thedailybeast.com",
         "published": "20261125T044500Z",
-        "language": "English"
-      },
-      {
-        "title": "The Gulf survived a short , hot war . A long , cold one will be harder",
-        "url": "https://www.hindustantimes.com/world-news/the-gulf-survived-a-short-hot-war-a-long-cold-one-will-be-harder-101795574116056.html",
-        "source": "hindustantimes.com",
-        "published": "20261125T044500Z",
-        "language": "English"
-      },
-      {
-        "title": "Bitmine Immersion Technologies ( NASDAQ : BMNR ) Faces Investor Scrutiny As Share Count Surges 164 % Amid Ethereum Treasury Pivot",
-        "url": "https://www.foreignpolicyjournal.com/2026/11/24/bitmine-immersion-technologies-nasdaq-bmnr-faces-investor-scrutiny-as-share-count-surges-164-amid-ethereum-treasury-pivot/",
-        "source": "foreignpolicyjournal.com",
-        "published": "20261125T041500Z",
-        "language": "English"
-      },
-      {
-        "title": "CleanSpark ( CLSK ) Q4 2026 Earnings Call Transcript",
-        "url": "https://www.aol.com/articles/cleanspark-clsk-q4-2026-earnings-022754000.html",
-        "source": "aol.com",
-        "published": "20261125T034500Z",
-        "language": "English"
-      },
-      {
-        "title": "Huawei convicted of stealing trade secrets : What the case , and what does it mean for US - China ties ? Explained",
-        "url": "https://www.livemint.com/news/us-news/huawei-convicted-of-stealing-us-trade-secrets-what-s-the-case-and-what-does-it-mean-for-us-china-ties-explained-11795572905540.html",
-        "source": "livemint.com",
-        "published": "20261125T034500Z",
-        "language": "English"
-      },
-      {
-        "title": "Microsoft Code Red : Microsoft  Code Red  Declared After Major Outage Exposes System Flaws , ETTelecom",
-        "url": "https://telecom.economictimes.indiatimes.com/news/internet/microsoft-declares-code-red-after-historic-outage-internal-memos-show/136146113",
-        "source": "telecom.economictimes.indiatimes.com",
-        "published": "20261125T034500Z",
         "language": "English"
       }
     ]
