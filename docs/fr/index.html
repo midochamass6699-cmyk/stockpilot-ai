@@ -8487,106 +8487,6 @@ body{font-size:16px}
 @media(prefers-reduced-motion:reduce){.tf-mobile-start-card{transition:none}}
 </style>
 
-<script id="technofront-mobile-stockday-order">
-(function(){
-  var stock=document.getElementById('sp-stock-of-day');
-  var hub=document.querySelector('.tf-mobile-start');
-  if(!stock||!hub)return;
-  var welcome;
-  if(document.querySelector('.fr-welcome-banner')) welcome=document.querySelector('.fr-welcome-banner');
-  else if(document.querySelector('.seo-intro')) welcome=document.querySelector('.seo-intro');
-  else welcome=document.querySelector('.trading-desk-header');
-  if(!welcome||!welcome.parentNode)return;
-  var marker=document.createComment('Original Stock of the Day position');
-  stock.parentNode.insertBefore(marker,stock);
-  var mobile=window.matchMedia('(max-width: 760px)');
-  function place(){
-    if(mobile.matches){hub.parentNode.insertBefore(stock,hub);}
-    else if(marker.parentNode){marker.parentNode.insertBefore(stock,marker.nextSibling);}
-  }
-  place();
-  if(mobile.addEventListener)mobile.addEventListener('change',place);
-  else if(mobile.addListener)mobile.addListener(place);
-})();
-</script>
-
-<style id="tf-mobile-priority-order-style">
-#tf-mobile-priority-stack{display:none}
-@media(max-width:760px){
-  #tf-mobile-priority-stack{display:flex;flex-direction:column;gap:12px;width:calc(100% - 20px);max-width:1200px;margin:12px auto 16px}
-  #tf-mobile-priority-stack .tf-mobile-priority-welcome{display:flex;flex-direction:column;gap:4px;padding:16px 14px;border:1px solid #d8e1ee;border-top:4px solid #2563eb;border-radius:12px;background:linear-gradient(135deg,#fff 0%,#f5f8ff 100%);color:#101827}
-  #tf-mobile-priority-stack .tf-mobile-priority-welcome h1{margin:0!important;color:#07111f!important;font-size:clamp(24px,7vw,34px)!important;line-height:1.08!important}
-  #tf-mobile-priority-stack .tf-mobile-priority-welcome .tf-welcome-tagline{margin:2px 0 0!important;font-size:15px!important;font-weight:800!important;color:#2563eb!important}
-  #tf-mobile-priority-stack .subscribe-bell-cta{width:100%;min-height:48px;justify-content:center;margin:0!important}
-  #tf-mobile-priority-stack #sp-stock-of-day{width:100%;max-width:100%;margin:0!important}
-  #tf-mobile-priority-stack .tf-mobile-start{width:100%;margin:0!important}
-}
-</style>
-<script id="tf-mobile-priority-order">
-(function(){
-  var stack=null, records=[], generatedUpdate=null;
-  function move(node,parent){
-    if(!node||!node.parentNode)return;
-    var marker=document.createComment('tf-mobile-order-placeholder');
-    node.parentNode.insertBefore(marker,node);
-    records.push({node:node,marker:marker});
-    parent.appendChild(node);
-  }
-  function restore(){
-    records.forEach(function(item){
-      if(item.marker.parentNode)item.marker.parentNode.insertBefore(item.node,item.marker);
-      item.marker.remove();
-    });
-    records=[];
-    if(stack){stack.remove();stack=null;}
-    if(generatedUpdate){generatedUpdate.remove();generatedUpdate=null;}
-  }
-  function apply(){
-    var topbar=document.querySelector('header.topbar');
-    if(!topbar)return;
-    if(!window.matchMedia('(max-width:760px)').matches){restore();return;}
-    if(stack)return;
-    stack=document.createElement('div');
-    stack.id='tf-mobile-priority-stack';
-    topbar.insertAdjacentElement('afterend',stack);
-    var welcome=document.createElement('section');
-    welcome.className='tf-mobile-priority-welcome';
-    welcome.setAttribute('aria-label','Welcome to Technofront');
-    stack.appendChild(welcome);
-    /* Keep the scrolling market ticker first on mobile. */
-    move(document.querySelector('.tf-market-pulse'),stack);
-    move(document.querySelector('#trading-desk-title, #fr-welcome-title, #home-seo-title'),welcome);
-    move(document.querySelector('.tf-welcome-tagline'),welcome);
-    move(document.getElementById('sp-stock-of-day'),stack);
-    var updates=document.querySelector('.subscribe-bell-cta');
-    if(updates){move(updates,stack);}
-    else{
-      var subscribeTarget=document.getElementById('stockpilot-subscribe-btn');
-      if(subscribeTarget){
-        generatedUpdate=document.createElement('button');
-        generatedUpdate.type='button';
-        generatedUpdate.className='subscribe-bell-cta';
-        var pageLang=(document.documentElement.lang||'').toLowerCase();
-        var updateLabel=pageLang.indexOf('fr')===0?'RECEVOIR LES MISES À JOUR GRATUITES':pageLang.indexOf('es')===0?'RECIBIR ACTUALIZACIONES GRATIS':pageLang.indexOf('de')===0?'KOSTENLOSE UPDATES ERHALTEN':'GET FREE UPDATES';
-        generatedUpdate.textContent=updateLabel;
-        generatedUpdate.setAttribute('aria-label',updateLabel);
-        generatedUpdate.addEventListener('click',function(){subscribeTarget.click();});
-        stack.appendChild(generatedUpdate);
-      }
-    }
-    move(document.querySelector('.tf-mobile-start'),stack);
-    /* Move the remainder of the original welcome/trading intro below the two priority sections.
-       Its heading and tagline have already been moved into the top welcome block. */
-    var introRemainder=document.querySelector('#live-trading-desk, .fr-welcome-banner, .seo-intro');
-    if(introRemainder)move(introRemainder,stack);
-  }
-  function refresh(){if(window.matchMedia('(max-width:760px)').matches)apply();else restore();}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh,{once:true});
-  else refresh();
-  window.addEventListener('resize',refresh,{passive:true});
-})();
-</script>
-
 <!-- Desktop-only hover navigation; original links remain intact for mobile. -->
 <style id="tf-desktop-hover-menus">
 @media (min-width:761px){
@@ -8700,163 +8600,84 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 })();
 </script>
 <style>.sp-editorial-note,.broker-editorial{margin:38px auto;max-width:1180px;padding:30px 32px;border:1px solid rgba(148,163,184,.28);border-radius:18px;background:linear-gradient(135deg,#f8fafc,#eef4fa);color:#25364b;line-height:1.75}.sp-editorial-inner{max-width:1060px;margin:auto}.sp-editorial-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:#58718e}.sp-editorial-note h2,.broker-editorial h2{font-size:clamp(22px,3vw,30px);line-height:1.2;color:#10243d;margin:8px 0 12px}.sp-editorial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}.sp-editorial-grid article{padding:17px;border:1px solid #d9e3ef;border-radius:13px;background:#fff}.sp-editorial-grid h3,.broker-editorial h3{font-size:16px;color:#173553;margin:0 0 7px}.sp-editorial-grid p,.broker-editorial p{margin:0}.sp-editorial-links{margin-top:16px}.sp-editorial-note a,.broker-editorial a{color:#1763a6;text-decoration:underline}@media(max-width:760px){.sp-editorial-note,.broker-editorial{margin:24px 12px;padding:22px 18px}.sp-editorial-grid{grid-template-columns:1fr}}</style><section class="sp-editorial-note"><div class="sp-editorial-inner"><p class="sp-editorial-kicker">Mieux utiliser le tableau de bord</p><h2>L’activité du marché est un point de départ, pas une conclusion.</h2><p>Une action très négociée, une forte variation quotidienne ou un nouveau sommet sur 52 semaines indique ce que fait le marché, mais ne prouve pas qu’une entreprise est solide financièrement ou correctement évaluée. Utilisez le tableau de bord pour formuler une question, puis consultez les dépôts de l’entreprise et comparez ses résultats récents aux périodes précédentes.</p><div class="sp-editorial-grid"><article><h3>Confirmer le titre</h3><p>Vérifiez le nom de l’entreprise, le symbole, la bourse et la devise. Des symboles semblables ou plusieurs inscriptions peuvent fausser une comparaison.</p></article><article><h3>Vérifier l’horodatage</h3><p>Consultez l’heure de la cotation et la période des résultats. Une cotation retardée, un instantané quotidien et un état financier trimestriel ne couvrent pas le même horizon.</p></article><article><h3>Chercher le contre-argument</h3><p>Pour chaque signal positif, identifiez un risque ou une autre explication. Le volume peut augmenter en période d’incertitude, et un faible cours ne signifie pas qu’une entreprise est sous-évaluée.</p></article></div><p class="sp-editorial-links">Poursuivez avec <a href="/research.html">la méthode de recherche</a>, <a href="/fr/education-financiere.html">l’éducation financière</a> ou <a href="/market-investing-guide.html">le guide pratique des marchés</a>.</p></div></section>
-<style id="tf-mobile-priority-reorder-v2">
+
+<style id="tf-mobile-priority-stack-clean">
+#tf-mobile-priority-stack{display:none}
 @media(max-width:760px){
-  #tf-mobile-priority-stack .trading-desk-tagline{width:100%;margin:0!important}
-  #market-terminal > .tf-welcome-actions,
-  #market-terminal > .tf-free-tools-cta,
-  #market-terminal > .tf-company-quick-form,
-  #market-terminal > #stockpilot-alert-signup,
-  #market-terminal > .subscribe-bell-cta{
-    width:100%;max-width:100%;margin:14px 0 0!important;
-  }
-  #market-terminal > .tf-welcome-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px}
-  #market-terminal > #stockpilot-alert-signup{padding:0}
-}
-</style>
-<script id="tf-mobile-priority-reorder-v2-script">
-(function(){
-  var moved=[];
-  var active=false;
-  function move(node,parent,before){
-    if(!node||!node.parentNode||!parent||moved.some(function(x){return x.node===node;}))return;
-    var marker=document.createComment('tf-mobile-v2-placeholder');
-    node.parentNode.insertBefore(marker,node);
-    moved.push({node:node,marker:marker});
-    parent.insertBefore(node,before||null);
-  }
-  function restore(){
-    moved.forEach(function(item){
-      if(item.marker.parentNode)item.marker.parentNode.insertBefore(item.node,item.marker);
-      item.marker.remove();
-    });
-    moved=[];
-    active=false;
-  }
-  function apply(){
-    if(!window.matchMedia('(max-width:760px)').matches){if(active)restore();return;}
-    if(active)return;
-    var stack=document.getElementById('tf-mobile-priority-stack');
-    var terminal=document.getElementById('market-terminal');
-    if(!stack||!terminal)return;
-    active=true;
-
-    /* Place the Market Pit Stop immediately after the welcome block. */
-    var marketBrand=document.querySelector('.trading-desk-tagline');
-    var stock=document.getElementById('sp-stock-of-day');
-    if(marketBrand&&stock)move(marketBrand,stack,stock);
-
-    /* Move the welcome shortcuts and report form to the bottom of the terminal. */
-    var actions=document.querySelector('.tf-welcome-actions');
-    if(actions)move(actions,terminal);
-    else{
-      var freeTools=document.querySelector('.tf-free-tools-cta');
-      if(freeTools)move(freeTools,terminal);
-      var reportForm=document.querySelector('.tf-company-quick-form');
-      if(reportForm)move(reportForm,terminal);
-    }
-
-    /* Keep the secondary subscription prompt, but place it with the other lower-priority tools. */
-    var extraSubscribe=document.querySelector('.subscribe-bell-cta');
-    if(extraSubscribe)move(extraSubscribe,terminal);
-    var signup=document.getElementById('stockpilot-alert-signup');
-    if(signup)move(signup,terminal);
-  }
-  function refresh(){if(window.matchMedia('(max-width:760px)').matches)apply();else restore();}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh,{once:true});
-  else refresh();
-  window.addEventListener('resize',refresh,{passive:true});
-})();
-</script>
-
-
-<style id="tf-mobile-stockday-order-v3">
-@media(max-width:760px){
-  #tf-mobile-priority-stack .trading-desk-tagline{display:none!important}
-  #tf-mobile-priority-stack .tf-mobile-start{order:3!important;margin:0!important;width:100%}
-  #tf-mobile-priority-stack #sp-stock-of-day{order:4!important;width:100%!important;max-width:100%!important;margin:0!important}
-  #tf-mobile-priority-stack .subscribe-bell-cta{order:2!important;width:100%;min-height:46px;justify-content:center;margin:0!important}
-}
-</style>
-<script id="tf-mobile-stockday-order-v3-script">
-(function(){
-  function arrange(){
-    if(!window.matchMedia('(max-width:760px)').matches)return;
-    var stack=document.getElementById('tf-mobile-priority-stack');
-    if(!stack)return;
-    var welcome=stack.querySelector('.tf-mobile-priority-welcome');
-    var subscribe=stack.querySelector('.subscribe-bell-cta');
-    var start=document.querySelector('.tf-mobile-start');
-    var stock=document.getElementById('sp-stock-of-day');
-    if(welcome)stack.appendChild(welcome);
-    if(subscribe)stack.appendChild(subscribe);
-    if(start)stack.appendChild(start);
-    if(stock)stack.appendChild(stock);
-  }
-  function run(){arrange();setTimeout(arrange,250);setTimeout(arrange,900);}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});
-  else run();
-  window.addEventListener('resize',arrange,{passive:true});
-})();
-</script>
-
-
-<style id="tf-mobile-final-order-fix">
-@media(max-width:760px){
- #tf-mobile-priority-stack{display:flex!important;flex-direction:column!important;gap:12px!important}
- #tf-mobile-priority-stack .tf-mobile-priority-welcome{display:flex!important;flex-direction:column!important;gap:6px!important;visibility:visible!important}
- #tf-mobile-priority-stack .tf-mobile-priority-welcome h1{display:block!important;visibility:visible!important;opacity:1!important;color:#07111f!important}
- #tf-mobile-priority-stack .tf-mobile-priority-welcome .tf-welcome-tagline{display:block!important;visibility:visible!important;opacity:1!important;color:#2563eb!important}
- #tf-mobile-priority-stack .tf-mobile-priority-welcome .subscribe-bell-cta{display:flex!important;width:100%!important;min-height:46px!important;justify-content:center!important;margin:4px 0 0!important}
- #tf-mobile-priority-stack .tf-mobile-start{display:block!important;order:2!important;width:100%!important;margin:0!important}
- #tf-mobile-priority-stack #sp-stock-of-day{display:flex!important;order:3!important;width:100%!important;max-width:100%!important;margin:0!important}
+ #tf-mobile-priority-stack{display:flex!important;flex-direction:column!important;gap:12px!important;width:calc(100% - 20px);max-width:1200px;margin:12px auto 16px}
+ #tf-mobile-priority-stack .tf-mobile-priority-welcome{display:flex!important;flex-direction:column!important;gap:5px!important;padding:15px 14px;border:1px solid #d8e1ee;border-top:4px solid #2563eb;border-radius:12px;background:linear-gradient(135deg,#fff 0%,#f5f8ff 100%);color:#101827}
+ #tf-mobile-priority-stack .tf-mobile-priority-welcome h1{display:block!important;margin:0!important;color:#07111f!important;font-size:clamp(24px,7vw,34px)!important;line-height:1.08!important;visibility:visible!important;opacity:1!important}
+ #tf-mobile-priority-stack .tf-mobile-priority-welcome .tf-welcome-tagline{display:block!important;margin:2px 0 4px!important;font-size:15px!important;font-weight:800!important;color:#2563eb!important;visibility:visible!important;opacity:1!important}
+ #tf-mobile-priority-stack .tf-mobile-priority-welcome .subscribe-bell-cta{display:flex!important;width:100%!important;min-height:46px!important;justify-content:center!important;margin:3px 0 0!important}
+ #tf-mobile-priority-stack .tf-mobile-start{display:block!important;width:100%!important;margin:0!important}
+ #tf-mobile-priority-stack #sp-stock-of-day{display:flex!important;width:100%!important;max-width:100%!important;margin:0!important}
  #tf-mobile-priority-stack .trading-desk-tagline{display:none!important}
 }
 </style>
-<script id="tf-mobile-final-order-fix-script">
+<script id="tf-mobile-priority-stack-clean-script">
 (function(){
- var lang=(document.documentElement.lang||'en').toLowerCase();
- var fallback={
-  fr:{title:'Bienvenue chez Technofront',tag:'Parce que l’avenir est clair.'},
-  es:{title:'Bienvenido a Technofront',tag:'Porque el futuro está claro.'},
-  de:{title:'Willkommen bei Technofront',tag:'Denn die Zukunft ist klar.'},
-  en:{title:'Welcome to Technofront',tag:'Because the future is clear.'}
- };
- var locale=lang.slice(0,2); if(!fallback[locale])locale='en';
- function run(){
-  if(!window.matchMedia('(max-width:760px)').matches)return;
+ function setup(){
+  var mq=window.matchMedia('(max-width:760px)');
   var stack=document.getElementById('tf-mobile-priority-stack');
-  if(!stack)return;
-  var welcome=stack.querySelector('.tf-mobile-priority-welcome');
-  if(!welcome){welcome=document.createElement('section');welcome.className='tf-mobile-priority-welcome';stack.insertBefore(welcome,stack.firstChild);}
-  var title=document.getElementById('trading-desk-title')||
-    document.getElementById('fr-welcome-title')||
-    document.getElementById('home-seo-title')||
-    welcome.querySelector('h1')||
-    document.querySelector('#live-trading-desk .trading-desk-header h1,.fr-welcome-banner h1,.seo-intro h1');
-  if(!title){title=document.createElement('h1');title.textContent=fallback[locale].title;}
-  var tagline=welcome.querySelector('.tf-welcome-tagline')||
-    document.querySelector('.tf-welcome-tagline');
-  if(!tagline){tagline=document.createElement('p');tagline.className='tf-welcome-tagline';tagline.textContent=fallback[locale].tag;}
-  var subscribe=welcome.querySelector('.subscribe-bell-cta')||
-    document.querySelector('.subscribe-bell-cta');
-  if(!subscribe){
-    var subscribeTarget=document.getElementById('stockpilot-subscribe-btn');
-    if(subscribeTarget){
-      subscribe=document.createElement('button');subscribe.type='button';subscribe.className='subscribe-bell-cta';
-      subscribe.textContent=locale==='fr'?'Recevoir les mises à jour':locale==='es'?'Recibir actualizaciones':locale==='de'?'Updates erhalten':'GET FREE UPDATES';
-      subscribe.addEventListener('click',function(){subscribeTarget.click();});
-    }
+  var records=[];
+  function put(node,parent){
+   if(!node||!parent)return;
+   if(!node.dataset.tfMobileHomeMarker){
+    var marker=document.createComment('tf-mobile-home-original-position');
+    node.parentNode&&node.parentNode.insertBefore(marker,node);
+    node.dataset.tfMobileHomeMarker='1';
+    node.__tfMobileHomeMarker=marker;
+    records.push(node);
+   }
+   parent.appendChild(node);
   }
-  [title,tagline,subscribe].forEach(function(node){if(node)welcome.appendChild(node);});
-  var start=document.querySelector('.tf-mobile-start')||stack.querySelector('.tf-mobile-start');
-  var stock=document.getElementById('sp-stock-of-day');
-  if(start)stack.appendChild(start);
-  if(stock)stack.appendChild(stock);
+  function restore(){
+   records.forEach(function(node){
+    var marker=node.__tfMobileHomeMarker;
+    if(marker&&marker.parentNode)marker.parentNode.insertBefore(node,marker);
+    if(marker)marker.remove();
+    delete node.dataset.tfMobileHomeMarker;
+    delete node.__tfMobileHomeMarker;
+   });
+   records=[];
+   if(stack){stack.remove();stack=null;}
+  }
+  function apply(){
+   if(!mq.matches){restore();return;}
+   if(!stack){
+    stack=document.createElement('div');
+    stack.id='tf-mobile-priority-stack';
+    var topbar=document.querySelector('header.topbar');
+    if(!topbar)return;
+    topbar.insertAdjacentElement('afterend',stack);
+   }
+   var welcome=stack.querySelector('.tf-mobile-priority-welcome');
+   if(!welcome){welcome=document.createElement('section');welcome.className='tf-mobile-priority-welcome';stack.appendChild(welcome);}
+   var title=document.querySelector('#trading-desk-title,#fr-welcome-title,#home-seo-title');
+   var tagline=document.querySelector('.tf-welcome-tagline');
+   var subscribe=document.querySelector('.subscribe-bell-cta');
+   if(title)put(title,welcome);
+   if(tagline)put(tagline,welcome);
+   if(subscribe)put(subscribe,welcome);
+
+   var start=document.querySelector('.tf-mobile-start');
+   var stock=document.getElementById('sp-stock-of-day');
+   if(start)put(start,stack);
+   if(stock)put(stock,stack);
+
+   /* Keep report and free-tool shortcuts, but move them below the priority stack. */
+   var actions=document.querySelector('.tf-welcome-actions');
+   var terminal=document.getElementById('market-terminal');
+   if(actions&&terminal)put(actions,terminal);
+
+   /* Remove the duplicate mobile-only subscription button from the older layout script. */
+   document.querySelectorAll('.tf-mobile-subscribe').forEach(function(el){el.style.display='none';});
+  }
+  apply();
+  if(mq.addEventListener)mq.addEventListener('change',apply);else mq.addListener(apply);
+  window.addEventListener('resize',apply,{passive:true});
  }
- function init(){run();setTimeout(run,150);setTimeout(run,700);}
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
- window.addEventListener('resize',run,{passive:true});
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
 })();
 </script>
 
