@@ -1,9 +1,10 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-26T06:55:32.967912+00:00",
+  "fetched_at": "2026-11-26T08:23:58.430430+00:00",
   "updated_sections": [
-    "penny"
+    "penny",
+    "crypto"
   ],
   "sections": {
     "markets": [
@@ -94,14 +95,84 @@
     ],
     "penny": [
       {
+        "title": "10 Most Oversold Semiconductor Stocks to Buy for 2027",
+        "url": "https://www.insidermonkey.com/news/10-most-oversold-semiconductor-stocks-to-buy-for-2027-1870302/",
+        "source": "insidermonkey.com",
+        "published": "20261126T051500Z",
+        "language": "English"
+      },
+      {
+        "title": "Billionaire Steve Cohen 10 Biggest Stock Bets for 2027",
+        "url": "https://www.insidermonkey.com/news/billionaire-steve-cohens-10-biggest-stock-bets-for-2027-1867809/",
+        "source": "insidermonkey.com",
+        "published": "20261126T051500Z",
+        "language": "English"
+      },
+      {
+        "title": "Dow Erases 1 , 100 - Point Plunge as AI Selloff Rattles Wall Street",
+        "url": "https://www.hngn.com/articles/273967/20261125/dow-erases-1100-point-plunge-ai-selloff-rattles-wall-street.htm",
+        "source": "hngn.com",
+        "published": "20261126T031500Z",
+        "language": "English"
+      },
+      {
+        "title": "What happens when a good active ETF strategy gets too big ?",
+        "url": "https://portfolio-adviser.com/what-happens-when-a-good-active-etf-strategy-gets-too-big/",
+        "source": "portfolio-adviser.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "Apollo Micro Systems joins MSCI India Small Cap Index on 30 November : index - fund buying expected at Monday close",
+        "url": "http://www.sanantoniopost.com/news/279453834/apollo-micro-systems-joins-msci-india-small-cap-index-on-30-november-index-fund-buying-expected-at-monday-close",
+        "source": "sanantoniopost.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "How understanding different mutual fund categories can help build a balanced portfolio",
+        "url": "http://www.sanantoniopost.com/news/279453760/how-understanding-different-mutual-fund-categories-can-help-build-a-balanced-portfolio",
+        "source": "sanantoniopost.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
         "title": "Sensex surges over 1 , 500 points , Nifty settles above 25 , 800 amid foreign inflows , falling oil prices",
         "url": "http://www.sanantoniopost.com/news/279453773/sensex-surges-over-1500-points-nifty-settles-above-25800-amid-foreign-inflows-falling-oil-prices",
         "source": "sanantoniopost.com",
         "published": "20261125T141500Z",
         "language": "English"
+      },
+      {
+        "title": "Multibagger Alert ! Up 102 % in 1 year , more rally seen in this small - cap power stock - here why | Check target , upside",
+        "url": "https://www.livemint.com/market/stock-market-news/multibagger-alert-up-102-in-1-year-more-rally-seen-in-this-small-cap-power-stock-heres-why-check-target-upside-11795594809008.html",
+        "source": "livemint.com",
+        "published": "20261125T103000Z",
+        "language": "English"
       }
     ],
     "crypto": [
+      {
+        "title": "LatAm Expat & Nomad Daily Guide for Thursday , November 26 , 2026",
+        "url": "https://www.riotimesonline.com/latam-expat-nomad-daily-guide-for-thursday-november-26-2026/",
+        "source": "riotimesonline.com",
+        "published": "20261126T061500Z",
+        "language": "English"
+      },
+      {
+        "title": "Where is Sam Trabucco Now After Sam Bankman - Fried Fraud Scandal ?",
+        "url": "https://www.oxygen.com/crime-news/where-is-sam-trabucco-now-after-sam-bankman-frieds-fraud-scandal",
+        "source": "oxygen.com",
+        "published": "20261126T061500Z",
+        "language": "English"
+      },
+      {
+        "title": "Digital Asset Clearing Center Establishes Digital Asset Distribution Alliance – IT Business Net",
+        "url": "https://itbusinessnet.com/2026/11/digital-asset-clearing-center-establishes-digital-asset-distribution-alliance/",
+        "source": "itbusinessnet.com",
+        "published": "20261126T054500Z",
+        "language": "English"
+      },
       {
         "title": "Simmons & Simmons Takes Aim at AI Legal Accuracy Problem",
         "url": "https://www.lawfuel.com/simmons-simmons-takes-aim-at-ais-legal-accuracy-problem/",
@@ -162,27 +233,6 @@
         "title": "Why CleanSpark Stock Was a Winner on Wednesday",
         "url": "https://www.fool.com/investing/2026/11/25/why-cleanspark-stock-was-a-winner-on-wednesday/",
         "source": "fool.com",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Braidwood Times",
-        "url": "https://www.braidwoodtimes.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "braidwoodtimes.com.au",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Firm Calls for Stronger Financial Connectivity to Unlock Cross - border Payments – THISDAYLIVE",
-        "url": "https://www.thisdaylive.com/2026/11/26/firm-calls-for-stronger-financial-connectivity-to-unlock-cross-border-payments/",
-        "source": "thisdaylive.com",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Blayney Chronicle",
-        "url": "https://www.blayneychronicle.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "blayneychronicle.com.au",
         "published": "20261126T033000Z",
         "language": "English"
       }
