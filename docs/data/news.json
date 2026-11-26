@@ -1,9 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-26T15:28:33.923358+00:00",
+  "fetched_at": "2026-11-26T16:33:59.378274+00:00",
   "updated_sections": [
-    "crypto"
+    "penny"
   ],
   "sections": {
     "markets": [
@@ -94,6 +94,13 @@
     ],
     "penny": [
       {
+        "title": "Children fantasy follows twin siblings who restore colour to a grey kingdom through teamwork and quick thinking | Press Releases",
+        "url": "https://www.ktbs.com/online_features/press_releases/children-s-fantasy-follows-twin-siblings-who-restore-colour-to-a-grey-kingdom-through-teamwork/article_c6e84205-7080-5e33-953e-6ea9e2066111.html",
+        "source": "ktbs.com",
+        "published": "20261126T124500Z",
+        "language": "English"
+      },
+      {
         "title": "10 Most Oversold Semiconductor Stocks to Buy for 2027",
         "url": "https://www.insidermonkey.com/news/10-most-oversold-semiconductor-stocks-to-buy-for-2027-1870302/",
         "source": "insidermonkey.com",
@@ -112,34 +119,6 @@
         "url": "https://www.hngn.com/articles/273967/20261125/dow-erases-1100-point-plunge-ai-selloff-rattles-wall-street.htm",
         "source": "hngn.com",
         "published": "20261126T031500Z",
-        "language": "English"
-      },
-      {
-        "title": "What happens when a good active ETF strategy gets too big ?",
-        "url": "https://portfolio-adviser.com/what-happens-when-a-good-active-etf-strategy-gets-too-big/",
-        "source": "portfolio-adviser.com",
-        "published": "20261125T141500Z",
-        "language": "English"
-      },
-      {
-        "title": "Apollo Micro Systems joins MSCI India Small Cap Index on 30 November : index - fund buying expected at Monday close",
-        "url": "http://www.sanantoniopost.com/news/279453834/apollo-micro-systems-joins-msci-india-small-cap-index-on-30-november-index-fund-buying-expected-at-monday-close",
-        "source": "sanantoniopost.com",
-        "published": "20261125T141500Z",
-        "language": "English"
-      },
-      {
-        "title": "How understanding different mutual fund categories can help build a balanced portfolio",
-        "url": "http://www.sanantoniopost.com/news/279453760/how-understanding-different-mutual-fund-categories-can-help-build-a-balanced-portfolio",
-        "source": "sanantoniopost.com",
-        "published": "20261125T141500Z",
-        "language": "English"
-      },
-      {
-        "title": "Sensex surges over 1 , 500 points , Nifty settles above 25 , 800 amid foreign inflows , falling oil prices",
-        "url": "http://www.sanantoniopost.com/news/279453773/sensex-surges-over-1500-points-nifty-settles-above-25800-amid-foreign-inflows-falling-oil-prices",
-        "source": "sanantoniopost.com",
-        "published": "20261125T141500Z",
         "language": "English"
       }
     ],
