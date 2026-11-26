@@ -58,13 +58,17 @@ export default {
     // Only route the Canadian/US root homepage by visitor country.
     if (url.pathname === "/" || url.pathname === "/index.html") {
       const savedChoice = readCookie(request.headers.get("Cookie"), COOKIE_NAME);
+      const detectedCountry = request.cf && request.cf.country;
       let edition = "";
-      if (savedChoice === "ca" || savedChoice === "us") {
+
+      // Country detection takes priority for Canada and the United States.
+      // A saved manual choice is only a fallback for visitors elsewhere.
+      if (detectedCountry === "US") {
+        edition = "us";
+      } else if (detectedCountry === "CA") {
+        edition = "ca";
+      } else if (savedChoice === "ca" || savedChoice === "us") {
         edition = savedChoice;
-      } else {
-        const detectedCountry = request.cf && request.cf.country;
-        if (detectedCountry === "US") edition = "us";
-        if (detectedCountry === "CA") edition = "ca";
       }
 
       if (edition) {
