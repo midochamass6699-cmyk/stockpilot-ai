@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-26T00:44:05.019171+00:00",
+  "fetched_at": "2026-11-26T02:10:33.101386+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -111,6 +111,76 @@
     ],
     "crypto": [
       {
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | St George & Sutherland Shire Leader",
+        "url": "https://www.theleader.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "theleader.com.au",
+        "published": "20261126T014500Z",
+        "language": "English"
+      },
+      {
+        "title": "Thailand Family Office Market Poised for Transformation Amid Wealth Transfer Boom and SEC Rule Clarifications – Thailand Business News",
+        "url": "https://www.thailand-business-news.com/finance/341647-thailands-family-office-market-poised-for-transformation-amid-wealth-transfer-boom-and-sec-rule-clarifications",
+        "source": "thailand-business-news.com",
+        "published": "20261126T013000Z",
+        "language": "English"
+      },
+      {
+        "title": "Thanksgiving Turkey Pardoned After Making $100 Mil Bribe to Donald Trump The Shovel",
+        "url": "https://theshovel.com.au/2026/11/26/thanksgiving-turkey-pardoned-after-making-100-mil-bribe-to-donald-trump/",
+        "source": "theshovel.com.au",
+        "published": "20261126T013000Z",
+        "language": "English"
+      },
+      {
+        "title": "Bitcoin News : ETF Outflows Slow , but $39K Crash Risk Remains",
+        "url": "https://www.coinspeaker.com/bitcoin-price-could-crash-to-39k-despite-slowing-etf-outflows-is-worst-yet-to-come/",
+        "source": "coinspeaker.com",
+        "published": "20261126T011500Z",
+        "language": "English"
+      },
+      {
+        "title": "She never been to Dubai . Now she free of the debt it left behind .",
+        "url": "https://www.atlantanewsfirst.com/2026/11/25/shes-never-been-dubai-now-shes-free-debt-it-left-behind/",
+        "source": "atlantanewsfirst.com",
+        "published": "20261126T011500Z",
+        "language": "English"
+      },
+      {
+        "title": "Outrage after top Senate Dem signals support for Fetterman reelection :  Out of touch",
+        "url": "https://www.rawstory.com/fetterman-2678532348/",
+        "source": "rawstory.com",
+        "published": "20261126T011500Z",
+        "language": "English"
+      },
+      {
+        "title": "Black Friday meets AI : Big changes for America holiday shopping season | Business",
+        "url": "http://www.dailyrecordnews.com/business/black-friday-meets-ai-big-changes-for-america-s-holiday-shopping-season/article_94f8a115-e990-46ef-9e30-7476224706da.html",
+        "source": "dailyrecordnews.com",
+        "published": "20261126T011500Z",
+        "language": "English"
+      },
+      {
+        "title": "Purpose Investments Announces Final November 2026 Distribution Rates for Its Cash Funds and Corrected Record and Ex - Distribution Dates for Select U . S . Dollar ETF Units",
+        "url": "https://www.thewhig.com/press-releases/globe-newswire/purpose-investments-announces-final-november-2026-distribution-rates-for-its-cash-funds-and-corrected-record-and-ex-distribution-dates-for-select-u-s-dollar-etf-units/",
+        "source": "thewhig.com",
+        "published": "20261126T004500Z",
+        "language": "English"
+      },
+      {
+        "title": "Tips for avoiding financial scams",
+        "url": "https://www.davisenterprise.com/news/tips-for-avoiding-financial-scams/article_fcf226ab-0042-4b0b-a27c-3d44612d925b.html",
+        "source": "davisenterprise.com",
+        "published": "20261126T004500Z",
+        "language": "English"
+      },
+      {
+        "title": "Banking in 2027 : AI rewrites the terms . Banks still carry the risk .",
+        "url": "https://www.webwire.com/ViewPressRel.asp?aId=364670",
+        "source": "webwire.com",
+        "published": "20261126T004500Z",
+        "language": "English"
+      },
+      {
         "title": "Stablecoin Giant Tether Reportedly Sought a 20 % Cut to Return Stolen Crypto",
         "url": "https://www.aol.com/articles/stablecoin-giant-tether-reportedly-sought-225526000.html",
         "source": "aol.com",
@@ -122,76 +192,6 @@
         "url": "https://www.aol.com/articles/5-things-investors-know-wednesday-133820000.html",
         "source": "aol.com",
         "published": "20261125T141500Z",
-        "language": "English"
-      },
-      {
-        "title": "Trump owned millions in Nvidia stock as he pressed for Jensen Huang reinstatement",
-        "url": "https://www.aol.com/articles/trump-owned-millions-nvidia-stock-110012000.html",
-        "source": "aol.com",
-        "published": "20261125T141500Z",
-        "language": "English"
-      },
-      {
-        "title": "KuCoin Opens Its Australian Programme with Adam Scott , Highlighting Global Infrastructure and Local Accountability",
-        "url": "http://www.australiannews.net/news/279453724/kucoin-opens-its-australian-programme-with-adam-scott-highlighting-global-infrastructure-and-local-accountability",
-        "source": "australiannews.net",
-        "published": "20261125T141500Z",
-        "language": "English"
-      },
-      {
-        "title": "Grierson adds Trustees from Minnow , BBC",
-        "url": "https://www.televisual.com/news/grierson-adds-trustees-from-minnow-bbc/",
-        "source": "televisual.com",
-        "published": "20261125T141500Z",
-        "language": "English"
-      },
-      {
-        "title": "Europe is embracing digital health , but do patients actually benefit ?",
-        "url": "https://www.euronews.com/2026/11/25/europe-is-embracing-digital-health-but-do-patients-actually-benefit",
-        "source": "euronews.com",
-        "published": "20261125T141500Z",
-        "language": "English"
-      },
-      {
-        "title": "US DOJ charges over 800 defendants in 400 cases in global anti - scam crackdown",
-        "url": "http://www.zimbabwestar.com/news/279453166/us-doj-charges-over-800-defendants-in-400-cases-in-global-anti-scam-crackdown",
-        "source": "zimbabwestar.com",
-        "published": "20261125T064500Z",
-        "language": "English"
-      },
-      {
-        "title": "Asian stocks tumble as AI rebound stumbles , US tariff threats loom",
-        "url": "https://www.business-standard.com/markets/news/asian-stocks-tumble-as-ai-rebound-stumbles-us-tariff-threats-loom-126112500066_1.html",
-        "source": "business-standard.com",
-        "published": "20261125T054500Z",
-        "language": "English"
-      },
-      {
-        "title": "Witness protection essential to criminal justice system : Kerala HC",
-        "url": "https://www.thehindu.com/news/national/kerala/witness-protection-essential-to-criminal-justice-system-kerala-hc/article71741057.ece",
-        "source": "thehindu.com",
-        "published": "20261125T054500Z",
-        "language": "English"
-      },
-      {
-        "title": "ECB to accept DLT - issued collateral from June 2027",
-        "url": "https://www.forexcrunch.com/blog/2026/11/25/ecb-dlt-collateral-june-2027/",
-        "source": "forexcrunch.com",
-        "published": "20261125T051500Z",
-        "language": "English"
-      },
-      {
-        "title": "CONFRONTING NIGERIA CRIMINAL ECONOMY OF METAL THEFT – THISDAYLIVE",
-        "url": "https://www.thisdaylive.com/2026/11/25/confronting-nigerias-criminal-economy-of-metal-theft/",
-        "source": "thisdaylive.com",
-        "published": "20261125T044500Z",
-        "language": "English"
-      },
-      {
-        "title": "Samsung C & T taps Citi blockchain for global cash management",
-        "url": "https://www.koreaherald.com/article/10948937",
-        "source": "koreaherald.com",
-        "published": "20261125T044500Z",
         "language": "English"
       }
     ]
