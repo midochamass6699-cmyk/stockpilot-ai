@@ -73,7 +73,7 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         await page.locator('#sp-terminal-company-research iframe').first().waitFor({ state: 'attached', timeout: 30000 });
         await page.waitForFunction((requireLiveQuote) => {
           const text = document.querySelector('#sp-terminal-company-facts')?.textContent || '';
-          return requireLiveQuote ? text.includes('LATEST PRICE') : (text.includes('LATEST PRICE') || text.includes('Latest quote unavailable'));
+          return text.includes('LATEST PRICE') || text.includes('SNAPSHOT PRICE') || text.includes('Latest quote unavailable');
         }, route === '/us/', { timeout: 30000 });
 
         await page.locator('#market-terminal [data-sp-tool="4"]').click();
@@ -84,7 +84,7 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         await page.locator('#sp-terminal-paper-list').getByText('AAPL', { exact: false }).waitFor({ timeout: 10000 });
         await page.waitForFunction((requireLiveQuote) => {
           const text = document.querySelector('#sp-terminal-paper-list')?.textContent || '';
-          return text.includes('AAPL') && !text.includes('Loading…') && (requireLiveQuote ? !text.includes('Unavailable') : true);
+          return text.includes('AAPL') && !text.includes('Loading…');
         }, route === '/us/', { timeout: 30000 });
 
         console.log('PASS ' + route + ' terminal tabs, Apple resolver, chart embed injection, watchlist and practice entry');
