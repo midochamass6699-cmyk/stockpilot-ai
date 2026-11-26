@@ -2259,6 +2259,26 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
   ]
 }
 </script>
+<style id="tf-workspace-menu-styles">
+.navlinks .tf-workspace-menu{position:relative;display:inline-flex;align-items:center}
+.navlinks .tf-workspace-menu>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid #56e0dc88;border-radius:6px;background:linear-gradient(110deg,#12384a,#10283b);color:#74e7e1;font-size:11px;font-weight:800;line-height:1.35}
+.navlinks .tf-workspace-menu>summary::-webkit-details-marker{display:none}
+.navlinks .tf-workspace-menu>summary:after{content:"▾";font-size:10px}
+.navlinks .tf-workspace-menu[open]>summary,.navlinks .tf-workspace-menu>summary:hover{background:#17465a;color:#fff;border-color:#56e0dc}
+.tf-workspace-dropdown{display:none;position:absolute;top:calc(100% + 10px);left:0;z-index:120;min-width:285px;max-width:340px;padding:8px;border:1px solid #31566b;border-radius:11px;background:#081827;box-shadow:0 15px 35px #0008}
+.tf-workspace-menu[open] .tf-workspace-dropdown,.tf-workspace-menu:hover .tf-workspace-dropdown,.tf-workspace-menu:focus-within .tf-workspace-dropdown{display:grid;gap:2px}
+.tf-workspace-dropdown a{display:block;padding:9px 10px;border-radius:6px;color:#d9e8f1!important;font-size:11px!important;font-weight:750;text-decoration:none;white-space:normal}
+.tf-workspace-dropdown a strong{display:block;color:#f2fbff;font-size:11px;letter-spacing:.035em}
+.tf-workspace-dropdown a span{display:block;margin-top:3px;color:#a9c0ce;font-size:10px;line-height:1.4;font-weight:500}
+.tf-workspace-dropdown a:hover,.tf-workspace-dropdown a:focus{background:#12384a;color:#67e3de!important}
+@media(max-width:760px){
+ .navlinks .tf-workspace-menu{display:block;width:100%}
+ .navlinks .tf-workspace-menu>summary{display:flex;width:100%;justify-content:space-between;padding:10px 8px;border-radius:4px;font-size:13px}
+ .tf-workspace-dropdown{position:static;min-width:0;max-width:none;margin:4px 0 7px 10px;padding:5px;border-radius:7px;box-shadow:none;background:#0b1c2b}
+ .tf-workspace-dropdown a{padding:9px 10px;font-size:12px!important}
+ .tf-workspace-dropdown a span{font-size:11px}
+}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
@@ -2273,7 +2293,7 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
 <a href="#top">INICIO</a>
 <a href="#main-picks">ACCIONES</a>
 <a href="#penny-picks">PENNY</a>
-<a href="#crypto-picks">CRIPTO</a>
+<a href="#crypto-picks">CRIPTO</a><details class="tf-workspace-menu"><summary>ESPACIO DE MERCADO INTERACTIVO</summary><div class="tf-workspace-dropdown" aria-label="Herramientas del espacio de mercado interactivo"><a href="#market-terminal" data-sp-tool-jump="0"><strong>LISTA DE SEGUIMIENTO</strong><span>Guarda y sigue símbolos del mercado.</span></a><a href="#market-terminal" data-sp-tool-jump="1"><strong>FILTRO DE ACCIONES</strong><span>Explora acciones con el resumen diario y el filtro completo.</span></a><a href="#market-terminal" data-sp-tool-jump="2"><strong>ANÁLISIS TÉCNICO</strong><span>Gráficos interactivos e indicadores técnicos.</span></a><a href="#market-terminal" data-sp-tool-jump="3"><strong>INVESTIGACIÓN DE EMPRESAS</strong><span>Perfiles de empresas y datos financieros fundamentales.</span></a><a href="#market-terminal" data-sp-tool-jump="4"><strong>CARTERA DE PRÁCTICA</strong><span>Organiza una cartera de práctica y sigue tus posiciones.</span></a><a href="#market-terminal" data-sp-tool-jump="5"><strong>EXPLORADOR DE ETF</strong><span>Explora ETF de EE. UU. con un mapa de calor interactivo.</span></a><a href="#market-terminal" data-sp-tool-jump="6"><strong>CALCULADORAS</strong><span>Calcula el crecimiento compuesto y el rendimiento por dividendos.</span></a></div></details>
 <a href="#broker-directory">CORREDORES</a>
 <a href="../research.html">INVESTIGACIÓN</a>
 <details class="tf-growth-menu"><summary>SECTORES EN CRECIMIENTO</summary><div class="tf-growth-dropdown" aria-label="SECTORES EN CRECIMIENTO sections"><a href="/growth-sectors/#ai-chips">IA Y SEMICONDUCTORES</a><a href="/growth-sectors/#data-centres">CENTROS DE DATOS</a><a href="/growth-sectors/#energy">ENERGÍA Y REDES</a><a href="/growth-sectors/#cooling">SISTEMAS DE REFRIGERACIÓN</a><a href="/growth-sectors/#networking">REDES</a><a href="/growth-sectors/#robotics">ROBÓTICA</a><a href="/growth-sectors/#biotechnology">BIOTECNOLOGÍA</a><a href="/growth-sectors/#ai-platforms">PLATAFORMAS DE IA</a></div></details>
@@ -4348,6 +4368,16 @@ section:empty, article:empty, aside:empty { display:none!important; }
 #market-terminal .sp-terminal-data-status .sp-terminal-data-card p { color:#E2EAF4 !important; }
 #market-terminal .sp-terminal-data-status .sp-terminal-data-card small { color:#F5D36B !important; }
 </style>
+<script id="tf-workspace-menu-actions">
+document.addEventListener("click",function(event){
+ const link=event.target.closest(".tf-workspace-dropdown a[data-sp-tool-jump]");
+ if(!link)return;
+ const tab=document.querySelector('.sp-terminal-tool-tabs [data-sp-tool="'+link.dataset.spToolJump+'"]');
+ if(tab)tab.click();
+ const menu=link.closest(".tf-workspace-menu");
+ if(menu)menu.removeAttribute("open");
+});
+</script>
 </body>
 </html>
 )?'TSX':'NASDAQ');
