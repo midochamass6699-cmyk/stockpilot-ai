@@ -56,19 +56,21 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
           const growth = document.querySelector('#sp-terminal-calc-growth-result')?.textContent || '';
           const yieldValue = document.querySelector('#sp-terminal-calc-yield-result')?.textContent || '';
           return growth.trim() !== '' && growth.trim() !== '—' && yieldValue === '3.00%';
-        }, { timeout: 10000 });
+        }, null, { timeout: 10000 });
         await page.locator('#market-terminal [data-sp-tool="0"]').click();
         await page.locator('#sp-terminal-watch-input').fill('Apple');
         await page.locator('#sp-terminal-watch-add').click();
         await page.locator('#sp-terminal-watch-list').getByText('AAPL', { exact: true }).waitFor({ timeout: 10000 });
 
         await page.locator('#market-terminal [data-sp-tool="1"]').click();
+        await page.locator('#sp-terminal-live-screener iframe').first().waitFor({ state: 'attached', timeout: 30000 });
         await page.locator('#sp-terminal-screen-search').fill('');
         await page.locator('#sp-terminal-screen-results .sp-terminal-tool-card').first().waitFor({ state: 'visible', timeout: 15000 });
         await page.locator('#market-terminal [data-sp-tool="2"]').click();
         await page.locator('#sp-terminal-ta-widget iframe').first().waitFor({ state: 'attached', timeout: 30000 });
 
         await page.locator('#market-terminal [data-sp-tool="3"]').click();
+        await page.locator('#sp-terminal-company-research iframe').first().waitFor({ state: 'attached', timeout: 30000 });
         await page.waitForFunction((requireLiveQuote) => {
           const text = document.querySelector('#sp-terminal-company-facts')?.textContent || '';
           return requireLiveQuote ? text.includes('LATEST PRICE') : (text.includes('LATEST PRICE') || text.includes('Latest quote unavailable'));
