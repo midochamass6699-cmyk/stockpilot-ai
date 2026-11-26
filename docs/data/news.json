@@ -1,9 +1,10 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-26T03:25:42.097205+00:00",
+  "fetched_at": "2026-11-26T04:34:42.944542+00:00",
   "updated_sections": [
-    "penny"
+    "penny",
+    "crypto"
   ],
   "sections": {
     "markets": [
@@ -94,10 +95,52 @@
     ],
     "penny": [
       {
+        "title": "Dow Erases 1 , 100 - Point Plunge as AI Selloff Rattles Wall Street",
+        "url": "https://www.hngn.com/articles/273967/20261125/dow-erases-1100-point-plunge-ai-selloff-rattles-wall-street.htm",
+        "source": "hngn.com",
+        "published": "20261126T031500Z",
+        "language": "English"
+      },
+      {
+        "title": "What happens when a good active ETF strategy gets too big ?",
+        "url": "https://portfolio-adviser.com/what-happens-when-a-good-active-etf-strategy-gets-too-big/",
+        "source": "portfolio-adviser.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "Apollo Micro Systems joins MSCI India Small Cap Index on 30 November : index - fund buying expected at Monday close",
+        "url": "http://www.sanantoniopost.com/news/279453834/apollo-micro-systems-joins-msci-india-small-cap-index-on-30-november-index-fund-buying-expected-at-monday-close",
+        "source": "sanantoniopost.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "How understanding different mutual fund categories can help build a balanced portfolio",
+        "url": "http://www.sanantoniopost.com/news/279453760/how-understanding-different-mutual-fund-categories-can-help-build-a-balanced-portfolio",
+        "source": "sanantoniopost.com",
+        "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
         "title": "Sensex surges over 1 , 500 points , Nifty settles above 25 , 800 amid foreign inflows , falling oil prices",
         "url": "http://www.sanantoniopost.com/news/279453773/sensex-surges-over-1500-points-nifty-settles-above-25800-amid-foreign-inflows-falling-oil-prices",
         "source": "sanantoniopost.com",
         "published": "20261125T141500Z",
+        "language": "English"
+      },
+      {
+        "title": "Multibagger Alert ! Up 102 % in 1 year , more rally seen in this small - cap power stock - here why | Check target , upside",
+        "url": "https://www.livemint.com/market/stock-market-news/multibagger-alert-up-102-in-1-year-more-rally-seen-in-this-small-cap-power-stock-heres-why-check-target-upside-11795594809008.html",
+        "source": "livemint.com",
+        "published": "20261125T103000Z",
+        "language": "English"
+      },
+      {
+        "title": "Asian stocks tumble as AI rebound stumbles , US tariff threats loom",
+        "url": "https://www.business-standard.com/markets/news/asian-stocks-tumble-as-ai-rebound-stumbles-us-tariff-threats-loom-126112500066_1.html",
+        "source": "business-standard.com",
+        "published": "20261125T054500Z",
         "language": "English"
       },
       {
@@ -110,87 +153,87 @@
     ],
     "crypto": [
       {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | St George & Sutherland Shire Leader",
-        "url": "https://www.theleader.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "theleader.com.au",
-        "published": "20261126T014500Z",
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Tenterfield Star",
+        "url": "https://www.tenterfieldstar.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "tenterfieldstar.com.au",
+        "published": "20261126T033000Z",
         "language": "English"
       },
       {
-        "title": "Thailand Family Office Market Poised for Transformation Amid Wealth Transfer Boom and SEC Rule Clarifications – Thailand Business News",
-        "url": "https://www.thailand-business-news.com/finance/341647-thailands-family-office-market-poised-for-transformation-amid-wealth-transfer-boom-and-sec-rule-clarifications",
-        "source": "thailand-business-news.com",
-        "published": "20261126T013000Z",
+        "title": "Why CleanSpark Stock Was a Winner on Wednesday",
+        "url": "https://www.fool.com/investing/2026/11/25/why-cleanspark-stock-was-a-winner-on-wednesday/",
+        "source": "fool.com",
+        "published": "20261126T033000Z",
         "language": "English"
       },
       {
-        "title": "Thanksgiving Turkey Pardoned After Making $100 Mil Bribe to Donald Trump The Shovel",
-        "url": "https://theshovel.com.au/2026/11/26/thanksgiving-turkey-pardoned-after-making-100-mil-bribe-to-donald-trump/",
-        "source": "theshovel.com.au",
-        "published": "20261126T013000Z",
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Braidwood Times",
+        "url": "https://www.braidwoodtimes.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "braidwoodtimes.com.au",
+        "published": "20261126T033000Z",
         "language": "English"
       },
       {
-        "title": "Bitcoin News : ETF Outflows Slow , but $39K Crash Risk Remains",
-        "url": "https://www.coinspeaker.com/bitcoin-price-could-crash-to-39k-despite-slowing-etf-outflows-is-worst-yet-to-come/",
-        "source": "coinspeaker.com",
-        "published": "20261126T011500Z",
+        "title": "Firm Calls for Stronger Financial Connectivity to Unlock Cross - border Payments – THISDAYLIVE",
+        "url": "https://www.thisdaylive.com/2026/11/26/firm-calls-for-stronger-financial-connectivity-to-unlock-cross-border-payments/",
+        "source": "thisdaylive.com",
+        "published": "20261126T033000Z",
         "language": "English"
       },
       {
-        "title": "She never been to Dubai . Now she free of the debt it left behind .",
-        "url": "https://www.atlantanewsfirst.com/2026/11/25/shes-never-been-dubai-now-shes-free-debt-it-left-behind/",
-        "source": "atlantanewsfirst.com",
-        "published": "20261126T011500Z",
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Blayney Chronicle",
+        "url": "https://www.blayneychronicle.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "blayneychronicle.com.au",
+        "published": "20261126T033000Z",
         "language": "English"
       },
       {
-        "title": "Outrage after top Senate Dem signals support for Fetterman reelection :  Out of touch",
-        "url": "https://www.rawstory.com/fetterman-2678532348/",
-        "source": "rawstory.com",
-        "published": "20261126T011500Z",
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Redland City Bulletin",
+        "url": "https://www.redlandcitybulletin.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "redlandcitybulletin.com.au",
+        "published": "20261126T033000Z",
         "language": "English"
       },
       {
-        "title": "Black Friday meets AI : Big changes for America holiday shopping season | Business",
-        "url": "http://www.dailyrecordnews.com/business/black-friday-meets-ai-big-changes-for-america-s-holiday-shopping-season/article_94f8a115-e990-46ef-9e30-7476224706da.html",
-        "source": "dailyrecordnews.com",
-        "published": "20261126T011500Z",
+        "title": "Alabama U . S . Attorney announces contribution to government crackdown on scams",
+        "url": "https://www.trussvilletribune.com/2026/11/25/alabama-u-s-attorney-announces-contribution-to-government-crackdown-on-scams/",
+        "source": "trussvilletribune.com",
+        "published": "20261126T033000Z",
         "language": "English"
       },
       {
-        "title": "Purpose Investments Announces Final November 2026 Distribution Rates for Its Cash Funds and Corrected Record and Ex - Distribution Dates for Select U . S . Dollar ETF Units",
-        "url": "https://www.thewhig.com/press-releases/globe-newswire/purpose-investments-announces-final-november-2026-distribution-rates-for-its-cash-funds-and-corrected-record-and-ex-distribution-dates-for-select-u-s-dollar-etf-units/",
-        "source": "thewhig.com",
-        "published": "20261126T004500Z",
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Muswellbrook Chronicle",
+        "url": "https://www.muswellbrookchronicle.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "muswellbrookchronicle.com.au",
+        "published": "20261126T031500Z",
         "language": "English"
       },
       {
-        "title": "Tips for avoiding financial scams",
-        "url": "https://www.davisenterprise.com/news/tips-for-avoiding-financial-scams/article_fcf226ab-0042-4b0b-a27c-3d44612d925b.html",
-        "source": "davisenterprise.com",
-        "published": "20261126T004500Z",
+        "title": "Dow Erases 1 , 100 - Point Plunge as AI Selloff Rattles Wall Street",
+        "url": "https://www.hngn.com/articles/273967/20261125/dow-erases-1100-point-plunge-ai-selloff-rattles-wall-street.htm",
+        "source": "hngn.com",
+        "published": "20261126T031500Z",
         "language": "English"
       },
       {
-        "title": "Banking in 2027 : AI rewrites the terms . Banks still carry the risk .",
-        "url": "https://www.webwire.com/ViewPressRel.asp?aId=364670",
-        "source": "webwire.com",
-        "published": "20261126T004500Z",
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Katherine Times",
+        "url": "https://www.katherinetimes.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "katherinetimes.com.au",
+        "published": "20261126T031500Z",
         "language": "English"
       },
       {
-        "title": "Stablecoin Giant Tether Reportedly Sought a 20 % Cut to Return Stolen Crypto",
-        "url": "https://www.aol.com/articles/stablecoin-giant-tether-reportedly-sought-225526000.html",
-        "source": "aol.com",
-        "published": "20261126T001500Z",
+        "title": "Hartnett does 2027",
+        "url": "https://www.macrobusiness.com.au/2026/11/hartnett-does-2027/",
+        "source": "macrobusiness.com.au",
+        "published": "20261126T031500Z",
         "language": "English"
       },
       {
-        "title": "5 Things Investors Need to Know About Wednesday Markets",
-        "url": "https://www.aol.com/articles/5-things-investors-know-wednesday-133820000.html",
-        "source": "aol.com",
-        "published": "20261125T141500Z",
+        "title": "Giancarlo Devasini and the  shadow of the Magician : from Juventus to Chora and Will , this is how the king of cryptocurrencies buys influence in Italy",
+        "url": "https://www.thevermilion.com/giancarlo-devasini-and-the-shadow-of-the-magician-from-juventus-to-chora-and-will-this-is-how-the-king-of-cryptocurrencies-buys-influence-in-italy/article_23252/",
+        "source": "thevermilion.com",
+        "published": "20261126T030000Z",
         "language": "English"
       }
     ]
