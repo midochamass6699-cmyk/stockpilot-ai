@@ -4344,7 +4344,7 @@ l-tool-muted">These are research and learning tools, not investment advice. Scre
  function calculate(){
   const initial=Number($('sp-terminal-calc-initial')?.value),monthly=Number($('sp-terminal-calc-monthly')?.value),annual=Number($('sp-terminal-calc-rate')?.value),years=Number($('sp-terminal-calc-years')?.value);
   const out=$('sp-terminal-calc-growth-result');
-  if(out){if([initial,monthly,annual,years].every(Number.isFinite)&&initial>=0&&monthly>=0&&years>0&&years<=80&&annual>-120){const r=Math.pow(1+annual/100,1/12)-1,n=Math.round(years*12);const factor=r===0?n:(Math.pow(1+r,n)-1)/r;const value=initial*Math.pow(1+r,n)+monthly*factor;out.textContent=new Intl.NumberFormat(document.documentElement.lang||'en-US',{style:'currency',currency:locale==='fr'?'CAD':'USD',maximumFractionDigits:2}).format(value);}else out.textContent='—';}
+  if(out){if([initial,monthly,annual,years].every(Number.isFinite)&&initial>=0&&monthly>=0&&years>0&&years<=80&&annual>-120){const r=Math.pow(1+annual/100,1/12)-1,n=Math.round(years*12);const factor=r===0?n:(Math.pow(1+r,n)-1)/r;const value=initial*Math.pow(1+r,n)+monthly*factor;out.textContent=new Intl.NumberFormat(document.documentElement.lang||'en-US',{style:'currency',currency:document.documentElement.lang==='en-CA'||locale==='fr'?'CAD':'USD',maximumFractionDigits:2}).format(value);}else out.textContent='—';}
   const price=Number($('sp-terminal-calc-price')?.value),dividend=Number($('sp-terminal-calc-dividend')?.value),yieldOut=$('sp-terminal-calc-yield-result');
   if(yieldOut)yieldOut.textContent=Number.isFinite(price)&&Number.isFinite(dividend)&&price>0&&dividend>=0?(dividend/price*100).toFixed(2)+'%':'—';
  }
