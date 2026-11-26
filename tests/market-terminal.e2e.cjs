@@ -39,8 +39,8 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
         await page.locator('#sp-terminal-chart iframe').first().waitFor({ state: 'attached', timeout: 30000 });
 
         const tabs = page.locator('#market-terminal [data-sp-tool]');
-        if (await tabs.count() !== 5) throw new Error('Expected five terminal tabs; found ' + await tabs.count());
-        for (let i = 0; i < 5; i++) {
+        if (await tabs.count() !== 7) throw new Error('Expected seven terminal tabs; found ' + await tabs.count());
+        for (let i = 0; i < 7; i++) {
           await tabs.nth(i).click();
           const panel = page.locator('#sp-terminal-tool-panel-' + i);
           await panel.waitFor({ state: 'visible', timeout: 5000 });
@@ -49,6 +49,14 @@ const ROUTES = ['/us/', '/', '/fr/', '/es/', '/de/'];
           }
         }
 
+        await page.locator('#market-terminal [data-sp-tool="5"]').click();
+        await page.locator('#sp-terminal-tool-panel-5 tv-heatmap').waitFor({ state: 'attached', timeout: 10000 });
+        await page.locator('#market-terminal [data-sp-tool="6"]').click();
+        await page.waitForFunction(() => {
+          const growth = document.querySelector('#sp-terminal-calc-growth-result')?.textContent || '';
+          const yieldValue = document.querySelector('#sp-terminal-calc-yield-result')?.textContent || '';
+          return growth.trim() !== '' && growth.trim() !== '—' && yieldValue === '3.00%';
+        }, { timeout: 10000 });
         await page.locator('#market-terminal [data-sp-tool="0"]').click();
         await page.locator('#sp-terminal-watch-input').fill('Apple');
         await page.locator('#sp-terminal-watch-add').click();
