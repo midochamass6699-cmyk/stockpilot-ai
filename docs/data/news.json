@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-26T04:34:42.944542+00:00",
+  "fetched_at": "2026-11-26T05:48:47.124841+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -95,6 +95,20 @@
     ],
     "penny": [
       {
+        "title": "10 Most Oversold Semiconductor Stocks to Buy for 2027",
+        "url": "https://www.insidermonkey.com/news/10-most-oversold-semiconductor-stocks-to-buy-for-2027-1870302/",
+        "source": "insidermonkey.com",
+        "published": "20261126T051500Z",
+        "language": "English"
+      },
+      {
+        "title": "Billionaire Steve Cohen 10 Biggest Stock Bets for 2027",
+        "url": "https://www.insidermonkey.com/news/billionaire-steve-cohens-10-biggest-stock-bets-for-2027-1867809/",
+        "source": "insidermonkey.com",
+        "published": "20261126T051500Z",
+        "language": "English"
+      },
+      {
         "title": "Dow Erases 1 , 100 - Point Plunge as AI Selloff Rattles Wall Street",
         "url": "https://www.hngn.com/articles/273967/20261125/dow-erases-1100-point-plunge-ai-selloff-rattles-wall-street.htm",
         "source": "hngn.com",
@@ -135,23 +149,58 @@
         "source": "livemint.com",
         "published": "20261125T103000Z",
         "language": "English"
-      },
-      {
-        "title": "Asian stocks tumble as AI rebound stumbles , US tariff threats loom",
-        "url": "https://www.business-standard.com/markets/news/asian-stocks-tumble-as-ai-rebound-stumbles-us-tariff-threats-loom-126112500066_1.html",
-        "source": "business-standard.com",
-        "published": "20261125T054500Z",
-        "language": "English"
-      },
-      {
-        "title": "High MTF revenue exposure brokerages face earnings impact : Prakash Kacholia",
-        "url": "https://www.business-standard.com/markets/news/high-mtf-revenue-exposure-brokerages-face-earnings-impact-prakash-kacholia-126112500149_1.html",
-        "source": "business-standard.com",
-        "published": "20261125T054500Z",
-        "language": "English"
       }
     ],
     "crypto": [
+      {
+        "title": "Simmons & Simmons Takes Aim at AI Legal Accuracy Problem",
+        "url": "https://www.lawfuel.com/simmons-simmons-takes-aim-at-ais-legal-accuracy-problem/",
+        "source": "lawfuel.com",
+        "published": "20261126T051500Z",
+        "language": "English"
+      },
+      {
+        "title": "Baahubali ,  RRR  Tech Chief on Weaning India Off Overseas Facilities",
+        "url": "https://variety.com/2026/film/news/baahubali-rrr-tech-chief-weaning-india-off-overseas-facilities-1236958697/",
+        "source": "variety.com",
+        "published": "20261126T041500Z",
+        "language": "English"
+      },
+      {
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Merimbula News Weekly",
+        "url": "https://www.merimbulanewsweekly.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "merimbulanewsweekly.com.au",
+        "published": "20261126T041500Z",
+        "language": "English"
+      },
+      {
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Nyngan Observer",
+        "url": "https://www.nynganobserver.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "nynganobserver.com.au",
+        "published": "20261126T041500Z",
+        "language": "English"
+      },
+      {
+        "title": "Sri Lanka allows Indians to travel without ETA approval temporarily | What travellers should know",
+        "url": "https://www.livemint.com/news/india/sri-lanka-allows-indians-to-travel-without-eta-approval-temporarily-what-travellers-should-know-11795662187215.html",
+        "source": "livemint.com",
+        "published": "20261126T041500Z",
+        "language": "English"
+      },
+      {
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Southern Cross",
+        "url": "https://www.juneesoutherncross.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "juneesoutherncross.com.au",
+        "published": "20261126T041500Z",
+        "language": "English"
+      },
+      {
+        "title": "Former FTX COO Constance Wang Slams  Racist   The Altruist Portrayal",
+        "url": "https://variety.com/2026/tv/news/ftx-constance-wang-slams-altruists-portrayal-racist-netflix-1236958694/",
+        "source": "variety.com",
+        "published": "20261126T041500Z",
+        "language": "English"
+      },
       {
         "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Tenterfield Star",
         "url": "https://www.tenterfieldstar.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
@@ -185,55 +234,6 @@
         "url": "https://www.blayneychronicle.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
         "source": "blayneychronicle.com.au",
         "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Redland City Bulletin",
-        "url": "https://www.redlandcitybulletin.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "redlandcitybulletin.com.au",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Alabama U . S . Attorney announces contribution to government crackdown on scams",
-        "url": "https://www.trussvilletribune.com/2026/11/25/alabama-u-s-attorney-announces-contribution-to-government-crackdown-on-scams/",
-        "source": "trussvilletribune.com",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Muswellbrook Chronicle",
-        "url": "https://www.muswellbrookchronicle.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "muswellbrookchronicle.com.au",
-        "published": "20261126T031500Z",
-        "language": "English"
-      },
-      {
-        "title": "Dow Erases 1 , 100 - Point Plunge as AI Selloff Rattles Wall Street",
-        "url": "https://www.hngn.com/articles/273967/20261125/dow-erases-1100-point-plunge-ai-selloff-rattles-wall-street.htm",
-        "source": "hngn.com",
-        "published": "20261126T031500Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Katherine Times",
-        "url": "https://www.katherinetimes.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "katherinetimes.com.au",
-        "published": "20261126T031500Z",
-        "language": "English"
-      },
-      {
-        "title": "Hartnett does 2027",
-        "url": "https://www.macrobusiness.com.au/2026/11/hartnett-does-2027/",
-        "source": "macrobusiness.com.au",
-        "published": "20261126T031500Z",
-        "language": "English"
-      },
-      {
-        "title": "Giancarlo Devasini and the  shadow of the Magician : from Juventus to Chora and Will , this is how the king of cryptocurrencies buys influence in Italy",
-        "url": "https://www.thevermilion.com/giancarlo-devasini-and-the-shadow-of-the-magician-from-juventus-to-chora-and-will-this-is-how-the-king-of-cryptocurrencies-buys-influence-in-italy/article_23252/",
-        "source": "thevermilion.com",
-        "published": "20261126T030000Z",
         "language": "English"
       }
     ]
