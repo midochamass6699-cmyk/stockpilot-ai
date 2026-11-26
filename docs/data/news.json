@@ -1,8 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-26T19:32:44.436565+00:00",
+  "fetched_at": "2026-11-26T20:28:07.296167+00:00",
   "updated_sections": [
+    "penny",
     "crypto"
   ],
   "sections": {
@@ -124,6 +125,13 @@
     ],
     "crypto": [
       {
+        "title": "FG hails Davido , Asake , others over 2027 Grammy nominations",
+        "url": "https://www.vanguardngr.com/2026/11/fg-hails-davido-asake-others-over-2027-grammy-nominations/",
+        "source": "vanguardngr.com",
+        "published": "20261126T194500Z",
+        "language": "English"
+      },
+      {
         "title": "CityWatch LA - Exploring the Rise of Crypto Casinos Today",
         "url": "https://www.citywatchla.com/gaming/33847-exploring-the-thrills-and-risks-of-crypto-casinos-online",
         "source": "citywatchla.com",
@@ -197,13 +205,6 @@
         "title": "Baahubali ,  RRR  Tech Chief on Weaning India Off Overseas Facilities",
         "url": "https://variety.com/2026/film/news/baahubali-rrr-tech-chief-weaning-india-off-overseas-facilities-1236958697/",
         "source": "variety.com",
-        "published": "20261126T041500Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Merimbula News Weekly",
-        "url": "https://www.merimbulanewsweekly.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "merimbulanewsweekly.com.au",
         "published": "20261126T041500Z",
         "language": "English"
       }
