@@ -2509,6 +2509,23 @@ main li + li { margin-top: 0.35em; }
  .tf-growth-dropdown a{padding:9px 10px;font-size:12px!important}
 }
 </style>
+
+<style id="stockpilot-animated-header-photo">
+/* Subtle photographic header background; preserves the existing navigation layout. */
+.topbar{position:sticky;isolation:isolate;background-color:#07111f!important;}
+.topbar::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(105deg,rgba(3,9,18,.94) 0%,rgba(5,16,31,.82) 48%,rgba(4,12,25,.91) 100%),url("https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1600");
+  background-size:cover,115% auto;background-position:center,50% 46%;background-repeat:no-repeat;
+  animation:stockpilot-header-photo-drift 30s ease-in-out infinite alternate;
+}
+@keyframes stockpilot-header-photo-drift{
+  from{background-position:center,50% 42%;}
+  to{background-position:center,50% 58%;}
+}
+@media(max-width:760px){.topbar::before{background-size:cover,auto 180%;background-position:center,50% 48%;}}
+@media(prefers-reduced-motion:reduce){.topbar::before{animation:none;background-position:center,50% 50%;}}
+</style>
 </head>
 <body>
 <!-- NAVIGATION -->
