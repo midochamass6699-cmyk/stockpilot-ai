@@ -1923,6 +1923,9 @@ input, select, textarea, button {
     }
 }
 /* Rotating hot-stock messages are styled in the dedicated block below. */
+
+.broker-logo .broker-logo-fallback{display:grid;place-items:center;width:100%;height:100%;border-radius:6px;background:#f1f5f9;color:#172b46;font-size:12px;font-weight:900;line-height:1;padding:0}
+.broker-scroll-item .broker-logo-fallback{display:inline-grid;place-items:center;flex:0 0 24px;width:24px;height:24px;border-radius:6px;background:#f1f5f9;color:#172b46;font-size:9px;font-weight:900;line-height:1;padding:0}
 </style>
 <script defer="" src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"></script>
 <link crossorigin="anonymous" href="https://www.google.com" rel="preconnect"/>
@@ -2822,7 +2825,7 @@ main li + li { margin-top: 0.35em; }
 <div class="kitco-banner-stack">
 <div class="trading-session-card kitco-affiliate-banner">
 <a rel="sponsored" href="https://www.awin1.com/cread.php?s=3794996&v=84579&q=505707&r=3074803">
-    <img decoding="async" src="https://www.awin1.com/cshow.php?s=3794996&v=84579&q=505707&r=3074803" border="0" alt="Kitco — precious metals">
+    <img decoding="async" loading="lazy" fetchpriority="low" src="https://www.awin1.com/cshow.php?s=3794996&v=84579&q=505707&r=3074803" border="0" alt="Kitco — precious metals">
 </a>
 </div>
 <div class="kitco-trade-link" style="text-align:center;margin-top:6px;font-size:13px;font-weight:600;">
@@ -3756,32 +3759,32 @@ main li + li { margin-top: 0.35em; }
 </div>
 <div class="broker-grid">
 <article class="broker-card">
-<div class="broker-logo"><img alt="Questrade logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">Q</span></div>
 <div class="broker-card-copy"><h4>Questrade</h4><p>Werkzeuge für selbstständige Geldanlage und Handel; auch unter der Bezeichnung „Questrade Direct Investing“ gesucht.</p></div>
 <a href="https://www.questrade.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Interactive Brokers logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">IB</span></div>
 <div class="broker-card-copy"><h4>Interactive Brokers</h4><p>Plattform für Anlagen an verschiedenen Märkten und aktiven Handel.</p></div>
 <a href="https://www.interactivebrokers.ca/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Wealthsimple logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">W</span></div>
 <div class="broker-card-copy"><h4>Wealthsimple</h4><p>Selbstständiger Handel mit Aktien, ETFs und weiteren Anlageprodukten.</p></div>
 <a href="https://www.wealthsimple.com/en-ca" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Qtrade Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">QT</span></div>
 <div class="broker-card-copy"><h4>Qtrade Direct Investing</h4><p>Online-Anlagen und selbstverwaltete Wertpapierkonten.</p></div>
 <a href="https://www.qtrade.ca/en/investor.html" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Moomoo logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">M</span></div>
 <div class="broker-card-copy"><h4>Moomoo</h4><p>Handelsplattform und Werkzeuge zur Marktrecherche.</p></div>
 <a href="https://www.moomoo.com/ca" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Webull Kanada logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">W</span></div>
 <div class="broker-card-copy"><h4>Webull Kanada</h4><p>Selbstständiger Handel und Marktdaten-Werkzeuge.</p></div>
 <a href="https://www.webull.ca/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
@@ -3793,13 +3796,13 @@ main li + li { margin-top: 0.35em; }
 <span>Anlagedienstleistungen von Finanzinstituten</span>
 </div>
 <div class="broker-grid broker-grid-banks">
-<article class="broker-card"><div class="broker-logo"><img alt="TD Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>TD Direct Investing</h4><p>Selbstständige Geldanlage bei TD.</p></div><a href="https://www.td.com/ca/en/investing/direct-investing" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="RBC Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>RBC Direct Investing</h4><p>Online-Anlageangebote von RBC.</p></div><a href="https://www.rbcdirectinvesting.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="BMO InvestorLine logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>BMO InvestorLine</h4><p>Selbstständige Geldanlage bei BMO.</p></div><a href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="CIBC Investor's Edge logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>CIBC Investor's Edge</h4><p>Online-Brokerage von CIBC.</p></div><a href="https://www.investorsedge.cibc.com/en/home.html" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="Scotia iTRADE logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>Scotia iTRADE</h4><p>Selbstständige Geldanlage bei Scotiabank.</p></div><a href="https://www.scotiaitrade.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="National Bank Direct Brokerage logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/></div><div class="broker-card-copy"><h4>National Bank Direct Brokerage</h4><p>Online-Brokerage der National Bank.</p></div><a href="https://nbdb.ca/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="Disnat logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>Disnat</h4><p>Online-Brokerage von Desjardins.</p></div><a href="https://www.disnat.com/en" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">TD</span></div><div class="broker-card-copy"><h4>TD Direct Investing</h4><p>Selbstständige Geldanlage bei TD.</p></div><a href="https://www.td.com/ca/en/investing/direct-investing" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">RBC</span></div><div class="broker-card-copy"><h4>RBC Direct Investing</h4><p>Online-Anlageangebote von RBC.</p></div><a href="https://www.rbcdirectinvesting.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">BMO</span></div><div class="broker-card-copy"><h4>BMO InvestorLine</h4><p>Selbstständige Geldanlage bei BMO.</p></div><a href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">CIBC</span></div><div class="broker-card-copy"><h4>CIBC Investor's Edge</h4><p>Online-Brokerage von CIBC.</p></div><a href="https://www.investorsedge.cibc.com/en/home.html" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">S</span></div><div class="broker-card-copy"><h4>Scotia iTRADE</h4><p>Selbstständige Geldanlage bei Scotiabank.</p></div><a href="https://www.scotiaitrade.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">NB</span></div><div class="broker-card-copy"><h4>National Bank Direct Brokerage</h4><p>Online-Brokerage der National Bank.</p></div><a href="https://nbdb.ca/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">D</span></div><div class="broker-card-copy"><h4>Disnat</h4><p>Online-Brokerage von Desjardins.</p></div><a href="https://www.disnat.com/en" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
 </div>
 </div>
 <div class="broker-group broker-special-group">
@@ -3808,7 +3811,7 @@ main li + li { margin-top: 0.35em; }
 <span>Nicht gleichbedeutend mit dem direkten Kauf von Aktien</span>
 </div>
 <article class="broker-card broker-cfd-card">
-<div class="broker-logo"><img alt="CMC Markets logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">CMC</span></div>
 <div class="broker-card-copy"><h4>CMC Markets</h4><p>Online-Handel mit Devisen und Differenzkontrakten (CFDs). CFDs sind gehebelte Produkte und vermitteln kein Eigentum an den zugrunde liegenden Aktien.</p></div>
 <a href="https://www.cmcmarkets.com/en-ca" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
@@ -3839,7 +3842,7 @@ main li + li { margin-top: 0.35em; }
 <div class="market-grid">
 <article class="market-card">
 <a href="https://www.nyse.com/" rel="noopener noreferrer" target="_blank">
-<img alt="Facade of the New Yorker Börse on Wall Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"/>
+<img alt="Facade of the New Yorker Börse on Wall Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=640"/>
 <div class="market-card-body">
 <div class="market-region">Vereinigte Staaten</div>
 <h3>NYSE ↗</h3>
@@ -3850,7 +3853,7 @@ main li + li { margin-top: 0.35em; }
 </article>
 <article class="market-card">
 <a href="https://www.nasdaq.com/" rel="noopener noreferrer" target="_blank">
-<img alt="NASDAQ MarketSite studio in Times Square" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"/>
+<img alt="NASDAQ MarketSite studio in Times Square" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=640"/>
 <div class="market-card-body">
 <div class="market-region">Vereinigte Staaten</div>
 <h3>NASDAQ ↗</h3>
@@ -3861,7 +3864,7 @@ main li + li { margin-top: 0.35em; }
 </article>
 <article class="market-card">
 <a href="https://www.tsx.com/" rel="noopener noreferrer" target="_blank">
-<img alt="Historic Börse Toronto building on Bay Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"/>
+<img alt="Historic Börse Toronto building on Bay Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=640"/>
 <div class="market-card-body">
 <div class="market-region">Kanada</div>
 <h3>TSX ↗</h3>
@@ -3872,7 +3875,7 @@ main li + li { margin-top: 0.35em; }
 </article>
 <article class="market-card">
 <a href="https://www.tsx.com/en/venture" rel="noopener noreferrer" target="_blank">
-<img alt="Toronto financial district skyline" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"/>
+<img alt="Toronto financial district skyline" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=640"/>
 <div class="market-card-body">
 <div class="market-region">Kanada</div>
 <h3>TSX Venture ↗</h3>
@@ -4984,42 +4987,42 @@ setInterval(loadStocks,15 * 60 * 1000);
 <div class="free-side-track">
 <div class="free-side-message">
 <strong class="broker-scroll-heading">ONLINE BROKERS</strong>
-<a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
+<a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">Q</span><span>Questrade</span></a>
+<a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">IB</span><span>Interactive Brokers</span></a>
+<a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">W</span><span>Wealthsimple</span></a>
+<a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">QT</span><span>Qtrade</span></a>
+<a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">M</span><span>Moomoo</span></a>
+<a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">W</span><span>Webull</span></a>
 <strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
+<a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">TD</span><span>TD Direct Investing</span></a>
+<a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">RBC</span><span>RBC Direct Investing</span></a>
+<a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">BMO</span><span>BMO InvestorLine</span></a>
+<a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">CIBC</span><span>CIBC Investor's Edge</span></a>
+<a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">S</span><span>Scotia iTRADE</span></a>
+<a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">NB</span><span>National Bank</span></a>
+<a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">D</span><span>Disnat</span></a>
 <strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
+<a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">CMC</span><span>CMC Markets</span></a>
 </div>
 <!-- Duplicate for continuous scrolling -->
 <div aria-hidden="true" class="free-side-message">
 <strong class="broker-scroll-heading">ONLINE BROKERS</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">Q</span><span>Questrade</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">IB</span><span>Interactive Brokers</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">W</span><span>Wealthsimple</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">QT</span><span>Qtrade</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">M</span><span>Moomoo</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">W</span><span>Webull</span></a>
 <strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">TD</span><span>TD Direct Investing</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">RBC</span><span>RBC Direct Investing</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">BMO</span><span>BMO InvestorLine</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">CIBC</span><span>CIBC Investor's Edge</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">S</span><span>Scotia iTRADE</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">NB</span><span>National Bank</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">D</span><span>Disnat</span></a>
 <strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">CMC</span><span>CMC Markets</span></a>
 </div>
 </div>
 </aside>
@@ -6649,32 +6652,32 @@ section:empty, article:empty, aside:empty { display:none!important; }
 </div>
 <div class="broker-grid">
 <article class="broker-card">
-<div class="broker-logo"><img alt="Questrade logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">Q</span></div>
 <div class="broker-card-copy"><h4>Questrade</h4><p>Werkzeuge für selbstständige Geldanlage und Handel; auch unter der Bezeichnung „Questrade Direct Investing“ gesucht.</p></div>
 <a href="https://www.questrade.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Interactive Brokers logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">IB</span></div>
 <div class="broker-card-copy"><h4>Interactive Brokers</h4><p>Plattform für Anlagen an verschiedenen Märkten und aktiven Handel.</p></div>
 <a href="https://www.interactivebrokers.ca/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Wealthsimple logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">W</span></div>
 <div class="broker-card-copy"><h4>Wealthsimple</h4><p>Selbstständiger Handel mit Aktien, ETFs und weiteren Anlageprodukten.</p></div>
 <a href="https://www.wealthsimple.com/en-ca" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Qtrade Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">QT</span></div>
 <div class="broker-card-copy"><h4>Qtrade Direct Investing</h4><p>Online-Anlagen und selbstverwaltete Wertpapierkonten.</p></div>
 <a href="https://www.qtrade.ca/en/investor.html" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Moomoo logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">M</span></div>
 <div class="broker-card-copy"><h4>Moomoo</h4><p>Handelsplattform und Werkzeuge zur Marktrecherche.</p></div>
 <a href="https://www.moomoo.com/ca" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
 <article class="broker-card">
-<div class="broker-logo"><img alt="Webull Kanada logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">W</span></div>
 <div class="broker-card-copy"><h4>Webull Kanada</h4><p>Selbstständiger Handel und Marktdaten-Werkzeuge.</p></div>
 <a href="https://www.webull.ca/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
@@ -6686,13 +6689,13 @@ section:empty, article:empty, aside:empty { display:none!important; }
 <span>Anlagedienstleistungen von Finanzinstituten</span>
 </div>
 <div class="broker-grid broker-grid-banks">
-<article class="broker-card"><div class="broker-logo"><img alt="TD Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>TD Direct Investing</h4><p>Selbstständige Geldanlage bei TD.</p></div><a href="https://www.td.com/ca/en/investing/direct-investing" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="RBC Direct Investing logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>RBC Direct Investing</h4><p>Online-Anlageangebote von RBC.</p></div><a href="https://www.rbcdirectinvesting.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="BMO InvestorLine logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>BMO InvestorLine</h4><p>Selbstständige Geldanlage bei BMO.</p></div><a href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="CIBC Investor's Edge logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>CIBC Investor's Edge</h4><p>Online-Brokerage von CIBC.</p></div><a href="https://www.investorsedge.cibc.com/en/home.html" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="Scotia iTRADE logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>Scotia iTRADE</h4><p>Selbstständige Geldanlage bei Scotiabank.</p></div><a href="https://www.scotiaitrade.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="National Bank Direct Brokerage logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/></div><div class="broker-card-copy"><h4>National Bank Direct Brokerage</h4><p>Online-Brokerage der National Bank.</p></div><a href="https://nbdb.ca/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
-<article class="broker-card"><div class="broker-logo"><img alt="Disnat logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/></div><div class="broker-card-copy"><h4>Disnat</h4><p>Online-Brokerage von Desjardins.</p></div><a href="https://www.disnat.com/en" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">TD</span></div><div class="broker-card-copy"><h4>TD Direct Investing</h4><p>Selbstständige Geldanlage bei TD.</p></div><a href="https://www.td.com/ca/en/investing/direct-investing" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">RBC</span></div><div class="broker-card-copy"><h4>RBC Direct Investing</h4><p>Online-Anlageangebote von RBC.</p></div><a href="https://www.rbcdirectinvesting.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">BMO</span></div><div class="broker-card-copy"><h4>BMO InvestorLine</h4><p>Selbstständige Geldanlage bei BMO.</p></div><a href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">CIBC</span></div><div class="broker-card-copy"><h4>CIBC Investor's Edge</h4><p>Online-Brokerage von CIBC.</p></div><a href="https://www.investorsedge.cibc.com/en/home.html" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">S</span></div><div class="broker-card-copy"><h4>Scotia iTRADE</h4><p>Selbstständige Geldanlage bei Scotiabank.</p></div><a href="https://www.scotiaitrade.com/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">NB</span></div><div class="broker-card-copy"><h4>National Bank Direct Brokerage</h4><p>Online-Brokerage der National Bank.</p></div><a href="https://nbdb.ca/" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
+<article class="broker-card"><div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">D</span></div><div class="broker-card-copy"><h4>Disnat</h4><p>Online-Brokerage von Desjardins.</p></div><a href="https://www.disnat.com/en" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a></article>
 </div>
 </div>
 <div class="broker-group broker-special-group">
@@ -6701,7 +6704,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
 <span>Nicht gleichbedeutend mit dem direkten Kauf von Aktien</span>
 </div>
 <article class="broker-card broker-cfd-card">
-<div class="broker-logo"><img alt="CMC Markets logo" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/></div>
+<div class="broker-logo"><span class="broker-logo-fallback" aria-hidden="true">CMC</span></div>
 <div class="broker-card-copy"><h4>CMC Markets</h4><p>Online-Handel mit Devisen und Differenzkontrakten (CFDs). CFDs sind gehebelte Produkte und vermitteln kein Eigentum an den zugrunde liegenden Aktien.</p></div>
 <a href="https://www.cmcmarkets.com/en-ca" rel="noopener noreferrer" target="_blank">Offizielle Website besuchen <span aria-hidden="true">↗</span></a>
 </article>
@@ -6732,7 +6735,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
 <div class="market-grid">
 <article class="market-card">
 <a href="https://www.nyse.com/" rel="noopener noreferrer" target="_blank">
-<img alt="Facade of the New Yorker Börse on Wall Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=1000"/>
+<img alt="Facade of the New Yorker Börse on Wall Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=640"/>
 <div class="market-card-body">
 <div class="market-region">Vereinigte Staaten</div>
 <h3>NYSE ↗</h3>
@@ -6743,7 +6746,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
 </article>
 <article class="market-card">
 <a href="https://www.nasdaq.com/" rel="noopener noreferrer" target="_blank">
-<img alt="NASDAQ MarketSite studio in Times Square" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=1000"/>
+<img alt="NASDAQ MarketSite studio in Times Square" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=640"/>
 <div class="market-card-body">
 <div class="market-region">Vereinigte Staaten</div>
 <h3>NASDAQ ↗</h3>
@@ -6754,7 +6757,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
 </article>
 <article class="market-card">
 <a href="https://www.tsx.com/" rel="noopener noreferrer" target="_blank">
-<img alt="Historic Börse Toronto building on Bay Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=1000"/>
+<img alt="Historic Börse Toronto building on Bay Street" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=640"/>
 <div class="market-card-body">
 <div class="market-region">Kanada</div>
 <h3>TSX ↗</h3>
@@ -6765,7 +6768,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
 </article>
 <article class="market-card">
 <a href="https://www.tsx.com/en/venture" rel="noopener noreferrer" target="_blank">
-<img alt="Toronto financial district skyline" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=1000"/>
+<img alt="Toronto financial district skyline" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=640"/>
 <div class="market-card-body">
 <div class="market-region">Kanada</div>
 <h3>TSX Venture ↗</h3>
@@ -7702,42 +7705,42 @@ setInterval(loadStocks,15 * 60 * 1000);
 <div class="free-side-track">
 <div class="free-side-message">
 <strong class="broker-scroll-heading">ONLINE BROKERS</strong>
-<a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
+<a class="broker-scroll-item" href="https://www.questrade.com/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">Q</span><span>Questrade</span></a>
+<a class="broker-scroll-item" href="https://www.interactivebrokers.ca/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">IB</span><span>Interactive Brokers</span></a>
+<a class="broker-scroll-item" href="https://www.wealthsimple.com/en-ca" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">W</span><span>Wealthsimple</span></a>
+<a class="broker-scroll-item" href="https://www.qtrade.ca/en/investor.html" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">QT</span><span>Qtrade</span></a>
+<a class="broker-scroll-item" href="https://www.moomoo.com/ca" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">M</span><span>Moomoo</span></a>
+<a class="broker-scroll-item" href="https://www.webull.ca/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">W</span><span>Webull</span></a>
 <strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
+<a class="broker-scroll-item" href="https://www.td.com/ca/en/investing/direct-investing" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">TD</span><span>TD Direct Investing</span></a>
+<a class="broker-scroll-item" href="https://www.rbcdirectinvesting.com/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">RBC</span><span>RBC Direct Investing</span></a>
+<a class="broker-scroll-item" href="https://www.bmo.com/en-ca/main/personal/investments/direct-investing/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">BMO</span><span>BMO InvestorLine</span></a>
+<a class="broker-scroll-item" href="https://www.investorsedge.cibc.com/en/home.html" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">CIBC</span><span>CIBC Investor's Edge</span></a>
+<a class="broker-scroll-item" href="https://www.scotiaitrade.com/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">S</span><span>Scotia iTRADE</span></a>
+<a class="broker-scroll-item" href="https://nbdb.ca/" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">NB</span><span>National Bank</span></a>
+<a class="broker-scroll-item" href="https://www.disnat.com/en" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">D</span><span>Disnat</span></a>
 <strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
+<a class="broker-scroll-item" href="https://www.cmcmarkets.com/en-ca" target="_blank"><span class="broker-logo-fallback" aria-hidden="true">CMC</span><span>CMC Markets</span></a>
 </div>
 <!-- Duplicate for continuous scrolling -->
 <div aria-hidden="true" class="free-side-message">
 <strong class="broker-scroll-heading">ONLINE BROKERS</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=questrade.com&amp;sz=128"/><span>Questrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=interactivebrokers.ca&amp;sz=128"/><span>Interactive Brokers</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=wealthsimple.com&amp;sz=128"/><span>Wealthsimple</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=qtrade.ca&amp;sz=128"/><span>Qtrade</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=moomoo.com&amp;sz=128"/><span>Moomoo</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=webull.ca&amp;sz=128"/><span>Webull</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">Q</span><span>Questrade</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">IB</span><span>Interactive Brokers</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">W</span><span>Wealthsimple</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">QT</span><span>Qtrade</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">M</span><span>Moomoo</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">W</span><span>Webull</span></a>
 <strong class="broker-scroll-heading">BANK BROKERAGES</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=td.com&amp;sz=128"/><span>TD Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=rbcdirectinvesting.com&amp;sz=128"/><span>RBC Direct Investing</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=bmo.com&amp;sz=128"/><span>BMO InvestorLine</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=investorsedge.cibc.com&amp;sz=128"/><span>CIBC Investor's Edge</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=scotiaitrade.com&amp;sz=128"/><span>Scotia iTRADE</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=nbdb.ca&amp;sz=128"/><span>National Bank</span></a>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=disnat.com&amp;sz=128"/><span>Disnat</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">TD</span><span>TD Direct Investing</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">RBC</span><span>RBC Direct Investing</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">BMO</span><span>BMO InvestorLine</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">CIBC</span><span>CIBC Investor's Edge</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">S</span><span>Scotia iTRADE</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">NB</span><span>National Bank</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">D</span><span>Disnat</span></a>
 <strong class="broker-scroll-heading">FOREX &amp; CFD</strong>
-<a class="broker-scroll-item"><img alt="" decoding="async" loading="lazy" src="https://www.google.com/s2/favicons?domain=cmcmarkets.com&amp;sz=128"/><span>CMC Markets</span></a>
+<a class="broker-scroll-item"><span class="broker-logo-fallback" aria-hidden="true">CMC</span><span>CMC Markets</span></a>
 </div>
 </div>
 </aside>
