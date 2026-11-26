@@ -1,9 +1,8 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-26T12:59:42.875851+00:00",
+  "fetched_at": "2026-11-26T14:11:22.128321+00:00",
   "updated_sections": [
-    "penny",
     "crypto"
   ],
   "sections": {
@@ -146,6 +145,55 @@
     ],
     "crypto": [
       {
+        "title": "CityWatch LA - Exploring the Rise of Crypto Casinos Today",
+        "url": "https://www.citywatchla.com/gaming/33847-exploring-the-thrills-and-risks-of-crypto-casinos-online",
+        "source": "citywatchla.com",
+        "published": "20261126T124500Z",
+        "language": "English"
+      },
+      {
+        "title": "Romance scams are evolving : A . I . is helping criminals steal hearts and money",
+        "url": "https://thelinkpaper.ca/romance-scams-are-evolving-a-i-is-helping-criminals-steal-hearts-and-money/",
+        "source": "thelinkpaper.ca",
+        "published": "20261126T124500Z",
+        "language": "English"
+      },
+      {
+        "title": "Top 10 names | EdelGive Hurun India Philanthropy List 2026 : From Shiv Nadar & family , Gautam Adani to Bajaj",
+        "url": "https://www.livemint.com/companies/people/top-10-names-edelgive-hurun-india-philanthropy-list-2026-from-shiv-nadar-family-gautam-adani-to-bajaj-11795685535304.html",
+        "source": "livemint.com",
+        "published": "20261126T124500Z",
+        "language": "English"
+      },
+      {
+        "title": "VARIANSE Launches Free Online Academy for Traders and Investors",
+        "url": "https://www.finanznachrichten.de/nachrichten-2026-11/70237030-varianse-launches-free-online-academy-for-traders-and-investors-008.htm",
+        "source": "finanznachrichten.de",
+        "published": "20261126T124500Z",
+        "language": "English"
+      },
+      {
+        "title": "Can Shiba Inu Reach $1 in 2027 ? The Answer Might Shock You .",
+        "url": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/",
+        "source": "fool.com",
+        "published": "20261126T124500Z",
+        "language": "English"
+      },
+      {
+        "title": "Questions linger over proposed data centre in Sherbrooke , Que ., after info session",
+        "url": "https://www.cbc.ca/news/canada/montreal/info-session-data-centre-ai-9.7436476",
+        "source": "cbc.ca",
+        "published": "20261126T124500Z",
+        "language": "English"
+      },
+      {
+        "title": "LatAm Expat & Nomad Daily Guide for Thursday , November 26 , 2026",
+        "url": "https://www.riotimesonline.com/latam-expat-nomad-daily-guide-for-thursday-november-26-2026/",
+        "source": "riotimesonline.com",
+        "published": "20261126T061500Z",
+        "language": "English"
+      },
+      {
         "title": "Where is Sam Trabucco Now After Sam Bankman - Fried Fraud Scandal ?",
         "url": "https://www.oxygen.com/crime-news/where-is-sam-trabucco-now-after-sam-bankman-frieds-fraud-scandal",
         "source": "oxygen.com",
@@ -160,73 +208,24 @@
         "language": "English"
       },
       {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Merimbula News Weekly",
-        "url": "https://www.merimbulanewsweekly.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "merimbulanewsweekly.com.au",
-        "published": "20261126T041500Z",
+        "title": "Simmons & Simmons Takes Aim at AI Legal Accuracy Problem",
+        "url": "https://www.lawfuel.com/simmons-simmons-takes-aim-at-ais-legal-accuracy-problem/",
+        "source": "lawfuel.com",
+        "published": "20261126T051500Z",
         "language": "English"
       },
       {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Nyngan Observer",
-        "url": "https://www.nynganobserver.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "nynganobserver.com.au",
-        "published": "20261126T041500Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Southern Cross",
-        "url": "https://www.juneesoutherncross.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "juneesoutherncross.com.au",
-        "published": "20261126T041500Z",
-        "language": "English"
-      },
-      {
-        "title": "Former FTX COO Constance Wang Slams  Racist   The Altruist Portrayal",
-        "url": "https://variety.com/2026/tv/news/ftx-constance-wang-slams-altruists-portrayal-racist-netflix-1236958694/",
+        "title": "Baahubali ,  RRR  Tech Chief on Weaning India Off Overseas Facilities",
+        "url": "https://variety.com/2026/film/news/baahubali-rrr-tech-chief-weaning-india-off-overseas-facilities-1236958697/",
         "source": "variety.com",
         "published": "20261126T041500Z",
         "language": "English"
       },
       {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Tenterfield Star",
-        "url": "https://www.tenterfieldstar.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "tenterfieldstar.com.au",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Why CleanSpark Stock Was a Winner on Wednesday",
-        "url": "https://www.fool.com/investing/2026/11/25/why-cleanspark-stock-was-a-winner-on-wednesday/",
-        "source": "fool.com",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Braidwood Times",
-        "url": "https://www.braidwoodtimes.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "braidwoodtimes.com.au",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Firm Calls for Stronger Financial Connectivity to Unlock Cross - border Payments – THISDAYLIVE",
-        "url": "https://www.thisdaylive.com/2026/11/26/firm-calls-for-stronger-financial-connectivity-to-unlock-cross-border-payments/",
-        "source": "thisdaylive.com",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Blayney Chronicle",
-        "url": "https://www.blayneychronicle.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "blayneychronicle.com.au",
-        "published": "20261126T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Redland City Bulletin",
-        "url": "https://www.redlandcitybulletin.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
-        "source": "redlandcitybulletin.com.au",
-        "published": "20261126T033000Z",
+        "title": "Festive rom - coms and revised fairytales and dodgy biopics , oh my | Merimbula News Weekly",
+        "url": "https://www.merimbulanewsweekly.com.au/story/9397465/festive-rom-coms-and-revised-fairytales-and-dodgy-biopics-oh-my/",
+        "source": "merimbulanewsweekly.com.au",
+        "published": "20261126T041500Z",
         "language": "English"
       }
     ]
