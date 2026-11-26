@@ -3165,13 +3165,13 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
     <h3>Your saved symbols</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-watch-input" type="text" placeholder="Ticker (e.g. AAPL)" aria-label="Ticker (e.g. AAPL)"><button class="primary" id="sp-terminal-watch-add" type="button">ADD</button></div><div id="sp-terminal-watch-list" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">No saved symbols yet. Add a ticker above.</p></div>
    </section>
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-1" role="tabpanel">
-    <h3>Momentum screen · daily snapshot</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-screen-search" type="search" placeholder="Search symbols or companies" aria-label="Search symbols or companies"><select id="sp-terminal-screen-kind" aria-label="Momentum screen · daily snapshot"><option value="all">All</option><option value="main">Main</option><option value="penny">Under $10</option></select></div><div id="sp-terminal-screen-results" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">Loading market snapshot…</p></div>
+    <h3>Momentum screen · daily snapshot</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-screen-search" type="search" placeholder="Search symbols or companies" aria-label="Search symbols or companies"><select id="sp-terminal-screen-kind" aria-label="Momentum screen · daily snapshot"><option value="all">All</option><option value="main">Main</option><option value="penny">Under $10</option></select></div><div id="sp-terminal-screen-results" class="sp-terminal-tool-list"><p class="sp-terminal-tool-muted">Loading market snapshot…</p></div><div id="sp-terminal-live-screener" class="sp-terminal-live-widget"><p class="sp-terminal-tool-muted">Loading full-market stock screener…</p></div>
    </section>
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-2" role="tabpanel">
     <h3>TECHNICALS</h3><p>Technical analysis for the selected symbol. TradingView data may be delayed.</p><div id="sp-terminal-ta-widget" class="sp-terminal-ta"><p class="sp-terminal-tool-muted">Technical analysis for the selected symbol. TradingView data may be delayed.</p></div>
    </section>
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-3" role="tabpanel">
-    <h3>Company snapshot</h3><div id="sp-terminal-company-facts"><p>Choose a stock from the screener or load a symbol above.</p></div>
+    <h3>Company snapshot</h3><div id="sp-terminal-company-facts"><p>Choose a stock from the screener or load a symbol above.</p></div><div id="sp-terminal-company-research" class="sp-terminal-live-widget"><p class="sp-terminal-tool-muted">Loading company profile and financial data…</p></div>
    </section>
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-4" role="tabpanel">
     <h3>Paper portfolio · educational only</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-paper-symbol" type="text" placeholder="Ticker (e.g. AAPL)" aria-label="Ticker (e.g. AAPL)"><input id="sp-terminal-paper-units" type="number" min="0.0001" step="any" placeholder="Units" aria-label="Units"><input id="sp-terminal-paper-entry" type="number" min="0.0001" step="any" placeholder="Entry price" aria-label="Entry price"><button class="primary" id="sp-terminal-paper-add" type="button">ADD PRACTICE POSITION</button></div><div id="sp-terminal-paper-list"><p class="sp-terminal-tool-muted">No practice positions saved.</p></div>
@@ -3976,6 +3976,7 @@ l-tool-muted">These are research and learning tools, not investment advice. Scre
 })();
 </script>
 <style id="sp-terminal-extra-tools-style">
+#market-terminal .sp-terminal-live-widget{width:100%;min-width:0;margin:10px 0;display:grid;gap:10px}#market-terminal .sp-terminal-live-widget iframe{max-width:100%!important;border:0!important;border-radius:7px}#market-terminal #sp-terminal-live-screener{min-height:440px}#market-terminal #sp-terminal-company-research>div{min-height:250px;overflow:hidden;border:1px solid #33445d;border-radius:8px;background:#0b1220}
 #market-terminal .sp-terminal-etf-heatmap{height:410px;min-height:320px;width:100%;overflow:hidden;border:1px solid #33445d;border-radius:8px;background:#0b1220}
 #market-terminal .sp-terminal-etf-heatmap tv-heatmap{display:block;width:100%;height:100%}
 #market-terminal .sp-terminal-calculator-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
@@ -3994,7 +3995,11 @@ l-tool-muted">These are research and learning tools, not investment advice. Scre
  const lang=(document.documentElement.lang||'en').toLowerCase().slice(0,2);
  const locale={en:'en',fr:'fr',de:'de',es:'es'}[lang]||'en';
  const $=id=>document.getElementById(id);
- let etfLoaded=false;
+ let etfLoaded=false,screenerLoaded=false,companyWidgetSymbol='';
+ function mountTradingView(host,src,config,height){const box=document.createElement('div');box.className='tradingview-widget-container';box.style.cssText='width:100%;height:'+height+'px;min-height:'+height+'px';const inner=document.createElement('div');inner.className='tradingview-widget-container__widget';inner.style.cssText='width:100%;height:100%';box.appendChild(inner);const script=document.createElement('script');script.async=true;script.type='text/javascript';script.src=src;script.textContent=JSON.stringify(config);box.appendChild(script);host.appendChild(box);}
+ function loadScreener(){const host=$('sp-terminal-live-screener');if(!host||screenerLoaded)return;screenerLoaded=true;host.replaceChildren();mountTradingView(host,'https://s3.tradingview.com/external-embedding/embed-widget-screener.js',{width:'100%',height:440,defaultColumn:'overview',defaultScreen:'most_capitalized',showToolbar:true,locale,colorTheme:'dark',market:'america'},440);}
+ function loadCompanyWidgets(){const host=$('sp-terminal-company-research');if(!host)return;const raw=($('sp-terminal-symbol')?.value||'AAPL').trim().toUpperCase(),exchange=$('sp-terminal-market')?.value||'NASDAQ',sym=raw.includes(':')?raw:(exchange+':'+raw);if(companyWidgetSymbol===sym)return;companyWidgetSymbol=sym;host.replaceChildren();const profile=document.createElement('div');host.appendChild(profile);mountTradingView(profile,'https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js',{width:'100%',height:250,colorTheme:'dark',isTransparent:true,symbol:sym,locale},250);const financials=document.createElement('div');host.appendChild(financials);mountTradingView(financials,'https://s3.tradingview.com/external-embedding/embed-widget-financials.js',{width:'100%',height:360,colorTheme:'dark',isTransparent:true,displayMode:'adaptive',symbol:sym,locale},360);}
+
  function loadETF(){
   const host=$('sp-terminal-etf-heatmap');if(!host||etfLoaded)return;etfLoaded=true;host.replaceChildren();
   const widget=document.createElement('tv-heatmap');widget.setAttribute('heatmap-type','etf');widget.setAttribute('data-source','AllUSEtf');widget.setAttribute('grouping','asset_class');widget.setAttribute('block-size','volume');widget.setAttribute('block-color','change');widget.setAttribute('locale',locale);widget.setAttribute('theme','dark');widget.style.width='100%';widget.style.height='100%';host.appendChild(widget);
@@ -4008,7 +4013,7 @@ l-tool-muted">These are research and learning tools, not investment advice. Scre
   if(yieldOut)yieldOut.textContent=Number.isFinite(price)&&Number.isFinite(dividend)&&price>0&&dividend>=0?(dividend/price*100).toFixed(2)+'%':'—';
  }
  ['sp-terminal-calc-initial','sp-terminal-calc-monthly','sp-terminal-calc-rate','sp-terminal-calc-years','sp-terminal-calc-price','sp-terminal-calc-dividend'].forEach(id=>$(id)?.addEventListener('input',calculate));
- root.querySelectorAll('[data-sp-tool="5"]').forEach(b=>b.addEventListener('click',loadETF));
+ root.querySelectorAll('[data-sp-tool="1"]').forEach(b=>b.addEventListener('click',loadScreener));root.querySelectorAll('[data-sp-tool="3"]').forEach(b=>b.addEventListener('click',loadCompanyWidgets));root.querySelectorAll('[data-sp-tool="5"]').forEach(b=>b.addEventListener('click',loadETF));$('sp-terminal-symbol')?.addEventListener('change',()=>{companyWidgetSymbol='';if(root.querySelector('[data-sp-tool="3"][aria-selected="true"]'))loadCompanyWidgets();});$('sp-terminal-market')?.addEventListener('change',()=>{companyWidgetSymbol='';if(root.querySelector('[data-sp-tool="3"][aria-selected="true"]'))loadCompanyWidgets();});
  calculate();
 })();
 </script>
