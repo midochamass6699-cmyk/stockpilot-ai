@@ -3169,7 +3169,7 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
     <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-1" data-sp-tool="1"><span class="sp-terminal-tool-icon" aria-hidden="true">⌕</span><span>FILTRE</span></button>
     <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-2" data-sp-tool="2"><span class="sp-terminal-tool-icon" aria-hidden="true">⌁</span><span>INDICATEURS</span></button>
     <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-3" data-sp-tool="3"><span class="sp-terminal-tool-icon" aria-hidden="true">▣</span><span>ENTREPRISE</span></button>
-    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-4" data-sp-tool="4"><span class="sp-terminal-tool-icon" aria-hidden="true">◎</span><span>SIMULATION</span></button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-4" data-sp-tool="4"><span class="sp-terminal-tool-icon" aria-hidden="true">◎</span><span>SIMULATION</span></button><button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-5" data-sp-tool="5"><span class="sp-terminal-tool-icon" aria-hidden="true">▦</span><span>EXPLORATEUR FNB</span></button><button type="button" role="tab" aria-selected="false" aria-controls="sp-terminal-tool-panel-6" data-sp-tool="6"><span class="sp-terminal-tool-icon" aria-hidden="true">∑</span><span>CALCULATRICES</span></button>
    </div></div><p>Recherchez des actions américaines et canadiennes ou des cryptomonnaies, consultez les graphiques et comparez les symboles.</p></div>
  </div>
  <div class="sp-terminal-controls">
@@ -3205,6 +3205,27 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
    </section>
    <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-4" role="tabpanel">
     <h3>Portefeuille simulé · éducatif</h3><div class="sp-terminal-tool-row"><input id="sp-terminal-paper-symbol" type="text" placeholder="Symbole (ex. AAPL)" aria-label="Symbole (ex. AAPL)"><input id="sp-terminal-paper-units" type="number" min="0.0001" step="any" placeholder="Quantité" aria-label="Quantité"><input id="sp-terminal-paper-entry" type="number" min="0.0001" step="any" placeholder="Prix d’entrée" aria-label="Prix d’entrée"><button class="primary" id="sp-terminal-paper-add" type="button">AJOUTER À LA SIMULATION</button></div><div id="sp-terminal-paper-list"><p class="sp-terminal-tool-muted">Aucune position simulée enregistrée.</p></div>
+   </section>
+   <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-5" role="tabpanel">
+    <h3>Explorateur du marché des FNB</h3><p>Explorez les fonds négociés en bourse par catégorie d’actifs et activité. Données fournies par TradingView; la couverture et les délais peuvent varier.</p>
+    <div id="sp-terminal-etf-heatmap" class="sp-terminal-etf-heatmap"><p class="sp-terminal-tool-muted">Loading ETF market data…</p></div>
+    <p class="sp-terminal-tool-muted">TradingView provides this embedded market-data visualization. Some exchange data may be delayed or unavailable.</p>
+   </section>
+   <section class="sp-terminal-tool-panel" id="sp-terminal-tool-panel-6" role="tabpanel">
+    <h3>Calculatrices de marché</h3><div class="sp-terminal-calculator-grid">
+     <div class="sp-terminal-calculator"><h4>Calculatrice de croissance composée</h4>
+      <label>Montant initial<input id="sp-terminal-calc-initial" type="number" min="0" step="any" value="1000"></label>
+      <label>Contribution mensuelle<input id="sp-terminal-calc-monthly" type="number" min="0" step="any" value="100"></label>
+      <label>Rendement annuel (%)<input id="sp-terminal-calc-rate" type="number" step="any" value="5"></label>
+      <label>Nombre d’années<input id="sp-terminal-calc-years" type="number" min="1" max="80" step="1" value="10"></label>
+      <div class="sp-terminal-calc-result"><small>Valeur future estimée</small><strong id="sp-terminal-calc-growth-result">—</strong></div>
+     </div>
+     <div class="sp-terminal-calculator"><h4>Calculatrice de rendement du dividende</h4>
+      <label>Prix de l’action<input id="sp-terminal-calc-price" type="number" min="0" step="any" value="100"></label>
+      <label>Dividende annuel par action<input id="sp-terminal-calc-dividend" type="number" min="0" step="any" value="3"></label>
+      <div class="sp-terminal-calc-result"><small>Rendement indicatif du dividende</small><strong id="sp-terminal-calc-yield-result">—</strong></div>
+     </div>
+    </div><p class="sp-terminal-tool-muted">Calculs illustratifs seulement. Les hypothèses ne sont ni des prévisions ni des conseils financiers.</p>
    </section>
    <p class="sp-terminal-tool-muted">Outils de recherche et d’apprentissage, pas des conseils financiers. Les valeurs du filtre proviennent du dernier instantané quotidien disponible.</p>
   </div>
@@ -3514,6 +3535,29 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
  function syncPracticeDefaults(){const parts=currentSymbol().split(':'),exchange=parts[0]||'NASDAQ',ticker=parts.slice(1).join(':');const paperSymbol=$('sp-terminal-paper-symbol'),entry=$('sp-terminal-paper-entry');if(paperSymbol)paperSymbol.value=ticker;if(entry&&!entry.value&&ticker)fetchTerminalQuote(ticker,exchange).then(q=>{if(!entry.value)entry.value=String(q.close);}).catch(()=>{});}
  symbol?.addEventListener('change',()=>{activeTicker=symbol.value.trim().toUpperCase();activeExchange=market?.value||activeExchange;renderCompany();syncPracticeDefaults();const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}});market?.addEventListener('change',()=>{activeExchange=market.value;syncPracticeDefaults();const ta=$('sp-terminal-ta-widget');if(ta){ta.dataset.loaded='';ta.replaceChildren();}});
  fetchPicks;
+})();
+</script>
+<style id="sp-terminal-extra-tools-style">
+#market-terminal .sp-terminal-etf-heatmap{height:410px;min-height:320px;width:100%;overflow:hidden;border:1px solid #33445d;border-radius:8px;background:#0b1220}
+#market-terminal .sp-terminal-etf-heatmap tv-heatmap{display:block;width:100%;height:100%}
+#market-terminal .sp-terminal-calculator-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+#market-terminal .sp-terminal-calculator{min-width:0;padding:11px;background:#17263b;border:1px solid #34465e;border-radius:8px}
+#market-terminal .sp-terminal-calculator h4{margin:0 0 9px;color:#fff;font-size:12px}
+#market-terminal .sp-terminal-calculator label{display:flex;flex-direction:column;gap:4px;margin:7px 0;color:#cbd5e1;font-size:10px}
+#market-terminal .sp-terminal-calculator input{width:100%;padding:8px;background:#f8fafc;color:#152033;border:1px solid #52627a;border-radius:6px;font-size:12px}
+#market-terminal .sp-terminal-calc-result{margin-top:10px;padding:9px;background:#0e1b2d;border:1px solid #34465e;border-radius:7px}
+#market-terminal .sp-terminal-calc-result small{display:block;color:#aebbd0;font-size:9px}
+#market-terminal .sp-terminal-calc-result strong{display:block;color:#f2c94c;font-size:19px;margin-top:3px;overflow-wrap:anywhere}
+@media(max-width:520px){#market-terminal .sp-terminal-calculator-grid{grid-template-columns:1fr}#market-terminal .sp-terminal-etf-heatmap{height:360px}}
+</style>
+<script id="sp-terminal-extra-tools">
+(function(){
+ const root=document.getElementById('market-terminal');if(!root||root.dataset.extraToolsReady)return;root.dataset.extraToolsReady='1';
+ const lang=(document.documentElement.lang||'en').toLowerCase().slice(0,2),locale={en:'en',fr:'fr',de:'de',es:'es'}[lang]||'en';
+ const $=id=>document.getElementById(id);let etfLoaded=false;
+ function loadETF(){const host=$('sp-terminal-etf-heatmap');if(!host||etfLoaded)return;etfLoaded=true;host.replaceChildren();const widget=document.createElement('tv-heatmap');[['heatmap-type','etf'],['data-source','AllUSEtf'],['grouping','asset_class'],['block-size','volume'],['block-color','change'],['locale',locale],['theme','dark']].forEach(([k,v])=>widget.setAttribute(k,v));widget.style.cssText='display:block;width:100%;height:100%';host.appendChild(widget);if(!document.querySelector('script[data-sp-tv-heatmap]')){const script=document.createElement('script');script.type='module';script.src='https://widgets.tradingview-widget.com/w/en/tv-heatmap.js';script.dataset.spTvHeatmap='1';document.head.appendChild(script);}}
+ function calculate(){const initial=Number($('sp-terminal-calc-initial')?.value),monthly=Number($('sp-terminal-calc-monthly')?.value),annual=Number($('sp-terminal-calc-rate')?.value),years=Number($('sp-terminal-calc-years')?.value),out=$('sp-terminal-calc-growth-result');if(out){if([initial,monthly,annual,years].every(Number.isFinite)&&initial>=0&&monthly>=0&&years>0&&years<=80&&annual>-120){const r=Math.pow(1+annual/100,1/12)-1,n=Math.round(years*12),factor=r===0?n:(Math.pow(1+r,n)-1)/r;const value=initial*Math.pow(1+r,n)+monthly*factor;const cur=document.documentElement.lang==='en-CA'||locale==='fr'?'CAD':'USD';out.textContent=new Intl.NumberFormat(document.documentElement.lang||'en-US',{style:'currency',currency:cur,maximumFractionDigits:2}).format(value);}else out.textContent='—';}const price=Number($('sp-terminal-calc-price')?.value),dividend=Number($('sp-terminal-calc-dividend')?.value),y=$('sp-terminal-calc-yield-result');if(y)y.textContent=Number.isFinite(price)&&Number.isFinite(dividend)&&price>0&&dividend>=0?(dividend/price*100).toFixed(2)+'%':'—';}
+ ['sp-terminal-calc-initial','sp-terminal-calc-monthly','sp-terminal-calc-rate','sp-terminal-calc-years','sp-terminal-calc-price','sp-terminal-calc-dividend'].forEach(id=>$(id)?.addEventListener('input',calculate));root.querySelectorAll('[data-sp-tool="5"]').forEach(b=>b.addEventListener('click',loadETF));calculate();
 })();
 </script>
 
