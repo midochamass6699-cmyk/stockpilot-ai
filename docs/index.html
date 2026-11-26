@@ -630,13 +630,30 @@ a {color:inherit;}
 }
 
 .visual-art {
+  position:relative;
   min-height:190px;
   display:grid;
   place-items:center;
+  overflow:hidden;
   background:linear-gradient(135deg,#151515,#343434);
   color:var(--yellow);
   font-size:65px;
 }
+.visual-art img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.72;
+}
+.visual-art::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,.55));
+}
+.visual-art span {position:relative;z-index:1;text-shadow:0 2px 12px #0008;}
 
 .visual-copy {
   padding:18px;
@@ -678,13 +695,30 @@ a {color:inherit;}
 }
 
 .feature-art {
+  position:relative;
   height:115px;
   display:grid;
   place-items:center;
+  overflow:hidden;
   background:linear-gradient(135deg,#181818,#353535);
   font-size:42px;
   color:var(--yellow);
 }
+.feature-art img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.76;
+}
+.feature-art::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(0,0,0,.12),rgba(0,0,0,.62));
+}
+.feature-art span {position:relative;z-index:1;text-shadow:0 2px 12px #0009;}
 
 .feature div:last-child {padding:13px;}
 
@@ -4468,7 +4502,7 @@ main p, main li, .section-head p, .updated, .card-meta {
 <!-- MARKET INSIGHTS -->
 <section class="visual-intro" id="market-insights">
 <article class="visual-card dark">
-<div class="visual-art">📊</div>
+<div class="visual-art"><img alt="Toronto financial district skyline and Canadian financial centre" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Financial_District.jpg?width=640"/><span aria-hidden="true">📊</span></div>
 <div class="visual-copy">
 <div class="eyebrow">YOUR RESEARCH DESK</div>
 <h2>Clear information. Better questions.</h2>
@@ -4485,21 +4519,21 @@ main p, main li, .section-head p, .updated, .card-meta {
 <!-- FEATURES -->
 <section class="features">
 <article class="feature">
-<div class="feature-art">📈</div>
+<div class="feature-art"><img alt="New York Stock Exchange building representing North American equity markets" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/New_York_Stock_Exchange_Facade_-_New_York_City,_USA.jpg?width=640"/><span aria-hidden="true">📈</span></div>
 <div>
 <h3>Follow the Market</h3>
 <p>Explore daily stock activity and market movements.</p>
 </div>
 </article>
 <article class="feature">
-<div class="feature-art">₿</div>
+<div class="feature-art"><img alt="NASDAQ MarketSite in Times Square representing technology and digital-asset markets" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/NASDAQ_studio.jpg?width=640"/><span aria-hidden="true">₿</span></div>
 <div>
 <h3>Explore Crypto</h3>
 <p>Discover cryptocurrencies ranked by trading volume.</p>
 </div>
 </article>
 <article class="feature">
-<div class="feature-art">🚀</div>
+<div class="feature-art"><img alt="Toronto Stock Exchange building representing independent market research" decoding="async" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Stock_Exchange.jpg?width=640"/><span aria-hidden="true">🚀</span></div>
 <div>
 <h3>Stay Curious</h3>
 <p>Keep learning and do your own financial research.</p>
