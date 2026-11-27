@@ -3417,6 +3417,24 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
 .tf-company-quick-form button{height:41px!important;border:1px solid rgba(135,238,220,.48)!important;border-radius:9px!important;background:linear-gradient(135deg,#167d78 0%,#159b86 100%)!important;color:#fff!important;font-size:12px!important;font-weight:900!important;letter-spacing:.045em!important;text-transform:uppercase;box-shadow:0 5px 13px rgba(4,22,34,.24),inset 0 1px 0 rgba(255,255,255,.16);transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
 .tf-company-quick-form button:hover{transform:translateY(-1px);filter:brightness(1.08);box-shadow:0 8px 18px rgba(4,22,34,.3)}
 .tf-company-quick-form p{color:#c2d3df!important;font-size:10px!important}
+
+/* Check Any Stock: visible, clickable research links scoped to this banner. */
+.tf-stock-tool-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:3px 0 1px;padding-top:9px;border-top:1px solid rgba(185,215,226,.2)}
+.tf-stock-tool-links a{display:flex;align-items:center;gap:6px;min-width:0;padding:6px 7px;border:1px solid rgba(139,183,197,.22);border-radius:7px;background:rgba(255,255,255,.055);color:#e8f4f7;text-decoration:none;font-size:10px;font-weight:750;line-height:1.25;transition:background .16s ease,border-color .16s ease}
+.tf-stock-tool-links a:hover,.tf-stock-tool-links a:focus-visible{background:rgba(68,190,178,.16);border-color:#62d6c8;outline:none}
+.tf-stock-tool-links a span{color:#70d9ce;font-size:12px;flex:0 0 auto}
+.tf-check-growth{margin-top:7px;padding-top:7px;border-top:1px solid rgba(185,215,226,.2)}
+.tf-check-growth-title{display:inline-block;color:#f3d98a!important;font-size:10px;font-weight:900;letter-spacing:.07em;text-decoration:none}
+.tf-check-growth-title:hover{text-decoration:underline}
+.tf-check-growth details{margin-top:4px}
+.tf-check-growth summary{cursor:pointer;color:#c5d9e1;font-size:9px;font-weight:800;letter-spacing:.04em;list-style:none}
+.tf-check-growth summary::-webkit-details-marker{display:none}
+.tf-check-growth summary:after{content:"＋";float:right;color:#70d9ce}
+.tf-check-growth details[open] summary:after{content:"−"}
+.tf-check-growth-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;margin-top:5px}
+.tf-check-growth-links a{padding:5px 6px;border-radius:5px;background:rgba(255,255,255,.045);color:#d6e7ed!important;text-decoration:none;font-size:9px;font-weight:700;line-height:1.2}
+.tf-check-growth-links a:hover,.tf-check-growth-links a:focus-visible{background:rgba(68,190,178,.16);color:#fff!important;outline:1px solid #62d6c8}
+@media(max-width:760px){.tf-stock-tool-links a{min-height:32px;font-size:10px}.tf-check-growth-links a{min-height:28px}}
 </style>
 <!-- LIVE TRADING DESK: REPLACES THE WEEKLY STOCK OPINION -->
 <section aria-labelledby="trading-desk-title" class="live-trading-desk" id="live-trading-desk">
@@ -3435,6 +3453,32 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
 <input id="tf-company-name" name="company" type="search" placeholder="Enter company name or ticker" autocomplete="off" minlength="2" required>
 <button id="tf-company-submit" type="submit">CHECK STOCK <span aria-hidden="true">→</span></button>
 <p id="tf-company-status" role="status" aria-live="polite"></p>
+<nav class="tf-stock-tool-links" aria-label="Stock research tools">
+<a href="/stock-explorer.html#chart-panel" data-stock-tool="chart"><span aria-hidden="true">↗</span>Interactive stock chart</a>
+<a href="/stock-explorer.html#technicals-panel" data-stock-tool="technicals"><span aria-hidden="true">⌁</span>Technical analysis</a>
+<a href="/stock-explorer.html#news-panel" data-stock-tool="news"><span aria-hidden="true">▤</span>Company news</a>
+<a href="/stock-explorer.html#fundamentals-panel" data-stock-tool="fundamentals"><span aria-hidden="true">◫</span>Company fundamentals</a>
+<a href="/stock-explorer.html#activity-panel" data-stock-tool="activity"><span aria-hidden="true">▥</span>Trading activity</a>
+<a href="/stock-explorer.html#compare-panel" data-stock-tool="compare"><span aria-hidden="true">⇄</span>Compare stocks</a>
+<a href="/stock-explorer.html#report-panel" data-stock-tool="report"><span aria-hidden="true">▣</span>Full company report</a>
+<a href="#tf-company-name" data-stock-tool="search"><span aria-hidden="true">⌕</span>Company &amp; ticker search</a>
+</nav>
+<div class="tf-check-growth">
+<a class="tf-check-growth-title" href="/growth-sectors/">GROWTH SECTORS ↗</a>
+<details>
+<summary>Explore the 8 growth themes</summary>
+<div class="tf-check-growth-links">
+<a href="/growth-sectors/#ai-chips">AI &amp; Semiconductors</a>
+<a href="/growth-sectors/#data-centres">Data Centres</a>
+<a href="/growth-sectors/#energy">Energy &amp; Power Grids</a>
+<a href="/growth-sectors/#cooling">Cooling Systems</a>
+<a href="/growth-sectors/#networking">Networking</a>
+<a href="/growth-sectors/#robotics">Robotics &amp; Automation</a>
+<a href="/growth-sectors/#biotechnology">Biotechnology</a>
+<a href="/growth-sectors/#ai-platforms">AI Platforms</a>
+</div>
+</details>
+</div>
 </form>
 </div>
 
@@ -7388,6 +7432,47 @@ section:empty, article:empty, aside:empty { display:none!important; }
   }catch(error){status.textContent=error.message||"Unable to search company records."}
   finally{button.disabled=false}
  });
+})();
+</script>
+<script id="tf-stock-tool-menu-script">
+(function(){
+ const form=document.getElementById('tf-company-quick-form');
+ if(!form)return;
+ const input=document.getElementById('tf-company-name');
+ const status=document.getElementById('tf-company-status');
+ const tools=form.querySelectorAll('[data-stock-tool]');
+ const panelByTool={chart:'chart-panel',technicals:'technicals-panel',news:'news-panel',fundamentals:'fundamentals-panel',activity:'activity-panel',compare:'compare-panel',report:'report-panel'};
+ tools.forEach(link=>link.addEventListener('click',async event=>{
+  event.preventDefault();
+  const tool=link.dataset.stockTool;
+  if(tool==='search'){input.focus();input.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  const query=input.value.trim();
+  if(query.length<1){status.textContent='Enter a company name or ticker above first.';input.focus();return;}
+  link.setAttribute('aria-busy','true');
+  status.textContent='Finding the correct stock listing…';
+  try{
+   let symbol='',companyName='';
+   if(query.includes(':')){symbol=query.toUpperCase();}
+   else{
+    const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev');
+    url.searchParams.set('action','search');url.searchParams.set('q',query);
+    const response=await fetch(url.toString(),{headers:{Accept:'application/json'}});
+    if(!response.ok)throw new Error('Company lookup is temporarily unavailable.');
+    const payload=await response.json(),matches=Array.isArray(payload.data)?payload.data:[];
+    if(!matches.length)throw new Error('No matching stock listing found. Try its ticker symbol.');
+    const norm=value=>String(value||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
+    const exact=matches.find(item=>norm(item.symbol)===norm(query))||matches.find(item=>norm(item.name)===norm(query));
+    if(matches.length>1&&!exact)throw new Error('Several companies match. Enter the exact ticker symbol to choose the right listing.');
+    const found=exact||matches[0];
+    const exchange=String(found.exchange||found.mic_code||'').toUpperCase();
+    const market=/TORONTO|XTSE|TSX/.test(exchange)?'TSX':/VENTURE|XTSX|TSXV/.test(exchange)?'TSXV':/NYSE|NEW YORK|XNYS/.test(exchange)?'NYSE':/AMEX|NYSE AMERICAN|XASE/.test(exchange)?'AMEX':'NASDAQ';
+    symbol=market+':'+String(found.symbol||'').toUpperCase();
+    companyName=String(found.name||'');
+   }
+   const destination='/stock-explorer.html?symbol='+encodeURIComponent(symbol)+(companyName?'&name='+encodeURIComponent(companyName):'')+'#'+(panelByTool[tool]||'chart-panel');
+   window.location.href=destination;
+  }catch(error){status.textContent=error.message||'Unable to open this research view.';link.removeAttribute('aria-busy');}
+ }));
 })();
 </script>
 
