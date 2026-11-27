@@ -9750,3 +9750,29 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
   outline-offset:3px;
 }
 </style>
+
+
+<style id="stockpilot-mobile-hide-side-banners">
+/* The live U.S. landing page is served from /us/, so hide its fixed desktop rails on phones. */
+@media screen and (max-width: 900px) {
+  #free-left-banner,
+  #free-right-banner,
+  .free-side-banner.tf-edge-banner {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -99999px !important;
+    right: auto !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+}
+</style>
