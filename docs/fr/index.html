@@ -3192,23 +3192,6 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
     </form>
   </article>
 
-  <article class="tf-fr-opening-card tf-fr-day-panel" aria-label="Action du jour">
-    <div id="sp-stock-of-day" role="region" aria-label="StockPilot AI stock of the day">
- <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
- <span class="sp-day-copy"><span class="sp-day-eyebrow">★ ACTION DU JOUR</span><strong class="sp-day-name" id="spDayName">Chargement de l’action du jour…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
- <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
-  <span class="sp-day-stat"><span class="sp-day-stat-label">PRIX</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong><small class="sp-day-updated">MIS À JOUR QUOTIDIENNEMENT</small></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">VARIATION</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">VOLUME</span><strong class="sp-day-stat-value" id="spDayVolume">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">5 JOURS</span><strong class="sp-day-stat-value" id="spDayFiveDay">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">VOL. RELATIF</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
- </span>
- <span class="sp-day-source" id="spDaySource">Données de clôture · —</span>
- <a class="sp-day-cta" href="#main-picks">VOIR L’ACTION →</a>
-<span class="sp-day-terminal-copy"><strong>TERMINAL DES MARCHÉS</strong><small>LISTES DE SUIVI · FILTRE D’ACTIONS · ANALYSE TECHNIQUE</small></span><a class="sp-day-terminal-link" href="#market-terminal">OUVRIR LE TERMINAL →</a>
-</div>
-  </article>
-
   <article class="tf-fr-opening-card tf-fr-growth-panel">
     <div class="tf-fr-growth-kicker">LES PROCHAINES VAGUES D’INNOVATION</div>
     <a class="tf-fr-growth-heading" href="/fr/growth-sectors/">Découvrir les secteurs en croissance <span aria-hidden="true">↗</span></a>
@@ -3236,6 +3219,23 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
     <span>VPIN · Exposition gamma (GEX) · Lambda de Kyle · Vanna et Charm · Exposant de Hurst</span>
   </div>
 </section>
+
+<article class="tf-fr-opening-card tf-fr-day-panel tf-fr-day-relocated" aria-label="Action du jour">
+    <div id="sp-stock-of-day" role="region" aria-label="StockPilot AI stock of the day">
+ <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
+ <span class="sp-day-copy"><span class="sp-day-eyebrow">★ ACTION DU JOUR</span><strong class="sp-day-name" id="spDayName">Chargement de l’action du jour…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
+ <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
+  <span class="sp-day-stat"><span class="sp-day-stat-label">PRIX</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong><small class="sp-day-updated">MIS À JOUR QUOTIDIENNEMENT</small></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VARIATION</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VOLUME</span><strong class="sp-day-stat-value" id="spDayVolume">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">5 JOURS</span><strong class="sp-day-stat-value" id="spDayFiveDay">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VOL. RELATIF</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
+ </span>
+ <span class="sp-day-source" id="spDaySource">Données de clôture · —</span>
+ <a class="sp-day-cta" href="#main-picks">VOIR L’ACTION →</a>
+<span class="sp-day-terminal-copy"><strong>TERMINAL DES MARCHÉS</strong><small>LISTES DE SUIVI · FILTRE D’ACTIONS · ANALYSE TECHNIQUE</small></span><a class="sp-day-terminal-link" href="#market-terminal">OUVRIR LE TERMINAL →</a>
+</div>
+  </article>
 
 <section class="tf-mobile-start" aria-labelledby="tf-mobile-start-title">
 <h2 id="tf-mobile-start-title">Que souhaitez-vous faire aujourd’hui ?</h2>
@@ -9622,12 +9622,12 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 
 
 <style id="tf-fr-four-card-opening-row-v1">
-/* French homepage: four distinct opening cards, matching the Canada and U.S. layout. */
+/* French homepage: three centered opening cards, positioned between the side banners. */
 .tf-fr-opening-row{
  display:grid!important;
- grid-template-columns:minmax(0,.98fr) minmax(0,1.12fr) minmax(0,1.08fr) minmax(0,1.12fr)!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
  gap:14px!important;align-items:stretch!important;
- width:calc(100% - 32px)!important;max-width:1600px!important;
+ width:calc(100% - 360px)!important;max-width:1320px!important;
  margin:14px auto 16px!important;
 }
 .tf-fr-opening-card{
@@ -9706,5 +9706,15 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 @media(max-width:420px){
  .tf-fr-growth-grid{grid-template-columns:minmax(0,1fr)!important}
  .tf-fr-tool-links{grid-template-columns:minmax(0,1fr)!important}
+}
+
+/* Keep the daily-stock feature available below the advanced ribbon, not as an empty opening tile. */
+.tf-fr-day-relocated{width:calc(100% - 360px)!important;max-width:1320px!important;margin:0 auto 16px!important;box-sizing:border-box!important}
+@media(max-width:1250px){
+ .tf-fr-opening-row{width:calc(100% - 40px)!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .tf-fr-day-relocated{width:calc(100% - 40px)!important}
+}
+@media(max-width:1024px){
+ .tf-fr-opening-row,.tf-fr-day-relocated{width:calc(100% - 32px)!important}
 }
 </style>
