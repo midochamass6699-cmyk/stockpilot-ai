@@ -6827,8 +6827,42 @@ section:empty, article:empty, aside:empty { display:none!important; }
 </style>
 
 <script id="tf-check-stock-hover-menu-script">
-(function(){function install(){var link=document.querySelector('#primary-navigation .tf-check-stock-nav');if(!link||link.closest('.tf-check-stock-wrap'))return;var wrap=document.createElement('div');wrap.className='tf-check-stock-wrap';link.parentNode.insertBefore(wrap,link);wrap.appendChild(link);link.setAttribute('aria-haspopup','true');link.setAttribute('aria-expanded','false');var panel=document.createElement('div');panel.className='tf-check-stock-preview';panel.setAttribute('role','group');panel.setAttribute('aria-label','Stock research tools');panel.innerHTML="<div class=\"tf-check-stock-note\">Vorschau der Analysewerkzeuge für börsennotierte Unternehmen.</div><div class=\"tf-stock-preview-item\">Interaktiver Chart<small>Kursverlauf, Indikatoren und Chartfunktionen.</small></div><div class=\"tf-stock-preview-item\">Technische Analyse<small>Technische Indikatoren und Marktsignale.</small></div><div class=\"tf-stock-preview-item\">Unternehmensnachrichten<small>Aktuelle Nachrichten zum ausgewählten Unternehmen.</small></div><div class=\"tf-stock-preview-item\">Fundamentaldaten<small>Finanzberichte und wichtige Kennzahlen.</small></div><div class=\"tf-stock-preview-item\">Handelsaktivität<small>Überblick über Kurs und Handelsvolumen.</small></div><div class=\"tf-stock-preview-item\">Aktien vergleichen<small>Das Unternehmen mit einem anderen Ticker vergleichen.</small></div><div class=\"tf-stock-preview-item\">Unternehmensbericht<small>Unternehmensprofil und Überblick.</small></div><a class=\"tf-stock-preview-cta\" href=\"#stock-check-entry\">Unternehmen oder Ticker eingeben →</a>";wrap.appendChild(panel);function setOpen(v){wrap.classList.toggle('is-open',v);link.setAttribute('aria-expanded',v?'true':'false')}wrap.addEventListener('mouseenter',function(){if(matchMedia('(min-width:761px)').matches)setOpen(true)});wrap.addEventListener('mouseleave',function(){if(matchMedia('(min-width:761px)').matches)setOpen(false)});link.addEventListener('focus',function(){setOpen(true)});wrap.addEventListener('focusout',function(e){if(!wrap.contains(e.relatedTarget))setOpen(false)});link.addEventListener('click',function(e){if(matchMedia('(max-width:760px)').matches){e.preventDefault();setOpen(!wrap.classList.contains('is-open'))}});panel.querySelector('.tf-stock-preview-cta').addEventListener('click',function(){setOpen(false);var form=document.getElementById('stock-check-entry');if(form){setTimeout(function(){var input=form.querySelector('input');if(input)input.focus()},80)}})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install()})();
+(function(){
+ function install(){
+  var link=document.querySelector('#primary-navigation .tf-check-stock-nav');
+  if(!link){return false;}
+  var wrap=link.closest('.tf-check-stock-wrap');
+  if(!wrap){wrap=document.createElement('div');wrap.className='tf-check-stock-wrap';link.parentNode.insertBefore(wrap,link);wrap.appendChild(link);}
+  var panel=wrap.querySelector('.tf-check-stock-preview');
+  if(!panel){panel=document.createElement('div');panel.className='tf-check-stock-preview';panel.setAttribute('role','group');panel.innerHTML='<div class="tf-check-stock-note">Preview the research tools available for this company.</div><div class="tf-stock-preview-item">INTERACTIVE CHART<small>Price history, indicators and chart controls.</small></div><div class="tf-stock-preview-item">TECHNICAL ANALYSIS<small>Technical indicators and market signals.</small></div><div class="tf-stock-preview-item">COMPANY NEWS<small>Recent headlines about the selected company.</small></div><div class="tf-stock-preview-item">FUNDAMENTALS<small>Financial statements and key company metrics.</small></div><div class="tf-stock-preview-item">TRADING ACTIVITY<small>Price and volume overview.</small></div><div class="tf-stock-preview-item">COMPARE STOCKS<small>Compare this company with another ticker.</small></div><div class="tf-stock-preview-item">FULL COMPANY REPORT<small>Company profile and business overview.</small></div><a class="tf-stock-preview-cta" href="#stock-check-entry">ENTER A COMPANY OR TICKER →</a>';wrap.appendChild(panel);}
+  link.setAttribute('aria-haspopup','true');
+  function open(){panel.style.display='grid';link.setAttribute('aria-expanded','true');}
+  function close(){panel.style.display='none';link.setAttribute('aria-expanded','false');}
+  if(!wrap.dataset.hoverReady){
+   wrap.addEventListener('mouseenter',function(){if(window.matchMedia('(min-width:761px)').matches)open();});
+   wrap.addEventListener('mouseleave',function(){if(window.matchMedia('(min-width:761px)').matches)close();});
+   link.addEventListener('focus',open);
+   wrap.addEventListener('focusout',function(e){if(!wrap.contains(e.relatedTarget))close();});
+   link.addEventListener('click',function(e){if(window.matchMedia('(max-width:760px)').matches){e.preventDefault();panel.style.display=panel.style.display==='grid'?'none':'grid';link.setAttribute('aria-expanded',panel.style.display==='grid'?'true':'false');}});
+   panel.addEventListener('click',function(e){if(e.target.closest('.tf-stock-preview-cta'))close();});
+   wrap.dataset.hoverReady='1';
+  }
+  return true;
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
+ var tries=0;var timer=setInterval(function(){tries++;if(install()||tries>=20)clearInterval(timer);},250);
+})();
 </script>
+<style id="tf-check-stock-hover-menu-fix">
+#primary-navigation .tf-check-stock-wrap{position:relative!important;display:inline-flex!important;align-items:center!important;overflow:visible!important;z-index:9999!important}
+#primary-navigation .tf-check-stock-wrap>.tf-check-stock-nav{display:inline-flex!important}
+#primary-navigation .tf-check-stock-preview{display:none;position:absolute;top:calc(100% + 8px);left:0;width:330px;max-width:calc(100vw - 28px);padding:10px;background:#0b1b2d;border:1px solid #31536b;border-radius:12px;box-shadow:0 17px 40px #0009;z-index:10000;grid-template-columns:1fr 1fr;gap:6px}
+#primary-navigation .tf-check-stock-preview .tf-check-stock-note{grid-column:1/-1;padding:5px 7px 8px;color:#b5cad9;font-size:10px;line-height:1.45;border-bottom:1px solid #29445e}
+#primary-navigation .tf-check-stock-preview .tf-stock-preview-item{display:block;padding:8px;border-radius:7px;background:#142c42;color:#f3f8fc;font-size:10px;font-weight:850;line-height:1.25}
+#primary-navigation .tf-check-stock-preview .tf-stock-preview-item small{display:block;margin-top:4px;color:#adc2d3;font-size:9px;font-weight:500;line-height:1.35}
+#primary-navigation .tf-check-stock-preview .tf-stock-preview-cta{grid-column:1/-1;margin-top:3px;padding:9px;border-radius:8px;text-align:center;background:linear-gradient(110deg,#126c70,#168d82);color:#fff;text-decoration:none;font-size:10px;font-weight:900}
+@media(max-width:760px){#primary-navigation .tf-check-stock-wrap{display:block!important;width:100%!important;margin:6px 0!important}#primary-navigation .tf-check-stock-wrap>.tf-check-stock-nav{display:inline-flex!important}#primary-navigation .tf-check-stock-preview{position:static;width:100%;max-width:none;box-shadow:none;margin-top:6px}}
+</style>
 </body>
 </html>
 )?'TSX':'NASDAQ');
