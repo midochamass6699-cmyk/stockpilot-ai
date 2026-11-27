@@ -85,6 +85,50 @@ a,.navlinks a{color:#eaf3fa}
 .watchlist span{color:#edf4fa!important}
 @media(max-width:650px){.sector-stocks{padding:14px}.stock-chip{font-size:13px}.sector-card{min-height:180px}}
 
+
+/* Accessibility correction: override every earlier low-contrast text color.
+   The page uses dark panels throughout, so all readable text is kept light. */
+html,body,body *{
+  color:#f2f7fc!important;
+}
+body{
+  background:#061321!important;
+}
+h1,h2,h3,h4,h5,h6,p,li,span,strong,b,em,i,label,small,
+a,button,summary,blockquote,figcaption,td,th{
+  color:#f2f7fc!important;
+}
+.kicker,.eyebrow,.topic-index,.stocks-heading,
+.company .ticker,.chain b,.sector-card .explore,
+.stock-chip b,.symbol,.core,.navlinks .active,
+.navlinks a:hover,footer a{
+  color:#72e7e2!important;
+}
+.note strong,.eyebrow{
+  color:#ffd778!important;
+}
+.brandmark{
+  color:#061321!important;
+}
+.sector-card,.mini,.company,.analysis-block,.pulse-card,
+.sources a,.feature,.sector-stocks,.pill,.stock-chip,
+.watchlist span,.chain span,.navlinks details>summary{
+  color:#f2f7fc!important;
+}
+.sector-card h3,.mini strong,.analysis-block h3,
+.company strong,.sources strong{
+  color:#ffffff!important;
+}
+.sector-card p,.mini span,.analysis-block p,.company p,
+.feature p,.lead,.topic .summary,.section-head p,
+.research-intro,.pulse-card p,.sources span,.note,
+footer,.sector-stocks>p{
+  color:#d6e2ed!important;
+}
+.navlinks a,.navlinks details>summary{
+  color:#f2f7fc!important;
+}
+
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VL62LP5NZ9"></script>
 <script>
