@@ -10765,7 +10765,6 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    var subtitle=desk.querySelector('.tf-welcome-tagline');
    var growth=document.querySelector('.tf-growth-welcome-menu,header.topbar .tf-growth-menu,.tf-growth-menu');
    var subscribeWelcome=Array.from(document.querySelectorAll('.subscribe-bell-cta')).find(function(el){return !el.closest('#tf-mobile-after-broker-tools')&&!el.closest('#tf-mobile-priority-stack');});
-   var stock=document.getElementById('sp-stock-of-day');
    var start=desk.querySelector('.tf-mobile-start');
    var pitstop=desk.querySelector('.trading-desk-tagline');
    var marketGrid=desk.querySelector('.tf-market-collection .trading-desk-grid');
@@ -10783,7 +10782,6 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    if(advanced)move(advanced,stack);
    if(start)move(start,stack);
    if(pitstop)move(pitstop,stack);
-   if(stock)move(stock,stack);
    if(marketGrid)move(marketGrid,stack);
    if(!afterBrokerBox&&topTools){
     afterBrokerBox=document.createElement('div');
@@ -10805,28 +10803,144 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 
 
 
-<style id="tf-check-stock-horizontal-layout-v3">
-#live-trading-desk .tf-welcome-actions{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:stretch!important;gap:12px!important;width:100%!important;margin:12px 0 8px!important}
-#live-trading-desk .tf-welcome-actions .tf-company-quick-form{order:1!important;display:grid!important;grid-template-columns:auto minmax(165px,230px) auto minmax(0,1fr)!important;grid-template-areas:"label input submit tools" "status status status growth"!important;align-items:center!important;column-gap:9px!important;row-gap:7px!important;width:100%!important;max-width:none!important;min-width:0!important;padding:12px 14px!important}
+
+<style id="tf-check-stock-horizontal-layout-v4">
+/* Check Any Stock: wide banner with research links BELOW the search controls. */
+#live-trading-desk .tf-welcome-actions{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(175px,215px)!important;
+ align-items:stretch!important;
+ gap:12px!important;
+ width:100%!important;
+ margin:12px 0 8px!important;
+}
+#live-trading-desk .tf-welcome-actions>.tf-company-quick-form{
+ order:1!important;
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) auto!important;
+ grid-template-areas:"label label" "input submit" "tools tools" "growth growth" "status status"!important;
+ align-content:start!important;
+ align-items:center!important;
+ gap:8px 9px!important;
+ width:100%!important;
+ max-width:none!important;
+ min-width:0!important;
+ padding:12px 14px!important;
+}
 #live-trading-desk .tf-company-quick-form>label{grid-area:label!important;white-space:nowrap!important}
-#live-trading-desk .tf-company-quick-form>input{grid-area:input!important;min-width:0!important}
+#live-trading-desk .tf-company-quick-form>input{grid-area:input!important;width:100%!important;min-width:0!important}
 #live-trading-desk .tf-company-quick-form>button{grid-area:submit!important;white-space:nowrap!important}
 #live-trading-desk .tf-company-quick-form>#tf-company-status{grid-area:status!important;min-height:0!important}
-#live-trading-desk .tf-company-quick-form>.tf-stock-tool-links{grid-area:tools!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;min-width:0!important;margin:0!important;padding:0 0 0 10px!important;border:0!important;border-left:1px solid rgba(185,215,226,.2)!important}
-#live-trading-desk .tf-company-quick-form>.tf-check-growth{grid-area:growth!important;min-width:0!important;margin:0!important;padding:5px 0 0!important;border:0!important;border-top:1px solid rgba(185,215,226,.2)!important}
-#live-trading-desk .tf-company-quick-form>.tf-check-growth details{display:inline-block;margin:0 0 0 10px!important}
-#live-trading-desk .tf-welcome-actions>.tf-free-tools-cta{order:2!important;align-self:center!important;justify-self:end!important;max-width:190px!important;margin:0!important;text-align:center!important;white-space:normal!important}
+#live-trading-desk .tf-company-quick-form>.tf-stock-tool-links{
+ grid-area:tools!important;
+ display:grid!important;
+ grid-template-columns:repeat(4,minmax(0,1fr))!important;
+ gap:5px!important;
+ min-width:0!important;
+ margin:0!important;
+ padding:9px 0 0!important;
+ border:0!important;
+ border-top:1px solid rgba(185,215,226,.2)!important;
+}
+#live-trading-desk .tf-company-quick-form>.tf-stock-tool-links a{
+ min-height:31px!important;
+ justify-content:flex-start!important;
+ font-size:10px!important;
+}
+#live-trading-desk .tf-company-quick-form>.tf-check-growth{
+ grid-area:growth!important;
+ display:flex!important;
+ align-items:center!important;
+ flex-wrap:wrap!important;
+ gap:9px!important;
+ min-width:0!important;
+ margin:0!important;
+ padding:7px 0 0!important;
+ border:0!important;
+ border-top:1px solid rgba(185,215,226,.2)!important;
+}
+#live-trading-desk .tf-company-quick-form>.tf-check-growth .tf-check-growth-title{
+ display:inline-flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ min-height:30px!important;
+ padding:6px 12px!important;
+ border:1px solid rgba(243,217,138,.65)!important;
+ border-radius:7px!important;
+ background:linear-gradient(135deg,#3a321f,#55451f)!important;
+ color:#ffe29a!important;
+ font-size:10px!important;
+ font-weight:900!important;
+ letter-spacing:.06em!important;
+ text-decoration:none!important;
+ box-shadow:0 3px 9px rgba(0,0,0,.18)!important;
+}
+#live-trading-desk .tf-company-quick-form>.tf-check-growth .tf-check-growth-title:hover{
+ background:linear-gradient(135deg,#55451f,#725b27)!important;
+ border-color:#ffe29a!important;
+ text-decoration:none!important;
+}
+#live-trading-desk .tf-company-quick-form>.tf-check-growth details{margin:0!important}
+#live-trading-desk .tf-company-quick-form>.tf-check-growth summary{
+ display:inline-flex!important;
+ align-items:center!important;
+ min-height:30px!important;
+ padding:5px 9px!important;
+ border:1px solid rgba(139,183,197,.25)!important;
+ border-radius:7px!important;
+ background:rgba(255,255,255,.055)!important;
+}
+#live-trading-desk .tf-welcome-actions>.tf-free-tools-cta{
+ order:2!important;
+ display:flex!important;
+ align-self:center!important;
+ justify-self:stretch!important;
+ align-items:center!important;
+ justify-content:center!important;
+ min-height:54px!important;
+ max-width:none!important;
+ margin:0!important;
+ padding:12px 14px!important;
+ text-align:center!important;
+ white-space:normal!important;
+}
 #live-trading-desk .sp-advanced-ribbon{margin:8px auto 14px!important}
 @media(max-width:1050px) and (min-width:761px){
- #live-trading-desk .tf-company-quick-form{grid-template-columns:auto minmax(150px,1fr) auto!important;grid-template-areas:"label input submit" "tools tools tools" "growth growth growth" "status status status"!important}
- #live-trading-desk .tf-company-quick-form>.tf-stock-tool-links{grid-template-columns:repeat(4,minmax(0,1fr))!important;padding:8px 0 0!important;border-left:0!important;border-top:1px solid rgba(185,215,226,.2)!important}
+ #live-trading-desk .tf-welcome-actions{grid-template-columns:minmax(0,1fr) 170px!important;gap:9px!important}
+ #live-trading-desk .tf-company-quick-form>.tf-stock-tool-links{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 @media(max-width:760px){
- #tf-mobile-priority-stack .tf-welcome-actions{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:9px!important;width:100%!important;margin:0!important}
- #tf-mobile-priority-stack .tf-welcome-actions>.tf-free-tools-cta{order:2!important;align-self:flex-end!important;max-width:220px!important;margin:0!important}
- #tf-mobile-priority-stack .tf-company-quick-form{order:1!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"label label" "input submit" "tools tools" "growth growth" "status status"!important;width:100%!important;max-width:none!important;min-width:0!important;padding:12px!important;gap:8px!important}
- #tf-mobile-priority-stack .tf-company-quick-form>.tf-stock-tool-links{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:8px 0 0!important;border-left:0!important;border-top:1px solid rgba(185,215,226,.2)!important}
- #tf-mobile-priority-stack .tf-company-quick-form>.tf-check-growth{padding-top:7px!important}
+ #tf-mobile-priority-stack .tf-welcome-actions{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:9px!important;
+  width:100%!important;
+  margin:0!important;
+ }
+ #tf-mobile-priority-stack .tf-welcome-actions>.tf-company-quick-form{
+  order:1!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  grid-template-areas:"label label" "input submit" "tools tools" "growth growth" "status status"!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  padding:12px!important;
+  gap:8px!important;
+ }
+ #tf-mobile-priority-stack .tf-company-quick-form>.tf-stock-tool-links{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  padding-top:8px!important;
+ }
+ #tf-mobile-priority-stack .tf-welcome-actions>.tf-free-tools-cta{
+  order:2!important;
+  align-self:flex-end!important;
+  justify-self:end!important;
+  max-width:240px!important;
+  min-height:42px!important;
+  margin:0!important;
+ }
  #tf-mobile-priority-stack .sp-advanced-ribbon{width:100%!important;margin:8px 0 4px!important}
 }
 </style>
