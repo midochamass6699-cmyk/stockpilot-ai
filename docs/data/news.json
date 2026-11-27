@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-27T20:22:44.399564+00:00",
+  "fetched_at": "2026-11-27T22:25:15.936803+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -102,6 +102,20 @@
         "language": "English"
       },
       {
+        "title": "Small - cap , big jump ! Waaree Renewable shares rise 14 % on this order win ; energy stock still 35 % below 52 - week high",
+        "url": "https://www.livemint.com/market/stock-market-news/smallcap-big-jump-waaree-renewable-shares-rise-14-on-this-order-win-energy-stock-still-35-below-52-week-high-11795756038934.html",
+        "source": "livemint.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Sensex , Nifty down today but ​Hindustan Zinc , Vedanta Aluminium to Vedanta Power are rising - Vedanta boost reason here",
+        "url": "https://www.livemint.com/market/stock-market-news/sensex-nifty-down-today-but-hindustan-zinc-vedanta-aluminium-to-vedanta-power-are-rising-vedanta-boost-reason-here-11795752280141.html",
+        "source": "livemint.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
         "title": "Airtel , Laurus among 6 large , mid & small - cap stock ideas by Motilal Oswal",
         "url": "https://www.business-standard.com/markets/news/stocks-to-buy-today-airtel-laurus-among-6-large-mid-small-cap-stock-ideas-by-motilal-oswal-126112700098_1.html",
         "source": "business-standard.com",
@@ -116,14 +130,63 @@
         "language": "English"
       },
       {
+        "title": "Stock market today : Live updates",
+        "url": "https://www.cnbc.com/2026/11/26/stock-market-today-live-updates.html",
+        "source": "cnbc.com",
+        "published": "20261127T021500Z",
+        "language": "English"
+      },
+      {
         "title": "Sensex , Nifty scale multi - month closing highs as tariff fears ease",
         "url": "https://economictimes.indiatimes.com/markets/stocks/news/sensex-nifty-scale-multi-month-closing-highs-as-tariff-fears-ease/articleshow/136206370.cms",
         "source": "economictimes.indiatimes.com",
         "published": "20261127T021500Z",
         "language": "English"
+      },
+      {
+        "title": "Pender Growth Fund Provides Financial Highlights and Company Updates",
+        "url": "https://www.saultstar.com/press-releases/globe-newswire/pender-growth-fund-provides-financial-highlights-and-company-updates/",
+        "source": "saultstar.com",
+        "published": "20261127T014500Z",
+        "language": "English"
+      },
+      {
+        "title": "DFI , Food Empire draw analyst favour ; Delfi faces margin squeeze",
+        "url": "https://www.businesstimes.com.sg/companies-markets/high-costs-cautious-shoppers-dfi-food-empire-favour-sheng-siong-delfi-face-margin-squeeze",
+        "source": "businesstimes.com.sg",
+        "published": "20261127T001500Z",
+        "language": "English"
       }
     ],
     "crypto": [
+      {
+        "title": "Bitcoin ( BTC ) Drops Below $60 , 000 in Binance Spot - Market Check",
+        "url": "https://econotimes.com/Bitcoin-BTC-Drops-Below-60-000-in-Binance-Spot-Market-Check-1781252",
+        "source": "econotimes.com",
+        "published": "20261127T203000Z",
+        "language": "English"
+      },
+      {
+        "title": "TRON Records 68 . 1 % Share of 30 - Day Chain Revenue in Nov . 25 Snapshot",
+        "url": "https://econotimes.com/TRON-Records-68-1-Share-of-30-Day-Chain-Revenue-in-Nov-25-Snapshot-1781248",
+        "source": "econotimes.com",
+        "published": "20261127T203000Z",
+        "language": "English"
+      },
+      {
+        "title": "Defending the Enterprise as Attackers Move at Machine Speed",
+        "url": "https://www.govinfosecurity.com/blogs/defending-enterprise-as-attackers-move-at-machine-speed-p-4268",
+        "source": "govinfosecurity.com",
+        "published": "20261127T203000Z",
+        "language": "English"
+      },
+      {
+        "title": "Render Price , Chart & Market Cap - InsideBitcoins . com",
+        "url": "https://insidebitcoins.com/cryptocurrency-price/render-token-price",
+        "source": "insidebitcoins.com",
+        "published": "20261127T203000Z",
+        "language": "English"
+      },
       {
         "title": "Dow Jones Top Financial Services Headlines at 12 AM ET : BOE Warns Scale and Breadth Of AI Financing Poses Threat to Financial Stability | Capital ...",
         "url": "https://www.morningstar.com/news/dow-jones/2026112752/dow-jones-top-financial-services-headlines-at-12-am-et-boe-warns-scale-and-breadth-of-ai-financing-poses-threat-to-financial-stability-capital",
@@ -178,34 +241,6 @@
         "url": "http://www.bignewsnetwork.com/news/279464555/australia-sanctions-two-suspects-behind-irgc-backed-melbourne-synagogue-and-sydney-arson-attacks",
         "source": "bignewsnetwork.com",
         "published": "20261127T053000Z",
-        "language": "English"
-      },
-      {
-        "title": "Roospin Casino : Quick - Hit Mobile Sessions for Players Who Want Fast Action",
-        "url": "https://www.15rounds.com/2026/11/26/roospin-casino-quick-hit-mobile-sessions-for-players-who-want-fast-action/",
-        "source": "15rounds.com",
-        "published": "20261127T053000Z",
-        "language": "English"
-      },
-      {
-        "title": "Local Authorities Warn Of Holiday Scams",
-        "url": "https://whky.com/local-authorities-warn-of-holiday-scams/",
-        "source": "whky.com",
-        "published": "20261127T033000Z",
-        "language": "English"
-      },
-      {
-        "title": "Global Market Today : Asian stocks rise for second day , crude oil gains",
-        "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-asian-stocks-rise-for-second-day-crude-oil-gains/articleshow/136206178.cms",
-        "source": "economictimes.indiatimes.com",
-        "published": "20261127T021500Z",
-        "language": "English"
-      },
-      {
-        "title": "WSOP puts Stake on its Bahamas series after Utah and Florida sued the crypto operator -",
-        "url": "https://www.uspoker.com/blog/wsop-puts-stake-on-its-bahamas-series-after-utah-and-florida-sued-the-crypto-operator/46979/",
-        "source": "uspoker.com",
-        "published": "20261127T011500Z",
         "language": "English"
       }
     ]
