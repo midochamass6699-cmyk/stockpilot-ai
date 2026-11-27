@@ -1,8 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-27T16:31:10.130743+00:00",
+  "fetched_at": "2026-11-27T17:31:36.202551+00:00",
   "updated_sections": [
+    "penny",
     "crypto"
   ],
   "sections": {
@@ -101,6 +102,20 @@
         "language": "English"
       },
       {
+        "title": "Small - cap , big jump ! Waaree Renewable shares rise 14 % on this order win ; energy stock still 35 % below 52 - week high",
+        "url": "https://www.livemint.com/market/stock-market-news/smallcap-big-jump-waaree-renewable-shares-rise-14-on-this-order-win-energy-stock-still-35-below-52-week-high-11795756038934.html",
+        "source": "livemint.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Sensex , Nifty down today but ​Hindustan Zinc , Vedanta Aluminium to Vedanta Power are rising - Vedanta boost reason here",
+        "url": "https://www.livemint.com/market/stock-market-news/sensex-nifty-down-today-but-hindustan-zinc-vedanta-aluminium-to-vedanta-power-are-rising-vedanta-boost-reason-here-11795752280141.html",
+        "source": "livemint.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
         "title": "Airtel , Laurus among 6 large , mid & small - cap stock ideas by Motilal Oswal",
         "url": "https://www.business-standard.com/markets/news/stocks-to-buy-today-airtel-laurus-among-6-large-mid-small-cap-stock-ideas-by-motilal-oswal-126112700098_1.html",
         "source": "business-standard.com",
@@ -115,10 +130,31 @@
         "language": "English"
       },
       {
+        "title": "Stock market today : Live updates",
+        "url": "https://www.cnbc.com/2026/11/26/stock-market-today-live-updates.html",
+        "source": "cnbc.com",
+        "published": "20261127T021500Z",
+        "language": "English"
+      },
+      {
         "title": "Sensex , Nifty scale multi - month closing highs as tariff fears ease",
         "url": "https://economictimes.indiatimes.com/markets/stocks/news/sensex-nifty-scale-multi-month-closing-highs-as-tariff-fears-ease/articleshow/136206370.cms",
         "source": "economictimes.indiatimes.com",
         "published": "20261127T021500Z",
+        "language": "English"
+      },
+      {
+        "title": "Pender Growth Fund Provides Financial Highlights and Company Updates",
+        "url": "https://www.saultstar.com/press-releases/globe-newswire/pender-growth-fund-provides-financial-highlights-and-company-updates/",
+        "source": "saultstar.com",
+        "published": "20261127T014500Z",
+        "language": "English"
+      },
+      {
+        "title": "DFI , Food Empire draw analyst favour ; Delfi faces margin squeeze",
+        "url": "https://www.businesstimes.com.sg/companies-markets/high-costs-cautious-shoppers-dfi-food-empire-favour-sheng-siong-delfi-face-margin-squeeze",
+        "source": "businesstimes.com.sg",
+        "published": "20261127T001500Z",
         "language": "English"
       }
     ],
