@@ -1,9 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-27T05:53:22.487416+00:00",
+  "fetched_at": "2026-11-27T06:59:06.828157+00:00",
   "updated_sections": [
-    "penny"
+    "crypto"
   ],
   "sections": {
     "markets": [
@@ -117,24 +117,66 @@
     ],
     "crypto": [
       {
-        "title": "ViaBTC to Showcase a Decade of Mining Expertise and One - Stop Asset Management at Blockchain Life 2026",
-        "url": "http://www.malaysiasun.com/news/279464229/viabtc-to-showcase-a-decade-of-mining-expertise-and-one-stop-asset-management-at-blockchain-life-2026",
-        "source": "malaysiasun.com",
-        "published": "20261127T043000Z",
+        "title": "Dow Jones Top Financial Services Headlines at 12 AM ET : BOE Warns Scale and Breadth Of AI Financing Poses Threat to Financial Stability | Capital ...",
+        "url": "https://www.morningstar.com/news/dow-jones/2026112752/dow-jones-top-financial-services-headlines-at-12-am-et-boe-warns-scale-and-breadth-of-ai-financing-poses-threat-to-financial-stability-capital",
+        "source": "morningstar.com",
+        "published": "20261127T063000Z",
         "language": "English"
       },
       {
         "title": "What to know about North Korean move to shut down Swiss diplomatic office",
-        "url": "https://www.wsls.com/news/world/2026/11/27/what-to-know-about-north-korean-move-to-shut-down-swiss-diplomatic-office/",
-        "source": "wsls.com",
-        "published": "20261127T043000Z",
+        "url": "https://www.the-messenger.com/news/world/article_e1e0942e-f005-5e3e-8ea7-02604820bb9f.html",
+        "source": "the-messenger.com",
+        "published": "20261127T063000Z",
         "language": "English"
       },
       {
-        "title": "Binance lifts withdrawal suspension after $6 . 3 billion crypto heist",
-        "url": "https://www.business-standard.com/markets/cryptocurrency/binance-lifts-withdrawal-suspension-after-6-3-billion-crypto-heist-126112700104_1.html",
-        "source": "business-standard.com",
-        "published": "20261127T043000Z",
+        "title": "ViaBTC to Showcase a Decade of Mining Expertise and One - Stop Asset Management at Blockchain Life 2026",
+        "url": "https://www.owensoundsuntimes.com/press-releases/pr-newswire/viabtc-to-showcase-a-decade-of-mining-expertise-and-one-stop-asset-management-at-blockchain-life-2026/",
+        "source": "owensoundsuntimes.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Asian Markets Rise as AI Sentiment Stabilizes Update",
+        "url": "https://www.morningstar.com/news/dow-jones/20261127157/asian-markets-rise-as-ai-sentiment-stabilizes-update",
+        "source": "morningstar.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Bitcoin vs the AI Trade : Why BTC Missed the 2026 Rebound",
+        "url": "https://memeburn.com/bitcoin-pump-and-fell-back-after-ai-trade-recovery/",
+        "source": "memeburn.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Gold price rebounds from one - year low , but experts feel sentiment remains fragile Check key factors affecting outlook",
+        "url": "https://www.livemint.com/money/gold-price-rebounds-from-one-year-low-but-experts-feel-sentiment-remains-fragile-check-key-factors-affecting-outlook-11795754573026.html",
+        "source": "livemint.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Bitcoin Treasury Corporation Reports Q3 2026 Financial Results",
+        "url": "https://www.cantechletter.com/newswires/bitcoin-treasury-corporation-reports-q3-2026-financial-results/",
+        "source": "cantechletter.com",
+        "published": "20261127T053000Z",
+        "language": "English"
+      },
+      {
+        "title": "Australia sanctions two suspects behind IRGC - backed Melbourne synagogue and Sydney arson attacks",
+        "url": "http://www.bignewsnetwork.com/news/279464555/australia-sanctions-two-suspects-behind-irgc-backed-melbourne-synagogue-and-sydney-arson-attacks",
+        "source": "bignewsnetwork.com",
+        "published": "20261127T053000Z",
+        "language": "English"
+      },
+      {
+        "title": "Roospin Casino : Quick - Hit Mobile Sessions for Players Who Want Fast Action",
+        "url": "https://www.15rounds.com/2026/11/26/roospin-casino-quick-hit-mobile-sessions-for-players-who-want-fast-action/",
+        "source": "15rounds.com",
+        "published": "20261127T053000Z",
         "language": "English"
       },
       {
@@ -145,20 +187,6 @@
         "language": "English"
       },
       {
-        "title": "International Business : Binance recovers",
-        "url": "https://www.gdnonline.com:443/Details/1414143",
-        "source": "gdnonline.com",
-        "published": "20261127T023000Z",
-        "language": "English"
-      },
-      {
-        "title": "The Great Blackout hasnt happened yet but it still could",
-        "url": "https://www.simcoe.com/opinion/columnists/the-great-blackout-did-not-happen-on-tuesday-but-it-might-in-the-future/article_dc2ec843-d5bd-5e2d-ac7f-450b84c5346e.html",
-        "source": "simcoe.com",
-        "published": "20261127T021500Z",
-        "language": "English"
-      },
-      {
         "title": "Global Market Today : Asian stocks rise for second day , crude oil gains",
         "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-asian-stocks-rise-for-second-day-crude-oil-gains/articleshow/136206178.cms",
         "source": "economictimes.indiatimes.com",
@@ -166,38 +194,10 @@
         "language": "English"
       },
       {
-        "title": "Trump Targets China , EU in New Round of Tariffs",
-        "url": "https://drudge.com/news/295754/trump-targets-china-eu-new-round",
-        "source": "drudge.com",
-        "published": "20261127T014500Z",
-        "language": "English"
-      },
-      {
         "title": "WSOP puts Stake on its Bahamas series after Utah and Florida sued the crypto operator -",
         "url": "https://www.uspoker.com/blog/wsop-puts-stake-on-its-bahamas-series-after-utah-and-florida-sued-the-crypto-operator/46979/",
         "source": "uspoker.com",
         "published": "20261127T011500Z",
-        "language": "English"
-      },
-      {
-        "title": "A Guided Meditation for Eldest Daughters on Thanksgiving Day",
-        "url": "https://www.jezebel.com/thanksgiving-day-guided-meditation-for-eldest-daughters",
-        "source": "jezebel.com",
-        "published": "20261127T011500Z",
-        "language": "English"
-      },
-      {
-        "title": "JPMorgan sees bitcoin capitulation in record Strategy discount , but 3 risks cloud the call",
-        "url": "https://investinglive.com/cryptocurrency/jpmorgan-sees-bitcoin-capitulation-in-record-strategy-discount-but-3-risks-cloud-the-call/",
-        "source": "investinglive.com",
-        "published": "20261127T011500Z",
-        "language": "English"
-      },
-      {
-        "title": "Trump pardons turkey who donated $4 million via crypto exchange",
-        "url": "https://www.thebeaverton.com/2026/11/trump-pardons-turkey-who-donated-4-million-via-crypto-exchange/",
-        "source": "thebeaverton.com",
-        "published": "20261127T004500Z",
         "language": "English"
       }
     ]
