@@ -61,19 +61,29 @@ footer{border-top:1px solid #20394d;padding:25px 0 38px;color:#92a8ba;font-size:
 @media(max-width:650px){.analysis-grid,.company-grid,.sources{grid-template-columns:1fr}.pulse-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.analysis-block{padding:14px}}
 
 
-/* High-contrast accessibility and reliable sector navigation */
-:root{color-scheme:dark}
-body{background:#061321!important;color:#f5f8fc!important}
-body,main,section,header,footer,.wrap{color:#f5f8fc}
-p,.lead,.section-head p,.topic .summary,.feature p,.research-intro,.analysis-block p,.company p,.mini span,.pulse-card p,.sources span,.note{color:#c7d5e2!important}
-h1,h2,h3,.topic h2,.feature h2,.analysis-block h3,.mini strong,.company strong,.sources strong{color:#f7fbff!important}
-.sector-card,.mini,.company,.analysis-block,.pulse-card,.sources a,.feature{background-color:#0b1d2e!important}
-.sector-card{background:linear-gradient(145deg,#102b40,#0a1a2a)!important;cursor:pointer;position:relative;z-index:1}
-.sector-card *{pointer-events:none}
+
+/* Final readability pass: force accessible contrast on every text element */
+body,body *{color:#edf4fa}
+body{background:#061321!important;color:#edf4fa!important}
+h1,h2,h3,h4,h5,h6,strong,b{color:#ffffff}
+p,li,small,label,.lead,.section-head p,.topic .summary,.feature p,.research-intro,.analysis-block p,.company p,.mini span,.pulse-card p,.sources span,.note,.sector-card p{color:#cbd8e4!important}
+a,.navlinks a{color:#eaf3fa}
+.kicker,.eyebrow,.topic-index,.stocks-heading,.stock-chip b,.company .ticker,.chain b,.sector-card .explore{color:#72e7e2!important}
+.note strong{color:#f4c96b!important}
+.symbol,.core{color:#72e7e2!important}
+.brandmark{color:#061321!important}
+.sector-card,.mini,.company,.analysis-block,.pulse-card,.sources a,.feature,.sector-stocks{background-color:#0b1d2e!important}
+.sector-card{background-image:linear-gradient(145deg,#102b40,#0a1a2a)!important}
 .sector-card:focus-visible,.navlinks a:focus-visible,.navlinks summary:focus-visible{outline:3px solid #72e7e2;outline-offset:4px}
-#companies .analysis-block{scroll-margin-top:100px}
-#companies .analysis-block[id^="stocks-"]{padding-top:22px}
-@media(max-width:650px){#companies .analysis-block[id^="stocks-"]{scroll-margin-top:110px}}
+.sector-stocks,.analysis-block[id^="stocks-"]{scroll-margin-top:110px}
+.sector-stocks{margin-top:20px;padding:18px;border:1px solid #41647a;border-radius:14px}
+.stocks-heading{font-size:17px;font-weight:900}
+.sector-stocks>p{font-size:14px;color:#cbd8e4!important;margin:5px 0 13px}
+.stock-chip-list{display:flex;flex-wrap:wrap;gap:8px}
+.stock-chip{display:inline-flex;gap:6px;align-items:center;padding:8px 10px;border:1px solid #41647a;border-radius:9px;background:#10283b!important;color:#edf4fa!important;font-size:13px;line-height:1.45}
+.stock-chip b{color:#72e7e2!important}
+.watchlist span{color:#edf4fa!important}
+@media(max-width:650px){.sector-stocks{padding:14px}.stock-chip{font-size:13px}.sector-card{min-height:180px}}
 
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VL62LP5NZ9"></script>
@@ -102,14 +112,14 @@ h1,h2,h3,.topic h2,.feature h2,.analysis-block h3,.mini strong,.company strong,.
 <section class="feature"><div><div class="eyebrow">L’occasion interconnectée</div><h2>L’IA ne se limite pas aux logiciels. C’est toute une économie physique.</h2><p>Chaque nouvelle charge de travail informatique dépend d’une chaîne de fournisseurs : puces, serveurs, réseaux, alimentation électrique, refroidissement, bâtiments et personnel spécialisé. L’histoire de l’industrie dépasse donc largement celle d’un seul développeur d’IA.</p><p>Comprendre les couches de soutien permet de mieux repérer les contraintes de capacité, les dépenses d’investissement et les zones de concurrence susceptibles d’émerger.</p></div><div class="feature-art"><div class="orbit"><div class="core">✳</div></div></div></section>
 <section class="section"><div class="section-head"><div><div class="eyebrow">Comprendre la chaîne physique</div><h2>Les huit couches de l’écosystème</h2></div><p>Une technologie émergente entraîne des besoins dans plusieurs industries complémentaires.</p></div>
 <div class="analysis-grid">
-<div class="mini" id="ai-chips"><strong>01 · Calcul — IA et semi-conducteurs</strong><span>Les accélérateurs exécutent les calculs parallèles, la mémoire alimente les processeurs et les fonderies ainsi que les fabricants d’équipements rendent possible la production avancée de puces.</span></div>
-<div class="mini" id="data-centres"><strong>02 · Installations — Centres de données</strong><span>Ces installations combinent immobilier, systèmes électriques, serveurs, sécurité et exploitation. Leur expansion dépend de l’accès à l’électricité, aux terrains, à la construction et aux réseaux.</span></div>
-<div class="mini" id="energy"><strong>03 · Électricité — Énergie et réseaux</strong><span>La demande peut stimuler la production, le transport, la modernisation du réseau et les équipements électriques. La capacité locale de raccordement compte autant que l’énergie disponible.</span></div>
-<div class="mini" id="cooling"><strong>04 · Thermique — Refroidissement</strong><span>Les équipements informatiques denses dégagent de la chaleur. Le refroidissement à air ou liquide, les échangeurs, les pompes et les systèmes de surveillance maintiennent les conditions d’exploitation.</span></div>
-<div class="mini" id="networking"><strong>05 · Connectivité — Réseaux</strong><span>Commutateurs, routeurs, émetteurs-récepteurs optiques, fibre et logiciels relient les ressources informatiques entre les baies et les installations.</span></div>
-<div class="mini" id="robotics"><strong>06 · Automatisation — Robotique</strong><span>La robotique associe mécanique, capteurs, logiciels de contrôle et IA. L’adoption dépend de la fiabilité, de la sécurité, des coûts d’intégration et du rendement opérationnel.</span></div>
-<div class="mini" id="biotechnology"><strong>07 · Sciences de la vie — Biotechnologie</strong><span>La recherche s’appuie sur des instruments de mesure, d’imagerie, de séquençage et d’analyse biologique. Les fournisseurs servent souvent plusieurs domaines scientifiques.</span></div>
-<div class="mini" id="ai-platforms"><strong>08 · Applications — Plateformes d’IA</strong><span>Les développeurs créent des modèles; les plateformes infonuagiques fournissent calcul et distribution; les éditeurs intègrent l’IA dans les produits et les processus.</span></div>
+<div class="mini"><strong>01 · Calcul — IA et semi-conducteurs</strong><span>Les accélérateurs exécutent les calculs parallèles, la mémoire alimente les processeurs et les fonderies ainsi que les fabricants d’équipements rendent possible la production avancée de puces.</span></div>
+<div class="mini"><strong>02 · Installations — Centres de données</strong><span>Ces installations combinent immobilier, systèmes électriques, serveurs, sécurité et exploitation. Leur expansion dépend de l’accès à l’électricité, aux terrains, à la construction et aux réseaux.</span></div>
+<div class="mini"><strong>03 · Électricité — Énergie et réseaux</strong><span>La demande peut stimuler la production, le transport, la modernisation du réseau et les équipements électriques. La capacité locale de raccordement compte autant que l’énergie disponible.</span></div>
+<div class="mini"><strong>04 · Thermique — Refroidissement</strong><span>Les équipements informatiques denses dégagent de la chaleur. Le refroidissement à air ou liquide, les échangeurs, les pompes et les systèmes de surveillance maintiennent les conditions d’exploitation.</span></div>
+<div class="mini"><strong>05 · Connectivité — Réseaux</strong><span>Commutateurs, routeurs, émetteurs-récepteurs optiques, fibre et logiciels relient les ressources informatiques entre les baies et les installations.</span></div>
+<div class="mini"><strong>06 · Automatisation — Robotique</strong><span>La robotique associe mécanique, capteurs, logiciels de contrôle et IA. L’adoption dépend de la fiabilité, de la sécurité, des coûts d’intégration et du rendement opérationnel.</span></div>
+<div class="mini"><strong>07 · Sciences de la vie — Biotechnologie</strong><span>La recherche s’appuie sur des instruments de mesure, d’imagerie, de séquençage et d’analyse biologique. Les fournisseurs servent souvent plusieurs domaines scientifiques.</span></div>
+<div class="mini"><strong>08 · Applications — Plateformes d’IA</strong><span>Les développeurs créent des modèles; les plateformes infonuagiques fournissent calcul et distribution; les éditeurs intègrent l’IA dans les produits et les processus.</span></div>
 </div></section>
 <section class="section" id="signals"><div class="section-head"><div><div class="eyebrow">Pourquoi ces thèmes attirent l’attention</div><h2>Les signaux de l’infrastructure</h2></div><p>Quelques indicateurs publiés en 2026 qui illustrent l’ampleur des investissements et les pressions sur la chaîne d’approvisionnement. Les prévisions sont des estimations, pas des garanties.</p></div>
 <div class="pulse-grid">
