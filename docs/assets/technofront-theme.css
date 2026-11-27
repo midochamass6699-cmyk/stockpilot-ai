@@ -49,3 +49,11 @@ html body #sp-stock-of-day .sp-day-ticker,html body #sp-stock-of-day .sp-day-met
 html body .sp-featured-product-card,html body .sp-product-showcase,html body .tf-two-panel-grid{border-color:#b5cce1!important}
 @media(max-width:760px){html body #live-trading-desk{width:calc(100% - 20px)!important;margin:10px auto 16px!important;padding:16px!important}html body .panel,html body .card,html body .resource-card,html body .visual-card,html body .feature,html body .faq-item,html body .stock-card,html body .trading-panel,html body .content-card{box-shadow:0 7px 20px rgba(0,0,0,.18)!important}}
 @media(prefers-reduced-motion:reduce){html body *,html body *:before,html body *:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* Keep the two dark side-banner headings readable above the navy panels. */
+html body #free-left-banner .tf-edge-heading h2,
+html body #free-right-banner .tf-edge-heading h2{
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+}
