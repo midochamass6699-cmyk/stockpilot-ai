@@ -88,7 +88,7 @@ export default {
     // Apply one shared visual theme to every public HTML page.
     // Preview mockups are intentionally excluded; page copy, layout and scripts remain untouched.
     if (!/^\/(?:design-preview|preview|preview-phone)(?:\.html)?\/?$/i.test(url.pathname) && !url.pathname.startsWith("/app/") && !html.includes("technofront-theme.css")) {
-      html = html.replace(/<\/head>/i, '<link rel="stylesheet" href="/assets/technofront-theme.css?v=20261126">\n</head>');
+      html = html.replace(/<\/head>/i, '<link rel="stylesheet" href="/assets/technofront-theme.css?v=20261128">\n</head>');
     }
 
     const pagePath = url.pathname.replace(/index\.html$/i, "").replace(/\/$/, "") || "/";
