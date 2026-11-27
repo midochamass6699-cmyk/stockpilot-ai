@@ -3166,6 +3166,14 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
   <h1 id="fr-welcome-title">Bienvenue chez Technofront</h1>
   <p class="fr-welcome-tagline">Parce que l’avenir est clair.</p>
   <a class="tf-free-tools-cta" href="#market-terminal">Découvrir nos outils gratuits pour les traders <span aria-hidden="true">↗</span></a>
+  <div class="tf-welcome-actions" aria-label="Recherche d’actions et fonctionnalités">
+    <form class="tf-company-quick-form" id="tf-company-quick-form">
+      <label for="tf-company-name">Vérifier une action</label>
+      <input id="tf-company-name" name="company" type="search" placeholder="Nom de l’entreprise ou symbole (ex. Microsoft, MSFT)" autocomplete="off" minlength="2" required>
+      <button id="tf-company-submit" type="submit">EXPLORER L’ACTION →</button>
+      <p id="tf-company-status" role="status" aria-live="polite">Saisissez un nom d’entreprise ou un symbole boursier.</p>
+    </form>
+  </div>
   <p>Actions, penny stocks et cryptomonnaies à surveiller.</p>
 </section>
 <section class="tf-mobile-start" aria-labelledby="tf-mobile-start-title">
@@ -6739,23 +6747,17 @@ section:empty, article:empty, aside:empty { display:none!important; }
 (function(){
  function install(){
   var form=document.querySelector('#stock-check-entry');
-  var button=form&&form.querySelector('button[type="submit"],button');
-  if(!button)return false;
-  var wrap=button.closest('.tf-stock-button-hover-wrap');
-  if(!wrap){
-   wrap=document.createElement('span');
-   wrap.className='tf-stock-button-hover-wrap';
-   button.parentNode.insertBefore(wrap,button);
-   wrap.appendChild(button);
-  }
-  if(!wrap.querySelector('.tf-stock-button-preview')){
-   var panel=document.createElement('div');
-   panel.className='tf-stock-button-preview';
+  var actions=form&&form.closest('.tf-welcome-actions');
+  if(!form||!actions)return false;
+  var panel=actions.querySelector('.tf-stock-feature-panel');
+  if(!panel){
+   panel=document.createElement('div');
+   panel.className='tf-stock-button-preview tf-stock-feature-panel';
    panel.setAttribute('role','group');
-   panel.innerHTML='<div class="tf-stock-preview-note">Preview the research tools available for the stock you enter.</div><div class="tf-stock-preview-item">INTERACTIVE CHART<small>Price history, indicators and chart controls.</small></div><div class="tf-stock-preview-item">TECHNICAL ANALYSIS<small>Technical indicators and market signals.</small></div><div class="tf-stock-preview-item">COMPANY NEWS<small>Recent headlines about the selected company.</small></div><div class="tf-stock-preview-item">FUNDAMENTALS<small>Financial statements and key company metrics.</small></div><div class="tf-stock-preview-item">TRADING ACTIVITY<small>Price and volume overview.</small></div><div class="tf-stock-preview-item">COMPARE STOCKS<small>Compare this company with another ticker.</small></div><div class="tf-stock-preview-item">FULL COMPANY REPORT<small>Company profile and business overview.</small></div><a class="tf-stock-preview-cta" href="#stock-check-entry">ENTER A COMPANY OR TICKER →</a>';
-   wrap.appendChild(panel);
+   panel.setAttribute('aria-label','Fonctionnalités disponibles pour l’action recherchée');
+   panel.innerHTML='<div class="tf-stock-preview-note">VOTRE ESPACE DE RECHERCHE · Les outils disponibles pour l’action que vous recherchez</div><div class="tf-stock-preview-item">GRAPHIQUE INTERACTIF<small>Historique des cours, indicateurs et commandes du graphique.</small></div><div class="tf-stock-preview-item">ANALYSE TECHNIQUE<small>Indicateurs techniques et signaux de marché.</small></div><div class="tf-stock-preview-item">ACTUALITÉS DE L’ENTREPRISE<small>Les manchettes récentes concernant l’entreprise sélectionnée.</small></div><div class="tf-stock-preview-item">DONNÉES FONDAMENTALES<small>États financiers et principaux indicateurs de l’entreprise.</small></div><div class="tf-stock-preview-item">ACTIVITÉ DE NÉGOCIATION<small>Aperçu du prix, du volume et de l’activité du titre.</small></div><div class="tf-stock-preview-item">COMPARER DES ACTIONS<small>Comparez cette entreprise à un autre symbole boursier.</small></div><div class="tf-stock-preview-item">RAPPORT COMPLET<small>Profil de l’entreprise et aperçu de ses activités.</small></div><a class="tf-stock-preview-cta" href="#stock-check-entry">SAISISSEZ UNE ENTREPRISE OU UN SYMBOLE →</a>';
+   actions.appendChild(panel);
   }
-  button.setAttribute('aria-haspopup','true');
   return true;
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
@@ -9503,3 +9505,69 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 }
 </style>
 
+
+<style id="tf-french-stock-check-feature-panel-v1">
+/* French welcome: keep the stock search and its research features visible side by side. */
+.fr-welcome-banner .tf-welcome-actions{
+  display:grid!important;
+  grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr)!important;
+  align-items:stretch!important;
+  gap:12px!important;
+  width:100%!important;
+  max-width:980px!important;
+  margin:13px auto 8px!important;
+  text-align:left!important;
+}
+.fr-welcome-banner .tf-company-quick-form{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  grid-template-areas:"label label" "input button" "status status"!important;
+  align-content:center!important;
+  align-items:center!important;
+  gap:9px!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  padding:15px!important;
+}
+.fr-welcome-banner .tf-company-quick-form label{grid-area:label!important}
+.fr-welcome-banner .tf-company-quick-form input{grid-area:input!important;min-width:0!important;width:100%!important}
+.fr-welcome-banner .tf-company-quick-form button{grid-area:button!important;white-space:nowrap!important;padding:0 13px!important}
+.fr-welcome-banner .tf-company-quick-form p{grid-area:status!important;min-height:14px!important}
+.fr-welcome-banner .tf-stock-feature-panel{
+  position:static!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-content:center!important;
+  gap:7px!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  padding:12px!important;
+  border:1px solid rgba(103,211,211,.3)!important;
+  border-radius:15px!important;
+  background:linear-gradient(145deg,#0b1b2d 0%,#102c3e 100%)!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.2)!important;
+  text-align:left!important;
+}
+.fr-welcome-banner .tf-stock-feature-panel .tf-stock-preview-note{grid-column:1/-1!important}
+.fr-welcome-banner .tf-stock-feature-panel .tf-stock-preview-item{
+  min-width:0!important;
+  padding:8px!important;
+  border:1px solid rgba(137,180,199,.12)!important;
+  background:rgba(255,255,255,.055)!important;
+  color:#f3f8fc!important;
+  font-size:10px!important;
+}
+.fr-welcome-banner .tf-stock-feature-panel .tf-stock-preview-item small{font-size:10px!important;line-height:1.35!important}
+.fr-welcome-banner .tf-stock-feature-panel .tf-stock-preview-cta{grid-column:1/-1!important}
+@media(max-width:760px){
+  .fr-welcome-banner .tf-welcome-actions{grid-template-columns:minmax(0,1fr)!important;gap:9px!important;margin-top:10px!important}
+  .fr-welcome-banner .tf-company-quick-form{grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"label" "input" "button" "status"!important;padding:13px!important}
+  .fr-welcome-banner .tf-company-quick-form button{width:100%!important;min-height:40px!important}
+  .fr-welcome-banner .tf-stock-feature-panel{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:420px){
+  .fr-welcome-banner .tf-stock-feature-panel{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
