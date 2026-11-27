@@ -3482,22 +3482,6 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
 </form>
 </div>
 
-
-<p class="trading-desk-intro">Hand-Picked Stock Picks · Detailed Analysis · Market Reports · Market Insights</p>
-</div>
-<div class="trading-desk-tagline"><strong>YOUR MARKET PIT STOP</strong>Your Market Pit Stop — Where Real Data Fuels Better Insights.</div>
-  </div>
-
-<section class="tf-mobile-start" aria-labelledby="tf-mobile-start-title">
-<h2 id="tf-mobile-start-title">What would you like to do today?</h2>
-<p class="tf-mobile-start-intro">Choose a starting point and discover the tools and resources available on this site.</p>
-<div class="tf-mobile-start-grid">
-<a class="tf-mobile-start-card" href="#main-picks"><span class="tf-mobile-start-icon" aria-hidden="true">🔎</span><strong>Discover Markets</strong><small>Stocks, penny stocks, crypto and company profiles.</small><span class="tf-mobile-start-link">Explore →</span></a>
-<a class="tf-mobile-start-card" href="#market-terminal"><span class="tf-mobile-start-icon" aria-hidden="true">📊</span><strong>Analyze Market Data</strong><small>Interactive terminal, charts, screeners and technical tools.</small><span class="tf-mobile-start-link">Explore →</span></a>
-<a class="tf-mobile-start-card" href="/financial-education.html"><span class="tf-mobile-start-icon" aria-hidden="true">📚</span><strong>Learn Finance</strong><small>Investing guides, options, margin accounts and financial education.</small><span class="tf-mobile-start-link">Explore →</span></a>
-<a class="tf-mobile-start-card" href="/options-simulator.html"><span class="tf-mobile-start-icon" aria-hidden="true">🧪</span><strong>Practice & Research</strong><small>Try the options simulator and explore advanced research.</small><span class="tf-mobile-start-link">Explore →</span></a>
-</div>
-</section>
 <div class="sp-advanced-ribbon" role="region" aria-label="Advanced market research resources">
   <div class="sp-advanced-ribbon-label">ADVANCED RESEARCH</div>
   <div class="sp-advanced-ribbon-window">
@@ -3518,6 +3502,21 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
   </div>
 </div>
 
+<p class="trading-desk-intro">Hand-Picked Stock Picks · Detailed Analysis · Market Reports · Market Insights</p>
+</div>
+<div class="trading-desk-tagline"><strong>YOUR MARKET PIT STOP</strong>Your Market Pit Stop — Where Real Data Fuels Better Insights.</div>
+  </div>
+
+<section class="tf-mobile-start" aria-labelledby="tf-mobile-start-title">
+<h2 id="tf-mobile-start-title">What would you like to do today?</h2>
+<p class="tf-mobile-start-intro">Choose a starting point and discover the tools and resources available on this site.</p>
+<div class="tf-mobile-start-grid">
+<a class="tf-mobile-start-card" href="#main-picks"><span class="tf-mobile-start-icon" aria-hidden="true">🔎</span><strong>Discover Markets</strong><small>Stocks, penny stocks, crypto and company profiles.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="#market-terminal"><span class="tf-mobile-start-icon" aria-hidden="true">📊</span><strong>Analyze Market Data</strong><small>Interactive terminal, charts, screeners and technical tools.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="/financial-education.html"><span class="tf-mobile-start-icon" aria-hidden="true">📚</span><strong>Learn Finance</strong><small>Investing guides, options, margin accounts and financial education.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="/options-simulator.html"><span class="tf-mobile-start-icon" aria-hidden="true">🧪</span><strong>Practice & Research</strong><small>Try the options simulator and explore advanced research.</small><span class="tf-mobile-start-link">Explore →</span></a>
+</div>
+</section>
 <div class="tf-two-panel-grid">
  <div class="tf-market-collection" aria-label="Market lists">
 
@@ -10723,7 +10722,7 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 (function(){
  function setup(){
   var mq=window.matchMedia('(max-width:760px)');
-  var stack=null,reportBox=null,afterBrokerBox=null,records=[];
+  var stack=null,afterBrokerBox=null,records=[];
   function move(node,parent,before){
    if(!node||!parent)return;
    if(node.parentNode===parent&&(!before||node.nextSibling===before))return;
@@ -10744,7 +10743,6 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    });
    records=[];
    if(stack){stack.remove();stack=null;}
-   if(reportBox){reportBox.remove();reportBox=null;}
    if(afterBrokerBox){afterBrokerBox.remove();afterBrokerBox=null;}
   }
   function apply(){
@@ -10771,9 +10769,7 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    var start=desk.querySelector('.tf-mobile-start');
    var pitstop=desk.querySelector('.trading-desk-tagline');
    var marketGrid=desk.querySelector('.tf-market-collection .trading-desk-grid');
-   var report=desk.querySelector('#tf-company-quick-form');
-   var freeToolsCta=desk.querySelector('.tf-free-tools-cta');
-   var twoPanels=desk.querySelector('.tf-two-panel-grid');
+   var welcomeActions=desk.querySelector('.tf-welcome-actions');
    var advanced=desk.querySelector('.sp-advanced-ribbon');
    var topTools=document.querySelector('.stockpilot-top-tools');
    var kitco=document.querySelector('.kitco-banner-stack');
@@ -10783,27 +10779,12 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
    if(subtitle)move(subtitle,main);
    if(growth)move(growth,actions);
    if(subscribeWelcome)move(subscribeWelcome,actions);
+   if(welcomeActions)move(welcomeActions,stack);
+   if(advanced)move(advanced,stack);
    if(start)move(start,stack);
    if(pitstop)move(pitstop,stack);
    if(stock)move(stock,stack);
    if(marketGrid)move(marketGrid,stack);
-   if(advanced)move(advanced,stack);
-
-   if(report){
-    if(!reportBox){
-     reportBox=document.createElement('section');
-     reportBox.id='tf-mobile-company-report';
-     reportBox.setAttribute('aria-label','Company report');
-     var heading=document.createElement('h2');
-     heading.textContent='Company Report';
-     heading.style.cssText='margin:0;color:#142b43;font-size:19px;font-weight:900;line-height:1.2';
-     reportBox.appendChild(heading);
-    }
-    if(twoPanels)twoPanels.insertAdjacentElement('afterend',reportBox);
-    move(freeToolsCta,reportBox);
-    move(report,reportBox);
-   }
-   if(topTools&&reportBox)move(topTools,reportBox.parentNode,reportBox.nextSibling);
    if(!afterBrokerBox&&topTools){
     afterBrokerBox=document.createElement('div');
     afterBrokerBox.id='tf-mobile-after-broker-tools';
@@ -10822,6 +10803,33 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 })();
 </script>
 
+
+
+<style id="tf-check-stock-horizontal-layout-v3">
+#live-trading-desk .tf-welcome-actions{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:stretch!important;gap:12px!important;width:100%!important;margin:12px 0 8px!important}
+#live-trading-desk .tf-welcome-actions .tf-company-quick-form{order:1!important;display:grid!important;grid-template-columns:auto minmax(165px,230px) auto minmax(0,1fr)!important;grid-template-areas:"label input submit tools" "status status status growth"!important;align-items:center!important;column-gap:9px!important;row-gap:7px!important;width:100%!important;max-width:none!important;min-width:0!important;padding:12px 14px!important}
+#live-trading-desk .tf-company-quick-form>label{grid-area:label!important;white-space:nowrap!important}
+#live-trading-desk .tf-company-quick-form>input{grid-area:input!important;min-width:0!important}
+#live-trading-desk .tf-company-quick-form>button{grid-area:submit!important;white-space:nowrap!important}
+#live-trading-desk .tf-company-quick-form>#tf-company-status{grid-area:status!important;min-height:0!important}
+#live-trading-desk .tf-company-quick-form>.tf-stock-tool-links{grid-area:tools!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;min-width:0!important;margin:0!important;padding:0 0 0 10px!important;border:0!important;border-left:1px solid rgba(185,215,226,.2)!important}
+#live-trading-desk .tf-company-quick-form>.tf-check-growth{grid-area:growth!important;min-width:0!important;margin:0!important;padding:5px 0 0!important;border:0!important;border-top:1px solid rgba(185,215,226,.2)!important}
+#live-trading-desk .tf-company-quick-form>.tf-check-growth details{display:inline-block;margin:0 0 0 10px!important}
+#live-trading-desk .tf-welcome-actions>.tf-free-tools-cta{order:2!important;align-self:center!important;justify-self:end!important;max-width:190px!important;margin:0!important;text-align:center!important;white-space:normal!important}
+#live-trading-desk .sp-advanced-ribbon{margin:8px auto 14px!important}
+@media(max-width:1050px) and (min-width:761px){
+ #live-trading-desk .tf-company-quick-form{grid-template-columns:auto minmax(150px,1fr) auto!important;grid-template-areas:"label input submit" "tools tools tools" "growth growth growth" "status status status"!important}
+ #live-trading-desk .tf-company-quick-form>.tf-stock-tool-links{grid-template-columns:repeat(4,minmax(0,1fr))!important;padding:8px 0 0!important;border-left:0!important;border-top:1px solid rgba(185,215,226,.2)!important}
+}
+@media(max-width:760px){
+ #tf-mobile-priority-stack .tf-welcome-actions{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:9px!important;width:100%!important;margin:0!important}
+ #tf-mobile-priority-stack .tf-welcome-actions>.tf-free-tools-cta{order:2!important;align-self:flex-end!important;max-width:220px!important;margin:0!important}
+ #tf-mobile-priority-stack .tf-company-quick-form{order:1!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"label label" "input submit" "tools tools" "growth growth" "status status"!important;width:100%!important;max-width:none!important;min-width:0!important;padding:12px!important;gap:8px!important}
+ #tf-mobile-priority-stack .tf-company-quick-form>.tf-stock-tool-links{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:8px 0 0!important;border-left:0!important;border-top:1px solid rgba(185,215,226,.2)!important}
+ #tf-mobile-priority-stack .tf-company-quick-form>.tf-check-growth{padding-top:7px!important}
+ #tf-mobile-priority-stack .sp-advanced-ribbon{width:100%!important;margin:8px 0 4px!important}
+}
+</style>
 
 </body>
 </html>
