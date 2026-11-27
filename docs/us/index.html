@@ -3080,29 +3080,48 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
 </style>
 <!-- LIVE TRADING DESK: REPLACES THE WEEKLY STOCK OPINION -->
 <section aria-labelledby="trading-desk-title" class="live-trading-desk" id="live-trading-desk">
-<div class="trading-desk-header">
-<div>
+<div class="trading-desk-header tf-us-four-column-header">
+<div class="tf-us-welcome-panel">
 <div class="trading-desk-kicker"><span aria-hidden="true" class="trading-pulse"></span> STOCKPILOT AI · U.S. MARKET MONITOR</div>
-
-
-
 <h1 id="trading-desk-title">Welcome to Technofront</h1>
-<p class="tf-welcome-tagline" style="margin:3px 0 5px;color:#000000;font-size:clamp(13px,1.35vw,16px);line-height:1.3;font-weight:750;">Because the future is clear.</p>
-<div class="tf-welcome-actions">
-<div class="tf-us-feature-heading">Explore Tech Stocks</div>
-<a class="tf-free-tools-cta" href="#market-terminal">Explore Our Free Tools for Traders <span aria-hidden="true">↗</span></a>
+<p class="tf-welcome-tagline">Because the future is clear.</p>
+<p class="trading-desk-intro">U.S.-Listed Stock Research · NYSE &amp; Nasdaq Market Coverage · USD Market Data · Independent Investor Education</p>
+</div>
+<div class="tf-us-check-panel">
+<div class="tf-us-feature-heading">Check Any Stock</div>
 <form class="tf-company-quick-form" id="tf-company-quick-form">
 <label for="tf-company-name">Check any stock</label>
 <input id="tf-company-name" name="company" type="search" placeholder="Enter company name or ticker" autocomplete="off" minlength="2" required>
 <button id="tf-company-submit" type="submit">CHECK STOCK <span aria-hidden="true">→</span></button>
 <p id="tf-company-status" role="status" aria-live="polite"></p>
+
+<nav class="tf-stock-tool-links" aria-label="Stock research tools">
+<a href="/stock-explorer.html#chart-panel" data-stock-tool="chart"><span aria-hidden="true">↗</span>Interactive stock chart</a>
+<a href="/stock-explorer.html#technicals-panel" data-stock-tool="technicals"><span aria-hidden="true">⌁</span>Technical analysis</a>
+<a href="/stock-explorer.html#news-panel" data-stock-tool="news"><span aria-hidden="true">▤</span>Company news</a>
+<a href="/stock-explorer.html#fundamentals-panel" data-stock-tool="fundamentals"><span aria-hidden="true">◫</span>Company fundamentals</a>
+<a href="/stock-explorer.html#activity-panel" data-stock-tool="activity"><span aria-hidden="true">▥</span>Trading activity</a>
+<a href="/stock-explorer.html#compare-panel" data-stock-tool="compare"><span aria-hidden="true">⇄</span>Compare stocks</a>
+<a href="/stock-explorer.html#report-panel" data-stock-tool="report"><span aria-hidden="true">▣</span>Full company report</a>
+<a href="#tf-company-name" data-stock-tool="search"><span aria-hidden="true">⌕</span>Company &amp; ticker search</a>
+</nav>
 </form>
 </div>
-<p class="trading-desk-intro">U.S.-Listed Stock Research · NYSE &amp; Nasdaq Market Coverage · USD Market Data · Independent Investor Education</p>
-</div>
-<div class="trading-desk-side-stack">
-<div class="trading-desk-tagline"><strong>YOUR MARKET PIT STOP</strong>Your Market Pit Stop — Where Real Data Fuels Better Insights.</div>
-<aside class="tf-growth-feature-card" aria-label="Growth sectors and themes">
+<div class="tf-us-day-panel"><div id="sp-stock-of-day" role="region" aria-label="StockPilot AI stock of the day">
+ <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
+ <span class="sp-day-copy"><span class="sp-day-eyebrow">★ U.S. STOCK OF THE DAY</span><strong class="sp-day-name" id="spDayName">Loading today's stock…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
+ <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
+  <span class="sp-day-stat"><span class="sp-day-stat-label">LAST PRICE</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong><small class="sp-day-updated">UPDATED DAILY</small></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">DAY MOVE</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VOLUME</span><strong class="sp-day-stat-value" id="spDayVolume">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">5-DAY MOVE</span><strong class="sp-day-stat-value" id="spDayFiveDay">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">REL. VOLUME</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
+ </span>
+ <span class="sp-day-source" id="spDaySource">Closing data · —</span>
+ <button class="sp-day-bell" id="spDaySubscribeBell" type="button" aria-label="Subscribe to StockPilot AI notifications" title="Subscribe to StockPilot AI notifications">🔔</button><a class="sp-day-cta" href="#main-picks">VIEW STOCK →</a>
+<span class="sp-day-terminal-copy"><strong>MARKET TERMINAL</strong><small>WATCHLISTS · STOCK SCREENER · TECHNICAL ANALYSIS</small></span><a class="sp-day-terminal-link" href="#market-terminal">OPEN TERMINAL →</a>
+</div></div>
+<div class="tf-us-growth-panel"><aside class="tf-growth-feature-card" aria-label="Growth sectors and themes">
   <div class="tf-growth-feature-kicker">THE NEXT WAVES OF INNOVATION</div>
   <a class="tf-growth-feature-heading" href="/us/growth-sectors/">Explore Growth Sectors <span aria-hidden="true">↗</span></a>
   <p>Discover the industries building tomorrow’s economy and the technologies driving their expansion.</p>
@@ -3117,34 +3136,8 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
     <a href="/us/growth-sectors/#ai-platforms"><strong>AI Platforms</strong><small>Software, models and AI applications</small></a>
   </div>
   <a class="tf-growth-feature-footer" href="/us/growth-sectors/">VIEW ALL 8 GROWTH THEMES →</a>
-</aside>
+</aside></div>
 </div>
-<div id="sp-stock-of-day" role="region" aria-label="StockPilot AI stock of the day">
- <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
- <span class="sp-day-copy"><span class="sp-day-eyebrow">★ U.S. STOCK OF THE DAY</span><strong class="sp-day-name" id="spDayName">Loading today's stock…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
- <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
-  <span class="sp-day-stat"><span class="sp-day-stat-label">LAST PRICE</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong><small class="sp-day-updated">UPDATED DAILY</small></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">DAY MOVE</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">VOLUME</span><strong class="sp-day-stat-value" id="spDayVolume">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">5-DAY MOVE</span><strong class="sp-day-stat-value" id="spDayFiveDay">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">REL. VOLUME</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
- </span>
- <span class="sp-day-source" id="spDaySource">Closing data · —</span>
- <button class="sp-day-bell" id="spDaySubscribeBell" type="button" aria-label="Subscribe to StockPilot AI notifications" title="Subscribe to StockPilot AI notifications">🔔</button><a class="sp-day-cta" href="#main-picks">VIEW STOCK →</a>
-<span class="sp-day-terminal-copy"><strong>MARKET TERMINAL</strong><small>WATCHLISTS · STOCK SCREENER · TECHNICAL ANALYSIS</small></span><a class="sp-day-terminal-link" href="#market-terminal">OPEN TERMINAL →</a>
-</div>
-  </div>
-
-<section class="tf-mobile-start" aria-labelledby="tf-mobile-start-title">
-<h2 id="tf-mobile-start-title">What would you like to do today?</h2>
-<p class="tf-mobile-start-intro">Choose a starting point and discover the tools and resources available on this site.</p>
-<div class="tf-mobile-start-grid">
-<a class="tf-mobile-start-card" href="#main-picks"><span class="tf-mobile-start-icon" aria-hidden="true">🔎</span><strong>Discover Markets</strong><small>U.S. stocks, penny stocks, crypto and company profiles.</small><span class="tf-mobile-start-link">Explore →</span></a>
-<a class="tf-mobile-start-card" href="#market-terminal"><span class="tf-mobile-start-icon" aria-hidden="true">📊</span><strong>Analyze Market Data</strong><small>Interactive terminal, charts, screeners and technical tools.</small><span class="tf-mobile-start-link">Explore →</span></a>
-<a class="tf-mobile-start-card" href="/us/financial-education.html"><span class="tf-mobile-start-icon" aria-hidden="true">📚</span><strong>Learn Finance</strong><small>Investing guides, options, margin accounts and financial education.</small><span class="tf-mobile-start-link">Explore →</span></a>
-<a class="tf-mobile-start-card" href="/options-simulator.html"><span class="tf-mobile-start-icon" aria-hidden="true">🧪</span><strong>Practice & Research</strong><small>Try the options simulator and explore advanced research.</small><span class="tf-mobile-start-link">Explore →</span></a>
-</div>
-</section>
 <div class="sp-advanced-ribbon" role="region" aria-label="Advanced market research resources">
   <div class="sp-advanced-ribbon-label">ADVANCED RESEARCH</div>
   <div class="sp-advanced-ribbon-window">
@@ -3163,7 +3156,20 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
       </div>
     </div>
   </div>
+</div
+
+
+<section class="tf-mobile-start" aria-labelledby="tf-mobile-start-title">
+<h2 id="tf-mobile-start-title">What would you like to do today?</h2>
+<p class="tf-mobile-start-intro">Choose a starting point and discover the tools and resources available on this site.</p>
+<div class="tf-mobile-start-grid">
+<a class="tf-mobile-start-card" href="#main-picks"><span class="tf-mobile-start-icon" aria-hidden="true">🔎</span><strong>Discover Markets</strong><small>U.S. stocks, penny stocks, crypto and company profiles.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="#market-terminal"><span class="tf-mobile-start-icon" aria-hidden="true">📊</span><strong>Analyze Market Data</strong><small>Interactive terminal, charts, screeners and technical tools.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="/us/financial-education.html"><span class="tf-mobile-start-icon" aria-hidden="true">📚</span><strong>Learn Finance</strong><small>Investing guides, options, margin accounts and financial education.</small><span class="tf-mobile-start-link">Explore →</span></a>
+<a class="tf-mobile-start-card" href="/options-simulator.html"><span class="tf-mobile-start-icon" aria-hidden="true">🧪</span><strong>Practice & Research</strong><small>Try the options simulator and explore advanced research.</small><span class="tf-mobile-start-link">Explore →</span></a>
 </div>
+</section>
+>
 
 <div class="tf-two-panel-grid">
  <div class="tf-market-collection" aria-label="Market lists">
@@ -9504,6 +9510,87 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 @media(max-width:760px){
   #live-trading-desk .tf-us-feature-heading{display:block!important;color:#10243b!important;font-size:18px!important;font-weight:950!important;margin-bottom:7px!important}
   #live-trading-desk #sp-stock-of-day{width:100%!important;max-width:none!important;margin:0!important}
+}
+</style>
+
+
+<style id="tf-us-four-card-opening-row-v2">
+/* Four parallel opening cards: welcome, stock search/tools, daily stock and growth sectors. */
+#live-trading-desk .tf-us-four-column-header{
+ display:grid!important;
+ grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr) minmax(0,1fr) minmax(0,1.08fr)!important;
+ gap:13px!important;align-items:stretch!important;margin:0 0 14px!important;
+}
+#live-trading-desk .tf-us-welcome-panel,
+#live-trading-desk .tf-us-check-panel,
+#live-trading-desk .tf-us-day-panel,
+#live-trading-desk .tf-us-growth-panel{
+ min-width:0!important;min-height:100%!important;box-sizing:border-box!important;
+}
+#live-trading-desk .tf-us-welcome-panel{
+ display:flex!important;flex-direction:column!important;justify-content:flex-start!important;
+ padding:17px!important;border:1px solid #d3e0eb!important;border-top:4px solid #167d86!important;
+ border-radius:14px!important;background:linear-gradient(145deg,#fff,#edf6fa)!important;
+}
+#live-trading-desk .tf-us-welcome-panel .trading-desk-kicker{font-size:9px!important;line-height:1.4!important}
+#live-trading-desk .tf-us-welcome-panel h1{margin:12px 0 8px!important;font-size:clamp(22px,2vw,31px)!important;line-height:1.08!important;color:#10243b!important}
+#live-trading-desk .tf-us-welcome-panel .tf-welcome-tagline{margin:0 0 12px!important;color:#26717b!important;font-size:14px!important;font-weight:850!important;line-height:1.35!important}
+#live-trading-desk .tf-us-welcome-panel .trading-desk-intro{margin-top:auto!important;padding-top:12px!important;font-size:10px!important;line-height:1.45!important}
+#live-trading-desk .tf-us-check-panel{
+ display:flex!important;flex-direction:column!important;gap:9px!important;padding:15px!important;
+ border:1px solid #cbd8e8!important;border-top:4px solid #167d86!important;border-radius:14px!important;
+ background:linear-gradient(145deg,#10243a 0%,#142f46 58%,#123b45 100%)!important;
+}
+#live-trading-desk .tf-us-feature-heading{display:block!important;color:#fff!important;font-size:18px!important;font-weight:950!important;line-height:1.2!important}
+#live-trading-desk .tf-us-check-panel .tf-company-quick-form{
+ display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;max-width:none!important;
+ min-width:0!important;box-sizing:border-box!important;margin:0!important;padding:0!important;
+ border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;
+}
+#live-trading-desk .tf-us-check-panel .tf-company-quick-form label{color:#f4f8fc!important}
+#live-trading-desk .tf-us-check-panel .tf-stock-tool-links{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important;margin-top:4px!important;
+}
+#live-trading-desk .tf-us-check-panel .tf-stock-tool-links a{
+ display:block!important;min-width:0!important;padding:7px 6px!important;border:1px solid rgba(166,220,225,.22)!important;
+ border-radius:7px!important;background:rgba(255,255,255,.07)!important;color:#eaf6fb!important;
+ font-size:9px!important;line-height:1.25!important;text-decoration:none!important;
+}
+#live-trading-desk .tf-us-check-panel .tf-stock-tool-links a:hover{background:rgba(76,203,184,.18)!important;border-color:#75e3d4!important}
+#live-trading-desk .tf-us-day-panel #sp-stock-of-day{
+ display:grid!important;width:100%!important;max-width:none!important;min-width:0!important;height:100%!important;
+ min-height:0!important;margin:0!important;padding:14px!important;box-sizing:border-box!important;
+ grid-template-columns:42px minmax(0,1fr)!important;gap:8px!important;align-content:start!important;overflow:hidden!important;
+}
+#live-trading-desk .tf-us-day-panel #sp-stock-of-day .sp-day-logo{width:40px!important;height:40px!important;min-width:40px!important;flex-basis:40px!important}
+#live-trading-desk .tf-us-day-panel #sp-stock-of-day .sp-day-name{font-size:16px!important;white-space:normal!important}
+#live-trading-desk .tf-us-day-panel #sp-stock-of-day .sp-day-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important;padding:6px!important}
+#live-trading-desk .tf-us-day-panel #sp-stock-of-day .sp-day-stat{padding:4px!important}
+#live-trading-desk .tf-us-day-panel #sp-stock-of-day .sp-day-stat-label{font-size:7px!important;white-space:normal!important}
+#live-trading-desk .tf-us-day-panel #sp-stock-of-day .sp-day-stat-value{font-size:12px!important}
+#live-trading-desk .tf-us-growth-panel .tf-growth-feature-card{
+ display:block!important;width:100%!important;height:100%!important;min-width:0!important;box-sizing:border-box!important;
+ margin:0!important;padding:14px!important;overflow:hidden!important;
+}
+#live-trading-desk .tf-us-growth-panel .tf-growth-feature-heading{font-size:17px!important}
+#live-trading-desk .tf-us-growth-panel .tf-growth-feature-card>p{font-size:10px!important;margin:6px 0 9px!important}
+#live-trading-desk .tf-us-growth-panel .tf-growth-feature-grid{gap:5px!important}
+#live-trading-desk .tf-us-growth-panel .tf-growth-feature-grid>a{min-height:43px!important;padding:6px!important}
+#live-trading-desk .tf-us-growth-panel .tf-growth-feature-grid strong{font-size:9px!important}
+#live-trading-desk .tf-us-growth-panel .tf-growth-feature-grid small{font-size:8px!important}
+#live-trading-desk .tf-us-growth-panel .tf-growth-feature-footer{margin-top:8px!important;font-size:8px!important}
+#live-trading-desk+.sp-advanced-ribbon,
+.sp-advanced-ribbon{margin-top:10px!important;margin-bottom:18px!important}
+@media(min-width:761px) and (max-width:1250px){
+ #live-trading-desk .tf-us-four-column-header{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #live-trading-desk .tf-us-welcome-panel,#live-trading-desk .tf-us-check-panel,
+ #live-trading-desk .tf-us-day-panel,#live-trading-desk .tf-us-growth-panel{min-height:300px!important}
+}
+@media(max-width:760px){
+ #live-trading-desk .tf-us-four-column-header{display:flex!important;flex-direction:column!important;gap:11px!important}
+ #live-trading-desk .tf-us-welcome-panel,#live-trading-desk .tf-us-check-panel,
+ #live-trading-desk .tf-us-day-panel,#live-trading-desk .tf-us-growth-panel{width:100%!important}
+ #live-trading-desk .tf-us-day-panel #sp-stock-of-day{min-height:0!important}
 }
 </style>
 
