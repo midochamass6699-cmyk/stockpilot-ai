@@ -8442,8 +8442,11 @@ body { overflow-x: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .free-side-track { animation:none; }
 }
-@media (max-width:1599px) {
-  .free-side-banner { display:none !important; }
+/* Keep the side panels visible on desktop widths from 1500px upward. */
+@media (min-width:1500px) and (max-width:1599px) {
+  .free-side-banner { display:block !important; width:120px; }
+  .free-side-message { padding:14px 8px; gap:8px; }
+  .free-side-message strong { font-size:16px; }
 }
 
   
