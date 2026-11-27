@@ -5,7 +5,7 @@ html{background:#eaf3fc!important;color-scheme:light!important}
 html body{background:radial-gradient(ellipse at 12% 0%,rgba(95,157,218,.18),transparent 38%),linear-gradient(180deg,#f2f7fd 0%,#e6f0fa 58%,#dceaf7 100%)!important;background-attachment:fixed!important;color:#18334d!important}
 html body,html body main,html body .container,html body .wrap,html body .content,html body .wrapper,html body .inner{color:#18334d!important}
 html body main,html body main.container,html body .container,html body .wrap{background:transparent!important}
-html body header,html body .topbar,html body nav,html body footer{background-color:#10243a!important;color:#edf4fb!important;border-color:#294764!important}
+html body header,html body .topbar,html body nav{background-color:#102b50!important;background-image:radial-gradient(ellipse at 12% 50%,rgba(0,224,255,.20),transparent 34%),radial-gradient(ellipse at 88% 50%,rgba(38,112,255,.28),transparent 38%),linear-gradient(105deg,#071a36 0%,#103d70 48%,#071a36 100%)!important;background-blend-mode:screen,screen,normal!important;color:#edf4fb!important;border-color:#2879c7!important}
 html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#173650!important}
 html body p,html body li,html body label,html body small,html body .muted,html body .description,html body .subtitle{color:#526b83}
 html body a{color:#236fae}html body a:hover{color:#155a96}
