@@ -4396,19 +4396,26 @@ section:empty, article:empty, aside:empty { display:none!important; }
   button.disabled=true;status.textContent=t.search;
   try{
    let resolved=q.toUpperCase(),companyName='';
-   if(!q.includes(':')){
+   const norm=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
+   const alias=norm(q),isUsEdition=location.pathname.startsWith('/us/');
+   if(!q.includes(':')&&(alias==='TELUS'||alias==='TELUS CORPORATION')){
+    resolved=isUsEdition?'NYSE:TU':'TSX:T';companyName='TELUS Corporation';
+   }else if(!q.includes(':')){
     const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev');
     url.searchParams.set('action','search');url.searchParams.set('q',q);
     const response=await fetch(url.toString(),{headers:{Accept:'application/json'}});
     if(!response.ok)throw new Error(t.error);
     const payload=await response.json(),matches=Array.isArray(payload.data)?payload.data:(Array.isArray(payload.results)?payload.results:[]);
     if(!matches.length){status.textContent=t.empty;return;}
-    const norm=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
-    const chosen=matches.find(x=>norm(x.symbol)===norm(q))||matches.find(x=>norm(x.ticker)===norm(q))||matches.find(x=>norm(x.name)===norm(q))||matches[0];
+    const chosen=matches.find(x=>norm(x.symbol)===alias)||matches.find(x=>norm(x.ticker)===alias)||matches.find(x=>norm(x.name||x.company_name)===alias)||matches.find(x=>norm(x.name||x.company_name).startsWith(alias+' '));
+    if(!chosen){status.textContent=t.empty;return;}
+    const rawTicker=String(chosen.symbol||chosen.ticker||'').trim().toUpperCase();
+    if(!rawTicker)throw new Error(t.error);
+    const suffix=rawTicker.match(/\.(TO|TSE|V|VN)$/);
+    const ticker=suffix?rawTicker.replace(/\.(TO|TSE|V|VN)$/,''):rawTicker;
     const ex=String(chosen.exchange||chosen.mic_code||chosen.exchange_short_name||'').toUpperCase();
-    const tv=ex.includes('NASDAQ')||ex==='XNAS'?'NASDAQ':ex.includes('NYSE')||ex==='XNYS'?'NYSE':ex.includes('VENTURE')||ex==='XTSX'||ex==='TSXV'?'TSXV':ex.includes('TORONTO')||ex==='XTSE'||ex==='TSX'?'TSX':(lang==='fr'?'TSX':'NASDAQ');
-    const ticker=String(chosen.symbol||chosen.ticker||'').trim().toUpperCase();
-    if(!ticker)throw new Error(t.error);
+    const tv=suffix&&['TO','TSE'].includes(suffix[1])?'TSX':suffix&&['V','VN'].includes(suffix[1])?'TSXV':/NASDAQ|XNAS/.test(ex)?'NASDAQ':/NYSE|NEW YORK|XNYS/.test(ex)?'NYSE':/VENTURE|XTSX|TSXV/.test(ex)?'TSXV':/TORONTO|XTSE|(^|\W)TSX($|\W)/.test(ex)?'TSX':'';
+    if(!tv){status.textContent=lang==='fr'?'Bourse non confirmée. Essayez un symbole avec sa bourse, par exemple TSX:T.':'Exchange not verified. Try a ticker with its exchange, such as TSX:T.';return;}
     resolved=tv+':'+ticker;companyName=chosen.name||chosen.company_name||'';
    }
    const target=new URL('/stock-explorer.html',location.origin);target.searchParams.set('symbol',resolved);if(companyName)target.searchParams.set('name',companyName);target.searchParams.set('lang',lang);window.location.href=target.toString();
