@@ -1,51 +1,51 @@
 /* Technofront unified visual theme — visual-only shared layer.
    Keeps existing wording, structure, URLs, data, scripts and interactions intact. */
-:root{color-scheme:dark!important;--tf-bg:#081321;--tf-panel:#10243a;--tf-panel2:#142c45;--tf-line:#294764;--tf-text:#edf4fb;--tf-muted:#b4c5d8;--tf-blue:#55a9f2;--tf-teal:#20b7a5}
-html{background:#081321!important;color-scheme:dark!important}
-html body{background:radial-gradient(ellipse at 12% 0%,rgba(35,112,174,.18),transparent 38%),linear-gradient(180deg,#081321 0%,#0a1727 58%,#07111e 100%)!important;background-attachment:fixed!important;color:#edf4fb!important}
-html body,html body main,html body .container,html body .wrap,html body .content,html body .wrapper,html body .inner{color:#edf4fb!important}
+:root{color-scheme:light!important;--tf-bg:#eaf3fc;--tf-panel:#dceaf7;--tf-panel2:#cfe1f2;--tf-line:#b6cde2;--tf-text:#18334d;--tf-muted:#536d86;--tf-blue:#2879c7;--tf-teal:#159b8d}
+html{background:#081321!important;color-scheme:light!important}
+html body{background:radial-gradient(ellipse at 12% 0%,rgba(95,157,218,.18),transparent 38%),linear-gradient(180deg,#f2f7fd 0%,#e6f0fa 58%,#dceaf7 100%)!important;background-attachment:fixed!important;color:#18334d!important}
+html body,html body main,html body .container,html body .wrap,html body .content,html body .wrapper,html body .inner{color:#18334d!important}
 html body main,html body main.container,html body .container,html body .wrap{background:transparent!important}
-html body header,html body .topbar,html body nav,html body footer{background-color:#091827!important;color:#edf4fb!important;border-color:#29445f!important}
-html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#f4f8fd!important}
-html body p,html body li,html body label,html body small,html body .muted,html body .description,html body .subtitle{color:#c0cede}
-html body a{color:#83c5fb}html body a:hover{color:#b9e2ff}
-html body hr{border-color:#29445f!important}
+html body header,html body .topbar,html body nav,html body footer{background-color:#091827!important;color:#18334d!important;border-color:#b8cde0!important}
+html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#173650!important}
+html body p,html body li,html body label,html body small,html body .muted,html body .description,html body .subtitle{color:#526b83}
+html body a{color:#236fae}html body a:hover{color:#155a96}
+html body hr{border-color:#b8cde0!important}
 html body table,html body thead,html body tbody,html body tr,html body th,html body td{border-color:#2b4661!important}
-html body th{background:#142b43!important;color:#f2f7fc!important}
-html body td{background:#0f2135!important;color:#dce7f2!important}
-html body input,html body select,html body textarea{background:#f5f9fd!important;color:#14283d!important;border-color:#7e9bb8!important}
-html body input::placeholder,html body textarea::placeholder{color:#647b91!important}
+html body th{background:#d5e5f3!important;color:#173650!important}
+html body td{background:#f8fbff!important;color:#24425e!important}
+html body input,html body select,html body textarea{background:#ffffff!important;color:#173650!important;border-color:#9db8d1!important}
+html body input::placeholder,html body textarea::placeholder{color:#71869a!important}
 html body input:focus,html body select:focus,html body textarea:focus{outline-color:#32c4b0!important;border-color:#32c4b0!important}
 html body button:not(.sp-product-paypal-button):not([data-theme-exempt]),html body .btn-primary,html body .primary-btn,html body .cta-button,html body .button-primary{background:linear-gradient(135deg,#087f83,#13a896)!important;color:#fff!important;border-color:#38cbb7!important;box-shadow:0 5px 16px rgba(0,0,0,.2)!important}
 html body button:not(.sp-product-paypal-button):hover,html body .btn-primary:hover,html body .primary-btn:hover,html body .cta-button:hover{filter:brightness(1.08)}
-html body .panel,html body .card,html body .resource-card,html body .visual-card,html body .feature,html body .faq-item,html body .stock-card,html body .trading-panel,html body .content-card,html body .quote-card,html body .section-card,html body .tool-card,html body .research-card,html body .guide-card,html body .broker-card,html body .metric-card,html body .stat-card,html body .result-card,html body .faq-card,html body .info-card{background:linear-gradient(145deg,#12263d,#0e1e31)!important;color:#eaf2fa!important;border-color:#294764!important;box-shadow:0 10px 26px rgba(0,0,0,.18)!important}
-html body .panel p,html body .card p,html body .resource-card p,html body .visual-card p,html body .feature p,html body .faq-item p,html body .stock-card p,html body .trading-panel p,html body .content-card p,html body .quote-card p,html body .section-card p,html body .tool-card p,html body .research-card p,html body .guide-card p,html body .broker-card p,html body .panel li,html body .card li,html body .resource-card li,html body .faq-item li{color:#c2d0df!important}
-html body .hero,html body .hero-section,html body .page-hero{background:linear-gradient(135deg,#0b1c30,#123453)!important;color:#f4f8fd!important;border-color:#315578!important}
-html body .hero p,html body .hero li,html body .hero .muted{color:#d0deec!important}
-html body .eyebrow,html body .kicker,html body .section-kicker{color:#78bff3!important}
-html body .pill,html body .badge,html body .tag{background:#173653!important;color:#dceeff!important;border-color:#3b6489!important}
+html body .panel,html body .card,html body .resource-card,html body .visual-card,html body .feature,html body .faq-item,html body .stock-card,html body .trading-panel,html body .content-card,html body .quote-card,html body .section-card,html body .tool-card,html body .research-card,html body .guide-card,html body .broker-card,html body .metric-card,html body .stat-card,html body .result-card,html body .faq-card,html body .info-card{background:linear-gradient(145deg,#f8fbff,#e4eff9)!important;color:#18334d!important;border-color:#b8cde0!important;box-shadow:0 8px 22px rgba(42,83,120,.10)!important}
+html body .panel p,html body .card p,html body .resource-card p,html body .visual-card p,html body .feature p,html body .faq-item p,html body .stock-card p,html body .trading-panel p,html body .content-card p,html body .quote-card p,html body .section-card p,html body .tool-card p,html body .research-card p,html body .guide-card p,html body .broker-card p,html body .panel li,html body .card li,html body .resource-card li,html body .faq-item li{color:#526b83!important}
+html body .hero,html body .hero-section,html body .page-hero{background:linear-gradient(135deg,#0b1c30,#123453)!important;color:#173650!important;border-color:#315578!important}
+html body .hero p,html body .hero li,html body .hero .muted{color:#536f89!important}
+html body .eyebrow,html body .kicker,html body .section-kicker{color:#286fae!important}
+html body .pill,html body .badge,html body .tag{background:#d8e9f8!important;color:#245273!important;border-color:#a9c7e1!important}
 /* Welcome and market monitor: replace the large white/light homepage surface. */
-html body #live-trading-desk{background:radial-gradient(ellipse at 90% 0%,rgba(45,132,209,.18),transparent 42%),linear-gradient(135deg,#0d2035 0%,#102b45 56%,#0b1c30 100%)!important;color:#f1f6fc!important;border:1px solid #315777!important;border-top:5px solid #328be4!important;box-shadow:0 16px 38px rgba(0,0,0,.28)!important}
-html body #live-trading-desk #trading-desk-title{color:#f7fbff!important}
-html body #live-trading-desk .trading-desk-kicker{color:#83c5fb!important}
-html body #live-trading-desk .trading-desk-intro{color:#c2d2e2!important}
-html body #live-trading-desk .tf-welcome-tagline{color:#e5eff9!important}
-html body #live-trading-desk .trading-desk-tagline{background:linear-gradient(145deg,#173754,#102840)!important;color:#f0f7ff!important;border:1px solid #3c668e!important;box-shadow:0 8px 22px rgba(0,0,0,.2)!important}
-html body #live-trading-desk .trading-desk-tagline strong{color:#83c5fb!important}
-html body #live-trading-desk .tf-mobile-start{background:linear-gradient(145deg,#112a43,#0e2034)!important;border-color:#315777!important}
-html body #live-trading-desk .tf-mobile-start h2,html body #live-trading-desk .tf-mobile-start-card strong{color:#f2f7fd!important}
-html body #live-trading-desk .tf-mobile-start .tf-mobile-start-intro,html body #live-trading-desk .tf-mobile-start-card small{color:#c1d0df!important}
-html body #live-trading-desk .tf-mobile-start-card{background:#142d47!important;border-color:#345878!important;color:#eaf3fc!important}
-html body #live-trading-desk .tf-mobile-start-link{color:#82c8ff!important}
+html body #live-trading-desk{background:radial-gradient(ellipse at 90% 0%,rgba(82,151,211,.16),transparent 42%),linear-gradient(135deg,#f4f8fd 0%,#e5f0fa 56%,#dceaf7 100%)!important;color:#18334d!important;border:1px solid #b5cce1!important;border-top:5px solid #328be4!important;box-shadow:0 12px 30px rgba(42,83,120,.12)!important}
+html body #live-trading-desk #trading-desk-title{color:#173650!important}
+html body #live-trading-desk .trading-desk-kicker{color:#236fae!important}
+html body #live-trading-desk .trading-desk-intro{color:#536f89!important}
+html body #live-trading-desk .tf-welcome-tagline{color:#365875!important}
+html body #live-trading-desk .trading-desk-tagline{background:linear-gradient(145deg,#e0edf8,#d2e4f3)!important;color:#244663!important;border:1px solid #b2cbe0!important;box-shadow:0 6px 18px rgba(42,83,120,.10)!important}
+html body #live-trading-desk .trading-desk-tagline strong{color:#236fae!important}
+html body #live-trading-desk .tf-mobile-start{background:linear-gradient(145deg,#e5f0fa,#d8e8f6)!important;border-color:#b4cce1!important}
+html body #live-trading-desk .tf-mobile-start h2,html body #live-trading-desk .tf-mobile-start-card strong{color:#173650!important}
+html body #live-trading-desk .tf-mobile-start .tf-mobile-start-intro,html body #live-trading-desk .tf-mobile-start-card small{color:#536f89!important}
+html body #live-trading-desk .tf-mobile-start-card{background:#f4f8fd!important;border-color:#b6cde2!important;color:#24425e!important}
+html body #live-trading-desk .tf-mobile-start-link{color:#286fae!important}
 html body #live-trading-desk .tf-free-tools-cta{background:linear-gradient(135deg,#087f83,#16a995)!important;color:#fff!important;border:1px solid #38cbb7!important;box-shadow:0 7px 18px rgba(0,0,0,.24)!important}
-html body #live-trading-desk .tf-company-quick-form label{color:#f2f7fd!important}
-html body #live-trading-desk .tf-company-quick-form{background:linear-gradient(145deg,#14344a,#10283d)!important;border-color:#3c6c82!important}
-html body #live-trading-desk .tf-company-quick-form p{color:#c8d8e7!important}
+html body #live-trading-desk .tf-company-quick-form label{color:#173650!important}
+html body #live-trading-desk .tf-company-quick-form{background:linear-gradient(145deg,#e2eef8,#d3e5f3)!important;border-color:#afc9df!important}
+html body #live-trading-desk .tf-company-quick-form p{color:#536f89!important}
 html body #live-trading-desk .tf-company-quick-form button{background:linear-gradient(135deg,#087f83,#16a995)!important;color:#fff!important;border-color:#38cbb7!important}
-html body #sp-stock-of-day{background:radial-gradient(ellipse at 88% 5%,rgba(59,130,246,.22),transparent 36%),linear-gradient(120deg,#081a2c,#103454 62%,#102b45)!important;border-color:#315777!important;color:#f5f9ff!important}
-html body #sp-stock-of-day .sp-day-eyebrow,html body #sp-stock-of-day .sp-product-eyebrow{color:#83c5fb!important}
-html body #sp-stock-of-day .sp-day-name,html body #sp-stock-of-day .sp-product-name{color:#f6f9fd!important}
-html body #sp-stock-of-day .sp-day-ticker,html body #sp-stock-of-day .sp-day-meta,html body #sp-stock-of-day .sp-product-details{color:#c4d3e2!important}
-html body .sp-featured-product-card,html body .sp-product-showcase,html body .tf-two-panel-grid{border-color:#315777!important}
+html body #sp-stock-of-day{background:radial-gradient(ellipse at 88% 5%,rgba(59,130,246,.12),transparent 36%),linear-gradient(120deg,#edf5fc,#dcebf8 62%,#d3e5f4)!important;border-color:#afc9df!important;color:#18334d!important}
+html body #sp-stock-of-day .sp-day-eyebrow,html body #sp-stock-of-day .sp-product-eyebrow{color:#236fae!important}
+html body #sp-stock-of-day .sp-day-name,html body #sp-stock-of-day .sp-product-name{color:#173650!important}
+html body #sp-stock-of-day .sp-day-ticker,html body #sp-stock-of-day .sp-day-meta,html body #sp-stock-of-day .sp-product-details{color:#536f89!important}
+html body .sp-featured-product-card,html body .sp-product-showcase,html body .tf-two-panel-grid{border-color:#b5cce1!important}
 @media(max-width:760px){html body #live-trading-desk{width:calc(100% - 20px)!important;margin:10px auto 16px!important;padding:16px!important}html body .panel,html body .card,html body .resource-card,html body .visual-card,html body .feature,html body .faq-item,html body .stock-card,html body .trading-panel,html body .content-card{box-shadow:0 7px 20px rgba(0,0,0,.18)!important}}
 @media(prefers-reduced-motion:reduce){html body *,html body *:before,html body *:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
