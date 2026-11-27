@@ -9370,3 +9370,18 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
   },{passive:true});
 })();
 </script>
+
+
+<style id="stockpilot-mobile-edge-banner-fix-v3">
+/* Hide both fixed vertical side banners on phones and tablets.
+   This final override intentionally wins over earlier display:block!important rules. */
+@media screen and (max-width: 1024px) {
+  #free-left-banner,
+  #free-right-banner,
+  .free-side-banner {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+</style>
