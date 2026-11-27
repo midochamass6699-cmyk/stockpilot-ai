@@ -1,9 +1,10 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-26T22:26:13.779266+00:00",
+  "fetched_at": "2026-11-27T01:53:51.673567+00:00",
   "updated_sections": [
-    "penny"
+    "penny",
+    "crypto"
   ],
   "sections": {
     "markets": [
@@ -94,6 +95,20 @@
     ],
     "penny": [
       {
+        "title": "Pender Growth Fund Provides Financial Highlights and Company Updates",
+        "url": "https://www.thewhig.com/press-releases/globe-newswire/pender-growth-fund-provides-financial-highlights-and-company-updates-2/",
+        "source": "thewhig.com",
+        "published": "20261127T004500Z",
+        "language": "English"
+      },
+      {
+        "title": "DFI , Food Empire draw analyst favour ; Delfi faces margin squeeze",
+        "url": "https://www.businesstimes.com.sg/companies-markets/high-costs-cautious-shoppers-dfi-food-empire-favour-sheng-siong-delfi-face-margin-squeeze",
+        "source": "businesstimes.com.sg",
+        "published": "20261127T001500Z",
+        "language": "English"
+      },
+      {
         "title": "Children fantasy follows twin siblings who restore colour to a grey kingdom through teamwork and quick thinking | Press Releases",
         "url": "https://www.ktbs.com/online_features/press_releases/children-s-fantasy-follows-twin-siblings-who-restore-colour-to-a-grey-kingdom-through-teamwork/article_c6e84205-7080-5e33-953e-6ea9e2066111.html",
         "source": "ktbs.com",
@@ -101,15 +116,15 @@
         "language": "English"
       },
       {
-        "title": "10 Most Oversold Semiconductor Stocks to Buy for 2027",
-        "url": "https://www.insidermonkey.com/news/10-most-oversold-semiconductor-stocks-to-buy-for-2027-1870302/",
+        "title": "Billionaire Steve Cohen 10 Biggest Stock Bets for 2027",
+        "url": "https://www.insidermonkey.com/news/billionaire-steve-cohens-10-biggest-stock-bets-for-2027-1867809/",
         "source": "insidermonkey.com",
         "published": "20261126T051500Z",
         "language": "English"
       },
       {
-        "title": "Billionaire Steve Cohen 10 Biggest Stock Bets for 2027",
-        "url": "https://www.insidermonkey.com/news/billionaire-steve-cohens-10-biggest-stock-bets-for-2027-1867809/",
+        "title": "10 Most Oversold Semiconductor Stocks to Buy for 2027",
+        "url": "https://www.insidermonkey.com/news/10-most-oversold-semiconductor-stocks-to-buy-for-2027-1870302/",
         "source": "insidermonkey.com",
         "published": "20261126T051500Z",
         "language": "English"
@@ -124,87 +139,87 @@
     ],
     "crypto": [
       {
-        "title": "FG hails Davido , Asake , others over 2027 Grammy nominations",
-        "url": "https://www.vanguardngr.com/2026/11/fg-hails-davido-asake-others-over-2027-grammy-nominations/",
-        "source": "vanguardngr.com",
-        "published": "20261126T194500Z",
+        "title": "WSOP puts Stake on its Bahamas series after Utah and Florida sued the crypto operator -",
+        "url": "https://www.uspoker.com/blog/wsop-puts-stake-on-its-bahamas-series-after-utah-and-florida-sued-the-crypto-operator/46979/",
+        "source": "uspoker.com",
+        "published": "20261127T011500Z",
         "language": "English"
       },
       {
-        "title": "CityWatch LA - Exploring the Rise of Crypto Casinos Today",
-        "url": "https://www.citywatchla.com/gaming/33847-exploring-the-thrills-and-risks-of-crypto-casinos-online",
-        "source": "citywatchla.com",
-        "published": "20261126T124500Z",
+        "title": "JPMorgan sees bitcoin capitulation in record Strategy discount , but 3 risks cloud the call",
+        "url": "https://investinglive.com/cryptocurrency/jpmorgan-sees-bitcoin-capitulation-in-record-strategy-discount-but-3-risks-cloud-the-call/",
+        "source": "investinglive.com",
+        "published": "20261127T011500Z",
         "language": "English"
       },
       {
-        "title": "Romance scams are evolving : A . I . is helping criminals steal hearts and money",
-        "url": "https://thelinkpaper.ca/romance-scams-are-evolving-a-i-is-helping-criminals-steal-hearts-and-money/",
-        "source": "thelinkpaper.ca",
-        "published": "20261126T124500Z",
+        "title": "Trump pardons turkey who donated $4 million via crypto exchange",
+        "url": "https://www.thebeaverton.com/2026/11/trump-pardons-turkey-who-donated-4-million-via-crypto-exchange/",
+        "source": "thebeaverton.com",
+        "published": "20261127T004500Z",
         "language": "English"
       },
       {
-        "title": "Top 10 names | EdelGive Hurun India Philanthropy List 2026 : From Shiv Nadar & family , Gautam Adani to Bajaj",
-        "url": "https://www.livemint.com/companies/people/top-10-names-edelgive-hurun-india-philanthropy-list-2026-from-shiv-nadar-family-gautam-adani-to-bajaj-11795685535304.html",
-        "source": "livemint.com",
-        "published": "20261126T124500Z",
+        "title": "Is the AI Boom Built on Shaky Ground ?",
+        "url": "https://afr.net/podcasts/a-disciples-view-with-todd-herman/2026/november/is-the-ai-boom-built-on-shaky-ground/",
+        "source": "afr.net",
+        "published": "20261127T001500Z",
         "language": "English"
       },
       {
-        "title": "VARIANSE Launches Free Online Academy for Traders and Investors",
-        "url": "https://www.finanznachrichten.de/nachrichten-2026-11/70237030-varianse-launches-free-online-academy-for-traders-and-investors-008.htm",
-        "source": "finanznachrichten.de",
-        "published": "20261126T124500Z",
+        "title": "A 30 % Bitcoin crash hasnt shaken this asset manager $1 . 6 million call",
+        "url": "https://cedarnews.net/newstasks/1201488/30-bitcoin-crash-hasnt-shaken-asset-managers/",
+        "source": "cedarnews.net",
+        "published": "20261126T223000Z",
         "language": "English"
       },
       {
-        "title": "Can Shiba Inu Reach $1 in 2027 ? The Answer Might Shock You .",
-        "url": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/",
-        "source": "fool.com",
-        "published": "20261126T124500Z",
+        "title": "Bitcoin Mining Difficulty Keeps Average Block Time Near 10 Minutes",
+        "url": "https://econotimes.com/Bitcoin-Mining-Difficulty-Keeps-Average-Block-Time-Near-10-Minutes-1780885",
+        "source": "econotimes.com",
+        "published": "20261126T223000Z",
         "language": "English"
       },
       {
-        "title": "Questions linger over proposed data centre in Sherbrooke , Que ., after info session",
-        "url": "https://www.cbc.ca/news/canada/montreal/info-session-data-centre-ai-9.7436476",
-        "source": "cbc.ca",
-        "published": "20261126T124500Z",
+        "title": "Woo Gambling enterprise Login - Gamble Woo Casino games On the internet Boxing News - Boxing , UFC and MMA News , Fight Results , Schedule , Rankings , Videos and More",
+        "url": "https://www.15rounds.com/2026/11/26/woo-gambling-enterprise-login-gamble-woo-casino-games-on-the-internet/",
+        "source": "15rounds.com",
+        "published": "20261126T223000Z",
         "language": "English"
       },
       {
-        "title": "LatAm Expat & Nomad Daily Guide for Thursday , November 26 , 2026",
-        "url": "https://www.riotimesonline.com/latam-expat-nomad-daily-guide-for-thursday-november-26-2026/",
-        "source": "riotimesonline.com",
-        "published": "20261126T061500Z",
+        "title": "Media misinformation and anti - indy bias are cranking up again",
+        "url": "https://www.thenational.scot/politics/26763555.media-misinformation-anti-indy-bias-cranking/",
+        "source": "thenational.scot",
+        "published": "20261126T223000Z",
         "language": "English"
       },
       {
-        "title": "Where is Sam Trabucco Now After Sam Bankman - Fried Fraud Scandal ?",
-        "url": "https://www.oxygen.com/crime-news/where-is-sam-trabucco-now-after-sam-bankman-frieds-fraud-scandal",
-        "source": "oxygen.com",
-        "published": "20261126T061500Z",
+        "title": "Early Ethereum ICO Participant Moves 1 , 500 Ether ( ETH ) During Apparent Liquidation",
+        "url": "https://econotimes.com/Early-Ethereum-ICO-Participant-Moves-1-500-Ether-ETH-During-Apparent-Liquidation-1780886",
+        "source": "econotimes.com",
+        "published": "20261126T223000Z",
         "language": "English"
       },
       {
-        "title": "Digital Asset Clearing Center Establishes Digital Asset Distribution Alliance – IT Business Net",
-        "url": "https://itbusinessnet.com/2026/11/digital-asset-clearing-center-establishes-digital-asset-distribution-alliance/",
-        "source": "itbusinessnet.com",
-        "published": "20261126T054500Z",
+        "title": "Netflix SBF miniseries soars while Amy Poehler Dig falls flat",
+        "url": "http://www.jpost.com/israel-news/culture/article-916293",
+        "source": "jpost.com",
+        "published": "20261126T221500Z",
         "language": "English"
       },
       {
-        "title": "Simmons & Simmons Takes Aim at AI Legal Accuracy Problem",
-        "url": "https://www.lawfuel.com/simmons-simmons-takes-aim-at-ais-legal-accuracy-problem/",
-        "source": "lawfuel.com",
-        "published": "20261126T051500Z",
+        "title": "N3on Impersonator Gets 47 Months In $260 , 000 Crypto Fraud",
+        "url": "https://allhiphop.com/news/n3on-impersonator-gets-47-months-in-260000-crypto-fraud/",
+        "source": "allhiphop.com",
+        "published": "20261126T221500Z",
         "language": "English"
       },
       {
-        "title": "Baahubali ,  RRR  Tech Chief on Weaning India Off Overseas Facilities",
-        "url": "https://variety.com/2026/film/news/baahubali-rrr-tech-chief-weaning-india-off-overseas-facilities-1236958697/",
-        "source": "variety.com",
-        "published": "20261126T041500Z",
+        "title": "Standard Chartered Crypto Unit Suffers Data Breach Just Weeks After Bank Agreed To Take Full Ownership",
+        "url": "https://www.ibtimes.com/standard-chartered-zodia-crypto-data-breach-3810243",
+        "source": "ibtimes.com",
+        "published": "20261126T221500Z",
         "language": "English"
       }
     ]
