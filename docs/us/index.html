@@ -3079,9 +3079,9 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
 <div class="tf-welcome-actions">
 <a class="tf-free-tools-cta" href="#market-terminal">Explore Our Free Tools for Traders <span aria-hidden="true">↗</span></a>
 <form class="tf-company-quick-form" id="tf-company-quick-form">
-<label for="tf-company-name">Create your personalized company report</label>
+<label for="tf-company-name">Check any stock</label>
 <input id="tf-company-name" name="company" type="search" placeholder="Enter company name or ticker" autocomplete="off" minlength="2" required>
-<button id="tf-company-submit" type="submit">Continue to Report <span aria-hidden="true">→</span></button>
+<button id="tf-company-submit" type="submit">CHECK STOCK <span aria-hidden="true">→</span></button>
 <p id="tf-company-status" role="status" aria-live="polite"></p>
 </form>
 </div>
@@ -6805,6 +6805,74 @@ section:empty, article:empty, aside:empty { display:none!important; }
 #market-terminal .sp-terminal-data-status .sp-terminal-data-card p { color:#E2EAF4 !important; }
 #market-terminal .sp-terminal-data-status .sp-terminal-data-card small { color:#F5D36B !important; }
 </style>
+<style id="sp-stock-explorer-entry-style">
+.tf-company-quick-form{width:min(360px,100%)!important;padding:15px 16px!important;gap:9px!important;border:1px solid rgba(103,211,211,.34)!important;border-radius:15px!important;background:linear-gradient(145deg,#10243a 0%,#142f46 58%,#123b45 100%)!important;box-shadow:0 12px 30px rgba(7,20,35,.24),inset 0 1px 0 rgba(255,255,255,.08)!important}
+.tf-company-quick-form label{font-size:13px!important;font-weight:850!important;color:#f4f8fc!important}
+.tf-company-quick-form input{height:42px!important;padding:9px 12px!important;border:1px solid #547087!important;border-radius:9px!important;background:#f8fbff!important;color:#132238!important;font-size:13px!important}
+.tf-company-quick-form input:focus{border-color:#62d6c8!important;box-shadow:0 0 0 3px rgba(98,214,200,.18)!important}
+.tf-company-quick-form button{height:41px!important;border:1px solid rgba(135,238,220,.48)!important;border-radius:9px!important;background:linear-gradient(135deg,#167d78 0%,#159b86 100%)!important;color:#fff!important;font-size:12px!important;font-weight:900!important;letter-spacing:.045em!important;text-transform:uppercase;cursor:pointer}
+.tf-company-quick-form p{color:#c2d3df!important;font-size:10px!important;margin:0}
+.tf-check-stock-nav{display:inline-flex!important;align-items:center;justify-content:center;gap:7px;margin:0 10px;padding:10px 14px;border:1px solid rgba(105,220,207,.48);border-radius:9px;background:linear-gradient(135deg,#155c66 0%,#168b83 100%);color:#f7ffff!important;text-decoration:none!important;font-size:11px;font-weight:900;letter-spacing:.045em;white-space:nowrap;box-shadow:0 5px 14px rgba(5,25,42,.22)}
+.tf-check-stock-nav:hover{filter:brightness(1.1)}
+@media(max-width:760px){.tf-company-quick-form{width:100%!important;max-width:420px!important}.tf-check-stock-nav{margin:6px 0;padding:9px 12px}}
+</style>
+<script id="sp-stock-explorer-entry-script">
+(function(){
+ const lang=(document.documentElement.lang||'en').toLowerCase().slice(0,2);
+ const copy={en:{label:'Check any stock',placeholder:'Company name or ticker (e.g. Microsoft, MSFT)',button:'CHECK STOCK →',search:'Finding the right listing…',empty:'No matching stock listing found. Try the ticker or full company name.',error:'Stock lookup is temporarily unavailable. Please try again.'},fr:{label:'Vérifier une action',placeholder:'Nom de l’entreprise ou symbole (ex. Microsoft, MSFT)',button:'EXPLORER L’ACTION →',search:'Recherche de la bonne inscription…',empty:'Aucune action correspondante. Essayez le symbole ou le nom complet.',error:'La recherche est temporairement indisponible. Réessayez.'},de:{label:'Aktie prüfen',placeholder:'Unternehmensname oder Ticker (z. B. Microsoft, MSFT)',button:'AKTIE PRÜFEN →',search:'Passenden Börseneintrag suchen…',empty:'Keine passende Aktie gefunden. Versuchen Sie den Ticker oder Firmennamen.',error:'Die Aktiensuche ist vorübergehend nicht verfügbar.'},es:{label:'Consultar una acción',placeholder:'Nombre de empresa o ticker (p. ej., Microsoft, MSFT)',button:'CONSULTAR ACCIÓN →',search:'Buscando la cotización correcta…',empty:'No se encontró una acción coincidente. Prueba el ticker o el nombre completo.',error:'La búsqueda no está disponible temporalmente.'}};
+ const t=copy[lang]||copy.en;
+ const nav=document.querySelector('#primary-navigation .navlinks');
+ if(nav&&!nav.querySelector('.tf-check-stock-nav')){
+  const link=document.createElement('a');link.className='tf-check-stock-nav';link.href='#stock-check-entry';link.textContent=lang==='fr'?'VÉRIFIER UNE ACTION':lang==='de'?'AKTIE PRÜFEN':lang==='es'?'CONSULTAR ACCIÓN':'CHECK ANY STOCK';
+  link.addEventListener('click',()=>{const f=document.querySelector('.tf-company-quick-form');if(f){setTimeout(()=>f.querySelector('input')?.focus(),80);}});
+  const cta=nav.querySelector('.nav-cta');nav.insertBefore(link,cta||null);
+ }
+ let form=document.querySelector('#tf-company-quick-form,#tf-fr-company-form');
+ if(!form){
+  const intro=document.querySelector('#live-trading-desk .trading-desk-intro');
+  if(intro&&intro.parentElement){
+   const wrap=document.createElement('div');wrap.className='tf-welcome-actions';
+   form=document.createElement('form');form.className='tf-company-quick-form';form.id='tf-company-quick-form';
+   form.innerHTML='<label for="tf-company-name"></label><input id="tf-company-name" type="search" minlength="2" required autocomplete="off"><button id="tf-company-submit" type="submit"></button><p id="tf-company-status" role="status" aria-live="polite"></p>';
+   wrap.appendChild(form);intro.parentElement.insertBefore(wrap,intro);
+  }
+ }
+ if(!form)return;
+ const input=form.querySelector('input'),button=form.querySelector('button'),status=form.querySelector('[role="status"]');
+ const label=form.querySelector('label');
+ if(label)label.textContent=t.label;
+ if(input)input.placeholder=t.placeholder;
+ if(button)button.textContent=t.button;
+ if(form.id==='tf-fr-company-form'){
+  const left=form.previousElementSibling;if(left&&left.classList.contains('tf-fr-company-start-copy'))left.textContent='Vérifiez une action et ouvrez son espace interactif de recherche.';
+ }
+ form.addEventListener('submit',async e=>{
+  e.preventDefault();e.stopImmediatePropagation();
+  const q=input.value.trim();if(q.length<2)return;
+  button.disabled=true;status.textContent=t.search;
+  try{
+   let resolved=q.toUpperCase(),companyName='';
+   if(!q.includes(':')){
+    const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev');
+    url.searchParams.set('action','search');url.searchParams.set('q',q);
+    const response=await fetch(url.toString(),{headers:{Accept:'application/json'}});
+    if(!response.ok)throw new Error(t.error);
+    const payload=await response.json(),matches=Array.isArray(payload.data)?payload.data:(Array.isArray(payload.results)?payload.results:[]);
+    if(!matches.length){status.textContent=t.empty;return;}
+    const norm=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
+    const chosen=matches.find(x=>norm(x.symbol)===norm(q))||matches.find(x=>norm(x.ticker)===norm(q))||matches.find(x=>norm(x.name)===norm(q))||matches[0];
+    const ex=String(chosen.exchange||chosen.mic_code||chosen.exchange_short_name||'').toUpperCase();
+    const tv=ex.includes('NASDAQ')||ex==='XNAS'?'NASDAQ':ex.includes('NYSE')||ex==='XNYS'?'NYSE':ex.includes('VENTURE')||ex==='XTSX'||ex==='TSXV'?'TSXV':ex.includes('TORONTO')||ex==='XTSE'||ex==='TSX'?'TSX':(lang==='fr'?'TSX':'NASDAQ');
+    const ticker=String(chosen.symbol||chosen.ticker||'').trim().toUpperCase();
+    if(!ticker)throw new Error(t.error);
+    resolved=tv+':'+ticker;companyName=chosen.name||chosen.company_name||'';
+   }
+   const target=new URL('/stock-explorer.html',location.origin);target.searchParams.set('symbol',resolved);if(companyName)target.searchParams.set('name',companyName);target.searchParams.set('lang',lang);window.location.href=target.toString();
+  }catch(err){status.textContent=err.message||t.error;}
+  finally{button.disabled=false;}
+ },true);
+})();
+</script>
 </body>
 </html>)?'TSX':'NASDAQ');
   symbol.value=isCrypto&&!ticker.includes('USDT')?ticker+'USDT':ticker;
