@@ -57,3 +57,29 @@ html body #free-right-banner .tf-edge-heading h2{
   color:#ffffff!important;
   -webkit-text-fill-color:#ffffff!important;
 }
+
+
+/* Clean white navigation header — header-only visual update. */
+html body .topbar,html body header.topbar{
+  background:#ffffff!important;
+  background-image:none!important;
+  color:#18334d!important;
+  border-bottom:1px solid #d7e2ed!important;
+  box-shadow:0 2px 12px rgba(24,51,77,.07)!important;
+}
+html body .topbar nav,html body .topbar .nav,html body .topbar .nav-menu{
+  background:transparent!important;
+  color:#18334d!important;
+}
+html body .topbar .brand,html body .topbar .navlinks a,html body .topbar .nav-menu a,html body .topbar .nav-bottom-row,html body .topbar .language-switch,html body .topbar .nav-toggle{
+  color:#18334d!important;
+}
+html body .topbar .navlinks a:hover,html body .topbar .language-switch a:hover{
+  color:#2879c7!important;
+}
+html body .topbar .navlinks .nav-cta,html body .topbar .nav-cta{
+  background:#2879c7!important;
+  color:#ffffff!important;
+  border:1px solid #2879c7!important;
+}
+html body .topbar .nav-toggle span{background:#18334d!important}
