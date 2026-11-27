@@ -7422,7 +7422,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
  const nav=document.querySelector('#primary-navigation .navlinks');
  if(nav&&!nav.querySelector('.tf-check-stock-nav')){
   const link=document.createElement('a');link.className='tf-check-stock-nav';link.href='#stock-check-entry';link.textContent=lang==='fr'?'VÉRIFIER UNE ACTION':lang==='de'?'AKTIE PRÜFEN':lang==='es'?'CONSULTAR ACCIÓN':'CHECK ANY STOCK';
-  link.addEventListener('click',()=>{const f=document.querySelector('.tf-company-quick-form');if(f){setTimeout(()=>f.querySelector('input')?.focus(),80);}});
+  link.addEventListener('click',()=>{const f=document.getElementById('stock-check-entry');if(f){setTimeout(()=>f.querySelector('input')?.focus(),80);}});
   const cta=nav.querySelector('.nav-cta');nav.insertBefore(link,cta||null);
  }
  let form=document.querySelector('#tf-company-quick-form,#tf-fr-company-form');
@@ -7436,6 +7436,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
   }
  }
  if(!form)return;
+ form.id='stock-check-entry';
  const input=form.querySelector('input'),button=form.querySelector('button'),status=form.querySelector('[role="status"]');
  const label=form.querySelector('label');
  if(label)label.textContent=t.label;
