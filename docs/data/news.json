@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-27T22:25:15.936803+00:00",
+  "fetched_at": "2026-11-27T23:20:05.589716+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -102,20 +102,6 @@
         "language": "English"
       },
       {
-        "title": "Small - cap , big jump ! Waaree Renewable shares rise 14 % on this order win ; energy stock still 35 % below 52 - week high",
-        "url": "https://www.livemint.com/market/stock-market-news/smallcap-big-jump-waaree-renewable-shares-rise-14-on-this-order-win-energy-stock-still-35-below-52-week-high-11795756038934.html",
-        "source": "livemint.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Sensex , Nifty down today but ​Hindustan Zinc , Vedanta Aluminium to Vedanta Power are rising - Vedanta boost reason here",
-        "url": "https://www.livemint.com/market/stock-market-news/sensex-nifty-down-today-but-hindustan-zinc-vedanta-aluminium-to-vedanta-power-are-rising-vedanta-boost-reason-here-11795752280141.html",
-        "source": "livemint.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
         "title": "Airtel , Laurus among 6 large , mid & small - cap stock ideas by Motilal Oswal",
         "url": "https://www.business-standard.com/markets/news/stocks-to-buy-today-airtel-laurus-among-6-large-mid-small-cap-stock-ideas-by-motilal-oswal-126112700098_1.html",
         "source": "business-standard.com",
@@ -130,45 +116,80 @@
         "language": "English"
       },
       {
-        "title": "Stock market today : Live updates",
-        "url": "https://www.cnbc.com/2026/11/26/stock-market-today-live-updates.html",
-        "source": "cnbc.com",
-        "published": "20261127T021500Z",
-        "language": "English"
-      },
-      {
         "title": "Sensex , Nifty scale multi - month closing highs as tariff fears ease",
         "url": "https://economictimes.indiatimes.com/markets/stocks/news/sensex-nifty-scale-multi-month-closing-highs-as-tariff-fears-ease/articleshow/136206370.cms",
         "source": "economictimes.indiatimes.com",
         "published": "20261127T021500Z",
         "language": "English"
-      },
-      {
-        "title": "Pender Growth Fund Provides Financial Highlights and Company Updates",
-        "url": "https://www.saultstar.com/press-releases/globe-newswire/pender-growth-fund-provides-financial-highlights-and-company-updates/",
-        "source": "saultstar.com",
-        "published": "20261127T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "DFI , Food Empire draw analyst favour ; Delfi faces margin squeeze",
-        "url": "https://www.businesstimes.com.sg/companies-markets/high-costs-cautious-shoppers-dfi-food-empire-favour-sheng-siong-delfi-face-margin-squeeze",
-        "source": "businesstimes.com.sg",
-        "published": "20261127T001500Z",
-        "language": "English"
       }
     ],
     "crypto": [
       {
-        "title": "Bitcoin ( BTC ) Drops Below $60 , 000 in Binance Spot - Market Check",
-        "url": "https://econotimes.com/Bitcoin-BTC-Drops-Below-60-000-in-Binance-Spot-Market-Check-1781252",
-        "source": "econotimes.com",
+        "title": "What Would It Take for Hedera ( HBAR ) to Reach $1 ?",
+        "url": "https://247wallst.com/investing/cryptocurrency/2026/11/27/what-would-it-take-for-hedera-hbar-to-reach-1/",
+        "source": "247wallst.com",
+        "published": "20261127T224500Z",
+        "language": "English"
+      },
+      {
+        "title": "Is 10 , 000 XRP Enough to Retire On by 2035 ?",
+        "url": "https://247wallst.com/investing/cryptocurrency/2026/11/27/is-10000-xrp-enough-to-retire-on-by-2035/",
+        "source": "247wallst.com",
+        "published": "20261127T224500Z",
+        "language": "English"
+      },
+      {
+        "title": "Florida man who used AI to impersonate popular online streamer to steal $260K sentenced to prison",
+        "url": "https://www.fox32chicago.com/news/florida-man-who-used-ai-impersonate-popular-online-streamer-steal-260k-sentenced-prison",
+        "source": "fox32chicago.com",
+        "published": "20261127T223000Z",
+        "language": "English"
+      },
+      {
+        "title": "IP Strategy Holdings Inc : IP Strategy Receives Nasdaq Notification Regarding Delayed Form 10 - Q Filing",
+        "url": "https://www.finanznachrichten.de/nachrichten-2026-11/70249826-ip-strategy-holdings-inc-ip-strategy-receives-nasdaq-notification-regarding-delayed-form-10-q-filing-200.htm",
+        "source": "finanznachrichten.de",
+        "published": "20261127T223000Z",
+        "language": "English"
+      },
+      {
+        "title": "CEO later , alligator - The Economic Times",
+        "url": "https://economictimes.indiatimes.com/opinion/bliss-of-everyday-life/ceo-later-alligator/articleshow/136231681.cms",
+        "source": "economictimes.indiatimes.com",
+        "published": "20261127T223000Z",
+        "language": "English"
+      },
+      {
+        "title": "NC Attorney General warns of shopping and online scams during Black Friday , Cyber Monday",
+        "url": "https://newschannel9.com/news/local/scams-shopping-holiday-black-friday-cyber-monday-online-credit-cards-wifi-network-north-carolina-attorney-general-jeff-jackson-community",
+        "source": "newschannel9.com",
+        "published": "20261127T221500Z",
+        "language": "English"
+      },
+      {
+        "title": "Vegastars Casino : Quick - Hit Slot Sessions for Players Who Want Fast Results",
+        "url": "https://www.15rounds.com/2026/11/27/vegastars-casino-quick-hit-slot-sessions-for-players-who-want-fast-results/",
+        "source": "15rounds.com",
+        "published": "20261127T203000Z",
+        "language": "English"
+      },
+      {
+        "title": "Finery Markets & LINK expand stablecoin pricing access",
+        "url": "https://cfotech.news/story/finery-markets-link-expand-stablecoin-pricing-access",
+        "source": "cfotech.news",
         "published": "20261127T203000Z",
         "language": "English"
       },
       {
         "title": "TRON Records 68 . 1 % Share of 30 - Day Chain Revenue in Nov . 25 Snapshot",
         "url": "https://econotimes.com/TRON-Records-68-1-Share-of-30-Day-Chain-Revenue-in-Nov-25-Snapshot-1781248",
+        "source": "econotimes.com",
+        "published": "20261127T203000Z",
+        "language": "English"
+      },
+      {
+        "title": "ASEAN+3 Establishes Working Group for Digital - Asset and Cross - Border - Payment Talks",
+        "url": "https://econotimes.com/ASEAN-3-Establishes-Working-Group-for-Digital-Asset-and-Cross-Border-Payment-Talks-1781251",
         "source": "econotimes.com",
         "published": "20261127T203000Z",
         "language": "English"
@@ -181,66 +202,10 @@
         "language": "English"
       },
       {
-        "title": "Render Price , Chart & Market Cap - InsideBitcoins . com",
-        "url": "https://insidebitcoins.com/cryptocurrency-price/render-token-price",
-        "source": "insidebitcoins.com",
+        "title": "Harvest ETFs announces Final November 2026 Cash Distribution for the Harvest Canadian T - Bill ETF",
+        "url": "https://nationalpost.com/press-releases/business-wire/harvest-etfs-announces-final-november-2026-cash-distribution-for-the-harvest-canadian-t-bill-etf/",
+        "source": "nationalpost.com",
         "published": "20261127T203000Z",
-        "language": "English"
-      },
-      {
-        "title": "Dow Jones Top Financial Services Headlines at 12 AM ET : BOE Warns Scale and Breadth Of AI Financing Poses Threat to Financial Stability | Capital ...",
-        "url": "https://www.morningstar.com/news/dow-jones/2026112752/dow-jones-top-financial-services-headlines-at-12-am-et-boe-warns-scale-and-breadth-of-ai-financing-poses-threat-to-financial-stability-capital",
-        "source": "morningstar.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "What to know about North Korean move to shut down Swiss diplomatic office",
-        "url": "https://www.the-messenger.com/news/world/article_e1e0942e-f005-5e3e-8ea7-02604820bb9f.html",
-        "source": "the-messenger.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "ViaBTC to Showcase a Decade of Mining Expertise and One - Stop Asset Management at Blockchain Life 2026",
-        "url": "https://www.owensoundsuntimes.com/press-releases/pr-newswire/viabtc-to-showcase-a-decade-of-mining-expertise-and-one-stop-asset-management-at-blockchain-life-2026/",
-        "source": "owensoundsuntimes.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Asian Markets Rise as AI Sentiment Stabilizes Update",
-        "url": "https://www.morningstar.com/news/dow-jones/20261127157/asian-markets-rise-as-ai-sentiment-stabilizes-update",
-        "source": "morningstar.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Bitcoin vs the AI Trade : Why BTC Missed the 2026 Rebound",
-        "url": "https://memeburn.com/bitcoin-pump-and-fell-back-after-ai-trade-recovery/",
-        "source": "memeburn.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Gold price rebounds from one - year low , but experts feel sentiment remains fragile Check key factors affecting outlook",
-        "url": "https://www.livemint.com/money/gold-price-rebounds-from-one-year-low-but-experts-feel-sentiment-remains-fragile-check-key-factors-affecting-outlook-11795754573026.html",
-        "source": "livemint.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Bitcoin Treasury Corporation Reports Q3 2026 Financial Results",
-        "url": "https://www.cantechletter.com/newswires/bitcoin-treasury-corporation-reports-q3-2026-financial-results/",
-        "source": "cantechletter.com",
-        "published": "20261127T053000Z",
-        "language": "English"
-      },
-      {
-        "title": "Australia sanctions two suspects behind IRGC - backed Melbourne synagogue and Sydney arson attacks",
-        "url": "http://www.bignewsnetwork.com/news/279464555/australia-sanctions-two-suspects-behind-irgc-backed-melbourne-synagogue-and-sydney-arson-attacks",
-        "source": "bignewsnetwork.com",
-        "published": "20261127T053000Z",
         "language": "English"
       }
     ]
