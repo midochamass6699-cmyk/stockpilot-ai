@@ -11395,3 +11395,58 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
   }
 }
 </style>
+
+<style id="tf-canada-growth-final-layout-fix-v2">
+/* Final override: older homepage rules force the welcome header to display:block.
+   Restore the two-column desktop layout for the Canada Growth Sectors card. */
+@media (min-width: 761px) {
+  #live-trading-desk .trading-desk-header {
+    display:flex!important;
+    flex-direction:row!important;
+    flex-wrap:nowrap!important;
+    align-items:flex-start!important;
+    justify-content:space-between!important;
+    gap:22px!important;
+  }
+  #live-trading-desk .trading-desk-header > div:first-child {
+    display:block!important;
+    flex:1 1 0!important;
+    width:auto!important;
+    max-width:none!important;
+    min-width:0!important;
+  }
+  #live-trading-desk .trading-desk-side-stack {
+    display:flex!important;
+    flex:0 0 min(390px,38%)!important;
+    width:min(390px,38%)!important;
+    max-width:390px!important;
+    min-width:270px!important;
+    flex-direction:column!important;
+    align-self:flex-start!important;
+    box-sizing:border-box!important;
+  }
+  #live-trading-desk .tf-growth-feature-card {
+    display:block!important;
+    width:100%!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+}
+@media (max-width: 760px) {
+  #live-trading-desk .trading-desk-header {
+    display:block!important;
+  }
+  #live-trading-desk .trading-desk-side-stack {
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    margin-top:12px!important;
+  }
+  #live-trading-desk .tf-growth-feature-card {
+    display:block!important;
+    width:100%!important;
+  }
+}
+</style>
+
