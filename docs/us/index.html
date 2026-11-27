@@ -2488,6 +2488,19 @@ input, select, textarea, button {
 .tf-company-quick-form button:disabled{opacity:.65;cursor:wait}
 .tf-company-quick-form p{margin:0;color:#526176;font-size:10px;line-height:1.35}
 @media(max-width:760px){.tf-welcome-actions{align-items:stretch;gap:10px}.tf-company-quick-form{width:min(100%,360px)}}
+
+/* StockPilot AI — premium stock discovery entry point */
+.tf-company-quick-form{width:min(360px,100%)!important;padding:15px 16px!important;gap:9px!important;border:1px solid rgba(103,211,211,.34)!important;border-radius:15px!important;background:linear-gradient(145deg,#10243a 0%,#142f46 58%,#123b45 100%)!important;box-shadow:0 12px 30px rgba(7,20,35,.24),inset 0 1px 0 rgba(255,255,255,.08)!important}
+.tf-company-quick-form label{font-size:13px!important;font-weight:850!important;letter-spacing:.01em;color:#f4f8fc!important}
+.tf-company-quick-form input{height:42px!important;padding:9px 12px!important;border:1px solid #547087!important;border-radius:9px!important;background:#f8fbff!important;color:#132238!important;font-size:13px!important;outline:none}
+.tf-company-quick-form input:focus{border-color:#62d6c8!important;box-shadow:0 0 0 3px rgba(98,214,200,.18)!important}
+.tf-company-quick-form button{height:41px!important;border:1px solid rgba(135,238,220,.48)!important;border-radius:9px!important;background:linear-gradient(135deg,#167d78 0%,#159b86 100%)!important;color:#fff!important;font-size:12px!important;font-weight:900!important;letter-spacing:.045em!important;text-transform:uppercase;box-shadow:0 5px 13px rgba(4,22,34,.24),inset 0 1px 0 rgba(255,255,255,.16);transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+.tf-company-quick-form button:hover{transform:translateY(-1px);filter:brightness(1.08);box-shadow:0 8px 18px rgba(4,22,34,.3)}
+.tf-company-quick-form p{color:#c2d3df!important;font-size:10px!important}
+.tf-check-stock-nav{display:inline-flex!important;align-items:center;justify-content:center;gap:7px;margin:0 12px;padding:10px 14px;border:1px solid rgba(105,220,207,.48);border-radius:9px;background:linear-gradient(135deg,#155c66 0%,#168b83 100%);color:#f7ffff!important;text-decoration:none!important;font-size:11px;font-weight:900;letter-spacing:.045em;white-space:nowrap;box-shadow:0 5px 14px rgba(5,25,42,.22);transition:transform .18s,filter .18s}
+.tf-check-stock-nav:hover{transform:translateY(-1px);filter:brightness(1.1)}
+@media(max-width:760px){.tf-company-quick-form{width:100%!important;max-width:420px!important}.tf-check-stock-nav{display:none!important}}
+@media(prefers-reduced-motion:reduce){.tf-company-quick-form button,.tf-check-stock-nav{transition:none}}
 </style>
 <style id="tf-us-market-panels-clean-alignment">
 /* Keep the three U.S. market categories neatly aligned in one vertical left-hand column. */
