@@ -4153,7 +4153,7 @@ l-tool-muted">These are research and learning tools, not investment advice. Scre
   const exactSymbols=matches.filter(item=>key(item.symbol)===cleanName);
   const exactNames=matches.filter(item=>key(item.name)===cleanName);
   const selectedMarket=tvExchange(exchange,'');
-  const isSelectedMarket=item=>{const ex=String(item.exchange||item.mic_code||'').toUpperCase();return selectedMarket==='NASDAQ'?(ex.includes('NASDAQ')||ex==='XNAS'):selectedMarket==='NYSE'?(ex.includes('NYSE')||ex==='XNYS'):selectedMarket==='TSX'?(ex.includes('TORONTO')||ex==='XTSE'||ex==='TSX'):selectedMarket==='TSXV'?(ex.includes('VENTURE')||ex==='XTSX'||ex==='TSXV'):false;};
+  const isSelectedMarket=item=>{const ex=String(item.exchange||item.mic_code||'').toUpperCase();return selectedMarket==='NASDAQ'?(ex.includes('NASDAQ')||ex==='XNAS'):selectedMarket==='NYSE'?(ex.includes('NYSE')||ex.includes('NEW YORK')||ex==='XNYS'):selectedMarket==='TSX'?(ex.includes('TORONTO')||ex==='XTSE'||ex==='TSX'):selectedMarket==='TSXV'?(ex.includes('VENTURE')||ex==='XTSX'||ex==='TSXV'):false;};
   const stock=exactSymbols.find(isSelectedMarket)||exactNames.find(isSelectedMarket)||exactSymbols[0]||exactNames[0]||matches.find(isSelectedMarket)||matches[0];
   const resolvedSymbol=String(stock.symbol||'').trim().toUpperCase();
   if(!resolvedSymbol)throw new Error('The company search returned a listing without a ticker symbol.');
@@ -7412,7 +7412,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
 .tf-company-quick-form p{color:#c2d3df!important;font-size:10px!important;margin:0}
 .tf-check-stock-nav{display:inline-flex!important;align-items:center;justify-content:center;gap:7px;margin:0 10px;padding:10px 14px;border:1px solid rgba(105,220,207,.48);border-radius:9px;background:linear-gradient(135deg,#155c66 0%,#168b83 100%);color:#f7ffff!important;text-decoration:none!important;font-size:11px;font-weight:900;letter-spacing:.045em;white-space:nowrap;box-shadow:0 5px 14px rgba(5,25,42,.22)}
 .tf-check-stock-nav:hover{filter:brightness(1.1)}
-@media(max-width:760px){.tf-company-quick-form{width:100%!important;max-width:420px!important}.tf-check-stock-nav{margin:6px 0;padding:9px 12px}}
+@media(max-width:760px){.tf-company-quick-form{width:100%!important;max-width:420px!important}.tf-check-stock-nav{display:inline-flex!important;margin:6px 0;padding:9px 12px}}
 </style>
 <script id="sp-stock-explorer-entry-script">
 (function(){
