@@ -9700,7 +9700,7 @@ header{margin-bottom:0!important}
 </style>
 <div id="sp-stock-of-day" role="region" aria-label="StockPilot AI stock of the day">
  <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
- <span class="sp-day-copy"><span class="sp-day-eyebrow">★ STOCK OF THE DAY</span><strong class="sp-day-name" id="spDayName">Loading today's stock…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
+ <span class="sp-day-copy"><span class="sp-day-eyebrow">★ STOCK OF THE DAY</span><strong class="sp-day-name" id="spDayName">Loading today's stock…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span><span class="sp-day-analysis" id="spDayAnalysis" aria-live="polite"></span></span>
  <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
   <span class="sp-day-stat"><span class="sp-day-stat-label">LAST PRICE</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong><small class="sp-day-updated">UPDATED DAILY</small></span>
   <span class="sp-day-stat"><span class="sp-day-stat-label">DAY MOVE</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
@@ -9716,7 +9716,7 @@ header{margin-bottom:0!important}
 (function(){
  const host=document.getElementById('sp-stock-of-day');if(!host)return;
 
- const name=document.getElementById('spDayName'),ticker=document.getElementById('spDayTicker'),meta=document.getElementById('spDayMeta'),logo=document.getElementById('spDayLogo');
+ const name=document.getElementById('spDayName'),ticker=document.getElementById('spDayTicker'),meta=document.getElementById('spDayMeta'),analysis=document.getElementById('spDayAnalysis'),logo=document.getElementById('spDayLogo');
  const priceEl=document.getElementById('spDayPrice'),moveEl=document.getElementById('spDayMove'),volumeEl=document.getElementById('spDayVolume'),fiveEl=document.getElementById('spDayFiveDay'),relEl=document.getElementById('spDayRelVolume'),sourceEl=document.getElementById('spDaySource');
  const locale="en-US";
  const compact=n=>new Intl.NumberFormat(locale,{notation:'compact',maximumFractionDigits:2}).format(n);
@@ -9741,6 +9741,14 @@ header{margin-bottom:0!important}
   if(Number.isFinite(move))parts.push(signed(move)+' '+"DAILY MOVE");
   if(volumeMatch)parts.push(Number(volumeMatch[1]).toLocaleString(locale,{maximumFractionDigits:1})+'× '+"RELATIVE VOLUME");
   meta.textContent=parts.join(' · ');
+  const context=[];
+  if(p.reason) context.push(String(p.reason).trim().replace(/[.\\s]+$/,'')+'.');
+  const trend=[];
+  if(Number.isFinite(move)) trend.push('The latest session '+(move>0?'finished higher':move<0?'finished lower':'was unchanged')+' by '+signed(move)+'.');
+  if(Number.isFinite(five)) trend.push('Over five trading days, the reported move is '+signed(five)+'.');
+  if(Number.isFinite(rel)&&rel>0) trend.push('Trading volume is '+rel.toLocaleString(locale,{maximumFractionDigits:2})+' times its recent average.');
+  if(Number.isFinite(volume)&&volume>=0) trend.push('Reported session volume: '+compact(volume)+' shares.');
+  analysis.textContent=[...context,...trend].join(' '); 
   host.href='#main-picks';
   const img=document.createElement('img');img.alt='';img.loading='lazy';img.src='https://financialmodelingprep.com/image-stock/'+encodeURIComponent(symbol)+'.png';img.onerror=()=>{img.remove();logo.textContent=symbol.slice(0,2);};logo.textContent=symbol.slice(0,2);logo.replaceChildren(img);
  }).catch(()=>{name.textContent="Today's selection unavailable";ticker.textContent='StockPilot AI';meta.textContent='';});
@@ -11163,6 +11171,15 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 #live-trading-desk #sp-stock-of-day .sp-day-meta{
   color:#536b80!important;
   font-size:10px!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-analysis{
+  display:block!important;
+  max-width:100%!important;
+  margin-top:3px!important;
+  color:#435c73!important;
+  font-size:10px!important;
+  line-height:1.45!important;
+  font-weight:600!important;
 }
 #live-trading-desk #sp-stock-of-day .sp-day-stats{
   grid-area:stats!important;
