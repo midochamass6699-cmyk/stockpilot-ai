@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-27T19:27:35.818287+00:00",
+  "fetched_at": "2026-11-27T20:22:44.399564+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -139,13 +139,6 @@
         "language": "English"
       },
       {
-        "title": "LSEG and Tradeweb partner on repo tool , agentic projects progress , and more",
-        "url": "https://www.waterstechnology.com/emerging-technologies/7953390/lseg-and-tradeweb-partner-on-repo-tool-agentic-projects-progress-and-more",
-        "source": "waterstechnology.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
         "title": "ViaBTC to Showcase a Decade of Mining Expertise and One - Stop Asset Management at Blockchain Life 2026",
         "url": "https://www.owensoundsuntimes.com/press-releases/pr-newswire/viabtc-to-showcase-a-decade-of-mining-expertise-and-one-stop-asset-management-at-blockchain-life-2026/",
         "source": "owensoundsuntimes.com",
@@ -174,13 +167,6 @@
         "language": "English"
       },
       {
-        "title": "LatAm Expat & Nomad Daily Guide for Friday , November 27 , 2026",
-        "url": "https://www.riotimesonline.com/latam-expat-nomad-daily-guide-for-friday-november-27-2026/",
-        "source": "riotimesonline.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
         "title": "Bitcoin Treasury Corporation Reports Q3 2026 Financial Results",
         "url": "https://www.cantechletter.com/newswires/bitcoin-treasury-corporation-reports-q3-2026-financial-results/",
         "source": "cantechletter.com",
@@ -202,10 +188,24 @@
         "language": "English"
       },
       {
-        "title": "Telco Seeks Tax Harmonisation , Protection Of Telecoms Infrastructure",
-        "url": "https://leadership.ng/telco-seeks-tax-harmonisation-protection-of-telecoms-infrastructure/",
-        "source": "leadership.ng",
-        "published": "20261127T053000Z",
+        "title": "Local Authorities Warn Of Holiday Scams",
+        "url": "https://whky.com/local-authorities-warn-of-holiday-scams/",
+        "source": "whky.com",
+        "published": "20261127T033000Z",
+        "language": "English"
+      },
+      {
+        "title": "Global Market Today : Asian stocks rise for second day , crude oil gains",
+        "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-asian-stocks-rise-for-second-day-crude-oil-gains/articleshow/136206178.cms",
+        "source": "economictimes.indiatimes.com",
+        "published": "20261127T021500Z",
+        "language": "English"
+      },
+      {
+        "title": "WSOP puts Stake on its Bahamas series after Utah and Florida sued the crypto operator -",
+        "url": "https://www.uspoker.com/blog/wsop-puts-stake-on-its-bahamas-series-after-utah-and-florida-sued-the-crypto-operator/46979/",
+        "source": "uspoker.com",
+        "published": "20261127T011500Z",
         "language": "English"
       }
     ]
