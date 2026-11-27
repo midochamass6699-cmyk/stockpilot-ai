@@ -3162,20 +3162,81 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
   .fr-welcome-banner p{font-size:12px}
 }
 </style>
-<section class="fr-welcome-banner" aria-labelledby="fr-welcome-title">
-  <h1 id="fr-welcome-title">Bienvenue chez Technofront</h1>
-  <p class="fr-welcome-tagline">Parce que l’avenir est clair.</p>
-  <a class="tf-free-tools-cta" href="#market-terminal">Découvrir nos outils gratuits pour les traders <span aria-hidden="true">↗</span></a>
-  <div class="tf-welcome-actions" aria-label="Recherche d’actions et fonctionnalités">
+
+<section class="tf-fr-opening-row" aria-label="Bienvenue et outils de recherche">
+  <article class="tf-fr-opening-card tf-fr-welcome-panel">
+    <div class="tf-fr-kicker"><span aria-hidden="true">●</span> STOCKPILOT AI · SURVEILLANCE DES MARCHÉS</div>
+    <h1 id="fr-welcome-title">Bienvenue chez Technofront</h1>
+    <p class="tf-fr-tagline">Parce que l’avenir est clair.</p>
+    <p class="tf-fr-intro">Recherche sur les marchés canadien et américain · Actions, penny stocks et cryptomonnaies · Données de marché et ressources éducatives</p>
+    <a class="tf-fr-primary-link" href="#market-terminal">Découvrir le terminal des marchés <span aria-hidden="true">↗</span></a>
+  </article>
+
+  <article class="tf-fr-opening-card tf-fr-check-panel">
+    <div class="tf-fr-card-heading">Vérifier une action</div>
     <form class="tf-company-quick-form" id="tf-company-quick-form">
-      <label for="tf-company-name">Vérifier une action</label>
-      <input id="tf-company-name" name="company" type="search" placeholder="Nom de l’entreprise ou symbole (ex. Microsoft, MSFT)" autocomplete="off" minlength="2" required>
-      <button id="tf-company-submit" type="submit">EXPLORER L’ACTION →</button>
+      <label for="tf-company-name">Nom de l’entreprise ou symbole boursier</label>
+      <input id="tf-company-name" name="company" type="search" placeholder="Ex. Microsoft ou MSFT" autocomplete="off" minlength="2" required>
+      <button id="tf-company-submit" type="submit">EXPLORER L’ACTION <span aria-hidden="true">→</span></button>
       <p id="tf-company-status" role="status" aria-live="polite">Saisissez un nom d’entreprise ou un symbole boursier.</p>
+      <nav class="tf-stock-tool-links tf-fr-tool-links" aria-label="Outils de recherche sur les actions">
+        <a href="/stock-explorer.html#chart-panel"><span aria-hidden="true">↗</span>Graphique interactif</a>
+        <a href="/stock-explorer.html#technicals-panel"><span aria-hidden="true">⌁</span>Analyse technique</a>
+        <a href="/stock-explorer.html#news-panel"><span aria-hidden="true">▤</span>Nouvelles de l’entreprise</a>
+        <a href="/stock-explorer.html#fundamentals-panel"><span aria-hidden="true">◫</span>Données fondamentales</a>
+        <a href="/stock-explorer.html#activity-panel"><span aria-hidden="true">▥</span>Activité de négociation</a>
+        <a href="/stock-explorer.html#compare-panel"><span aria-hidden="true">⇄</span>Comparer des actions</a>
+        <a href="/stock-explorer.html#report-panel"><span aria-hidden="true">▣</span>Rapport complet</a>
+        <a href="#tf-company-name"><span aria-hidden="true">⌕</span>Recherche par nom ou symbole</a>
+      </nav>
     </form>
-  </div>
-  <p>Actions, penny stocks et cryptomonnaies à surveiller.</p>
+  </article>
+
+  <article class="tf-fr-opening-card tf-fr-day-panel" aria-label="Action du jour">
+    <div id="sp-stock-of-day" role="region" aria-label="StockPilot AI stock of the day">
+ <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
+ <span class="sp-day-copy"><span class="sp-day-eyebrow">★ ACTION DU JOUR</span><strong class="sp-day-name" id="spDayName">Chargement de l’action du jour…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
+ <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
+  <span class="sp-day-stat"><span class="sp-day-stat-label">PRIX</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong><small class="sp-day-updated">MIS À JOUR QUOTIDIENNEMENT</small></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VARIATION</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VOLUME</span><strong class="sp-day-stat-value" id="spDayVolume">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">5 JOURS</span><strong class="sp-day-stat-value" id="spDayFiveDay">—</strong></span>
+  <span class="sp-day-stat"><span class="sp-day-stat-label">VOL. RELATIF</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
+ </span>
+ <span class="sp-day-source" id="spDaySource">Données de clôture · —</span>
+ <a class="sp-day-cta" href="#main-picks">VOIR L’ACTION →</a>
+<span class="sp-day-terminal-copy"><strong>TERMINAL DES MARCHÉS</strong><small>LISTES DE SUIVI · FILTRE D’ACTIONS · ANALYSE TECHNIQUE</small></span><a class="sp-day-terminal-link" href="#market-terminal">OUVRIR LE TERMINAL →</a>
+</div>
+  </article>
+
+  <article class="tf-fr-opening-card tf-fr-growth-panel">
+    <div class="tf-fr-growth-kicker">LES PROCHAINES VAGUES D’INNOVATION</div>
+    <a class="tf-fr-growth-heading" href="/fr/growth-sectors/">Découvrir les secteurs en croissance <span aria-hidden="true">↗</span></a>
+    <p>Explorez les industries qui façonnent l’économie de demain et les technologies qui stimulent leur développement.</p>
+    <div class="tf-fr-growth-grid">
+      <a href="/fr/growth-sectors/#ai-chips"><strong>IA et semi-conducteurs</strong><small>Puces IA, processeurs graphiques et calcul avancé</small></a>
+      <a href="/fr/growth-sectors/#data-centres"><strong>Centres de données</strong><small>Infonuagique et infrastructure numérique</small></a>
+      <a href="/fr/growth-sectors/#energy"><strong>Énergie et réseaux</strong><small>Demande électrique et modernisation des réseaux</small></a>
+      <a href="/fr/growth-sectors/#cooling"><strong>Systèmes de refroidissement</strong><small>Gestion thermique des centres informatiques</small></a>
+      <a href="/fr/growth-sectors/#networking"><strong>Réseaux et connectivité</strong><small>Réseaux optiques et équipements de communication</small></a>
+      <a href="/fr/growth-sectors/#robotics"><strong>Robotique et automatisation</strong><small>Automatisation industrielle et machines intelligentes</small></a>
+      <a href="/fr/growth-sectors/#biotechnology"><strong>Biotechnologie</strong><small>Recherche en sciences de la vie et nouvelles thérapies</small></a>
+      <a href="/fr/growth-sectors/#ai-platforms"><strong>Plateformes d’IA</strong><small>Logiciels, modèles et applications d’intelligence artificielle</small></a>
+    </div>
+    <a class="tf-fr-growth-footer" href="/fr/growth-sectors/">VOIR LES 8 SECTEURS →</a>
+  </article>
 </section>
+
+<section class="tf-fr-advanced-ribbon" role="region" aria-label="Ressources de recherche avancée">
+  <div class="tf-fr-advanced-label">RECHERCHE AVANCÉE</div>
+  <div class="tf-fr-advanced-content">
+    <span>Allez au-delà des données boursières de base</span><span aria-hidden="true">✦</span>
+    <a href="/advanced-market-intelligence.html">Guide d’intelligence avancée des marchés</a><span aria-hidden="true">✦</span>
+    <a href="/experts-exchange.html">Échanges avec des experts</a><span aria-hidden="true">✦</span>
+    <span>VPIN · Exposition gamma (GEX) · Lambda de Kyle · Vanna et Charm · Exposant de Hurst</span>
+  </div>
+</section>
+
 <section class="tf-mobile-start" aria-labelledby="tf-mobile-start-title">
 <h2 id="tf-mobile-start-title">Que souhaitez-vous faire aujourd’hui ?</h2>
 <p class="tf-mobile-start-intro">Choisissez un point de départ pour découvrir les outils et ressources disponibles.</p>
@@ -8604,20 +8665,7 @@ header{margin-bottom:0!important}
 @media(prefers-reduced-motion:reduce){#sp-stock-of-day .sp-day-bell{animation:none}}
 @media(max-width:600px){#sp-stock-of-day .sp-day-updated{font-size:6px}#sp-stock-of-day .sp-day-bell{width:28px;height:28px;flex-basis:28px;font-size:14px}}
 </style>
-<div id="sp-stock-of-day" role="region" aria-label="StockPilot AI stock of the day">
- <span class="sp-day-logo" id="spDayLogo" aria-hidden="true">SP</span>
- <span class="sp-day-copy"><span class="sp-day-eyebrow">★ ACTION DU JOUR</span><strong class="sp-day-name" id="spDayName">Chargement de l’action du jour…</strong><span class="sp-day-ticker" id="spDayTicker">STOCKPILOT AI</span><span class="sp-day-meta" id="spDayMeta"></span></span>
- <span class="sp-day-stats" id="sp-day-stats" aria-label="Stock market data">
-  <span class="sp-day-stat"><span class="sp-day-stat-label">PRIX</span><strong class="sp-day-stat-value" id="spDayPrice">—</strong><small class="sp-day-updated">MIS À JOUR QUOTIDIENNEMENT</small></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">VARIATION</span><strong class="sp-day-stat-value" id="spDayMove">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">VOLUME</span><strong class="sp-day-stat-value" id="spDayVolume">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">5 JOURS</span><strong class="sp-day-stat-value" id="spDayFiveDay">—</strong></span>
-  <span class="sp-day-stat"><span class="sp-day-stat-label">VOL. RELATIF</span><strong class="sp-day-stat-value" id="spDayRelVolume">—</strong></span>
- </span>
- <span class="sp-day-source" id="spDaySource">Données de clôture · —</span>
- <a class="sp-day-cta" href="#main-picks">VOIR L’ACTION →</a>
-<span class="sp-day-terminal-copy"><strong>TERMINAL DES MARCHÉS</strong><small>LISTES DE SUIVI · FILTRE D’ACTIONS · ANALYSE TECHNIQUE</small></span><a class="sp-day-terminal-link" href="#market-terminal">OUVRIR LE TERMINAL →</a>
-</div>
+<!-- Action du jour déplacée dans la rangée principale de quatre cartes. -->
 <script id="sp-stock-of-day-data">
 (function(){
  const host=document.getElementById('sp-stock-of-day');if(!host)return;
@@ -9569,5 +9617,94 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 }
 @media(max-width:420px){
   .fr-welcome-banner .tf-stock-feature-panel{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+
+
+<style id="tf-fr-four-card-opening-row-v1">
+/* French homepage: four distinct opening cards, matching the Canada and U.S. layout. */
+.tf-fr-opening-row{
+ display:grid!important;
+ grid-template-columns:minmax(0,.98fr) minmax(0,1.12fr) minmax(0,1.08fr) minmax(0,1.12fr)!important;
+ gap:14px!important;align-items:stretch!important;
+ width:calc(100% - 32px)!important;max-width:1600px!important;
+ margin:14px auto 16px!important;
+}
+.tf-fr-opening-card{
+ min-width:0!important;box-sizing:border-box!important;
+ border:1px solid #d3e0eb!important;border-radius:14px!important;
+ box-shadow:0 8px 22px rgba(14,39,62,.08)!important;
+}
+.tf-fr-welcome-panel{
+ display:flex!important;flex-direction:column!important;justify-content:flex-start!important;
+ padding:19px!important;background:linear-gradient(145deg,#fff,#edf6fa)!important;
+ border-top:4px solid #167d86!important;color:#172b43!important;
+}
+.tf-fr-kicker{font-size:10px!important;line-height:1.45!important;font-weight:900!important;letter-spacing:.055em!important;color:#176b72!important}
+.tf-fr-kicker span{color:#16a58f!important}
+.tf-fr-welcome-panel h1{margin:15px 0 6px!important;color:#102a43!important;font-size:clamp(22px,2vw,30px)!important;line-height:1.12!important;font-weight:950!important}
+.tf-fr-tagline{margin:2px 0 10px!important;color:#147b78!important;font-size:17px!important;line-height:1.35!important;font-weight:850!important}
+.tf-fr-intro{margin:0 0 14px!important;color:#40556b!important;font-size:14px!important;line-height:1.55!important}
+.tf-fr-primary-link{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin-top:auto;padding:9px 12px;border-radius:8px;background:#12384a;color:#fff!important;text-decoration:none!important;font-size:13px!important;font-weight:850!important}
+.tf-fr-check-panel{padding:16px!important;background:linear-gradient(145deg,#10283d,#173d50)!important;border-top:4px solid #27b6a4!important;color:#fff!important}
+.tf-fr-card-heading{margin:0 0 9px!important;color:#fff!important;font-size:19px!important;line-height:1.25!important;font-weight:950!important}
+.tf-fr-check-panel .tf-company-quick-form{display:flex!important;flex-direction:column!important;gap:8px!important;margin:0!important;padding:0!important}
+.tf-fr-check-panel .tf-company-quick-form label{color:#f1f7fb!important;font-size:13px!important;font-weight:800!important}
+.tf-fr-check-panel .tf-company-quick-form input{width:100%!important;min-height:39px!important;box-sizing:border-box!important;font-size:14px!important;padding:9px 10px!important}
+.tf-fr-check-panel .tf-company-quick-form button{width:100%!important;min-height:39px!important;font-size:13px!important}
+.tf-fr-check-panel .tf-company-quick-form p{font-size:11px!important;line-height:1.4!important;color:#d0e0e9!important}
+.tf-fr-tool-links{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;margin:5px 0 0!important;padding-top:10px!important;border-top:1px solid rgba(185,215,226,.22)!important}
+.tf-fr-tool-links a{display:flex!important;align-items:center!important;gap:6px!important;min-width:0!important;padding:7px 7px!important;border:1px solid rgba(139,183,197,.25)!important;border-radius:7px!important;background:rgba(255,255,255,.06)!important;color:#eef8fb!important;text-decoration:none!important;font-size:11px!important;line-height:1.3!important;font-weight:750!important}
+.tf-fr-tool-links a span{color:#70d9ce!important;font-size:13px!important;flex:0 0 auto!important}
+.tf-fr-tool-links a:hover{background:rgba(68,190,178,.16)!important;border-color:#62d6c8!important}
+.tf-fr-day-panel{padding:13px!important;background:linear-gradient(145deg,#10243b,#183c58)!important;border-top:4px solid #d4aa4c!important;color:#fff!important;display:flex!important;align-items:flex-start!important}
+.tf-fr-day-panel #sp-stock-of-day{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;gap:9px!important;box-shadow:none!important;background:transparent!important;border:0!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-copy{flex:1 1 100%!important;min-width:0!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-eyebrow{font-size:11px!important;letter-spacing:.06em!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-name{font-size:17px!important;line-height:1.3!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-ticker{font-size:12px!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-meta{font-size:11px!important;line-height:1.4!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-stats{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;flex:1 1 100%!important;min-width:0!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-stat{padding:7px!important;border:1px solid #ffffff24!important;border-radius:7px!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-stat-label{font-size:10px!important;white-space:normal!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-stat-value{font-size:16px!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-updated{font-size:8px!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-source{margin:0!important;font-size:10px!important;line-height:1.4!important}
+.tf-fr-day-panel #sp-stock-of-day .sp-day-cta,.tf-fr-day-panel #sp-stock-of-day .sp-day-terminal-link{font-size:11px!important}
+.tf-fr-growth-panel{padding:16px!important;background:linear-gradient(145deg,#fff,#eff7f8)!important;border-top:4px solid #168b83!important;color:#183047!important}
+.tf-fr-growth-kicker{font-size:10px!important;line-height:1.4!important;font-weight:900!important;letter-spacing:.06em!important;color:#177c78!important}
+.tf-fr-growth-heading{display:block!important;margin:7px 0!important;color:#102b43!important;text-decoration:none!important;font-size:19px!important;line-height:1.2!important;font-weight:950!important}
+.tf-fr-growth-panel>p{margin:5px 0 10px!important;color:#52657a!important;font-size:13px!important;line-height:1.45!important}
+.tf-fr-growth-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
+.tf-fr-growth-grid a{display:flex!important;flex-direction:column!important;gap:3px!important;min-width:0!important;padding:7px!important;border:1px solid #d8e5e9!important;border-radius:7px!important;background:#fff!important;color:#183047!important;text-decoration:none!important}
+.tf-fr-growth-grid strong{font-size:12px!important;line-height:1.3!important;font-weight:900!important}
+.tf-fr-growth-grid small{font-size:11px!important;line-height:1.35!important;color:#52677a!important}
+.tf-fr-growth-grid a:hover{border-color:#45b8aa!important;background:#f2fbf9!important}
+.tf-fr-growth-footer{display:block!important;margin-top:9px!important;color:#147b78!important;font-size:11px!important;font-weight:950!important;text-decoration:none!important}
+.tf-fr-advanced-ribbon{display:flex!important;align-items:stretch!important;gap:12px!important;width:calc(100% - 32px)!important;max-width:1600px!important;margin:0 auto 16px!important;padding:11px 14px!important;box-sizing:border-box!important;border:1px solid #cbdde8!important;border-radius:10px!important;background:linear-gradient(100deg,#102b43,#164c5a)!important;color:#fff!important}
+.tf-fr-advanced-label{display:flex!important;align-items:center!important;flex:0 0 auto!important;color:#f1d78b!important;font-size:12px!important;font-weight:950!important;letter-spacing:.06em!important}
+.tf-fr-advanced-content{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:8px!important;color:#e4f0f4!important;font-size:12px!important;line-height:1.5!important}
+.tf-fr-advanced-content a{color:#8ee7dc!important;font-weight:850!important;text-decoration:none!important}
+.tf-fr-advanced-content a:hover{text-decoration:underline!important}
+@media(max-width:1250px){
+ .tf-fr-opening-row{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+ .tf-fr-opening-row{grid-template-columns:minmax(0,1fr)!important;width:calc(100% - 24px)!important;gap:10px!important;margin:10px auto 13px!important}
+ .tf-fr-opening-card{width:100%!important}
+ .tf-fr-welcome-panel,.tf-fr-check-panel,.tf-fr-growth-panel{padding:15px!important}
+ .tf-fr-welcome-panel h1{font-size:23px!important}
+ .tf-fr-intro{font-size:14px!important}
+ .tf-fr-tool-links{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .tf-fr-tool-links a{font-size:12px!important}
+ .tf-fr-day-panel{padding:13px!important}
+ .tf-fr-growth-grid strong{font-size:13px!important}
+ .tf-fr-growth-grid small{font-size:12px!important}
+ .tf-fr-advanced-ribbon{width:calc(100% - 24px)!important;flex-direction:column!important;gap:5px!important;margin-bottom:12px!important}
+ .tf-fr-advanced-content{font-size:12px!important}
+}
+@media(max-width:420px){
+ .tf-fr-growth-grid{grid-template-columns:minmax(0,1fr)!important}
+ .tf-fr-tool-links{grid-template-columns:minmax(0,1fr)!important}
 }
 </style>
