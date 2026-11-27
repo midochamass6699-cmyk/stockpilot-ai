@@ -83,6 +83,7 @@ export default {
     const response = await fetch(request);
     const contentType = response.headers.get("content-type") || "";
     if (!response.ok || !contentType.includes("text/html")) return response;
+    let html = await response.text();
 
     // Apply one shared visual theme to every public HTML page.
     // Preview mockups are intentionally excluded; page copy, layout and scripts remain untouched.
@@ -91,7 +92,6 @@ export default {
     }
 
     const pagePath = url.pathname.replace(/index\.html$/i, "").replace(/\/$/, "") || "/";
-    let html = await response.text();
 
     // Add Statcounter to every HTML page served by this domain.
     // Keep existing page-level copies, and avoid adding a duplicate tracker.
