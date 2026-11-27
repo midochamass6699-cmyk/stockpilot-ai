@@ -11078,3 +11078,156 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
   }
 }
 </style>
+
+
+<style id="tf-stockday-readable-tall-v1">
+/* Improve readability of the Check Any Stock feature links. */
+#live-trading-desk .tf-company-quick-form>.tf-stock-tool-links a{
+  min-height:38px!important;
+  padding:9px 10px!important;
+  font-size:13px!important;
+  line-height:1.3!important;
+  font-weight:800!important;
+}
+#live-trading-desk .tf-company-quick-form>.tf-stock-tool-links a span{
+  font-size:15px!important;
+}
+@media(min-width:761px){
+  #live-trading-desk .tf-company-quick-form>.tf-stock-tool-links{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:7px!important;
+  }
+}
+
+/* Brighter Stock of the Day card: strong contrast for logo, name and market figures. */
+#live-trading-desk #sp-stock-of-day{
+  display:grid!important;
+  grid-template-columns:66px minmax(0,1fr)!important;
+  grid-template-areas:
+    "logo copy"
+    "stats stats"
+    "source source"
+    "cta cta"!important;
+  align-content:center!important;
+  align-items:center!important;
+  justify-items:stretch!important;
+  gap:13px 12px!important;
+  min-height:275px!important;
+  height:100%!important;
+  padding:22px 20px!important;
+  border:1px solid #cbd9e8!important;
+  border-left:4px solid #149b82!important;
+  border-radius:17px!important;
+  background:linear-gradient(145deg,#ffffff 0%,#f1f7fc 62%,#e6f3f1 100%)!important;
+  box-shadow:0 12px 28px rgba(21,48,76,.13)!important;
+  color:#14243a!important;
+}
+#live-trading-desk #sp-stock-of-day:before{display:none!important}
+#live-trading-desk #sp-stock-of-day .sp-day-logo{
+  grid-area:logo!important;
+  width:64px!important;height:64px!important;min-width:64px!important;flex-basis:64px!important;
+  border-radius:13px!important;
+  background:#fff!important;
+  color:#12304b!important;
+  border:1px solid #cbd8e5!important;
+  box-shadow:0 4px 12px rgba(20,44,70,.12)!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-logo img{
+  padding:5px!important;
+  object-fit:contain!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-copy{
+  grid-area:copy!important;
+  min-width:0!important;
+  gap:4px!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-eyebrow{
+  color:#805b08!important;
+  background:#fff5d8!important;
+  border:1px solid #e9d28b!important;
+  font-size:10px!important;
+  letter-spacing:.08em!important;
+  padding:5px 8px!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-name{
+  color:#122b45!important;
+  font-size:clamp(18px,1.6vw,24px)!important;
+  line-height:1.15!important;
+  overflow-wrap:anywhere!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-ticker{
+  color:#36536f!important;
+  font-size:11px!important;
+  line-height:1.3!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-meta{
+  color:#536b80!important;
+  font-size:10px!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-stats{
+  grid-area:stats!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:7px!important;
+  padding:9px!important;
+  border:1px solid #d6e1eb!important;
+  border-radius:11px!important;
+  background:#fff!important;
+  backdrop-filter:none!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-stat{
+  min-width:0!important;
+  padding:4px!important;
+  gap:4px!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-stat-label{
+  color:#64788b!important;
+  font-size:8px!important;
+  letter-spacing:.04em!important;
+  white-space:normal!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-stat-value{
+  color:#152f49!important;
+  font-size:15px!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-stat-value.up{color:#087a52!important}
+#live-trading-desk #sp-stock-of-day .sp-day-stat-value.down{color:#bd3434!important}
+#live-trading-desk #sp-stock-of-day .sp-day-updated{color:#73869a!important}
+#live-trading-desk #sp-stock-of-day .sp-day-source{
+  grid-area:source!important;
+  margin:0!important;
+  color:#63798d!important;
+  font-size:9px!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-cta,
+#live-trading-desk #sp-stock-of-day .sp-day-terminal-link{
+  color:#087e70!important;
+  font-weight:900!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-terminal-copy{
+  color:#243e57!important;
+}
+#live-trading-desk #sp-stock-of-day .sp-day-terminal-copy small{
+  color:#61788d!important;
+}
+@media(max-width:760px){
+  #live-trading-desk #sp-stock-of-day{
+    min-height:0!important;
+    height:auto!important;
+    padding:16px!important;
+    grid-template-columns:54px minmax(0,1fr)!important;
+    gap:10px!important;
+  }
+  #live-trading-desk #sp-stock-of-day .sp-day-logo{
+    width:52px!important;height:52px!important;min-width:52px!important;flex-basis:52px!important;
+  }
+  #live-trading-desk #sp-stock-of-day .sp-day-stats{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  #live-trading-desk .tf-company-quick-form>.tf-stock-tool-links a{
+    min-height:36px!important;
+    font-size:12px!important;
+  }
+}
+</style>
