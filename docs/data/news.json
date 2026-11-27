@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-27T01:53:51.673567+00:00",
+  "fetched_at": "2026-11-27T02:47:46.224429+00:00",
   "updated_sections": [
     "penny",
     "crypto"
@@ -95,53 +95,53 @@
     ],
     "penny": [
       {
-        "title": "Pender Growth Fund Provides Financial Highlights and Company Updates",
-        "url": "https://www.thewhig.com/press-releases/globe-newswire/pender-growth-fund-provides-financial-highlights-and-company-updates-2/",
-        "source": "thewhig.com",
-        "published": "20261127T004500Z",
+        "title": "Select blue chips drive Nifty rally as market breadth weakens",
+        "url": "https://economictimes.indiatimes.com/markets/stocks/news/market-rally-narrows-as-mid-small-and-microcaps-lose-ground/articleshow/136206231.cms",
+        "source": "economictimes.indiatimes.com",
+        "published": "20261127T021500Z",
         "language": "English"
       },
       {
-        "title": "DFI , Food Empire draw analyst favour ; Delfi faces margin squeeze",
-        "url": "https://www.businesstimes.com.sg/companies-markets/high-costs-cautious-shoppers-dfi-food-empire-favour-sheng-siong-delfi-face-margin-squeeze",
-        "source": "businesstimes.com.sg",
-        "published": "20261127T001500Z",
-        "language": "English"
-      },
-      {
-        "title": "Children fantasy follows twin siblings who restore colour to a grey kingdom through teamwork and quick thinking | Press Releases",
-        "url": "https://www.ktbs.com/online_features/press_releases/children-s-fantasy-follows-twin-siblings-who-restore-colour-to-a-grey-kingdom-through-teamwork/article_c6e84205-7080-5e33-953e-6ea9e2066111.html",
-        "source": "ktbs.com",
-        "published": "20261126T124500Z",
-        "language": "English"
-      },
-      {
-        "title": "Billionaire Steve Cohen 10 Biggest Stock Bets for 2027",
-        "url": "https://www.insidermonkey.com/news/billionaire-steve-cohens-10-biggest-stock-bets-for-2027-1867809/",
-        "source": "insidermonkey.com",
-        "published": "20261126T051500Z",
-        "language": "English"
-      },
-      {
-        "title": "10 Most Oversold Semiconductor Stocks to Buy for 2027",
-        "url": "https://www.insidermonkey.com/news/10-most-oversold-semiconductor-stocks-to-buy-for-2027-1870302/",
-        "source": "insidermonkey.com",
-        "published": "20261126T051500Z",
-        "language": "English"
-      },
-      {
-        "title": "Dow Erases 1 , 100 - Point Plunge as AI Selloff Rattles Wall Street",
-        "url": "https://www.hngn.com/articles/273967/20261125/dow-erases-1100-point-plunge-ai-selloff-rattles-wall-street.htm",
-        "source": "hngn.com",
-        "published": "20261126T031500Z",
+        "title": "Sensex , Nifty scale multi - month closing highs as tariff fears ease",
+        "url": "https://economictimes.indiatimes.com/markets/stocks/news/sensex-nifty-scale-multi-month-closing-highs-as-tariff-fears-ease/articleshow/136206370.cms",
+        "source": "economictimes.indiatimes.com",
+        "published": "20261127T021500Z",
         "language": "English"
       }
     ],
     "crypto": [
       {
+        "title": "The Great Blackout hasnt happened yet but it still could",
+        "url": "https://www.simcoe.com/opinion/columnists/the-great-blackout-did-not-happen-on-tuesday-but-it-might-in-the-future/article_dc2ec843-d5bd-5e2d-ac7f-450b84c5346e.html",
+        "source": "simcoe.com",
+        "published": "20261127T021500Z",
+        "language": "English"
+      },
+      {
+        "title": "Global Market Today : Asian stocks rise for second day , crude oil gains",
+        "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-today-asian-stocks-rise-for-second-day-crude-oil-gains/articleshow/136206178.cms",
+        "source": "economictimes.indiatimes.com",
+        "published": "20261127T021500Z",
+        "language": "English"
+      },
+      {
+        "title": "Trump Targets China , EU in New Round of Tariffs",
+        "url": "https://drudge.com/news/295754/trump-targets-china-eu-new-round",
+        "source": "drudge.com",
+        "published": "20261127T014500Z",
+        "language": "English"
+      },
+      {
         "title": "WSOP puts Stake on its Bahamas series after Utah and Florida sued the crypto operator -",
         "url": "https://www.uspoker.com/blog/wsop-puts-stake-on-its-bahamas-series-after-utah-and-florida-sued-the-crypto-operator/46979/",
         "source": "uspoker.com",
+        "published": "20261127T011500Z",
+        "language": "English"
+      },
+      {
+        "title": "A Guided Meditation for Eldest Daughters on Thanksgiving Day",
+        "url": "https://www.jezebel.com/thanksgiving-day-guided-meditation-for-eldest-daughters",
+        "source": "jezebel.com",
         "published": "20261127T011500Z",
         "language": "English"
       },
@@ -167,6 +167,13 @@
         "language": "English"
       },
       {
+        "title": "2026 was UFC Year of the Upset",
+        "url": "https://www.mmamania.com/ufc-odds/488471/2026-was-ufcs-year-of-the-upset",
+        "source": "mmamania.com",
+        "published": "20261126T224500Z",
+        "language": "English"
+      },
+      {
         "title": "A 30 % Bitcoin crash hasnt shaken this asset manager $1 . 6 million call",
         "url": "https://cedarnews.net/newstasks/1201488/30-bitcoin-crash-hasnt-shaken-asset-managers/",
         "source": "cedarnews.net",
@@ -185,41 +192,6 @@
         "url": "https://www.15rounds.com/2026/11/26/woo-gambling-enterprise-login-gamble-woo-casino-games-on-the-internet/",
         "source": "15rounds.com",
         "published": "20261126T223000Z",
-        "language": "English"
-      },
-      {
-        "title": "Media misinformation and anti - indy bias are cranking up again",
-        "url": "https://www.thenational.scot/politics/26763555.media-misinformation-anti-indy-bias-cranking/",
-        "source": "thenational.scot",
-        "published": "20261126T223000Z",
-        "language": "English"
-      },
-      {
-        "title": "Early Ethereum ICO Participant Moves 1 , 500 Ether ( ETH ) During Apparent Liquidation",
-        "url": "https://econotimes.com/Early-Ethereum-ICO-Participant-Moves-1-500-Ether-ETH-During-Apparent-Liquidation-1780886",
-        "source": "econotimes.com",
-        "published": "20261126T223000Z",
-        "language": "English"
-      },
-      {
-        "title": "Netflix SBF miniseries soars while Amy Poehler Dig falls flat",
-        "url": "http://www.jpost.com/israel-news/culture/article-916293",
-        "source": "jpost.com",
-        "published": "20261126T221500Z",
-        "language": "English"
-      },
-      {
-        "title": "N3on Impersonator Gets 47 Months In $260 , 000 Crypto Fraud",
-        "url": "https://allhiphop.com/news/n3on-impersonator-gets-47-months-in-260000-crypto-fraud/",
-        "source": "allhiphop.com",
-        "published": "20261126T221500Z",
-        "language": "English"
-      },
-      {
-        "title": "Standard Chartered Crypto Unit Suffers Data Breach Just Weeks After Bank Agreed To Take Full Ownership",
-        "url": "https://www.ibtimes.com/standard-chartered-zodia-crypto-data-breach-3810243",
-        "source": "ibtimes.com",
-        "published": "20261126T221500Z",
         "language": "English"
       }
     ]
