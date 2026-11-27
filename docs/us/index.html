@@ -2633,7 +2633,23 @@ input, select, textarea, button {
 #free-left-banner.tf-edge-banner:focus-within .tf-edge-track,
 #free-right-banner.tf-edge-banner:focus-within .tf-edge-track{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.tf-edge-track{animation:none!important}}
-@media(max-width:1599px),(max-height:620px){
+/* Keep the edge banners visible at 100% zoom on common desktop widths.
+   Narrow them to the available side gutters instead of hiding them. */
+@media(min-width:1500px) and (max-width:1599px){
+ #free-left-banner.tf-edge-banner,#free-right-banner.tf-edge-banner{
+  display:block!important;
+  width:clamp(110px,calc((100vw - 1200px)/2 - 24px),160px)!important;
+  min-width:110px!important;
+  max-width:160px!important;
+ }
+ .tf-edge-inner{padding:12px 8px 10px}
+ .tf-edge-heading h2{font-size:15px}
+ .tf-edge-heading p{font-size:10px}
+ .tf-edge-card{padding:9px 8px;min-height:68px}
+ .tf-edge-card strong{font-size:11px}
+ .tf-edge-card span{font-size:10px}
+}
+@media(max-height:620px){
  #free-left-banner.tf-edge-banner,#free-right-banner.tf-edge-banner{display:none!important}
 }
 @media(min-width:1600px) and (max-width:1699px){
