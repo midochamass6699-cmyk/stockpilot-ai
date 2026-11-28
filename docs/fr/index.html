@@ -6729,18 +6729,19 @@ section:empty, article:empty, aside:empty { display:none!important; }
   es:{label:'Consultar una acción',placeholder:'Nombre de empresa o ticker (p. ej., Microsoft, MSFT)',button:'CONSULTAR ACCIÓN →',search:'Buscando cotizaciones coincidentes…',empty:'No se encontró ninguna cotización. Prueba otro nombre o ticker.',error:'La búsqueda no está disponible temporalmente.',choose:'Elige una empresa y una bolsa, o utiliza el mejor resultado:',best:'Usar el mejor resultado',exchange:'Bolsa no identificada',missing:'Falta el ticker o una bolsa confirmada. Elige otro resultado.',direct:'Abriendo la cotización solicitada…'}
  };
  const t=copy[lang]||copy.en;
- let form=document.querySelector('#tf-company-quick-form,#tf-fr-company-form');
- if(!form){
+ let forms=Array.from(document.querySelectorAll('#tf-company-quick-form,#tf-fr-company-form'));
+ if(!forms.length){
   const intro=document.querySelector('#live-trading-desk .trading-desk-intro');
   if(intro&&intro.parentElement){
    const wrap=document.createElement('div');wrap.className='tf-welcome-actions';
    form=document.createElement('form');form.className='tf-company-quick-form';form.id='tf-company-quick-form';
    form.innerHTML='<label for="tf-company-name"></label><input id="tf-company-name" type="search" minlength="2" required autocomplete="off"><button id="tf-company-submit" type="submit"></button><p id="tf-company-status" role="status" aria-live="polite"></p>';
    wrap.appendChild(form);intro.parentElement.insertBefore(wrap,intro);
+   forms.push(form);
   }
  }
- if(!form)return;
- form.id='stock-check-entry';
+ if(!forms.length)return;
+ forms.forEach(form=>{
  const input=form.querySelector('input'),button=form.querySelector('button'),status=form.querySelector('[role="status"]');
  const label=form.querySelector('label');
  if(label)label.textContent=t.label;
@@ -6827,6 +6828,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
   }catch(err){status.textContent=err.message||t.error;}
   finally{button.disabled=false;}
  },true);
+ });
 })();
 </script>
 
