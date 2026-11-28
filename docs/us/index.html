@@ -6791,37 +6791,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
 }
 </style>
 
-<script id="tf-company-quick-form-script">
-(function(){
- const form=document.getElementById("tf-company-quick-form");
- if(!form)return;
- const input=document.getElementById("tf-company-name");
- const button=document.getElementById("tf-company-submit");
- const status=document.getElementById("tf-company-status");
- form.addEventListener("submit",async function(event){
-  event.preventDefault();
-  const q=input.value.trim();
-  if(q.length<2){status.textContent="Enter at least two characters.";return}
-  button.disabled=true;status.textContent="Searching SEC company records…";
-  try{
-   const response=await fetch("https://api.technofront.org/api/search?q="+encodeURIComponent(q),{headers:{Accept:"application/json"}});
-   const data=await response.json();
-   if(!response.ok)throw new Error(data.error||"Company search is temporarily unavailable.");
-   if(!data.results||!data.results.length){status.textContent="No matching SEC company found. Try its legal name or ticker.";return}
-   if(data.results.length>1){
-    const exact=data.results.find(x=>String(x.name).toLowerCase()===q.toLowerCase()||String(x.ticker).toLowerCase()===q.toLowerCase());
-    if(exact){window.location.href="/financial-report-generator.html?cik="+encodeURIComponent(exact.cik)+"&name="+encodeURIComponent(exact.name)+"&ticker="+encodeURIComponent(exact.ticker)+"#report-builder";return}
-    status.textContent="Several matches found. Opening company lookup so you can select the exact company.";
-    window.location.href="/financial-report-generator.html?query="+encodeURIComponent(q)+"#report-builder";
-    return;
-   }
-   const company=data.results[0];
-   window.location.href="/financial-report-generator.html?cik="+encodeURIComponent(company.cik)+"&name="+encodeURIComponent(company.name)+"&ticker="+encodeURIComponent(company.ticker)+"#report-builder";
-  }catch(error){status.textContent=error.message||"Unable to search company records."}
-  finally{button.disabled=false}
- });
-})();
-</script>
+
 
 <style id="technofront-compact-trending-rows">
 /* Compact only the live stock rows in the left edge banner. */
@@ -6892,7 +6862,9 @@ section:empty, article:empty, aside:empty { display:none!important; }
    let resolved=q.toUpperCase(),companyName='';
    const norm=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
    const alias=norm(q),isUsEdition=location.pathname.startsWith('/us/');
-   if(!q.includes(':')&&(alias==='TELUS'||alias==='TELUS CORPORATION')){
+   if(!q.includes(':')&&['DELTA','DELTA AIR LINES','DELTA AIR LINES INC','DELTA AIR LINES INCORPORATED','DAL'].includes(alias)){
+    resolved='NYSE:DAL';companyName='Delta Air Lines, Inc.';
+   }else if(!q.includes(':')&&(alias==='TELUS'||alias==='TELUS CORPORATION')){
     resolved=isUsEdition?'NYSE:TU':'TSX:T';companyName='TELUS Corporation';
    }else if(!q.includes(':')){
     const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev');
@@ -6907,7 +6879,7 @@ section:empty, article:empty, aside:empty { display:none!important; }
     if(!rawTicker)throw new Error(t.error);
     const suffix=rawTicker.match(/\.(TO|TSE|V|VN)$/);
     const ticker=suffix?rawTicker.replace(/\.(TO|TSE|V|VN)$/,''):rawTicker;
-    const ex=String(chosen.exchange||chosen.mic_code||chosen.exchange_short_name||'').toUpperCase();
+    const ex=String(chosen.exchange||chosen.mic_code||chosen.exchange_short_name||chosen.exchange_name||chosen.primary_exchange||chosen.market||'').toUpperCase();
     const tv=suffix&&['TO','TSE'].includes(suffix[1])?'TSX':suffix&&['V','VN'].includes(suffix[1])?'TSXV':/NASDAQ|XNAS/.test(ex)?'NASDAQ':/NYSE|NEW YORK|XNYS/.test(ex)?'NYSE':/VENTURE|XTSX|TSXV/.test(ex)?'TSXV':/TORONTO|XTSE|(^|\W)TSX($|\W)/.test(ex)?'TSX':'';
     if(!tv){status.textContent=lang==='fr'?'Bourse non confirmée. Essayez un symbole avec sa bourse, par exemple TSX:T.':'Exchange not verified. Try a ticker with its exchange, such as TSX:T.';return;}
     resolved=tv+':'+ticker;companyName=chosen.name||chosen.company_name||'';
