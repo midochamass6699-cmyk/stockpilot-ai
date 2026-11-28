@@ -1,9 +1,8 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-28T05:49:14.855954+00:00",
+  "fetched_at": "2026-11-28T06:53:39.175974+00:00",
   "updated_sections": [
-    "penny",
     "crypto"
   ],
   "sections": {
@@ -104,16 +103,16 @@
     ],
     "crypto": [
       {
-        "title": "Internet Post Office hacked , personal data of 113 , 000 customers leaked",
-        "url": "https://www.prokerala.com/news/articles/a1842052.html",
-        "source": "prokerala.com",
+        "title": "Beware of Bitcoin Recovery Scams : Fake FBI Agents Are Targeting Victims !",
+        "url": "https://bangaloremirror.indiatimes.com/bangalore/others/bust-fake-news-with-bangalore-mirror-myth-busted-fake-fbi-agents-cannot-recover-your-lost-cryptocurrency/articleshow/136235956.cms",
+        "source": "bangaloremirror.indiatimes.com",
         "published": "20261128T051500Z",
         "language": "English"
       },
       {
-        "title": "Beware of Bitcoin Recovery Scams : Fake FBI Agents Are Targeting Victims !",
-        "url": "https://bangaloremirror.indiatimes.com/bangalore/others/bust-fake-news-with-bangalore-mirror-myth-busted-fake-fbi-agents-cannot-recover-your-lost-cryptocurrency/articleshow/136235956.cms",
-        "source": "bangaloremirror.indiatimes.com",
+        "title": "Internet Post Office hacked , personal data of 113 , 000 customers leaked",
+        "url": "https://www.prokerala.com/news/articles/a1842052.html",
+        "source": "prokerala.com",
         "published": "20261128T051500Z",
         "language": "English"
       },
@@ -136,6 +135,13 @@
         "url": "https://www.fox5atlanta.com/news/florida-man-who-used-ai-impersonate-popular-online-streamer-steal-260k-sentenced-prison",
         "source": "fox5atlanta.com",
         "published": "20261128T023000Z",
+        "language": "English"
+      },
+      {
+        "title": "Property manager halts crypto buying as debts loom",
+        "url": "https://www.aol.com/articles/property-manager-halts-crypto-buying-214204000.html",
+        "source": "aol.com",
+        "published": "20261128T014500Z",
         "language": "English"
       },
       {
@@ -169,13 +175,6 @@
       {
         "title": "Bitcoin took Thanksgiving off , going 98 minutes without a block",
         "url": "https://www.aol.com/articles/bitcoin-took-thanksgiving-off-going-210000000.html",
-        "source": "aol.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Property manager halts crypto buying as debts loom",
-        "url": "https://www.aol.com/articles/property-manager-halts-crypto-buying-214204000.html",
         "source": "aol.com",
         "published": "20261128T014500Z",
         "language": "English"
