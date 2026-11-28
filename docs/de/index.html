@@ -9493,15 +9493,15 @@ if(wrap.children.length)nav.insertBefore(wrap,nav.firstChild);
 
 <!-- TECHNofront HEADER PALETTE + LANGUAGE SELECTOR CONTRAST -->
 <style id="tf-soft-blue-grey-header-v2">
-/* Soft blue-grey header: lighter than navy, warmer and softer than pure white. */
+/* Black header with high-contrast branding, navigation and language controls. */
 html body header.topbar,
 html body .topbar {
-  background:linear-gradient(112deg,#dce5ea 0%,#d2dee5 54%,#c7d6df 100%) !important;
-  background-color:#d2dee5 !important;
-  background-image:linear-gradient(112deg,#dce5ea 0%,#d2dee5 54%,#c7d6df 100%) !important;
-  color:#17324a !important;
-  border-bottom:1px solid #c4d2dc !important;
-  box-shadow:0 3px 14px rgba(23,50,74,.09) !important;
+  background:#05080d !important;
+  background-color:#05080d !important;
+  background-image:linear-gradient(110deg,#05080d 0%,#0b111a 58%,#111a25 100%) !important;
+  color:#f7f9fc !important;
+  border-bottom:1px solid #263444 !important;
+  box-shadow:0 4px 18px rgba(0,0,0,.32) !important;
 }
 html body .topbar::before,
 html body .topbar::after {
@@ -9513,77 +9513,85 @@ html body .topbar::after {
 html body .topbar .nav,
 html body .topbar nav,
 html body .topbar .navlinks,
-html body .topbar .nav-menu {
+html body .topbar .nav-menu,
+html body .topbar .nav-bottom-row {
   background:transparent !important;
   background-color:transparent !important;
   background-image:none !important;
-  color:#17324a !important;
+  color:#f7f9fc !important;
+}
+html body .topbar,
+html body .topbar *:not(img):not(svg):not(path):not(.nav-cta):not(button):not(.language-switch):not(.language-switch *) {
+  text-shadow:none !important;
 }
 html body .topbar .brand,
+html body .topbar .brand *,
 html body .topbar .navlinks a,
 html body .topbar .nav-menu a,
 html body .topbar .nav-bottom-row,
-html body .topbar .nav-toggle {
-  color:#17324a !important;
-  text-shadow:none !important;
+html body .topbar .nav-toggle,
+html body .topbar .nav-toggle span,
+html body .topbar .navlinks a:not(.nav-cta),
+html body .topbar .nav-menu a:not(.nav-cta) {
+  color:#f7f9fc !important;
 }
 html body .topbar .navlinks a:hover,
 html body .topbar .nav-menu a:hover {
-  color:#176b91 !important;
+  color:#f2d47e !important;
 }
-html body .topbar .navlinks .nav-cta,
-html body .topbar .nav-cta {
-  background:#286f96 !important;
+html body .topbar .nav-cta,
+html body .topbar .navlinks .nav-cta {
+  background:#e2bd5b !important;
   background-image:none !important;
-  color:#ffffff !important;
-  border:1px solid #286f96 !important;
+  color:#101820 !important;
+  border:1px solid #e2bd5b !important;
   text-shadow:none !important;
 }
 html body .topbar .nav-toggle span {
-  background:#17324a !important;
+  background:#f7f9fc !important;
 }
-/* Language selector: pale surface + dark text; selected language gets a blue pill. */
+/* Language selector stays distinct from the black header; all labels remain readable. */
 html body .topbar .language-switch {
-  background:#c2d1da !important;
-  background-color:#c2d1da !important;
+  background:#202b38 !important;
+  background-color:#202b38 !important;
   background-image:none !important;
-  border:1px solid #9eafb9 !important;
+  border:1px solid #718096 !important;
   border-radius:999px !important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 2px 7px rgba(23,50,74,.08) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 2px 8px rgba(0,0,0,.28) !important;
 }
 html body .topbar .language-switch > span {
-  color:#536b7d !important;
+  color:#cbd5e1 !important;
   opacity:1 !important;
 }
 html body .topbar .language-switch a,
 html body .topbar .language-switch .edition-link {
-  color:#17324a !important;
+  color:#f7f9fc !important;
   background:transparent !important;
   background-color:transparent !important;
   background-image:none !important;
-  border-color:transparent !important;
+  border:1px solid transparent !important;
   text-shadow:none !important;
   font-weight:800 !important;
   opacity:1 !important;
 }
 html body .topbar .language-switch a[aria-current="page"],
 html body .topbar .language-switch .edition-link[aria-current="page"] {
-  color:#ffffff !important;
-  background:#286f96 !important;
-  background-color:#286f96 !important;
+  color:#111820 !important;
+  background:#e2bd5b !important;
+  background-color:#e2bd5b !important;
   background-image:none !important;
-  border:1px solid #286f96 !important;
+  border:1px solid #f0d27d !important;
   border-radius:999px !important;
-  box-shadow:0 1px 4px rgba(23,50,74,.18) !important;
+  box-shadow:0 1px 5px rgba(0,0,0,.25) !important;
 }
 html body .topbar .language-switch a:hover,
 html body .topbar .language-switch .edition-link:hover {
-  color:#0f5275 !important;
-  background:#edf4f7 !important;
+  color:#111820 !important;
+  background:#f2d47e !important;
   background-image:none !important;
 }
 html body .topbar .language-switch a:focus-visible {
-  outline:2px solid #176b91 !important;
+  outline:2px solid #f2d47e !important;
   outline-offset:2px !important;
 }
 </style>
