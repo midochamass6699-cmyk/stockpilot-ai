@@ -1,8 +1,10 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-28T09:18:47.121687+00:00",
-  "updated_sections": [],
+  "fetched_at": "2026-11-28T10:19:43.565988+00:00",
+  "updated_sections": [
+    "crypto"
+  ],
   "sections": {
     "markets": [
       {
@@ -101,17 +103,66 @@
     ],
     "crypto": [
       {
-        "title": "HOLY SH * T : Top Computer Scientist Warns AI Labs Hiding  Bombshells  That Could Shatter Encryption Worldwide",
-        "url": "https://www.zerohedge.com/ai/holy-sht-top-computer-scientist-warns-ai-labs-hiding-bombshells-could-shatter-encryption",
-        "source": "zerohedge.com",
-        "published": "20261128T071500Z",
+        "title": "Binance Secures In - Principle Approval in Gelephu Mindfulness City , Plans Asia Hub in Bhutan",
+        "url": "http://www.indiagazette.com/news/279470301/binance-secures-in-principle-approval-in-gelephu-mindfulness-city-plans-asia-hub-in-bhutan",
+        "source": "indiagazette.com",
+        "published": "20261128T094500Z",
         "language": "English"
       },
       {
-        "title": "Binance Secures In - Principle Approval in Gelephu Mindfulness City , Plans Asia Hub in Bhutan",
-        "url": "http://www.trinidadtimes.com/news/279470301/binance-secures-in-principle-approval-in-gelephu-mindfulness-city-plans-asia-hub-in-bhutan",
-        "source": "trinidadtimes.com",
-        "published": "20261128T071500Z",
+        "title": "Binance Pay , DK Bank and Tether Sign MOU to Expand Stablecoin Payments to Merchants Across Bhutan , Starting with USD",
+        "url": "http://www.malaysiasun.com/news/279470467/binance-pay-dk-bank-and-tether-sign-mou-to-expand-stablecoin-payments-to-merchants-across-bhutan-starting-with-usd",
+        "source": "malaysiasun.com",
+        "published": "20261128T084500Z",
+        "language": "English"
+      },
+      {
+        "title": "ON THE MOVE : Hudson River Trading Hires Michael Dolezal ; CME Group Appoints John Grigus",
+        "url": "https://www.tradersmagazine.com/xtra/on-the-move-hudson-river-trading-hires-michael-dolezal-cme-group-appoints-john-grigus/",
+        "source": "tradersmagazine.com",
+        "published": "20261128T083000Z",
+        "language": "English"
+      },
+      {
+        "title": "KuCoin Advances Australian Engagement at CryptoCon Sydney , Spotlighting Global Infrastructure and Local Accountability",
+        "url": "https://www.prnewswire.com/news-releases/kucoin-advances-australian-engagement-at-cryptocon-sydney-spotlighting-global-infrastructure-and-local-accountability-302952014.html",
+        "source": "prnewswire.com",
+        "published": "20261128T083000Z",
+        "language": "English"
+      },
+      {
+        "title": "Schwab Announces Platform Enhancements  - Traders Magazine",
+        "url": "https://www.tradersmagazine.com/news/schwab-announces-platform-enhancements/",
+        "source": "tradersmagazine.com",
+        "published": "20261128T083000Z",
+        "language": "English"
+      },
+      {
+        "title": "LSEG Workspace Integrates Kalshi Prediction Markets",
+        "url": "https://www.tradersmagazine.com/news/lseg-workspace-integrates-kalshi-prediction-markets/",
+        "source": "tradersmagazine.com",
+        "published": "20261128T083000Z",
+        "language": "English"
+      },
+      {
+        "title": "Binance Pay , DK Bank and Tether Sign MOU to Expand Stablecoin Payments to Merchants Across Bhutan , Starting with USD₮",
+        "url": "https://www.prnewswire.com/news-releases/binance-pay-dk-bank-and-tether-sign-mou-to-expand-stablecoin-payments-to-merchants-across-bhutan-starting-with-usd-302952011.html",
+        "source": "prnewswire.com",
+        "published": "20261128T083000Z",
+        "language": "English"
+      },
+      {
+        "title": "ON THE MOVE : PIMCO Eden Simmer Launches UpLevel Impact Ventures ; State Street Appoints Jane Kizhner",
+        "url": "https://www.tradersmagazine.com/xtra/on-the-move-pimcos-eden-simmer-launches-uplevel-impact-ventures-state-street-appoints-jane-kizhner/",
+        "source": "tradersmagazine.com",
+        "published": "20261128T083000Z",
+        "language": "English"
+      },
+      {
+        "title": "Binance gets preliminary approval to establish Asia hub in Bhutan",
+        "url": "https://www.thehindubusinessline.com/money-and-banking/cryptocurrency/binance-gets-preliminary-approval-to-establish-asia-hub-in-bhutan/article71753791.ece",
+        "source": "thehindubusinessline.com",
+        "published": "20261128T081500Z",
         "language": "English"
       },
       {
@@ -129,59 +180,10 @@
         "language": "English"
       },
       {
-        "title": "OORI announces a strategic partnership with Oumla to advance digital investment infrastructure for banks and financial institutions",
-        "url": "https://www.zawya.com/en/press-release/companies-news/oori-announces-a-strategic-partnership-with-oumla-to-advance-digital-investment-infrastructure-for-banks-and-financial-institutions-2448822",
-        "source": "zawya.com",
-        "published": "20261128T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Progressive Charlestown : America Doomsday Feeling Is Turning Into Something Far More Dangerous Than Fear",
-        "url": "https://www.progressive-charlestown.com/2026/11/americas-doomsday-feeling-is-turning.html",
-        "source": "progressive-charlestown.com",
-        "published": "20261128T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Beware of Bitcoin Recovery Scams : Fake FBI Agents Are Targeting Victims !",
-        "url": "https://bangaloremirror.indiatimes.com/bangalore/others/bust-fake-news-with-bangalore-mirror-myth-busted-fake-fbi-agents-cannot-recover-your-lost-cryptocurrency/articleshow/136235956.cms",
-        "source": "bangaloremirror.indiatimes.com",
-        "published": "20261128T051500Z",
-        "language": "English"
-      },
-      {
-        "title": "Internet Post Office hacked , personal data of 113 , 000 customers leaked",
-        "url": "https://www.prokerala.com/news/articles/a1842052.html",
-        "source": "prokerala.com",
-        "published": "20261128T051500Z",
-        "language": "English"
-      },
-      {
-        "title": "Kings rally past Ducks for their 4th win in 5 games",
-        "url": "https://www.pasadenastarnews.com/2026/11/27/kings-rally-past-ducks-for-their-4th-win-in-5-games/",
-        "source": "pasadenastarnews.com",
-        "published": "20261128T044500Z",
-        "language": "English"
-      },
-      {
-        "title": "Dollar set for weekly gain as risk appetite returns",
-        "url": "https://economictimes.indiatimes.com/markets/forex/forex-news/dollar-set-for-weekly-gain-as-risk-appetite-returns/articleshow/136237831.cms",
-        "source": "economictimes.indiatimes.com",
-        "published": "20261128T043000Z",
-        "language": "English"
-      },
-      {
-        "title": "Goat Funded Launches Perpetuals Prop Firm Powered by Hyperliquid",
-        "url": "https://www.insidermonkey.com/news/press-releases/goat-funded-launches-perpetuals-prop-firm-powered-by-hyperliquid-1871001/",
-        "source": "insidermonkey.com",
-        "published": "20261128T043000Z",
-        "language": "English"
-      },
-      {
-        "title": "The Great Blackout hasnt happened yet but it still could",
-        "url": "https://www.caledonenterprise.com/opinion/columnists/the-great-blackout-did-not-happen-on-tuesday-but-it-might-in-the-future/article_30784fdd-e130-5355-9833-13cb2f8a9995.html",
-        "source": "caledonenterprise.com",
-        "published": "20261128T023000Z",
+        "title": "HOLY SH * T : Top Computer Scientist Warns AI Labs Hiding  Bombshells  That Could Shatter Encryption Worldwide",
+        "url": "https://www.zerohedge.com/ai/holy-sht-top-computer-scientist-warns-ai-labs-hiding-bombshells-could-shatter-encryption",
+        "source": "zerohedge.com",
+        "published": "20261128T071500Z",
         "language": "English"
       }
     ]
