@@ -61,23 +61,15 @@ export default {
       const detectedCountry = request.cf && request.cf.country;
       let edition = "";
 
-      // Country detection takes priority for Canada and the United States.
-      // A saved manual choice is only a fallback for visitors elsewhere.
-      const regionCode = request.cf && request.cf.regionCode;
-      const regionName = request.cf && request.cf.region;
-      const isQuebec =
-        regionCode === "CA-QC" ||
-        regionCode === "QC" ||
-        (typeof regionName === "string" && regionName.toLowerCase() === "quebec");
-
-      if (detectedCountry === "US") {
+      // A visitor's explicit edition choice always wins over geolocation.
+      // Canada defaults to the Canadian English homepage, including Quebec.
+      // French remains available through the FR language link.
+      if (savedChoice === "ca" || savedChoice === "us") {
+        edition = savedChoice;
+      } else if (detectedCountry === "US") {
         edition = "us";
-      } else if (detectedCountry === "CA" && isQuebec) {
-        edition = "fr";
       } else if (detectedCountry === "CA") {
         edition = "ca";
-      } else if (savedChoice === "ca" || savedChoice === "us") {
-        edition = savedChoice;
       }
 
       if (edition) {
