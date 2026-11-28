@@ -1,10 +1,9 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-28T02:42:25.273666+00:00",
+  "fetched_at": "2026-11-28T03:47:23.617034+00:00",
   "updated_sections": [
-    "penny",
-    "crypto"
+    "penny"
   ],
   "sections": {
     "markets": [
@@ -95,6 +94,13 @@
     ],
     "penny": [
       {
+        "title": "Small - cap , big jump ! Waaree Renewable shares rise 14 % on this order win ; energy stock still 35 % below 52 - week high",
+        "url": "https://www.livemint.com/market/stock-market-news/smallcap-big-jump-waaree-renewable-shares-rise-14-on-this-order-win-energy-stock-still-35-below-52-week-high-11795756038934.html",
+        "source": "livemint.com",
+        "published": "20261127T063000Z",
+        "language": "English"
+      },
+      {
         "title": "India offers better risk - reward than global markets : Bandhan AMC Manish Gunwani",
         "url": "https://www.livemint.com/money/personal-finance/bandhan-amc-manish-gunwani-small-cap-stocks-market-outlook-11795671634596.html",
         "source": "livemint.com",
@@ -102,10 +108,10 @@
         "language": "English"
       },
       {
-        "title": "Airtel , Laurus among 6 large , mid & small - cap stock ideas by Motilal Oswal",
-        "url": "https://www.business-standard.com/markets/news/stocks-to-buy-today-airtel-laurus-among-6-large-mid-small-cap-stock-ideas-by-motilal-oswal-126112700098_1.html",
-        "source": "business-standard.com",
-        "published": "20261127T033000Z",
+        "title": "Sensex , Nifty down today but ​Hindustan Zinc , Vedanta Aluminium to Vedanta Power are rising - Vedanta boost reason here",
+        "url": "https://www.livemint.com/market/stock-market-news/sensex-nifty-down-today-but-hindustan-zinc-vedanta-aluminium-to-vedanta-power-are-rising-vedanta-boost-reason-here-11795752280141.html",
+        "source": "livemint.com",
+        "published": "20261127T063000Z",
         "language": "English"
       }
     ],
