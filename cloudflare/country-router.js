@@ -63,8 +63,17 @@ export default {
 
       // Country detection takes priority for Canada and the United States.
       // A saved manual choice is only a fallback for visitors elsewhere.
+      const regionCode = request.cf && request.cf.regionCode;
+      const regionName = request.cf && request.cf.region;
+      const isQuebec =
+        regionCode === "CA-QC" ||
+        regionCode === "QC" ||
+        (typeof regionName === "string" && regionName.toLowerCase() === "quebec");
+
       if (detectedCountry === "US") {
         edition = "us";
+      } else if (detectedCountry === "CA" && isQuebec) {
+        edition = "fr";
       } else if (detectedCountry === "CA") {
         edition = "ca";
       } else if (savedChoice === "ca" || savedChoice === "us") {
@@ -72,7 +81,7 @@ export default {
       }
 
       if (edition) {
-        const destination = edition === "us" ? "/us/" : "/";
+        const destination = edition === "us" ? "/us/" : edition === "fr" ? "/fr/" : "/";
         if (url.pathname !== destination) {
           url.pathname = destination;
           return Response.redirect(url.toString(), 302);
