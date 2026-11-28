@@ -2979,22 +2979,7 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
  </div>
 </section>
 <script id="tf-fr-company-start-script">
-(function(){
- const form=document.getElementById("tf-fr-company-form");if(!form)return;
- const input=document.getElementById("tf-fr-company-name"),button=document.getElementById("tf-fr-company-submit"),status=document.getElementById("tf-fr-company-status");
- form.addEventListener("submit",async e=>{
-  e.preventDefault();const q=input.value.trim();if(q.length<2){status.textContent="Saisissez au moins deux caractères.";return}
-  button.disabled=true;status.textContent="Recherche dans le répertoire SEC…";
-  try{
-   const response=await fetch("https://api.technofront.org/api/search?q="+encodeURIComponent(q),{headers:{Accept:"application/json"}});
-   const data=await response.json();if(!response.ok)throw new Error(data.error||"La recherche est temporairement indisponible.");
-   if(!data.results||!data.results.length){status.textContent="Aucune entreprise trouvée. Essayez son nom légal ou son symbole boursier.";return}
-   let company=data.results.length===1?data.results[0]:data.results.find(x=>String(x.name).toLowerCase()===q.toLowerCase()||String(x.ticker).toLowerCase()===q.toLowerCase());
-   if(company){window.location.href="/fr/generateur-rapport-financier.html?cik="+encodeURIComponent(company.cik)+"&name="+encodeURIComponent(company.name)+"&ticker="+encodeURIComponent(company.ticker)+"#report-builder";return}
-   window.location.href="/fr/generateur-rapport-financier.html?query="+encodeURIComponent(q)+"#report-builder";
-  }catch(error){status.textContent=error.message||"Erreur de recherche."}finally{button.disabled=false}
- });
-})();
+// Legacy SEC-only search disabled: the shared Stock Explorer lookup handles this form.
 </script>
 
 <style id="tf-market-pulse-style">
