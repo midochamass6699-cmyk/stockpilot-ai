@@ -6927,6 +6927,31 @@ html body .topbar .nav-cta {
 html body .topbar .nav-toggle span {background:#18334d !important;}
 
 </style>
+
+<script id="tf-fr-company-form-shared-lookup-fix">
+(function(){
+  const secondary=document.getElementById('tf-fr-company-form');
+  if(!secondary)return;
+  secondary.addEventListener('submit',function(event){
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const query=document.getElementById('tf-fr-company-name')?.value?.trim()||'';
+    const main=document.getElementById('stock-check-entry');
+    const mainInput=main?.querySelector('input[type="search"],input[name="company"]');
+    const mainButton=main?.querySelector('button[type="submit"],button');
+    const status=document.getElementById('tf-fr-company-status');
+    if(query.length<2){if(status)status.textContent='Saisissez au moins deux caractères.';return;}
+    if(!main||!mainInput||!mainButton){
+      if(status)status.textContent='La recherche commune est temporairement indisponible. Utilisez le champ principal « Vérifier une action ».';
+      return;
+    }
+    mainInput.value=query;
+    if(status)status.textContent='Recherche des inscriptions boursières…';
+    main.requestSubmit(mainButton);
+  },true);
+})();
+</script>
+
 </body>
 </html>
 )?'TSX':'NASDAQ');
