@@ -19,7 +19,8 @@ If your visitors also use `www.technofront.org`, add a second route:
 ## Expected behaviour after activation
 
 - A visitor from the United States who opens the homepage is redirected to `/us/`.
-- A visitor from Canada stays on `/`.
+- A visitor from Quebec is redirected to `/fr/`.
+- A visitor from the rest of Canada stays on `/`.
 - Choosing **CANADA** or **UNITED STATES** in the site's edition selector saves that choice for 180 days and takes priority over automatic country detection.
 - Visitors from other countries stay on the default homepage.
 - Existing article pages, language pages, scripts, images and other deep links are not redirected.
