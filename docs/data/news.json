@@ -1,8 +1,11 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-28T04:52:48.490183+00:00",
-  "updated_sections": [],
+  "fetched_at": "2026-11-28T05:49:14.855954+00:00",
+  "updated_sections": [
+    "penny",
+    "crypto"
+  ],
   "sections": {
     "markets": [
       {
@@ -92,22 +95,8 @@
     ],
     "penny": [
       {
-        "title": "Small - cap , big jump ! Waaree Renewable shares rise 14 % on this order win ; energy stock still 35 % below 52 - week high",
-        "url": "https://www.livemint.com/market/stock-market-news/smallcap-big-jump-waaree-renewable-shares-rise-14-on-this-order-win-energy-stock-still-35-below-52-week-high-11795756038934.html",
-        "source": "livemint.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
         "title": "India offers better risk - reward than global markets : Bandhan AMC Manish Gunwani",
         "url": "https://www.livemint.com/money/personal-finance/bandhan-amc-manish-gunwani-small-cap-stocks-market-outlook-11795671634596.html",
-        "source": "livemint.com",
-        "published": "20261127T063000Z",
-        "language": "English"
-      },
-      {
-        "title": "Sensex , Nifty down today but ​Hindustan Zinc , Vedanta Aluminium to Vedanta Power are rising - Vedanta boost reason here",
-        "url": "https://www.livemint.com/market/stock-market-news/sensex-nifty-down-today-but-hindustan-zinc-vedanta-aluminium-to-vedanta-power-are-rising-vedanta-boost-reason-here-11795752280141.html",
         "source": "livemint.com",
         "published": "20261127T063000Z",
         "language": "English"
@@ -115,10 +104,31 @@
     ],
     "crypto": [
       {
-        "title": "The Great Blackout hasnt happened yet but it still could",
-        "url": "https://www.caledonenterprise.com/opinion/columnists/the-great-blackout-did-not-happen-on-tuesday-but-it-might-in-the-future/article_30784fdd-e130-5355-9833-13cb2f8a9995.html",
-        "source": "caledonenterprise.com",
-        "published": "20261128T023000Z",
+        "title": "Internet Post Office hacked , personal data of 113 , 000 customers leaked",
+        "url": "https://www.prokerala.com/news/articles/a1842052.html",
+        "source": "prokerala.com",
+        "published": "20261128T051500Z",
+        "language": "English"
+      },
+      {
+        "title": "Beware of Bitcoin Recovery Scams : Fake FBI Agents Are Targeting Victims !",
+        "url": "https://bangaloremirror.indiatimes.com/bangalore/others/bust-fake-news-with-bangalore-mirror-myth-busted-fake-fbi-agents-cannot-recover-your-lost-cryptocurrency/articleshow/136235956.cms",
+        "source": "bangaloremirror.indiatimes.com",
+        "published": "20261128T051500Z",
+        "language": "English"
+      },
+      {
+        "title": "Dollar set for weekly gain as risk appetite returns",
+        "url": "https://economictimes.indiatimes.com/markets/forex/forex-news/dollar-set-for-weekly-gain-as-risk-appetite-returns/articleshow/136237831.cms",
+        "source": "economictimes.indiatimes.com",
+        "published": "20261128T043000Z",
+        "language": "English"
+      },
+      {
+        "title": "Goat Funded Launches Perpetuals Prop Firm Powered by Hyperliquid",
+        "url": "https://www.insidermonkey.com/news/press-releases/goat-funded-launches-perpetuals-prop-firm-powered-by-hyperliquid-1871001/",
+        "source": "insidermonkey.com",
+        "published": "20261128T043000Z",
         "language": "English"
       },
       {
@@ -132,13 +142,6 @@
         "title": "Analyst flags December correction before January breakout",
         "url": "https://www.aol.com/articles/analyst-flags-december-correction-january-210000000.html",
         "source": "aol.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Ninepoint Partners Announces Estimated Annual 2026 Capital Gains Distributions for ETFs and ETF Series Securities",
-        "url": "https://www.theobserver.ca/press-releases/globe-newswire/ninepoint-partners-announces-estimated-annual-2026-capital-gains-distributions-for-etfs-and-etf-series-securities/",
-        "source": "theobserver.ca",
         "published": "20261128T014500Z",
         "language": "English"
       },
@@ -178,24 +181,10 @@
         "language": "English"
       },
       {
-        "title": "Kings rally past Ducks for their 4th win in 5 games",
-        "url": "https://www.whittierdailynews.com/2026/11/27/kings-rally-past-ducks-for-their-4th-win-in-5-games/",
-        "source": "whittierdailynews.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
         "title": "Pet Peeves : Too Many Chefs",
         "url": "https://www.lagunabeachindy.com/opinion/pet-peeves-too-many-chefs/article_a0ee6f9d-8ee1-4b17-bf1d-d30a8367bd7b.html",
         "source": "lagunabeachindy.com",
         "published": "20261128T001500Z",
-        "language": "English"
-      },
-      {
-        "title": "Could Avalanche ( AVAX ) Market Value Reach $10 Billion by 2030 ?",
-        "url": "https://247wallst.com/investing/cryptocurrency/2026/11/27/could-avalanches-avax-market-value-reach-10-billion-by-2030/",
-        "source": "247wallst.com",
-        "published": "20261127T234500Z",
         "language": "English"
       }
     ]
