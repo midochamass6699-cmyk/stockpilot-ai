@@ -10279,3 +10279,62 @@ html body .topbar .language-switch a:focus-visible {
   }
 }
 </style>
+<style id="tf-us-black-header-final-override">
+/* Final U.S. homepage header override: keep the full header black and every control legible. */
+html body header.topbar,
+html body header.topbar.topbar,
+html body .topbar {
+  background:#05080d !important;
+  background-color:#05080d !important;
+  background-image:linear-gradient(110deg,#05080d 0%,#0b111a 58%,#111a25 100%) !important;
+  color:#f7f9fc !important;
+  border-bottom:1px solid #263444 !important;
+}
+html body header.topbar > *,
+html body .topbar > *,
+html body .topbar .nav,
+html body .topbar nav,
+html body .topbar .navlinks,
+html body .topbar .nav-menu {
+  background-color:transparent !important;
+  background-image:none !important;
+  color:#f7f9fc !important;
+}
+html body .topbar .brand,
+html body .topbar .brand *,
+html body .topbar .navlinks a:not(.nav-cta),
+html body .topbar .nav-menu a:not(.nav-cta),
+html body .topbar .nav-bottom-row,
+html body .topbar .nav-toggle {
+  color:#f7f9fc !important;
+}
+html body .topbar .nav-toggle span { background:#f7f9fc !important; }
+html body .topbar .nav-cta {
+  background:#e2bd5b !important;
+  color:#101820 !important;
+  border:1px solid #e2bd5b !important;
+}
+html body .topbar .language-switch {
+  background:#202b38 !important;
+  border:1px solid #718096 !important;
+}
+html body .topbar .language-switch > span { color:#cbd5e1 !important; }
+html body .topbar .language-switch a,
+html body .topbar .language-switch .edition-link {
+  color:#f7f9fc !important;
+  background:transparent !important;
+  opacity:1 !important;
+}
+html body .topbar .language-switch a[aria-current="page"],
+html body .topbar .language-switch .edition-link[aria-current="page"] {
+  color:#111820 !important;
+  background:#e2bd5b !important;
+  border:1px solid #f0d27d !important;
+  border-radius:999px !important;
+}
+html body .topbar .language-switch a:hover,
+html body .topbar .language-switch .edition-link:hover {
+  color:#111820 !important;
+  background:#f2d47e !important;
+}
+</style>
