@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-28T10:19:43.565988+00:00",
+  "fetched_at": "2026-11-28T11:16:52.896779+00:00",
   "updated_sections": [
     "crypto"
   ],
@@ -103,30 +103,51 @@
     ],
     "crypto": [
       {
+        "title": "Binance Gets Preliminary Approval to Establish Asia Hub in Bhutan",
+        "url": "https://www.deccanchronicle.com/news/business-tech/binance-gets-preliminary-approval-to-establish-asia-hub-in-bhutan-2008799",
+        "source": "deccanchronicle.com",
+        "published": "20261128T104500Z",
+        "language": "English"
+      },
+      {
         "title": "Binance Secures In - Principle Approval in Gelephu Mindfulness City , Plans Asia Hub in Bhutan",
-        "url": "http://www.indiagazette.com/news/279470301/binance-secures-in-principle-approval-in-gelephu-mindfulness-city-plans-asia-hub-in-bhutan",
-        "source": "indiagazette.com",
-        "published": "20261128T094500Z",
+        "url": "http://www.russiaherald.com/news/279470301/binance-secures-in-principle-approval-in-gelephu-mindfulness-city-plans-asia-hub-in-bhutan",
+        "source": "russiaherald.com",
+        "published": "20261128T104500Z",
+        "language": "English"
+      },
+      {
+        "title": "SPCX55G Draws Attention as AI , Blockchain and Satellite",
+        "url": "https://www.openpr.com/news/4702463/spcx55g-draws-attention-as-ai-blockchain-and-satellite",
+        "source": "openpr.com",
+        "published": "20261128T104500Z",
+        "language": "English"
+      },
+      {
+        "title": "Bitcoin value rises after Thanksgiving | The Arkansas Democrat - Gazette",
+        "url": "https://www.arkansasonline.com/news/2026/nov/28/bitcoins-value-rises-after-thanksgiving/",
+        "source": "arkansasonline.com",
+        "published": "20261128T104500Z",
         "language": "English"
       },
       {
         "title": "Binance Pay , DK Bank and Tether Sign MOU to Expand Stablecoin Payments to Merchants Across Bhutan , Starting with USD",
-        "url": "http://www.malaysiasun.com/news/279470467/binance-pay-dk-bank-and-tether-sign-mou-to-expand-stablecoin-payments-to-merchants-across-bhutan-starting-with-usd",
-        "source": "malaysiasun.com",
-        "published": "20261128T084500Z",
+        "url": "http://www.laosnews.net/news/279470560/binance-pay-dk-bank-and-tether-sign-mou-to-expand-stablecoin-payments-to-merchants-across-bhutan-starting-with-usd",
+        "source": "laosnews.net",
+        "published": "20261128T103000Z",
+        "language": "English"
+      },
+      {
+        "title": "KuCoin Advances Australian Engagement at CryptoCon Sydney , Spotlighting Global Infrastructure and Local Accountability",
+        "url": "http://www.philippinetimes.com/news/279470596/kucoin-advances-australian-engagement-at-cryptocon-sydney-spotlighting-global-infrastructure-and-local-accountability",
+        "source": "philippinetimes.com",
+        "published": "20261128T101500Z",
         "language": "English"
       },
       {
         "title": "ON THE MOVE : Hudson River Trading Hires Michael Dolezal ; CME Group Appoints John Grigus",
         "url": "https://www.tradersmagazine.com/xtra/on-the-move-hudson-river-trading-hires-michael-dolezal-cme-group-appoints-john-grigus/",
         "source": "tradersmagazine.com",
-        "published": "20261128T083000Z",
-        "language": "English"
-      },
-      {
-        "title": "KuCoin Advances Australian Engagement at CryptoCon Sydney , Spotlighting Global Infrastructure and Local Accountability",
-        "url": "https://www.prnewswire.com/news-releases/kucoin-advances-australian-engagement-at-cryptocon-sydney-spotlighting-global-infrastructure-and-local-accountability-302952014.html",
-        "source": "prnewswire.com",
         "published": "20261128T083000Z",
         "language": "English"
       },
@@ -159,30 +180,9 @@
         "language": "English"
       },
       {
-        "title": "Binance gets preliminary approval to establish Asia hub in Bhutan",
-        "url": "https://www.thehindubusinessline.com/money-and-banking/cryptocurrency/binance-gets-preliminary-approval-to-establish-asia-hub-in-bhutan/article71753791.ece",
-        "source": "thehindubusinessline.com",
-        "published": "20261128T081500Z",
-        "language": "English"
-      },
-      {
         "title": "Indian regulators have become more friendly , they have innovative ideas : Binance Co - CEO Yi He",
         "url": "https://www.moneycontrol.com/news/business/indian-regulators-have-become-more-friendly-they-have-innovative-ideas-binance-co-ceo-yi-he-14090695.html",
         "source": "moneycontrol.com",
-        "published": "20261128T071500Z",
-        "language": "English"
-      },
-      {
-        "title": "Trump on the six - times ?",
-        "url": "https://jamaica-gleaner.com/article/commentary/20261128/trump-six-times",
-        "source": "jamaica-gleaner.com",
-        "published": "20261128T071500Z",
-        "language": "English"
-      },
-      {
-        "title": "HOLY SH * T : Top Computer Scientist Warns AI Labs Hiding  Bombshells  That Could Shatter Encryption Worldwide",
-        "url": "https://www.zerohedge.com/ai/holy-sht-top-computer-scientist-warns-ai-labs-hiding-bombshells-could-shatter-encryption",
-        "source": "zerohedge.com",
         "published": "20261128T071500Z",
         "language": "English"
       }
