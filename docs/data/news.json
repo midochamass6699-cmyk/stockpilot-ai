@@ -1,7 +1,7 @@
 {
   "provider": "GDELT Project",
   "attribution": "News metadata supplied by the GDELT Project. Headlines link to their original publishers.",
-  "fetched_at": "2026-11-28T06:53:39.175974+00:00",
+  "fetched_at": "2026-11-28T08:06:53.216063+00:00",
   "updated_sections": [
     "crypto"
   ],
@@ -103,6 +103,48 @@
     ],
     "crypto": [
       {
+        "title": "HOLY SH * T : Top Computer Scientist Warns AI Labs Hiding  Bombshells  That Could Shatter Encryption Worldwide",
+        "url": "https://www.zerohedge.com/ai/holy-sht-top-computer-scientist-warns-ai-labs-hiding-bombshells-could-shatter-encryption",
+        "source": "zerohedge.com",
+        "published": "20261128T071500Z",
+        "language": "English"
+      },
+      {
+        "title": "Binance Secures In - Principle Approval in Gelephu Mindfulness City , Plans Asia Hub in Bhutan",
+        "url": "http://www.trinidadtimes.com/news/279470301/binance-secures-in-principle-approval-in-gelephu-mindfulness-city-plans-asia-hub-in-bhutan",
+        "source": "trinidadtimes.com",
+        "published": "20261128T071500Z",
+        "language": "English"
+      },
+      {
+        "title": "Indian regulators have become more friendly , they have innovative ideas : Binance Co - CEO Yi He",
+        "url": "https://www.moneycontrol.com/news/business/indian-regulators-have-become-more-friendly-they-have-innovative-ideas-binance-co-ceo-yi-he-14090695.html",
+        "source": "moneycontrol.com",
+        "published": "20261128T071500Z",
+        "language": "English"
+      },
+      {
+        "title": "Trump on the six - times ?",
+        "url": "https://jamaica-gleaner.com/article/commentary/20261128/trump-six-times",
+        "source": "jamaica-gleaner.com",
+        "published": "20261128T071500Z",
+        "language": "English"
+      },
+      {
+        "title": "OORI announces a strategic partnership with Oumla to advance digital investment infrastructure for banks and financial institutions",
+        "url": "https://www.zawya.com/en/press-release/companies-news/oori-announces-a-strategic-partnership-with-oumla-to-advance-digital-investment-infrastructure-for-banks-and-financial-institutions-2448822",
+        "source": "zawya.com",
+        "published": "20261128T063000Z",
+        "language": "English"
+      },
+      {
+        "title": "Progressive Charlestown : America Doomsday Feeling Is Turning Into Something Far More Dangerous Than Fear",
+        "url": "https://www.progressive-charlestown.com/2026/11/americas-doomsday-feeling-is-turning.html",
+        "source": "progressive-charlestown.com",
+        "published": "20261128T063000Z",
+        "language": "English"
+      },
+      {
         "title": "Beware of Bitcoin Recovery Scams : Fake FBI Agents Are Targeting Victims !",
         "url": "https://bangaloremirror.indiatimes.com/bangalore/others/bust-fake-news-with-bangalore-mirror-myth-busted-fake-fbi-agents-cannot-recover-your-lost-cryptocurrency/articleshow/136235956.cms",
         "source": "bangaloremirror.indiatimes.com",
@@ -114,6 +156,13 @@
         "url": "https://www.prokerala.com/news/articles/a1842052.html",
         "source": "prokerala.com",
         "published": "20261128T051500Z",
+        "language": "English"
+      },
+      {
+        "title": "Kings rally past Ducks for their 4th win in 5 games",
+        "url": "https://www.pasadenastarnews.com/2026/11/27/kings-rally-past-ducks-for-their-4th-win-in-5-games/",
+        "source": "pasadenastarnews.com",
+        "published": "20261128T044500Z",
         "language": "English"
       },
       {
@@ -131,59 +180,10 @@
         "language": "English"
       },
       {
-        "title": "Florida man who used AI to impersonate popular online streamer to steal $260K sentenced to prison",
-        "url": "https://www.fox5atlanta.com/news/florida-man-who-used-ai-impersonate-popular-online-streamer-steal-260k-sentenced-prison",
-        "source": "fox5atlanta.com",
+        "title": "The Great Blackout hasnt happened yet but it still could",
+        "url": "https://www.caledonenterprise.com/opinion/columnists/the-great-blackout-did-not-happen-on-tuesday-but-it-might-in-the-future/article_30784fdd-e130-5355-9833-13cb2f8a9995.html",
+        "source": "caledonenterprise.com",
         "published": "20261128T023000Z",
-        "language": "English"
-      },
-      {
-        "title": "Property manager halts crypto buying as debts loom",
-        "url": "https://www.aol.com/articles/property-manager-halts-crypto-buying-214204000.html",
-        "source": "aol.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Analyst flags December correction before January breakout",
-        "url": "https://www.aol.com/articles/analyst-flags-december-correction-january-210000000.html",
-        "source": "aol.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Day I confronted the face of evil : This man company hosted Motherless , a vile website of sex crimes and paedophile chatrooms that led to rape and murder . Now GUY ADAMS tracks him down ....",
-        "url": "https://www.dailymail.com/news/article-16327531/evil-company-hosted-Motherless-vile-website-sex-crimes-GUY-ADAMS-tracks-down.html",
-        "source": "dailymail.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Bitcoin Rises 1 . 63 % to US$61 , 482 as Stocks Rally",
-        "url": "https://www.riotimesonline.com/crypto-markets-bitcoin-majors-friday-november-27-2026/",
-        "source": "riotimesonline.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Veteran economist says Bitcoin holders have little to brag about this Thanksgiving",
-        "url": "https://www.aol.com/articles/veteran-economist-says-bitcoin-holders-213000000.html",
-        "source": "aol.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Bitcoin took Thanksgiving off , going 98 minutes without a block",
-        "url": "https://www.aol.com/articles/bitcoin-took-thanksgiving-off-going-210000000.html",
-        "source": "aol.com",
-        "published": "20261128T014500Z",
-        "language": "English"
-      },
-      {
-        "title": "Pet Peeves : Too Many Chefs",
-        "url": "https://www.lagunabeachindy.com/opinion/pet-peeves-too-many-chefs/article_a0ee6f9d-8ee1-4b17-bf1d-d30a8367bd7b.html",
-        "source": "lagunabeachindy.com",
-        "published": "20261128T001500Z",
         "language": "English"
       }
     ]
