@@ -6930,23 +6930,22 @@ html body .topbar .nav-toggle span {background:#18334d !important;}
 
 <script id="tf-fr-company-form-shared-lookup-fix">
 (function(){
-  const secondary=document.getElementById('tf-fr-company-form');
+  // The primary French action form is claimed by the shared explorer script,
+  // which renames it to #stock-check-entry. Forward the other quick-search
+  // form to that same handler so both French entry points open Stock Explorer.
+  const secondary=document.getElementById('tf-company-quick-form');
   if(!secondary)return;
   secondary.addEventListener('submit',function(event){
     event.preventDefault();
     event.stopImmediatePropagation();
-    const query=document.getElementById('tf-fr-company-name')?.value?.trim()||'';
+    const query=secondary.querySelector('input[type="search"],input[name="company"]')?.value?.trim()||'';
     const main=document.getElementById('stock-check-entry');
     const mainInput=main?.querySelector('input[type="search"],input[name="company"]');
     const mainButton=main?.querySelector('button[type="submit"],button');
-    const status=document.getElementById('tf-fr-company-status');
+    const status=secondary.querySelector('[role="status"]');
     if(query.length<2){if(status)status.textContent='Saisissez au moins deux caractères.';return;}
-    if(!main||!mainInput||!mainButton){
-      if(status)status.textContent='La recherche commune est temporairement indisponible. Utilisez le champ principal « Vérifier une action ».';
-      return;
-    }
+    if(!main||!mainInput||!mainButton){if(status)status.textContent='La recherche est temporairement indisponible.';return;}
     mainInput.value=query;
-    if(status)status.textContent='Recherche des inscriptions boursières…';
     main.requestSubmit(mainButton);
   },true);
 })();
