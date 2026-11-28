@@ -3561,6 +3561,66 @@ body{background:#052a20 url('/assets/green-digital-globe.webp') center center / 
 .sp-terminal-data-card small{display:block;margin-top:7px;color:#f2c94c;font-size:10px;line-height:1.4}
 @media(max-width:700px){.sp-terminal-data-status{grid-template-columns:1fr}.sp-terminal-data-status-head{align-items:flex-start;flex-direction:column}}
 
+
+/* Market Terminal readability pass: larger type and stronger contrast in every result view. */
+#market-terminal .sp-terminal-tools,
+#market-terminal .sp-terminal-tool-panel,
+#market-terminal .sp-terminal-data-status,
+#market-terminal #sp-terminal-screen-results,
+#market-terminal #sp-terminal-watch-list,
+#market-terminal #sp-terminal-practice-list,
+#market-terminal #sp-terminal-company-results,
+#market-terminal #sp-terminal-screener-results {
+  color:#f4f8ff!important;font-size:14px!important;line-height:1.65!important;
+}
+#market-terminal .sp-terminal-tool-panel h3,
+#market-terminal .sp-terminal-tool-panel h4,
+#market-terminal .sp-terminal-tool-card strong,
+#market-terminal .sp-terminal-tool-metric strong,
+#market-terminal .sp-terminal-data-card strong {
+  color:#fff!important;font-size:15px!important;line-height:1.4!important;
+}
+#market-terminal .sp-terminal-tool-panel p,
+#market-terminal .sp-terminal-tool-muted,
+#market-terminal .sp-terminal-tool-card small,
+#market-terminal .sp-terminal-tool-metric small,
+#market-terminal .sp-terminal-data-card p,
+#market-terminal .sp-terminal-data-card small,
+#market-terminal .sp-terminal-data-status-head span {
+  color:#d0dceb!important;font-size:13px!important;line-height:1.6!important;
+}
+#market-terminal .sp-terminal-tool-card,
+#market-terminal .sp-terminal-tool-metric,
+#market-terminal .sp-terminal-data-card {background:#172b43!important;border-color:#58718c!important}
+#market-terminal .sp-terminal-tool-panel table {color:#f1f6fd!important;font-size:13px!important}
+#market-terminal .sp-terminal-tool-panel th {color:#d6e4f3!important;font-size:12px!important;font-weight:800!important}
+#market-terminal .sp-terminal-tool-panel td {color:#f1f6fd!important;font-size:13px!important}
+#market-terminal .sp-terminal-tool-tabs button,
+#market-terminal .sp-terminal-title-line .sp-terminal-tool-tabs button {
+  color:#f1f6fd!important;font-size:13px!important;line-height:1.4!important;background:#203a56!important;border-color:#718ba5!important;
+}
+#market-terminal .sp-terminal-tool-tabs button[aria-selected="true"],
+#market-terminal .sp-terminal-title-line .sp-terminal-tool-tabs button[aria-selected="true"] {
+  color:#101827!important;background:#f5d46a!important;border-color:#f5d46a!important;
+}
+#market-terminal .sp-terminal-tool-panel input,
+#market-terminal .sp-terminal-tool-panel select {
+  color:#142235!important;background:#fff!important;border-color:#8196ad!important;font-size:14px!important;min-height:40px!important;
+}
+#market-terminal .sp-terminal-tool-panel button {
+  color:#fff!important;background:#285477!important;border-color:#8aa5bf!important;font-size:13px!important;line-height:1.4!important;
+}
+#market-terminal .sp-terminal-tool-panel button.primary {color:#172033!important;background:#f5d46a!important;border-color:#f5d46a!important}
+#market-terminal .sp-terminal-data-status-head strong {color:#ffe18a!important;font-size:13px!important}
+@media(max-width:600px){
+  #market-terminal .sp-terminal-tool-panel,
+  #market-terminal .sp-terminal-tool-panel p,
+  #market-terminal .sp-terminal-tool-muted,
+  #market-terminal .sp-terminal-tool-panel td {font-size:14px!important}
+  #market-terminal .sp-terminal-tool-tabs button,
+  #market-terminal .sp-terminal-title-line .sp-terminal-tool-tabs button {font-size:12px!important;padding:9px 11px!important}
+}
+
 </style>
 <script id="sp-market-terminal-script">
 (function(){
