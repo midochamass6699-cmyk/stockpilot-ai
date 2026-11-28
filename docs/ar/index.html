@@ -6382,6 +6382,54 @@ section:empty, article:empty, aside:empty { display:none!important; }
 #market-terminal .sp-terminal-data-status .sp-terminal-data-card p { color:#E2EAF4 !important; }
 #market-terminal .sp-terminal-data-status .sp-terminal-data-card small { color:#F5D36B !important; }
 </style>
+
+<!-- FINAL PLAIN WHITE HEADER OVERRIDE -->
+<style>
+
+/* FINAL OVERRIDE: plain white navigation bar only. No image, no gradient. */
+html body header.topbar,
+html body .topbar,
+html body .topbar nav,
+html body .topbar .nav,
+html body .topbar .nav-menu {
+  background:#ffffff !important;
+  background-color:#ffffff !important;
+  background-image:none !important;
+  color:#18334d !important;
+  border-bottom:1px solid #d7e2ed !important;
+  box-shadow:0 2px 12px rgba(24,51,77,.07) !important;
+}
+html body .topbar::before,
+html body .topbar::after,
+html body .topbar nav::before,
+html body .topbar nav::after {
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  background-image:none !important;
+}
+html body .topbar .brand,
+html body .topbar .navlinks a,
+html body .topbar .nav-menu a,
+html body .topbar .nav-bottom-row,
+html body .topbar .language-switch,
+html body .topbar .nav-toggle {
+  color:#18334d !important;
+}
+html body .topbar .navlinks a:hover,
+html body .topbar .language-switch a:hover {
+  color:#2879c7 !important;
+}
+html body .topbar .navlinks .nav-cta,
+html body .topbar .nav-cta {
+  background:#2879c7 !important;
+  background-image:none !important;
+  color:#ffffff !important;
+  border:1px solid #2879c7 !important;
+}
+html body .topbar .nav-toggle span {background:#18334d !important;}
+
+</style>
 </body>
 </html>
 )?'TSX':'NASDAQ');
