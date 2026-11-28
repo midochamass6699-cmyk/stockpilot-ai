@@ -6832,7 +6832,12 @@ section:empty, article:empty, aside:empty { display:none!important; }
 <script id="sp-stock-explorer-entry-script">
 (function(){
  const lang=(document.documentElement.lang||'en').toLowerCase().slice(0,2);
- const copy={en:{label:'Check any stock',placeholder:'Company name or ticker (e.g. Microsoft, MSFT)',button:'CHECK STOCK →',search:'Finding the right listing…',empty:'No matching stock listing found. Try the ticker or full company name.',error:'Stock lookup is temporarily unavailable. Please try again.'},fr:{label:'Vérifier une action',placeholder:'Nom de l’entreprise ou symbole (ex. Microsoft, MSFT)',button:'EXPLORER L’ACTION →',search:'Recherche de la bonne inscription…',empty:'Aucune action correspondante. Essayez le symbole ou le nom complet.',error:'La recherche est temporairement indisponible. Réessayez.'},de:{label:'Aktie prüfen',placeholder:'Unternehmensname oder Ticker (z. B. Microsoft, MSFT)',button:'AKTIE PRÜFEN →',search:'Passenden Börseneintrag suchen…',empty:'Keine passende Aktie gefunden. Versuchen Sie den Ticker oder Firmennamen.',error:'Die Aktiensuche ist vorübergehend nicht verfügbar.'},es:{label:'Consultar una acción',placeholder:'Nombre de empresa o ticker (p. ej., Microsoft, MSFT)',button:'CONSULTAR ACCIÓN →',search:'Buscando la cotización correcta…',empty:'No se encontró una acción coincidente. Prueba el ticker o el nombre completo.',error:'La búsqueda no está disponible temporalmente.'}};
+ const copy={
+  en:{label:'Check any stock',placeholder:'Company name or ticker (e.g. Microsoft, MSFT)',button:'CHECK STOCK →',search:'Finding matching listings…',empty:'No matching stock listing found. Try another company name or ticker.',error:'Stock lookup is temporarily unavailable. Please try again.',choose:'Choose a company and exchange, or use the best match:',best:'Use best match',exchange:'Exchange not identified',missing:'This listing is missing a ticker or confirmed exchange. Choose another result.',direct:'Opening the requested listing…'},
+  fr:{label:'Vérifier une action',placeholder:'Nom de l’entreprise ou symbole (ex. Microsoft, MSFT)',button:'EXPLORER L’ACTION →',search:'Recherche des inscriptions correspondantes…',empty:'Aucune inscription correspondante. Essayez un autre nom ou symbole.',error:'La recherche est temporairement indisponible. Réessayez.',choose:'Choisissez une entreprise et une bourse, ou utilisez le meilleur résultat :',best:'Utiliser le meilleur résultat',exchange:'Bourse non identifiée',missing:'Il manque le symbole ou la bourse confirmée. Choisissez un autre résultat.',direct:'Ouverture de l’inscription demandée…'},
+  de:{label:'Aktie prüfen',placeholder:'Unternehmensname oder Ticker (z. B. Microsoft, MSFT)',button:'AKTIE PRÜFEN →',search:'Passende Börsennotierungen werden gesucht…',empty:'Keine passende Aktie gefunden. Versuchen Sie einen anderen Namen oder Ticker.',error:'Die Aktiensuche ist vorübergehend nicht verfügbar.',choose:'Unternehmen und Börse auswählen oder besten Treffer verwenden:',best:'Besten Treffer verwenden',exchange:'Börse nicht erkannt',missing:'Ticker oder bestätigte Börse fehlt. Bitte ein anderes Ergebnis wählen.',direct:'Gewünschte Notierung wird geöffnet…'},
+  es:{label:'Consultar una acción',placeholder:'Nombre de empresa o ticker (p. ej., Microsoft, MSFT)',button:'CONSULTAR ACCIÓN →',search:'Buscando cotizaciones coincidentes…',empty:'No se encontró ninguna cotización. Prueba otro nombre o ticker.',error:'La búsqueda no está disponible temporalmente.',choose:'Elige una empresa y una bolsa, o utiliza el mejor resultado:',best:'Usar el mejor resultado',exchange:'Bolsa no identificada',missing:'Falta el ticker o una bolsa confirmada. Elige otro resultado.',direct:'Abriendo la cotización solicitada…'}
+ };
  const t=copy[lang]||copy.en;
  let form=document.querySelector('#tf-company-quick-form,#tf-fr-company-form');
  if(!form){
@@ -6851,40 +6856,84 @@ section:empty, article:empty, aside:empty { display:none!important; }
  if(label)label.textContent=t.label;
  if(input)input.placeholder=t.placeholder;
  if(button)button.textContent=t.button;
- if(form.id==='tf-fr-company-form'){
-  const left=form.previousElementSibling;if(left&&left.classList.contains('tf-fr-company-start-copy'))left.textContent='Vérifiez une action et ouvrez son espace interactif de recherche.';
+ const norm=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,' AND ').replace(/[.,'’]/g,' ').replace(/[^A-Z0-9. :_-]/g,' ').replace(/\s+/g,' ').trim();
+ function extractMatches(payload){
+  const candidates=[payload?.data,payload?.results,payload?.result,payload?.matches,payload?.items,payload?.data?.results,payload?.data?.items,payload?.result?.data];
+  return candidates.find(Array.isArray)||[];
+ }
+ function exchangeFor(stock){
+  const raw=String(stock.exchange||stock.mic_code||stock.exchange_short_name||stock.exchange_name||stock.primary_exchange||stock.market||'').toUpperCase();
+  const symbol=String(stock.symbol||stock.ticker||'').toUpperCase();
+  const suffix=symbol.match(/\.(TO|TSE|V|VN)$/);
+  if(suffix)return ['TO','TSE'].includes(suffix[1])?'TSX':'TSXV';
+  if(/NASDAQ|XNAS/.test(raw))return 'NASDAQ';
+  if(/NYSE|NEW YORK|XNYS/.test(raw))return 'NYSE';
+  if(/AMEX|NYSE AMERICAN|XASE/.test(raw))return 'AMEX';
+  if(/VENTURE|XTSX|TSXV/.test(raw))return 'TSXV';
+  if(/TORONTO|XTSE|(^|\W)TSX($|\W)/.test(raw))return 'TSX';
+  if(/CSE|CANADIAN SECURITIES/.test(raw))return 'CSE';
+  return '';
+ }
+ function nameOf(stock){return String(stock.name||stock.company_name||stock.instrument_name||stock.description||stock.title||stock.symbol||stock.ticker||'Company');}
+ function score(stock,q){
+  const n=norm(nameOf(stock)),s=norm(stock.symbol||stock.ticker),c=norm(stock.company_name||stock.instrument_name);
+  if(s===q)return 120;
+  if(n===q||c===q)return 110;
+  if(s.startsWith(q))return 95;
+  if(n.startsWith(q)||c.startsWith(q))return 85;
+  if(n.includes(q)||c.includes(q))return 65;
+  return 0;
+ }
+ function openListing(stock){
+  const rawTicker=String(stock.symbol||stock.ticker||'').trim().toUpperCase();
+  const exchange=exchangeFor(stock);
+  if(!rawTicker||!exchange){status.textContent=t.missing;return;}
+  const ticker=rawTicker.replace(/\.(TO|TSE|V|VN)$/,'');
+  const symbol=exchange+':'+ticker;
+  const target=new URL('/stock-explorer.html',location.origin);
+  target.searchParams.set('symbol',symbol);
+  target.searchParams.set('name',nameOf(stock));
+  target.searchParams.set('lang',lang);
+  status.textContent=t.direct;
+  window.location.href=target.toString();
+ }
+ function renderMatches(matches,q){
+  const ranked=matches.map(stock=>({stock,score:score(stock,q)})).filter(x=>x.score>0||matches.length===1).sort((a,b)=>b.score-a.score).slice(0,8);
+  if(!ranked.length){status.textContent=t.empty;return;}
+  const wrap=document.createElement('div');
+  wrap.style.cssText='display:grid;gap:7px;margin-top:10px;width:100%';
+  const heading=document.createElement('div');heading.textContent=t.choose;heading.style.cssText='font-weight:800;margin-bottom:2px';
+  wrap.appendChild(heading);
+  const best=document.createElement('button');best.type='button';best.textContent=t.best;best.style.cssText='min-height:38px;padding:8px 12px;border-radius:8px;background:#167d78;color:#fff;font-weight:850;cursor:pointer';
+  best.addEventListener('click',()=>openListing(ranked[0].stock));wrap.appendChild(best);
+  ranked.forEach(({stock})=>{
+   const item=document.createElement('button');item.type='button';
+   item.style.cssText='display:block;width:100%;min-height:40px;padding:9px 11px;text-align:left;border:1px solid #8ba1b4;border-radius:8px;background:#fff;color:#172333;cursor:pointer;white-space:normal';
+   const exchange=exchangeFor(stock)||t.exchange;
+   item.textContent=nameOf(stock)+' · '+String(stock.symbol||stock.ticker||'—')+' · '+exchange;
+   item.addEventListener('click',()=>openListing(stock));wrap.appendChild(item);
+  });
+  status.replaceChildren(wrap);
  }
  form.addEventListener('submit',async e=>{
   e.preventDefault();e.stopImmediatePropagation();
   const q=input.value.trim();if(q.length<2)return;
   button.disabled=true;status.textContent=t.search;
   try{
-   let resolved=q.toUpperCase(),companyName='';
-   const norm=v=>String(v||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
-   const alias=norm(q),isUsEdition=location.pathname.startsWith('/us/');
-   if(!q.includes(':')&&['DELTA','DELTA AIR LINES','DELTA AIR LINES INC','DELTA AIR LINES INCORPORATED','DAL'].includes(alias)){
-    resolved='NYSE:DAL';companyName='Delta Air Lines, Inc.';
-   }else if(!q.includes(':')&&(alias==='TELUS'||alias==='TELUS CORPORATION')){
-    resolved=isUsEdition?'NYSE:TU':'TSX:T';companyName='TELUS Corporation';
-   }else if(!q.includes(':')){
-    const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev');
-    url.searchParams.set('action','search');url.searchParams.set('q',q);
-    const response=await fetch(url.toString(),{headers:{Accept:'application/json'}});
-    if(!response.ok)throw new Error(t.error);
-    const payload=await response.json(),matches=Array.isArray(payload.data)?payload.data:(Array.isArray(payload.results)?payload.results:[]);
-    if(!matches.length){status.textContent=t.empty;return;}
-    const chosen=matches.find(x=>norm(x.symbol)===alias)||matches.find(x=>norm(x.ticker)===alias)||matches.find(x=>norm(x.name||x.company_name)===alias)||matches.find(x=>norm(x.name||x.company_name).startsWith(alias+' '));
-    if(!chosen){status.textContent=t.empty;return;}
-    const rawTicker=String(chosen.symbol||chosen.ticker||'').trim().toUpperCase();
-    if(!rawTicker)throw new Error(t.error);
-    const suffix=rawTicker.match(/\.(TO|TSE|V|VN)$/);
-    const ticker=suffix?rawTicker.replace(/\.(TO|TSE|V|VN)$/,''):rawTicker;
-    const ex=String(chosen.exchange||chosen.mic_code||chosen.exchange_short_name||chosen.exchange_name||chosen.primary_exchange||chosen.market||'').toUpperCase();
-    const tv=suffix&&['TO','TSE'].includes(suffix[1])?'TSX':suffix&&['V','VN'].includes(suffix[1])?'TSXV':/NASDAQ|XNAS/.test(ex)?'NASDAQ':/NYSE|NEW YORK|XNYS/.test(ex)?'NYSE':/VENTURE|XTSX|TSXV/.test(ex)?'TSXV':/TORONTO|XTSE|(^|\W)TSX($|\W)/.test(ex)?'TSX':'';
-    if(!tv){status.textContent=lang==='fr'?'Bourse non confirmée. Essayez un symbole avec sa bourse, par exemple TSX:T.':'Exchange not verified. Try a ticker with its exchange, such as TSX:T.';return;}
-    resolved=tv+':'+ticker;companyName=chosen.name||chosen.company_name||'';
+   if(q.includes(':')){
+    const [exchange,ticker]=q.split(':',2);
+    const map={TSX:'XTSE',TSXV:'XTSX',NASDAQ:'XNAS',NYSE:'XNYS',AMEX:'XASE'};
+    openListing({symbol:ticker,exchange:map[exchange.toUpperCase()]||exchange,name:ticker});
+    return;
    }
-   const target=new URL('/stock-explorer.html',location.origin);target.searchParams.set('symbol',resolved);if(companyName)target.searchParams.set('name',companyName);target.searchParams.set('lang',lang);window.location.href=target.toString();
+   const url=new URL('https://stockpilot-lookup.midochamass6699.workers.dev/');
+   url.searchParams.set('action','search');url.searchParams.set('q',q);
+   const response=await fetch(url.toString(),{headers:{Accept:'application/json'}});
+   if(!response.ok)throw new Error(t.error);
+   const payload=await response.json();
+   const matches=extractMatches(payload);
+   if(!matches.length){status.textContent=t.empty;return;}
+   renderMatches(matches,norm(q));
   }catch(err){status.textContent=err.message||t.error;}
   finally{button.disabled=false;}
  },true);
